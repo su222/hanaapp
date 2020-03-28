@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="650" Id="CCAB02T01" Left="8" OnLoadCompleted="CCAB02T01_OnLoadCompleted" OnUnloadCompleted="CCAB02T01_OnUnloadCompleted" PidAttrib="7" Title="휴일관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1240" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_HOLI_BAS" OnColumnChanged="DS_HOLI_BAS_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="HOLI_ST_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="HOLI_ED_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="HOLI_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_temp"></Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="46" Height="40" Id="Shape_search" Left="0" LineColor="user22" Right="1234" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="0" Top="6" Type="RoundRect" Width="1234"></Shape>
+		<Shape Bottom="48" Height="40" Id="Shape21" Left="49" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="69" TabOrder="4" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Image Align="Left" Height="18" Id="Image3" ImageID="label_dot" Left="10" LeftMargin="12" Style="Stc_Default_bold" TabOrder="5" Text="년도" Top="17" Transparent="TRUE" Width="50"></Image>
+		<Shape Bottom="61" Height="15" Id="Shape1" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="1239" TabOrder="6" Top="46" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Image Align="Left" Height="14" Id="Image0" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="7" Text="조회내역" Top="69" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="89" Height="5" Id="Shape2" Left="-5" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1234" TabOrder="8" Top="84" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Shape Bottom="5" Height="5" Id="Shape15" Left="5" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1244" TabOrder="9" Top="0" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_HOLI_BAS" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="641" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="553" Id="GRD_HOLI_BAS" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_HOLI_BAS_OnCellClick" OnExpandEdit="GRD_HOLI_BAS_OnExpandEdit" OnHeadClick="GRD_HOLI_BAS_OnHeadClick" Right="1234" RowHeight="20" Style="Grid_2" TabOrder="10" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1234">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="30"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="200"/>
+						<col width="400"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="checkbox" edit="checkbox" InputZeroTime="true"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="휴일시작일"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="휴일종료일"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="휴일명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="비고"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell align="center" col="3" colid="chk" color="black" display="checkbox" edit="checkbox" InputZeroTime="true"/>
+						<cell align="center" col="4" colid="HOLI_ST_DT" display="date" edit="date" expandimage="Btn_calendar" expandshow="true" InputZeroTime="true"/>
+						<cell align="center" col="5" colid="HOLI_ED_DT" display="date" edit="date" expandimage="Btn_calendar" expandshow="true" InputZeroTime="true"/>
+						<cell align="left" col="6" colid="HOLI_NM" color="black" display="normal" edit="normal" InputZeroTime="true"/>
+						<cell align="left" col="7" colid="NOTE" display="normal" edit="normal" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Combo Border="Flat" Height="18" Id="S_YYYY" ImeMode="none" Left="68" OnChanged="S_YYYY_OnChanged" Style="Combo_Ess" TabOrder="1" Top="17" Width="100"></Combo>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_add" ImageID="Btn_sub_add" Left="1184" LeftMargin="16" OnClick="btn_add_OnClick" Style="Btn_sub" TabOrder="2" Text="추가" Top="63" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="645" Height="640" Id="Shape8" Left="1234" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1239" TabOrder="11" Top="5" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 휴일관리
+* 작성자     : 이용재
+* 작성일     : 2013-01-24 : 최초 생성
+* 기능설명   : 지역정보 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+var curRow          = "";
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	//*------------------------------------------------------------------------
+    //* 리사이즈 컨포넌트 정의
+	//* H: 가로 리사이즈
+	//* W: 세로 리사이즈
+	//* A: 가로세로 리사이즈
+	//* R: Resize
+	//* M: Move
+	//* Quick view로 테스트시 주석처리 후 테스트
+    //*------------------------------------------------------------------------
+	gfn_SetResize(this, "Shape_search:H:R GRD_HOLI_BAS:A:R btn_add:H:M");
+	
+	// 년도 가져오기 
+	gfn_yearCombo(S_YYYY, SubStr(Today(),0,4), '선택하세요');
+	
+	// 공통 명령어 조정
+	gfn_set_cbutton("조회:fn_search 저장:fn_save 삭제:fn_delete");
+    
+    fn_search();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	
+	DS_HOLI_BAS.ClearData();
+	
+	svcID			= "CCAB02T01.selectHoliLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_HOLI_BAS=cc.CCHoliDAO.selectHoliLst";
+	argument    	= " _sqlName=cc.CCHoliDAO.selectHoliLst"
+							+ " S_YYYY=" + quote(S_YYYY.Value)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	
+	curRow = DS_HOLI_BAS.currow;
+		
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	
+	// 필터 
+	DS_HOLI_BAS.FireEvent = false;		
+	DS_HOLI_BAS.UnFilter();
+	DS_HOLI_BAS.Filter("FLAG !='N'");
+	
+	
+	// 휴일 체크 
+	if(DS_HOLI_BAS.rowcount > 0)
+	{
+		// 필수체크
+		for(var i=0;i<DS_HOLI_BAS.rowcount;i++)
+		{
+			
+			cMessage = "";
+			
+			
+			if(length(DS_HOLI_BAS.GetColumn(i, "HOLI_ST_DT")) == 0)
+			{
+				bValidate = false;
+				cMessage += "시작일 누락 ";
+			}
+			if(length(DS_HOLI_BAS.GetColumn(i, "HOLI_ED_DT")) == 0)
+			{
+				bValidate = false;
+				cMessage += "종료일 누락 ";
+			}			
+			if(length(DS_HOLI_BAS.GetColumn(i, "HOLI_NM")) == 0)
+			{
+				bValidate = false;
+				cMessage += "휴일명 누락 ";
+			}
+			
+
+			if(bValidate == false)
+			{
+				pMessage += "\n ["+i+"] " + cMessage;
+			}
+		}
+		
+		// 필수항목 누락 
+		if(bValidate == false)
+		{
+			gfn_popup_message("modal", "error", pMessage, "확인");
+		}
+	}
+	else
+	{
+		gfn_popup_message("modal", "error", "저장할 항목이 없습니다.", "확인");
+		bValidate = false;		
+	
+	}
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		// 저장 
+		//if(gfn_popup_message("modal", "confirm", "저장하시겠습니까?", "확인")) 
+		//{
+
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			ds_temp.ClearData();
+			ds_temp.CopyF("DS_HOLI_BAS");
+			
+			svcID			= "CCAB02T01.saveHoliLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "cc.CCHoliDAO.saveHoliLst=ds_temp:A";
+			outDatasets 	= "";
+			argument    	= " _sqlName=cc.CCHoliDAO.saveHoliLst";
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		//}
+	
+	}
+
+	DS_HOLI_BAS.UnFilter();
+	DS_HOLI_BAS.Filter("flag != 'D'");
+	DS_HOLI_BAS.FireEvent = true;	
+
+	DS_HOLI_BAS.row = curRow;
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 삭제 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_delete()
+{
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	
+	// 필터 
+	DS_HOLI_BAS.FireEvent = false;		
+	DS_HOLI_BAS.UnFilter();
+	DS_HOLI_BAS.Filter("CHK ='1'");
+	
+	
+	// 체크 
+	if(DS_HOLI_BAS.rowcount > 0)
+	{
+		// 필수체크
+		for(var i=0;i<DS_HOLI_BAS.rowcount;i++)
+		{
+		}
+		
+		// 필수항목 누락 
+		if(bValidate == false)
+		{
+			gfn_popup_message("modal", "error", pMessage, "확인");
+		}
+	}
+	else
+	{
+		gfn_popup_message("modal", "error", "삭제할 항목이 없습니다.", "확인");
+		bValidate = false;		
+	
+	}
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		//삭제 
+		//if(gfn_popup_message("modal", "confirm", "삭제하시겠습니까?", "확인")) 
+		//{
+		
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			ds_temp.ClearData();
+			ds_temp.CopyF("DS_HOLI_BAS");		
+		
+			svcID			= "CCAB02T01.deleteHoliLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "cc.CCHoliDAO.deleteHoliLst=ds_temp:A";
+			outDatasets 	= "";
+			argument    	= " _sqlName=cc.CCHoliDAO.deleteHoliLst";
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		//}
+	
+	}
+
+	DS_HOLI_BAS.UnFilter();
+	DS_HOLI_BAS.Filter("FLAG != 'D'");
+	DS_HOLI_BAS.FireEvent = true;	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "CCAB02T01.selectHoliLst" :
+		
+			// 조회 결과 없으면 메시지를 띄운다.
+			//if(DS_HOLI_BAS.rowcount < 1) 
+			//{ 
+			//	gfn_popup_message("modal", "ico_info", "조회된 내용이 없습니다.", "확인");	
+			//}
+			
+			
+		break;	
+
+		// 저장
+		case "CCAB02T01.saveHoliLst" :
+		
+			gfn_popup_message("modal", "ico_info", "추가/수정완료.", "확인");	
+			fn_search();		
+		break;	
+		
+		// 삭제
+		case "CCAB02T01.deleteHoliLst" :
+		
+			gfn_popup_message("modal", "ico_info", "삭제완료.", "확인");	
+			fn_search();		
+		break;	
+		
+		default:
+			  alert("기타"); 
+	}
+
+	if(curRow != null) 
+	{
+		DS_HOLI_BAS.row = curRow;
+	}
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 변경된 항목 있는지 체크
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 저장 안하고 창 닫을때 체크해서 저장하게 한다.
+//*-----------------------------------------------------------------------------------------------
+function fn_check_unsave()
+{
+	var isUnSave = false;
+
+	curRow = DS_HOLI_BAS.currow;
+	
+	// 필터 
+	DS_HOLI_BAS.FireEvent = false;		
+	DS_HOLI_BAS.UnFilter();
+	DS_HOLI_BAS.Filter("FLAG !='N'");
+	
+	
+	//  체크 
+	if(DS_HOLI_BAS.rowcount > 0)
+	{
+		isUnSave = true;
+	}
+
+	DS_HOLI_BAS.UnFilter();
+	DS_HOLI_BAS.Filter("flag != 'D'");
+	DS_HOLI_BAS.FireEvent = true;	
+
+	DS_HOLI_BAS.row = curRow;
+			
+	return isUnSave;
+	
+}
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_add_row()
+{
+
+	var vRow = DS_HOLI_BAS.AddRow();
+	
+	// 기초값
+	DS_HOLI_BAS.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+	DS_HOLI_BAS.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+	DS_HOLI_BAS.SetColumn(vRow,"CHK","1");	// 선택됨
+    DS_HOLI_BAS.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+    
+   
+}
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAB02T01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAB02T01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-7.엑셀버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_excel_OnClick(obj)
+{
+	gfn_exportExcel(Grid1,"sheet1");
+}
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid  클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_HOLI_BAS_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+		curRow = nRow;
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_HOLI_BAS_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	// 체크박스 클릭시
+	if(nCell == 3)
+	{
+		gfn_SetCheckBoxAllSelected(nCell, GRD_HOLI_BAS, DS_HOLI_BAS, "CHK");
+	}
+	// 나머지는 Sorting
+	else
+	{
+		gfn_GridSort(GRD_HOLI_BAS, DS_HOLI_BAS, nCell);	
+	}
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 달력 클릭 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_HOLI_BAS_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	// 달력
+	if(nCell == 4 || nCell == 5 )
+	{
+		gfn_PopupGridCalendar(obj, nRow, nCell);
+	}	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  행추가 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_add_OnClick(obj)
+{
+	var row = DS_HOLI_BAS.AddRow();
+	
+	DS_HOLI_BAS.SetColumn(row,"FLAG","I");	// 추가 FLAG 넣기
+	DS_HOLI_BAS.SetColumn(row,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+	DS_HOLI_BAS.SetColumn(row,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+	DS_HOLI_BAS.SetColumn(row,"CHk","1");	//
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 flag 설정
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_HOLI_BAS_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	// 즉 조회된거를 수정하면 U로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" && ToUpper(strColumnID) != "CHK")
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+		obj.SetColumn(nRow, "CHK", "1");	// 자동 체크 처리
+	}
+}
+
+
+
+function Button0_OnClick(obj)
+{
+	alert(gfn_dsToString(DS_HOLI_BAS));
+}
+
+
+
+
+
+
+
+function S_YYYY_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	fn_search();
+}
+]]></Script>
+</Window>

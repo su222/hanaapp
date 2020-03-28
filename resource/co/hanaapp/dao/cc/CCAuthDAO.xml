@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_USERPMS_LST A, TB_CC_PMSMENU_LST B, TB_CC_MENU_BAS  -->
+<mapper namespace="co.hanaapp.dao.cc.CCAuthDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+
+   <!-- 사용가능 회사 조회 -->
+    <select id="selectAuthCmpnyLst" parameterType="map" resultType ="map">
+        SELECT '0' AS CHK,
+               NVL(MNG_COM_ID,' ') MNG_COM_ID,
+               NVL(FC_CC_GET_COMNAME(MNG_COM_ID),' ') AS MNG_COM_NM,
+               ' ' AS MNG_BRCH_ID, 
+               ' ' MNG_BRCH_NM,
+               NVL(SEL_PMS,'N') SEL_PMS,
+               NVL(TRN_PMS,'N') TRN_PMS
+          FROM (SELECT /* 권한적용회사*/
+                       DISTINCT A.MNG_COM_ID,
+                       NULL MNG_BRCH_ID,
+                       MAX(B.SEL_PMS) AS SEL_PMS, -- 중복시  상위 권한을 넣는다
+                       MAX(B.TRN_PMS) AS TRN_PMS -- 중복시 상위 권한을 넣는다.
+                  FROM TB_CC_USERPMS_LST A, TB_CC_PMSMENU_LST B, TB_CC_MENU_BAS C
+                 WHERE A.PMS_CD = B.PMS_CD
+                   AND B.MENU_ID = C.MENU_ID
+                   AND #{AUTH_USE, jdbcType=VARCHAR} = 'Y'
+                   AND C.USE_YN = 'Y'
+                   AND A.USR_ID = #{USR_ID, jdbcType=VARCHAR}
+                   AND UPPER(C.MENU_URL) LIKE '%'||UPPER(#{FORM_ID, jdbcType=VARCHAR}) || '%'
+                 GROUP BY A.MNG_COM_ID,
+                       A.MNG_BRCH_ID
+                UNION ALL
+                SELECT /*전체지사*/ 
+                       COM_ID AS MNG_COM_ID,
+                       NULL AS MNG_BRCH_ID, 
+                       'Y' AS SEL_PMS,
+                       'Y' AS TRN_PMS 
+                  FROM TB_CC_CMPNY_BAS
+                 WHERE USE_YN = 'Y'  
+                   AND #{AUTH_USE, jdbcType=VARCHAR} = 'N'
+             ) A
+         ORDER BY MNG_COM_ID    
+   
+
+    </select>   
+
+ 
+   <!-- 사용가능 지사 조회 -->
+    <select id="selectAuthBrchLst" parameterType="map" resultType ="map">
+		SELECT '0' AS CHK,
+		       NVL(MNG_COM_ID,' ') MNG_COM_ID,
+		       NVL(FC_CC_GET_COMNAME(MNG_COM_ID),' ') AS MNG_COM_NM,
+		       NVL(MNG_BRCH_ID, ' ') AS MNG_BRCH_ID, 
+		       NVL(FC_CC_GET_BRCHNAME(MNG_COM_ID, MNG_BRCH_ID),' ') MNG_BRCH_NM,
+		       NVL(SEL_PMS,'N') SEL_PMS,
+		       NVL(TRN_PMS,'N') TRN_PMS
+		  FROM (SELECT /* 권한적용지사*/
+		               A.MNG_COM_ID,
+		               A.MNG_BRCH_ID,
+		               MAX(B.SEL_PMS) AS SEL_PMS, -- 중복시  상위 권한을 넣는다
+		               MAX(B.TRN_PMS) AS TRN_PMS -- 중복시 상위 권한을 넣는다.
+		          FROM TB_CC_USERPMS_LST A, TB_CC_PMSMENU_LST B, TB_CC_MENU_BAS C
+		         WHERE A.PMS_CD = B.PMS_CD
+		           AND B.MENU_ID = C.MENU_ID
+		           AND #{AUTH_USE, jdbcType=VARCHAR} = 'Y'
+		           AND C.USE_YN = 'Y'
+		           AND A.USR_ID = #{USR_ID, jdbcType=VARCHAR}
+		           AND UPPER(C.MENU_URL) LIKE '%'||UPPER(#{FORM_ID, jdbcType=VARCHAR}) || '%'
+		         GROUP BY A.MNG_COM_ID,
+		               A.MNG_BRCH_ID
+		        UNION ALL
+		        SELECT /*전체지사*/ 
+		               COM_ID AS MNG_COM_ID,
+		               BRCH_ID AS MNG_BRCH_ID, 
+		               'Y' AS SEL_PMS,
+		               'Y' AS TRN_PMS 
+		          FROM TB_CC_BRCH_BAS
+		         WHERE USE_YN = 'Y'  
+		           AND #{AUTH_USE, jdbcType=VARCHAR} = 'N'
+		     ) A
+		 ORDER BY MNG_COM_ID, MNG_BRCH_ID    
+
+    </select>   
+
+
+   <!-- 사용가능 콤보 지사 조회 -->
+    <select id="selectAuthBrchCombo" parameterType="map" resultType ="map">
+		SELECT '0' AS CHK,
+		       NVL(MNG_COM_ID,' ') MNG_COM_ID,
+		       NVL(FC_CC_GET_COMNAME(MNG_COM_ID),' ') AS MNG_COM_NM,
+		       NVL(MNG_BRCH_ID, ' ') AS MNG_BRCH_ID, 
+		       NVL(FC_CC_GET_BRCHNAME(MNG_COM_ID, MNG_BRCH_ID),' ') MNG_BRCH_NM,
+		       NVL(SEL_PMS,'N') SEL_PMS,
+		       NVL(TRN_PMS,'N') TRN_PMS
+		  FROM (SELECT /* 권한적용지사*/
+		               A.MNG_COM_ID,
+		               A.MNG_BRCH_ID,
+		               MAX(B.SEL_PMS) AS SEL_PMS, -- 중복시  상위 권한을 넣는다
+		               MAX(B.TRN_PMS) AS TRN_PMS -- 중복시 상위 권한을 넣는다.
+		          FROM TB_CC_USERPMS_LST A, TB_CC_PMSMENU_LST B, TB_CC_MENU_BAS C
+		         WHERE A.PMS_CD = B.PMS_CD
+		           AND B.MENU_ID = C.MENU_ID
+		           AND #{AUTH_USE, jdbcType=VARCHAR} = 'Y'
+		           AND C.USE_YN = 'Y'
+		           AND A.USR_ID = #{USR_ID, jdbcType=VARCHAR}
+		           AND UPPER(C.MENU_URL) LIKE '%'||UPPER(#{FORM_ID, jdbcType=VARCHAR}) || '%'
+		         GROUP BY A.MNG_COM_ID,
+		               A.MNG_BRCH_ID
+		        UNION ALL
+		        SELECT /*전체지사*/ 
+		               COM_ID AS MNG_COM_ID,
+		               BRCH_ID AS MNG_BRCH_ID, 
+		               'Y' AS SEL_PMS,
+		               'Y' AS TRN_PMS 
+		          FROM TB_CC_BRCH_BAS
+		         WHERE USE_YN = 'Y'  
+		           AND #{AUTH_USE, jdbcType=VARCHAR} = 'N'
+		     ) A
+		 ORDER BY MNG_COM_ID, MNG_BRCH_ID    
+
+    </select>   
+
+
+</mapper>

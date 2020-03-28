@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_LOGIN_LST : 로그인 -->
+<mapper namespace="co.hanaapp.dao.cc.CCLoginDAO">
+
+   <!-- 로그인 체크 -->
+    <select id="CheckLogin" parameterType="map" resultType="map">
+	     select /*로그인 체크*/
+	            a.usr_id,
+	            a.pwd_tp, -- 비밀번호 타입(R:초기화, I:주민번호, N: 정상)
+	            case 
+	                 when a.usr_pwd = #{USR_PWD, jdbcType=VARCHAR} then 'Y'
+	                 else 'N'
+	            end as pwd_match,
+	            trunc(sysdate - nvl(a.pwd_edt_dt,sysdate)) as pwd_chg_dd,
+	            nvl(a.fail_cnt,0) as login_fail_cnt,
+	       a.lock_yn as lock_yn    
+	      from tb_cc_login_lst a, tb_cc_user_lst b
+	     where a.brch_id = b.brch_id
+	       and a.usr_id = b.usr_id
+	       and (a.usr_id = #{USR_ID, jdbcType=VARCHAR} or b.usr_nm = #{USR_ID, jdbcType=VARCHAR})
+
+    </select>
+
+    <!-- 비밀번호 변경 체크 -->
+    <select id="ChangePWAuth" parameterType="map" resultType="map">
+       select /*비밀번호변경 체크*/
+             a.usr_id,
+             pwd_tp -- 비밀번호 타입(R:초기화, I:주민번호, N: 정상)
+        from tb_cc_login_lst a
+       where a.usr_id = #{USR_ID, jdbcType=VARCHAR}
+
+    </select>
+
+
+    <!-- 사용자 정보 조회 -->
+    <select id="selectUserInfo" parameterType="map" resultType="map">
+        select /* 사용자 정보 조회*/
+               a.brch_id,
+               a.brch_nm,
+               b.dept_cd,
+               b.dept_nm,
+               c.usr_id,
+               c.usr_nm,
+               d.usr_ip,
+               c.email,
+               c.hp_no,
+               d.lst_login_dt,
+               C.PMS_GBN
+          from tb_cc_brch_bas a,
+               tb_cc_dept_bas b, 
+               tb_cc_user_lst c,
+               tb_cc_login_lst d
+         where a.brch_id = b.brch_id
+           and a.brch_id = c.brch_id
+           and a.brch_id = d.brch_id
+           and c.dept_cd = b.dept_cd(+)
+           and c.usr_id = d.usr_id
+           and c.usr_id = #{USR_ID, jdbcType=VARCHAR}
+
+    </select>
+
+   <!-- 로그인 성공정보 저장 -->
+    <update  id="saveSuccess" parameterType="map" >
+       	begin
+			
+			update tb_cc_login_lst 
+			   set fail_cnt = 0,
+			       lock_yn = 'N',
+			       lst_login_dt = sysdate,
+			       usr_ip = #{USR_IP, jdbcType=VARCHAR},
+			       edt_usr = #{USR_ID, jdbcType=VARCHAR},
+			       edt_dt = sysdate
+			 where usr_id = #{USR_ID, jdbcType=VARCHAR};
+			
+		exception
+               when others then
+                   raise_application_error(-20501,'LOGIN.saveFailCnt save error : ' ||SQLERRM);	
+		end;			 
+        
+    </update>   
+
+
+   <!-- 로그인 실패횟수 증가 -->
+    <update  id="saveFailCnt" parameterType="map" >
+       	begin
+			
+			update tb_cc_login_lst 
+			   set fail_cnt = #{FAIL_CNT, jdbcType=VARCHAR},
+			       lock_yn = case
+			                      when #{FAIL_CNT, jdbcType=VARCHAR} >= #{LOGIN_FAIL_LIMIT, jdbcType=VARCHAR} then 'Y'
+			                      else 'N'
+			                 end,
+			       edt_usr = #{USR_ID, jdbcType=VARCHAR},
+			       edt_dt = sysdate
+			 where usr_id = #{USR_ID, jdbcType=VARCHAR};
+			
+		exception
+               when others then
+                   raise_application_error(-20501,'LOGIN.saveFailCnt save error : ' ||SQLERRM);	
+		end;			 
+        
+    </update>   
+
+   <!-- 비밀번호 변경 -->
+    <update  id="ChangePWSave" parameterType="map" >
+       	begin
+			
+			update tb_cc_login_lst 
+			   set USR_PWD = #{USR_PWD, jdbcType=VARCHAR},
+			       pwd_tp = #{PWD_TP, jdbcType=VARCHAR},
+			       fail_cnt = 0,
+			       lock_yn = 'N',
+			       pwd_edt_dt = sysdate,
+			       edt_usr = #{USR_ID, jdbcType=VARCHAR},
+			       edt_dt = sysdate
+			 where usr_id = #{USR_ID, jdbcType=VARCHAR};
+			
+		exception
+               when others then
+                   raise_application_error(-20501,'ChangePWSave save error : ' ||SQLERRM);	
+		end;			 
+        
+    </update>   
+ 
+
+</mapper>

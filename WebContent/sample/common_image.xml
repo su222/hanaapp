@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="700" Id="common_image" Left="8" OnLoadCompleted="common_image_OnLoadCompleted" PidAttrib="7" Title="common_image" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="920" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" FireNextCount="10" Id="ds_grd_multipart">
+				<Contents>
+					<colinfo id="filename" size="256" summ="default" type="STRING"/>
+					<colinfo id="param1" size="256" summ="default" type="STRING"/>
+					<colinfo id="param2" size="256" summ="default" type="STRING"/>
+					<colinfo id="param3" size="256" summ="default" type="STRING"/>
+					<colinfo id="check_val" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="49" Height="39" Id="Shape1" Left="11" LineColor="user22" Right="909" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="9" Top="10" Type="RoundRect" Width="898"></Shape>
+		<Shape Bottom="700" Height="700" Id="Shape5" Left="910" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="920" TabOrder="3" Top="0" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Shape Bottom="700" Height="700" Id="Shape6" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="10" TabOrder="4" Top="0" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Shape Bottom="700" Height="10" Id="Shape3" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="2" Top="690" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<Shape Bottom="10" Height="10" Id="Shape2" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="4" Top="0" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<Shape Bottom="537" Height="520" Id="Shape7" Left="435" LineKind="Vertical" LineStyle="Dot" Right="438" TabOrder="1" Top="17" Visible="FALSE" Width="3"></Shape>
+		<Shape Bottom="536" Height="520" Id="Shape4" Left="117" LineKind="Vertical" LineStyle="Dot" Right="120" TabOrder="5" Top="16" Visible="FALSE" Width="3"></Shape>
+		<AxMSIE Bottom="264" DocumentComplete="AxMSIE0_DocumentComplete" Height="208" Id="AxMSIE0" Left="15" Right="239" Top="56" Width="224"></AxMSIE>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_transform" ImageID="btn_a_02" Left="441" LeftMargin="8" OnClick="btn_transform_OnClick" Style="btn_a" TabOrder="5" Text="변환" Top="19" Width="50"></Button>
+		<Image Align="Right" Height="18" Id="Image1" Left="276" LeftMargin="0" Style="Stc_Default_bold" TabOrder="10" Text="이미지사이즈" Top="21" Transparent="TRUE" Width="83"></Image>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_imageSize" Left="362" LeftMargin="4" Style="Edit" TabOrder="11" Top="20" Width="74"></Edit>
+		<Image Align="Right" Height="18" Id="Image0" Left="36" LeftMargin="0" Style="Stc_Default_bold" TabOrder="12" Text="이미지이름" Top="21" Transparent="TRUE" Width="83"></Image>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_imageName" Left="122" LeftMargin="4" Style="Edit" TabOrder="13" Top="20" Width="154"></Edit>
+	</Form>
+	<Script><![CDATA[/********************************************************************************
+* FormID(명) : common_multipart
+* Form 설명  : sample
+* 작성자     : DaMaNeGi
+* 작성일     : 2011-01-31
+* ===============================================================================
+* ds_multipart
+* ===============================================================================
+* 변경내역 : 
+* YYYYMMDD 담당자명 변경내용(Why?,What?)
+* ===============================================================================
+*********************************************************************************/
+
+#include script::common.js
+
+
+
+function common_image_OnLoadCompleted(obj)
+{
+	AxMsie0.Navigate2("about:blank", ,"_self", "", "");  //* 반드시 필요.
+}
+
+
+
+function AxMSIE0_DocumentComplete(obj,pDisp,URL)
+{
+	AxMsie0.Document.body.Scroll = "no";    //* msie의 속성을 지정하는 scrollbar.
+	AxMsie0.Document.body.leftmargin = "0"; //* msie의 속성을 지정하는  leftmargin.
+	AxMsie0.Document.body.topmargin = "0";	//m* sie의 속성을 지정하는 topmargin.
+}
+
+function btn_transform_OnClick(obj)
+{
+	var imageName = edt_imageName.Text;
+	
+	AxMsie0.Document.body.innerHTML = '<img style="FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=0)" src="img::' +  imageName + '" width="' + edt_imageSize.Text + ' style="FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=2)">';	
+}
+]]></Script>
+</Window>

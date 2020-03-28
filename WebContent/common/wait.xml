@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="170" Id="MessageView" Left="8" OnKeyDown="MessageView_OnKeyDown" OnLoadCompleted="MessageView_OnLoadCompleted" PidAttrib="7" scroll="false" Title="메시지창" ToolTipFont="Default,0" Top="8" Ver="1.1" Width="400" WorkArea="TRUE">
+		<Shape BKColor="white" Bottom="170" Height="170" Id="Shape2" Left="0" LineColor="#ececec" LineWidth="10" Right="400" TabOrder="1" Top="0" Type="Rectangle" Width="400"></Shape>
+		<TextArea Align="Center" Border="None" Color="#555555" Font="돋움,10,Bold" Height="27" Id="TextArea0" Left="62" Readonly="TRUE" Style="d_textarea" TabOrder="2" Text="처리중입니다.&#32;잠시만&#32;기다려&#32;주십시오." Top="115" Width="276"></TextArea>
+		<Image Height="66" Id="Image_wait" ImageID="img::wait-bar.gif" Left="153" TabOrder="3" Top="34" Width="94"></Image>
+	</Form>
+	<Script><![CDATA[
+var code;
+var message;
+
+function MessageView_OnLoadCompleted(obj)
+{
+	message = parent.resultMessage;
+	code = parent.resultCode;
+	var msg = message;
+	
+	if (msg != null && msg != "" && msg != "no message") {
+//		messageArea.Value= msg + "("+ code + ")";
+	}
+}
+
+function btn_close_OnClick(obj)
+{
+	Close();
+}
+
+function btn_close_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == "13")
+		close();
+}
+
+function MessageView_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 27)
+		obj.Visible = false;
+}
+]]></Script>
+</Window>

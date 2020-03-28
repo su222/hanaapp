@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="450" Id="CPAE02P02" Left="8" OnLoadCompleted="CPAE02P02_OnLoadCompleted" OnUnloadCompleted="CPAE02P02_OnUnloadCompleted" PidAttrib="7" Title="청구누락상세" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="808" WorkArea="true">
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="0" Transparent="TRUE" Width="800"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="1" Text="청구누락&#32;상세" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Image Align="Right" Height="18" Id="Image17" Left="26" LeftMargin="0" Style="Stc_Default_bold" TabOrder="2" Top="66" Transparent="TRUE" Width="51"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="333" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="3" Text="닫기" Top="424" Transparent="TRUE" Width="50"></Button>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="4" Top="8" Width="24"></Image>
+		<Shape Bottom="66" Height="5" Id="Shape14" Left="-2" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="793" TabOrder="6" Top="61" Type="Rectangle" Visible="FALSE" Width="795"></Shape>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_TIEUPASK_OMS_DTL" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="410" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="346" Id="GRD_TIEUPASK_NOT_DTL" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnHeadClick="GRD_TIEUPASK_NOT_DTL_OnHeadClick" Right="792" RowHeight="20" Style="Grid_2" TabOrder="7" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="150"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" col="0" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="1" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="사건번호"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="2" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="은행수수료"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="대행수수료"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="합계"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="고객명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="주민번호"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="진행상태"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="center" col="1" colid="AFF_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="right" col="2" colid="BNK_CHRG" combodisplayrowcnt="20" display="number" InputZeroTime="true"/>
+						<cell align="right" col="3" colid="AGC_CHRG" color="black" display="number" InputZeroTime="true"/>
+						<cell align="right" col="4" colid="OCC_AMT" color="black" display="number" InputZeroTime="true"/>
+						<cell align="center" col="5" colid="CLT_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="6" colid="CLT_JMN" color="black" display="text" InputZeroTime="true" Mask="######-#######"/>
+						<cell align="left" col="7" colid="AFF_PRS_STS" color="black" display="normal" InputZeroTime="true"/>
+					</body>
+					<summary>
+						<cell col="0" display="text" InputZeroTime="true"/>
+						<cell col="1" display="text" InputZeroTime="true"/>
+						<cell align="right" col="2" display="number" expr='SUM(&quot;BNK_CHRG&quot;)' InputZeroTime="true"/>
+						<cell align="right" col="3" display="number" expr='SUM(&quot;AGC_CHRG&quot;)' InputZeroTime="true"/>
+						<cell align="right" col="4" display="number" expr='SUM(&quot;OCC_AMT&quot;)' InputZeroTime="true"/>
+						<cell col="5" display="text" InputZeroTime="true"/>
+						<cell col="6" display="text" InputZeroTime="true"/>
+						<cell col="7" display="text" InputZeroTime="true"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 청구누락상세
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 청구누락상세 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.Transaction 후 처리 해야 할 내용
+//  1-4.창닫기
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고      
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+	
+
+	
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.조회 버튼 클릭  
+//  2-4.확인 버튼 클릭
+//  2-5.닫기 버튼 클릭  
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAE02P02_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+    fn_initForm();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 UnLoad 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAE02P02_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 헤더클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_TIEUPASK_NOT_DTL_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_TIEUPASK_NOT_DTL, DS_TIEUPASK_OMS_DTL, nCell);	
+}
+
+
+
+]]></Script>
+</Window>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="560" Id="WHITEBOD02" Left="8" PidAttrib="7" Title="빈화면&#32;나의매뉴&#32;없음" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Shape BKColor="user0" Bottom="248" Height="208" Id="Shape0" Left="8" LineColor="user22" Right="777" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="1" Top="40" Type="RoundRect" Width="769"></Shape>
+		<Image Align="Left" Font="굴림,9,Bold" Height="16" Id="Image2" ImageID="icon_msg_dot" Left="39" LeftMargin="12" Style="Stc_Message" TabOrder="3" Text="나의공간에&#32;등록된&#32;메뉴가&#32;없습니다." Top="106" Transparent="TRUE" Width="696"></Image>
+		<Image Align="Left" Font="굴림,9,Bold" Height="20" Id="Image0" ImageID="icon_msg" Left="22" LeftMargin="25" Style="Stc_Message" TabOrder="2" Text="알림" Top="63" Transparent="TRUE" Width="366"></Image>
+		<Image Align="Left" Font="굴림,9,Bold" Height="16" Id="Image1" ImageID="icon_msg_dot" Left="39" LeftMargin="12" Style="Stc_Message" TabOrder="4" Text="현재&#32;작업중인&#32;있는&#32;화면에서&#32;왼쪽메뉴&#32;상단의&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;버튼을&#32;이용하여&#32;나의메뉴를&#32;관리할&#32;수&#32;있습니다." Top="134" Transparent="TRUE" Width="704"></Image>
+		<Image Height="20" Id="img_add_bookmark" ImageID="bt_add_menu" Left="329" Static="FALSE" TabOrder="6" Top="132" Width="56"></Image>
+		<Image Height="20" Id="img_del_bookmark" ImageID="bt_del_menu" Left="388" Static="FALSE" TabOrder="5" Top="132" Width="56"></Image>
+		<Image Align="Left" Font="굴림,9,Bold" Height="16" Id="Image3" ImageID="icon_msg_dot" Left="39" LeftMargin="12" Style="Stc_Message" TabOrder="7" Text="추가된&#32;메뉴는&#32;최상위&#32;메뉴단위로&#32;그룹화&#32;됩니다." Top="163" Transparent="TRUE" Width="696"></Image>
+		<Image Align="Left" Font="굴림,9,Bold" Height="16" Id="Image4" ImageID="icon_msg_dot" Left="39" LeftMargin="12" Style="Stc_Message" TabOrder="8" Text="메뉴&#32;삭제시&#32;최상위&#32;메뉴단위&#32;&amp;&#32;메뉴단위로&#32;삭제가&#32;가능합니다." Top="192" Transparent="TRUE" Width="696"></Image>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : WHITEBOD02
+* 작성자     : 강동수
+* 작성일     : 
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-07-08      V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID		 = "";
+var url   		 = "";
+var inDatasets   = "";
+var outDatasets  = "";
+var argument     = "";
+var callbackFunc = "";
+var compCd 		 = "";
+var corpCd 		 = "";
+var edu_gb       = "";
+var edu_cd       = "";
+var edu_gb       = "";
+
+var sel_flag     = "S";		// 회사선택구분(S:단일선택, M:멀티선택)
+var form_id      = "";
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.초기화 함수      
+//  1-3.조회 함수     
+//  1-4.저장 함수    
+//  1-5.삭제 함수    
+//  1-6.Transaction 후 처리 해야 할 내용
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/]]></Script>
+</Window>

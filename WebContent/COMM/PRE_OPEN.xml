@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="275" Id="PRE_OPEN" Left="8" PidAttrib="7" scroll="false" Title="pre-open&#32;download" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="450" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_newEno">
+				<Contents>
+					<colinfo id="chk" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="corp_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="eno" size="256" summ="default" type="STRING"/>
+					<colinfo id="kor_nm" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Align="Left" Height="270" Id="img_bg" ImageID="popBg_450x300" TabOrder="3" Text="&#32;&#32;&#32;&#32;&#32;주민번호&#32;입력&#32;후&#32;통합사번찾기를&#32;클릭하여&#32;통합사번을&#32;찾아주세요.&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" Width="450"></Image>
+		<Static BKColor="#d7d7d7" Height="2" Id="Static0" Left="25" TabOrder="4" Top="92" Width="400"></Static>
+		<Image Height="28" Id="btn_searchEno2" ImageID="bt_통합사번찾기" Left="472" OnClick="btn_searchEno_OnClick" Static="FALSE" TabOrder="2" Top="184" Visible="FALSE" Width="100"></Image>
+		<Image Height="22" Id="img_ssn" ImageID="txt_주민번호" Left="28" TabOrder="5" Top="103" Width="88"></Image>
+		<Image Height="22" Id="img_eno" ImageID="txt_통합사번" Left="468" TabOrder="6" Top="152" Visible="FALSE" Width="88"></Image>
+		<Edit Border="Flat" Font="돋움,9,Bold" Height="22" Id="edt_eno" ImeMode="native" Left="544" LeftMargin="4" MaxLength="10" Readonly="TRUE" Style="Edit" TabOrder="1" TabStop="FALSE" Top="152" Visible="FALSE" Width="100"></Edit>
+		<Image Align="Left" Height="20" Id="Image1" Left="18" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="7" Text="통합사번찾기" Top="20" Transparent="TRUE" Width="250"></Image>
+		<Image Height="28" Id="img_close" ImageID="bt_close" Left="576" OnClick="btn_close_OnClick" Static="FALSE" TabOrder="8" Top="184" Visible="FALSE" Width="70"></Image>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoScrollBar="Vert" BindDataset="ds_newEno" BkColor2="user45" BkSelColor="user44" BoldHead="FALSE" Border="Flat" Bottom="230" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="90" Id="grd_new_eno" InputPanel="FALSE" Left="25" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnCellDBLClick="grd_new_eno_OnCellDblClick" Right="425" RowHeight="20" ScrollCell="true" Style="Grid" TabOrder="9" TabStop="true" Top="140" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="400">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="140"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="0" color="user42" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="1" color="user42" display="text" text="회사"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="2" color="user42" display="text" text="통합사번"/>
+					</head>
+					<body>
+						<cell col="0" display="text"/>
+						<cell align="center" col="1" colid="COM_NM" display="text"/>
+						<cell align="center" col="2" colid="eno" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="3" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_searchEno" ImageID="Btn_sub_6w" Left="261" LeftMargin="16" OnClick="btn_searchEno_OnClick" Style="Btn_sub" TabOrder="10" Text="통합사번찾기" Top="103" TopMargin="1" Transparent="TRUE" Width="101"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_confirm" ImageID="Btn_sub_2w" Left="163" LeftMargin="16" OnClick="btn_confirm" Style="Btn_sub" TabOrder="11" Text="확인" Top="240" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_sub_2w" Left="223" LeftMargin="16" OnClick="btn_close_OnClick" Style="Btn_sub" TabOrder="12" Text="닫기" Top="240" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Static Font="돋움,10,Bold" Height="20" Id="Static1" Left="176" Style="Stc_Title" TabOrder="13" Text="-" Top="106" Width="10"></Static>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_ssn1" Left="104" MaxLength="6" Style="Edit" TabOrder="14" Top="104" Width="70"></Edit>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_ssn2" Left="186" MaxLength="7" Password="TRUE" Style="Edit" TabOrder="15" Top="104" Width="70"></Edit>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : PRE_OPEN
+* 작성자     : 김현수
+* 작성일     : 2011-08-19: 최초 생성
+* 기능설명   : 시스템 다운로드 완료알림 
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-04-18       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+#include "lib::fileupdown.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+//var popupValue 		= ""; 		// 팝업창에서 받아온 값을 넣어주기 위해서 전역변수로 선언 (현제 쓰이지는 않는다)
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.초기화 함수      
+//  1-3.조회 함수     
+//  1-4.저장 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+	// 초기화
+	edt_ssn = "";
+	edt_eno = "";
+	
+	// 초기마우스 포커스
+	edt_ssn.setfocus();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 통합사번찾기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_searchEno(ssn)
+{
+	if(length(ssn) !=13)
+	{
+		gfn_popup_message("modal", "error", "잘못된 주민번호입니다.", "확인");
+	}
+	else
+	{
+		svcID			= "PreSystem.searchEno";
+		url   			= "service::PreSystem.searchEno.do";
+		inDatasets  	= "";
+		outDatasets 	= "ds_newEno = PreSystem.searchEno"  
+						;
+		argument    	= " _sqlName=PreSystem.searchEno"
+						 + " p_ssn=" + quote(ssn)
+							;
+		callbackFunc 	= "gfn_callback";
+			
+		gfn_showProgressWindow(true);
+		gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : //Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	switch(svcID) 
+	{
+		// 1. 통합사번찾기
+		case "PreSystem.searchEno" :
+		
+			if(length(ds_newEno.getcolumn(0, "eno") == 0)
+			{
+				gfn_popup_message("modal", "error", "통합사번검색에 실패하였습니다. 관리자에게 문의하세요", "확인");
+			}
+			else
+			{
+				//gfn_popup_message("modal", "error", ds_newEno.kor_nm + "님의 통합사번은 " + ds_newEno.eno + " 입니다.", "확인");
+				//edt_eno.text = ds_newEno.eno;
+			}
+			break;
+	}
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.초기화 부분
+//  2-4.조회 버튼 클릭     
+//  2-5.저장 버튼 클릭    
+//  2-6.삭제 버튼 클릭    
+//  2-7.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function form_OnLoadCompleted(obj) 
+{
+
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function form_OnUnloadCompleted(obj) 
+{
+	gfn_OnBeforeExit();
+}
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 통합사번찾기 버튼 클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_searchEno_OnClick(obj,nX,nY)
+{
+	var ssn = edt_ssn1+edt_ssn2;
+	
+	// 주민번호 미입력시
+	if(length(ssn) == 0)
+	{
+		gfn_popup_message("modal", "error", "주민번호를 입력하세요", "확인");
+	}
+	else
+	{
+		
+		fn_searchEno(ssn);
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj,nX,nY)
+{
+	close(false);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 주민번호 입력 후 엔터키
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function edt_ssn_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 13)
+	{
+		var ssn = replace(replace(edt_ssn.value, "-", ""), "_","");
+		
+		// 주민번호 미입력시
+		if(length(ssn) == 0)
+		{
+			gfn_popup_message("modal", "error", "주민번호를 입력하세요", "확인");
+		}
+		else
+		{
+			
+			fn_searchEno(ssn);
+		}
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 확인클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_confirm(obj)
+{
+	close(ds_newEno.getcolumn(ds_newEno.currow, "eno"));
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드더블클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function grd_new_eno_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	close(ds_newEno.getcolumn(ds_newEno.currow, "eno"));	
+}
+]]></Script>
+</Window>

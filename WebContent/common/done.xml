@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="96" Id="done" Left="8" OnKeyDown="done_OnKeyDown" OnLoadCompleted="done_OnLoadCompleted" PidAttrib="7" Title="done" TooltipFont=",0" Top="8" Ver="1.0" Width="200" WorkArea="false">
+		<Div Border="Raised" Height="97" Id="Div0" TabOrder="1" Text="Div0" Width="200">
+			<Contents>
+				<Image Border="Flat" Height="120" Id="Image0" ImageID="img::wait_1.gif" Left="-34" OnKeyDown="Image0_OnKeyDown" TabOrder="1" Top="-13" Width="241"></Image>
+				<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_confirm" ImageID="btn_a_02" Left="77" LeftMargin="5" OnClick="btn_confirm_OnClick" Style="btn_a" TabOrder="2" Text="확인" Top="56" Width="50"></Button>
+			</Contents>
+		</Div>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"
+
+function btn_excel_OnClick(obj)
+{
+//	Progress.visible = false;
+//	Progress.Url = "sys_common::wait.xml";
+}
+
+
+function done_OnLoadCompleted(obj)
+{
+	trace("do ..");
+}
+
+function btn_confirm_OnClick(obj)
+{
+	gfn_screenClose(this);
+}
+
+function Image0_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == "13") gfn_screenClose(this);
+}
+
+function done_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == "13") gfn_screenClose(this);
+}
+]]></Script>
+</Window>

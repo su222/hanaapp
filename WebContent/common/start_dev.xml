@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<connectGroup Bkalign="right" BkColor="white" Bkvalign="middle" Border="false" device="Win32&#32;(1024x768)" FixedMenu="false" Font="Default,0" height="900" HideFrame="true" ReSize="true" SessionOpenStyle="StatusBar=true&#32;Resize=true" SessionURL="main::Login.xml" ShowSubTitleButton="false" ShowSubTitleText="false" Statusbar="false" title="HES-APP-NEW2" titlebar="true" TraceMode="append" UseDefaultMenu="false" version="1.0" width="1250" work_height="745" work_width="1028">
+	<container Version="1000">
+		<Component Height="21" Id="Spin" Image="10" Name="cySpin" Title="Spin" Version="1000" Width="121"/>
+		<Component Height="21" Id="MaskEdit" Image="19" Name="cyMaskedit" Title="MaskEdit" Version="1000" Width="121"/>
+		<Component Height="21" Id="Button" Image="2" Name="cyButton" Title="Button" Version="1000" Width="104"/>
+		<Component Height="13" Id="Static" Image="8" Name="cyStatic" Title="Static" Version="1000" Width="40"/>
+		<Component Height="21" Id="Edit" Image="3" Name="cyEdit" Title="Edit" Version="1000" Width="121"/>
+		<Component Height="65" Id="Shape" Image="28" Name="cyShape" Title="Shape" Version="1000" Width="65"/>
+		<Component Height="65" Id="Pie" Image="30" Name="cyPie" Title="Pie" Version="1000" Width="65"/>
+		<Component Height="21" Id="Checkbox" Image="4" Name="cyCheckBox" Title="Check&#32;Box" Version="1000" Width="97"/>
+		<Component Height="24" Id="FileDialog" Image="18" Name="cyFileDialog" Title="File&#32;Dialog" Version="1000" Width="24"/>
+		<Component Height="24" Id="File" Image="25" Name="cyFile" Title="File" Version="1000" Width="24"/>
+		<Component Height="97" Id="List" Image="6" Name="cyListBox" Title="List" Version="1000" Width="145"/>
+		<Component Height="21" Id="Combo" Image="5" Name="cyComboEx" Title="ComboBox" Version="1000" Width="145"/>
+		<Component Height="21" Id="Radio" Image="7" Name="cyRadio" Title="Radio" Version="1000" Width="113"/>
+		<Component Height="72" Id="TextArea" Image="16" Name="cyTextArea" Title="Text&#32;Area" Version="1000" Width="185"/>
+		<Component Height="17" Id="Progressbar" Image="31" Name="cyProgressbar" Title="Progressbar" Version="1000" Width="150"/>
+		<Component Height="97" Id="TreeView" Image="11" Module="CyTreeView" Name="cyTreeView" Title="Tree&#32;View" Version="1000" Width="121"/>
+		<Component Height="120" Id="Grid" Image="1" Module="CyGrid" Name="cyGrid" Title="Grid" Version="1000" Width="320"/>
+		<Component Height="105" Id="Image" Image="9" Name="cyImage" Title="Image" Version="1000" Width="105"/>
+		<Component Height="21" Id="Calendar" Image="13" Module="CyCalendarEx" Name="cyCalendarEx" Title="Calendar" Version="1000" Width="145"/>
+		<Component Height="193" Id="Div" Image="20" Name="cyDiv" Title="Division" Version="1000" Width="289"/>
+		<Component Id="PopupDiv" Image="54" Name="CyPopupDiv" Title="Popup&#32;Div" Version="1000"/>
+		<Component Height="193" Id="Tab" Image="12" Name="cyTab" Title="Tab" Version="1000" Width="289"/>
+		<Component Height="260" Id="WebBrowser" Image="24" Module="CyWebBrowser" Name="cyWebBrowser" Title="WebBrowser" Version="1000" Width="364"/>
+		<Component Height="168" Id="swFlash" Image="27" Module="CySWFlash" Name="cySWFlash" Title="Flash" Version="1000" Width="248"/>
+		<Component Height="24" Id="MenuBar" Image="32" Module="CyMenuBar" Name="cyMenuBar" Title="MenuBar" Version="1000" Width="192"/>
+		<Component Height="50" Id="Split" Image="55" Module="CySplit" Name="cySplit" Title="Split" Version="1000" Width="8"/>
+		<Component Height="8" Id="SplitJoint" Image="56" Module="CySplitU" Name="cySplitJoint" Title="SplitJoint" Version="1000" Width="8"/>
+		<Component Height="50" Id="Sign" Image="57" Module="CySign" Name="cySign" Title="Sign" Version="1000" Width="50"/>
+		<Component Id="VsReport" Image="12" Name="CyAxVsReport" Title="VsReport" Version="1000"/>
+		<Component Id="VsView" Image="23" Name="CyAxVSView" Title="VsView" Version="1000"/>
+		<Component Id="PopDiv" Image="54" Name="CyPopupDiv" Title="Popup&#32;Div" Version="1000"/>
+		<Component Height="24" Id="AsyncSocket" Image="12" Name="CyAsyncSocket" Title="AsyncSocket" Version="1000"/>
+		<Component Height="24" Id="MultiLineTab" Image="12" Module="CyMultiLineTab" Name="cyMultiLineTab" Title="MultiLineTab" Version="1000"/>
+		<Component Height="100" Id="ExcelImport" Image="1" Module="ExtCommonApi" Name="ExtCommonApi" Title="Excel&#32;Import&#32;Componunt" Version="1000" Width="100"/>
+		<Component Height="24" Id="ftp" Image="23" Module="CyFtpEx" Name="CyFtpEx" Title="FtpEx" Version="1000" Width="24"/>
+		<Component Height="100" Id="ColorDialog" Image="26" Module="CyColorDialog" Name="CyColorDialog" Title="ColorDialog" Version="1000" Width="100"/>
+		<Component Height="100" Id="HttpFile" Image="23" Module="CyHttpFile" Name="CyHttpFile" Title="HttpFile" Version="1000" Width="100"/>
+	</container>
+	<protocols version="1000">
+		<protocol id="file" name="cyHttpAdp" Version="1000"/>
+		<protocol CompressMethod="ZLIB" id="http" name="cyHttpAdp" Version="1000" XmlFormat="true"/>
+		<protocol id="https" name="cyHttpAdp" Version="1000"/>
+		<Protocol CompressMethod="ZLIB" Id="http_bk" Name="CyHttpAdp" UseWaitCursor="False" Version="1000"/>
+		<protocol Compress="false" id="http2" name="cyHttpAdp320" Retry="0" TimeOut="300" UseCache="true" UseWaitCursor="false" Version="1000"/>
+	</protocols>
+	<AppGroups>
+		<AppGroup CacheLevel="none" CodePage="euc-kr" Language="1042" Prefix="script" Type="js" Version="1000">
+			<Script Baseurl="./script/" CacheLevel="none"/>
+		</AppGroup>
+		<AppGroup CacheLevel="none" CodePage="euc-kr" Language="1042" Prefix="img" Title="img" Type="file" Version="1.0">
+			<script Baseurl="./images/" CacheLevel="none" Ext="gif"/>
+		</AppGroup>
+		<AppGroup CacheLevel="none" CodePage="euc-kr" Language="1042" Prefix="sys_common" Type="form" Version="1000">
+			<Script Baseurl="./" CacheLevel="none" ScriptUrl="./script/"/>
+		</AppGroup>
+		<AppGroup CacheLevel="none" CodePage="euc-kr" Language="1042" Prefix="sample" Type="form" Version="1000">
+			<Script Baseurl="../sample/" CacheLevel="none" ScriptUrl="./script/"/>
+		</AppGroup>
+		<AppGroup CacheLevel="none" CodePage="euc-kr" Language="1042" Prefix="TestView" Type="form" Version="1000">
+			<Script Baseurl="../TestView/" CacheLevel="none" ScriptUrl="./script/"/>
+		</AppGroup>
+		<AppGroup CodePage="euc-kr" Language="1042" Prefix="COMMON" Type="form" Version="1000">
+			<Script Baseurl="../common/" ScriptUrl="./script/"/>
+		</AppGroup>
+		<AppGroup CodePage="euc-kr" Language="1042" Prefix="Test" Type="form" Version="1000">
+			<Script Baseurl="../test/" ScriptUrl="./script/"/>
+		</AppGroup>
+		<AppGroup CodePage="euc-kr" Language="1042" Prefix="Templet" Type="form" Version="1000">
+			<Script Baseurl="../Templet/" ScriptUrl="./script/"/>
+		</AppGroup>
+		<AppGroup CodePage="euc-kr" Language="1042" Prefix="commonscript" Type="js" Version="1000">
+			<Script Baseurl="./script/"/>
+		</AppGroup>
+		<AppGroup CodePage="euc-kr" Language="1042" Prefix="main" Type="form" Version="1000">
+			<Script Baseurl="../main/" ScriptUrl="./script/"/>
+		</AppGroup>
+		<AppGroup CodePage="euc-kr" Language="1042" Prefix="lib" Type="js" Version="1000">
+			<Script Baseurl="./lib/"/>
+		</AppGroup>
+		<AppGroup CodePage="euc-kr" Language="1042" Prefix="COMM" Type="form" Version="1000">
+			<Script Baseurl="../COMM/" ScriptUrl="./script/"/>
+		</AppGroup>
+		<AppGroup CodePage="euc-kr" Language="1042" Prefix="CC" Type="form" Version="1000">
+			<Script Baseurl="../CC/" ScriptUrl="./script/"/>
+		</AppGroup>
+		<AppGroup CodePage="euc-kr" Language="1042" Prefix="CP" Type="form" Version="1000">
+			<Script Baseurl="../CP/" ScriptUrl="./script/"/>
+		</AppGroup>
+		<AppGroup CodePage="euc-kr" Language="1042" Prefix="AC" Type="form" Version="1000">
+			<Script Baseurl="../AC/" ScriptUrl="./script/"/>
+		</AppGroup>
+		<DataGroup Baseurl="http://erp.hanahana.kr:9999/" CacheLevel="none" CodePage="euc-kr" Language="1042" Prefix="service" Streamver="3100" TrMethod="normal" Type="JSP" Version="1000"/>
+	</AppGroups>
+	<Variables>
+		<Var Comment="창닫기유무" Id="g_closeFlag" Type="Global"/>
+		<Var Comment="FIX,&#32;HIDE&#32;좌측메뉴&#32;오픈모드" Id="g_LeftMenuMode" Type="Global" Value="HIDE"/>
+		<Var Id="g_leftMenuView" Type="Global"/>
+		<Var Comment="한번에&#32;보여질&#32;최대&#32;폼&#32;수" Id="g_maxForm" Type="Global" Value="50"/>
+		<Var Comment="좌측메뉴&#32;보일지&#32;안보일지&#32;(1:&#32;숨기기,&#32;2:&#32;보이기)" Id="g_menuForm" Type="Global"/>
+		<Var Id="g_nX" Type="Global"/>
+		<Var Id="g_nY" Type="Global"/>
+		<Var Comment="메인&#32;테스트&#32;파라미터" Id="g_param1" Type="Global"/>
+		<Var Comment="테마이미지(전체&#32;화면의&#32;스타일)" Id="g_skinImage" Type="Global" Value="A"/>
+		<Var Id="GlobalURL" Type="Global" Value="http://erp.hanahana.kr:8080/"/>
+		<Var Comment="등기추적번호" Id="g_trc_regs_no" Type="Global"/>
+	</Variables>
+	<Script><![CDATA[
+	
+/***************************************************************************************************
+ * http error처리
+ *
+ * 
+ * 
+ * 
+***************************************************************************************************/
+//------------------------------------------------------------------ 
+// Http Error 301, 302오류만 이곳에서 처리합니다.
+//------------------------------------------------------------------ 
+function http_onError(obj,url,errcode,errmsg,httpRetCode,LocationURL)
+{
+	//alert("!");
+	//alert(obj);
+	//alert(url);
+	//alert(errcode);
+	//alert(errmsg);
+	//alert(httpRetCode);
+	//alert(locationURL);
+/*
+	if ( (httpRetCode == 301) || (httpRetCode == 302))
+	{
+		if ( Pos(LocationURL,"login.do") > -1 ) {
+		alert("시간 초과입니다.\n재로그인 하시기 바랍니다.(SESSION TIME OUT)");
+		} else { 
+		alert("이미 사용자가 로그인되었거나 정상적인 접속이 아닙니다.\n확인 후 재 로그인 하시기 바랍니다.");
+	}
+*/
+//	G_OnError = Y;
+/*
+if(G_HTTPFG != "LOGIN" && G_HTTPFG != "HTTPERR") {
+G_HTTPFG = "HTTPERR_EXIT";
+exit();
+} else {
+G_HTTPFG = "HTTPERR";
+} 
+*/
+}
+]]></Script>
+	<Datasets>
+		<Dataset DataSetType="Dataset" Id="GDS_USER_INFO">
+			<Contents>
+				<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="BRCH_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+				<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="USR_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="USR_IP" size="256" summ="default" type="STRING"/>
+				<colinfo id="EMAIL" size="256" summ="default" type="STRING"/>
+				<colinfo id="HP_NO" size="256" summ="default" type="STRING"/>
+				<colinfo id="LST_LOGIN_DT" size="256" summ="default" type="STRING"/>
+				<colinfo id="USR_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="PMS_GBN" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="gds_code">
+			<Contents>
+				<colinfo id="MST_CD" size="256" summ="default" type="STRING"/>
+				<colinfo id="DTL_CD" size="256" summ="default" type="STRING"/>
+				<colinfo id="DTL_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="SORT_NO" size="256" summ="default" type="INT"/>
+				<colinfo id="TXT_VAL1" size="256" summ="default" type="STRING"/>
+				<colinfo id="TXT_VAL2" size="256" summ="default" type="STRING"/>
+				<colinfo id="TXT_VAL3" size="256" summ="default" type="STRING"/>
+				<colinfo id="NUM_VAL1" size="256" summ="default" type="STRING"/>
+				<colinfo id="NUM_VAL2" size="256" summ="default" type="STRING"/>
+				<colinfo id="NUM_VAL3" size="256" summ="default" type="STRING"/>
+				<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GDS_BRCH_BAS">
+			<Contents>
+				<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="BRCH_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="REGS_AMT" size="256" summ="default" type="STRING"/>
+				<colinfo id="RMT_AMT" size="256" summ="default" type="STRING"/>
+				<colinfo id="COC_AMT" size="256" summ="default" type="STRING"/>
+				<colinfo id="CRDT_AMT" size="256" summ="default" type="STRING"/>
+				<colinfo id="COC_AMT2" size="256" summ="default" type="STRING"/>
+				<colinfo id="CRDT_AMT2" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GDS_AUTH_LST">
+			<Contents>
+				<colinfo id="MNG_COM_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="MNG_COM_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="MNG_BRCH_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="MNG_BRCH_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="SEL_PMS" size="256" summ="default" type="STRING"/>
+				<colinfo id="TRN_PMS" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="gds_system">
+			<Contents>
+				<colinfo id="cmpny_auth_use" size="256" summ="default" type="STRING"/>
+				<colinfo id="BRCH_AUTH_USE" size="256" summ="default" type="STRING"/>
+				<colinfo id="rd_svc_url" size="256" summ="default" type="STRING"/>
+				<colinfo id="rd_svc_name" size="256" summ="default" type="STRING"/>
+				<colinfo id="rd_mrd_url" size="256" summ="default" type="STRING"/>
+				<colinfo id="login_fail_limit" size="256" summ="default" type="STRING"/>
+				<colinfo id="tab_cnt" size="256" summ="default" type="STRING"/>
+				<record>
+					<BRCH_AUTH_USE>Y</BRCH_AUTH_USE>
+					<cmpny_auth_use>Y</cmpny_auth_use>
+					<login_fail_limit>3</login_fail_limit>
+					<rd_mrd_url>http://erp.hanahana.kr:8080/mrd/</rd_mrd_url>
+					<rd_svc_name>hana</rd_svc_name>
+					<rd_svc_url>http://erp.hanahana.kr:8282/RDServer/rdagent.jsp</rd_svc_url>
+					<tab_cnt>100</tab_cnt>
+				</record>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GDS_CMPNY_BAS">
+			<Contents>
+				<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="COM_NM" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="gds_topMenu" UseClientLayout="1">
+			<Contents>
+				<colinfo id="MENU_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_GBN" size="256" summ="default" type="STRING"/>
+				<colinfo id="UP_MENU_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_LVL" size="256" summ="default" type="STRING"/>
+				<colinfo id="IMG_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="IMG_WIDTH" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_URL" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="gds_com_group">
+			<Contents>
+				<colinfo id="com_group_cd" size="256" summ="default" type="STRING"/>
+				<colinfo id="com_group_nm" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="gds_menu" UseClientLayout="1">
+			<Contents>
+				<colinfo id="MENU_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_GBN" size="256" summ="default" type="STRING"/>
+				<colinfo id="UP_MENU_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_LVL" size="256" summ="default" type="STRING"/>
+				<colinfo id="IMG_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="IMG_WIDTH" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_URL" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="gds_leftMenu" UseClientLayout="1">
+			<Contents>
+				<colinfo id="MENU_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_GBN" size="256" summ="default" type="STRING"/>
+				<colinfo id="UP_MENU_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_LVL" size="256" summ="default" type="STRING"/>
+				<colinfo id="IMG_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="IMG_WIDTH" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_URL" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="gds_myMenu" UseClientLayout="1">
+			<Contents>
+				<colinfo id="MENU_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_GBN" size="256" summ="default" type="STRING"/>
+				<colinfo id="UP_MENU_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_LVL" size="256" summ="default" type="STRING"/>
+				<colinfo id="IMG_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="IMG_WIDTH" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_URL" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="gds_function">
+			<Contents>
+				<colinfo id="BTN_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="BTN_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="EVENT_NM" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="gds_openForm">
+			<Contents>
+				<colinfo id="MENU_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="MENU_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="OPEN_PGM_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="IMG_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="IMG_WIDTH" size="256" summ="default" type="STRING"/>
+				<colinfo id="TEXT_WIDTH" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GDS_PICOSPEC_BAS">
+			<Contents>
+				<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="SPEC_CD" size="256" summ="default" type="STRING"/>
+				<colinfo id="SPEC_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="LAG_DRY_KEP" size="256" summ="default" type="STRING"/>
+				<colinfo id="LAG_DRY_WTH" size="256" summ="default" type="STRING"/>
+				<colinfo id="LAG_DRY_FCS" size="256" summ="default" type="STRING"/>
+				<colinfo id="CBL_SNP_BAS" size="256" summ="default" type="STRING"/>
+				<colinfo id="CBL_SHT_BAS" size="256" summ="default" type="STRING"/>
+				<colinfo id="CBL_PRIV_SNP_YN" size="256" summ="default" type="STRING"/>
+				<colinfo id="CBL_SPOT_SNP_YN" size="256" summ="default" type="STRING"/>
+				<colinfo id="ABNO_TRM_LAG" size="256" summ="default" type="STRING"/>
+				<colinfo id="ABNO_TRM_CBL" size="256" summ="default" type="STRING"/>
+				<colinfo id="ABNO_TRM_COMM" size="256" summ="default" type="STRING"/>
+				<colinfo id="NORM_TRM_LAG" size="256" summ="default" type="STRING"/>
+				<colinfo id="NORM_TRM_CBL" size="256" summ="default" type="STRING"/>
+				<colinfo id="NORM_TRM_COMM" size="256" summ="default" type="STRING"/>
+				<colinfo id="LVL_BAS_BLD" size="256" summ="default" type="STRING"/>
+				<colinfo id="LVL_BAS_CMP" size="256" summ="default" type="STRING"/>
+				<colinfo id="LVL_BAS_FLT" size="256" summ="default" type="STRING"/>
+				<colinfo id="LVL_BAS_KEP" size="256" summ="default" type="STRING"/>
+				<colinfo id="COMM_ERR_TM" size="256" summ="default" type="STRING"/>
+				<colinfo id="COMM_ERR_TRM" size="256" summ="default" type="STRING"/>
+				<colinfo id="CHK_DD_BAS" size="256" summ="default" type="STRING"/>
+				<colinfo id="DOWN_TURN_LVL" size="256" summ="default" type="STRING"/>
+				<colinfo id="DOWN_TURN_TRM" size="256" summ="default" type="STRING"/>
+				<colinfo id="UP_TURN_LVL" size="256" summ="default" type="STRING"/>
+				<colinfo id="UP_TURN_TRM" size="256" summ="default" type="STRING"/>
+				<colinfo id="NEW_TURN_TRM" size="256" summ="default" type="STRING"/>
+				<colinfo id="SPOT_OSV_YN" size="256" summ="default" type="STRING"/>
+				<colinfo id="MODI_FTR_YN" size="256" summ="default" type="STRING"/>
+				<colinfo id="EQP_REPR_TRM" size="256" summ="default" type="STRING"/>
+				<colinfo id="LOOP_REPR_TRM" size="256" summ="default" type="STRING"/>
+				<colinfo id="BATT_WRN_BAS" size="256" summ="default" type="STRING"/>
+				<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+				<colinfo id="NOTE" size="256" summ="default" type="STRING"/>
+				<colinfo id="CALC_GBN" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GDS_DATE_TYPE">
+			<Contents>
+				<colinfo id="DATE_VAL" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GDS_SEL_BOND_LST">
+			<Contents>
+				<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="BND_SEQ" size="256" summ="default" type="STRING"/>
+				<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+				<colinfo id="BND_TEL" size="256" summ="default" type="STRING"/>
+				<colinfo id="BIZ_PRT_YN" size="256" summ="default" type="STRING"/>
+				<colinfo id="FORM_SAVE_FILE" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GDS_USER_PMS">
+			<Contents>
+				<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="USR_ID" size="256" summ="default" type="STRING"/>
+				<colinfo id="PMS_GBN" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+		<Dataset DataSetType="Dataset" Id="GDS_TODAY">
+			<Contents>
+				<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+			</Contents>
+		</Dataset>
+	</Datasets>
+	<GlobalStyle>
+		<style Font="돋움,9" ID="Btn_Com" TextColor="white"/>
+		<style Font="돋움,9" ID="Btn_detail" TextColor="#333333"/>
+		<style Font="돋움,9" ID="Btn_Grd"/>
+		<style Font="돋움,9" ID="Btn_Left_Expand" TextColor="#6c6c6c"/>
+		<style Font="돋움,9" ID="Btn_Left_Sub" TextColor="white"/>
+		<style Font="돋움,9,Bold" ID="Btn_Popup" TextColor="white"/>
+		<style Font="돋움,9" ID="Btn_QuickSub" TextColor="white"/>
+		<style Font="돋움,9" ID="Btn_sub" TextColor="#736747"/>
+		<style FixedFont="돋움,9" Font="돋움,9" ID="calendar_Day" TextColor="user10"/>
+		<style FixedFont="돋움,9" Font="돋움,9" ID="calendar_Head" TextColor="user10"/>
+		<style DisablebkColor="#eeeeee" DisableColor="#999999" Font="돋움,9" Formcolor="user6" ID="Check_Master" TextColor="#333333"/>
+		<style DisablebkColor="#eeeeee" DisableColor="#999999" Font="돋움,9" ID="CheckBox" TextColor="#333333"/>
+		<style DisablebkColor="#eeeeee" DisableColor="#999999" EditColor="#fffdd8" Font="돋움,9" ID="CheckBox_Ess" TextColor="#333333"/>
+		<style BorderColor="#c5c8cf" DisablebkColor="#eeeeee" DisableColor="#999999" EditColor="white" Font="돋움,9" ID="Combo" TextColor="#333333"/>
+		<style BorderColor="#c5c8cf" DisablebkColor="#eeeeee" DisableColor="#999999" EditColor="#fffdd8" Font="돋움,9" Formcolor="#fffdd8" ID="Combo_Ess" TextColor="#333333"/>
+		<style BorderColor="#c5c8cf" DisablebkColor="#eeeeee" DisableColor="#999999" Font="돋움,9" ID="Edit" TextColor="#333333"/>
+		<style BorderColor="#c5c8cf" DisablebkColor="#eeeeee" DisableColor="#999999" EditColor="#fffdd8" Font="돋움,9" ID="Edit_Ess" TextColor="#333333"/>
+		<style BorderColor="#cfd2d7" DisablebkColor="#eeeeee" DisableColor="#999999" EditColor="#fbfbfb" FixedFont="돋움,9" ID="Edit_Red" TextColor="user1"/>
+		<style BorderColor="user15" FixedFont="돋움,9" Font="돋움,9" HilightTextColor="#333333" ID="Grid" Light3dColor="user15" ShadowColor="user15" TextColor="#333333" WindowColor="white"/>
+		<style BorderColor="#c1c5cb" FixedFont="돋움,9" Font="돋움,9,Bold" HilightTextColor="#333333" ID="Grid_2" Light3dColor="#c1c5cb" TextColor="user1"/>
+		<style BorderColor="#aaaaaa" Font="돋움,9" ID="Grid_Calendar_B" TextColor="#333333"/>
+		<style BorderColor="#dddddd" Font="돋움,9,Bold" HilightColor="#e57d02" HilightTextColor="white" ID="Grid_Calendar_S" Light3dColor="#dddddd" TextColor="white"/>
+		<style Font="돋움,9" HilightColor="#777777" ID="Grid_M" TextColor="#222222" WindowColor="white"/>
+		<style ID="Grid_M1" TextColor="#333333"/>
+		<style BorderColor="user15" FixedFont="돋움,9" Font="돋움,9" HilightTextColor="#333333" ID="Grid_tab" Light3dColor="user15" ShadowColor="user15" TextColor="#555555"/>
+		<style BorderColor="#cacaca" DisablebkColor="#cccccc" DkshadowColor="#ebebeb" EditColor="#ebebeb" Face3dColor="#ebebeb" Font="돋움,9" Hilight3dColor="#cacaca" ID="Login_Edit" Light3dColor="#e6e9eb" ShadowColor="#cfcfcf" TextColor="black"/>
+		<style Font="돋움,11,Bold" ID="Stc_BodyTitle" TextColor="black"/>
+		<style Font="돋움,9" ID="Stc_Bottom_Message" TextColor="black"/>
+		<style Font="돋움,9" ID="Stc_Default" TextColor="#333333"/>
+		<style Font="돋움,9,Bold" ID="Stc_Default_bold" TextColor="#333333"/>
+		<style Font="돋움,9,Bold" ID="Stc_Detail_Sub" TextColor="#4e6b89"/>
+		<style BorderColor="#c1c5cb" FixedFont="굴림체,9" Font="돋움,9,Bold" Formcolor="#cfe5f4" ID="Stc_Label" TextColor="#184060"/>
+		<style BorderColor="#6cb0bc" Font="돋움,9" Formcolor="#ccecf1" ID="Stc_Label_Ess" TextColor="#214951"/>
+		<style BorderColor="#a6d3d5" Font="돋움,9,Bold" Formcolor="#c3e7e9" ID="Stc_Label_Info" TextColor="#3e5d83"/>
+		<style BorderColor="#5bbcd4" Font="돋움,9,Bold" Formcolor="#f7fefe" ID="Stc_Label_Info_Ess" TextColor="#3e5d83"/>
+		<style BorderColor="#a6d3d5" Font="돋움,9" Formcolor="#d3f8fa" ID="Stc_Label_Info_Sub" TextColor="#3e5d83"/>
+		<style BorderColor="#dedede" Font="돋움,9" Formcolor="#f6f6f6" ID="Stc_Label_Popup" TextColor="#333333"/>
+		<style BorderColor="#c6d9a9" Font="돋움,9" Formcolor="#e7f4d4" ID="Stc_Label_Popup_Ess" TextColor="#333333"/>
+		<style BorderColor="#9fc6c3" Font="돋움,9" Formcolor="#c9e1df" ID="Stc_Label2" TextColor="#13414d"/>
+		<style BorderColor="#c1c5cb" Font="돋움,9" Formcolor="white" ID="Stc_LabelBody"/>
+		<style BorderColor="#cccccc" Font="돋움,9" Formcolor="white" ID="Stc_LabelBody2"/>
+		<style Font="돋움,9,Bold" ID="Stc_Leftmenu_1dh" TextColor="#666666"/>
+		<style Font="돋움,9,Bold" ID="Stc_Leftmenu_1dh_on" TextColor="#8a6a12"/>
+		<style Font="돋움,9" ID="Stc_Leftmenu_2dh" TextColor="#737373"/>
+		<style Font="돋움,9,Bold" ID="Stc_Leftmenu_2dh_on" TextColor="white"/>
+		<style Font="돋움,9" ID="Stc_Point" TextColor="red"/>
+		<style Font="돋움,11,Bold" ID="Stc_PopupTitle" TextColor="white"/>
+		<style Font="돋움,9,Bold" ID="Stc_SubTitle" TextColor="#333333"/>
+		<style FixedFont="돋움,13" Font="돋움,13,Bold" ID="Stc_Title" TextColor="black"/>
+		<style BorderColor="user3" DisableColor="user3" ID="T_line" ShadowColor="user4"/>
+		<style BorderColor="#5da1e4" EditColor="#f3f6fe" Font="돋움,9" Formcolor="#f3f6fe" ID="Ta_Quick" TextColor="#333333" WindowColor="#f3f6fe"/>
+		<style BorderColor="user21" FixedFont="돋움,8,Bold" Font="돋움,9" ID="tab" TextColor="user21"/>
+		<style BorderColor="user20" FixedFont="돋움,8,Bold" Font="돋움,8,Bold" ID="tab_navi" TextColor="user14"/>
+		<style BorderColor="#c5c8cf" DisablebkColor="#eeeeee" DisableColor="#999999" Font="돋움,9" ID="TextArea" TextColor="#333333"/>
+		<style BorderColor="#c5c8cf" DisablebkColor="#eeeeee" DisableColor="#999999" EditColor="#fffdd8" Font="돋움,9" Formcolor="#fffdd8" ID="TextArea_Ess" TextColor="#333333"/>
+		<style FixedFont="돋움체,8" Font="돋움,8" ID="TopGM_off" TextColor="#888888"/>
+		<style FixedFont="굴림체,9" Font="돋움,9,Bold" ID="TopMenu_off" TextColor="white"/>
+		<style Font="돋움,9,Bold" ID="TopMenu_on" TextColor="#466177"/>
+		<style FixedFont="굴림체,9" Font="돋움,8" ID="TopText" TextColor="#777370"/>
+		<style FixedFont="굴림체,9" Font="돋움,8,Bold" ID="TopTextB" TextColor="#777370"/>
+		<style Font="돋움,9,Bold" ID="TopUsername" TextColor="#777370"/>
+		<style BorderColor="#dedede" Font="돋움,9" Formcolor="white" ID="Tree_Sub" TextColor="#333333"/>
+		<style Font="돋움,9" ID="Tv_Left" TextColor="#333333"/>
+	</GlobalStyle>
+	<UserColor User0="white" User1="#444444" User11="#f9f7f0" User12="gainsboro" User13="#d8d8d8" User14="#79652f" User15="#666666" User17="#f9f6c2" User2="#636363" User21="white" User22="#989898" User23="whitesmoke" User24="#666666" User26="#b6ccd7" User27="#d8e7ef" User28="#223d6f" User29="#e8f0da" User3="#444444" User31="#e4e4e4" User32="#333333" User33="#a0a0a0" User34="#f2eac5" User35="#fafafa" User36="#ededed" User37="#c1c1c1" User38="#eaeaea" User4="#b7b5b3" User41="#c5c9f4" User42="#1b224d" User43="#ad9595" User44="#f2eac5" User45="#f7f7f7" User46="#ededed" User47="#af7a7a" User48="#f3e1e1" User5="#e1e0e0" User51="#4e699d" User52="white" User53="#6f89b6" User54="#f2eac5" User55="#f7f7f7" User56="#ededed" User58="#f5eed1" User59="#666ec9" User6="#c1c5cb" User61="#c8c8c8" User62="#e5e5e5" User63="#a0a0a0" User7="#f0f7fc"/>
+	<ActiveX Version="1000">
+		<Component Height="100" Id="AxMSIE" Image="24" Progid="Shell.Explorer" Title="AxMSIE" Version="1000" Width="100"/>
+		<Component Height="111" Id="WinSock" Image="51" LicenseKey="2c49f800-c2dd-11cf-9ad6-0080c7e7b78d" Progid="MSWinsock.Winsock" Title="WinSock" Version="1000" Width="111"/>
+		<Component Id="IMap3DActiveX" Image="23" Progid="IMAP3DACTIVEX.IMap3DActiveXCtrl.1" Title="IMap3DActiveX" Version="1000"/>
+		<Component Id="TeeChart" Image="30" Progid="TeeChart.TChart" Title="TeeChart" Version="1000"/>
+		<Component Id="Report" Image="23" Progid="RDVIEWER50.RdviewerCtrl.1" Title="Report" Version="1000"/>
+	</ActiveX>
+	<EXTAPIS>
+		<EXTAPI Name="ExtCommonApi" Version="1000"/>
+	</EXTAPIS>
+	<DataObjects></DataObjects>
+	<ServiceObjects></ServiceObjects>
+	<Resource Ext="res" Url="hesapp.res" Version="1000"/>
+	<DockBars>
+		<DockBar Align="top" Border="false" Bottom="40" ID="DocTop" InitURL="main::frmTop.xml" Left="0" Right="1250" Top="0"/>
+		<DockBar Align="top" Border="false" Bottom="70" ID="DocStatus" InitURL="main::frmStatus.xml" Left="0" Right="1250" Top="40"/>
+		<DockBar Align="left" Border="false" ID="DocLeft" InitURL="main::frmLeft.xml" Left="0" Right="200" Top="70"/>
+		<DockBar Align="left" Border="false" ID="Docleftbar" InitURL="main::frmLeftBar.xml" Left="0" Right="25" Top="70" Visible="false"/>
+		<DockBar Align="bottom" Border="false" Bottom="900" ID="DocBottom" InitURL="main::frmBottom.xml" Left="0" Right="1250" Top="870"/>
+	</DockBars>
+	<MDIInfo>
+		<Forms>
+			<Form Height="900" ID="MDIForm0" Left="0" Top="0" Width="1250"/>
+		</Forms>
+		<Shortcuts Color="default" Font="tahoma,9" HeaderTitle="Title:Description:Status"></Shortcuts>
+	</MDIInfo>
+</connectGroup>

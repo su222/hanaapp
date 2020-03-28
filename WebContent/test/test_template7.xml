@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="555" Id="form" Left="8" PidAttrib="7" Title="New&#32;Form" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_test_data">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+					<colinfo id="index" size="256" summ="default" type="STRING"/>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+					<colinfo id="manager" size="256" summ="default" type="STRING"/>
+					<colinfo id="join_date" size="256" summ="default" type="STRING"/>
+					<colinfo id="dept_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="image_level" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_manager_history">
+				<Contents>
+					<colinfo id="manager" size="256" summ="default" type="STRING"/>
+					<colinfo id="division" size="256" summ="default" type="STRING"/>
+					<colinfo id="join_day" size="256" summ="default" type="STRING"/>
+					<colinfo id="address" size="256" summ="default" type="STRING"/>
+					<colinfo id="pay" size="256" summ="default" type="STRING"/>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Height="20" Id="Static8" Style="Stc_Title" TabOrder="1" Text="Template7" Width="208"></Static>
+		<Image Align="Left" Height="14" Id="Image3" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="2" Text="메뉴명" Top="103" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="122" Height="5" Id="Shape15" Left="-2" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="808" TabOrder="3" Top="117" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Shape Bottom="799" Height="15" Id="Shape1" Left="304" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="1114" TabOrder="4" Top="784" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Shape Bottom="41" Height="7" Id="Shape10" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="790" TabOrder="5" Top="34" Type="Rectangle" Visible="FALSE" Width="790"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_insert" ImageID="Btn_com_2w" Left="738" LeftMargin="12" OnClick="btn_selectUser_OnClick" Style="Btn_Com" TabOrder="5" Text="저장" Top="13" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="559" Height="460" Id="Shape43" Left="260" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="265" TabOrder="5" Top="99" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape BKColor="user21" Bottom="81" Height="40" Id="Shape2" Left="0" LineColor="user22" Right="790" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="9" Top="41" Type="RoundRect" Width="790"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="728" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="7" Top="49" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="90" Height="56" Id="Shape11" Left="0" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="20" TabOrder="6" Top="34" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="96" Height="15" Id="Shape6" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="8" Top="81" Type="Rectangle" Visible="FALSE" Width="794"></Shape>
+		<Image Align="Left" Height="14" Id="Image2" ImageID="Title_dot" Left="265" LeftMargin="20" Style="Stc_Subtitle" TabOrder="12" Text="관리자&#32;이력" Top="103" Transparent="TRUE" Width="157"></Image>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_del_row" ImageID="Btn_sub_rowdel" Left="624" OnClick="btn_del_row_OnClick" Style="Btn_sub" TabOrder="14" Text="&#32;&#32;&#32;행삭제" Top="96" Width="61"></Button>
+		<Shape Bottom="122" Height="32" Id="Shape19" Left="619" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="624" TabOrder="15" Top="90" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_add_row" ImageID="Btn_sub_rowadd" Left="558" OnClick="btn_add_row_OnClick" Style="Btn_sub" TabOrder="13" Text="&#32;&#32;&#32;행추가" Top="96" Width="61"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button35" ImageID="Btn_sub_ex_down" Left="690" LeftMargin="16" OnClick="btn_print_OnClick" Style="Btn_sub" TabOrder="16" Top="96" TopMargin="1" Transparent="TRUE" Width="99"></Button>
+		<Shape Bottom="122" Height="32" Id="Shape0" Left="685" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="690" TabOrder="17" Top="90" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<TreeView BindDataset="ds_test_data" Border="None" Expand="FALSE" ExpandImageIndex="0" Height="424" Id="TreeView0" ImageColumn="image_level" ImageID="treeview_org_img" ImageIndex="0" InnerImageCount="3" LevelColumn="levels" OnDblClick="TreeView0_OnDblClick" Style="Tree_Sub" TabOrder="18" TEXTColumn="menu_nm" Top="122" Width="250"></TreeView>
+		<Image Align="Left" Height="18" Id="Image1" Left="20" LeftMargin="0" Style="Stc_Default_bold" TabOrder="19" Text="입력값" Top="51" Transparent="TRUE" Width="59"></Image>
+		<Shape Bottom="76" Height="32" Id="Shape3" Left="60" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="70" TabOrder="20" Top="44" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Edit Border="Flat" Height="18" Id="edt_menuName" Left="70" LeftMargin="4" Readonly="TRUE" Style="Edit_Ess" TabOrder="21" Text="테스트용&#32;(&#32;조회&#32;클릭&#32;)" Top="51" Width="130"></Edit>
+		<Grid AutoFit="TRUE" BindDataset="ds_manager_history" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="548" CellMoving="TRUE" ColSelect="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="427" Id="Grid1" InputPanel="FALSE" Left="265" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnHeadClick="Grid1_OnHeadClick" Right="791" RowHeight="20" Style="Grid_2" TabOrder="22" TabStop="true" Top="121" UseAutoSizing="Both" UseDBuff="true" UseExSizing="Both" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="526">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="22"/>
+						<col width="35"/>
+						<col width="82"/>
+						<col width="165"/>
+						<col width="112"/>
+						<col width="82"/>
+						<col width="71"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="NO"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="관리자"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="3" color="user52" display="text" text="소속"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="4" color="user52" display="text" text="소속일"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="5" color="user52" display="text" text="주소"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="6" color="user52" display="text" text="급여"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="checked" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="index" color="black" display="text" expr="row+1"/>
+						<cell align="center" col="2" colid="manager" display="text"/>
+						<cell align="left" col="3" colid="division" display="text" edit="normal"/>
+						<cell align="center" col="4" colid="join_day" display="text" edit="normal"/>
+						<cell align="center" col="5" colid="address" display="text" edit="normal"/>
+						<cell align="center" col="6" colid="pay" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<FileDialog Bottom="120" Filter="All(*.*)|*.*|" Height="24" Id="FileDialog0" Left="824" Right="848" TabOrder="22" Top="96" Type="Save" Width="24"></FileDialog>
+		<Shape Bottom="40" Height="32" Id="Shape4" Left="733" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="738" TabOrder="24" Top="8" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button5" ImageID="Btn_com_3w" Left="671" LeftMargin="12" OnClick="Button5_OnClick" Style="Btn_Com" TabOrder="23" Text="초기화" Top="13" Transparent="TRUE" Width="62"></Button>
+	</Form>
+	<Script><![CDATA[
+#include "script::cmnFunction.js";
+
+var currentID = ""; //저장을 하기 위해서 현제의 아이디를 저장한다.
+var checkFlag = "";
+var checked_cnt = 0;  // 체크된 리스트의 수를 위한 전역변수
+
+
+/* 조회*/
+function btn_search_OnClick(obj)
+{
+	currentID = "";
+	checkFlag = "";
+	
+	Grid1.SetCellProp("head", 0, "Text", 0);
+	
+	getTreeLevelValues();
+}
+
+
+/* 트리내용 조회*/
+function getTreeLevelValues()
+{
+	var svcID			= "CMC001M.testTreeLevelSearch";
+	var url   			= "service::CMC001M.testTreeLevelSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_test_data=TST001V.selectTestTable";
+	var argument    	= " _sqlName=TST001V.selectTestTable"
+						;
+	var callbackFunc 	= "";
+	
+	Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 트리 내용을 더블클릭하면 왼편 에디트 창에 내용을 보낸다.*/
+function TreeView0_OnDblClick(obj,nRow)
+{
+	//alert(ds_test_data.GetColumn(nRow,"manager"));
+	
+	if(ds_test_data.GetColumn(nRow,"levels") == 1){
+		return;
+	}
+	
+	checkFlag = "click";
+	
+	var tmpManager = ds_test_data.GetColumn(nRow,"manager");
+	
+	var svcID			= "TST001V.testFunctionSearch";
+	var url   			= "service::TST001V.testFunctionSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_manager_history=TST001V.getManagerHistoryInfos";
+	var argument    	= " _sqlName=TST001V.getManagerHistoryInfos"
+						+ " P_MANAGER=" + quote(tmpManager)
+						;
+	var callbackFunc 	= "";
+	
+	Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+
+/* 저장*/
+function btn_selectUser_OnClick(obj)
+{
+	if(ds_manager_history.rowcount == 0){
+		alert('먼저 리스트를 조회하세요.');
+		return;
+	}
+	
+	// 리스트에서 체크박스를 선택한 값이 몇개 인지 센다.
+	for(var i=0; i<ds_manager_history.rowcount; i++)
+	{
+		if(ds_manager_history.GetColumn(i,"checked") == 1){
+			checked_cnt++;
+		}
+	}
+	
+	Grid1.SetCellProp("head", 0, "Text", 0); //저장하면 자동조회를 하므로 헤더의 체크박스를 해제한다.
+	
+	if(checked_cnt == 0){
+		alert('체크된 리스트가 없습니다.');
+	}else{
+		checkSaveData(checked_cnt);
+		checked_cnt = 0;
+	}	
+}
+
+
+/* 체크된 리스트의 수를 알아내어서 수정한다. */
+function checkSaveData(cnt)
+{
+	// 체크된 값의 리스트를 저장하거나 수정할 때 
+	// 처음인지 마지막인지를 알기 위해서 아래 checkedCnt 변수를 사용한다. 
+	var checkedCnt = cnt;
+	
+	for(var i=0; i<ds_manager_history.rowcount; i++)
+	{
+	
+		if(ds_manager_history.GetColumn(i,"checked") == 1){
+
+			//  한건만 체크 된 경우로 처음이자 마지막이다.
+			if(cnt == 1){
+				
+				gfn_showProgressWindow(true);
+				saveTestData(i, 'last');
+				
+			}
+			// 여러 건을 선택한 경우
+			else{
+				
+				// 처음
+				if(checkedCnt == cnt){
+					
+					gfn_showProgressWindow(true); //처음이므로 진행상태바를 표시한다.
+					saveTestData(i, 'first');
+					
+				// 마지막									
+				}else if(checkedCnt == 1){
+					
+					saveTestData(i, 'last');
+					
+				// 중간
+				}else{
+					
+					saveTestData(i, 'middle');
+					
+				}
+				
+			}			
+			checkedCnt--; // 한건 처리했으므로 빼준다.
+		}
+	}
+}
+
+
+/* 값을 추가하거나 수정하는 함수 */
+function saveTestData(rowIndex,flag)
+{
+	var id       = ds_manager_history.GetColumn(rowIndex,"id");
+	var manager  = ds_manager_history.GetColumn(rowIndex,"manager");
+	var division = ds_manager_history.GetColumn(rowIndex,"division");
+	var join_day = ds_manager_history.GetColumn(rowIndex,"join_day");
+	var address  = ds_manager_history.GetColumn(rowIndex,"address");
+	var pay      = ds_manager_history.GetColumn(rowIndex,"pay");
+
+	if(manager == null){
+		alert('관리자명은 값은 필수사항입니다!');
+		return;
+	}
+	
+	var svcID			= "TST001V.testFunctionSave";
+	var url   			= "service::TST001V.testFunctionSave.do";
+	var inDatasets      = "";
+	var outDatasets 	= "";
+	var argument        = "";
+	
+	ds_manager_history.SetColumn(rowIndex,"checked",0);
+
+	// 추가 (Insert)
+	if(id == null){
+		argument    	= " _sqlName=TST001V.insertManagerHistoryData"
+						+ " P_MANAGER=" + quote(manager)
+						+ " P_DIVISION=" + quote(division)
+						+ " P_JOIN_DAY=" + quote(join_day)
+						+ " P_ADDRESS=" + quote(address)
+						+ " P_PAY=" + quote(pay)
+						;
+	}
+	// 수정 (Update)
+	else{
+		argument    	= " _sqlName=TST001V.updateManagerHistoryData"
+						+ " P_ID=" + quote(id)
+						+ " P_MANAGER=" + quote(manager)
+						+ " P_DIVISION=" + quote(division)
+						+ " P_JOIN_DAY=" + quote(join_day)
+						+ " P_ADDRESS=" + quote(address)
+						+ " P_PAY=" + quote(pay)
+						;
+	}		
+	
+	var callbackFunc 	= "";
+	
+	if(flag == 'last'){
+		callbackFunc    = "fn_save_callback";
+	}
+	
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 저장이나 수정이 완료되고 난 후에 진행바를 화면에서 없에고 자동으로 조회를 시킨다 */
+function fn_save_callback()
+{
+	gfn_showProgressWindow(false);
+	//btn_search_OnClick();
+}
+
+
+/* 행추가 함수 */
+function btn_add_row_OnClick(obj)
+{
+	if(checkFlag == "click"){
+		
+		gfn_AddColumn(ds_manager_history, 'checked');
+		
+		ds_manager_history.SetColumn(ds_manager_history.rowcount-1,"manager",ds_manager_history.GetColumn(0,"manager"));
+	}
+}
+
+
+/* 삭제*/
+function btn_del_row_OnClick(obj)
+{
+	if(checkFlag != "click"){
+		return;
+	}
+
+	if((ds_manager_history.rowcount < 1) || (!confirm('정말로 삭제하시겠습니까?'))){
+		return;
+	}
+	
+	Grid1.SetCellProp("head", 0, "Text", 0); //삭제하면 자동조회를 하므로 헤더의 체크박스를 해제한다.
+	
+	// 삭제되면서 총 로우수가 변하므로 로우수가 큰 것부터 삭제한다.
+	for(var i=ds_manager_history.rowcount; i >= 0; i--)
+	{	
+		if(ds_manager_history.GetColumn(i,"checked") == 1){
+		
+			//새로 행을 추가했지만 저장하지 않고 삭제하는 경우
+			if(ds_manager_history.GetColumn(i,'id') == null){
+				
+				ds_manager_history.DeleteRow(i);
+				
+			}
+			//디비에 있는 값을 삭제하는 경우
+			else{
+			
+				deleteTestData(ds_manager_history.GetColumn(i,'id'),i);
+				
+			}
+			
+		}
+	}
+}
+
+/* 그리드와 디비에서 리스트를 삭제한다. */
+function deleteTestData(id,delCnt)
+{
+	ds_manager_history.DeleteRow(delCnt); //그리드에서 리스트에서 삭제한다.	
+	
+	var svcID			= "TST001V.testFunctionDelete";
+	var url   			= "service::TST001V.testFunctionDelete.do";
+	var inDatasets      = "";
+	var outDatasets 	= "";
+	var argument    	= " _sqlName=TST001V.deleteManagerHistoryData"
+						+ " P_ID=" + quote(id)
+						;
+	var callbackFunc 	= "";
+
+	if(ParseInt(id) > 35){
+		//새로 추가 된 값은 삭제시킨다.
+		transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+	}else{
+		//새로 추가된 값 이외의 본레의 값은 디비에서 삭제 시키지 않는다.
+		//transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+	}	
+}
+
+
+/* 헤더에서 체크박스를 선택할 경우에 전부 선택이 되게 한다. */
+function Grid1_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	// 체크박스 클릭시
+	if(nCell == 0){
+		
+		gfn_SetCheckBoxAllSelected(nCell, Grid1, ds_manager_history, "checked");
+		
+	}
+}
+
+
+/* 엑셀출력*/
+function btn_print_OnClick(obj)
+{
+	if(checkFlag == "click"){
+	
+		gfn_SaveExcelContents(FileDialog0, Grid1, "C:\\", "TestExcel_"+gfn_GetNowDateTime(), "테스트 보고서", true);
+	
+	}
+}
+
+
+/* 초기화*/
+function Button5_OnClick(obj)
+{
+	currentID = "";
+		
+	ds_test_data.ClearData();
+	ds_manager_history.ClearData();
+}
+]]></Script>
+</Window>

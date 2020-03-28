@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="700" Id="common_sample" Left="8" OnLoadCompleted="common_sample_OnLoadCompleted" PidAttrib="7" Title="common_sample" TooltipFont="Default,0" Top="8" Ver="1.0" Width="920" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_grd_userList">
+				<Contents>
+					<column id="allchk" type="STRING"></column>
+					<colinfo id="USERID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERLEVEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERGROUPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHECK_VAL" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_userList">
+				<Contents>
+					<colinfo id="USERID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERLEVEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERGROUPCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_searchType">
+				<Contents>
+					<colinfo id="KEY" size="256" summ="default" type="STRING"/>
+					<colinfo id="VALUE" size="256" summ="default" type="STRING"/>
+					<record>
+						<KEY>0</KEY>
+						<VALUE>USER_ID</VALUE>
+					</record>
+					<record>
+						<KEY>1</KEY>
+						<VALUE>USER_NM</VALUE>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_grd_userList1">
+				<Contents>
+					<column id="allchk" type="STRING"></column>
+					<colinfo id="USERID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERLEVEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERGROUPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHECK_VAL" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_user">
+				<Contents>
+					<column id="allchk" type="STRING"></column>
+					<colinfo id="USERID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERLEVEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERGROUPCD" size="256" summ="default" type="STRING"/>
+					<record>
+						<USERGROUPCD></USERGROUPCD>
+						<USERID></USERID>
+						<USERLEVEL></USERLEVEL>
+						<USERNAME></USERNAME>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_test">
+				<Contents>
+					<column id="allchk" type="STRING">2222</column>
+					<column id="test" type="STRING">3333</column>
+					<colinfo id="USERID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERLEVEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="USERGROUPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHECK_VAL" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="281" Height="39" Id="Shape0" Left="11" LineColor="user22" Right="909" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="41" Top="242" Type="RoundRect" Width="898"></Shape>
+		<Shape BKColor="user21" Bottom="50" Height="39" Id="Shape1" Left="11" LineColor="user22" Right="909" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="40" Top="11" Type="RoundRect" Width="898"></Shape>
+		<Shape BKColor="user21" Bottom="689" Height="39" Id="Shape14" Left="11" LineColor="user22" Right="909" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="39" Top="650" Type="RoundRect" Width="898"></Shape>
+		<Shape Bottom="700" Height="700" Id="Shape5" Left="910" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="920" TabOrder="13" Top="0" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Shape Bottom="700" Height="700" Id="Shape6" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="10" TabOrder="14" Top="0" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Shape Bottom="700" Height="10" Id="Shape3" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="12" Top="690" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<Shape Bottom="10" Height="10" Id="Shape2" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="15" Top="0" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<Shape Bottom="292" Height="10" Id="Shape8" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="15" Top="282" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<Combo Border="Flat" CodeColumn="KEY" DataColumn="VALUE" Height="18" Id="cmb_searchType" InnerDataset="ds_searchType" Left="120" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="1" Top="20" Width="94"></Combo>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_userData" Left="216" LeftMargin="4" OnKeyDown="edt_userData_OnKeyDown" Style="Edit" TabOrder="2" Top="21" Width="130"></Edit>
+		<MaskEdit Align="Center" AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="18" Id="msk_month" Left="437" Mask="####-##" OnKeyDown="msk_month_OnKeyDown" RightMargin="4" Style="edit" TabOrder="3" Top="20" Type="STRING" Width="54"></MaskEdit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_selectUser" ImageID="btn_a_02" Left="521" LeftMargin="8" OnClick="btn_selectUser_OnClick" Style="btn_a" TabOrder="10" Text="조회" Top="19" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_init" ImageID="btn_a_03" Left="678" LeftMargin="8" OnClick="btn_init_OnClick" Style="btn_a" TabOrder="17" Text="초기화" Top="219" Width="62"></Button>
+		<Edit Align="RIGHT" AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_rowCnt" Left="375" LeftMargin="4" Number="TRUE" Style="edit" TabOrder="11" Text="0" Top="54" Width="61"></Edit>
+		<Shape Bottom="537" Height="520" Id="Shape7" Left="435" LineKind="Vertical" LineStyle="Dot" Right="438" TabOrder="4" Top="17" Visible="FALSE" Width="3"></Shape>
+		<Edit AutoSkip="TRUE" BindDataset="ds_user" Border="Flat" CheckLength="Byte" Column="USERID" Height="18" Id="edt_userID" Left="119" LeftMargin="4" Style="edit" TabOrder="5" Top="253" Width="130"></Edit>
+		<Shape Bottom="536" Height="520" Id="Shape4" Left="117" LineKind="Vertical" LineStyle="Dot" Right="120" TabOrder="18" Top="16" Visible="FALSE" Width="3"></Shape>
+		<Edit AutoSkip="TRUE" BindDataset="ds_user" Border="Flat" CheckLength="Byte" Column="USERNAME" Height="18" Id="edt_userName" Left="359" LeftMargin="4" Style="edit" TabOrder="6" Top="253" Width="130"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="20" Id="btn_deleteUser" ImageID="btn_a_02" Left="858" LeftMargin="8" OnClick="btn_deleteUser_OnClick" Style="btn_a" TabOrder="19" Text="삭제" Top="219" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="20" Id="btn_updateUser" ImageID="btn_a_02" Left="802" LeftMargin="8" OnClick="btn_updateUser_OnClick" Style="btn_a" TabOrder="20" Text="수정" Top="219" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_insertUser" ImageID="btn_a_02" Left="746" LeftMargin="8" OnClick="btn_insertUser_OnClick" Style="btn_a" TabOrder="21" Text="입력" Top="219" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_month" ImageID="btn_c_search" Left="496" LeftMargin="8" OnClick="btn_month_OnClick" Style="btn_c" TabOrder="9" ToolTipText="저장" Top="19" Width="20"></Button>
+		<Div BKColor="white" Color="white" Font="Arial,9,Bold" Height="168" Id="div_calMonth" Left="921" TabOrder="22" Text="Div0" Top="-1" Url="sys_common::calendarMonth.xml" Visible="FALSE" Width="179">
+			<Contents></Contents>
+		</Div>
+		<Edit AutoSkip="TRUE" BindDataset="ds_user" Border="Flat" CheckLength="Byte" Column="USERLEVEL" Height="18" Id="edt_userLevel" Left="599" LeftMargin="4" Style="edit" TabOrder="7" Top="253" Width="74"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_user" Border="Flat" CheckLength="Byte" Column="USERGROUPCD" Height="18" Id="edt_userGroupCode" Left="799" LeftMargin="4" Style="edit" TabOrder="8" Top="253" Width="74"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_rigth" ImageID="btn_c_right" Left="451" LeftMargin="8" OnClick="btn_rigth_OnClick" Style="btn_c" TabOrder="23" Top="116" Width="20"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_left" ImageID="btn_c_left" Left="451" LeftMargin="8" OnClick="btn_left_OnClick" Style="btn_c" TabOrder="24" Top="140" Width="20"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_next" ImageID="btn_c_next" Left="335" LeftMargin="8" OnClick="btn_next_OnClick" Style="btn_c" TabOrder="25" Top="53" Width="20"></Button>
+		<Edit Align="RIGHT" Border="Flat" Height="18" Id="edt_rowCnt1" Left="847" LeftMargin="4" Number="TRUE" Style="edit" TabOrder="26" Text="0" Top="54" Width="61"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_batchUser" ImageID="btn_a_04" Left="769" LeftMargin="8" OnClick="btn_batchUser_OnClick" Style="btn_a" TabOrder="27" Text="일괄처리" Top="52" Width="74"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_tranUser" ImageID="btn_a_04" Left="689" LeftMargin="8" OnClick="btn_tranUser_OnClick" Style="btn_a" TabOrder="28" Text="트랜잭션" Top="52" Width="74"></Button>
+		<Edit Align="RIGHT" Border="Flat" Height="18" Id="edt_pageSize" Left="295" LeftMargin="4" Number="TRUE" OnKeyDown="edt_pageSize_OnKeyDown" Style="edit" TabOrder="29" Text="10" Top="54" Width="37"></Edit>
+		<Shape Bottom="649" Height="10" Id="Shape12" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="31" Top="639" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<Combo Border="Flat" Height="18" Id="cmb_code1" Left="279" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="30" Top="660" Width="94"></Combo>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_selectCode" ImageID="btn_a_02" Left="198" LeftMargin="8" OnClick="btn_selectCode_OnClick" Style="btn_a" TabOrder="32" Text="조회" Top="660" Width="50"></Button>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_code" Left="119" LeftMargin="4" OnKeyDown="edt_code_OnKeyDown" Style="Edit" TabOrder="33" Top="661" Width="74"></Edit>
+		<Combo Border="Flat" Height="18" Id="cmb_code2" Left="375" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="34" Top="660" Width="94"></Combo>
+		<Combo Border="Flat" Height="18" Id="cmb_code3" Left="471" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="35" Top="660" Width="94"></Combo>
+		<Div Height="346" Id="div_browser" Left="10" scroll="true" TabOrder="36" Text="Div0" Top="293" Url="sample::common_embeded.xml" Width="900">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoFit="TRUE" BindDataset="ds_grd_userList1" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="213" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="139" Id="grd_userList1" InputPanel="FALSE" Left="480" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnHeadClick="grd_userList1_OnHeadClick" Right="909" RowHeight="20" Style="Grid_2" TabOrder="37" TabStop="true" Top="74" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="429">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="82"/>
+						<col width="82"/>
+						<col width="82"/>
+						<col width="82"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" colid="allchk" color="user52" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="사용자아이디"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="사용자이름"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="3" color="user52" display="text" text="사용자레벨"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="4" color="user52" display="text" text="사용자그룹코드"/>
+					</head>
+					<body>
+						<cell col="0" colid="CHECK_VAL" display="checkbox" edit="checkbox"/>
+						<cell align="right" col="1" colid="USERID" display="text"/>
+						<cell align="right" col="2" colid="USERNAME" display="text"/>
+						<cell align="right" col="3" colid="USERLEVEL" display="text"/>
+						<cell align="right" col="4" colid="USERGROUPCD" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoFit="TRUE" BindDataset="ds_grd_userList" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="213" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="139" Id="grd_userList" InputPanel="FALSE" Left="11" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnCellDBLClick="grd_userList_OnCellDblClick" OnHeadClick="grd_userList_OnHeadClick" Right="436" RowHeight="20" Style="Grid_2" TabOrder="38" TabStop="true" Top="74" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="425">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="82"/>
+						<col width="82"/>
+						<col width="82"/>
+						<col width="82"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" colid="allchk" color="user52" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="사용자아이디"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="사용자이름"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="3" color="user52" display="text" text="사용자레벨"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="4" color="user52" display="text" text="사용자그룹코드"/>
+					</head>
+					<body>
+						<cell col="0" colid="CHECK_VAL" display="checkbox" edit="checkbox"/>
+						<cell align="right" col="1" colid="USERID" display="text"/>
+						<cell align="right" col="2" colid="USERNAME" display="text"/>
+						<cell align="right" col="3" colid="USERLEVEL" display="text"/>
+						<cell align="right" col="4" colid="USERGROUPCD" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Align="Right" Height="18" Id="Image1" Left="60" LeftMargin="0" Style="Stc_Default_bold" TabOrder="42" Text="조회구분" Top="21" Transparent="TRUE" Width="51"></Image>
+		<Image Align="Right" Height="18" Id="Image0" Left="384" LeftMargin="0" Style="Stc_Default_bold" TabOrder="43" Text="등록년월" Top="21" Transparent="TRUE" Width="51"></Image>
+		<Image Align="Right" Height="18" Id="Image2" Left="33" LeftMargin="0" Style="Stc_Default_bold" TabOrder="44" Text="사용자아이디" Top="254" Transparent="TRUE" Width="83"></Image>
+		<Image Align="Right" Height="18" Id="Image3" Left="273" LeftMargin="0" Style="Stc_Default_bold" TabOrder="45" Text="사용자이름" Top="253" Transparent="TRUE" Width="83"></Image>
+		<Image Align="Right" Height="18" Id="Image4" Left="513" LeftMargin="0" Style="Stc_Default_bold" TabOrder="46" Text="사용자레벨" Top="254" Transparent="TRUE" Width="83"></Image>
+		<Image Align="Right" Height="18" Id="Image5" Left="704" LeftMargin="0" Style="Stc_Default_bold" TabOrder="47" Text="사용자그룹코드" Top="254" Transparent="TRUE" Width="91"></Image>
+		<Image Align="Right" Height="18" Id="Image6" Left="31" LeftMargin="0" Style="Stc_Default_bold" TabOrder="48" Text="코드조회" Top="661" Transparent="TRUE" Width="83"></Image>
+	</Form>
+	<Script><![CDATA[/********************************************************************************
+* FormID(명) : common_sample
+* Form 설명  : sample
+* 작성자     : DaMaNeGi
+* 작성일     : 2010-12-21
+* ===============================================================================
+* ds_grd_userList	: 사용자정보 리스트.
+* ds_grd_userList1	: 사용자정보 리스트.
+* ds_searchType		: 검색조건.
+* ds_userList		: 사용자정보 리스트.
+* ds_user			: 사용자정보.
+* ===============================================================================
+* 변경내역 : 
+* YYYYMMDD 담당자명 변경내용(Why?,What?)
+* ===============================================================================
+*********************************************************************************/
+
+#include script::common.js
+
+//** 페이지관련 default value.
+var _PAGESIZE = 10; //* 페이지 사이즈.
+var _PAGE = 1; //* 조회페이지.
+
+var _TOTALCOUNT;
+var _TOTALPAGE;
+
+/**
+ * Form의 모든 Component가 생성되고, 모든 Dataset이 Load 되었을 때에 발생하는 Event.
+ */
+function common_sample_OnLoadCompleted(obj)
+{
+	msk_month.Value = substr(today(), 0, 6);
+	cmb_searchType.Index = 0;
+	edt_pageSize.Text = 10;
+	
+	var commonURL = "http://localhost:8088/TKS/index.html";
+	div_browser.edt_url.Text = commonURL;
+}
+
+
+/**
+ * 콜백 메서드.
+ * @param svcID 서비스아이디.
+ * @param errorCode 에러코드.
+ * @param errorMsg 에러메시지.
+ * @return
+ */
+function fn_callback(svcID, errorCode, errorMsg) {
+
+	gfn_showProgressWindow(false);
+	_PAGESIZE = edt_pageSize.Text;
+	
+	switch (svcID) {
+	case "sample.selectUser" :
+	case "sample.selectUser2" :
+	case "sample.selectUserCondition" :
+		edt_rowCnt.Text = ds_grd_userList.RowCount();
+		edt_rowCnt1.Text = ds_grd_userList1.RowCount();
+		init();
+		
+		if (_TOTALPAGE == _PAGE) {
+			btn_next.Enable = false;
+		} else {
+			btn_next.Enable	= true;
+		}
+		break;
+	case "sample.tranUser" :
+	case "sample.tranUser2" :
+		edt_rowCnt.Text = ds_grd_userList.RowCount();
+		edt_rowCnt1.Text = ds_grd_userList1.RowCount();
+		initDataset();
+		break;
+	
+	case "sample.insertUser" :
+	case "sample.updateUser" :
+	case "sample.deleteUser" :
+		//** 사용자 정보 재조회.
+		selectUserCondition();
+		break;
+	case "sample.batchUser" :
+		//** 사용자 정보 재조회.
+		selectUserCondition();
+		break;
+
+	default :
+		break;
+	}
+}
+
+
+/**
+ * T_USER 테이블의 유저 정보를 조회한다.
+ */
+function btn_selectUser_OnClick(obj)
+{
+	btn_next.Enable = true;
+	_PAGE = 1;
+	_PAGESIZE = edt_pageSize.Text;
+	//selectUser();
+	//selectUser2();
+	selectUserCondition();
+}
+
+function edt_userData_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) selectUser();
+}
+
+function msk_month_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 13) selectUser();
+}
+
+/**
+ * 사용자 조회.
+ * @param
+ * @return
+ */
+function selectUser()
+{
+	ds_grd_userList.ClearData();
+	ds_grd_userList1.ClearData();
+	
+	var USERID			= edt_userData.Text;
+	var REGDATE			= msk_month.Value;
+	
+	var svcID			= "sample.selectUser";
+	var url   			= "service::sample.selectUser.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_grd_userList=sample.selectUser";
+	var argument    	= " _sqlName=sample.selectUser"
+						+ " _page="		+ quote(_PAGE)
+						+ " _pagesize="	+ quote(_PAGESIZE)
+						+ " USERID="	+ quote(USERID)
+						+ " REGDATE="	+ quote(REGDATE)
+						;
+	var callbackFunc 	= "fn_callback";
+	
+	gfn_showProgressWindow(true);
+	gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/**
+ * 사용자 조회(WebAction - BizWebAction 클래스생성 이용예제).
+ * @param
+ * @return
+ */
+function selectUser2()
+{
+
+	ds_grd_userList.ClearData();
+	ds_grd_userList1.ClearData();
+	
+	var USERID			= edt_userData.Text;
+	var REGDATE			= msk_month.Value;
+	
+	var svcID			= "sample.selectUser2";
+	var url   			= "service::sample.selectUser2.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_grd_userList=sample.selectUser";
+	var argument    	= " _sqlName=sample.selectUser"
+						+ " _page="		+ quote(_PAGE)
+						+ " _pagesize="	+ quote(_PAGESIZE)	
+						+ " USERID="	+ quote(USERID)
+						+ " REGDATE="	+ quote(REGDATE)
+						;
+	var callbackFunc 	= "fn_callback";
+	
+	gfn_showProgressWindow(true);
+	gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+/**
+ * 사용자 조회(condition 이용).
+ * @param
+ * @return
+ */
+function selectUserCondition()
+{
+
+	ds_grd_userList.ClearData();
+	ds_grd_userList1.ClearData();
+	
+	var USERID 			= "";
+	var USERNAME 		= "";
+	var PARAM_FLAG 		= cmb_searchType.Value;
+	
+	if (cmb_searchType.Value == "0") {
+		USERID			= edt_userData.Text;
+	} else {
+		USERNAME 		= edt_userData.Text;
+	}
+	
+	var REGDATE			= msk_month.Value;
+	
+	var svcID			= "sample.selectUserCondition";
+	var url   			= "service::sample.selectUserCondition.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_grd_userList=sample.selectUserCondition";
+	var argument    	= " _sqlName=sample.selectUserCondition"
+						+ " _page="			+ quote(_PAGE)
+						+ " _pagesize="		+ quote(_PAGESIZE)
+						+ " USERID="		+ quote(USERID)
+						+ " USERNAME="		+ quote(USERNAME)
+						+ " REGDATE="		+ quote(REGDATE)
+						+ " PARAM_FLAG="	+ quote(PARAM_FLAG)
+						;
+	var callbackFunc 	= "fn_callback";
+	
+	gfn_showProgressWindow(true);
+	gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+/**
+ * 유저정보 초기화.
+ */
+function grd_userList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	ds_user.CopyRow(0, ds_grd_userList, nRow);
+	
+	btn_init.Enable = true;
+	btn_insertUser.Enable = false;
+	btn_updateUser.Enable = true;
+	btn_deleteUser.Enable = true;
+	edt_userID.Enable = false;
+}
+
+
+/**
+ * 유저정보 초기화.
+ */
+function btn_init_OnClick(obj)
+{
+	init();
+}
+
+function init()
+{
+	ds_user.ClearData();
+	ds_user.AddRow();
+	
+	btn_insertUser.Enable = true;
+	btn_updateUser.Enable = false;
+	btn_deleteUser.Enable = false;
+
+	edt_userID.Enable	= true;
+	edt_userID.Text		= "";
+	edt_userName.Text	= "";
+	edt_userLevel.Text	= "";
+	edt_userGroupCode.Text	= "";
+	
+	edt_userID.SetFocus();
+}
+
+function initDataset()
+{
+	ds_grd_userList1.ClearData();
+	
+	ds_grd_userList.SetConstColumn("allchk", 0);
+	ds_grd_userList1.SetConstColumn("allchk", 0);
+}
+
+/**
+ * T_USER 테이블의 유저 정보를 등록한다.
+ */
+function btn_insertUser_OnClick(obj)
+{
+	insertUser();
+}
+
+
+/**
+ * 사용자 정보 입력.
+ * @param
+ * @return
+ */
+ function insertUser()
+ {
+	if (gfn_isEmpty(edt_userID.Text)) {
+		alert("사용자 아이디를 입력하여 주십시오.");
+		edt_userID.SetFocus();
+		return;
+	}
+	
+	var USERID			= edt_userID.Text;
+	var USERNAME 		= edt_userName.Text;
+	var USERLEVEL 		= edt_userLevel.Text;
+	var USERGROUPCD 	= edt_userGroupCode.Text;
+	
+ 	var svcID			= "sample.insertUser";
+	var url   			= "service::sample.insertUser.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "";
+	var argument    	= " _sqlName=sample.insertUser"
+						+ " _page="			+ quote(_PAGE)
+						+ " _pagesize="		+ quote(_PAGESIZE)
+						+ " USERID=" 		+ quote(USERID)
+						+ " USERNAME="		+ quote(USERNAME)
+						+ " USERLEVEL="		+ quote(USERLEVEL)
+						+ " USERGROUPCD="	+ quote(USERGROUPCD)
+						;
+	var callbackFunc 	= "fn_callback";
+	
+	if (confirm("사용자 정보를 등록 하시겠습니까?")) {
+		gfn_showProgressWindow(true);
+		gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+	}
+}
+
+
+/**
+ * T_USER 테이블의 유저 정보를 수정한다.
+ */
+function btn_updateUser_OnClick(obj)
+{
+	updateUser();
+}
+
+
+/**
+ * 사용자 정보 수정.
+ * @param
+ * @return
+ */
+function updateUser()
+{
+	var USERID			= edt_userID.Text;
+	var USERNAME 		= edt_userName.Text;
+	var USERLEVEL 		= edt_userLevel.Text;
+	var USERGROUPCD 	= edt_userGroupCode.Text;
+		
+ 	var svcID			= "sample.updateUser";
+	var url   			= "service::sample.updateUser.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "";
+	var argument    	= " _sqlName=sample.updateUser"
+						+ " USERID=" 		+ quote(USERID)
+						+ " USERNAME="		+ quote(USERNAME)
+						+ " USERLEVEL="		+ quote(USERLEVEL)
+						+ " USERGROUPCD="	+ quote(USERGROUPCD)
+						;
+	var callbackFunc 	= "fn_callback";
+	
+	if (confirm("사용자 정보를 수정 하시겠습니까?")) {
+		gfn_showProgressWindow(true);
+		gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+	}
+}
+
+
+/**
+ * T_USER 테이블의 유저 정보를 삭제한다.
+ */
+function btn_deleteUser_OnClick(obj)
+{
+	deleteUser();
+}
+
+
+/**
+ * 사용자 정보 삭제.
+ * @param
+ * @return
+ */
+function deleteUser()
+{
+	var USERID	= edt_userID.Text;
+
+ 	var svcID			= "sample.deleteUser";
+	var url   			= "service::sample.deleteUser.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "";
+	var argument    	= " _sqlName=sample.deleteUser"
+						+ " USERID="	+ quote(USERID)
+						;
+	var callbackFunc 	= "fn_callback";
+	
+	if (confirm("사용자 정보를 삭제 하시겠습니까?")) {
+		gfn_showProgressWindow(true);
+		gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+	}
+}
+
+
+/**
+ * T_USER 테이블의 유저 정보 수정 후 재조회.
+ */
+function btn_tranUser_OnClick(obj)
+{
+	var addRow = -1;
+	//** 선택한 리스트 이동.
+	ds_userList.ClearData();
+	for (var i = 0; i < ds_grd_userList1.rowcount; i++) {
+		
+		if (ds_grd_userList1.GetColumn(i, "CHECK_VAL") == true) {
+			addRow = ds_userList.AddRow();
+			ds_grd_userList1.CopyToRow(i, ds_userList, addRow);
+		}
+	}
+	
+	//* Validate Check.
+	if (ds_userList.rowcount <= 0) {
+		alert("선택하신 항목이 없습니다.");
+		return;
+	}
+	
+	//* 트랜잭션 처리. (updateUser->selectUser)
+	tranUser();
+	//tranUser2();
+}
+
+
+/**
+ * 사용자 정보 수정 후 재조회.
+ * 서비스의 트랜잭션 처리.
+ * @param
+ * @return
+ */
+function tranUser()
+{
+	var USERID		= edt_userData.Text;
+	var REGDATE		= msk_month.Value;
+	
+ 	var svcID			= "sample.tranUser";
+	var url   			= "service::sample.tranUser.do";
+	var inDatasets  	= "sample.batchUser=ds_userList";
+	var outDatasets 	= "ds_grd_userList=sample.selectUser";
+	var argument    	= " _sqlName='sample.batchUser,sample.selectUser'"
+						+ " _page="			+ quote(_PAGE)
+						+ " _pagesize="		+ quote(_PAGESIZE)
+						+ " USERID=" 		+ quote(USERID)
+						+ " REGDATE="		+ quote(REGDATE)
+						;
+	var callbackFunc 	= "fn_callback";
+	
+	if (confirm("사용자 정보를 수정 하시겠습니까?")) {
+		gfn_showProgressWindow(true);
+		gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+	}
+}
+
+
+function tranUser2()
+{
+	var USERID 			= "";
+	var USERNAME 		= "";
+	var PARAM_FLAG 		= cmb_searchType.Value;
+	
+	if (cmb_searchType.Value == "0") {
+		USERID			= edt_userData.Text;
+	} else {
+		USERNAME 		= edt_userData.Text;
+	}
+	
+	var REGDATE			= msk_month.Value;
+	
+ 	var svcID			= "sample.tranUser2";
+	var url   			= "service::sample.tranUser2.do";
+	var inDatasets  	= "sample.batchUser=ds_userList";
+	var outDatasets 	= "ds_grd_userList=sample.selectUserCondition";
+	var argument    	= " _sqlName='sample.batchUser,sample.selectUserCondition'"
+						+ " _page="			+ quote(_PAGE)
+						+ " _pagesize="		+ quote(_PAGESIZE)	
+						+ " USERID=" 		+ quote(USERID)
+						+ " USERNAME="		+ quote(USERNAME)
+						+ " REGDATE="		+ quote(REGDATE)
+						+ " PARAM_FLAG="	+ quote(PARAM_FLAG)
+						;
+	var callbackFunc 	= "fn_callback";
+	
+	if (confirm("사용자 정보를 수정 하시겠습니까?")) {
+		gfn_showProgressWindow(true);
+		gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+	}
+}
+
+
+/**
+ * 선택한 리스트 배치입력.
+ * @param
+ * @return
+ */
+function btn_batchUser_OnClick(obj)
+{
+
+	var addRow = -1;
+	//** 선택한 리스트 이동.
+	ds_userList.ClearData();
+	for (var i = 0; i < ds_grd_userList1.rowcount; i++) {
+		
+		if (ds_grd_userList1.GetColumn(i, "CHECK_VAL") == true) {
+			addRow = ds_userList.AddRow();
+			ds_grd_userList1.CopyToRow(i, ds_userList, addRow);
+		}
+	}
+	
+	//* Validate Check.
+	if (ds_userList.rowcount <= 0) {
+		alert("선택하신 항목이 없습니다.");
+		return;
+	}
+	//** 배치작업 실행.
+	batchUser();
+}
+
+function batchUser()
+{
+ 	var svcID			= "sample.batchUser";
+	var url   			= "service::sample.batchUser.do";
+	var inDatasets  	= "sample.batchUser=ds_userList";
+	var outDatasets 	= "";
+	var argument    	= " _sqlName=sample.batchUser"
+						;
+	var callbackFunc 	= "fn_callback";
+	
+	if (confirm("사용자 정보를 일괄처리 하시겠습니까?")) {
+		gfn_showProgressWindow(true);
+		gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+	}
+}
+
+
+
+function btn_rigth_OnClick(obj)
+{
+	var addRow = -1;
+	//* 데이터셋 이벤트 발생제어.
+	ds_grd_userList.FireEvent = false;
+	ds_grd_userList1.FireEvent = false;
+	
+	//** 선택한 리스트 이동.
+	for (var i = ds_grd_userList.rowcount; 0 <= i; i--) {
+		
+		if (ds_grd_userList.GetColumn(i, "CHECK_VAL") == true) {
+			//* 선택해제.
+			ds_grd_userList.SetColumn(i, "CHECK_VAL", false);
+			addRow = ds_grd_userList1.AddRow();
+			ds_grd_userList.CopyToRow(i, ds_grd_userList1, addRow);
+			ds_grd_userList.DeleteRow(i);
+		}
+	}
+	
+	//* 전체선택 해제.
+	ds_grd_userList.SetConstColumn("allchk", false);
+	ds_grd_userList1.SetConstColumn("allchk", false);
+	//* 리스트 갯수 재조회.
+	edt_rowCnt.Text 	= ds_grd_userList.rowcount;
+	edt_rowCnt1.Text	= ds_grd_userList1.rowcount;
+
+	ds_grd_userList1.Sort("USERID");
+	
+	ds_grd_userList.FireEvent = true;
+	ds_grd_userList1.FireEvent = true;
+}
+
+function btn_left_OnClick(obj)
+{
+	var addRow = 0;
+	//* 데이터셋 이벤트 발생제어.
+	ds_grd_userList.FireEvent = false;
+	ds_grd_userList1.FireEvent = false;
+	
+	//** 선택한 리스트 이동.
+	for (var i = ds_grd_userList1.rowcount; 0 <= i; i--) {
+		
+		if (ds_grd_userList1.GetColumn(i, "CHECK_VAL") == true) {
+			//* 선택해제.
+			ds_grd_userList1.SetColumn(i, "CHECK_VAL", false);
+			addRow = ds_grd_userList.AddRow();
+			ds_grd_userList1.CopyToRow(i, ds_grd_userList, addRow);
+			ds_grd_userList1.DeleteRow(i);
+		}
+	}
+	
+	//* 전체선택 해제.
+	ds_grd_userList.SetConstColumn("allchk", false);
+	ds_grd_userList1.SetConstColumn("allchk", false);
+	//* 리스트 갯수 재조회.
+	edt_rowCnt.Text 	= ds_grd_userList.rowcount;
+	edt_rowCnt1.Text	= ds_grd_userList1.rowcount;
+
+	ds_grd_userList.Sort("USERID");
+	
+	ds_grd_userList.FireEvent = true;
+	ds_grd_userList1.FireEvent = true;
+}
+
+function btn_month_OnClick(obj)
+{
+	
+	if (div_calMonth.Visible) {
+		div_calMonth.Visible = false;
+	
+	} else {
+		div_calMonth.Left = btn_month.Left;
+		div_calMonth.Top = btn_month.Bottom + 2;
+		div_calMonth.Visible = true;
+	}
+}
+
+
+function closePopse(retDate) 
+{
+	msk_month.Text = retDate;
+}
+
+
+/**
+ * 전체선택.
+ */
+function grd_userList_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	if (nCell = 0) gfn_checkAll(grd_userList, ds_grd_userList, "check_val");
+}
+
+function grd_userList1_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	if (nCell = 0) gfn_checkAll(grd_userList1, ds_grd_userList1, "check_val");
+}
+
+
+
+/**
+ * 페이지 사이즈 구하기.
+ */
+function edt_pageSize_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	_PAGE = obj.text;
+}
+
+
+/**
+ * 다음페이지 조회.
+ */
+function btn_next_OnClick(obj)
+{
+	_PAGE = ToNumber(_PAGE) + 1;
+	selectUserCondition();
+}
+
+
+/**
+ * 태광산업인사정보시스템 URL 접속 : http://213.175.91.41:8090
+ */
+function btn_moveSite_OnClick(obj)
+{
+	AxMSIE.Navigate(edt_url.Text, false, "_self");
+}
+
+/**
+ * 코드조회.
+ */
+function btn_selectCode_OnClick(obj)
+{
+	var codeName = edt_code.Text;
+	gfn_initCommonCodes("cmb_code1=" + codeName + ":X,cmb_code2=COM002:X");
+	gfn_initCommonCodes("cmb_code2=" + codeName + ":O");
+	gfn_initCommonCodes("cmb_code3=" + codeName + ":A");
+}
+
+function edt_code_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {
+		btn_selectCode_OnClick();
+	}
+}
+
+]]></Script>
+</Window>

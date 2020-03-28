@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_AREA_BAS : 지역, TB_CC_USEAREA_LST: 지사별 사용지역 -->
+<mapper namespace="co.hanaapp.dao.cc.CCTieUpDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 제휴사 Tree  조회 -->
+    <select id="selectTieUpTree" parameterType="map" resultType ="map">
+        SELECT /* 제휴사 TREE */
+                NVL(A.BRCH_ID,' ') AS BRCH_ID,
+                NVL(A.TUB_SEQ,'-99999') AS TUB_SEQ,
+                NVL(A.TUB_NM,' ') AS TUB_NM,
+                NVL(A.TUB_TEL,' ') AS TUB_TEL,
+                NVL(A.TUB_FAX,' ') AS TUB_FAX,
+                NVL(B.USR_NM, ' ') AS HNA_CHG_USR_NM,
+                NVL(A.SIN_NM, ' ') AS SIN_NM,                
+                NVL(A.UNP_AMT,'-99999') AS UNP_AMT,
+                NVL(FC_CC_GET_CODENAME('AC05', A.DOC_CARY),' ')   AS DOC_CARY,
+                NVL(A.SIN_DT_STR, ' ') AS SIN_DT_STR                                                           
+          FROM TB_CC_TIEUP_LST A, TB_CC_USER_LST B
+         WHERE A.BRCH_ID = B.BRCH_ID(+)
+           AND A.HNA_CHG_USR = B.USR_ID(+)
+           AND A.BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+           AND nvl(A.SIN_GBN, ' ') LIKE '%' || #{S_SIN_GBN, jdbcType=VARCHAR} || '%'
+           AND nvl(A.DEAL_STS, ' ') LIKE '%' || #{S_DEAL_STS, jdbcType=VARCHAR} || '%'
+           AND nvl(A.REG_GBN, ' ') LIKE '%' || #{S_REG_GBN, jdbcType=VARCHAR} || '%'
+           AND ((A.TUB_SEQ LIKE  #{S_SEARCH_STR, jdbcType=VARCHAR} || '%' OR A.TUB_NM LIKE '%' || #{S_SEARCH_STR, jdbcType=VARCHAR} || '%')
+               OR (nvl(A.TUB_TEL, ' ') LIKE '%' || #{S_SEARCH_STR, jdbcType=VARCHAR} || '%' OR nvl(A.TUB_FAX, ' ') LIKE '%' || #{S_SEARCH_STR, jdbcType=VARCHAR} || '%')
+               OR nvl(B.USR_NM, ' ') LIKE '%' || #{S_SEARCH_STR, jdbcType=VARCHAR} || '%' 
+               )
+		<choose>
+             <when test='S_ORDER == "TUB_SEQ"'> ORDER BY A.TUB_SEQ</when>
+             <when test='S_ORDER == "CRT_DT"'> ORDER BY A.CRT_DT</when>
+             <when test='S_ORDER == "LST_DEAL_DT"'> ORDER BY A.LST_DEAL_DT</when>
+        </choose>         
+      
+         
+
+    </select>
+     
+
+
+   <!-- 제휴사 기본정보 한건  조회 -->
+    <select id="selectTieUpOne" parameterType="map" resultType ="map">
+        SELECT /* 제휴사 기본정보 */
+                'N' AS FLAG,
+                ROWIDTOCHAR(ROWID) AS ROW_ID,
+                '0' AS CHK,
+                #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+                NVL(BRCH_ID,' ') AS BRCH_ID,
+                NVL(TUB_SEQ,'-99999') AS TUB_SEQ,
+                NVL(TUB_NM,' ') AS TUB_NM,
+                NVL(TUB_TEL,' ') AS TUB_TEL,
+                NVL(TUB_FAX,' ') AS TUB_FAX,
+                NVL(TUB_ADDR,' ') AS TUB_ADDR,
+                NVL(TUB_ZIP,' ') AS TUB_ZIP,
+                NVL(BAG_AGC_AMT,'-99999') AS BAG_AGC_AMT,
+                NVL(ETC_AGC_AMT,'-99999') AS ETC_AGC_AMT,
+                NVL(SIN_NM,' ') AS SIN_NM,
+                NVL(SIN_TEL,' ') AS SIN_TEL,
+                NVL(SIN_GBN,' ') AS SIN_GBN,
+                NVL(SIN_DT_STR,' ') AS SIN_DT_STR,
+                NVL(RCP_GBN,' ') AS RCP_GBN,
+                NVL(BIL_GBN,' ') AS BIL_GBN,
+                NVL(DEAL_STS,' ') AS DEAL_STS,
+                NVL(DEAL_STOP_RSN,' ') AS DEAL_STOP_RSN,
+                NVL(HNA_CHG_USR,' ') AS HNA_CHG_USR,
+                NVL(FC_CC_GET_USRNAME(BRCH_ID, HNA_CHG_USR),' ') AS HNA_CHG_USR_NM,
+                NVL(DOC_CARY,' ') AS DOC_CARY,
+                NVL(BIZ_FILE_NM,' ') AS BIZ_FILE_NM,
+                NVL(BIZ_FILE_SAVE_NM,' ') AS BIZ_FILE_SAVE_NM,
+                NVL(AFF_REG_NOTE,' ') AS AFF_REG_NOTE,
+                NVL(AFF_PRS_NOTE,' ') AS AFF_PRS_NOTE,
+                NVL(COST_NOTE,' ') AS COST_NOTE ,
+                NVL(REG_GBN,' ') AS REG_GBN,
+                NVL(RLT_NM,' ') AS RLT_NM,
+                NVL(TO_CHAR(A.CRT_DT,'YYYY-MM-DD'),' ') AS CRT_DT,
+                NVL(TO_CHAR(A.LST_DEAL_DT,'YYYY-MM-DD'),' ') AS LST_DEAL_DT,
+                NVL(CLT_OPN_YN,' ') AS CLT_OPN_YN,
+                NVL(CLT_OPN_HP,' ') AS CLT_OPN_HP,
+                NVL(TUB_NM_HIS,' ') AS TUB_NM_HIS,
+                NVL(UNP_AMT,'-99999') AS UNP_AMT                          
+                            
+          FROM TB_CC_TIEUP_LST A
+         WHERE A.BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+           AND A.TUB_SEQ =  #{S_TUB_SEQ, jdbcType=VARCHAR}
+
+    </select>
+
+   <!-- 제휴사 코드채번 -->
+    <select id="selectTubSeq" parameterType="map" resultType ="map">
+		 SELECT /* 제휴사 채번 */
+		        SQ_CC_TIEUP_LST.NEXTVAL AS TUB_SEQ
+		   FROM DUAL              
+    </select>
+
+
+
+   	<!-- 제휴사정보 추가/수정 -->
+     <insert   id="saveTieUpLst" parameterType="map" >
+
+		DECLARE
+			V_TUB_NM VARCHAR2(255);
+        
+        begin
+			
+			-- 먼저 명칭 변경이 있는지 확인 
+			BEGIN
+				SELECT TUB_NM
+				  INTO V_TUB_NM
+				  FROM TB_CC_TIEUP_LST
+				 where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});  
+             exception
+                WHEN NO_DATA_FOUND THEN
+                   V_TUB_NM := NULL;
+                when others then
+                    raise_application_error(-20501,'제휴사명칭 비교 오류 save error : ' ||SQLERRM);
+             end; 	                 			
+			
+			UPDATE TB_CC_TIEUP_LST
+			   SET TUB_NM = #{TUB_NM, jdbcType=VARCHAR} , 
+			       TUB_TEL = #{TUB_TEL, jdbcType=VARCHAR} , 
+			       TUB_FAX = #{TUB_FAX, jdbcType=VARCHAR} , 
+			       TUB_ADDR = #{TUB_ADDR, jdbcType=VARCHAR} , 
+			       TUB_ZIP = #{TUB_ZIP, jdbcType=VARCHAR} , 
+			       BAG_AGC_AMT = #{BAG_AGC_AMT, jdbcType=VARCHAR} , 
+			       ETC_AGC_AMT = #{ETC_AGC_AMT, jdbcType=VARCHAR} , 
+			       SIN_NM = #{SIN_NM, jdbcType=VARCHAR} , 
+			       SIN_TEL = #{SIN_TEL, jdbcType=VARCHAR} , 
+			       SIN_GBN = #{SIN_GBN, jdbcType=VARCHAR} , 
+			       SIN_DT_STR = #{SIN_DT_STR, jdbcType=VARCHAR}, 
+			       RCP_GBN = #{RCP_GBN, jdbcType=VARCHAR} , 
+			       BIL_GBN = #{BIL_GBN, jdbcType=VARCHAR} , 
+			       DEAL_STS = #{DEAL_STS, jdbcType=VARCHAR} , 
+			       DEAL_STOP_RSN = #{DEAL_STOP_RSN, jdbcType=VARCHAR} , 
+			       HNA_CHG_USR = #{HNA_CHG_USR, jdbcType=VARCHAR} , 
+			       DOC_CARY = #{DOC_CARY, jdbcType=VARCHAR} , 
+			       BIZ_FILE_NM = #{BIZ_FILE_NM, jdbcType=VARCHAR} , 
+			       BIZ_FILE_SAVE_NM = #{BIZ_FILE_SAVE_NM, jdbcType=VARCHAR} , 
+			       AFF_REG_NOTE = #{AFF_REG_NOTE, jdbcType=VARCHAR} , 
+			       AFF_PRS_NOTE = #{AFF_PRS_NOTE, jdbcType=VARCHAR} , 
+			       COST_NOTE = #{COST_NOTE, jdbcType=VARCHAR} , 
+			       REG_GBN = #{REG_GBN, jdbcType=VARCHAR} , 
+			       RLT_NM = #{RLT_NM, jdbcType=VARCHAR} , 
+			       CLT_OPN_YN = #{CLT_OPN_YN, jdbcType=VARCHAR} , 
+			       CLT_OPN_HP = #{CLT_OPN_HP, jdbcType=VARCHAR} , 
+			       TUB_NM_HIS = SUBSTR(CASE
+			                         WHEN NVL(V_TUB_NM,' ') != #{TUB_NM, jdbcType=VARCHAR} THEN V_TUB_NM || ', ' || TUB_NM_HIS
+			                         ELSE TUB_NM_HIS
+			                    END,1,4000),
+			       UNP_AMT = #{UNP_AMT, jdbcType=VARCHAR} ,              
+			       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+			       EDT_DT = SYSDATE 
+            where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+
+
+               if sql%rowcount=0 then
+					INSERT INTO TB_CC_TIEUP_LST
+					        (
+					         BRCH_ID , 
+					         TUB_SEQ , 
+					         TUB_NM , 
+					         TUB_TEL , 
+					         TUB_FAX , 
+					         TUB_ADDR , 
+					         TUB_ZIP , 
+					         BAG_AGC_AMT , 
+					         ETC_AGC_AMT , 
+					         SIN_NM , 
+					         SIN_TEL , 
+					         SIN_GBN , 
+					         SIN_DT_STR,
+					         RCP_GBN , 
+					         BIL_GBN , 
+					         DEAL_STS , 
+					         DEAL_STOP_RSN , 
+					         HNA_CHG_USR , 
+					         DOC_CARY , 
+					         BIZ_FILE_NM , 
+					         BIZ_FILE_SAVE_NM,
+					         AFF_REG_NOTE,
+					         AFF_PRS_NOTE,
+					         COST_NOTE,
+					         REG_GBN,
+					         RLT_NM,
+					         CLT_OPN_YN,
+					         CLT_OPN_HP,
+					         UNP_AMT,
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT )
+					 VALUES (
+					         #{BRCH_ID, jdbcType=VARCHAR} , 
+					         #{TUB_SEQ, jdbcType=VARCHAR} , 
+					         #{TUB_NM, jdbcType=VARCHAR} , 
+					         #{TUB_TEL, jdbcType=VARCHAR} , 
+					         #{TUB_FAX, jdbcType=VARCHAR} , 
+					         #{TUB_ADDR, jdbcType=VARCHAR} , 
+					         #{TUB_ZIP, jdbcType=VARCHAR} , 
+					         #{BAG_AGC_AMT, jdbcType=VARCHAR} , 
+					         #{ETC_AGC_AMT, jdbcType=VARCHAR} , 
+					         #{SIN_NM, jdbcType=VARCHAR} , 
+					         #{SIN_TEL, jdbcType=VARCHAR} , 
+					         #{SIN_GBN, jdbcType=VARCHAR} , 
+					         #{SIN_DT_STR, jdbcType=VARCHAR} , 
+					         #{RCP_GBN, jdbcType=VARCHAR} , 
+					         #{BIL_GBN, jdbcType=VARCHAR} , 
+					         #{DEAL_STS, jdbcType=VARCHAR} , 
+					         #{DEAL_STOP_RSN, jdbcType=VARCHAR} , 
+					         #{HNA_CHG_USR, jdbcType=VARCHAR} , 
+					         #{DOC_CARY, jdbcType=VARCHAR} , 
+					         #{BIZ_FILE_NM, jdbcType=VARCHAR} , 
+					         #{BIZ_FILE_SAVE_NM, jdbcType=VARCHAR} , 
+					         #{AFF_REG_NOTE, jdbcType=VARCHAR} , 
+					         #{AFF_PRS_NOTE, jdbcType=VARCHAR} , 
+					         #{COST_NOTE, jdbcType=VARCHAR} ,
+					         #{REG_GBN, jdbcType=VARCHAR} , 
+					         #{RLT_NM, jdbcType=VARCHAR} , 
+					         #{CLT_OPN_YN, jdbcType=VARCHAR} , 
+					         #{CLT_OPN_HP, jdbcType=VARCHAR} , 
+					         #{UNP_AMT, jdbcType=VARCHAR} , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE );
+                  end if;
+
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_TIEUP_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 제휴사정보 삭제 -->
+    <delete   id="deleteTieUpLst" parameterType="map" >
+       	BEGIN
+	       	
+	       	DELETE FROM TB_CC_TIEUPCHG_LST A
+	       	 WHERE (BRCH_ID, TUB_SEQ) IN 
+		       	 (SELECT BRCH_ID, TUB_SEQ 
+		       	    FROM TB_CC_TIEUP_LST
+		       	   WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})   
+		       	 );
+
+	       	DELETE FROM TB_CC_TIEUPNOTE_LST A
+	       	 WHERE (BRCH_ID, TUB_SEQ) IN 
+		       	 (SELECT BRCH_ID, TUB_SEQ 
+		       	    FROM TB_CC_TIEUP_LST
+		       	   WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})   
+		       	 );
+
+	       	DELETE FROM TB_CC_TIEUP_LST
+			 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR});   
+        exception
+            when others then
+                raise_application_error(-20501,'TB_CC_TIEUP_LST save error : ' ||SQLERRM);
+        end;  
+   
+    </delete>
+ 
+ 
+  <!-- 제휴사 사건진행정보  조회 -->
+    <select id="selectTieUpChgOne" parameterType="map" resultType ="map">
+			SELECT /* 제휴사 사건진행정보 */
+				   'N' AS FLAG,
+				   ROWIDTOCHAR(B.ROWID) AS ROW_ID,
+				   '0' AS CHK,
+				   #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+				   NVL(B.BRCH_ID,' ') AS BRCH_ID,
+				   NVL(B.TUB_SEQ,'-99999') AS TUB_SEQ,
+				   NVL(B.CHG_SEQ,'-99999') AS CHG_SEQ,
+				   NVL(B.CHG_NM,' ') AS CHG_NM,
+				   NVL(B.CHG_HP,' ') AS CHG_HP,
+				   NVL(B.CHG_FAX,' ') AS CHG_FAX,
+				   NVL(B.CHG_TEL,' ') AS CHG_TEL,
+				   NVL(B.CHG_POS,' ') AS CHG_POS,
+				   NVL(B.TEL_OPN_YN,' ') AS TEL_OPN_YN,
+				   NVL(B.DESC_PRV,' ') AS DESC_PRV,
+				   NVL(B.DPST_NM,' ') AS DPST_NM,
+				   NVL(B.NOTE,' ') AS NOTE
+			  FROM TB_CC_TIEUP_LST A, TB_CC_TIEUPCHG_LST B
+         WHERE A.BRCH_ID = B.BRCH_ID
+           AND A.TUB_SEQ = B.TUB_SEQ
+           AND A.BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+           AND A.TUB_SEQ =  #{S_TUB_SEQ, jdbcType=VARCHAR}
+         ORDER BY nvl(A.TUB_SEQ,'-99999'),  nvl(B.CHG_SEQ,'-99999')
+
+
+    </select>
+
+  	<!-- 제휴사 사건진행정보 추가/수정 -->
+     <insert   id="saveTieUpChgLst" parameterType="map" >
+
+        begin
+            IF #{FLAG, jdbcType=VARCHAR} = 'D' THEN
+                DELETE FROM TB_CC_TIEUPCHG_LST
+                 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;              
+            ELSE			
+			
+				UPDATE TB_CC_TIEUPCHG_LST
+				   SET        CHG_NM = #{CHG_NM, jdbcType=VARCHAR} , 
+				       CHG_HP = #{CHG_HP, jdbcType=VARCHAR} , 
+				       CHG_TEL = #{CHG_TEL, jdbcType=VARCHAR} , 
+				       CHG_FAX = #{CHG_FAX, jdbcType=VARCHAR} , 
+				       CHG_POS = #{CHG_POS, jdbcType=VARCHAR} , 
+				       TEL_OPN_YN = #{TEL_OPN_YN, jdbcType=VARCHAR} , 
+				       DESC_PRV = #{DESC_PRV, jdbcType=VARCHAR} , 
+				       DPST_NM = #{DPST_NM, jdbcType=VARCHAR} , 
+				       NOTE = #{NOTE, jdbcType=VARCHAR} , 
+				       CRT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+				       CRT_DT = SYSDATE 		       
+	            where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+	
+	
+	               if sql%rowcount=0 then
+						INSERT INTO TB_CC_TIEUPCHG_LST
+						        (
+						         BRCH_ID , 
+						         TUB_SEQ , 
+						         CHG_SEQ , 
+						         CHG_NM , 
+						         CHG_HP , 
+						         CHG_TEL , 
+						         CHG_FAX,
+						         CHG_POS , 
+						         TEL_OPN_YN , 
+						         DESC_PRV , 
+						         DPST_NM , 
+						         NOTE ,
+						         CRT_USR , 
+						         CRT_DT , 
+						         EDT_USR , 
+						         EDT_DT )
+						 VALUES (
+						         #{BRCH_ID, jdbcType=VARCHAR} , 
+						         #{TUB_SEQ, jdbcType=VARCHAR} , 
+						         (select nvl(MAX(CHG_SEQ),0) + 1 FROM TB_CC_TIEUPCHG_LST WHERE BRCH_ID = #{BRCH_ID, jdbcType=VARCHAR} AND TUB_SEQ = #{TUB_SEQ, jdbcType=VARCHAR}),
+						         #{CHG_NM, jdbcType=VARCHAR} , 
+						         #{CHG_HP, jdbcType=VARCHAR} , 
+						         #{CHG_TEL, jdbcType=VARCHAR} , 
+						         #{CHG_FAX, jdbcType=VARCHAR} , 
+						         #{CHG_POS, jdbcType=VARCHAR} , 
+						         #{TEL_OPN_YN, jdbcType=VARCHAR}, 
+						         #{DESC_PRV, jdbcType=VARCHAR} , 
+						         #{DPST_NM, jdbcType=VARCHAR} , 
+						         #{NOTE, jdbcType=VARCHAR} ,
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE );
+	                  end if;
+               END IF;
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_TIEUPCHG_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 사건진행정보 삭제 -->
+    <delete   id="deleteTieUpChgLst" parameterType="map" >
+       	DELETE FROM TB_CC_TIEUPCHG_LST
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+ 
+ 
+    <!-- 제휴사 담당선택 팝업  조회 -->
+    <select id="selectTieUpChgPopup" parameterType="map" resultType ="map">
+        SELECT /* 제휴사 담당선택 팝업 */
+               nvl(A.BRCH_ID,' ') BRCH_ID, 
+               nvl(A.TUB_SEQ,'-99999') TUB_SEQ, 
+               nvl(A.TUB_NM,' ') TUB_NM,
+               nvl(B.CHG_SEQ,'-99999') CHG_SEQ, 
+               nvl(B.CHG_NM,' ') CHG_NM,
+               nvl(A.TUB_TEL,' ') TUB_TEL,
+               nvl(A.TUB_FAX,' ') TUB_FAX,
+               nvl(A.HNA_CHG_USR,' ') HNA_CHG_USR,
+               nvl(FC_CC_GET_USRNAME(A.BRCH_ID, A.HNA_CHG_USR),' ') HNA_CHG_USR_NM,
+               nvl(A.BIZ_FILE_SAVE_NM,' ') BIZ_FILE_SAVE_NM,               
+               nvl(A.DOC_CARY,' ') DOC_CARY  ,
+               nvl(A.AFF_REG_NOTE,' ') AFF_REG_NOTE,
+               nvl(A.CLT_OPN_YN,' ') CLT_OPN_YN  ,
+               nvl(A.CLT_OPN_HP,' ') CLT_OPN_HP ,
+               nvl(A.SIN_GBN,' ') SIN_GBN,
+               nvl(A.SIN_NM,' ') SIN_NM,
+               nvl(A.BAG_AGC_AMT,'-99999') BAG_AGC_AMT,
+               nvl(A.ETC_AGC_AMT,'-99999') ETC_AGC_AMT               
+          FROM TB_CC_TIEUP_LST A, TB_CC_TIEUPCHG_LST B
+         WHERE A.BRCH_ID = B.BRCH_ID
+           AND A.TUB_SEQ = B.TUB_SEQ
+           AND NVL(A.DEAL_STS,'Y') IN ('Y') -- 거래상황이 진행인것만
+           AND A.BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+           AND A.TUB_NM LIKE '%' || #{S_TUB_NM, jdbcType=VARCHAR} || '%'
+           AND B.CHG_NM LIKE '%' || #{S_CHG_NM, jdbcType=VARCHAR} || '%'
+           
+         ORDER BY A.TUB_SEQ, B.CHG_SEQ
+         
+
+    </select>
+ 
+     	<!-- 임시제휴사등록 -->
+     <insert   id="saveTmpTieUpChgPopup" parameterType="map" >
+		
+		DECLARE
+			V_TUB_SEQ NUMBER(10);
+		
+		BEGIN
+			
+			SELECT SQ_CC_TIEUP_LST.NEXTVAL
+			  INTO V_TUB_SEQ
+			  FROM DUAL;
+			
+			
+					INSERT INTO TB_CC_TIEUP_LST
+					        (
+					         BRCH_ID , 
+					         TUB_SEQ , 
+					         TUB_NM ,
+					         DEAL_STS, 
+					         REG_GBN,
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT )
+					 VALUES (
+					         #{BRCH_ID, jdbcType=VARCHAR} , 
+					         V_TUB_SEQ , 
+					         #{TUB_NM, jdbcType=VARCHAR} , 
+					         'Y',
+					         'P' , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE );
+
+                  
+                  
+						INSERT INTO TB_CC_TIEUPCHG_LST
+						        (
+						         BRCH_ID , 
+						         TUB_SEQ , 
+						         CHG_SEQ , 
+						         CHG_NM , 
+						         CRT_USR , 
+						         CRT_DT , 
+						         EDT_USR , 
+						         EDT_DT )
+						 VALUES (
+						         #{BRCH_ID, jdbcType=VARCHAR} , 
+						         V_TUB_SEQ , 
+						         1,
+						         #{CHG_NM, jdbcType=VARCHAR} , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE );                 
+
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_TIEUP_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+
+  <!-- 제휴사 특이사항  조회 -->
+    <select id="selectTieUpNoteOne" parameterType="map" resultType ="map">
+			SELECT /* 제휴사 특이사항  */
+				   'N' AS FLAG,
+				   ROWIDTOCHAR(B.ROWID) AS ROW_ID,
+				   '0' AS CHK,
+				   #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+				   NVL(B.BRCH_ID,' ') AS BRCH_ID,
+				   NVL(B.TUB_SEQ,'-99999') AS TUB_SEQ,
+				   NVL(B.NOTE_SEQ,'-99999') AS NOTE_SEQ,
+				   NVL(B.JOB_GBN,' ') AS JOB_GBN,
+				   NVL(B.NOTE_GBN,' ') AS NOTE_GBN,
+				   NVL(B.NOTE_DESC,' ') AS NOTE_DESC,
+				   NVL(FC_CC_GET_CODENAME('CC06',B.JOB_GBN),' ') AS  JOB_GBN_NM,
+				   NVL(FC_CC_GET_CODENAME('CC07',B.NOTE_GBN),' ') AS  NOTE_GBN_NM
+			  FROM TB_CC_TIEUP_LST A, TB_CC_TIEUPNOTE_LST B
+         WHERE A.BRCH_ID = B.BRCH_ID
+           AND A.TUB_SEQ = B.TUB_SEQ
+           AND A.BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+           AND A.TUB_SEQ =  #{S_TUB_SEQ, jdbcType=VARCHAR}
+         ORDER BY nvl(A.TUB_SEQ,'-99999'), NVL(B.JOB_GBN,' '), nvl(B.NOTE_SEQ,'-99999')
+
+
+    </select>
+
+  	<!-- 제휴사 특이사항 추가/수정 -->
+     <insert   id="saveTieUpNoteLst" parameterType="map" >
+
+        begin
+            IF #{FLAG, jdbcType=VARCHAR} = 'D' THEN
+                DELETE FROM TB_CC_TIEUPNOTE_LST
+                 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;              
+            ELSE			
+			
+				UPDATE TB_CC_TIEUPNOTE_LST
+				   SET        JOB_GBN = #{JOB_GBN, jdbcType=VARCHAR} , 
+				       NOTE_GBN = #{NOTE_GBN, jdbcType=VARCHAR} , 
+				       NOTE_DESC = #{NOTE_DESC, jdbcType=VARCHAR} , 
+				       CRT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+				       CRT_DT = SYSDATE 		       
+	            where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+	
+	
+	               if sql%rowcount=0 then
+						INSERT INTO TB_CC_TIEUPNOTE_LST
+						        (
+						         BRCH_ID , 
+						         TUB_SEQ , 
+						         NOTE_SEQ , 
+						         JOB_GBN , 
+						         NOTE_GBN , 
+						         NOTE_DESC , 
+						         CRT_USR , 
+						         CRT_DT , 
+						         EDT_USR , 
+						         EDT_DT )
+						 VALUES (
+						         #{BRCH_ID, jdbcType=VARCHAR} , 
+						         #{TUB_SEQ, jdbcType=VARCHAR} , 
+						         (select nvl(MAX(NOTE_SEQ),0) + 1 FROM TB_CC_TIEUPNOTE_LST WHERE BRCH_ID = #{BRCH_ID, jdbcType=VARCHAR} AND TUB_SEQ = #{TUB_SEQ, jdbcType=VARCHAR}),
+						         #{JOB_GBN, jdbcType=VARCHAR} , 
+						         #{NOTE_GBN, jdbcType=VARCHAR} , 
+						         #{NOTE_DESC, jdbcType=VARCHAR} , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE );
+	                  end if;
+               END IF;
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_TIEUPNOTE_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 특이사항 삭제 -->
+    <delete   id="deleteTieUpNoteLst" parameterType="map" >
+       	DELETE FROM TB_CC_TIEUPNOTE_LST
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+ 
+ 
+    <!-- 제휴사 특이사항 조회 -->
+    <select id="selectTieupNoteLst" parameterType="map" resultType ="map">
+		SELECT /* 제휴사 특이사항 */
+		        NVL(B.NOTE_SEQ,'-99999') AS  NOTE_SEQ,
+		        NVL(B.JOB_GBN,' ') AS  JOB_GBN,
+		        NVL(FC_CC_GET_CODENAME('CC07',B.NOTE_GBN),' ') AS NOTE_GBN,
+		        NVL(B.NOTE_DESC,' ') AS  NOTE_DESC                                                 
+		  FROM TB_CC_TIEUPNOTE_LST B
+		 WHERE B.BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+		   AND B.TUB_SEQ =   #{S_TUB_SEQ, jdbcType=VARCHAR}
+		   AND B.JOB_GBN =  #{S_JOB_GBN, jdbcType=VARCHAR}
+		 ORDER BY B.NOTE_GBN, B.NOTE_SEQ
+
+    </select> 
+
+    <!-- 제휴사 미수정보 조회 -->
+    <select id="selectTieupUnpOne" parameterType="map" resultType ="map">
+		SELECT /*제휴사 미수, 청구후누적금 */ 
+		       NVL(A.BRCH_ID, ' ') AS BRCH_ID, 
+		       NVL(A.TUB_SEQ, '-99999') AS TUB_SEQ,
+		       NVL(A.UNP_AMT, '-99999') AS UNP_AMT,
+		       NVL(B.OCC_AMT, '-99999') AS OCC_AMT,
+		       NVL(A.UNP_AMT,0) + NVL(B.OCC_AMT,0) AS TOT_AMT
+		  FROM TB_CC_TIEUP_LST A, 
+		       (SELECT A.BRCH_ID, 
+		              A.TUB_SEQ,
+		              NVL(SUM(B.BNK_CHRG),0) + NVL(SUM(B.AGC_CHRG),0) OCC_AMT
+		         FROM TB_AC_AFFAIR_MST A, TB_AC_AFFAIR_DTL B
+		        WHERE A.BRCH_ID = B.BRCH_ID
+		          AND A.AFF_SEQ = B.AFF_SEQ
+		          AND A.AFF_PRS_STS IN ('20','25') -- 사건마감, 추가마감인것만 
+		        GROUP BY A.BRCH_ID, 
+		              A.TUB_SEQ      
+		       ) B
+		 WHERE A.BRCH_ID = B.BRCH_ID(+)
+		   AND A.TUB_SEQ = B.TUB_SEQ(+) 
+		   AND A.BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+		   AND A.TUB_SEQ =   #{S_TUB_SEQ, jdbcType=VARCHAR}
+		  
+ 
+
+    </select> 
+
+    <!-- 제휴사 특이사항 팝업 조회 -->
+    <select id="selectJobNotePopup" parameterType="map" resultType ="map">
+		SELECT B.TXT_VAL1 AS JOB_GBN,
+		       NVL(FC_CC_GET_CODENAME('CC06',B.TXT_VAL1),' ') JOB_GBN_NM,
+		       B.DTL_CD AS NOTE_GBN,
+		       B.DTL_NM AS NOTE_GBN_NM
+		  FROM TB_CC_CODE_DTL B
+		 WHERE NVL(B.USE_YN,'N') = 'Y'
+		   AND B.MST_CD in  ('CC07') 
+		ORDER BY B.TXT_VAL1, B.SORT_NO
+
+    </select> 
+
+    <!-- 제휴사 공개전화 조회 -->
+    <select id="selectCltOpnHp" parameterType="map" resultType ="map">
+		SELECT NVL(HP_NO, ' ') AS DTL_CD,
+		       NVL(HP_NO, ' ') AS DTL_NM
+		   FROM (SELECT HP_NO
+		          FROM TB_CC_BRCH_BAS
+		         WHERE BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+		        UNION ALL
+		        SELECT HP_NO2
+		          FROM TB_CC_BRCH_BAS
+		         WHERE BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+		        ) A
+		 ORDER BY HP_NO 
+ 
+
+    </select> 
+ 
+
+</mapper>

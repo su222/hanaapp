@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_AC_EVP_LST : 봉투출력 -->
+<mapper namespace="co.hanaapp.dao.ac.ACEvpDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 봉투출력용 조회 -->
+    <select id="selectEvpLst" parameterType="map" resultType ="map">
+			SELECT /* 봉투출력용 */
+					'N' AS FLAG,
+					ROWIDTOCHAR(A.ROWID) AS ROW_ID,
+					'0' AS CHK,
+					#{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+					NVL(A.BRCH_ID,' ') AS  BRCH_ID,
+					NVL(EVP_SEQ, '-99999') AS EVP_SEQ,
+					NVL(BND_NM, ' ') AS BND_NM,
+					NVL(BND_ADDR, ' ') AS BND_ADDR,
+					NVL(BND_ZIP, ' ') AS BND_ZIP
+			  FROM TB_AC_EVP_LST A
+			 WHERE BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+			   AND BND_NM LIKE '%' ||  #{S_BND_NM, jdbcType=VARCHAR} || '%'
+			 ORDER BY EVP_SEQ
+
+    </select>
+
+
+
+
+  	<!-- 봉투출력용 추가/수정/삭제 -->
+     <insert   id="saveEvpLst" parameterType="map" >
+
+        begin
+            IF #{FLAG, jdbcType=VARCHAR} = 'D' THEN
+                DELETE FROM TB_AC_EVP_LST
+                 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;              
+            ELSE			
+							
+				UPDATE TB_AC_EVP_LST
+				   SET BND_NM = #{BND_NM, jdbcType=VARCHAR} , 
+				       BND_ADDR = #{BND_ADDR, jdbcType=VARCHAR} , 
+				       BND_ZIP = #{BND_ZIP, jdbcType=VARCHAR} , 
+				       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+				       EDT_DT = SYSDATE 
+			    where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+	
+	
+	               if sql%rowcount=0 then
+						
+												
+						INSERT INTO TB_AC_EVP_LST
+						        (
+						         BRCH_ID , 
+						         EVP_SEQ , 
+						         BND_NM , 
+						         BND_ADDR , 
+						         BND_ZIP , 
+						         CRT_USR , 
+						         CRT_DT , 
+						         EDT_USR , 
+						         EDT_DT )
+						 VALUES (
+						         #{BRCH_ID, jdbcType=VARCHAR} , 
+						         (select nvl(MAX(EVP_SEQ),0) + 1 FROM TB_AC_EVP_LST WHERE BRCH_ID = #{BRCH_ID, jdbcType=VARCHAR}) , 
+						         #{BND_NM, jdbcType=VARCHAR} , 
+						         #{BND_ADDR, jdbcType=VARCHAR} , 
+						         #{BND_ZIP, jdbcType=VARCHAR} , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE );			
+									
+
+	                  end if;
+               END IF;
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_AC_EVP_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 봉투출력용 삭제 -->
+    <delete   id="deleteEvpLst" parameterType="map" >
+       	DELETE FROM TB_AC_EVP_LST
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+
+
+</mapper>

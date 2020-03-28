@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form BKColor="#ebebeb" Font="Arial,9" Height="30" Id="frmStatus" Left="8" OnLoadCompleted="frmStatus_OnLoadCompleted" OnSize="frmStatus_OnSize" OnUnloadCompleted="frmStatus_OnUnloadCompleted" PidAttrib="7" Title="상태메뉴" Top="8" Ver="1.0" Width="1250" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_RClose">
+				<Contents>
+					<colinfo id="LEVEL" size="256" type="STRING"/>
+					<colinfo id="ID" size="256" type="STRING"/>
+					<colinfo id="VALUE" size="256" type="STRING"/>
+					<colinfo id="STATUS" size="256" type="STRING"/>
+					<colinfo id="IMG" size="256" type="STRING"/>
+					<colinfo id="MENUID" size="256" type="STRING"/>
+					<record>
+						<ID></ID>
+						<IMG></IMG>
+						<LEVEL></LEVEL>
+						<MENUID></MENUID>
+						<STATUS></STATUS>
+						<VALUE></VALUE>
+					</record>
+					<record>
+						<ID>101</ID>
+						<IMG></IMG>
+						<LEVEL>1</LEVEL>
+						<MENUID></MENUID>
+						<STATUS></STATUS>
+						<VALUE>닫기</VALUE>
+					</record>
+					<record>
+						<ID>102</ID>
+						<IMG></IMG>
+						<LEVEL>1</LEVEL>
+						<MENUID>ALL</MENUID>
+						<STATUS></STATUS>
+						<VALUE>전체&#32;닫기</VALUE>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="30" Id="img_tabBg" ImageID="A_win_tab_bg" TabOrder="2" Width="1248"></Image>
+		<Div BKColor="#e5e5e5" Height="20" Id="DivBtn" Left="80" TabOrder="0" Text="DivButton00" Top="5" Url="main::buttonForm.xml" Width="1056">
+			<Contents></Contents>
+		</Div>
+		<Div BKColor="user2" Height="30" Id="div_left" TabOrder="3" Text="Div1" Width="80">
+			<Contents>
+				<Image FillType="STRETCH" Height="30" Id="img_tabBg" ImageID="A_win_tab_bg" Left="-1" TabOrder="2" Width="88"></Image>
+				<Image Color="white" FillType="STRETCH" Font="돋움,9" Height="20" Id="Image0" ImageID="A_win_title" Left="5" TabOrder="1" Text="열린화면&#32;:" Top="5" Width="68"></Image>
+			</Contents>
+		</Div>
+		<Button Cursor="HAND" Height="22" Id="btn_toLeft" ImageID="A_win_tab_left" Left="1147" OnClick="btn_toLeft_OnClick" TabOrder="5" Top="3" Width="10"></Button>
+		<Button Cursor="HAND" Height="22" Id="btn_toRight" ImageID="A_win_tab_right" Left="1158" OnClick="btn_toRight_OnClick" TabOrder="6" Top="3" Width="10"></Button>
+		<Split BKColor="red" Height="30" Id="splHorz" Left="1246" Visible="FALSE" Width="2">
+			<Contents>
+				<LeftOrTop>
+					<Bind BindType="Move" CompID="btn_toLeft"/>
+					<Bind BindType="Move" CompID="btn_toRight"/>
+					<Bind BindType="Move" CompID="img_all_close"/>
+					<Bind BindType="Resize" CompID="img_tabBg"/>
+				</LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+		<Split BKColor="blue" Direct="VERT" Height="2" Id="splVert" Left="1198" Top="28" Visible="FALSE" Width="50">
+			<Contents>
+				<LeftOrTop></LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+		<Image Cursor="HAND" Height="24" Id="img_all_close" ImageID="allClose" Left="1171" OnClick="btn_all_close_OnClick" Static="FALSE" TabOrder="7" Top="4" Width="71"></Image>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : frmStatus(상태메뉴)
+* 작성자     : 이용재
+* 작성일     : 2013-01-22 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-22       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID			= "";
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= ""; 
+
+var wb_ArrangeMode = false;
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-1. 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_initForm()
+{
+	
+	// 여기에 기본으로 띄울 창 표시함 
+	//var winHandle = NewWindow("STATUS","AC::ACAA01T01.xml", "", 955,514, "CloseFlag=false Resize=true OpenStyle=Max");	
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 열린 프로그램 탭 버튼 생성
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_AddButton(sMenuId, sMenuNm, sFormHandle){
+	var nRow = fn_InsertRow(sMenuId, sMenuNm, sFormHandle);
+	divBtn.fn_AddBtn(nRow, sMenuId);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 탭추가
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_InsertRow(sMenuId, sMenuNm, sFormHandle)
+{
+	var nRow = gds_OpenForm.AddRow();
+	gds_OpenForm.SetColumn(nRow, "MENU_NM", sMenuNm);
+	gds_OpenForm.SetColumn(nRow, "MENU_ID"  , sMenuId);
+	gds_OpenForm.SetColumn(nRow, "OPEN_PGM_ID"   , sFormHandle);
+	
+	return nRow;
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 탭삭제
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_DeleteButton(menuId)
+{
+	divBtn.fn_removeBtn(menuId);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 탭활성화
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_OnActivate(menuid)
+{
+	// 선택한 폼의 탭버튼 색상 변경...
+	divBtn.fn_SelBtn(menuId);
+}
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.화면크기 조정
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1. 화면 Load 완료시 실행 스크립트  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function frmStatus_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();	
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function frmStatus_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-3.화면 크기변환시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function frmStatus_OnSize(obj,nCx,nCy,nState)
+{
+	divBtn.fn_SelBtn(GetTopWindow().id);
+	gfn_SplitOnSize(splHorz, splVert, obj, nCx, nCy, nState);
+}
+
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : '<' 클릭 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_toLeft_OnClick(obj,nX,nY)
+{
+	divBtn.fn_moveTab("L");
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : '>' 클릭 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_toRight_OnClick(obj,nX,nY)
+{
+	divBtn.fn_moveTab("R");
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 전체 닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_all_close_OnClick(obj,nX,nY)
+{
+	
+	if(gfn_popup_message("modal", "confirm", "열려진 탭을 모두 닫으시겠습니까?", "확인")) 
+	{
+		for(var i=(gds_OpenForm.rowcount-1); i>=0; i--)
+		{
+			gfn_CloseWindowByFormId(gds_OpenForm.GetColumn(i, "MENU_ID"));
+		}
+	}
+}
+
+
+
+/*
+// remove All Button < --- for Test
+function btn_removeAll_OnClick(obj)
+{
+	for ( wi = 1; wi < global.windows.count; wi ++)
+	{
+		global.windows[wi].Close();
+	}
+}
+
+
+
+// 선택Form Close
+function img_delForm_OnClick(obj,nX,nY)
+{
+	var formId = obj.UserData;
+	
+	gfn_CloseWindowByFormId(formId);	
+}
+*/
+
+
+
+
+
+]]></Script>
+</Window>

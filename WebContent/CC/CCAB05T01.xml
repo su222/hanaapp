@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="650" Id="CCAB05T01" Left="8" OnLoadCompleted="CCAB05T01_OnLoadCompleted" OnUnloadCompleted="CCAB05T01_OnUnloadCompleted" PidAttrib="7" Title="그룹별사용메뉴관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_TEMP"></Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_PMSMENU_LST" OnColumnChanged="DS_PMSMENU_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMS_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MENU_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MENU_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UP_MENU_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MENU_LVL" size="256" summ="default" type="STRING"/>
+					<colinfo id="MENU_URL" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEL_PMS" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRN_PMS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_MENU_BAS" OnColumnChanged="DS_MENU_BAS_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="MENU_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MENU_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UP_MENU_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MENU_LVL" size="256" summ="default" type="STRING"/>
+					<colinfo id="MENU_URL" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_NO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_PMS_CODE">
+				<Contents>
+					<colinfo id="PMS_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMS_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="46" Height="40" Id="Shape_search" Left="0" LineColor="user22" Right="995" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="0" Top="6" Type="RoundRect" Width="995"></Shape>
+		<Shape Bottom="44" Height="40" Id="Shape21" Left="76" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="96" TabOrder="2" Top="4" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="61" Height="15" Id="Shape1" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="999" TabOrder="3" Top="46" Type="Rectangle" Visible="FALSE" Width="999"></Shape>
+		<Shape Bottom="5" Height="5" Id="Shape15" Left="-3" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="996" TabOrder="4" Top="0" Type="Rectangle" Visible="FALSE" Width="999"></Shape>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoFitEndLine="Hide" BindDataset="DS_MENU_BAS" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="640" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="552" Id="GRD_MENU_BAS" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnHeadClick="GRD_MENU_BAS_OnHeadClick" Right="496" RowHeight="20" Style="Grid_2" TabOrder="5" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="496">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="30"/>
+						<col width="70"/>
+						<col width="100"/>
+						<col width="70"/>
+						<col width="50"/>
+						<col width="100"/>
+						<col width="50"/>
+					</columns>
+					<head>
+						<cell col="-1" display="text">
+							<cell col="0" display="text"/>
+							<cell col="1" color="user52" display="text" text="출고번호"/>
+						</cell>
+						<cell col="0" display="text" text="FLAG"/>
+						<cell col="1" display="text" text="ROW_ID"/>
+						<cell col="2" display="text" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" text="메뉴ID"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" text="메뉴명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" text="상위메뉴ID"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" text="레벨"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" text="URL"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="9" color="user52" display="text" font="돋움,10,Bold" text="순서"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text"/>
+						<cell col="1" colid="ROW_ID" display="text"/>
+						<cell col="2" colid="OPERATOR" display="text"/>
+						<cell align="center" col="3" colid="chk" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="left" col="4" colid="MENU_ID" color="black" display="text"/>
+						<cell align="left" col="5" colid="MENU_NM" color="black" display="text"/>
+						<cell align="left" col="6" colid="UP_MENU_ID" color="black" display="text"/>
+						<cell align="left" col="7" colid="MENU_LVL" color="black" display="text"/>
+						<cell align="left" col="8" colid="MENU_URL" color="black" display="text"/>
+						<cell align="right" col="9" colid="SORT_NO" color="black" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoFitEndLine="Hide" BindDataset="DS_PMSMENU_LST" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="640" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="552" Id="GRD_PMSMENU_LST" InputPanel="FALSE" Left="536" LineColor="default" LineType="OnlyVERT" OnHeadClick="GRD_PMSMENU_LST_OnHeadClick" Right="992" RowHeight="20" Style="Grid_2" TabOrder="6" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="456">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="30"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="70"/>
+						<col width="100"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="100"/>
+						<col width="0"/>
+						<col width="50"/>
+						<col width="50"/>
+					</columns>
+					<head>
+						<cell col="-1" display="text">
+							<cell col="0" display="text"/>
+							<cell col="1" color="user52" display="text" text="출고번호"/>
+						</cell>
+						<cell col="0" display="text" text="FLAG"/>
+						<cell col="1" display="text" text="ROW_ID"/>
+						<cell col="2" display="text" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" text="회사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" text="지사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" text="그룹코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" text="메뉴ID"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" text="메뉴명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="9" color="user52" display="text" font="돋움,10,Bold" text="상위메뉴ID"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="10" color="user52" display="text" font="돋움,10,Bold" text="레벨"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="11" color="user52" display="text" font="돋움,10,Bold" text="URL"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="12" color="user52" display="text" font="돋움,10,Bold" text="순서"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="13" color="user52" display="checkbox" edit="checkbox" font="돋움,10,Bold"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="14" color="user52" display="checkbox" edit="checkbox" font="돋움,10,Bold" text="저장"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text"/>
+						<cell col="1" colid="ROW_ID" display="text"/>
+						<cell col="2" colid="OPERATOR" display="text"/>
+						<cell align="center" col="3" colid="chk" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="left" col="4" colid="COM_ID" color="black" display="text"/>
+						<cell align="left" col="5" colid="BRCH_ID" color="black" display="text"/>
+						<cell align="left" col="6" colid="PMS_CD" color="black" display="text"/>
+						<cell align="left" col="7" colid="MENU_ID" color="black" display="text"/>
+						<cell align="left" col="8" colid="MENU_NM" color="black" display="text"/>
+						<cell align="left" col="9" colid="UP_MENU_ID" color="black" display="text"/>
+						<cell align="left" col="10" colid="MENU_LVL" color="black" display="text"/>
+						<cell align="left" col="11" colid="MENU_URL" color="black" display="text"/>
+						<cell align="right" col="12" colid="SORT_NO" color="black" display="text"/>
+						<cell align="center" col="13" colid="SEL_PMS" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="14" colid="TRN_PMS" color="black" display="checkbox" edit="checkbox"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="88" Height="5" Id="Shape0" Left="-8" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="991" TabOrder="8" Top="83" Type="Rectangle" Visible="FALSE" Width="999"></Shape>
+		<Image Align="Left" Height="14" Id="Image2" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="7" Text="미사용&#32;메뉴&#32;목록" Top="69" Transparent="TRUE" Width="157"></Image>
+		<Image Align="Left" Height="14" Id="Image0" ImageID="Title_dot" Left="696" LeftMargin="20" Style="Stc_Subtitle" TabOrder="9" Text="사용&#32;메뉴&#32;목록" Top="67" Transparent="TRUE" Width="157"></Image>
+		<Image Align="Left" Height="18" Id="Image3" ImageID="label_dot" Left="10" LeftMargin="12" Style="Stc_Default_bold" TabOrder="10" Text="메뉴분류" Top="17" Transparent="TRUE" Width="80"></Image>
+		<Combo Border="Flat" Height="18" Id="S_MENU_GBN" Left="95" OnChanged="S_MENU_GBN_OnChanged" ResetIndex="FIRST" ShadowColor="user2" Style="Combo_Ess" TabOrder="11" Top="16" Width="200"></Combo>
+		<Image Align="Left" Height="18" Id="Image1" ImageID="label_dot" Left="475" LeftMargin="12" Style="Stc_Default_bold" TabOrder="12" Text="권한그룹" Top="17" Transparent="TRUE" Width="80"></Image>
+		<Combo Border="Flat" Height="18" Id="S_PMS_CD" Left="560" OnChanged="S_PMS_CD_OnChanged" ResetIndex="FIRST" ShadowColor="user2" Style="Combo_Ess" TabOrder="13" Top="16" Width="200"></Combo>
+		<Image Height="63" Id="img_prev" ImageID="main_qmPre_off" Left="504" OnClick="img_prev_OnClick" OnMouseOut="img_prev_OnMouseOut" OnMouseOver="img_prev_OnMouseOver" Static="FALSE" TabOrder="14" Top="304" Width="17"></Image>
+		<Image Height="63" Id="img_next" ImageID="main_qmNext_off" Left="504" OnClick="img_next_OnClick" OnMouseOut="img_next_OnMouseOut" OnMouseOver="img_next_OnMouseOver" Static="FALSE" TabOrder="15" Top="232" Width="17"></Image>
+		<Image Align="Right" Height="18" Id="Image4" Left="848" LeftMargin="0" Style="Stc_Default_bold" TabOrder="16" Text="조회" Top="64" Transparent="TRUE" Width="34"></Image>
+		<Image Align="Right" Height="18" Id="Image5" Left="896" LeftMargin="0" Style="Stc_Default_bold" TabOrder="17" Text="저장" Top="64" Transparent="TRUE" Width="34"></Image>
+		<Shape Bottom="48" Height="40" Id="Shape2" Left="541" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="561" TabOrder="18" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="240" Height="184" Id="Shape4" Left="497" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="501" TabOrder="19" Top="56" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 그룹별사용메뉴 관리
+* 작성자     : 이용재
+* 작성일     : 2013-01-24 : 최초 생성
+* 기능설명   : 그룹별사용메뉴 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	//*------------------------------------------------------------------------
+    //* 리사이즈 컨포넌트 정의
+	//* H: 가로 리사이즈
+	//* W: 세로 리사이즈
+	//* A: 가로세로 리사이즈
+	//* R: Resize
+	//* M: Move
+	//* Quick view로 테스트시 주석처리 후 테스트
+    //*------------------------------------------------------------------------
+	gfn_SetResize(this, "Shape_search:H:R GRD_MENU_BAS:W:R GRD_PMSMENU_LST:W:R");
+	
+	
+	// 권한그룹 가져오기 
+	fn_search_pms_bas();	
+	
+	// 메뉴분류
+	gfn_comCodeCombo(S_MENU_GBN, "CC04", "","전체");
+    
+
+	// 공통 명령어 조정
+	gfn_set_cbutton("조회:fn_search 저장:fn_save 삭제:fn_delete");
+	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	
+	DS_MENU_BAS.ClearData();
+	DS_PMSMENU_LST.ClearData();
+	
+	svcID			= "CCAB05T01.selectPmsMenuLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_MENU_BAS=cc.CCMenuPmsDAO.selectNonPmsMenuLst"
+							+ " DS_PMSMENU_LST=cc.CCMenuPmsDAO.selectPmsMenuLst";
+	argument    	= " _sqlName=cc.CCMenuPmsDAO.selectNonPmsMenuLst"
+							+ ",cc.CCMenuPmsDAO.selectPmsMenuLst"
+							+ " S_MENU_GBN=" + quote(S_MENU_GBN.Value)
+							+ " S_PMS_CD=" + quote(S_PMS_CD.Value)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	var isSave = false;
+	
+	// 필터 
+	DS_PMSMENU_LST.FireEvent = false;		
+	DS_PMSMENU_LST.UnFilter();
+	DS_PMSMENU_LST.Filter("FLAG !='N'");	// 변경된것 모두 필터링  (저장/삭제) 
+	
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		// 저장 
+		//if(gfn_popup_message("modal", "confirm", "저장/삭제 하시겠습니까?", "확인")) 
+		//{
+
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			DS_TEMP.ClearData();
+			DS_TEMP.CopyF("DS_PMSMENU_LST");			
+			
+			svcID			= "CCAB05T01.savePmsMenuLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "cc.CCMenuPmsDAO.savePmsMenuLst=DS_TEMP:A";
+
+			outDatasets 	= "";
+			argument    	= " _sqlName=cc.CCMenuPmsDAO.savePmsMenuLst";
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		//}
+	
+	}
+
+
+	DS_PMSMENU_LST.UnFilter();
+	DS_PMSMENU_LST.Filter("flag != 'D'");
+	DS_PMSMENU_LST.FireEvent = true;	
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 삭제 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_delete()
+{
+	// 추가/수정/삭제가 일괄 처리되므로 저장을 호출
+	fn_save();
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "CCAB05T01.selectPmsMenuLst" :
+		
+			
+		break;	
+
+		// 저장
+		case "CCAB05T01.savePmsMenuLst" :
+		
+			gfn_popup_message("modal", "ico_info", "추가/수정/삭제 완료.", "확인");	
+			fn_search();		
+		break;	
+		
+		// 권한그룹 콤보
+		case "CCAB05T01.selectPmsCode" :
+		
+			// 권한그룹 채우기 
+			gfn_DSCombo(S_PMS_CD, "DS_PMS_CODE", "PMS_CD", "PMS_NM",  "", "");
+			
+			fn_search();
+
+			
+		break;	
+
+
+
+
+		
+		default:
+			  alert("기타"); 
+	}
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 변경된 항목 있는지 체크
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 저장 안하고 창 닫을때 체크해서 저장하게 한다.
+//*-----------------------------------------------------------------------------------------------
+function fn_check_unsave()
+{
+	var isUnSave = false;
+
+	curRow = DS_PMSMENU_LST.currow;
+	
+	// 필터 
+	DS_PMSMENU_LST.FireEvent = false;		
+	DS_PMSMENU_LST.UnFilter();
+	DS_PMSMENU_LST.Filter("FLAG !='N'");
+	
+	
+	//  체크 
+	if(DS_PMSMENU_LST.rowcount > 0)
+	{
+		isUnSave = true;
+	}
+
+	DS_PMSMENU_LST.UnFilter();
+	DS_PMSMENU_LST.Filter("flag != 'D'");
+	DS_PMSMENU_LST.FireEvent = true;	
+
+	DS_PMSMENU_LST.row = curRow;
+			
+	return isUnSave;
+	
+}
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 권한그룹 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search_pms_bas()
+{
+	svcID			= "CCAB05T01.selectPmsCode";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_PMS_CODE=cc.CCMenuPmsDAO.selectPmsCode";
+	argument    	= " _sqlName=cc.CCMenuPmsDAO.selectPmsCode";
+							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAB05T01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAB05T01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-7.엑셀버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_excel_OnClick(obj)
+{
+	gfn_exportExcel(Grid1,"sheet1");
+}
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_MENU_BAS_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+
+	// 체크박스 클릭시
+	if(nCell == 3)
+	{
+		gfn_SetCheckBoxAllSelected(nCell, GRD_MENU_BAS, DS_MENU_BAS, "CHK");
+	}
+	// 나머지는 Sorting
+	else
+	{
+		gfn_GridSort(GRD_MENU_BAS, DS_MENU_BAS, nCell);	
+	}	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_PMSMENU_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+
+	// 체크박스 클릭시
+	if(nCell == 3 )
+	{
+		gfn_SetCheckBoxAllSelected(nCell, GRD_PMSMENU_LST, DS_PMSMENU_LST, "CHK");
+	}
+	else if(nCell == 13 )
+	{
+		gfn_SetCheckBoxAllSelected(nCell, GRD_PMSMENU_LST, DS_PMSMENU_LST, "SEL_PMS");
+	}
+	else if(nCell == 14 )
+	{
+		gfn_SetCheckBoxAllSelected(nCell, GRD_PMSMENU_LST, DS_PMSMENU_LST, "TRN_PMS");
+	}
+	// 나머지는 Sorting
+	else
+	{
+		gfn_GridSort(GRD_PMSMENU_LST, DS_PMSMENU_LST, nCell);	
+	}		
+	
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 엑셀다운로드 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_excel_download_OnClick(obj)
+{
+	gfn_exportExcel(GRD_CMPNY_BAS,"회사목록");
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : MENU_BAS DataSet 변경시 flag 설정
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_MENU_BAS_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	// 즉 조회된거를 수정하면 U로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : PMSMENU_LST DataSet 변경시 flag 설정
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_PMSMENU_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	// 즉 조회된거를 수정하면 U로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 메뉴분류 선택 변경시 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function S_MENU_GBN_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+
+	// 조회데이터는 초기화
+	DS_MENU_BAS.ClearData();
+	DS_PMSMENU_LST.ClearData();	
+	
+	fn_search();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 권한그룹 선택 변경시 조회내역 초기화
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function S_PMS_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	// 조회데이터는 초기화
+	DS_MENU_BAS.ClearData();
+	DS_PMSMENU_LST.ClearData();	
+	
+	fn_search();
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그룹별사용메뉴 추가
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function img_next_OnClick(obj,nX,nY)
+{
+	var vRow;
+	
+	DS_MENU_BAS.FireEvent = false;		
+	DS_MENU_BAS.UnFilter();
+	DS_MENU_BAS.Filter("CHK ='1'");
+
+	// 선택된 항목 넣기
+	for(var i=(DS_MENU_BAS.rowcount-1);i>=0;i--)
+	{
+		
+		// 만약 사용메뉴에 이미 있다면 패스
+		if(DS_PMSMENU_LST.FindRow("MENU_ID",DS_MENU_BAS.GetColumn(i, "MENU_ID")) == -1) 
+		{
+			
+			// 사용메뉴 추가
+			vRow = DS_PMSMENU_LST.AddRow();
+			
+			// 기초값
+			DS_PMSMENU_LST.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+			DS_PMSMENU_LST.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+			DS_PMSMENU_LST.SetColumn(vRow,"CHK","1");	// 선택됨
+			DS_PMSMENU_LST.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+			
+			DS_PMSMENU_LST.SetColumn(vRow,"PMS_CD", S_PMS_CD.Value);// 
+			DS_PMSMENU_LST.SetColumn(vRow,"MENU_ID", DS_MENU_BAS.GetColumn(i, "MENU_ID"));// 
+			DS_PMSMENU_LST.SetColumn(vRow,"MENU_NM", DS_MENU_BAS.GetColumn(i, "MENU_NM")); 
+			DS_PMSMENU_LST.SetColumn(vRow,"UP_MENU_ID", DS_MENU_BAS.GetColumn(i, "UP_MENU_ID"));	
+			DS_PMSMENU_LST.SetColumn(vRow,"MENU_LVL", DS_MENU_BAS.GetColumn(i, "MENU_LVL"));
+			DS_PMSMENU_LST.SetColumn(vRow,"MENU_URL", DS_MENU_BAS.GetColumn(i, "MENU_URL"));
+			DS_PMSMENU_LST.SetColumn(vRow,"SORT_NO", DS_MENU_BAS.GetColumn(i, "SORT_NO"));	
+			DS_PMSMENU_LST.SetColumn(vRow,"SEL_PMS", "1");	// 기본조회가능
+			DS_PMSMENU_LST.SetColumn(vRow,"TRN_PMS", "0");	// 기본저장 불가
+			
+			// 미사용메뉴 삭제
+			DS_MENU_BAS.DeleteRow(DS_MENU_BAS.FindRow("MENU_ID",DS_MENU_BAS.GetColumn(i, "MENU_ID")));
+    
+		}
+		
+	}
+
+
+	DS_MENU_BAS.UnFilter();
+	DS_MENU_BAS.FireEvent = true;	
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그룹별사용메뉴 삭제
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function img_prev_OnClick(obj,nX,nY)
+{
+	var vRow;
+	
+	
+	// 사용메뉴 삭제 
+	DS_PMSMENU_LST.FireEvent = false;		
+	DS_PMSMENU_LST.UnFilter();
+	DS_PMSMENU_LST.Filter("CHK ='1'");
+
+	// 선택된 항목 삭제
+	// 끝에서 부터 삭제해야 안 꼬임
+	for(var i=(DS_PMSMENU_LST.rowcount-1);i>=0;i--)
+	{
+		// 먼저 미사용메뉴 목록을 추가하고 사용메뉴 목록을 삭제한다.
+		vRow = DS_MENU_BAS.AddRow();	
+		
+		// 기초값
+		DS_MENU_BAS.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+		DS_MENU_BAS.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+		DS_MENU_BAS.SetColumn(vRow,"CHK","1");	// 선택됨
+		DS_MENU_BAS.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+			
+		DS_MENU_BAS.SetColumn(vRow,"MENU_ID", DS_PMSMENU_LST.GetColumn(i, "MENU_ID")); 
+		DS_MENU_BAS.SetColumn(vRow,"MENU_NM", DS_PMSMENU_LST.GetColumn(i, "MENU_NM"));
+		DS_MENU_BAS.SetColumn(vRow,"UP_MENU_ID", DS_PMSMENU_LST.GetColumn(i, "UP_MENU_ID"));	
+		DS_MENU_BAS.SetColumn(vRow,"MENU_LVL", DS_PMSMENU_LST.GetColumn(i, "MENU_LVL"));
+		DS_MENU_BAS.SetColumn(vRow,"MENU_URL", DS_PMSMENU_LST.GetColumn(i, "MENU_URL"));
+		DS_MENU_BAS.SetColumn(vRow,"SORT_NO", DS_PMSMENU_LST.GetColumn(i, "SORT_NO"));		
+			
+			
+		// 추가된것은 DB저장전이므로 그냥 DataSet에서 삭제
+		if(DS_PMSMENU_LST.GetColumn(i,"FLAG") == "I")
+		{
+			DS_PMSMENU_LST.DeleteRow(i);
+		}
+		// 아닌것은 실제로 DB에 삭제해야되므로 flag를 D로 두고 마지막에 filter한다.
+		else
+		{
+			DS_PMSMENU_LST.SetColumn(i,"FLAG", "D");
+		}
+		
+			
+	}
+	
+	DS_PMSMENU_LST.UnFilter();
+	DS_PMSMENU_LST.Filter("flag != 'D'");	// 삭제된거는 필터링
+	DS_PMSMENU_LST.FireEvent = true;		
+}
+
+
+function img_next_OnMouseOut(obj)
+{
+	obj.Cursor = "arrow";
+	obj.ImageID = "main_qmNext_off";	
+}
+
+function img_next_OnMouseOver(obj,nX,nY)
+{
+	obj.Cursor = "hand";
+	obj.ImageID = "main_qmNext_on";		
+}
+
+function img_prev_OnMouseOut(obj)
+{
+	obj.Cursor = "arrow";
+	obj.ImageID = "main_qmPre_off";		
+}
+
+function img_prev_OnMouseOver(obj,nX,nY)
+{
+	obj.Cursor = "hand";
+	obj.ImageID = "main_qmPre_on";	
+}
+
+
+
+
+]]></Script>
+</Window>

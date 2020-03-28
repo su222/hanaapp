@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_NOTICE_LST : 공지사항 -->
+<mapper namespace="co.hanaapp.dao.cc.CCNoticeDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 공지사항정보 조회 -->
+    <select id="selectNoticeLst" parameterType="map" resultType ="map">
+		SELECT /* 공지사항정보 목록 */
+		       'N' AS FLAG,
+		       ROWIDTOCHAR(ROWID) AS ROW_ID,
+		       '0' AS CHK,
+		       #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+		       nvl(BRCH_ID,' ') BRCH_ID, 
+		       NVL(FC_CC_GET_BRCHNAME( A.BRCH_ID),' ') BRCH_NM,
+		       nvl(SEQ_NO,'-99999') SEQ_NO, 
+		       nvl(TITLE,' ') TITLE, 
+		       nvl(CONTENT,' ') CONTENT, 
+		       NVL(TO_CHAR(A.REQ_DT,'YYYYMMDD'), ' ') REQ_DT,
+		       NVL(TO_CHAR(A.DUE_DT,'YYYYMMDD'), ' ') DUE_DT,
+		       NVL(TO_CHAR(A.OK_DT,'YYYYMMDD'), ' ') OK_DT,
+		       NVL(A.PRS_STS,' ') PRS_STS,
+		       NVL(A.CATE_ID,' ') CATE_ID,
+		       NVL((SELECT MENU_NM FROM TB_CC_MENU_BAS WHERE MENU_ID = A.CATE_ID),' ') AS CATE_NM
+		  FROM TB_CC_NOTICE_LST A
+		 WHERE BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+		   AND TITLE LIKE '%' || #{S_TITLE, jdbcType=VARCHAR} || '%'
+		   AND PRS_STS LIKE  #{S_PRS_STS, jdbcType=VARCHAR} || '%'		   
+		 ORDER BY  BRCH_ID, SEQ_NO
+
+    </select>
+
+ 
+ 	<!-- 공지사항정보 추가/수정 -->
+     <insert   id="saveNoticeLst" parameterType="map" >
+
+        begin
+			UPDATE TB_CC_NOTICE_LST
+			   SET TITLE = #{TITLE, jdbcType=VARCHAR} , 
+			       CONTENT = #{CONTENT, jdbcType=VARCHAR} , 
+			       REQ_DT = #{REQ_DT, jdbcType=VARCHAR} , 
+			       DUE_DT = #{DUE_DT, jdbcType=VARCHAR} , 
+			       OK_DT = #{OK_DT, jdbcType=VARCHAR} , 
+			       PRS_STS = #{PRS_STS, jdbcType=VARCHAR} , 
+			       CATE_ID = #{CATE_ID, jdbcType=VARCHAR} , 			       
+			       CRT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+			       CRT_DT = SYSDATE , 
+			       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+			       EDT_DT = SYSDATE 
+			where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+
+
+               if sql%rowcount=0 then
+				INSERT INTO TB_CC_NOTICE_LST
+				        (
+				         BRCH_ID , 
+				         SEQ_NO , 
+				         TITLE , 
+				         CONTENT , 
+				         REQ_DT , 
+				         DUE_DT ,
+				         OK_DT,
+				         PRS_STS, 
+				         CATE_ID,
+				         CRT_USR , 
+				         CRT_DT , 
+				         EDT_USR , 
+				         EDT_DT )
+				 VALUES (
+				         #{BRCH_ID, jdbcType=VARCHAR} , 
+				         (SELECT NVL(MAX(SEQ_NO),1) + 1 
+				            FROM TB_CC_NOTICE_LST
+		 		         ), 
+				         #{TITLE, jdbcType=VARCHAR} , 
+				         #{CONTENT, jdbcType=VARCHAR} , 
+				         #{REQ_DT, jdbcType=VARCHAR} , 
+				         #{DUE_DT, jdbcType=VARCHAR} , 
+				         #{OK_DT, jdbcType=VARCHAR} ,
+				         #{PRS_STS, jdbcType=VARCHAR} , 
+				         #{CATE_ID, jdbcType=VARCHAR} , 
+				         #{OPERATOR, jdbcType=VARCHAR} , 
+				         SYSDATE , 
+				         #{OPERATOR, jdbcType=VARCHAR} , 
+				         SYSDATE );
+                  end if;
+
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_NOTICE_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 공지사항정보 삭제 -->
+    <delete   id="deleteNoticeLst" parameterType="map" >
+       	DELETE FROM TB_CC_NOTICE_LST
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+ 
+
+   <!-- Portal 공지사항 조회 -->
+    <select id="selectPortalNoticeLst" parameterType="map" resultType ="map">
+        SELECT /* Portal 공지사항 목록 */
+               nvl(COM_ID,' ') COM_ID, 
+               nvl(BRCH_ID,' ') BRCH_ID, 
+               NVL(FC_CC_GET_COMNAME(A.COM_ID),' ') AS COM_NM,
+               NVL(FC_CC_GET_BRCHNAME(A.COM_ID, A.BRCH_ID),' ') BRCH_NM,
+               nvl(SEQ_NO,'-99999') SEQ_NO, 
+               nvl(TITLE,' ') TITLE
+          FROM TB_CC_NOTICE_LST A
+         WHERE (BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR} OR ALL_YN = 'Y')
+           AND SYSDATE BETWEEN REQ_DT AND DUE_DT + 0.99999 
+         ORDER BY COM_ID, BRCH_ID, SEQ_NO
+
+    </select>
+
+
+   <!-- 공지사항팝업 조회 -->
+    <select id="selectNoticePop" parameterType="map" resultType ="map">
+		SELECT /* 공지사항팝업  */
+		       nvl(TITLE,' ') TITLE, 
+		       nvl(CONTENT,' ') CONTENT, 
+		       NVL(TO_CHAR(A.REQ_DT,'YYYYMMDD'), ' ') REQ_DT,
+		       NVL(TO_CHAR(A.DUE_DT,'YYYYMMDD'), ' ') DUE_DT,
+		       decode(ALL_YN,'Y',1,0) ALL_YN
+		  FROM TB_CC_NOTICE_LST A
+		 WHERE COM_ID = #{S_COM_ID, jdbcType=VARCHAR}
+		   AND BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+		   AND SEQ_NO = #{S_SEQ_NO, jdbcType=VARCHAR}
+
+    </select>
+
+ 
+</mapper>

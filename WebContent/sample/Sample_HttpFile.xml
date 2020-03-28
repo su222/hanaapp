@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="600" Id="form_HttpMultiPart" Left="8" PidAttrib="7" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" FireNextCount="10" Id="Dataset0">
+				<Contents>
+					<colinfo id="custSeqNo" size="22" summ="default" type="STRING"/>
+					<colinfo id="name" size="50" summ="default" type="STRING"/>
+					<colinfo id="sex" size="1" summ="default" type="STRING"/>
+					<colinfo id="age" size="3" summ="default" type="INT"/>
+					<colinfo id="registNo1" size="6" summ="default" type="STRING"/>
+					<colinfo id="registNo2" size="7" summ="default" type="STRING"/>
+					<colinfo id="birthDay" size="8" summ="default" type="STRING"/>
+					<colinfo id="riskGrade" size="14" summ="default" type="STRING"/>
+					<colinfo id="drivingYn" size="2" summ="default" type="STRING"/>
+					<colinfo id="smokingYn" size="2" summ="default" type="STRING"/>
+					<colinfo id="familySeqNo" size="22" summ="default" type="STRING"/>
+					<colinfo id="familyRelationCode" size="2" summ="default" type="STRING"/>
+					<colinfo id="registryDate" size="16" summ="default" type="STRING"/>
+					<colinfo id="level" size="1" summ="default" type="STRING"/>
+					<colinfo id="img" size="1" summ="default" type="STRING"/>
+					<colinfo id="cimg" size="1" summ="default" type="STRING"/>
+					<colinfo id="eimg" size="1" summ="default" type="STRING"/>
+					<colinfo id="context" size="50" summ="default" type="STRING"/>
+					<colinfo id="ret" size="1" summ="default" type="STRING"/>
+					<colinfo id="filename" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="Dataset1">
+				<Contents>
+					<colinfo Id="chk" Size="256" Type="STRING"/>
+					<colinfo Id="fullname" Size="256" Type="STRING"/>
+					<colinfo Id="filename" Size="256" Type="STRING"/>
+					<colinfo Id="prog_bar" Size="256" Type="STRING"/>
+					<colinfo Id="filesize" Size="256" Type="INT"/>
+					<colinfo Id="progsize" Size="256" Type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="Dataset2">
+				<Contents>
+					<colinfo id="column0" size="256" summ="default" type="STRING"/>
+					<record>
+						<column0>a.txt|0.001|2010/02/16+17:45</column0>
+					</record>
+					<record>
+						<column0>b.txt|0.000|2010/02/16+17:56</column0>
+					</record>
+					<record>
+						<column0>result1.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result10.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result100.log|2.547|2010/02/16+11:18</column0>
+					</record>
+					<record>
+						<column0>result101.log|2.547|2010/02/16+11:19</column0>
+					</record>
+					<record>
+						<column0>result11.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result12.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result13.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result14.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result15.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result16.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result17.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result18.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result19.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result2.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result20.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result21.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result22.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result23.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result24.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result25.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result26.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result27.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result28.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result29.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result3.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result30.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result31.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result32.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result33.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result34.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result35.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result36.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result37.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result38.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result39.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result4.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result40.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result41.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result42.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result43.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result44.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result45.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result46.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result47.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result48.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result49.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result5.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result50.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result51.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result52.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result53.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result54.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result55.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result56.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result57.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result58.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result59.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result6.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result60.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result61.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result62.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result63.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result64.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result65.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result66.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result67.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result68.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result69.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result7.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result70.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result71.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result72.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result73.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result74.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result75.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result76.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result77.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result78.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result79.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result8.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result80.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result81.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result82.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result83.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result84.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result85.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result86.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result87.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result88.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result89.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result9.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result90.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result91.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result92.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result93.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result94.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result95.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result96.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result97.log|2.547|2010/02/16+11:14</column0>
+					</record>
+					<record>
+						<column0>result99.log|2.547|2010/02/16+11:22</column0>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<FileDialog Bottom="32" Height="24" Id="FileDlg" Left="744" Right="768" TabOrder="4" Top="8" Width="24"></FileDialog>
+		<Button Height="34" Id="Button1" Left="56" OnClick="Button1_OnClick" TabOrder="1" Text="파일선택" Top="216" Width="158"></Button>
+		<Grid BindDataset="Dataset1" BkColor2="default" BoldHead="true" Bottom="208" Editable="TRUE" Enable="true" EndLineColor="default" Height="160" Id="Grid0" InputPanel="FALSE" Left="56" LineColor="default" Right="616" RowHeight="30" TabOrder="3" TabStop="true" Top="48" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="560">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="121"/>
+						<col width="301"/>
+						<col width="123"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="filename"/>
+						<cell col="1" display="text" text="prog_bar"/>
+						<cell col="2" display="text"/>
+					</head>
+					<body>
+						<cell col="0" colid="filename" display="text"/>
+						<cell align="left" col="1" colid="prog_bar" color="red" display="bar"/>
+						<cell align="center" col="2" colid="filesize" display="text" expr='progsize+&quot;/&quot;&#32;+&#32;filesize'/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button Height="34" Id="Button2" Left="224" OnClick="Button2_OnClick" TabOrder="3" Text="첨부파일&#32;업로드" Top="216" Width="158"></Button>
+		<multipart_http Height="24" Id="multipart_http0" Left="768" Top="8" Width="24"></multipart_http>
+		<File Bottom="32" Height="24" Id="File0" Left="720" Right="744" TabOrder="4" Top="8" Width="24"></File>
+		<Button Height="34" Id="Button0" Left="392" OnClick="Button0_OnClick" TabOrder="4" Text="첨부파일&#32;다운로드" Top="216" Width="158"></Button>
+	</Form>
+	<Script><![CDATA[//파일 선택 
+function Button1_OnClick(obj)
+{
+	FileDlg.Open();
+	
+	Dataset1.addRow();
+	Dataset1.SetColumn(Dataset1.row,"fullname",FileDlg.FilePath + "\\" + FileDlg.FileName);
+	Dataset1.SetColumn(Dataset1.row,"filename",FileDlg.FileName);		
+}
+
+//파일 업로드 
+function Button2_OnClick(obj)
+{
+	var ret;
+	
+	for ( var i = 0 ; i < Dataset1.rowcount ; i++ )
+	{
+		var str_param = Dataset1.getColumn(i,"filename");
+		ret = gfn_FileWrite(multipart_http0,Dataset1.getColumn(i,"fullname"), str_param, i, "prog_bar", grid0);
+		if ( ret[0] == "FAIL" )
+		{
+			alert(ret[1]);
+			break;
+		}
+	}
+}
+
+//파일 다운로드
+function Button0_OnClick(obj)
+{
+	var str_param = Dataset1.getColumn(0,"filename");
+	FileDlg.Type = "save";
+	FileDlg.FileName = str_param;	
+	FileDlg.Open();	
+	trace(" >>> " + FileDlg.FilePath);
+	var ret = gfn_FileRead(multipart_http0,FileDlg.FilePath +"\\"+ str_param,str_param, Dataset1.getColumn(Dataset1.row,"filesize"),Dataset1.row, "prog_bar", grid0);
+
+	if ( ret[0] == "FAIL" )
+	{
+		alert(ret[1]);
+	} 	
+}
+
+function fn_callBack(svcid,strErrCode,strErrMsg)
+{
+	//alert(tot_cnt);
+	if(strErrCode != 0)
+	{
+			return;
+	}	
+} 
+
+
+
+
+/*** 공통 스크립트로 사용하세요**/
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿var target_url = "http://localhost:7657/Test_1/";
+var upload_packetSize = 4096000; //1048576;
+var download_packetSize = 1048576;
+
+/*====================================================================
+= 기능 : File 생성 (Write)
+= 인수 : file_url			file Path
+				 str_param		Parameter (Cookie)
+				 nRow					Dataset Row Position 
+				 strCol				Column ID (Progress 설정)
+				 objState			Progress 표시 Grid
+= Return : Result/Message/file Size				 
+=====================================================================*/
+function gfn_FileWrite(httpfileObj,file_url, str_param, nRow, strCol, objState){
+	var rtn_arr = Array(3);
+	rtn_arr[0] = "FAIL";
+
+	if (length(file_url) < 7) {
+		rtn_arr[1] = "Not Found Seleced File!";
+		return rtn_arr;
+	}
+	
+	if (length(str_param) < 1){
+		rtn_arr[1] = "Not Found CookieParam!";
+		return rtn_arr;
+	} 
+
+	
+	var write_size;
+	var tot_write_size;
+	var file_size; 
+
+	remote_url =  target_url + "fileUpload.jsp?a=test";	
+	file_size = httpfileObj.GetFileSizeLocal(file_url);
+
+	httpFileObj.CookieParam = UrlEncode(str_Param);
+
+	ret = httpfileObj.OpenFile(remote_url, file_url, "PUT");
+	
+	if( ret < 0 )	{
+		rtn_arr[0] = "FAIL";
+		rtn_arr[1] = "OpenFile Failed :: " + httpfileObj.ErrorMsg;
+		return rtn_arr;
+	}
+
+	if (IsValidObject(objState)){
+		var objDs = objState.BindDataset;
+		var readpercent;
+		object(objDs).SetColumn(nRow, "filesize",round(file_size/1024)); 
+
+		while(1) {
+			write_size = httpfileObj.WriteFile(upload_packetSize);
+			tot_write_size += write_size;
+			
+			readpercent = truncate((tot_write_size / file_size) * 100,1);
+			
+			object(objDs).SetColumn(nRow, strCol, readpercent); 
+			object(objDs).SetColumn(nRow, "progsize",round(tot_write_size/1024)); 
+			
+			if( write_size < upload_packetSize )	break;
+		}
+		
+	} else {
+		while(1)	{
+			write_size = httpfileObj.WriteFile(upload_packetSize);	
+			if( write_size < upload_packetSize )	break;
+		}
+	}
+
+	httpfileObj.CloseFile();
+
+	if (isExistVar("objState",true)){
+		if ( write_size == -1 )	{
+			rtn_arr[0] = "FAIL";
+			rtn_arr[1] = httpfileObj.ErrorMsg;
+			return rtn_arr;
+		}
+	}
+
+	var rtn_val = httpfileObj.CookieParam;
+	trace(">>> rtn : " +rtn_val);
+	var str_sp = split2(rtn_val,";","=");
+	var tmp_a;
+	
+	for ( var i = 0 ; i < str_sp.length() ; i++ )
+	{
+		tmp_a = str_sp[i];
+		if ( tmp_a[0].pos("FileParam") > -1 )
+		{
+			rtn_arr[0] = left(tmp_a[1],4);
+			rtn_arr[1] = right(tmp_a[1], length(tmp_a[1]) -6);
+		}	
+	}	
+	return rtn_arr;	
+}
+
+/*====================================================================
+= 기능 : File Read
+= 인수 : file_url			file Path
+				 str_cookie		Cookie (parameter)
+				 str_size			File Size
+				 nRow					Dataset Row Position
+				 strCol				Column ID (progress 설정)
+				 objState			progress 설정 Grid
+= Return : Result/Message/file Size				 
+=====================================================================*/
+function gfn_FileRead(httpfileObj,file_url, str_param, str_size, nRow, strCol, objState){
+	 alert(httpfileObj+"=="+file_url+"=="+ str_param+"=="+ nRow+"=="+ strCol+"=="+ objState);
+	var rtn_arr = Array(2);
+	rtn_arr[0] = "FAIL";
+
+	if (length(quote(file_url)) < 7) {
+		rtn_arr[1] = "Not Found Seleced File!";
+		return rtn_arr;
+	}
+	
+	if (length(quote(str_param)) < 1){
+		rtn_arr[1] = "Not Found CookieParam!";
+		return rtn_arr;
+	}
+
+	if (length(quote(str_size)) < 1 || str_size == 0){
+		rtn_arr[1] = "Not Found File Size!";
+		return rtn_arr;
+	}
+
+	remote_url =  target_url + "fileDownload.jsp";
+	
+	var read_size;
+	var tot_read_size;
+	var file_size;
+
+	httpFileObj.CookieParam = UrlEncode(str_param);
+	
+	file_size = str_size;
+trace("remote_url::"+remote_url);	
+trace("file_url::"+file_url);
+	ret = httpfileObj.OpenFile(remote_url, file_url, "GET");
+	
+	if( ret < 0 ) {
+		rtn_arr[0] = "FAIL";
+		rtn_arr[1] = "OpenFile Fail ::" + httpfileObj.ErrorMsg;
+		return rtn_arr;
+	}
+	
+	tot_read_size = 0;	
+
+	if (IsValidObject(objState)){
+		var objDs = objState.BindDataset;
+		var readpercent;
+
+		while(1) {
+			read_size = httpfileObj.ReadFile(download_packetSize);
+			tot_read_size += read_size;
+			
+			readpercent = truncate((toNumber(tot_read_size) / toNumber(file_size)) * 100,1);
+			
+			object(objDs).SetColumn(nRow, strCol, readpercent); 
+			
+			if( (read_size == 0) || ( read_size == -1) ) break;
+		}
+		
+	} else {
+		while(1) {
+			read_size = httpfileObj.ReadFile(download_packetSize);
+			if( (read_size == 0) || ( read_size == -1) ) break;
+		}
+	}
+	
+	httpfileObj.CloseFile();
+	
+	if ( read_size == -1 )	{
+		rtn_arr[0] = "FAIL";
+		rtn_arr[1] = httpfileObj.ErrorMsg;
+		return rtn_arr;
+	}
+	
+	var rtn_val = httpfileObj.CookieParam;
+	
+	alert(rtn_val);
+	var str_sp = split2(rtn_val,";","=");
+	var tmp_a;
+	
+	for ( var i = 0 ; i < str_sp.length() ; i++ )
+	{
+		tmp_a = str_sp[i];
+		if ( tmp_a[0].pos("FileParam") > -1 )
+		{
+			rtn_arr[0] = left(tmp_a[1],4);
+			rtn_arr[1] = right(tmp_a[1], length(tmp_a[1]) -6);
+		}	
+	}	
+	
+	return rtn_arr;
+}
+
+
+
+]]></Script>
+</Window>

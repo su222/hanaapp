@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="592" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="New&#32;Form" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1080" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_tklv001">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="INT"/>
+					<colinfo id="levels" size="256" summ="default" type="INT"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="image_level" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<TreeView BindDataset="ds_tklv001" Color="WINDOWFRAME" ExpandImageIndex="0" Height="555" Id="tree_view" ImageColumn="image_level" ImageID="treeview_lmenu_img" ImageIndex="0" InnerImageCount="3" Left="16" LevelColumn="levels" OnDblClick="tree_view_OnDblClick" Style="Tree_Sub" TabOrder="1" TEXTColumn="menu_nm" Top="17" Width="256"></TreeView>
+		<AxMSIE Bottom="572" Height="555" Id="AxMSIE0" Left="272" Right="1062" Top="17" Width="790"></AxMSIE>
+	</Form>
+	<Script><![CDATA[#include "script::common.js"
+
+function form_OnLoadCompleted(obj)
+{
+	getTreeLevelValues();
+}
+
+function getTreeLevelValues()
+{
+	var svcID			= "CMC001M.testTreeLevelSearch";
+	var url   			= "service::CMC001M.testTreeLevelSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_tklv001=CMC001M.testTreeLevelSearch";
+	var argument    	= " _sqlName=CMC001M.testTreeLevelSearch"
+						;
+	var callbackFunc 	= "fn_test_callback";
+	
+	gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+function fn_test_callback()
+{
+	var tmpID = "00013924";
+	var tmpPW = "aa";
+
+	//confirm(tmpID+" / "+tmpPW);
+	
+	//wb_mainView.PageUrl = "http://localhost:8088/servlets/ehr.sa.servlet.salgservlet?task=login&Fo_eno="+tmpID+"&Fo_pwd="+tmpPW;
+	//wb_mainView.PostData = "http://localhost:8088/servlets/ehr.sa.servlet.salgservlet?task=login&Fo_eno="+tmpID+"&Fo_pwd="+tmpPW;
+	//wb_mainView.Run();
+	
+	var URL = GlobalURL+"servlets/ehr.sa.servlet.salgservlet?task=loginByMiPlatform";
+	var PostData = TextToBin("Fo_eno="+tmpID+"&Fo_pwd="+tmpPW);
+	var Headers = "Content-Type: application/x-www-form-urlencoded";
+	AxMSIE0.Navigate(URL,"","",PostData,Headers);
+}
+
+function tree_view_OnDblClick(obj,nRow)
+{
+	var tmpURL = GlobalURL+ds_tklv001.GetColumn(nRow, "page_url");
+	
+	//alert(tmpURL);
+	
+	AxMSIE0.Navigate(tmpURL, false, "_self");
+}
+]]></Script>
+</Window>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="260" Id="form" Left="8" OnKeyDown="form_OnKeyDown" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="팝업&#32;메시지" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="400" WorkArea="true">
+		<Shape BKColor="white" Bottom="260" Height="260" Id="Shape0" Left="0" LineColor="#455067" Right="400" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="7" Top="0" Type="Rectangle" Width="400"></Shape>
+		<Shape BKColor="white" Bottom="193" Height="120" Id="Shape4" Left="30" LineColor="gainsboro" LineWidth="5" Right="370" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="4" Top="73" Type="Rectangle" Width="340"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_ok" ImageID="Btn_pop_2w" Left="143" LeftMargin="14" OnClick="btn_ok_OnClick" Style="Btn_Popup" TabOrder="2" Text="확인" Top="209" Transparent="TRUE" Width="50"></Button>
+		<TextArea BKColor="white" Border="None" Height="72" Id="edt_message" Left="135" Readonly="TRUE" Style="TextArea" TabOrder="3" Top="101" Width="221"></TextArea>
+		<Image Height="60" Id="Image_ico" Left="53" TabOrder="5" Top="100" Width="61"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_cancel" ImageID="Btn_pop_2w" Left="206" LeftMargin="14" OnClick="btn_cancel_OnClick" Style="Btn_Popup" TabOrder="6" Text="취소" Top="209" Transparent="TRUE" Width="50"></Button>
+		<Image FillType="STRETCH" Height="43" Id="Image0" ImageID="pop_message_bg" Left="1" TabOrder="8" Width="398"></Image>
+		<Static Color="white" Font="Default,10,Bold" Height="24" Id="Static_title" Left="30" TabOrder="1" Text="정보메시지" Top="16" Width="344"></Static>
+	</Form>
+	<Script><![CDATA[
+function form_OnLoadCompleted(obj)
+{
+	if(p_type == "info"){
+		if(p_title != ""){
+			Static_title.Text = p_title;   
+		 }else{
+			Static_title.Text = "정보메시지";
+		 }
+		Image_ico.ImageID = "ico_info"; 
+	}else if(p_type == "confirm"){
+		if(p_title != ""){
+			Static_title.Text = p_title;   
+		 }else{
+			Static_title.Text = "확인메시지";
+		 }
+		Image_ico.ImageID = "ico_conform";
+	}else if(p_type == "error"){
+		if(p_title != ""){
+			Static_title.Text = p_title;   
+		 }else{
+			Static_title.Text = "에러메시지";
+		 }	
+		Image_ico.ImageID = "ico_alert";
+	}else{
+		Static_title.Text = "정보메시지"; 
+		Image_ico.ImageID = "ico_info";
+	}
+
+	if(p_message != ""){
+		edt_message.Text = fn_replace_message(p_message);
+	}else{
+		edt_message.Text = "시스템 오류 발생\n[관리자에게 문의하세요].";
+	}
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 콜백 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_replace_message(org_msg)
+{
+	
+	var ret_msg = "";
+	
+	ret_msg = org_msg;
+	
+	return ret_msg;
+}
+
+
+
+
+
+
+
+function btn_ok_OnClick(obj)
+{
+	close(true);
+}
+
+function btn_cancel_OnClick(obj)
+{
+	
+	close(false);	
+}
+
+function form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+	close(true);
+}
+]]></Script>
+</Window>

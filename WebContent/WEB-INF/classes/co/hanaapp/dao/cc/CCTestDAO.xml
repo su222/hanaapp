@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  -->
+<mapper namespace="co.hanaapp.dao.cc.CCTestDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+    <select id="selectChart" parameterType="map" resultType ="map">
+		SELECT /*보온재건조상태*/
+		       DISTINCT LOOP_NO, 
+		       TO_CHAR(GET_DT,'YYYY-MM-DD') AS GET_DT,
+		       LAG_DRY_STS,
+		       FC_CC_GET_CODENAME('DT04',LAG_DRY_STS) AS LAG_DRY_STS_NM
+		  FROM TB_DT_DVCGET_DTL
+		 WHERE  COM_ID = 'A10'
+		   AND BRCH_ID = '202'
+		   AND CU_NO = 3
+		   AND GET_DT BETWEEN '20130301' AND '20130331'
+		   AND LOOP_NO BETWEEN '213' AND '220'
+		   AND CALC_GBN = '20'
+		   --AND LAG_DRY_STS != '10'
+		 ORDER BY LOOP_NO, GET_DT
+    </select>
+    
+     <select id="selectChart2" parameterType="map" resultType ="map">
+        SELECT /*절연레벨*/
+               DISTINCT LOOP_NO, 
+               TO_CHAR(GET_DT,'YYYY-MM-DD') AS GET_DT,
+               ISL_LVL
+          FROM TB_DT_DVCGET_DTL
+         WHERE  COM_ID = 'A10'
+           AND BRCH_ID = '202'
+           AND CU_NO = 3
+           AND GET_DT BETWEEN '20130201' AND '20130331'
+           AND LOOP_NO in ('215','216','218','219')
+           AND CALC_GBN = '20'
+           --AND LAG_DRY_STS != '10'
+         ORDER BY LOOP_NO, GET_DT
+    </select>
+    
+ 
+</mapper>

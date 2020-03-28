@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="760" Id="frmLeftMenu" Left="8" OnLoadCompleted="frmLeftMenu_OnLoadCompleted" OnSize="frmLeftMenu_OnSize" OnUnloadCompleted="frmLeftMenu_OnUnloadCompleted" PidAttrib="7" Title="왼쪽메뉴" Top="8" Ver="1.0" Width="198" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_PopupMenu">
+				<Contents>
+					<colinfo id="TYPE" size="10" summ="default" type="INT"/>
+					<colinfo id="ID" size="10" summ="default" type="INT"/>
+					<colinfo id="STATUS" size="5" summ="default" type="STRING"/>
+					<colinfo id="CAPTION" size="255" summ="default" type="STRING"/>
+					<record>
+						<CAPTION>MyMenu&#32;추가</CAPTION>
+						<ID>110</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>1</TYPE>
+					</record>
+					<record>
+						<CAPTION>MyMenu&#32;제거</CAPTION>
+						<ID>210</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>2</TYPE>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<TreeView BindDataset="gds_MyMenu" Border="None" HasButtons="FALSE" HasLines="FALSE" Height="660" Id="tv_myMenu" ImageID="A_Left_Tree" InnerImageCount="3" Left="208" LevelColumn="MENU_LVL" OnClick="tv_mymenu_OnClick" OnRButtonDown="tv_menu_OnRButtonDown" Style="Tv_Left" TabOrder="1" TEXTColumn="MENU_NM" Top="64" Visible="FALSE" Width="178"></TreeView>
+		<Image Height="13" Id="img_menuBom" ImageID="A_Left_Bg_03" Left="7" TabOrder="10" Top="740" Width="190"></Image>
+		<Image FillType="STRETCH" Height="713" Id="img_menuMid" ImageID="A_Left_Bg_02" Left="7" TabOrder="9" Top="29" Width="190"></Image>
+		<Image Height="31" Id="img_menuTop" ImageID="A_Left_Bg_01" Left="7" TabOrder="8" Top="5" Width="190"></Image>
+		<TreeView BindDataset="gds_LeftMenu" Border="None" HasButtons="FALSE" HasLines="FALSE" Height="650" Id="tv_menu" ImageID="A_Left_Tree" InnerImageCount="3" Left="16" LevelColumn="MENU_LVL" OnClick="tv_menu_OnClick" OnDblClick="tv_menu_OnDblClick" OnRButtonDown="tv_menu_OnRButtonDown" Style="Tv_Left" TabOrder="2" TEXTColumn="MENU_NM" Top="72" Width="178"></TreeView>
+		<Button Appearance="FLAT" Cursor="HAND" Height="18" Id="btn_fix" ImageID="A_Left_Btn_Hide" Left="172" OnClick="btn_fix_OnClick" TabOrder="3" Top="12" Width="18"></Button>
+		<Static Height="17" Id="st_menuNm" Left="26" Style="Stc_BodyTitle" TabOrder="4" Text="하나민원&#32;시스템" Top="14" Width="130"></Static>
+		<Split BKColor="red" Height="61" Id="splHorz" Left="195" Top="694" Visible="FALSE" Width="2">
+			<Contents>
+				<LeftOrTop></LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+		<Split BKColor="blue" Direct="VERT" Height="2" Id="splVert" Left="147" Top="753" Visible="FALSE" Width="50">
+			<Contents>
+				<LeftOrTop>
+					<Bind BindType="Move" CompID="dv_treeOpt"/>
+					<Bind BindType="Move" CompID="img_menuBom"/>
+					<Bind BindType="Resize" CompID="img_menuMid"/>
+					<Bind BindType="Resize" CompID="tv_menu"/>
+					<Bind BindType="Resize" CompID="tv_myMenu"/>
+				</LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+		<Div Height="16" Id="dv_treeOpt" Left="10" TabOrder="7" Text="Div0" Top="731" Width="133">
+			<Contents>
+				<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="16" Id="btn_expand" ImageID="A_Left_Btn_Expand" Left="-2" OnClick="dv_treeOpt_btn_expand_OnClick" Style="Btn_Left_Expand" TabOrder="1" Text="펼치기" Top="2" Width="65"></Button>
+				<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="16" Id="btn_callapse" ImageID="A_Left_Btn_Callapse" Left="64" OnClick="dv_treeOpt_btn_callapse_OnClick" Style="Btn_Left_Expand" TabOrder="2" Text="접&#32;기" Top="2" Width="78"></Button>
+			</Contents>
+		</Div>
+		<Image Cursor="HAND" Height="24" Id="img_menu" ImageID="A_Left_Menu_on" Left="9" OnClick="img_menu_OnClick" Static="FALSE" TabOrder="11" Top="38" Width="102"></Image>
+		<Image Cursor="HAND" Height="24" Id="img_myMenu" ImageID="A_Left_MyMenu_off" Left="111" OnClick="img_myMenu_OnClick" Static="FALSE" TabOrder="12" Top="38" Width="82"></Image>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : frmLeftMenu(좌측메뉴)
+* 작성자     : 이용재
+* 작성일     : 2013-01-22 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-22       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID			= "";
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= ""; 
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-1. 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_initForm()
+{
+	
+
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : myMenu 추가하기 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_AddMyMenu(nRow)
+{
+	if(length(gds_LeftMenu.GetColumn(nRow, "MENU_URL") + "") <= 0)
+	{
+		gfn_Popup_Message("modal", "confirm", "즐겨찾기에 추가하실 수 없습니다.", "확인");
+		return;	
+	}
+	
+	if(gds_MyMenu.FindRow("MENU_ID", gds_LeftMenu.GetColumn(nRow, "MENU_ID")) >= 0)
+	{
+		gfn_Popup_Message("modal", "confirm", "이미 즐겨찾기에 등록된 메뉴입니다.", "확인");
+		return;		
+	}
+
+	var row = gds_MyMenu.AppendRow();
+	
+	gds_MyMenu.SetColumn(row, "MENU_ID", gds_LeftMenu.GetColumn(nRow, "MENU_ID"));
+	gds_MyMenu.SetColumn(row, "MENU_NM", gds_LeftMenu.GetColumn(nRow, "MENU_NM"));
+	gds_MyMenu.SetColumn(row, "MENU_GBN", gds_LeftMenu.GetColumn(nRow, "MENU_GBN"));
+	gds_MyMenu.SetColumn(row, "UP_MENU_ID", gds_LeftMenu.GetColumn(nRow, "UP_MENU_ID"));
+	gds_MyMenu.SetColumn(row, "MENU_LVL", gds_LeftMenu.GetColumn(nRow, "MENU_LVL"));
+	gds_MyMenu.SetColumn(row, "IMG_ID", gds_LeftMenu.GetColumn(nRow, "IMG_ID"));
+	gds_MyMenu.SetColumn(row, "IMG_WIDTH", gds_LeftMenu.GetColumn(nRow, "IMG_WIDTH"));
+	gds_MyMenu.SetColumn(row, "MENU_URL", gds_LeftMenu.GetColumn(nRow, "MENU_URL"));
+	
+	img_myMenu.Click();
+}
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.화면크기 조정
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1. 화면 Load 완료시 실행 스크립트  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function frmLeftMenu_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function frmLeftMenu_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-3.화면 크기변환시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function frmLeftMenu_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_SplitOnSize(splHorz, splVert, obj, nCx, nCy, nState);
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 메뉴 클릭시 해당 프로그램 오픈
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function tv_menu_OnClick(obj,nOldRow,nNewRow)
+{
+	// 더블클릭으로 전환 
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 마이메뉴 클릭시 해당 프로그램 오픈
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function tv_myMenu_OnClick(obj,nOldRow,nNewRow)
+{
+	var oDs = object(obj.BindDataset);
+	gfn_MenuOpenWindow(oDs.GetColumn(nNewRow,"MENU_ID"), oDs);
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 메뉴 숨기기/고정 기능
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_fix_OnClick(obj)
+{
+	DocLeft.fn_MenuShow(!DocLeft.Visible);
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 메뉴탭클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function img_menu_OnClick(obj,nX,nY)
+{
+	tv_menu.Visible = true;
+	tv_myMenu.Visible = false;
+	
+	img_menu.ImageID = g_skinImage+"_Left_Menu_on";
+	img_myMenu.ImageID = g_skinImage+"_Left_MyMenu_off";
+	
+	//btn_myMenuSet.Visible = false;
+	dv_treeOpt.Visible = true;
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 마이메뉴 탭클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function img_myMenu_OnClick(obj,nX,nY)
+{
+	tv_menu.Visible = false;
+	tv_myMenu.Visible = true;
+	
+	tv_myMenu.Left = tv_menu.Left;
+	
+	img_menu.ImageID = g_skinImage+"_Left_Menu_off";
+	img_myMenu.ImageID = g_skinImage+"_Left_MyMenu_on";
+	//btn_myMenuSet.Visible = true;
+	dv_treeOpt.Visible = true;
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 트리 펼치기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function dv_treeOpt_btn_expand_OnClick(obj)
+{
+	if(tv_menu.Visible)		tv_menu.Expand = true;
+	else 					tv_myMenu.Expand = true;
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 트리 뭉치기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function dv_treeOpt_btn_callapse_OnClick(obj)
+{
+	if(tv_menu.Visible)		tv_menu.Expand = false;
+	else 					tv_myMenu.Expand = false;
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 트리뷰 마우스 우측 클릭(팝업창뜸)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function tv_menu_OnRButtonDown(obj,nPosX,nPosY,nRow)
+{
+	object(obj.BindDataset).Row = nRow;
+	ds_PopupMenu.UnFilter();
+	
+	if(toUpper(obj.id) == "TV_MENU")
+	{
+		ds_PopupMenu.Filter("TYPE=1");
+	}
+	else
+	{
+		ds_PopupMenu.Filter("TYPE=2");
+	}
+	
+	TrackPopupMenu("ds_PopupMenu", "", "ID", "CAPTION", "STATUS", "", nPosX, nPosY, "TreeView_OnTrackPopupMenu", obj, nRow, 0);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 트리뷰 팝업메뉴
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function TreeView_OnTrackPopupMenu(obj, menuid, nRow)
+{
+	switch (menuid) {
+		case 110: // 신규
+			fn_AddMyMenu(nRow);
+			break;
+		case 210 :
+			if(gfn_Popup_Message("modal", "confirm", "나만의 메뉴에서 삭제하시게습니까?", "확인"))
+			{
+				gds_MyMenu.DeleteRow(nRow);
+			}
+			break;
+	}
+}
+
+
+
+
+function tv_menu_OnDblClick(obj,nRow)
+{
+	var oDs = object(obj.BindDataset);
+	
+	// 하위메뉴만 프로그램 오픈
+	if(obj.IsLeaf(nRow)) 
+	{
+		gfn_MenuOpenWindow(oDs.GetColumn(nRow,"MENU_ID"), oDs);
+		
+		// 클릭과 동시에 창닫기 
+		DocLeft.fn_MenuShow(false);
+	}	
+}
+]]></Script>
+</Window>

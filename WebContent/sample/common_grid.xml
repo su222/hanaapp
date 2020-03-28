@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="711" Id="ChartGrid" Left="8" OnLoadCompleted="ChartGrid_OnLoadCompleted" PidAttrib="7" Title="ChartGrid" Top="8" Ver="1.0" Width="1024" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="dsChart">
+				<Contents>
+					<colinfo id="RESVNO" size="256" type="STRING"/>
+					<colinfo id="REALSTARTHM" size="256" type="STRING"/>
+					<colinfo id="REALENDHM" size="256" type="STRING"/>
+					<colinfo id="TECHID" size="256" type="STRING"/>
+					<colinfo id="BAYCD" size="256" type="STRING"/>
+					<colinfo id="VEHICLENO2" size="256" type="STRING"/>
+					<colinfo id="ISNEW" size="256" type="STRING"/>
+					<record>
+						<BAYCD>기능1</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1100</REALENDHM>
+						<REALSTARTHM>0920</REALSTARTHM>
+						<RESVNO>1</RESVNO>
+						<TECHID>테크1</TECHID>
+						<VEHICLENO2>1_8432</VEHICLENO2>
+					</record>
+					<record>
+						<BAYCD>기능1</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1100</REALENDHM>
+						<REALSTARTHM>0920</REALSTARTHM>
+						<RESVNO>1</RESVNO>
+						<TECHID>테크2</TECHID>
+						<VEHICLENO2>1_8432</VEHICLENO2>
+					</record>
+					<record>
+						<BAYCD>기능2</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1200</REALENDHM>
+						<REALSTARTHM>1030</REALSTARTHM>
+						<RESVNO>2</RESVNO>
+						<TECHID>테크3</TECHID>
+						<VEHICLENO2>2_4321</VEHICLENO2>
+					</record>
+					<record>
+						<BAYCD>기능1</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1400</REALENDHM>
+						<REALSTARTHM>1230</REALSTARTHM>
+						<RESVNO>3</RESVNO>
+						<TECHID>테크1</TECHID>
+						<VEHICLENO2>1_1234</VEHICLENO2>
+					</record>
+					<record>
+						<BAYCD>기능3</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1300</REALENDHM>
+						<REALSTARTHM>1120</REALSTARTHM>
+						<RESVNO>4</RESVNO>
+						<TECHID>테크1-1</TECHID>
+						<VEHICLENO2>3_8432</VEHICLENO2>
+					</record>
+					<record>
+						<BAYCD>기능3</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1300</REALENDHM>
+						<REALSTARTHM>1120</REALSTARTHM>
+						<RESVNO>4</RESVNO>
+						<TECHID>테크2</TECHID>
+						<VEHICLENO2>3_8432</VEHICLENO2>
+					</record>
+					<record>
+						<BAYCD>기능4</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1430</REALENDHM>
+						<REALSTARTHM>1230</REALSTARTHM>
+						<RESVNO>5</RESVNO>
+						<TECHID>테크3</TECHID>
+						<VEHICLENO2>4_4321</VEHICLENO2>
+					</record>
+					<record>
+						<BAYCD>기능3</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1630</REALENDHM>
+						<REALSTARTHM>1430</REALSTARTHM>
+						<RESVNO>6</RESVNO>
+						<TECHID>테크1</TECHID>
+						<VEHICLENO2>3_1234</VEHICLENO2>
+					</record>
+					<record>
+						<BAYCD>기능5</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1500</REALENDHM>
+						<REALSTARTHM>1320</REALSTARTHM>
+						<RESVNO>7</RESVNO>
+						<TECHID>테크1-1</TECHID>
+						<VEHICLENO2>5_8432</VEHICLENO2>
+					</record>
+					<record>
+						<BAYCD>기능5</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1500</REALENDHM>
+						<REALSTARTHM>1320</REALSTARTHM>
+						<RESVNO>7</RESVNO>
+						<TECHID>테크2</TECHID>
+						<VEHICLENO2>5_8432</VEHICLENO2>
+					</record>
+					<record>
+						<BAYCD>기능6</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1600</REALENDHM>
+						<REALSTARTHM>1450</REALSTARTHM>
+						<RESVNO>8</RESVNO>
+						<TECHID>테크3</TECHID>
+						<VEHICLENO2>6_4321</VEHICLENO2>
+					</record>
+					<record>
+						<BAYCD>기능7</BAYCD>
+						<ISNEW></ISNEW>
+						<REALENDHM>1800</REALENDHM>
+						<REALSTARTHM>1630</REALSTARTHM>
+						<RESVNO>9</RESVNO>
+						<TECHID>테크1</TECHID>
+						<VEHICLENO2>7_1234</VEHICLENO2>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="dsTech" OnColumnChanged="dsTech_OnColumnChanged">
+				<Contents>
+					<colinfo id="TECHID" size="0" type="STRING"/>
+					<colinfo id="CHK" size="256" type="STRING"/>
+					<record>
+						<CHK></CHK>
+						<TECHID>테크1</TECHID>
+					</record>
+					<record>
+						<CHK></CHK>
+						<TECHID>테크1-1</TECHID>
+					</record>
+					<record>
+						<CHK></CHK>
+						<TECHID>테크2</TECHID>
+					</record>
+					<record>
+						<CHK></CHK>
+						<TECHID>테크3</TECHID>
+					</record>
+					<record>
+						<CHK></CHK>
+						<TECHID>테크4</TECHID>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsBay">
+				<Contents>
+					<colinfo id="BAYCD" size="0" type="STRING"/>
+					<record>
+						<BAYCD>기능1</BAYCD>
+					</record>
+					<record>
+						<BAYCD>기능2</BAYCD>
+					</record>
+					<record>
+						<BAYCD>기능3</BAYCD>
+					</record>
+					<record>
+						<BAYCD>기능4</BAYCD>
+					</record>
+					<record>
+						<BAYCD>기능5</BAYCD>
+					</record>
+					<record>
+						<BAYCD>기능6</BAYCD>
+					</record>
+					<record>
+						<BAYCD>기능7</BAYCD>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AreaSelect="TRUE" BindDataset="dsBay" BkColor2="default" BoldHead="true" Bottom="264" ColSelect="TRUE" DropMode="TRUE" Enable="true" EndLineColor="default" Height="248" Id="Grid0" InputPanel="FALSE" LineColor="default" OnCellClick="Grid0_OnCellClick" OnCellPosChanged="Grid0_OnCellPosChanged" OnVScroll="Grid0_OnVScroll" Right="734" RowHeight="40" TabOrder="1" TabStop="true" Top="16" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="734">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+					</columns>
+					<head>
+						<cell col="0" colspan="2" display="text" text="Bay"/>
+						<cell col="2" colspan="5" display="text" text="09:10"/>
+						<cell col="7" colspan="6" display="text" text="10:00"/>
+						<cell col="13" colspan="6" display="text" text="11:00"/>
+						<cell col="19" colspan="6" display="text" text="12:00"/>
+						<cell col="25" colspan="6" display="text" text="13:00"/>
+						<cell col="31" colspan="6" display="text" text="14:00"/>
+						<cell col="37" colspan="6" display="text" text="15:00"/>
+						<cell col="43" colspan="6" display="text" text="16:00"/>
+						<cell col="49" colspan="3" display="text" text="17:00"/>
+					</head>
+					<body>
+						<cell col="0" colid="BAYCD" colspan="2" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+						<cell col="12" display="text"/>
+						<cell col="13" display="text"/>
+						<cell col="14" display="text"/>
+						<cell col="15" display="text"/>
+						<cell col="16" display="text"/>
+						<cell col="17" display="text"/>
+						<cell col="18" display="text"/>
+						<cell col="19" display="text"/>
+						<cell col="20" display="text"/>
+						<cell col="21" display="text"/>
+						<cell col="22" display="text"/>
+						<cell col="23" display="text"/>
+						<cell col="24" display="text"/>
+						<cell col="25" display="text"/>
+						<cell col="26" display="text"/>
+						<cell col="27" display="text"/>
+						<cell col="28" display="text"/>
+						<cell col="29" display="text"/>
+						<cell col="30" display="text"/>
+						<cell col="31" display="text"/>
+						<cell col="32" display="text"/>
+						<cell col="33" display="text"/>
+						<cell col="34" display="text"/>
+						<cell col="35" display="text"/>
+						<cell col="36" display="text"/>
+						<cell col="37" display="text"/>
+						<cell col="38" display="text"/>
+						<cell col="39" display="text"/>
+						<cell col="40" display="text"/>
+						<cell col="41" display="text"/>
+						<cell col="42" display="text"/>
+						<cell col="43" display="text"/>
+						<cell col="44" display="text"/>
+						<cell col="45" display="text"/>
+						<cell col="46" display="text"/>
+						<cell col="47" display="text"/>
+						<cell col="48" display="text"/>
+						<cell col="49" display="text"/>
+						<cell col="50" display="text"/>
+						<cell col="51" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid BindDataset="dsTech" BkColor2="default" BoldHead="true" Bottom="560" Editable="TRUE" Enable="true" EndLineColor="default" Height="208" Id="Grid1" InputPanel="FALSE" Left="8" LineColor="default" OnCellPosChanged="Grid_OnCellPosChanged" OnHeadClick="Grid1_OnHeadClick" OnVScroll="Grid1_OnVScroll" Right="742" RowHeight="40" TabOrder="2" TabStop="true" Top="352" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="734">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="69"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+						<col width="10"/>
+					</columns>
+					<head>
+						<cell col="0" display="checkbox"/>
+						<cell col="1" display="text" text="테크니션"/>
+						<cell col="2" colspan="5" display="text" text="09:10"/>
+						<cell col="7" colspan="6" display="text" text="10:00"/>
+						<cell col="13" colspan="6" display="text" text="11:00"/>
+						<cell col="19" colspan="6" display="text" text="12:00"/>
+						<cell col="25" colspan="6" display="text" text="13:00"/>
+						<cell col="31" colspan="6" display="text" text="14:00"/>
+						<cell col="37" colspan="6" display="text" text="15:00"/>
+						<cell col="43" colspan="6" display="text" text="16:00"/>
+						<cell col="49" colspan="3" display="text" text="17:00"/>
+					</head>
+					<body>
+						<cell col="0" colid="CHK" display="checkbox" edit="checkbox"/>
+						<cell col="1" colid="TECHID" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+						<cell col="12" display="text"/>
+						<cell col="13" display="text"/>
+						<cell col="14" display="text"/>
+						<cell col="15" display="text"/>
+						<cell col="16" display="text"/>
+						<cell col="17" display="text"/>
+						<cell col="18" display="text"/>
+						<cell col="19" display="text"/>
+						<cell col="20" display="text"/>
+						<cell col="21" display="text"/>
+						<cell col="22" display="text"/>
+						<cell col="23" display="text"/>
+						<cell col="24" display="text"/>
+						<cell col="25" display="text"/>
+						<cell col="26" display="text"/>
+						<cell col="27" display="text"/>
+						<cell col="28" display="text"/>
+						<cell col="29" display="text"/>
+						<cell col="30" display="text"/>
+						<cell col="31" display="text"/>
+						<cell col="32" display="text"/>
+						<cell col="33" display="text"/>
+						<cell col="34" display="text"/>
+						<cell col="35" display="text"/>
+						<cell col="36" display="text"/>
+						<cell col="37" display="text"/>
+						<cell col="38" display="text"/>
+						<cell col="39" display="text"/>
+						<cell col="40" display="text"/>
+						<cell col="41" display="text"/>
+						<cell col="42" display="text"/>
+						<cell col="43" display="text"/>
+						<cell col="44" display="text"/>
+						<cell col="45" display="text"/>
+						<cell col="46" display="text"/>
+						<cell col="47" display="text"/>
+						<cell col="48" display="text"/>
+						<cell col="49" display="text"/>
+						<cell col="50" display="text"/>
+						<cell col="51" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[var ARG_VEHICLENO2 = "1005";
+var ARG_DAYSTARTHM = "0910";
+var ARG_DAYENDHM = "1800";
+var ARG_RESVNO = "4";
+
+var ws_Col = "";
+var ws_Head = "";
+var ws_Body = "";
+
+var arrBay = array();
+var arrTech = array();
+
+var wn_Time1;
+var wn_Time2;
+var wn_Min1;
+var wn_Min2;
+var wn_TopMargin = 2;
+var wn_CellWidth = 10;
+
+var wn_VScrollPos_Bay = 0;
+var wn_VScrollPos_Tech = 0;
+
+var wo_TarBay = null;
+var arrTarTech = array();
+var wn_BayCnt = 0;
+var wn_TarBayCnt = 0;
+var wn_TechCnt = 0;
+var wn_TarTechCnt = 0;
+var ws_TarStartHM = "";
+var ws_TarEndHM = "";
+
+var wb_IsNew = false;
+var wn_StartAreaCol = -1;
+
+function ChartGrid_OnLoadCompleted(obj)
+{
+	if(ARG_RESVNO == "") wb_IsNew = true;
+	
+	wn_Time1 = toNumber(ARG_DAYSTARTHM.mid(0,2));
+	wn_Time2 = toNumber(ARG_DAYENDHM.mid(0,2));
+	wn_Min1 = toNumber(ARG_DAYSTARTHM.mid(2,1));
+	wn_Min2 = toNumber(ARG_DAYENDHM.mid(2,1));
+	
+	var nColIdx = 2;
+	var nHeadIdx = 2;
+	var nBodyIdx = 2;
+	var nColSpan = 0;
+	var i, j, j1, j2;
+	for(i = wn_Time1; i <= wn_Time2; i++)
+	{		
+		j1 = 0;
+		j2 = 6;
+		nColSpan = 0;
+		if(i == wn_Time1) j1 = wn_Min1;
+		if(i == wn_Time2) j2 = wn_Min2;
+
+		for(j = j1; j < j2; j++)
+		{
+			ws_Col += "\n<col width='" + wn_CellWidth + "'/>";
+			ws_Body += "\n<cell col='" + nBodyIdx + "' display='text'/>";
+			nBodyIdx++;
+			nColSpan++;		
+		}
+		
+		if(nColSpan > 0)
+		{
+			ws_Head += "\n<cell col='" + nHeadIdx + "' colspan='" + nColSpan + "' display='text' text='" + lpad(i, "0", 2) + ":" + j1 + "0'/>";
+			nHeadIdx += nColSpan;
+		}		
+	}	
+	
+	var sConts = "<contents>\n<columns>\n<col width='50'/>\n<col width='50'/>" + ws_Col + "\n</columns>"
+	           + "\n<head>\n<cell col='0' display='text' colspan='2' text='Bay'/>" + ws_Head + "\n</head>"
+			   + "\n<body>\n<cell col='0' display='text' colspan='2' colid='BAYCD'/>" + ws_Body + "\n</body>"
+			   + "\n</contents>";
+
+	Grid0.Redraw = false;
+	Grid0.Contents = sConts;
+	Grid0.Redraw = true;
+	
+	sConts = "<contents>\n<columns>\n<col width='30'/>\n<col width='150'/>" + ws_Col + "\n</columns>"
+	           + "\n<head>\n<cell col='0' display='checkbox'/>" 
+	           + "\n<cell col='1' display='text' text='테크니션'/>" 
+	           + ws_Head + "\n</head>"
+			   + "\n<body>\n<cell col='0' edit='checkbox' display='checkbox' colid='CHK'/>" 
+			   + "\n<cell col='1' display='text' colid='TECHID'/>" 
+			   + ws_Body + "\n</body>"
+			   + "\n</contents>";
+
+
+	Grid1.Redraw = false;
+	Grid1.Contents = sConts;
+	Grid1.Redraw = true;
+	
+	wf_MakeBay(Grid0);
+	wf_MakeTech(Grid1);
+}
+
+function wf_MakeBay(oGrid)
+{
+	var sText;
+	var nSubTime1;
+	var nSubTime2;
+	var nSubMin1;
+	var nSubMin2;
+	
+	var sBorderColor;
+	var sPreNo = "";
+	var sNo = "";
+	var sID;
+
+	var arrPos = array(4);
+	
+	for(i = 0; i < dsBay.rowcount; i++)
+	{
+		dsChart.UnFilter();
+		dsChart.Filter("BAYCD=" + quote(dsBay.GetColumn(i, "BAYCD")));
+		dsChart.Sort("REALSTARTHM:VEHICLENO2:TECHID");
+	
+		sText = "";
+		sPreNo = "";
+		
+		for(j = 0; j <= dsChart.RowCount; j++)
+		{
+			sNo = dsChart.GetColumn(j, "VEHICLENO2");
+			if(sPreNo != sNo || j == dsChart.RowCount)
+			{
+				if(sPreNo != "" || j == dsChart.RowCount)
+				{
+					sBorderColor = "";
+					nSubTime1 = toNumber(dsChart.GetColumn(j - 1, "REALSTARTHM").mid(0,2));
+					nSubTime2 = toNumber(dsChart.GetColumn(j - 1, "REALENDHM").mid(0,2));
+					nSubMin1 = toNumber(dsChart.GetColumn(j - 1, "REALSTARTHM").mid(2,1));
+					nSubMin2 = toNumber(dsChart.GetColumn(j - 1, "REALENDHM").mid(2,1));
+
+					arrPos = wf_GetPos(oGrid, i, ((nSubTime1 - wn_Time1) * 6 + nSubMin1 - wn_Min1) 
+							, ((nSubTime2 - nSubTime1) * 6 + nSubMin2 - nSubMin1), 100);				
+					
+					sID = "imgBay_" + lpad(wn_BayCnt, "0", "2");
+					if(dsChart.GetColumn(j - 1, "RESVNO") == ARG_RESVNO)
+					{
+						sBorderColor = " BorderColor='red'";
+						sID = "imgTarBay_" + lpad(wn_TarBayCnt++, "0", "2");
+						ws_TarStartHM = dsChart.GetColumn(j - 1, "REALSTARTHM");
+						ws_TarEndHM = dsChart.GetColumn(j - 1, "REALENDHM");
+					}
+					
+					wf_CreateImg(sID, arrPos, i, sText, sBorderColor);
+										
+					if(dsChart.GetColumn(j - 1, "RESVNO") == ARG_RESVNO)
+					{
+						wo_TarBay = object(sID);
+					}
+					else
+					{
+						arrBay[wn_BayCnt++] = object(sID);
+					}
+				}
+				
+				if(j < dsChart.RowCount)
+				{
+					sText = sNo + "\n" + dschart.GetColumn(j, "TECHID");
+				}
+			}
+			else if(j < dsChart.RowCount)
+			{
+				sText += "," + dschart.GetColumn(j, "TECHID");
+			}
+			
+			sPreNo = sNo;
+		}		
+	}
+}
+
+function wf_MakeTech(oGrid)
+{
+	var sText;
+	var nSubTime1;
+	var nSubTime2;
+	var nSubMin1;
+	var nSubMin2;
+	var sBorderColor;
+	var sID;
+	var arrPos = array(4);
+	
+	dsTech.FireEvent = false;
+	for(i = 0; i < dsTech.rowcount; i++)
+	{
+		dsChart.UnFilter();
+		dsChart.Filter("TECHID=" + quote(dsTech.GetColumn(i, "TECHID")));
+		dsChart.Sort("REALSTARTHM:VEHICLENO2:BAYCD");
+	
+		for(j = 0; j < dsChart.RowCount; j++)
+		{
+			sBorderColor = "";
+			sText = dsChart.GetColumn(j, "VEHICLENO2") + "\n" + dsChart.GetColumn(j, "BAYCD");
+			nSubTime1 = toNumber(dsChart.GetColumn(j, "REALSTARTHM").mid(0,2));
+			nSubTime2 = toNumber(dsChart.GetColumn(j, "REALENDHM").mid(0,2));
+			nSubMin1 = toNumber(dsChart.GetColumn(j, "REALSTARTHM").mid(2,1));
+			nSubMin2 = toNumber(dsChart.GetColumn(j, "REALENDHM").mid(2,1));
+
+			arrPos = wf_GetPos(oGrid, i, ((nSubTime1 - wn_Time1) * 6 + nSubMin1 - wn_Min1) 
+							, ((nSubTime2 - nSubTime1) * 6 + nSubMin2 - nSubMin1), 180);
+	
+			sID = "imgTech_" + lpad(wn_TechCnt, "0", "2");
+			if(dsChart.GetColumn(j, "RESVNO") == ARG_RESVNO)
+			{
+				dsTech.SetColumn(i, "CHK", "1");
+				sBorderColor = " BorderColor='red'";
+				sID = "imgTarTech_" + lpad(wn_TarTechCnt, "0", "2");
+			}
+			
+			wf_CreateImg(sID, arrPos, i, sText, sBorderColor);
+			
+			if(dsChart.GetColumn(j, "RESVNO") == ARG_RESVNO)
+			{
+				arrTarTech[wn_TarTechCnt++] = object(sID);
+			}
+			else
+			{
+				arrTech[wn_TechCnt++] = object(sID);
+			}
+		}		
+	}
+	
+	dsTech.FireEvent = true;
+}
+
+function Grid0_OnVScroll(obj,strType,nPos)
+{
+	wn_VScrollPos_Bay = nPos;
+	for(var i = 0; i < arrBay.length; i++)
+	{
+		wf_SetPosImg(obj, arrBay[i], nPos);
+	}
+	
+	if(wo_TarBay != null)
+	{
+		wf_SetPosImg(obj, wo_TarBay, nPos);
+	}
+}
+	
+function Grid1_OnVScroll(obj,strType,nPos)		
+{
+	wn_VScrollPos_Tech = nPos;
+	for(var i = 0; i < wn_TechCnt; i++)
+	{
+		wf_SetPosImg(obj, arrTech[i], nPos);
+	}
+	
+	for(i = 0; i < wn_TarTechCnt; i++)
+	{
+		wf_SetPosImg(obj, arrTarTech[i], nPos);
+	}
+}
+
+function wf_SetPosImg(oGrid, oImg, nPos)
+{
+	var nHeight;
+	var	nRow = toNumber(oImg.UserData);
+	var nTop = oGrid.Top + oGrid.HeadHeight + (oGrid.RowHeight * (nRow - nPos));
+		
+	if(nTop < oGrid.Top + oGrid.HeadHeight)
+		nHeight = 0;
+	else if(nTop > oGrid.Top + oGrid.Height)
+		nHeight = 0;
+	else if(nTop + oGrid.RowHeight > oGrid.Top + oGrid.Height)
+		nHeight = oGrid.Top + oGrid.Height - nTop;
+	else
+		nHeight = oGrid.RowHeight;
+	
+	oImg.Height = nHeight;
+	oImg.Top = nTop + wn_TopMargin;
+	
+}
+
+function Grid_OnCellPosChanged(obj,nRow,nCell,nOldRow,nOldCell,nPivotIndex,nOldPivotIndex)
+{
+	var nOldPos;
+	if(obj.BindDataset=="dsBay")
+	{
+		nOldPos = wn_VScrollPos_Bay;
+	}
+	else if(obj.Binddataset == "dsTech")
+	{
+		nOldPos = wn_VScrollPos_Tech;
+	}
+	
+	if(obj.VScrollPos != nOldPos)
+	{
+		CallScript(Obj.OnVScroll + "(" + obj.id + ",''," + obj.VScrollPos + ")");
+	}
+}
+
+function Grid0_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if(nCell == 0) 
+		wn_StartAreaCol = 1;
+	else
+		wn_StartAreaCol = nCell;
+}
+
+function Grid0_OnCellPosChanged(obj,nRow,nCell,nOldRow,nOldCell,nPivotIndex,nOldPivotIndex)
+{
+	Grid_OnCellPosChanged(obj,nRow,nCell,nOldRow,nOldCell,nPivotIndex,nOldPivotIndex);
+//	if(Grid0.AreaStartCol < 0)	return;
+	if(nCell == 0) nCell = 1;
+	
+	var nCell1;
+	var nCell2;
+	if(wn_StartAreaCol > nCell)
+	{
+		nCell1 = nCell;
+		nCell2 = wn_StartAreaCol;
+	}
+	else
+	{
+		nCell1 = wn_StartAreaCol;
+		nCell2 = nCell;	
+	}
+
+	var arrPos = wf_GetPos(obj, nRow, (nCell1 - 1), abs(nCell2 - nCell1 + 1), 100);
+	
+	if(wn_TarBayCnt == 0)
+	{
+		wf_CreateImg("imgTarBay_" + lpad(wn_TarBayCnt, "0", 2), arrPos, nRow, ARG_VEHICLENO2, " BorderColor='red'");
+	
+		wn_TarBayCnt++;
+		wo_TarBay = object("imgTarBay_" + lpad(wn_TarBayCnt, "0", 2));  
+	}
+	else
+	{
+		wo_TarBay.Width = arrPos[2];
+		wo_TarBay.Height = arrPos[3];
+		wo_TarBay.Left = arrPos[0];
+		wo_TarBay.Top = arrPos[1];
+		wo_TarBay.UserData = nRow;
+		wo_TarBay.Text = ARG_VEHICLENO2;
+	}
+	
+	Grid1.SetCellProp("head", 0, "text", "0");
+	for(var i = arrTarTech.length - 1; i >= 0 ; i--)
+	{
+		arrTarTech[i].visible = false;
+		dsTech.SetColumn(toNumber(arrTarTech[i].UserData), "CHK", "0");
+	}
+	
+	dsChart.UnFilter();
+	dsChart.Filter("RESVNO=" + quote(ARG_RESVNO));
+	for(i = dsChart.RowCount; i > 0; i--)
+	{
+		dsChart.DeleteRow(i - 1);
+	}
+	
+	ws_TarStartHM = wf_GetTimeAdd(ARG_DAYSTARTHM, nCell1 - 1);
+	ws_TarEndHM = wf_GetTimeAdd(ARG_DAYSTARTHM, nCell2);
+}
+
+function wf_GetTimeAdd(sStart, nTenMin)
+{
+	var nTime = toNumber(mid(sStart, 0, 2));
+	var nMin = toNumber(mid(sStart, 2, 1));
+	
+	nMin += nTenMin;
+	nTime += Floor(nMin / 6);
+	nMin = nMin % 6;
+
+	return (lpad(nTime, "0", 2) + nMin + "0");
+}
+
+function Grid1_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	var nChk;
+	if(nCell == 0)
+	{
+		if(obj.GetCellProp("head", nCell, "text") == "1")
+			nChk = "0";
+		else
+			nChk = "1";
+		
+		obj.SetCellProp("head", nCell, "text", nChk);
+		for(var i = 0; i < dsTech.rowcount; i++)
+		{
+			dsTech.SetColumn(i, "CHK", nChk);
+		}
+	}
+}
+
+function dsTech_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID != "CHK") return;
+	if(varNewValue == "1")
+	{
+		dsChart.Unfilter();
+		var idx = wn_TarTechCnt;
+		//nTarRow = dsChart.SearchRow("RESVNO=" + quote(ARG_RESVNO));
+		var sBayCd = dsBay.GetColumn(toNumber(wo_TarBay.UserData), "BAYCD");
+		var sText = ARG_VEHICLENO2 + "\n" + sBayCd;
+		var	nSubTime1 = toNumber(ws_TarStartHM.mid(0,2));
+		var	nSubTime2 = toNumber(ws_TarEndHM.mid(0,2));
+		var	nSubMin1 = toNumber(ws_TarStartHM.mid(2,1));
+		var	nSubMin2 = toNumber(ws_TarEndHM.mid(2,1));
+		var nCell1 = ((nSubTime1 - wn_Time1) * 6 + nSubMin1 - wn_Min1);
+		var nCell2 = ((nSubTime2 - nSubTime1) * 6 + nSubMin2 - nSubMin1);
+		var	arrPos = wf_GetPos(Grid1, nRow, nCell1, nCell2, 180);
+//Trace(ARG_RESVNO  + "::" + arrPos);		
+		if(arrTarTech.length <= wn_TarTechCnt)
+		{
+			wf_CreateImg("imgTarTech_" + lpad(idx, "0", 2), arrPos, nRow, sText, " BorderColor='red'");
+			arrTarTech[idx]  = object("imgTarTech_" + lpad(idx, "0", 2));  		  
+		}
+		else
+		{
+			arrTarTech[idx].Width = arrPos[2];
+			arrTarTech[idx].Height = arrPos[3];
+			arrTarTech[idx].Left = arrPos[0];
+			arrTarTech[idx].Top = arrPos[1];
+			arrTarTech[idx].UserData = nRow;
+			arrTarTech[idx].Text = sText;
+			arrTarTech[idx].visible = true;
+		}	
+			
+		var TarRow = dsChart.AppendRow();
+			
+		dsChart.SetColumn(TarRow, "RESVNO", ARG_RESVNO);
+		dsChart.SetColumn(TarRow, "VEHICLENO2", ARG_VEHICLENO2);
+		dsChart.SetColumn(TarRow, "BAYCD", sBayCd);
+		dsChart.SetColumn(TarRow, "TECHID", dsTech.GetColumn(nRow, "TECHID"));
+		dsChart.SetColumn(TarRow, "REALSTARTHM", wf_GetTimeAdd(ARG_DAYSTARTHM, (nCell1 - 1)));
+		dsChart.SetColumn(TarRow, "REALENDHM", wf_GetTimeAdd(ARG_DAYSTARTHM, nCell2));
+		
+		wn_TarTechCnt++;
+	}
+	else
+	{
+		dsChart.Unfilter();
+		var nTarRow = dsChart.SearchRow("RESVNO=" + quote(ARG_RESVNO) + " && TECHID=" + quote(dsTech.GetColumn(nRow, "TECHID")));
+		dsChart.DeleteRow(nTarRow);
+	
+		var oTarImg = null;
+		for(var i = 0; i < wn_TarTechCnt; i++)
+		{
+			if(oTarImg != null)
+			{
+				arrTarTech[i - 1] = arrTarTech[i];
+			} 
+			else if(arrTarTech[i].UserData == nRow)
+			{
+				oTarImg = arrTarTech[i];
+				oTarImg.visible = false;
+			}			
+		}	
+		arrTarTech[--wn_TarTechCnt] = oTarImg;
+	}
+	
+	wf_SetTarBayText();
+	
+//Trace(wn_TarTechCnt + "\n" + dsChart.SaveCSV());	
+}
+
+
+function wf_SetTarBayText()
+{
+	if(wo_TarBay == null) return;
+	var sText = ARG_VEHICLENO2;
+	var sLog = "\n";
+	
+	for(var i = 0; i < wn_TarTechCnt; i++)
+	{
+		sText += sLog + dsTech.GetColumn(toNumber(arrTarTech[i].UserData), "TECHID");
+		sLog = ",";	
+	}
+	wo_TarBay.Text = sText;
+}
+
+function wf_CreateImg(sID, arrPos, nRow, sText, sProp)
+{
+	if(sProp == null) sPorp = "";
+	
+	Create("Image", sID
+		  , "Static='FALSE' Border='Flat' WordWrap='true' Text=" + quote(sText)
+		  + " UserData=" + quote(nRow)
+		  + " Left=" + quote(arrPos[0]) 
+		  + " Top=" + quote(arrPos[1])
+		  + " Width=" + quote(arrPos[2])
+		  + " Height=" + quote(arrPos[3]) + sProp);
+}
+
+function wf_GetPos(oGrid, nRow, nCell, nCellCnt, nLeftMargin, nPos)
+{
+	var arrRtn = array(4);
+	
+	if(nPos == null) nPos = oGrid.VScrollPos;
+	
+	var nTop = oGrid.Top + wn_TopMargin + oGrid.HeadHeight + ((nRow - nPos) *  oGrid.RowHeight);
+	var nLeft = oGrid.left + nLeftMargin + nCell * wn_CellWidth;
+	var nWidth = nCellCnt * wn_CellWidth;
+	var nHeight;
+
+	if(nTop < oGrid.Top + oGrid.HeadHeight)
+		nHeight = 0;
+	else if(nTop > oGrid.Top + oGrid.Height)
+		nHeight = 0;
+	else if(nTop + oGrid.RowHeight > oGrid.Top + oGrid.Height)
+		nHeight = oGrid.Top + oGrid.Height - nTop;
+	else
+		nHeight = oGrid.RowHeight;
+		
+	arrRtn[0] = nLeft;
+	arrRtn[1] = nTop;
+	arrRtn[2] = nWidth;
+	arrRtn[3] = nHeight;
+	
+	return arrRtn;
+}]]></Script>
+</Window>

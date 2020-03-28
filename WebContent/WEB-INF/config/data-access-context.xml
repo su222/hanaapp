@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}" />
+
+	
+	<!-- JNDI (경로는 tomcat server.xml에 있음) -->
+
+<!-- 
+
+	<bean id="dataSource" 
+	      class="org.springframework.jndi.JndiObjectFactoryBean">
+	      <property name="jndiName" 
+	                  value="java:comp/env/jdbc/hedata"/>    
+
+	</bean>
+ -->
+
+
+    <tx:annotation-driven transaction-manager="txManager" />
+
+    <!-- a PlatformTransactionManager is still required -->
+    <bean id="txManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+          p:dataSource-ref="dataSource" />
+
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean"
+          p:dataSource-ref="dataSource"
+          p:configLocation="WEB-INF/config/mybatis-config.xml">
+    </bean>
+	
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory" />
+    </bean>
+
+    <!-- scan for mappers and let them be autowired -->
+    
+     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+    	p:sqlSessionFactory-ref="sqlSessionFactory" p:sqlSessionTemplate-ref="sqlSessionTemplate" >
+    	<property name="basePackage">
+    		<value>
+    			co.hanaapp.dao.ac,
+    			co.hanaapp.dao.cc
+    		</value>
+    	</property>
+    </bean>
+
+	 
+    <!-- Sql 세션 넣을때 여기 꼭 등록해야됨 -->
+    <!-- 
+    <bean id="ccCodeDDAOImpl" 
+    	class="hes.heapp.dao.cc.CCCodeDDAOImpl" 
+    	p:sqlSessionTemplate-ref="sqlSessionTemplate" />
+     -->
+    <bean id="cCMiplatformDAOImpl"
+    	class="co.hanaapp.dao.cc.CCMiplatformDAOImpl"
+    	p:sqlSessionTemplate-ref="sqlSessionTemplate" />
+
+</beans>

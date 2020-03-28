@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="500" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="New&#32;Form" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_big_menu">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_small_menu">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_test_data">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+					<colinfo id="index" size="256" summ="default" type="STRING"/>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="khaki" Bottom="498" Height="40" Id="Shape7" Left="-1" LineColor="user22" Right="789" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="31" Top="458" Type="RoundRect" Width="790"></Shape>
+		<Shape BKColor="user21" Bottom="80" Height="40" Id="Shape5" Left="0" LineColor="user22" Right="790" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="32" Top="40" Type="RoundRect" Width="790"></Shape>
+		<Image Align="Left" Height="18" Id="Image1" Left="20" LeftMargin="0" Style="Stc_Default_bold" TabOrder="1" Text="대메뉴" Top="50" Transparent="TRUE" Width="59"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="728" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="3" Top="48" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="89" Height="56" Id="Shape11" Left="0" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="20" TabOrder="2" Top="33" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="75" Height="32" Id="Shape12" Left="60" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="70" TabOrder="4" Top="43" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Combo Border="Flat" DataColumn="menu_nm" Height="18" Id="cob_big_menu" ImeMode="none" InnerDataset="ds_big_menu" Left="69" OnChanged="cob_big_menu_OnChanged" OnKeyDown="cob_big_menu_OnKeyDown" Style="Combo" TabOrder="5" Top="49" Width="160"></Combo>
+		<Static Height="20" Id="Static8" Style="Stc_Title" TabOrder="6" Text="테스트용&#32;조회,&#32;수정,&#32;추가,&#32;삭제&#32;화면" Width="304"></Static>
+		<Shape Bottom="40" Height="7" Id="Shape13" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="790" TabOrder="7" Top="33" Type="Rectangle" Visible="FALSE" Width="790"></Shape>
+		<Image Align="Left" Height="18" Id="Image0" Left="252" LeftMargin="0" Style="Stc_Default_bold" TabOrder="8" Text="소메뉴" Top="50" Transparent="TRUE" Width="59"></Image>
+		<Shape Bottom="75" Height="32" Id="Shape1" Left="292" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="302" TabOrder="9" Top="43" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Combo Border="Flat" DataColumn="menu_nm" Editable="TRUE" Height="18" Id="cob_small_menu" InnerDataset="ds_small_menu" Left="301" OnChanged="cob_small_menu_OnChanged" OnKeyDown="cob_small_menu_OnKeyDown" Style="Combo" TabOrder="10" Top="49" Width="160"></Combo>
+		<Image Align="Left" Height="14" Id="Image2" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="11" Text="테스트&#32;조회" Top="102" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="121" Height="5" Id="Shape20" Left="-8" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="802" TabOrder="13" Top="116" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Grid AutoFit="TRUE" BindDataset="ds_test_data" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="452" CellMoving="TRUE" ColSelect="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="331" Id="Grid1" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnCellClick="Grid1_OnCellClick" OnHeadClick="Grid1_OnHeadClick" Right="790" RowHeight="20" Style="Grid_2" TabOrder="12" TabStop="true" Top="121" UseAutoSizing="Both" UseDBuff="true" UseExSizing="Both" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="790">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="22"/>
+						<col width="35"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="55"/>
+						<col width="147"/>
+						<col width="166"/>
+						<col width="237"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="NO"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="LEVELS"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="3" color="user52" display="text" text="SECTION"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="4" color="user52" display="text" text="LVL_SEQ"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="5" color="user52" display="text" text="MENU_NM"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="6" color="user52" display="text" text="PAGE_URL"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="7" color="user52" display="text" text="ETC"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="checked" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="index" color="black" display="text" expr="row+1"/>
+						<cell align="center" col="2" colid="levels" display="text" edit="normal"/>
+						<cell align="center" col="3" colid="section" display="text" edit="normal"/>
+						<cell align="center" col="4" colid="lvl_seq" display="text" edit="normal"/>
+						<cell col="5" colid="menu_nm" cursor="hand" display="text" edit="normal"/>
+						<cell col="6" colid="page_url" display="text" edit="normal"/>
+						<cell bkimagealign="stretch" col="7" colid="etc" display="text" edit="normal" expandsize="50"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_del_row" ImageID="Btn_sub_rowdel" Left="624" OnClick="btn_del_row_OnClick" Style="Btn_sub" TabOrder="15" Text="&#32;&#32;&#32;행삭제" Top="95" Width="61"></Button>
+		<Shape Bottom="121" Height="32" Id="Shape19" Left="619" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="624" TabOrder="16" Top="89" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_add_row" ImageID="Btn_sub_rowadd" Left="558" OnClick="btn_add_row_OnClick" Style="Btn_sub" TabOrder="14" Text="&#32;&#32;&#32;행추가" Top="95" Width="61"></Button>
+		<Shape Bottom="95" Height="15" Id="Shape2" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="17" Top="80" Type="Rectangle" Visible="FALSE" Width="794"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_save" ImageID="Btn_com_2w" Left="738" LeftMargin="12" OnClick="btn_save_OnClick" Style="Btn_Com" TabOrder="18" Text="저장" Top="12" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button35" ImageID="Btn_sub_ex_down" Left="690" LeftMargin="16" OnClick="btn_print_OnClick" Style="Btn_sub" TabOrder="19" Top="95" TopMargin="1" Transparent="TRUE" Width="99"></Button>
+		<Button Height="18" Id="Button25" ImageID="Btn_search" Left="732" OnClick="Button25_OnClick" TabOrder="20" Text="Button1" Top="470" Width="21"></Button>
+		<Button Height="16" Id="Button6" ImageID="Btn_calendar" Left="408" OnClick="Button6_OnClick" TabOrder="21" Text="Button1" Top="472" Width="16"></Button>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="MaskEdit0" Left="334" Mask="@@@@-@@-@@" TabOrder="22" Top="470" Type="STRING" Width="70"></MaskEdit>
+		<Button Height="16" Id="Button3" ImageID="Btn_calendar" Left="184" OnClick="Button3_OnClick" TabOrder="23" Text="Button1" Top="472" Width="16"></Button>
+		<Image Align="Right" Height="18" Id="Image5" ImageID="A_ic" Left="216" LeftMargin="0" Style="Stc_Default_bold" TabOrder="24" Text="테스트&#32;날짜&#32;입력" Top="472" Transparent="TRUE" Width="107"></Image>
+		<Image Align="Right" Height="18" Id="Image3" ImageID="A_ic" Left="8" LeftMargin="0" Style="Stc_Default_bold" TabOrder="25" Text="테스트&#32;월&#32;입력" Top="472" Transparent="TRUE" Width="91"></Image>
+		<Shape Bottom="121" Height="32" Id="Shape4" Left="685" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="690" TabOrder="26" Top="89" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Image Align="Right" Height="18" Id="Image4" ImageID="A_ic" Left="531" LeftMargin="0" Style="Stc_Default_bold" TabOrder="27" Text="테스트&#32;팝업" Top="472" Transparent="TRUE" Width="75"></Image>
+		<Shape Bottom="495" Height="32" Id="Shape0" Left="100" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="110" TabOrder="28" Top="463" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Shape Bottom="495" Height="32" Id="Shape6" Left="324" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="334" TabOrder="29" Top="463" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="ed_popup_value" Left="619" MaxLength="6" Style="Edit" TabOrder="30" Top="470" Width="110"></Edit>
+		<Shape Bottom="495" Height="32" Id="Shape9" Left="609" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="619" TabOrder="33" Top="463" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="MaskEdit1" Left="110" Mask="@@@@-@@" TabOrder="34" Top="470" Type="STRING" Width="70"></MaskEdit>
+		<FileDialog Bottom="118" Filter="All(*.*)|*.*|" Height="24" Id="FileDialog0" Left="816" Right="840" TabOrder="34" Top="94" Type="Save" Width="24"></FileDialog>
+	</Form>
+	<Script><![CDATA[#include "script::cmnFunction.js";
+
+
+/***************************************************************************************************************
+ ***************************************************************************************************************
+	<-- 트랜젝션 설명 -->
+
+	var svcID		= "TST001V.testFunctionSearch";               <-  서비스명으로tconfig 폴더의 requests폴더의 xml 파일에서 설정한다.
+	var url   		= "service::TST001V.testFunctionSearch.do";   <-  위의 svcID에 .do(서블릿)를 붙인다.
+	var inDatasets  = "";                                         <- argument의 파라미터를 데이터셋에 넣어 보낼 수 있다.
+	var outDatasets = "ds_test_data=TST001V.selectTestTableable"; <- 쿼리로 조회해온 값을 데이터셋(ds_test_data)에 넣는다. 쿼리(TST001V.selectTestFunctionTable)는 tconfig 폴더의 querys의 xml 파일에서 설정한다.
+	var argument    = " _sqlName=TST001V.selectTestTableTable"	  <- 쿼리(TST001V.selectTestFunctionTable)는 tconfig의 querys의 xml 파일에서 설정한다.
+					+ " p_section=" + quote(big_section)    
+					+ " p_lvl_seq=" + quote(small_seq)		      <- p_section, p_lvl_seq는 xml 파일에 보내는 파라미터값이다.
+					;
+	var callbackFunc = "fn_search_callback";                      <- 서비스 실행후의 콜백함수
+	
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+ ***************************************************************************************************************
+ ***************************************************************************************************************/
+
+
+var big_section = ''; // 대메뉴를 구분하기 위한 전역변수
+var small_seq   = ''; // 소메뉴를 구분하기 위한 전역변수
+var checked_cnt = 0;  // 체크된 리스트의 수를 위한 전역변수
+
+
+/* 폼 로드 함수 */
+function form_OnLoadCompleted(obj)
+{
+	// 화면이 로드될 때 대메뉴를 조회한다.
+	getBigMenuName();
+}
+
+
+/* 대메뉴 조회 */
+function getBigMenuName()
+{
+	var svcID			= "TST001V.bigMenuNameSearch";
+	var url   			= "service::TST001V.bigMenuNameSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_big_menu=TST001V.selectBigMenuName";
+	var argument    	= " _sqlName=TST001V.selectBigMenuName"
+						;
+	var callbackFunc 	= "fn_get_big_menu_callback";
+
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+
+/* 대메뉴 조회 콜백 함수 - 콤보의 첫번째 값으로 [전체]를 넣어준다.*/
+function fn_get_big_menu_callback()
+{
+	gfn_AddComboData(0, ds_big_menu, "id", "0", "menu_nm", "[전체]");
+	cob_big_menu.Index  = 0;
+	ds_small_menu.ClearData();
+	gfn_AddComboData(0, ds_small_menu, "id", "0", "menu_nm", "[전체]");
+	cob_small_menu.Index = 0;
+}
+
+
+/* 소메뉴 조회 */
+function cob_big_menu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(nNewIndex == 0){ // 대매뉴에서 [전체]를 선택한 경우
+		ds_small_menu.ClearData();
+		
+		gfn_AddComboData(0, ds_small_menu, "id", "0", "menu_nm", "[전체]");
+		cob_small_menu.Index = 0;
+
+		big_section = '';
+		small_seq   = '';
+		return;
+	}
+
+	big_section = ds_big_menu.GetColumn(nNewIndex,'section');
+
+	var svcID			= "TST001V.smallMenuNameSearch";
+	var url   			= "service::TST001V.smallMenuNameSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_small_menu=TST001V.selectSmallMenuName";
+	var argument    	= " _sqlName=TST001V.selectSmallMenuName"
+						+ " p_section=" + quote(ds_big_menu.GetColumn(nNewIndex,'section'))				
+						;
+	var callbackFunc 	= "fn_cob_big_menu_callback";
+
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 소메뉴 조회 콜백 함수 - 콤보의 첫번째 값으로 [전체]를 넣어준다.*/
+function fn_cob_big_menu_callback()
+{
+	small_seq = '';
+	gfn_AddComboData(0, ds_small_menu, "id", "0", "menu_nm", "[전체]");
+	cob_small_menu.Index = 0;
+}
+
+
+/* 소매뉴 콤보를 선택하였을때 조회를 위해서 small_seq 변수에 LVL_SEQ 컬럼값을 넣어준다. */
+function cob_small_menu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	small_seq = ds_small_menu.GetColumn(nNewIndex,'LVL_SEQ');
+}
+
+
+/* 조회버튼 - 조회한다. */
+function btn_search_OnClick(obj)
+{
+	Grid1.SetCellProp("head", 0, "Text", 0); //저장하면 자동조회를 하므로 헤더의 체크박스를 해제한다.
+
+	var svcID			= "TST001V.testFunctionSearch";
+	var url   			= "service::TST001V.testFunctionSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_test_data=TST001V.selectTestTable";
+	var argument    	= " _sqlName=TST001V.selectTestTable"
+						+ " p_section=" + quote(big_section)
+						+ " p_lvl_seq=" + quote(small_seq)
+						;
+	var callbackFunc 	= "";
+
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 그리드 리스트에서 체크박스를 선택한 것을 수정하거나 행추가 한 값을 디비에 추가하는 경우 */
+function btn_save_OnClick(obj)
+{
+	if(ds_test_data.rowcount == 0){
+		alert('먼저 리스트를 조회하세요.');
+		return;
+	}
+	
+	// 리스트에서 체크박스를 선택한 값이 몇개 인지 센다.
+	for(var i=0; i<ds_test_data.rowcount; i++)
+	{
+		if(ds_test_data.GetColumn(i,"checked") == 1){
+			checked_cnt++;
+		}
+	}
+	
+	Grid1.SetCellProp("head", 0, "Text", 0); //저장하면 자동조회를 하므로 헤더의 체크박스를 해제한다.
+	
+	if(checked_cnt == 0){
+		alert('체크된 리스트가 없습니다.');
+	}else{
+		checkSaveData(checked_cnt);
+		checked_cnt = 0;
+	}
+}
+
+
+/* 체크된 리스트의 수를 알아내어서 수정한다. */
+function checkSaveData(cnt)
+{
+	// 체크된 값의 리스트를 저장하거나 수정할 때 
+	// 처음인지 마지막인지를 알기 위해서 아래 checkedCnt 변수를 사용한다
+	var checkedCnt = cnt; 
+	
+	for(var i=0; i<ds_test_data.rowcount; i++)
+	{
+	
+		if(ds_test_data.GetColumn(i,"checked") == 1){
+
+			//  한건만 체크 된 경우로 처음이자 마지막이다.
+			if(cnt == 1){
+				
+				gfn_showProgressWindow(true);
+				saveTestData(i, 'last');
+				
+			}
+			// 여러 건을 선택한 경우
+			else{
+				
+				// 처음
+				if(checkedCnt == cnt){
+					
+					gfn_showProgressWindow(true); //처음이므로 진행상태바를 표시한다.
+					saveTestData(i, 'first');
+					
+				// 마지막									
+				}else if(checkedCnt == 1){
+					
+					saveTestData(i, 'last');
+					
+				// 중간
+				}else{
+					
+					saveTestData(i, 'middle');
+					
+				}
+				
+			}			
+			checkedCnt--; // 한건 처리했으므로 빼준다.
+		}
+	}
+}
+
+
+/* 값을 추가하거나 수정하는 함수 */
+function saveTestData(rowIndex,flag)
+{
+	var id   	  = ds_test_data.GetColumn(rowIndex,"id");
+	var levels    = ds_test_data.GetColumn(rowIndex,"levels");
+	var section   = ds_test_data.GetColumn(rowIndex,"section");
+	var lvl_seq   = ds_test_data.GetColumn(rowIndex,"lvl_seq");
+	var menu_nm   = ds_test_data.GetColumn(rowIndex,"menu_nm");
+	var page_url  = ds_test_data.GetColumn(rowIndex,"page_url");
+	var etc       = ds_test_data.GetColumn(rowIndex,"etc");
+	var manager   = ds_test_data.GetColumn(rowIndex,"manager");
+	var join_date = ds_test_data.GetColumn(rowIndex,"join_date");
+	var dept_nm   = ds_test_data.GetColumn(rowIndex,"dept_nm");
+
+	if(levels == null){
+		alert('levels 값은 필수사항입니다!');
+		return;
+	}
+	if(section == null){
+		alert('section 값은 필수사항입니다!');
+		return;
+	}
+	if(lvl_seq == null){
+		alert('lvl_seq 값은 필수사항입니다!');
+		return;
+	}
+	if(menu_nm == null){  // null 일 경우에는 SQL 에러가 생기므로 값을 일부러 넣어준다.
+		menu_nm = ' ';
+	}
+	if(page_url == null){ // null 일 경우에는 SQL 에러가 생기므로 값을 일부러 넣어준다.
+		page_url = ' ';
+	}
+	if(etc == null){      // null 일 경우에는 SQL 에러가 생기므로 값을 일부러 넣어준다.
+		etc = ' ';
+	}
+	
+	var svcID			= "TST001V.testFunctionSave";
+	var url   			= "service::TST001V.testFunctionSave.do";
+	var inDatasets      = "";
+	var outDatasets 	= "";
+	var argument        = "";
+	
+	// 추가 (Insert)
+	if(id == null){
+		argument    	= " _sqlName=TST001V.insertTestTableData"
+						+ " P_LEVELS=" + quote(levels)
+						+ " P_SECTION=" + quote(section)
+						+ " P_LVL_SEQ=" + quote(lvl_seq)
+						+ " P_MENU_NM=" + quote(menu_nm)
+						+ " P_PAGE_URL=" + quote(page_url)
+						+ " P_ETC=" + quote(etc)
+						+ " P_MANAGER=" + quote(manager)
+						+ " P_JOIN_DATE=" + quote(join_date)
+						+ " P_DEPT_NM=" + quote(dept_nm)
+						;
+	}
+	// 수정 (Update)
+	else{
+		argument    	= " _sqlName=TST001V.updateTestTableData"
+						+ " P_ID=" + quote(id)
+						+ " P_LEVELS=" + quote(levels)
+						+ " P_SECTION=" + quote(section)
+						+ " P_LVL_SEQ=" + quote(lvl_seq)
+						+ " P_MENU_NM=" + quote(menu_nm)
+						+ " P_PAGE_URL=" + quote(page_url)
+						+ " P_ETC=" + quote(etc)
+						+ " P_MANAGER=" + quote(manager)
+						+ " P_JOIN_DATE=" + quote(join_date)
+						+ " P_DEPT_NM=" + quote(dept_nm)						
+						;
+	}		
+	
+	var callbackFunc 	= "";
+	
+	if(flag == 'last'){
+		callbackFunc    = "fn_save_callback";
+	}
+	
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 저장이나 수정이 완료되고 난 후에 진행바를 화면에서 없에고 자동으로 조회를 시킨다 */
+function fn_save_callback()
+{
+	gfn_showProgressWindow(false);
+	btn_search_OnClick();
+}
+
+
+/* 헤더에서 체크박스를 선택할 경우에 전부 선택이 되게 한다. */
+function Grid1_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	// 체크박스 클릭시
+	if(nCell == 0){
+		
+		gfn_SetCheckBoxAllSelected(nCell, Grid1, ds_test_data, "checked");
+		
+	}
+}
+
+
+/* 행추가 함수 */
+function btn_add_row_OnClick(obj)
+{
+	gfn_AddColumn(ds_test_data, 'checked');
+}
+
+
+/* 행삭제 함수 */
+function btn_del_row_OnClick(obj)
+{
+	if((ds_test_data.rowcount < 1) || (!confirm('정말로 삭제하시겠습니까?'))){
+		return;
+	}
+	
+	Grid1.SetCellProp("head", 0, "Text", 0); //삭제하면 자동조회를 하므로 헤더의 체크박스를 해제한다.
+	
+	// 삭제되면서 총 로우수가 변하므로 로우수가 큰 것부터 삭제한다.
+	for(var i=ds_test_data.rowcount; i >= 0; i--)
+	{	
+		if(ds_test_data.GetColumn(i,"checked") == 1){
+		
+			//새로 행을 추가했지만 저장하지 않고 삭제하는 경우
+			if(ds_test_data.GetColumn(i,'id') == null){
+			
+				ds_test_data.DeleteRow(i);
+				
+			}
+			//디비에 있는 값을 삭제하는 경우
+			else{
+			
+				deleteTestData(ds_test_data.GetColumn(i,'id'),i);
+				
+			}
+			
+		}
+	}
+}
+
+
+/* 그리드와 디비에서 리스트를 삭제한다. */
+function deleteTestData(id,delCnt)
+{
+	ds_test_data.DeleteRow(delCnt); //그리드에서 리스트에서 삭제한다.
+
+	var svcID			= "TST001V.testFunctionDelete";
+	var url   			= "service::TST001V.testFunctionDelete.do";
+	var inDatasets      = "";
+	var outDatasets 	= "";
+	var argument    	= " _sqlName=TST001V.deleteTestTableData"
+						+ " P_ID=" + quote(id)
+						;
+	var callbackFunc 	= "";
+
+	if(ParseInt(id) > 68){
+		//새로 추가 된 값은 삭제시킨다.
+		transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+	}else{
+		//새로 추가된 값 이외의 본레의 값은 디비에서 삭제 시키지 않는다.
+		//transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+	}
+}
+
+
+/* 테스트 월 입력 */
+function Button3_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "M", MaskEdit1);
+}
+
+
+/* 테스트 날짜 입력 */
+function Button6_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", MaskEdit0);
+}
+
+
+/* 테스트 팝업 */
+function Button25_OnClick(obj)
+{
+	var params = "p_text=" + ed_popup_value.Text;
+	gfn_CmnPopup("TestView::testPopup", params, "modal", "336, 168, -1, -1");
+}
+
+
+/* 엑셀 다운로드 */
+function btn_print_OnClick(obj)
+{
+	gfn_SaveExcelContents(FileDialog0, Grid1, "C:\\", "TestExcel", "테스트 보고서", true);
+}
+
+
+/* 셀 클릭시에 한건 수정 */
+function Grid1_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if(nCell == 5){
+		if(confirm("ETC를 정말로 수정하시겠습니까?")){
+			updateUsePLSQL(ds_test_data.GetColumn(nRow, "id"),ds_test_data.GetColumn(nRow, "etc"));
+		}
+	}
+}
+
+
+/* PL/SQL 사용하는 한건 수정 */
+function updateUsePLSQL(id,etc)
+{
+	var svcID			= "TST001V.testPlSqlFunction";
+	var url   			= "service::TST001V.testPlSqlFunction.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_test_data=TST001V.updateTestPlSql";join
+	var argument    	= " _sqlName=TST001V.updateTestPlSql"
+	//var outDatasets 	= "ds_test_data=TST001V.updateTestPlSql2";
+	//var argument    	= " _sqlName=TST001V.updateTestPlSql2"
+						+ " P_ID=" + quote(id)
+						+ " P_ETC=" + quote(etc)
+						;
+	var callbackFunc 	= "fn_update_PLSQL_callback";
+
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* updateUsePLSQL 콜백 함수*/
+function fn_update_PLSQL_callback()
+{
+	btn_search_OnClick();
+}
+]]></Script>
+</Window>

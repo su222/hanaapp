@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<params>	
+	<param id="VERSION" type="string">2010,6,3,1</param>
+	<param id="Config" type="string">true</param>
+	</params>
+	
+	<dataset id="win32">			
+		<colinfo id="SOURCE" type="string" size="255"/>
+		<colinfo id="DEVICE" type="string" size="255"/>
+		<colinfo id="VERSION" type="string" size="255"/>		
+		<colinfo id="STATUS" type="string"  size="2"/>		
+		<record>
+			<DEVICE>win32</DEVICE>	
+			<SOURCE>update_cab_files.xml</SOURCE>				
+		</record>
+		<record>
+			<DEVICE>win32</DEVICE>	
+			<SOURCE>update_component_files.xml</SOURCE>				
+		</record>
+		<record>
+			<DEVICE>win32</DEVICE>	
+			<SOURCE>update_engine_files.xml</SOURCE>				
+		</record>
+		<record>
+			<DEVICE>win32</DEVICE>	
+			<SOURCE>update_etc_files.xml</SOURCE>				
+		</record>
+		<record>
+			<DEVICE>win32</DEVICE>	
+			<SOURCE>update_msi_files.xml</SOURCE>				
+		</record>
+		<!--
+		<record>
+			<DEVICE>win32</DEVICE>	
+			<SOURCE>update_site_files.xml</SOURCE>				
+		</record>
+		-->		
+	</dataset>
+</root>

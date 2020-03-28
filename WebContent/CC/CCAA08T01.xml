@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="650" Id="CCAA08T01" Left="8" OnLoadCompleted="CCAA08T01_OnLoadCompleted" OnUnloadCompleted="CCAA08T01_OnUnloadCompleted" PidAttrib="7" Title="작업의뢰관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1240" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_NOTICE_LST" OnColumnChanged="DS_NOTICE_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEQ_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TITLE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CONTENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="DUE_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="OK_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="CATE_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CATE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_temp"></Dataset>
+		</Datasets>
+		<Shape BKColor="user7" Bottom="372" Height="284" Id="Shape_edit" Left="0" LineColor="user6" Right="1235" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="17" Top="88" Type="RoundRect" Width="1235"></Shape>
+		<Shape BKColor="user21" Bottom="46" Height="40" Id="Shape_search" Left="0" LineColor="user22" Right="1234" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="2" Top="6" Type="RoundRect" Width="1234"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_add" ImageID="Btn_sub_add" Left="1182" LeftMargin="16" OnClick="btn_add_OnClick" Style="Btn_sub" TabOrder="1" Text="추가" Top="62" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="61" Height="15" Id="Shape1" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="1239" TabOrder="4" Top="46" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Shape Bottom="88" Height="5" Id="Shape3" Left="-2" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1237" TabOrder="5" Top="83" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Image Align="Left" Height="14" Id="Image0" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="6" Text="조회내역" Top="395" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="389" Height="15" Id="Shape12" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="1239" TabOrder="7" Top="374" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Shape Bottom="5" Height="5" Id="Shape15" Left="-11" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1228" TabOrder="8" Top="0" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_NOTICE_LST" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="641" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="225" Id="GRD_NOTICE_LST" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_NOTICE_LST_OnCellClick" OnHeadClick="GRD_NOTICE_LST_OnHeadClick" Right="1235" RowHeight="20" Style="Grid_2" TabOrder="9" TabStop="true" Top="416" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1235">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="30"/>
+						<col width="0"/>
+						<col width="80"/>
+						<col width="150"/>
+						<col width="500"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="checkbox" edit="checkbox" InputZeroTime="true"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" InputZeroTime="true" text="지사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="일련번호"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="카테고리"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제목"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="요청일"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="9" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="완료요구일"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="10" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="완료일"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="11" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="진행상태"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell align="center" col="3" colid="chk" color="black" display="checkbox" edit="checkbox" InputZeroTime="true"/>
+						<cell align="left" col="4" colid="BRCH_ID" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="5" colid="SEQ_NO" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="6" colid="CATE_NM" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="7" colid="TITLE" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="8" colid="REQ_DT" color="black" display="date" InputZeroTime="true"/>
+						<cell align="center" col="9" colid="DUE_DT" color="black" display="date" InputZeroTime="true"/>
+						<cell align="center" col="10" colid="OK_DT" color="black" display="date" InputZeroTime="true"/>
+						<cell align="center" col="11" colid="PRS_STS" color="black" display="combo" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Align="Left" Height="14" Id="Image4" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="10" Text="작업의뢰" Top="69" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="119" Height="28" Id="Shape9" Left="172" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="177" TabOrder="11" Top="91" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<TextArea BindDataset="DS_NOTICE_LST" Column="CONTENT" Height="226" Id="TXT_CONTENT" ImeMode="none" Left="99" Style="Edit" TabOrder="2" Top="117" VScroll="TRUE" Width="1125"></TextArea>
+		<Static Align="Center" Border="Flat" Height="228" Id="Static25" Left="5" Style="Stc_Label" TabOrder="12" Text="내용" Top="115" VAlign="Middle" Width="90"></Static>
+		<Shape Bottom="414" Height="5" Id="Shape5" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1239" TabOrder="13" Top="409" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Image Align="Left" Height="18" Id="Image1" ImageID="label_dot" Left="8" LeftMargin="12" Style="Stc_Default_bold" TabOrder="15" Text="제목" Top="17" Transparent="TRUE" Width="80"></Image>
+		<Shape Bottom="47" Height="40" Id="Shape11" Left="46" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="66" TabOrder="16" Top="7" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Edit Border="Flat" Height="18" Id="S_TITLE" Left="66" LeftMargin="4" Style="Edit" TabOrder="14" Top="17" Width="242"></Edit>
+		<Shape Bottom="160" Height="88" Id="Shape6" Left="592" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="596" TabOrder="18" Top="72" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="257" Height="176" Id="Shape0" Left="95" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="99" TabOrder="19" Top="81" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static0" Left="5" Style="Stc_Label" TabOrder="21" Text="제목" Top="92" VAlign="Middle" Width="90"></Static>
+		<Edit BindDataset="DS_NOTICE_LST" Border="Flat" Column="TITLE" Height="18" Id="EDT_TITLE" Left="99" LeftMargin="4" Style="Edit" TabOrder="20" Top="93" Width="1118"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static3" Left="293" Style="Stc_Label" TabOrder="22" Text="요청일" Top="347" VAlign="Middle" Width="90"></Static>
+		<MaskEdit BindDataset="DS_NOTICE_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="REQ_DT" Height="18" Id="EDT_REQ_DT" Left="388" Mask="####-##-##" Style="Edit" TabOrder="23" Top="349" Type="STRING" Width="73"></MaskEdit>
+		<Shape Bottom="373" Height="28" Id="Shape13" Left="461" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="466" TabOrder="25" Top="345" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="BTN_REQ_DT" ImageID="Btn_calendar" Left="466" OnClick="BTN_REQ_DT_OnClick" TabOrder="24" Text="Button1" Top="350" Width="16"></Button>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static1" Left="493" Style="Stc_Label" TabOrder="26" Text="완료요구일" Top="347" VAlign="Middle" Width="90"></Static>
+		<MaskEdit BindDataset="DS_NOTICE_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="DUE_DT" Height="18" Id="EDT_DUE_DT" Left="588" Mask="####-##-##" Style="Edit" TabOrder="27" Top="349" Type="STRING" Width="73"></MaskEdit>
+		<Shape Bottom="373" Height="28" Id="Shape2" Left="661" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="666" TabOrder="29" Top="345" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="BTN_DUE_DT" ImageID="Btn_calendar" Left="666" OnClick="BTN_DUE_DT_OnClick" TabOrder="28" Text="Button1" Top="350" Width="16"></Button>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static2" Left="693" Style="Stc_Label" TabOrder="30" Text="완료일" Top="347" VAlign="Middle" Width="90"></Static>
+		<MaskEdit BindDataset="DS_NOTICE_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="OK_DT" Height="18" Id="EDT_OK_DT" Left="788" Mask="####-##-##" Style="Edit" TabOrder="31" Top="349" Type="STRING" Width="73"></MaskEdit>
+		<Button Height="16" Id="BTN_OK_DT" ImageID="Btn_calendar" Left="866" OnClick="BTN_OK_DT_OnClick" TabOrder="32" Text="Button1" Top="350" Width="16"></Button>
+		<Shape Bottom="373" Height="28" Id="Shape4" Left="861" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="866" TabOrder="33" Top="345" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static8" Left="896" Style="Stc_Label" TabOrder="34" Text="진행상태" Top="347" VAlign="Middle" Width="80"></Static>
+		<Combo BindDataset="DS_NOTICE_LST" Border="Flat" Column="PRS_STS" Height="18" Id="COB_PRS_STS" ImeMode="none" Left="979" ResetIndex="FIRST" ShadowColor="user2" Style="Combo_Ess" TabOrder="35" Top="347" Width="95"></Combo>
+		<Image Align="Left" Height="18" Id="Image2" ImageID="label_dot" Left="345" LeftMargin="12" Style="Stc_Default_bold" TabOrder="37" Text="진행상태" Top="17" Transparent="TRUE" Width="66"></Image>
+		<Shape Bottom="48" Height="40" Id="Shape7" Left="408" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="428" TabOrder="36" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Combo Border="Flat" Height="18" Id="S_PRS_STS" Left="426" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="38" Top="16" Width="130"></Combo>
+		<Shape Bottom="645" Height="640" Id="Shape8" Left="1234" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1239" TabOrder="39" Top="5" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static4" Left="5" Style="Stc_Label" TabOrder="40" Text="카테고리" Top="347" VAlign="Middle" Width="90"></Static>
+		<Edit BindDataset="DS_NOTICE_LST" Border="Flat" Column="CATE_NM" Height="18" Id="EDT_CATE_ID" Left="101" LeftMargin="4" OnKeyDown="EDT_HNA_CHG_USR_NM_OnKeyDown" Style="Edit_Ess" TabOrder="41" Top="349" Width="159"></Edit>
+		<Button Height="18" Id="POP_CATE_ID" ImageID="Btn_search" Left="268" OnClick="POP_CATE_ID_OnClick" TabOrder="42" TabStop="FALSE" Text="Button1" Top="349" Width="21"></Button>
+		<Shape Bottom="376" Height="36" Id="Shape18" Left="263" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="268" TabOrder="43" Top="340" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 작업의뢰관리
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 작업의뢰 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var sel_flag = "S";					// 회사선택구분(S:단일선택, M:멀티선택)
+var form_id = "CCAA08T01" ;			// 폼ID (해당 폼 ID로 권한을체크한다.)
+
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+var curRow          = "";
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	//*------------------------------------------------------------------------
+    //* 리사이즈 컨포넌트 정의
+	//* H: 가로 리사이즈
+	//* W: 세로 리사이즈
+	//* A: 가로세로 리사이즈
+	//* R: Resize
+	//* M: Move
+	//* Quick view로 테스트시 주석처리 후 테스트
+    //*------------------------------------------------------------------------
+	gfn_SetResize(this, "Shape_search:H:R GRD_NOTICE_LST:A:R Shape_edit:H:R btn_add:H:M btn_excel_download:H:M");
+
+
+	// 진행상태
+	gfn_comCodeCombo(S_PRS_STS, "CC05", "","전체");
+	
+	gfn_comCodeCombo(COB_PRS_STS, "CC05", "","");
+	
+	
+	// 서류접수방법
+	gfn_makeCodeDataSet("CC05", "", "DS_PRS_STS");  
+
+	
+	// Grid의 컬럼에 매핑 해보자 .
+	gfn_setGridCombo(GRD_NOTICE_LST, "DS_PRS_STS", 11);
+
+
+	// 공통 명령어 조정
+	gfn_set_cbutton("조회:fn_search 저장:fn_save 삭제:fn_delete");
+		
+	
+	fn_search();
+
+
+	
+	//fn_search();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	DS_NOTICE_LST.ClearData();
+	
+	svcID			= "CCAA08T01.selectNoticeLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_NOTICE_LST=cc.CCNoticeDAO.selectNoticeLst";
+	argument    	= " _sqlName=cc.CCNoticeDAO.selectNoticeLst"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " S_TITLE=" + quote(S_TITLE.Text)
+							+ " S_PRS_STS=" + quote(S_PRS_STS.Value)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	curRow = DS_NOTICE_LST.currow;
+	
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	
+	// 필터 
+	DS_NOTICE_LST.FireEvent = false;		
+	DS_NOTICE_LST.UnFilter();
+	DS_NOTICE_LST.Filter("FLAG !='N'");
+	
+	
+	// 회사 체크 
+	if(DS_NOTICE_LST.rowcount > 0)
+	{
+		// 필수체크
+		for(var i=0;i<DS_NOTICE_LST.rowcount;i++)
+		{
+			
+			cMessage = "";
+
+			
+			if(length(DS_NOTICE_LST.GetColumn(i, "REQ_DT")) == 0)
+			{
+				bValidate = false;
+				cMessage += "요청일 누락 ";
+			}
+			
+			
+
+			if(length(DS_NOTICE_LST.GetColumn(i, "TITLE")) == 0)
+			{
+				bValidate = false;
+				cMessage += "제목 누락 ";
+			}			
+			
+			if(bValidate == false)
+			{
+				pMessage += "\n ["+i+"] " + cMessage;
+			}
+		}
+		
+		// 필수항목 누락 
+		if(bValidate == false)
+		{
+			gfn_popup_message("modal", "error", pMessage, "확인");
+		}
+	}
+	else
+	{
+		//gfn_popup_message("modal", "error", "저장할 항목이 없습니다.", "확인");
+		bValidate = false;		
+	
+	}
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		// 저장 
+		//if(gfn_popup_message("modal", "confirm", "저장하시겠습니까?", "확인")) 
+		//{
+
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			ds_temp.ClearData();
+			ds_temp.CopyF("DS_NOTICE_LST");
+			
+			svcID			= "CCAA08T01.saveNoticeLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "cc.CCNoticeDAO.saveNoticeLst=ds_temp:A";
+			outDatasets 	= "";
+			argument    	= " _sqlName=cc.CCNoticeDAO.saveNoticeLst";
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		//}
+	
+	}
+
+	DS_NOTICE_LST.UnFilter();
+	DS_NOTICE_LST.Filter("flag != 'D'");
+	DS_NOTICE_LST.FireEvent = true;	
+
+	DS_NOTICE_LST.row = curRow;
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 삭제 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_delete()
+{
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	
+	// 필터 
+	DS_NOTICE_LST.FireEvent = false;		
+	DS_NOTICE_LST.UnFilter();
+	DS_NOTICE_LST.Filter("CHK ='1'");
+	
+	
+	// 회사 체크 
+	if(DS_NOTICE_LST.rowcount > 0)
+	{
+		// 필수체크
+		for(var i=0;i<DS_NOTICE_LST.rowcount;i++)
+		{
+		}
+		
+		// 필수항목 누락 
+		if(bValidate == false)
+		{
+			gfn_popup_message("modal", "error", pMessage, "확인");
+		}
+	}
+	else
+	{
+		//gfn_popup_message("modal", "error", "삭제할 항목이 없습니다.", "확인");
+		bValidate = false;		
+	
+	}
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		//삭제 
+		//if(gfn_popup_message("modal", "confirm", "삭제하시겠습니까?", "확인")) 
+		//{
+		
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			ds_temp.ClearData();
+			ds_temp.CopyF("DS_NOTICE_LST");		
+		
+			svcID			= "CCAA08T01.deleteNoticeLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "cc.CCNoticeDAO.deleteNoticeLst=ds_temp:A";
+			outDatasets 	= "";
+			argument    	= " _sqlName=cc.CCNoticeDAO.deleteNoticeLst";
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		//}
+	
+	}
+
+	DS_NOTICE_LST.UnFilter();
+	DS_NOTICE_LST.Filter("FLAG != 'D'");
+	DS_NOTICE_LST.FireEvent = true;	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "CCAA08T01.selectNoticeLst" :
+		
+			// 조회 결과 없으면 메시지를 띄운다.
+			//if(DS_NOTICE_LST.rowcount < 1) 
+			//{ 
+			//	gfn_popup_message("modal", "ico_info", "조회된 내용이 없습니다.", "확인");	
+			//}
+			
+			
+		break;	
+
+		// 저장
+		case "CCAA08T01.saveNoticeLst" :
+		
+			//gfn_popup_message("modal", "ico_info", "추가/수정완료.", "확인");	
+			fn_search();		
+		break;	
+		
+		// 삭제
+		case "CCAA08T01.deleteNoticeLst" :
+		
+			//gfn_popup_message("modal", "ico_info", "삭제완료.", "확인");	
+			fn_search();		
+		break;	
+
+		default:
+			  alert("기타"); 
+	}
+
+	if(curRow != null) 
+	{
+		DS_NOTICE_LST.row = curRow;
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 변경된 항목 있는지 체크
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 저장 안하고 창 닫을때 체크해서 저장하게 한다.
+//*-----------------------------------------------------------------------------------------------
+function fn_check_unsave()
+{
+	var isUnSave = false;
+
+	curRow = DS_NOTICE_LST.currow;
+	
+	// 필터 
+	DS_NOTICE_LST.FireEvent = false;		
+	DS_NOTICE_LST.UnFilter();
+	DS_NOTICE_LST.Filter("FLAG !='N'");
+	
+	
+	//  체크 
+	if(DS_NOTICE_LST.rowcount > 0)
+	{
+		isUnSave = true;
+	}
+
+	DS_NOTICE_LST.UnFilter();
+	DS_NOTICE_LST.Filter("flag != 'D'");
+	DS_NOTICE_LST.FireEvent = true;	
+
+	DS_NOTICE_LST.row = curRow;
+			
+	return isUnSave;
+	
+}
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_add_row()
+{
+
+	var vRow = DS_NOTICE_LST.AddRow();
+	var cRow = GDS_AUTH_LST.FindRow("MNG_BRCH_ID",S_BRCH_ID.Value);	// 콤보박스의 row
+
+	gfn_get_date('TODAY',0,'YYYYMMDD');
+	
+	// 기초값
+	DS_NOTICE_LST.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+	DS_NOTICE_LST.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+	DS_NOTICE_LST.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+    
+    DS_NOTICE_LST.SetColumn(vRow,"BRCH_ID", GDS_USER_INFO.GetColumn(0, "BRCH_ID"));// 
+
+    DS_NOTICE_LST.SetColumn(vRow,"REQ_DT", GDS_DATE_TYPE.GetColumn(0,'DATE_VAL'));// 
+	
+	DS_NOTICE_LST.SetColumn(vRow,"PRS_STS", '10');// 
+	
+    
+}
+
+
+
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAA08T01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+	
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAA08T01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid  클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_NOTICE_LST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	curRow = nRow;	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_NOTICE_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	// 체크박스 클릭시
+	if(nCell == 3)
+	{
+		gfn_SetCheckBoxAllSelected(nCell, GRD_NOTICE_LST, DS_NOTICE_LST, "CHK");
+	}
+	// 나머지는 Sorting
+	else
+	{
+		gfn_GridSort(GRD_NOTICE_LST, DS_NOTICE_LST, nCell);	
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_add_OnClick(obj)
+{
+	fn_add_row();
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 flag 설정
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_NOTICE_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	// 즉 조회된거를 수정하면 U로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+		obj.SetColumn(nRow, "CHK", "1");	// 자동 체크 처리
+	}
+}
+
+
+
+function BTN_REQ_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", EDT_REQ_DT);
+}
+
+function BTN_DUE_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", EDT_DUE_DT);
+}
+
+function BTN_OK_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", EDT_OK_DT);
+}
+
+function POP_CATE_ID_OnClick(obj)
+{
+	var params = "";
+			   	
+			   	
+	var retArr = gfn_openPopup(this, "CP::CPAE01P01.xml", params, true);
+
+	DS_NOTICE_LST.SetColumn(DS_NOTICE_LST.curRow,"CATE_ID", retArr[0]);
+	DS_NOTICE_LST.SetColumn(DS_NOTICE_LST.curRow,"CATE_NM", retArr[1]);
+}
+]]></Script>
+</Window>

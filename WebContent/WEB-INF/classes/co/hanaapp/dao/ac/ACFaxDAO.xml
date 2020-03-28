@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_AC_FAX_LST : 팩스표지 -->
+<mapper namespace="co.hanaapp.dao.ac.ACFaxDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 팩스표지 조회 -->
+    <select id="selectFaxLst" parameterType="map" resultType ="map">
+			SELECT /* 팩스표지 */
+					'N' AS FLAG,
+					ROWIDTOCHAR(A.ROWID) AS ROW_ID,
+					'0' AS CHK,
+					#{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+					NVL(A.BRCH_ID,' ') AS  BRCH_ID,
+					NVL(AFF_SEQ, '-99999') AS AFF_SEQ,
+					NVL(TUB_SEQ, '-99999') AS TUB_SEQ,
+					NVL(TUB_NM, ' ') AS TUB_NM,
+					NVL(CHG_NM, ' ') AS CHG_NM,
+					NVL(TUB_TEL, ' ') AS TUB_TEL,
+					NVL(TUB_FAX, ' ') AS TUB_FAX,
+					NVL(SND_NM, ' ') AS SND_NM,
+					NVL(SND_CHGR, ' ') AS SND_CHGR,
+					NVL(SND_TEL, ' ') AS SND_TEL,
+					NVL(SND_FAX, ' ') AS SND_FAX,
+					NVL(TITLE, ' ') AS TITLE,
+					NVL(SND_CNT, ' ') AS SND_CNT,
+					NVL(TO_CHAR(SND_DT,'YYYYMMDD'), ' ') AS SND_DT,
+					NVL(SND_REF, ' ') AS SND_REF,
+					NVL(SND_NOTE, ' ') AS SND_NOTE
+			  FROM TB_AC_FAX_LST A
+			 WHERE BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+			   AND AFF_SEQ = #{S_AFF_SEQ, jdbcType=VARCHAR}
+
+    </select>
+
+
+   <!-- 팩스표지 조회 (추가용) -->
+    <select id="selectFaxLstAdd" parameterType="map" resultType ="map">
+            SELECT /* 팩스표지 */
+                    'I' AS FLAG,
+                    ' ' AS ROW_ID,
+                    '0' AS CHK,
+                    #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+                    NVL(A.BRCH_ID,' ') AS  BRCH_ID,
+                    NVL(A.AFF_SEQ, '-99999') AS AFF_SEQ,
+                    NVL(A.TUB_SEQ, '-99999') AS TUB_SEQ,
+                    NVL(A.TUB_NM, ' ') AS TUB_NM,
+                    NVL(A.CHG_NM, ' ') AS CHG_NM,
+                    NVL(A.TUB_TEL, ' ') AS TUB_TEL,
+                    NVL(A.TUB_FAX, ' ') AS TUB_FAX,
+                    NVL(B.BRCH_NM, ' ') AS SND_NM,
+                    NVL(A.HNA_CHG_USR_NM, ' ') AS SND_CHGR,
+                    NVL(C.TEL_NO, ' ') AS SND_TEL,
+                    NVL(B.FAX_NO, ' ') AS SND_FAX,
+                    NVL(A.CLT_NM, ' ') AS TITLE,
+                    '2매 (표지 포함)' AS SND_CNT,
+                    NVL(TO_CHAR(SYSDATE,'YYYYMMDD'), ' ') AS SND_DT,
+                    ' ' AS SND_REF,
+                    ' ' AS SND_NOTE
+              FROM TB_AC_AFFAIR_MST A, TB_CC_BRCH_BAS B, TB_CC_USER_LST C
+             WHERE A.BRCH_ID = B.BRCH_ID
+               AND A.BRCH_ID = C.BRCH_ID
+               AND A.HNA_CHG_USR = C.USR_ID
+               AND A.BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+               AND A.AFF_SEQ = #{S_AFF_SEQ, jdbcType=VARCHAR}
+
+    </select>
+
+  	<!-- 팩스표지 추가/수정/삭제 -->
+     <insert   id="saveFaxLst" parameterType="map" >
+
+        begin
+            IF #{FLAG, jdbcType=VARCHAR} = 'D' THEN
+                DELETE FROM TB_AC_FAX_LST
+                 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;              
+            ELSE			
+							
+				UPDATE TB_AC_FAX_LST
+				   SET TUB_SEQ = #{TUB_SEQ, jdbcType=VARCHAR} , 
+				       TUB_NM = #{TUB_NM, jdbcType=VARCHAR} , 
+				       CHG_NM = #{CHG_NM, jdbcType=VARCHAR} , 
+				       TUB_TEL = #{TUB_TEL, jdbcType=VARCHAR} , 
+				       TUB_FAX = #{TUB_FAX, jdbcType=VARCHAR} , 
+				       SND_NM = #{SND_NM, jdbcType=VARCHAR} , 
+				       SND_CHGR = #{SND_CHGR, jdbcType=VARCHAR} , 
+				       SND_TEL = #{SND_TEL, jdbcType=VARCHAR} , 
+				       SND_FAX = #{SND_FAX, jdbcType=VARCHAR} , 
+				       TITLE = #{TITLE, jdbcType=VARCHAR} , 
+				       SND_CNT = #{SND_CNT, jdbcType=VARCHAR} , 
+				       SND_DT = #{SND_DT, jdbcType=VARCHAR} , 
+				       SND_REF = #{SND_REF, jdbcType=VARCHAR} , 
+				       SND_NOTE = #{SND_NOTE, jdbcType=VARCHAR} , 
+				       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+				       EDT_DT = SYSDATE 
+			    where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+	
+	
+	               if sql%rowcount=0 then
+						
+						
+						INSERT INTO TB_AC_FAX_LST
+						        (
+						         BRCH_ID , 
+						         AFF_SEQ , 
+						         TUB_SEQ , 
+						         TUB_NM , 
+						         CHG_NM , 
+						         TUB_TEL , 
+						         TUB_FAX , 
+						         SND_NM , 
+						         SND_CHGR , 
+						         SND_TEL , 
+						         SND_FAX , 
+						         TITLE , 
+						         SND_CNT , 
+						         SND_DT , 
+						         SND_REF , 
+						         SND_NOTE , 
+						         CRT_USR , 
+						         CRT_DT , 
+						         EDT_USR , 
+						         EDT_DT )
+						 VALUES (
+						         #{BRCH_ID, jdbcType=VARCHAR} , 
+						         #{AFF_SEQ, jdbcType=VARCHAR} , 
+						         #{TUB_SEQ, jdbcType=VARCHAR} , 
+						         #{TUB_NM, jdbcType=VARCHAR} , 
+						         #{CHG_NM, jdbcType=VARCHAR} , 
+						         #{TUB_TEL, jdbcType=VARCHAR} , 
+						         #{TUB_FAX, jdbcType=VARCHAR} , 
+						         #{SND_NM, jdbcType=VARCHAR} , 
+						         #{SND_CHGR, jdbcType=VARCHAR} , 
+						         #{SND_TEL, jdbcType=VARCHAR} , 
+						         #{SND_FAX, jdbcType=VARCHAR} , 
+						         #{TITLE, jdbcType=VARCHAR} , 
+						         #{SND_CNT, jdbcType=VARCHAR} , 
+						         #{SND_DT, jdbcType=VARCHAR} , 
+						         #{SND_REF, jdbcType=VARCHAR} , 
+						         #{SND_NOTE, jdbcType=VARCHAR} , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE );					
+			
+
+	                  end if;
+               END IF;
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_AC_FAX_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 팩스표지 삭제 -->
+    <delete   id="deleteFaxLst" parameterType="map" >
+       	DELETE FROM TB_AC_FAX_LST
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+
+
+</mapper>

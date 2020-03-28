@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="416" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="데이터셋보기" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="648" WorkArea="true">
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_ok" ImageID="Btn_pop_2w" Left="280" LeftMargin="14" OnClick="btn_ok_OnClick" Style="Btn_Popup" TabOrder="1" Text="확인" Top="384" Transparent="TRUE" Width="50"></Button>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg_400" Left="-1" TabOrder="2" Transparent="TRUE" Width="649"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="62" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="3" Text="데이터셋보기" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Image Height="60" Id="Image2" Left="53" TabOrder="4" Top="86" Width="61"></Image>
+		<Grid BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="376" CellMoving="TRUE" ColSelect="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="320" Id="Grid1" InputPanel="FALSE" Left="8" LineColor="default" LineType="OnlyVERT" OnHeadClick="Grid1_OnHeadClick" Right="632" RowHeight="20" Style="Grid_2" TabOrder="5" TabStop="true" Top="56" UseAutoSizing="Both" UseDBuff="true" UseExSizing="Both" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="624">
+			<contents>
+				<format id="Default"></format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : form_grid_temp(폼_그리드템플릿)
+* 작성자     : 이용재
+* 작성일     : 2011-03-24 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-03-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************/
+
+
+
+function form_OnLoadCompleted(obj)
+{
+	var objDs = object(pDataSet);
+	
+	alert(pDataSet);
+	
+	gfn_SetGridHeaderBodyValue(Grid1, gds_test_menu_info, pDataSet,"YES");
+}
+
+
+function btn_ok_OnClick(obj)
+{
+	close(true);
+}
+]]></Script>
+</Window>

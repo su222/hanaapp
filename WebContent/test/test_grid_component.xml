@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="555" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="New&#32;Form" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_test_data">
+				<Contents>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+					<colinfo id="radio_data" size="256" summ="default" type="STRING"/>
+					<colinfo id="currency_data" size="256" summ="default" type="STRING"/>
+					<colinfo id="commbo_data" size="256" summ="default" type="STRING"/>
+					<colinfo id="popup_data" size="256" summ="default" type="STRING"/>
+					<colinfo id="calendar_data" size="256" summ="default" type="STRING"/>
+					<colinfo id="code01" size="256" summ="default" type="STRING"/>
+					<colinfo id="code02" size="256" summ="default" type="STRING"/>
+					<record>
+						<calendar_data></calendar_data>
+						<checked>1</checked>
+						<code01></code01>
+						<code02></code02>
+						<commbo_data>CM0002</commbo_data>
+						<currency_data>10000000000</currency_data>
+						<popup_data></popup_data>
+						<radio_data>1</radio_data>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_cmn_code">
+				<Contents>
+					<colinfo id="common_code" size="256" summ="default" type="STRING"/>
+					<colinfo id="code_name" size="256" summ="default" type="STRING"/>
+					<record>
+						<code_name>박지성</code_name>
+						<common_code>CM0001</common_code>
+					</record>
+					<record>
+						<code_name>이영표</code_name>
+						<common_code>CM0002</common_code>
+					</record>
+					<record>
+						<code_name>이청용</code_name>
+						<common_code>CM0003</common_code>
+					</record>
+					<record>
+						<code_name>차두리</code_name>
+						<common_code>CM0004</common_code>
+					</record>
+					<record>
+						<code_name>홍명보</code_name>
+						<common_code>CM0005</common_code>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="128" Height="88" Id="Shape5" Left="0" LineColor="user22" Right="790" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="11" Top="40" Type="RoundRect" Width="790"></Shape>
+		<Static Height="20" Id="Static8" Style="Stc_Title" TabOrder="2" Text="Test&#32;Grid&#32;Component" Width="304"></Static>
+		<Shape Bottom="40" Height="7" Id="Shape13" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="790" TabOrder="3" Top="33" Type="Rectangle" Visible="FALSE" Width="790"></Shape>
+		<Image Align="Left" Height="14" Id="Image2" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="4" Text="테스트&#32;조회" Top="150" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="169" Height="5" Id="Shape20" Left="-8" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="802" TabOrder="6" Top="164" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Grid AutoFit="TRUE" BindDataset="ds_test_data" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="555" CellMoving="TRUE" ColSelect="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="387" Id="Grid1" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnCellClick="Grid1_OnCellClick" OnExpandEdit="Grid1_OnExpandEdit" Right="790" RowHeight="20" Style="Grid_2" TabOrder="5" TabStop="true" Top="168" UseAutoSizing="Both" UseDBuff="true" UseExSizing="Both" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="790">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="68"/>
+						<col width="141"/>
+						<col width="140"/>
+						<col width="134"/>
+						<col width="116"/>
+						<col width="93"/>
+						<col width="95"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="text" text="Checkbox"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="Currency"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="Commbo"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="3" color="user52" display="text" text="Popup"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="4" color="user52" display="text" text="Calendar"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="5" color="user52" display="text" text="CODE01"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="6" color="user52" display="text" text="CODE02"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="checked" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="currency_data" display="currency" displaymaskchar="-" edit="integer"/>
+						<cell align="center" col="2" colid="commbo_data" combocol="common_code" combodataset="ds_cmn_code" combodisplaynltext="true" combotext="code_name" display="combo" edit="combo"/>
+						<cell bkimagealign="right" col="3" colid="popup_data" display="text" edit="normal" expandimage="Btn_search" expandshow="true" expandsize="21"/>
+						<cell align="center" col="4" colid="calendar_data" display="date" edit="date" expandimage="Btn_calendar" expandshow="true"/>
+						<cell col="5" colid="code01" display="text"/>
+						<cell col="6" colid="code02" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_del_row" ImageID="Btn_sub_rowdel" Left="727" OnClick="btn_del_row_OnClick" Style="Btn_sub" TabOrder="8" Text="&#32;&#32;&#32;행삭제" Top="143" Width="61"></Button>
+		<Shape Bottom="169" Height="32" Id="Shape19" Left="722" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="727" TabOrder="9" Top="137" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_add_row" ImageID="Btn_sub_rowadd" Left="661" OnClick="btn_add_row_OnClick" Style="Btn_sub" TabOrder="7" Text="&#32;&#32;&#32;행추가" Top="143" Width="61"></Button>
+		<Shape Bottom="143" Height="15" Id="Shape2" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="10" Top="128" Type="Rectangle" Visible="FALSE" Width="794"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="728" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="12" Top="48" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button10" ImageID="Btn_com_4w" Left="28" LeftMargin="12" OnClick="Button10_OnClick" Style="Btn_Com" TabOrder="13" Text="정보팝업" Top="47" TopMargin="1" Transparent="TRUE" Width="75"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button0" ImageID="Btn_com_4w" Left="28" LeftMargin="12" OnClick="Button0_OnClick" Style="Btn_Com" TabOrder="14" Text="확인팝업" Top="74" TopMargin="1" Transparent="TRUE" Width="75"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button1" ImageID="Btn_com_4w" Left="28" LeftMargin="12" OnClick="Button1_OnClick" Style="Btn_Com" TabOrder="15" Text="에러팝업" Top="101" TopMargin="1" Transparent="TRUE" Width="75"></Button>
+		<Shape Bottom="145" Height="112" Id="Shape11" Left="0" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="20" TabOrder="1" Top="33" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Combo Border="Flat" Height="18" Id="cob_test_code" ImeMode="none" Left="244" Style="Combo" TabOrder="16" Top="49" Width="160"></Combo>
+		<Image Align="Left" Height="15" Id="Image1" Left="133" LeftMargin="0" Style="Stc_Default_bold" TabOrder="17" Text="공통코드&#32;콤보" Top="52" Transparent="TRUE" Width="83"></Image>
+		<Image Align="Left" Height="12" Id="Image0" Left="132" LeftMargin="0" Style="Stc_Default_bold" TabOrder="18" Text="공통코드&#32;라디오" Top="81" Transparent="TRUE" Width="108"></Image>
+		<Radio ColumnCount="10" Height="21" Id="rd_test_code" INDEX="-1" Left="244" TabOrder="19" Top="75" Width="539"></Radio>
+		<Image Align="Left" Height="14" Id="Image3" Left="132" LeftMargin="0" Style="Stc_Default_bold" TabOrder="20" Text="공통코드&#32;체크박스" Top="106" Transparent="TRUE" Width="116"></Image>
+	</Form>
+	<Script><![CDATA[//#include "script::cmn_calendar.js";
+//#include "script::cmn_function.js";
+
+//#include "script::lib_comm.js";
+//#include "script::lib_popup.js";
+
+#include "lib::lib_comm.js";
+
+function form_OnLoadCompleted(obj)
+{
+	/*
+	cob_test_code.InnerDataset = "gds_test_code";
+	cob_test_code.DataColumn = "code_name";
+	
+	gfn_AddComboData(0, gds_test_code, "id", "0", "code_name", "[전체]");
+	cob_test_code.Index  = 0;	
+	*/
+	
+	//gfn_SetCmnRadio();
+	
+	/*
+	rd_test_code.InnerDataset = "gds_test_code";
+	rd_test_code.DataColumn   = "code_name";
+	rd_test_code.CodeColumn   = "code_value";
+	rd_test_code.Index        = 3;
+	*/
+	
+	gfn_SetCmnCheckBox(gds_test_code, "chk_test", "chk_test_OnClick", "wheat", 102, 248, 70, 20, 70, "row", true);
+	
+	gfn_SetCmnRadio(rd_test_code, "gds_test_code", "code_name", "code_value", 2);
+	
+	gfn_SetCmnCommbo(cob_test_code, "gds_test_code", "code_value", "code_name", true, 0);
+	
+	gfn_FormLoadEventProc(obj);
+}
+
+
+var popupValue = ""; // 팝업창에서 받아온 값을 넣어주기 위해서 전역변수로 선언 (현제 쓰이지는 않는다)
+
+
+function Grid1_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if(nCell == 3){
+		/*
+		var tmpValue = ds_test_data.GetColumn(nRow,"popup_data");
+		if(tmpValue == ''){
+			tmpValue = "";
+		}
+		var tmpParam = "p_obj=" + obj +" p_nRow=" + nRow +" p_nCell=" + nCell;
+		gfn_CmnPopup("test::test_grid_list.xml", tmpParam, "MODAL", "368, 288, -1, -1");
+		*/
+		gfn_PopupGridView(obj,"test::test_grid_list.xml",nRow,nCell,288,368);
+	}
+}
+
+
+function Grid1_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	if(nCell == 4){
+		gfn_PopupGridCalendar(obj, nRow, nCell);
+		//Trace("nRow : "+nRow+" nCell : "+nCell);
+	}
+}
+
+
+function btn_add_row_OnClick(obj)
+{
+	gfn_AddColumn(ds_test_data, 'checked');
+}
+
+
+function btn_del_row_OnClick(obj)
+{
+	for(var i=ds_test_data.rowcount; i >= 0; i--)
+	{	
+		if(ds_test_data.GetColumn(i,"checked") == 1){
+
+			ds_test_data.DeleteRow(i);
+			
+		}
+	}
+}
+
+
+function Button10_OnClick(obj)
+{
+	gfn_popup_message("modal", "info", "테스트 정보 메시지", "테스트 정보 타이틀");
+}
+
+
+function Button0_OnClick(obj)
+{
+	gfn_popup_message("modal", "confirm", "테스트 확인 메시지", "테스트 확인 타이틀");
+}
+
+
+function Button1_OnClick(obj)
+{
+	gfn_popup_message("modal", "error", "테스트 에러 메시지", "테스트 에러 타이틀");
+}
+
+
+function chk_test_OnClick()
+{
+	alert("chk_OnClick");
+}
+
+
+function btn_search_OnClick(obj)
+{
+	alert(chk_test0+','+chk_test1+','+chk_test2); // 각 체크박스 값 (0 or 1)
+	alert(rd_test_code.Value); // 체크된 라디오박스 값
+}
+
+function Checkbox0_OnClick(obj,strValue)
+{
+	
+}
+]]></Script>
+</Window>

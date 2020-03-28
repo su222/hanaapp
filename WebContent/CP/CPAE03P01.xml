@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="496" Id="CPAE03P01" Left="8" OnLoadCompleted="CPAE03P01_OnLoadCompleted" OnUnloadCompleted="CPAE03P01_OnUnloadCompleted" PidAttrib="7" Title="입금확인불가" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="648" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="PDS_PAY_LST">
+				<Contents>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_GBN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_NOTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="0" Transparent="TRUE" Width="640"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="40" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="1" Text="입금확인불가&#32;목록" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Image Align="Right" Height="18" Id="Image17" Left="26" LeftMargin="0" Style="Stc_Default_bold" TabOrder="2" Top="106" Transparent="TRUE" Width="51"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="280" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="3" Text="닫기" Top="464" Transparent="TRUE" Width="50"></Button>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="4" Top="8" Width="24"></Image>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="PDS_PAY_LST" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="450" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="346" Id="GRD_PAYCHECK_LST" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnHeadClick="GRD_PAYCHECK_LST_OnHeadClick" Right="640" RowHeight="20" Style="Grid_2" TabOrder="6" TabStop="true" Top="104" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="640">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="200"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" col="0" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="1" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="입금일자"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="2" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="은행"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="입금액"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="적요"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="center" col="1" colid="PAY_DT" display="date" InputZeroTime="true"/>
+						<cell align="center" col="2" colid="BANK_GBN_NM" combodisplayrowcnt="20" display="normal" InputZeroTime="true"/>
+						<cell align="right" col="3" colid="PAY_AMT" color="black" display="number" InputZeroTime="true"/>
+						<cell align="left" col="4" colid="PAY_NOTE" color="black" display="normal" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Align="Right" Height="18" Id="Image3" Left="26" LeftMargin="0" Style="Stc_Default_bold" TabOrder="7" Top="66" Transparent="TRUE" Width="51"></Image>
+		<Shape Bottom="104" Height="5" Id="Shape0" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="547" TabOrder="8" Top="99" Type="Rectangle" Visible="FALSE" Width="547"></Shape>
+		<Shape BKColor="user21" Bottom="98" Height="40" Id="Shape4" Left="0" LineColor="user22" Right="640" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="12" Top="58" Type="RoundRect" Width="640"></Shape>
+		<Image Align="Right" Height="18" Id="Image4" Left="16" LeftMargin="0" Style="Stc_Default_bold" TabOrder="11" Top="68" Transparent="TRUE" Width="51"></Image>
+		<Edit Border="Flat" Height="18" Id="S_PAY_NOTE" ImeMode="none" Left="53" LeftMargin="4" OnKeyDown="S_PAY_NOTE_OnKeyDown" Style="Edit" TabOrder="9" Top="67" Width="60"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="580" LeftMargin="16" OnClick="fn_search" Style="Btn_sub" TabOrder="10" Top="67" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Image Align="Left" Height="18" Id="Image8" ImageID="label_dot" Left="316" LeftMargin="12" Style="Stc_Default_bold" TabOrder="13" Text="입금일" Top="68" Transparent="TRUE" Width="50"></Image>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="S_ST_DT" Left="373" Mask="####-##-##" TabOrder="14" ToolTipText="날짜를&#32;입력안하시면&#32;전체&#32;기간&#32;검색&#32;가능합니다." Top="69" Type="STRING" Width="70"></MaskEdit>
+		<Shape Bottom="100" Height="36" Id="Shape14" Left="444" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="449" TabOrder="17" Top="64" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="BTN_ST_DT" ImageID="Btn_calendar" Left="448" OnClick="BTN_ST_DT_OnClick" TabOrder="16" Text="Button1" Top="71" Width="16"></Button>
+		<Static Height="13" Id="Static72" Left="468" Style="Stc_Default" TabOrder="16" Text="~" Top="74" Width="15"></Static>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="S_ED_DT" Left="480" Mask="####-##-##" TabOrder="15" ToolTipText="날짜를&#32;입력안하시면&#32;전체&#32;기간&#32;검색&#32;가능합니다" Top="69" Type="STRING" Width="70"></MaskEdit>
+		<Button Height="16" Id="BTN_ED_DT" ImageID="Btn_calendar" Left="555" OnClick="BTN_ED_DT_OnClick" TabOrder="18" Text="Button1" Top="70" Width="16"></Button>
+		<Shape Bottom="89" Height="24" Id="Shape6" Left="365" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="373" TabOrder="19" Top="65" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Image Align="Left" Height="18" Id="Image6" ImageID="label_dot" Left="119" LeftMargin="12" Style="Stc_Default_bold" TabOrder="20" Text="입금액" Top="69" Transparent="TRUE" Width="90"></Image>
+		<Shape Bottom="87" Height="24" Id="Shape16" Left="169" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="177" TabOrder="21" Top="63" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<MaskEdit Border="Flat" Height="18" Id="S_ST_AMT" Left="178" Style="Edit" TabOrder="22" Top="69" Width="60"></MaskEdit>
+		<Static Height="13" Id="Static3" Left="239" Style="Stc_Default" TabOrder="23" Text="~" Top="74" Width="15"></Static>
+		<MaskEdit Border="Flat" Height="18" Id="S_ED_AMT" Left="249" Style="Edit" TabOrder="24" Top="69" Width="60"></MaskEdit>
+		<Image Align="Left" Height="18" Id="Image9" ImageID="label_dot" Left="7" LeftMargin="12" Style="Stc_Default_bold" TabOrder="26" Text="적요" Top="69" Transparent="TRUE" Width="42"></Image>
+		<Shape Bottom="89" Height="24" Id="Shape1" Left="45" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="53" TabOrder="27" Top="65" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 입금확인불가
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 입금확인불가 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.Transaction 후 처리 해야 할 내용
+//  1-4.창닫기
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고      
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+	// 기본 기간은 오늘  
+	gfn_get_date('TODAY',0,'YYYYMMDD');	
+	
+	S_ST_DT.Text = GDS_DATE_TYPE.GetColumn(0,'DATE_VAL');
+	S_ED_DT.Text = GDS_DATE_TYPE.GetColumn(0,'DATE_VAL');
+	
+	
+	
+	fn_search();
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	PDS_PAY_LST.ClearData();
+	
+	svcID			= "CPAE03P01.selectPayCheckLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "PDS_PAY_LST=ac.ACAffairDAO.selectPayCheckLst"
+					;		
+
+	argument    	= " _sqlName=ac.ACAffairDAO.selectPayCheckLst"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " S_PAY_NOTE="+quote(S_PAY_NOTE.Text)
+							+ " S_ST_AMT="+quote(S_ST_AMT.Value)
+							+ " S_ED_AMT="+quote(S_ED_AMT.Value)
+							+ " S_ST_DT="+quote(S_ST_DT.Value)
+							+ " S_ED_DT="+quote(S_ED_DT.Value)
+							+ " S_BANK_GBN=''"
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+//	trace('call mst/dtl/note='+curNotRow+'/'+curYesRow+'/'+curNoteRow);
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "CPAE03P01.selectPayCheckLst" :
+			
+		
+		break;	
+
+
+
+		default:
+	}
+
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.조회 버튼 클릭  
+//  2-4.확인 버튼 클릭
+//  2-5.닫기 버튼 클릭  
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAE03P01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+    fn_initForm();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 UnLoad 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAE03P01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 헤더클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_PAYCHECK_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_PAYCHECK_LST_OnHeadClick, PDS_PAY_LST, nCell);	
+}
+
+
+
+function S_PAY_NOTE_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		FN_SEARCH();
+	}		
+}
+]]></Script>
+</Window>

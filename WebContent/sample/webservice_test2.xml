@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="792" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" OnUnloadCompleted="form_OnUnloadCompleted" PidAttrib="7" Title="폼_그리드템플릿" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_grid_temp1" OnColumnChanged="ds_grid_temp_OnColumnChanged">
+				<Contents>
+					<colinfo id="flag" size="256" summ="default" type="STRING"/>
+					<colinfo id="row_id" size="256" summ="default" type="STRING"/>
+					<colinfo id="operator" size="256" summ="default" type="STRING"/>
+					<colinfo id="chk" size="256" summ="default" type="STRING"/>
+					<colinfo id="keycol" size="256" summ="default" type="STRING"/>
+					<colinfo id="strcol" size="256" summ="default" type="STRING"/>
+					<colinfo id="datecol" size="256" summ="default" type="STRING"/>
+					<colinfo id="numcol" size="256" summ="default" type="STRING"/>
+					<record>
+						<chk>11</chk>
+						<datecol>1</datecol>
+						<flag>1</flag>
+						<keycol>1</keycol>
+						<numcol>1</numcol>
+						<operator>11</operator>
+						<row_id>11</row_id>
+						<strcol>11</strcol>
+					</record>
+					<record>
+						<chk>4</chk>
+						<datecol>3</datecol>
+						<flag>1</flag>
+						<keycol>3</keycol>
+						<numcol>22</numcol>
+						<operator>5</operator>
+						<row_id>6</row_id>
+						<strcol>3</strcol>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_grid_temp2" OnColumnChanged="ds_grid_temp_OnColumnChanged">
+				<Contents>
+					<colinfo id="flag" size="256" summ="default" type="STRING"/>
+					<colinfo id="row_id" size="256" summ="default" type="STRING"/>
+					<colinfo id="operator" size="256" summ="default" type="STRING"/>
+					<colinfo id="chk" size="256" summ="default" type="STRING"/>
+					<colinfo id="keycol" size="256" summ="default" type="STRING"/>
+					<colinfo id="strcol" size="256" summ="default" type="STRING"/>
+					<colinfo id="datecol" size="256" summ="default" type="STRING"/>
+					<colinfo id="numcol" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Height="20" Id="Static8" Style="Stc_Title" TabOrder="1" Text="웹서비스&#32;트랜젝션" Width="304"></Static>
+		<Shape Bottom="40" Height="7" Id="Shape13" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="790" TabOrder="2" Top="33" Type="Rectangle" Visible="FALSE" Width="790"></Shape>
+		<Shape Bottom="121" Height="5" Id="Shape20" Left="-8" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="802" TabOrder="3" Top="116" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Shape BKColor="user21" Bottom="81" Height="40" Id="Shape31" Left="0" LineColor="user22" Right="790" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="5" Top="41" Type="RoundRect" Width="790"></Shape>
+		<Shape Bottom="96" Height="15" Id="Shape3" Left="-16" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="4" Top="81" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Shape Bottom="94" Height="15" Id="Shape1" Left="-16" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="4" Top="79" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Shape Bottom="81" Height="32" Id="Shape19" Left="698" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="703" TabOrder="7" Top="49" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Image Align="Left" Height="14" Id="Image2" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="8" Text="ds_grid_temp1" Top="102" Transparent="TRUE" Width="157"></Image>
+		<Button Height="21" Id="btn_search" Left="704" OnClick="btn_search_OnClick" TabOrder="9" Text="조회" Top="48" Width="79"></Button>
+		<Button Height="21" Id="btn_save" Left="600" OnClick="btn_save_OnClick" TabOrder="10" Text="저장" Top="8" Width="95"></Button>
+		<Button Height="21" Id="btn_delete" Left="704" OnClick="btn_delete_OnClick" TabOrder="10" Text="삭제" Top="8" Width="79"></Button>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="ds_grid_temp1" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="368" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="248" Id="Grid1" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnExpandEdit="Grid1_OnExpandEdit" OnHeadClick="Grid1_OnHeadClick" OnKeyDown="Grid1_OnKeyDown" Right="790" RowHeight="20" Style="Grid_2" TabOrder="12" TabStop="true" Top="120" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="790">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="104"/>
+						<col width="104"/>
+						<col width="96"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="keycol"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="strcol"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="3" color="user52" combocol="code" combodataset="ds_INDS_GB" combotext="value" display="text" text="datecol"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="4" color="user52" display="text" text="numcol"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="chk" color="black" display="checkbox" edit="checkbox"/>
+						<cell col="1" colid="keycol" display="text" edit="normal"/>
+						<cell col="2" colid="strcol" display="text" edit="normal"/>
+						<cell align="center" col="3" colid="datecol" display="normal" edit="date" expandimage="Btn_calendar" expandshow="true"/>
+						<cell align="right" col="4" colid="numcol" display="number" edit="integer"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Align="Right" Height="21" Id="Image3" Left="336" LeftMargin="0" Style="Stc_Default_bold" TabOrder="13" Text="코드/코드명" Top="51" Transparent="TRUE" Width="80"></Image>
+		<Edit Border="Flat" Height="18" Id="s_edt_name" ImeMode="none" Left="562" LeftMargin="4" OnKeyDown="edt_name_OnKeyDown" Style="Edit_Ess" TabOrder="13" Top="51" Width="130"></Edit>
+		<Shape Bottom="76" Height="32" Id="Shape2" Left="552" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="562" TabOrder="14" Top="44" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="ds_grid_temp2" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="648" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="248" Id="Grid0" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnExpandEdit="Grid1_OnExpandEdit" OnHeadClick="Grid1_OnHeadClick" OnKeyDown="Grid1_OnKeyDown" Right="790" RowHeight="20" Style="Grid_2" TabOrder="16" TabStop="true" Top="400" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="790">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="104"/>
+						<col width="104"/>
+						<col width="96"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="keycol"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="strcol"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="3" color="user52" combocol="code" combodataset="ds_INDS_GB" combotext="value" display="text" text="datecol"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="4" color="user52" display="text" text="numcol"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="chk" color="black" display="checkbox" edit="checkbox"/>
+						<cell col="1" colid="keycol" display="text" edit="normal"/>
+						<cell col="2" colid="strcol" display="text" edit="normal"/>
+						<cell align="center" col="3" colid="datecol" display="normal" edit="date" expandimage="Btn_calendar" expandshow="true"/>
+						<cell align="right" col="4" colid="numcol" display="number" edit="integer"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="399" Height="5" Id="Shape0" Left="-9" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="801" TabOrder="17" Top="394" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Image Align="Left" Height="14" Id="Image0" ImageID="Title_dot" Left="-1" LeftMargin="20" Style="Stc_Subtitle" TabOrder="18" Text="ds_grid_temp2" Top="380" Transparent="TRUE" Width="157"></Image>
+		<Edit Border="Flat" Height="18" Id="s_edt_code" ImeMode="none" Left="422" LeftMargin="4" OnChanged="s_edt_code_OnChanged" OnKeyDown="edt_name_OnKeyDown" Style="Edit_Ess" TabOrder="19" Top="51" Width="130"></Edit>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : form_grid_temp(폼_그리드템플릿)
+* 작성자     : 이용재
+* 작성일     : 2011-03-24 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-03-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+//var popupValue 		= ""; 		// 팝업창에서 받아온 값을 넣어주기 위해서 전역변수로 선언 (현제 쓰이지는 않는다)
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.초기화 함수      
+//  1-3.조회 함수     
+//  1-4.저장 함수    
+//  1-5.삭제 함수    
+//  1-6.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+    
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 초기화 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_reset()
+{
+	// dataset reset
+	//ds_grid_temp1.ClearData();
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	
+	svcID			= "test_template1.selectSample";
+	url   			= "service::cm/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "ds_grid_temp1=selectSample1 ds_grid_temp2=selectSample2";
+	argument    	= " _sqlName=selectSample1,selectSample2"
+							+ " KEY_COL=" + quote(s_edt_code.Text)
+							+ " STR_COL=" + quote(s_edt_name.Text)
+							+ " operator=" + quote(GDS_USER_INFO.eno)
+						;
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	
+	var bValidate = true;
+	var pMessage = "";
+	
+	
+	if(ds_grid_temp1.rowcount > 0)
+	{
+		
+			svcID		= "test_template1.transSample";              
+			url   		= "service::cm/trans_mi.do";   
+			inDatasets  = "insertSample1=ds_grid_temp1:U updateSample2=ds_grid_temp2:U";   //U: 업데이트 된 row만 넘긴다, A:전부 전달, N:delete를 제외한 모든 정보전달                                      
+			outDatasets = ""; 
+			argument    = " _sqlName=insertSample1,updateSample2"
+							;	  
+			callbackFunc = "gfn_callback"; 
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+	}
+	else
+	{
+		gfn_popup_message("modal", "ico_alert", "저장할 내용이 없습니다.", "확인");	
+	}
+
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 삭제 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_delete()
+{
+
+	ds_grid_temp1.FireEvent = false;		// DataSet filter 하더라도 Grid에 영향을 끼치지 않게.
+	
+	// 삭제된것도 포함되게Unfilter 한다.
+	ds_grid_temp1.UnFilter();
+	
+	ds_grid_temp1.Filter("flag ='D'");	// 삭제된것 
+	
+	if(ds_grid_temp1.rowcount > 0)
+	{
+		if(gfn_popup_message("modal", "confirm", "삭제하시겠습니까?", "확인")) 
+		{
+			svcID		= "test_template1.transSample";              
+			url   		= "service::test_template1.transSample.do";   
+			inDatasets  = "test_template1.transSample=ds_grid_temp1:A";   //U: 업데이트 된 row만 넘긴다, A:전부 전달, N:delete를 제외한 모든 정보전달                                      
+			outDatasets = ""; 
+			argument    = " _sqlName=test_template1.transSample"
+							;	  
+			callbackFunc = "gfn_callback"; 
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		}
+	}
+	else
+	{
+		gfn_popup_message("modal", "ico_alert", "삭제할 항목이 없습니다.", "확인");	
+	}
+
+	ds_grid_temp1.UnFilter();
+	ds_grid_temp1.Filter("flag != 'D'");	// 삭제된거는 필터링
+
+	ds_grid_temp1.FireEvent = true;
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : //Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	
+	switch(svcID) 
+	{
+		// 조회
+		case "test_template1.selectSample" :
+			
+			// 조회 결과 없으면 1행 추가한다.
+			if(ds_grid_temp1.rowcount < 1) { fn_add_row();}
+			
+			//Grid1.SetColProp(0,"width",0);
+			//Grid1.SetColProp(1,"width",0);
+			//Grid1.SetColProp(2,"width",0);
+			
+		break;	
+
+		// 저장/삭제 
+		case "test_template1.transSample" :
+		
+			alert('처리완료');
+			//fn_search();		
+		break;	
+		
+		// Test DataSet 조회 
+		case "test_template1.selectTest" :
+		break;	
+		
+		default:
+			  alert("기타"); 
+	}
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.초기화 부분
+//  2-4.조회 버튼 클릭     
+//  2-5.저장 버튼 클릭    
+//  2-6.삭제 버튼 클릭    
+//  2-7.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function form_OnLoadCompleted(obj) 
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+	// 그리드 공통 초기화 
+	gfn_grid_init(Grid1);	
+
+	// 초기화 
+	fn_reset();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function form_OnUnloadCompleted(obj) 
+{
+	gfn_OnBeforeExit();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-3.초기화  클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_reset_OnClick(obj)
+{
+	fn_reset();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-4.조회버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_search_OnClick(obj)
+{
+	fn_search();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-5.저장버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_save_OnClick(obj)
+{
+	fn_save();
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-6.삭제버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_delete_OnClick(obj)
+{
+	// 먼저 선택된 행을 삭제한다.
+	fn_delete_row();
+	
+	// 그다음에 DB 삭제한다. 
+	fn_delete();
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function Grid1_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	// 체크박스 클릭시
+	if(nCell == 3)
+	{
+		gfn_SetCheckBoxAllSelected(nCell, Grid1, ds_grid_temp1, "chk");
+	}
+	// 나머지는 Sorting
+	else
+	{
+		gfn_GridSort(Grid1, ds_grid_temp1, nCell);	
+	}
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 flag 설정 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function ds_grid_temp1_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	
+	// 체크박스 선택은 패스한다.
+	if(ToUpper(strColumnID) == "CHK") return;
+	
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	// 즉 조회된거를 수정하면 U로 바꾼다.
+	if(obj.GetColumn(nRow, "flag") == "N")
+	{
+		obj.SetColumn(nRow, "flag", "U");	// 수정했다는 표시 
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid Ctrl+A, Ctrl+C로 클립보드에 넣기  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function Grid1_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	gfn_gridCopy(obj, ds_grid_temp1, nChar, bCtrl);
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid Ctrl+A, Ctrl+C로 클립보드에 넣기  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_cal_sel_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", cal_saveDate);
+}
+
+function s_edt_code_OnChanged(obj,strText)
+{
+	
+}
+]]></Script>
+</Window>

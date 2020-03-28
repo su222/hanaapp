@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="376" Id="common_BLOB" Left="8" PidAttrib="7" Title="common_BLOB" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="920" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_blob">
+				<Contents>
+					<colinfo encrypt="base64" id="IDPIC" size="256" summ="default" type="BLOB"/>
+					<colinfo id="ENO" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CORP_CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_resultset">
+				<Contents></Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="50" Height="39" Id="Shape1" Left="11" LineColor="user22" Right="909" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="9" Top="11" Type="RoundRect" Width="898"></Shape>
+		<Shape Bottom="374" Height="374" Id="Shape5" Left="910" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="920" TabOrder="4" Top="0" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Shape Bottom="374" Height="374" Id="Shape6" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="10" TabOrder="5" Top="0" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Shape Bottom="375" Height="10" Id="Shape3" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="3" Top="365" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<Shape Bottom="10" Height="10" Id="Shape2" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="5" Top="0" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_filePlus" ImageID="btn_a_05" Left="240" LeftMargin="8" OnClick="btn_filePlus_OnClick" Style="btn_a" TabOrder="2" Text="파일더하기" Top="20" Width="86"></Button>
+		<Shape Bottom="537" Height="520" Id="Shape7" Left="435" LineKind="Vertical" LineStyle="Dot" Right="438" TabOrder="1" Top="17" Visible="FALSE" Width="3"></Shape>
+		<Shape Bottom="536" Height="520" Id="Shape4" Left="117" LineKind="Vertical" LineStyle="Dot" Right="120" TabOrder="7" Top="16" Visible="FALSE" Width="3"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_fileSend" ImageID="btn_a_04" Left="330" LeftMargin="8" OnClick="btn_fileSend_OnClick" Style="btn_a" TabOrder="8" Text="파일전송" Top="20" Width="74"></Button>
+		<FileDialog Bottom="25" Height="24" Id="FileDlg" Left="921" MultiSelect="TRUE" Right="945" TabOrder="12" Top="1" Width="24"></FileDialog>
+		<Grid AutoFit="TRUE" BindDataset="ds_blob" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="190" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="139" Id="grd_blob" InputPanel="FALSE" Left="12" LineColor="default" LineType="OnlyVERT" MinWidth="100" Right="909" RowHeight="20" Style="Grid_2" TabOrder="9" TabStop="true" Top="51" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="897">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="395"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="text" text="파일경로"/>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="ENO" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Align="Right" Height="18" Id="Image1" Left="60" LeftMargin="0" Style="Stc_Default_bold" TabOrder="10" Text="blob&#32;Request&#32;Sample" Top="21" Transparent="TRUE" Width="171"></Image>
+		<File Bottom="48" Height="24" Id="File" Left="920" Right="944" TabOrder="15" Top="24" Width="24"></File>
+		<Shape BKColor="user21" Bottom="250" Height="39" Id="Shape0" Left="11" LineColor="user22" Right="909" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="13" Top="211" Type="RoundRect" Width="898"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_fileReceive" ImageID="btn_a_04" Left="242" LeftMargin="8" OnClick="btn_fileReceive_OnClick" Style="btn_a" TabOrder="12" Text="파일다운" Top="220" Width="74"></Button>
+		<Image Align="Right" Height="18" Id="Image0" Left="62" LeftMargin="0" Style="Stc_Default_bold" TabOrder="14" Text="blob&#32;file&#32;download" Top="223" Transparent="TRUE" Width="171"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_fileDel" ImageID="btn_a_04" Left="438" LeftMargin="8" OnClick="btn_fileDel_OnClick" Style="btn_a" TabOrder="15" Text="파일삭제" Top="20" Width="74"></Button>
+		<Shape BKColor="user21" Bottom="361" Height="104" Id="Shape8" Left="80" LineColor="user22" Right="909" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="16" Top="257" Type="RoundRect" Width="829"></Shape>
+		<Image Align="Left" Height="80" Id="Image2" Left="96" LeftMargin="0" Style="Stc_Default_bold" TabOrder="17" Text="1.&#32;파일더하기&#32;버튼을&#32;통해서&#32;여러개&#32;파일&#32;한번에&#32;선택가능.&#13;&#10;2.&#32;그리드에&#32;보이는&#32;모든&#32;리스트&#32;파일전송.&#13;&#10;&#13;&#10;임의&#32;데이터가&#32;입력되도록&#32;구성되어&#32;있으며,&#32;TABLE&#32;의&#32;COLUMN&#32;이&#32;Unique&#32;처리&#32;되어&#32;있으므로&#32;에러시&#32;파일삭제를&#32;수행하여&#32;주십시요.&#13;&#10;&#13;&#10;파일&#32;다운로드는&#32;TABLE&#32;에&#32;저장되어&#32;있는&#32;이미지&#32;파일을&#32;D:\temp.jpg&#32;로&#32;다운되도록&#32;하드코딩&#32;되어&#32;있습니다." Top="272" Transparent="TRUE" Width="808"></Image>
+	</Form>
+	<Script><![CDATA[/********************************************************************************
+* FormID(명) : common_BLOB
+* Form 설명  : sample
+* 작성자     : DaMaNeGi
+* 작성일     : 2011-01-31
+* ===============================================================================
+* ds_grd_blob
+* ===============================================================================
+* 변경내역 : 
+* YYYYMMDD 담당자명 변경내용(Why?,What?)
+* ===============================================================================
+*********************************************************************************/
+
+#include script::common.js
+function fn_callback(svcID, errorCode, errorMsg) {
+
+
+	switch (svcID) {
+	case "sample.selectBLOB" :
+		var bytes = ds_resultset.getColumn(0, "IDPIC");
+		File.FileName = "D:\\temp.jpg";
+		File.Open("wb");
+		File.WriteBinary(bytes);
+		File.Close();
+		
+		
+		break;
+
+	default :
+		break;
+	}
+}
+
+function btn_filePlus_OnClick(obj)
+{
+	if (!FileDlg.Open()) return;
+	var fileName = FileDlg.FilePath; 
+	array = FileDlg.FileNameList;
+	
+	for (i = 0; i < array.length; i++) {
+		ds_blob.addRow();
+		File.FileName = fileName  + "\\" + array[i];
+		File.Open("rb"); //* Option ( r:read, t:text, b:binary, w:write, a:append +:read/write )
+		
+		ds_blob.SetColumn(ds_blob.row, "IDPIC", File.ReadBinary());
+		ds_blob.setColumn(ds_blob.row, "CORP_CD", "TH" + i);
+		ds_blob.setColumn(ds_blob.row, "COM_ID", "TH" + i);
+		ds_blob.setColumn(ds_blob.row, "ENO", "TH" + i);
+		File.Close();
+	}
+	
+	gfn_traceds(ds_blob);
+
+}
+
+function btn_fileSend_OnClick(obj)
+{
+
+	var svcID			= "sample.insertBLOB";
+	var url   			= "service::sample.insertBLOB.do";
+	var inDatasets  	= "ds_blob=ds_blob";
+	var outDatasets 	= "";
+	var argument    	= "_sqlName=sample.insertBLOB"
+						;
+	var callbackFunc 	= "fn_callback";
+
+	gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+
+function btn_fileReceive_OnClick(obj)
+{
+	var svcID			= "sample.selectBLOB";
+	var url   			= "service::sample.selectBLOB.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_resultset=sample.selectBLOB";
+	var argument    	= "_sqlName=sample.selectBLOB"
+						;
+	var callbackFunc 	= "fn_callback";
+
+	gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+function btn_fileDel_OnClick(obj)
+{
+	var svcID			= "sample.deleteBLOB";
+	var url   			= "service::sample.deleteBLOB.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "";
+	var argument    	= "_sqlName=sample.deleteBLOB"
+						;
+	var callbackFunc 	= "fn_callback";
+
+	gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+]]></Script>
+</Window>

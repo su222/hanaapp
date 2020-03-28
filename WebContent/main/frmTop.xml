@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="40" Id="frm_top_menu" Left="8" OnLoadCompleted="frm_top_menu_OnLoadCompleted" OnSize="frm_top_menu_OnSize" OnUnloadCompleted="frm_top_menu_OnUnloadCompleted" PidAttrib="7" Title="상단메뉴" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1250" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_top_menu"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_menu_img">
+				<Contents>
+					<colinfo id="img_id" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_id" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_menub_lst">
+				<Contents>
+					<colinfo id="big_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="mid_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="sml_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="sml_menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="sml_menu_seq" size="256" summ="default" type="INT"/>
+					<colinfo id="sml_use_yn" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="INT"/>
+					<colinfo id="img" size="256" summ="default" type="INT"/>
+					<colinfo id="dtl_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtl_menu_nm" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_menud_lst">
+				<Contents>
+					<colinfo id="big_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="mid_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="sml_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="sml_menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="sml_menu_seq" size="256" summ="default" type="INT"/>
+					<colinfo id="sml_use_yn" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="INT"/>
+					<colinfo id="img" size="256" summ="default" type="INT"/>
+					<colinfo id="dtl_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtl_menu_nm" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_tmp_detailMenu" UseClientLayout="1">
+				<Contents>
+					<colinfo id="big_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="mid_menu_seq" size="256" summ="default" type="INT"/>
+					<colinfo id="mid_use_yn" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="INT"/>
+					<colinfo id="img" size="256" summ="default" type="INT"/>
+					<colinfo id="sml_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="sml_menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="sml_menu_seq" size="256" summ="default" type="INT"/>
+					<colinfo id="sml_use_yn" size="256" summ="default" type="STRING"/>
+					<colinfo id="mid_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="mid_menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtl_menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtl_menu_seq" size="25" summ="default" type="INT"/>
+					<colinfo id="dtl_menu_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtl_use_yn" size="256" summ="default" type="STRING"/>
+					<colinfo id="end_yn" size="256" summ="default" type="STRING"/>
+					<colinfo id="color" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtl_menu_cd" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_detailMenu">
+				<Contents>
+					<colinfo id="big_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="mid_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="sml_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtl_menu_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtl_menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtl_menu_seq" size="256" summ="default" type="INT"/>
+					<colinfo id="dtl_menu_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="dtl_use_yn" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="INT"/>
+					<colinfo id="img" size="256" summ="default" type="INT"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_REQ_LST">
+				<Contents>
+					<colinfo id="REQ_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_CNT_MSG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="38" Id="img_topMenu" ImageID="A_TopMenu_c" Left="-1" TabOrder="2" Top="-1" Width="1250"></Image>
+		<Div BKColor="user4" Height="35" Id="div_menu" Left="123" TabOrder="1" Text="Div0" Top="2" Visible="FALSE" Width="292">
+			<Contents></Contents>
+		</Div>
+		<Split BKColor="red" Height="30" Id="splHorz" Left="1243" Top="-1" Visible="FALSE" Width="2">
+			<Contents>
+				<LeftOrTop>
+					<Bind BindType="Resize" CompID="img_topMenu"/>
+					<Bind BindType="Move" CompID="img_topMenuRight"/>
+					<Bind BindType="Move" CompID="img_modify_info"/>
+					<Bind BindType="Move" CompID="img_logOut"/>
+					<Bind BindType="Move" CompID="img_req"/>
+				</LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+		<Split BKColor="blue" Direct="VERT" Height="2" Id="splVert" Left="1214" Top="31" Visible="FALSE" Width="30">
+			<Contents>
+				<LeftOrTop></LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+		<Image Height="31" Id="img_logout" ImageID="A_TopMenu_4W_Off" Left="1121" OnClick="img_logout_OnClick" OnMouseOut="fn_topMenu_MouseOut" OnMouseOver="fn_topMenu_MouseOver" Static="FALSE" Style="TopMenu_off" TabOrder="5" Text="로그아웃" Top="2" Width="92"></Image>
+		<Image Height="31" Id="img_req" ImageID="A_TopMenu_4W_Off" Left="1033" OnClick="img_req_OnClick" OnMouseOut="fn_topMenu_MouseOut" OnMouseOver="fn_topMenu_MouseOver" Static="FALSE" Style="TopMenu_off" TabOrder="6" Text="입금요청" Top="2" Width="92"></Image>
+		<Edit Border="Flat" Height="18" Id="G_CLT_NM" Left="712" LeftMargin="4" OnKeyDown="G_CLT_NM_OnKeyDown" Style="Edit" TabOrder="7" Top="9" Width="138"></Edit>
+		<Image Height="31" Id="Image0" ImageID="A_TopMenu_4W_Off" Left="620" Static="FALSE" Style="TopMenu_off" TabOrder="8" Text="사건번호조회" Top="2" Width="85"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="g_btn_aff_search" ImageID="Btn_sub_2w" Left="854" LeftMargin="16" OnClick="g_btn_aff_search_OnClick" Style="Btn_sub" TabOrder="9" TabStop="FALSE" Text="조회" Top="7" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : TopMenu (메인 탑메뉴)
+* 작성자     : 이용재
+* 작성일     : 2013-01-22 : 최초 생성
+* 기능설명   : 메인 화면의 상단 메뉴 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-22       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID			= "";
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= ""; 
+
+var f_objImg = "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-1. 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_initForm()
+{
+	
+	//trace(gfn_dsToString(GDS_USER_INFO));
+	
+	// 회사로고 보여주기
+	//img_logo.imageID = "img_logo";	
+	
+	//img_userId.Text = " "+replace(GDS_USER_INFO.GetColumn(0,"USR_NM")," ","");
+	//img_ipAddr.Text = GDS_USER_INFO.GetColumn(0,"USR_IP");		
+	
+	//var tmpDay = GDS_USER_INFO.GetColumn(0,"LST_LOGIN_DT");;
+	//img_accessDate.Text = substr(tmpDay,0,10);
+	
+	
+	// 입금요청건 가져오기 
+	//fn_check_req_lst();
+	
+	
+	
+	
+	fn_search();
+	
+
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 현재는 권한 상관없이 조회
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	
+	svcID			= "Main.selectMenu";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "gds_menu=cc.CCMainDAO.selectMenu";
+	argument    	= " _sqlName=cc.CCMainDAO.selectMenu"
+					+ " S_USR_ID=" + GDS_USER_INFO.GetColumn(0,"USR_ID")
+					;
+					
+	callbackFunc 	= "gfn_callback";
+
+	//gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-6.Transaction 후 처리 해야 할 내용
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	switch(svcID) 
+	{
+	
+		// 전체메뉴 조회
+		case "Main.selectMenu" :
+			
+			fn_MenuCreate();
+			
+			// 좌측 메뉴 로딩
+			DocLeft.fn_LoadMenu("1000");
+		break;
+			
+
+		// 요청건 가져오고나서  
+		case "frmTop.selectChrgReqLst" :
+		
+			// 건수가 있으면 폰트 빨강 아니면 검정 
+			if(DS_REQ_LST.GetColumn(0, "REQ_CNT") > 0)
+			{
+				S_REQ_TOP.Color = "orangered";
+			}
+			else
+			{
+				S_REQ_TOP.Color = "black";
+			}
+			
+			
+		break;
+					
+		default:
+			  alert("기타"); 
+	}		
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 상단메뉴 생성
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_MenuCreate()
+{
+	var menuName = "";
+	var leftPos  = 0;
+	var strTemp;
+	var rowCnt;
+	
+	// gds_menu중 상단메뉴 관련된것만 필터링 menu_lvl = 1
+	gds_menu.Filter("MENU_LVL='1'");
+	gds_topMenu.CopyF(gds_menu);
+	gds_menu.UnFilter();
+
+	// 기초값 넣기
+	strTemp  = "<Contents>";
+	rowCnt   = gds_topMenu.RowCount();
+	
+	
+	for (var i=0; i<rowCnt; i++) 
+	{
+		
+		menuName = gds_topMenu.GetColumn(i, "MENU_NM");	//상단메뉴명
+
+		strTemp += '<Image Align="center"';
+		strTemp += '       FillType="TILE"';
+		strTemp += '       Static="FALSE"';
+		strTemp += '       Cursor="HAND"';
+		strTemp += '       Style="TopMenu_off"';
+		strTemp += '       Id="imgTopMenu'+(i+1)+'"';
+		strTemp += '       ImageID="'+gds_topMenu.GetColumn(i, "IMG_ID")+'"';
+		strTemp += '       Top="0"';
+		strTemp += '       Left="' + leftPos + '"';
+		strTemp += '       Height="34"';
+		strTemp += '       Width="' + gds_topMenu.GetColumn(i, "IMG_WIDTH") + '"';
+		strTemp += '       OnClick="fn_topMenu_Click"';
+		strTemp += '       OnMouseOut="fn_topMenu_MouseOut"';
+		strTemp += '       OnMouseOver="fn_topMenu_MouseOver"';
+		strTemp += '       Userdata="' + gds_topMenu.GetColumn(i, "MENU_ID") + '"';	//메뉴id
+		strTemp += '       Text="' + gds_topMenu.GetColumn(i, "MENU_NM") + '" ></Image>';
+		
+		leftPos += ToNumber(gds_topMenu.GetColumn(i, "IMG_WIDTH"));
+	}
+	
+	strTemp += '</Contents>';
+	
+//	trace(strTemp);
+
+	div_menu.Contents = strTemp;
+	div_menu.Visible = true;
+	div_menu.Width = leftPos;
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 메뉴 마우스 오버시 이미지 변경
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_topMenu_MouseOver(obj, nX, nY) 
+{
+	obj.ImageID = replace(obj.ImageID, "Off", "On");
+	obj.Style   = replace(obj.Style,   "off", "on");
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 메뉴 마우스 아웃시 이미지 변경
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_topMenu_MouseOut(obj) 
+{
+	if (f_objImg == obj) return;
+
+	obj.ImageID = replace(obj.ImageID, "On", "Off");
+	obj.Style   = replace(obj.Style,   "on", "off");
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 메뉴 클릭시 함수
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_topMenu_Click(obj) 
+{
+	obj.ImageID = replace(obj.ImageID, "Off", "On");
+	obj.Style   = replace(obj.Style,   "off", "on");
+
+	if (f_objImg == obj) return;
+
+	f_objImg.ImageID = replace(f_objImg.ImageID, "On", "Off");
+	f_objImg.Style   = replace(f_objImg.Style,   "on", "off");
+
+
+	// Left 메뉴 로딩
+	
+	DocLeft.fn_LoadMenu(obj.UserData);
+	
+	f_objImg = obj;
+	
+	if(g_LeftMenuMode == "HIDE"){
+		DocLeft.fn_pdvMenuOpen();
+	}
+	
+}
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.화면크기 조정
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1. 화면 Load 완료시 실행 스크립트  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function frm_top_menu_OnLoadCompleted(obj)
+{
+	
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function frm_top_menu_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-3.화면 크기변환시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function frm_top_menu_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_SplitOnSize(splHorz, splVert, obj, nCx, nCy, nState);
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 로그아웃시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function img_logOut_OnClick(obj,nX,nY)
+{
+	if(gfn_popup_message("modal", "confirm", "로그아웃 하시겠습니까?", "확인"))
+	{
+		mainFormExit();
+	}
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 상단 로고 클릭 롤오버 이벤트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 상단 로고 클릭시 포털 화면으로 이동
+//*-----------------------------------------------------------------------------------------------
+function img_logo_OnMouseOver(obj,nX,nY)
+{
+	obj.Cursor = "hand";
+}
+
+function img_logo_OnMouseOut(obj)
+{
+	obj.Cursor = "arrow";
+}
+
+function img_logo_OnClick(obj,nX,nY)
+{
+	gfn_MenuOpenWindow2("9000", gds_Menu);
+}
+
+
+function mainFormExit()
+{
+	//alert("mainFormExit");
+	//InitSession(true);
+	aleadyLogout = "true";
+	exit();
+	//this.url = "main::Login.xml"; 
+}
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 입금요청 카운트 가져오기 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 
+//*-----------------------------------------------------------------------------------------------
+function fn_check_req_lst()
+{
+	DS_REQ_LST.ClearData();
+	
+	
+	svcID			= "frmTop.selectChrgReqLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_REQ_LST=ac.ACAffairDAO.countChrgReqLst"
+							;	
+	
+	argument    	= " _sqlName=ac.ACAffairDAO.countChrgReqLst"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	callbackFunc 	= "gfn_callback";
+
+	//gfn_showProgressWindow(true);
+	gfn_SyncTransaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+
+
+
+function img_req_OnClick(obj,nX,nY)
+{
+	var retArr = gfn_openPopup(this, "CP::CPAB06P05.xml", "", false);
+}
+
+
+// 사건번호 조회 
+// 사건번호 조회 팝업창 띄움
+function g_btn_aff_search_OnClick(obj)
+{
+	var params = "P_CHG_NM=" + quote(G_CLT_NM.Text);
+
+	var retArr = gfn_openPopup(this, "CP::CPAB06P06.xml", params, false);
+}
+
+function G_CLT_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		g_btn_aff_search_OnClick();
+	}	
+	
+}
+]]></Script>
+</Window>

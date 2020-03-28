@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="760" Id="Portal" Left="8" OnLoadCompleted="Portal_OnLoadCompleted" OnUnloadCompleted="Portal_OnUnloadCompleted" PidAttrib="7" Title="포탈메인" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1050" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_NOTICE">
+				<Contents>
+					<colinfo id="column0" size="256" summ="default" type="STRING"/>
+					<record>
+						<column0>강남지사&#32;GIS&#32;테스트&#32;중입니다.</column0>
+					</record>
+					<record>
+						<column0>화창한&#32;봄이&#32;지나고&#32;있습니다.</column0>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_WRN_LST">
+				<Contents>
+					<colinfo id="WRN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_LOOPDIAM_LST">
+				<Contents>
+					<colinfo id="DIAM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DIAM_LEN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DIAM_PER" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_LAG_DRY_STS">
+				<Contents>
+					<colinfo id="LAG_DRY_STS_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_CBL_STS">
+				<Contents>
+					<colinfo id="CBL_STS_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_CMN_STS">
+				<Contents>
+					<colinfo id="CBL_STS_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_DVC_GBN">
+				<Contents>
+					<colinfo id="DVC_GBN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_TOT_GDE">
+				<Contents>
+					<colinfo id="TOT_GDE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 메인포털
+* 작성자     : 이용재
+* 작성일     : 2013-01-24 : 최초 생성
+* 기능설명   : 메인포털 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+
+var sel_flag = "S";					// 회사선택구분(S:단일선택, M:멀티선택)
+var form_id = "Portal" ;			// 폼ID (해당 폼 ID로 권한을체크한다.)
+
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+
+	
+	DS_WRN_LST.ClearData();
+	DS_LOOPDIAM_LST.ClearData();
+	
+	svcID			= "Portal.selectPortal";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_WRN_LST=cc.CCMainDAO.selectWrnLst"
+							+ " DS_LOOPDIAM_LST=an.ANChartDAO.selectLoopDiamLstPortal"	
+							+ " DS_LAG_DRY_STS=cc.CCMainDAO.selectLagDrySts"
+							+ " DS_CBL_STS=cc.CCMainDAO.selectCblSts"
+							+ " DS_CMN_STS=cc.CCMainDAO.selectCmnSts"
+							+ " DS_DVC_GBN=cc.CCMainDAO.selectDvcGbn"
+							+ " DS_TOT_GDE=cc.CCMainDAO.selectTotGde"
+							
+	;
+	argument    	= " _sqlName=cc.CCMainDAO.selectWrnLst"
+							+ ",an.ANChartDAO.selectLoopDiamLstPortal"	
+							+ ",cc.CCMainDAO.selectLagDrySts"	
+							+ ",cc.CCMainDAO.selectCblSts"
+							+ ",cc.CCMainDAO.selectCmnSts"
+							+ ",cc.CCMainDAO.selectDvcGbn"
+							+ ",cc.CCMainDAO.selectTotGde"
+							+ " S_BRCH_ID=" + quote(S_BRCH_ID.Value)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);
+
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "Portal.selectPortal" :
+			
+			// 탭의 차트 그리기
+			Tab0.tab2.Div0.fn_draw_chart();
+			Tab0.tab3.Div0.fn_draw_chart();
+			Tab0.tab4.Div0.fn_draw_chart();
+			Tab0.tab5.Div0.fn_draw_chart();
+			Tab0.tab6.Div0.fn_draw_chart();
+			
+		break;	
+
+		
+		default:
+			  alert("기타"); 
+	}
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+function setBrchData(brch_id)
+{
+	GDS_AUTH_LST.FireEvent = false;	
+	
+	// 글로벌 지사에 사용가능 지사 셋팅
+	GDS_BRCH_BAS.ClearData();
+	
+	vRow = GDS_BRCH_BAS.AddRow();
+	
+	
+	
+	GDS_AUTH_LST.Filter("MNG_BRCH_ID="+quote(brch_id));
+	
+			
+	GDS_BRCH_BAS.SetColumn(vRow,"COM_ID",GDS_AUTH_LST.GetColumn(GDS_AUTH_LST.currow,"MNG_COM_ID"));
+	GDS_BRCH_BAS.SetColumn(vRow,"COM_NM",GDS_AUTH_LST.GetColumn(GDS_AUTH_LST.currow,"MNG_COM_NM"));
+	GDS_BRCH_BAS.SetColumn(vRow,"BRCH_ID",GDS_AUTH_LST.GetColumn(GDS_AUTH_LST.currow,"MNG_BRCH_ID"));
+	GDS_BRCH_BAS.SetColumn(vRow,"BRCH_NM",GDS_AUTH_LST.GetColumn(GDS_AUTH_LST.currow,"MNG_BRCH_NM"));
+		
+	GDS_AUTH_LST.UnFilter();	
+	
+	GDS_AUTH_LST.FireEvent = true;	
+		
+	
+}
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function Portal_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+	
+	var oDs = object(obj.BindDataset);
+	
+	// 하위메뉴만 프로그램 오픈
+	gfn_MenuOpenWindow("4101", oDs);
+	
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function Portal_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 탭 변할때 마다 차트 갱신
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function Tab0_OnChanged(obj,nOldIndex,nNewindex)
+{
+	// 탭의 차트 그리기
+	Tab0.tab2.Div0.fn_draw_chart();
+	Tab0.tab3.Div0.fn_draw_chart();
+	Tab0.tab4.Div0.fn_draw_chart();
+	Tab0.tab5.Div0.fn_draw_chart();
+	Tab0.tab6.Div0.fn_draw_chart();
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 지사변경시 다시 모든 데이터 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function S_BRCH_ID_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	setBrchData(S_BRCH_ID.Value);
+	
+	fn_search();
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 경고창 상세보기 이동
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function BTN_WRN_OnClick(obj)
+{
+	gfn_MenuOpenWindow("3203", gds_menu, "");
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 배관길이 상세보기 이동
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function BTN_PIPE_LEN_OnClick(obj)
+{
+	gfn_MenuOpenWindow("5501", gds_menu, "");
+}
+
+
+function Button2_OnClick(obj)
+{
+	alert('준비중입니다.');
+}
+
+function Button0_OnClick(obj)
+{
+	gfn_MenuOpenWindow("6101", gds_menu, "");
+}
+
+
+]]></Script>
+</Window>

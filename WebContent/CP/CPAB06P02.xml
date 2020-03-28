@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="472" Id="CPAB06P02" Left="8" OnLoadCompleted="CPAB06P02_OnLoadCompleted" OnUnloadCompleted="CPAB06P02_OnUnloadCompleted" PidAttrib="7" Title="팩스표지" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="560" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_FAX_LST" OnColumnChanged="DS_FAX_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_FAX" size="256" summ="default" type="STRING"/>
+					<colinfo id="SND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SND_CHGR" size="256" summ="default" type="STRING"/>
+					<colinfo id="SND_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="SND_FAX" size="256" summ="default" type="STRING"/>
+					<colinfo id="TITLE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SND_CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SND_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SND_REF" size="256" summ="default" type="STRING"/>
+					<colinfo id="SND_NOTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user7" Bottom="432" Height="336" Id="Shape_edit" Left="8" LineColor="user61" Right="552" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="12" Top="96" Type="RoundRect" Width="544"></Shape>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="0" Transparent="TRUE" Width="555"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="0" Text="팩스표지" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="276" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="1" Text="닫기" Top="437" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_print" ImageID="Btn_pop_2w" Left="223" LeftMargin="14" OnClick="btn_print_OnClick" Style="Btn_Popup" TabOrder="2" Text="출력" Top="437" Transparent="TRUE" Width="50"></Button>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="3" Top="8" Width="24"></Image>
+		<Shape Bottom="92" Height="5" Id="Shape14" Left="8" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="547" TabOrder="5" Top="87" Type="Rectangle" Visible="FALSE" Width="539"></Shape>
+		<Image Align="Left" Height="14" Id="Image6" ImageID="Title_dot" Left="8" LeftMargin="20" Style="Stc_Subtitle" TabOrder="5" Text="팩스표지&#32;목록" Top="72" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="67" Height="5" Id="Shape3" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="551" TabOrder="9" Top="62" Type="Rectangle" Visible="FALSE" Width="551"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static22" Left="65" Style="Stc_Label" TabOrder="10" Text="참&#32;조" Top="123" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static10" Left="65" Style="Stc_Label" TabOrder="11" Text="수&#32;신" Top="100" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="90" Id="Static21" Left="13" Style="Stc_Label" TabOrder="12" Text="수&#10;&#10;신&#10;&#10;처" Top="100" VAlign="Middle" Width="48"></Static>
+		<Edit BindDataset="DS_FAX_LST" Border="Flat" Column="TUB_NM" Height="18" Id="Edit1" Left="151" LeftMargin="4" Style="Edit" TabOrder="14" Top="124" Width="120"></Edit>
+		<Edit BindDataset="DS_FAX_LST" Border="Flat" Column="CHG_NM" Height="18" Id="Edit2" Left="151" LeftMargin="4" Style="Edit" TabOrder="13" Top="101" Width="120"></Edit>
+		<Shape Bottom="184" Height="96" Id="Shape0" Left="146" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="150" TabOrder="15" Top="88" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="192" Height="96" Id="Shape2" Left="61" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="65" TabOrder="16" Top="96" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static0" Left="331" Style="Stc_Label" TabOrder="17" Text="담&#32;당" Top="123" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static1" Left="331" Style="Stc_Label" TabOrder="18" Text="발&#32;신" Top="100" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="90" Id="Static2" Left="279" Style="Stc_Label" TabOrder="19" Text="발&#10;&#10;신&#10;&#10;처" Top="100" VAlign="Middle" Width="48"></Static>
+		<Edit BindDataset="DS_FAX_LST" Border="Flat" Column="SND_CHGR" Height="18" Id="Edit3" Left="417" LeftMargin="4" Style="Edit" TabOrder="21" Top="124" Width="120"></Edit>
+		<Edit BindDataset="DS_FAX_LST" Border="Flat" Column="SND_NM" Height="18" Id="Edit4" Left="417" LeftMargin="4" Style="Edit" TabOrder="20" Top="101" Width="120"></Edit>
+		<Shape Bottom="144" Height="56" Id="Shape1" Left="412" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="416" TabOrder="22" Top="88" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="192" Height="96" Id="Shape4" Left="327" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="331" TabOrder="23" Top="96" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="193" Height="96" Id="Shape5" Left="272" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="280" TabOrder="24" Top="97" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static3" Left="65" Style="Stc_Label" TabOrder="26" Text="TEL" Top="146" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_FAX_LST" Border="Flat" Column="TUB_TEL" Height="18" Id="Edit5" Left="151" LeftMargin="4" Style="Edit" TabOrder="27" Top="147" Width="120"></Edit>
+		<Edit BindDataset="DS_FAX_LST" Border="Flat" Column="TUB_FAX" Height="18" Id="Edit6" Left="151" LeftMargin="4" Style="Edit" TabOrder="28" Top="170" Width="120"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static4" Left="65" Style="Stc_Label" TabOrder="25" Text="FAX" Top="169" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static5" Left="331" Style="Stc_Label" TabOrder="29" Text="FAX" Top="171" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static6" Left="331" Style="Stc_Label" TabOrder="30" Text="TEL" Top="148" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_FAX_LST" Border="Flat" Column="SND_FAX" Height="18" Id="Edit7" Left="417" LeftMargin="4" Style="Edit" TabOrder="32" Top="172" Width="120"></Edit>
+		<Edit BindDataset="DS_FAX_LST" Border="Flat" Column="SND_TEL" Height="18" Id="Edit8" Left="417" LeftMargin="4" Style="Edit" TabOrder="31" Top="149" Width="120"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static7" Left="13" Style="Stc_Label" TabOrder="34" Text="제&#32;목" Top="198" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static8" Left="13" Style="Stc_Label" TabOrder="33" Text="발송매수" Top="221" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_FAX_LST" Border="Flat" Column="SND_CNT" Height="18" Id="Edit9" Left="99" LeftMargin="4" Style="Edit" TabOrder="36" Top="222" Width="432"></Edit>
+		<Edit BindDataset="DS_FAX_LST" Border="Flat" Column="TITLE" Height="18" Id="Edit10" Left="99" LeftMargin="4" Style="Edit" TabOrder="35" Top="199" Width="432"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static9" Left="13" Style="Stc_Label" TabOrder="38" Text="발송일자" Top="246" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static11" Left="13" Style="Stc_Label" TabOrder="37" Text="참&#32;고" Top="269" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_FAX_LST" Border="Flat" Column="SND_REF" Height="18" Id="Edit11" Left="99" LeftMargin="4" Style="Edit" TabOrder="39" Top="270" Width="432"></Edit>
+		<Static Align="Center" Border="Flat" Height="130" Id="Static13" Left="12" Style="Stc_Label" TabOrder="41" Text="내&#32;용" Top="294" VAlign="Middle" Width="80"></Static>
+		<TextArea BindDataset="DS_FAX_LST" Column="SND_NOTE" Height="130" Id="TXT_RLT_NM" ImeMode="none" Left="95" Style="Edit" TabOrder="40" Top="294" Width="432"></TextArea>
+		<MaskEdit BindDataset="DS_FAX_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="SND_DT" Height="18" Id="EDT_SND_DT" Left="100" Mask="####-##-##" OnKeyDown="EDT_AFF_ST_DT_OnKeyDown" Style="Edit" TabOrder="42" TabStop="FALSE" Top="247" Type="STRING" Width="70"></MaskEdit>
+		<Button Height="16" Id="BTN_SND_DT" ImageID="Btn_calendar" Left="175" OnClick="BTN_SND_DT_OnClick" TabOrder="43" TabStop="FALSE" Text="Button1" Top="248" Width="16"></Button>
+		<Shape Bottom="277" Height="36" Id="Shape20" Left="170" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="175" TabOrder="44" Top="241" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Report Bottom="81" Height="16" Id="Report0" Left="496" Right="504" Top="65" Visible="FALSE" Width="8"></Report>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 팩스표지 
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 팩스표지
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+#include "lib::lib_file.js";
+#include "lib::lib_report.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	fn_search();
+		
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2.0 조회 함수 (전체)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 데이터셋 clear 후 조회 (만약 안하면 기존 데이터 남아서 조회값이 없어도 있는것 처럼 보임)
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	DS_FAX_LST.ClearData();
+	
+	svcID			= "CPAB06P02.selectFaxLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_FAX_LST=ac.ACFaxDAO.selectFaxLst"
+							;	
+	
+	argument    	= " _sqlName=ac.ACFaxDAO.selectFaxLst"
+							+ " S_BRCH_ID=" + quote(P_BRCH_ID)
+							+ " S_AFF_SEQ=" + quote(P_AFF_SEQ)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+
+
+
+	// 바로 저장 
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		
+		svcID			= "CPAB06P02.saveFaxLst";
+		url   			= "service::common/select_mi.do";
+		inDatasets  	= "ac.ACFaxDAO.saveFaxLst=DS_FAX_LST:A"
+						;
+		
+		outDatasets 	= "";
+		argument    	= " _sqlName=ac.ACFaxDAO.saveFaxLst"
+						;
+		callbackFunc 	= "gfn_callback";	
+	
+	
+		gfn_showProgressWindow(true);
+		gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+
+	}
+
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2.3출력
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_print()
+{
+	var mrd = "";
+	var param = "";
+	
+	// 출력
+	mrd = "PG_AC_FAX_LST.mrd";
+
+	
+	param = "/rp ["
+			+DS_FAX_LST.GetColumn(DS_FAX_LST.curRow, "BRCH_ID")+"] ["        // 회사코드 1
+			+DS_FAX_LST.GetColumn(DS_FAX_LST.curRow, "AFF_SEQ")+"]"   // 사건순번
+			;
+	gfn_viewReport(Report0, mrd, param, true);	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		
+		//  조회
+		case "CPAB06P02.selectFaxLst" :
+
+			
+			if(DS_FAX_LST.rowcount < 1)
+			{
+				fn_add();
+			}
+		break;	
+		
+		//  추가용 조회
+		case "CPAB06P02.selectFaxLstAdd" :
+
+		break;	
+			
+		
+		//  저장
+		case "CPAB06P02.saveFaxLst" :
+			gfn_setMsg("팩스표지 추가/수정/삭제 완료.");
+			fn_print();	
+		break;	
+		
+				
+		
+		default:
+	}
+
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 팩스표지 추가
+//* 함수유형     : 
+//* parameter    : 
+//* return value : db 정보 가져오기 
+//*-----------------------------------------------------------------------------------------------
+function fn_add()
+{
+	DS_FAX_LST.ClearData();
+	
+	svcID			= "CPAB06P02.selectFaxLstAdd";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_FAX_LST=ac.ACFaxDAO.selectFaxLstAdd"
+							;	
+	
+	argument    	= " _sqlName=ac.ACFaxDAO.selectFaxLstAdd"
+							+ " S_BRCH_ID=" + quote(P_BRCH_ID)
+							+ " S_AFF_SEQ=" + quote(P_AFF_SEQ)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CPAB06P02_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CPAB06P02_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2.3출력
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_print_OnClick(obj)
+{
+	fn_save();
+}
+
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 자동저장
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_FAX_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+}
+
+
+
+
+function BTN_SND_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", EDT_SND_DT);
+}
+
+
+
+
+
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+
+
+]]></Script>
+</Window>

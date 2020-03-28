@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="240" Id="CPAB06P04" Left="8" OnLoadCompleted="CPAB06P04_OnLoadCompleted" OnUnloadCompleted="CPAB06P04_OnUnloadCompleted" PidAttrib="7" Title="입금요청" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="560" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_AFFAIRCHRG_REQ_LST">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_JMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_STEP" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_DOC_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="PDS_BOND_ONE">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_FAX" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZONE_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACC_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHRG_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIZ_PRT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_FILE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_EXP_DD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RLT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BUY_BND" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEL_ROUT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_TIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_SAVE_FILE" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACP_MTD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="REG_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STP_OUT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_FUL_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="OLD_ACP_MTD" size="256" summ="default" type="STRING"/>
+					<colinfo id="OLD_FORM_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="OLD_BONDSPOT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACP_CHG_USR" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACP_CHG_USR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRT_GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_REQ_PRS_STS">
+				<Contents>
+					<colinfo id="REQ_PRS_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_PRS_STS_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user7" Bottom="232" Height="136" Id="Shape_edit" Left="8" LineColor="user61" Right="552" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="9" Top="96" Type="RoundRect" Width="544"></Shape>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="0" Transparent="TRUE" Width="555"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="0" Text="입금요청" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="BTN_DELETE" ImageID="Btn_pop_4w" Left="224" LeftMargin="14" OnClick="fn_delete" Style="Btn_Popup" TabOrder="1" Text="요청취소" Top="201" Transparent="TRUE" Width="82"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_save" ImageID="Btn_pop_4w" Left="139" LeftMargin="14" OnClick="fn_save" Style="Btn_Popup" TabOrder="2" Text="입금요청" Top="201" Transparent="TRUE" Width="82"></Button>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="3" Top="8" Width="24"></Image>
+		<Shape Bottom="92" Height="5" Id="Shape14" Left="8" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="547" TabOrder="5" Top="87" Type="Rectangle" Visible="FALSE" Width="539"></Shape>
+		<Image Align="Left" Height="14" Id="Image6" ImageID="Title_dot" Left="8" LeftMargin="20" Style="Stc_Subtitle" TabOrder="5" Text="입금요청&#32;내역" Top="72" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="67" Height="5" Id="Shape3" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="551" TabOrder="9" Top="62" Type="Rectangle" Visible="FALSE" Width="551"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static7" Left="13" Style="Stc_Label" TabOrder="11" Text="고객명" Top="102" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static8" Left="13" Style="Stc_Label" TabOrder="10" Text="채권사명" Top="125" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static9" Left="13" Style="Stc_Label" TabOrder="13" Text="입금요청액" Top="150" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static11" Left="13" Style="Stc_Label" TabOrder="12" Text="계좌정보" Top="173" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_AFFAIRCHRG_REQ_LST" Border="Flat" Column="REQ_NOTE" Height="18" Id="Edit11" Left="99" LeftMargin="4" Style="Edit_Ess" TabOrder="14" Top="174" Width="160"></Edit>
+		<Edit BindDataset="DS_AFFAIRCHRG_REQ_LST" Border="Flat" Column="CLT_NM" Height="18" Id="Edit10" Left="100" LeftMargin="4" Readonly="TRUE" Style="Edit" TabOrder="15" Top="103" Width="160"></Edit>
+		<Shape Bottom="204" Height="108" Id="Shape0" Left="94" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="99" TabOrder="16" Top="96" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="193" Height="96" Id="Shape5" Left="272" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="280" TabOrder="17" Top="97" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<MaskEdit BindDataset="DS_AFFAIRCHRG_REQ_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="CLT_JMN" Height="18" Id="MaskEdit0" Left="368" Mask="######-#######" Readonly="TRUE" Style="Edit" TabOrder="19" Top="103" Type="STRING" Width="86"></MaskEdit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static0" Left="281" Style="Stc_Label" TabOrder="18" Text="주민번호" Top="102" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_AFFAIRCHRG_REQ_LST" Border="Flat" Column="BND_NM" Height="18" Id="Edit0" Left="99" LeftMargin="4" Readonly="TRUE" Style="Edit" TabOrder="20" Top="126" Width="160"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static1" Left="281" Style="Stc_Label" TabOrder="21" Text="입금요청일" Top="125" VAlign="Middle" Width="80"></Static>
+		<MaskEdit BindDataset="DS_AFFAIRCHRG_REQ_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="REQ_DT" Height="18" Id="EDT_REQ_DT" Left="368" Mask="####-##-##" Style="Edit_Ess" TabOrder="22" TabStop="FALSE" Top="126" Type="STRING" Width="70"></MaskEdit>
+		<Shape Bottom="156" Height="36" Id="Shape1" Left="438" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="443" TabOrder="24" Top="120" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="BTN_REQ_DT" ImageID="Btn_calendar" Left="443" OnClick="BTN_REQ_DT_OnClick" TabOrder="23" TabStop="FALSE" Text="Button1" Top="127" Width="16"></Button>
+		<MaskEdit BindDataset="DS_AFFAIRCHRG_REQ_LST" Border="Flat" Column="REQ_AMT" Height="18" Id="EDT_CHRG_AMT_N" Left="99" Style="Edit_Ess" TabOrder="25" Top="151" Width="160"></MaskEdit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static2" Left="281" Style="Stc_Label" TabOrder="26" Text="입금증필요" Top="150" VAlign="Middle" Width="80"></Static>
+		<Checkbox BindDataset="DS_AFFAIRCHRG_REQ_LST" Column="REQ_DOC_YN" Height="15" Id="Checkbox0" Left="368" TabOrder="27" Text="필요시체크하세요" Top="152" Width="121"></Checkbox>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="BTN_CLOSE" ImageID="Btn_pop_2w" Left="307" LeftMargin="14" OnClick="fn_close" Style="Btn_Popup" TabOrder="28" Text="닫기" Top="201" Transparent="TRUE" Width="58"></Button>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static3" Left="281" Style="Stc_Label" TabOrder="29" Text="처리상황" Top="173" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_REQ_PRS_STS" Border="Flat" Color="red" Column="REQ_PRS_STS_NM" Font="돋움,10,Bold" Height="18" Id="Edit1" Left="367" LeftMargin="4" Style="Edit" TabOrder="30" Top="174" Width="160"></Edit>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 입금요청 
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 입금요청
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+#include "lib::lib_file.js";
+#include "lib::lib_report.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	fn_search();
+	
+	
+		
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2.0 조회 함수 (전체)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 데이터셋 clear 후 조회 (만약 안하면 기존 데이터 남아서 조회값이 없어도 있는것 처럼 보임)
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	DS_AFFAIRCHRG_REQ_LST.ClearData();
+	DS_REQ_PRS_STS.ClearData();
+	
+	
+	svcID			= "CPAB06P04.selectChrgReqLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_AFFAIRCHRG_REQ_LST=ac.ACAffairDAO.selectChrgReqLst"
+							+ " DS_REQ_PRS_STS=ac.ACAffairDAO.chkChrgReqPrsSts"
+							;
+	
+	argument    	= " _sqlName=ac.ACAffairDAO.selectChrgReqLst"
+							+ ",ac.ACAffairDAO.chkChrgReqPrsSts"
+							+ " S_BRCH_ID=" + quote(P_BRCH_ID)
+							+ " S_AFF_SEQ=" + quote(P_AFF_SEQ)
+							+ " S_BND_SEQ=" + quote(P_BND_SEQ)
+							+ " S_PRS_STEP=" + quote(P_PRS_STEP)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  입금요청 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+
+	if(length(DS_REQ_PRS_STS.GetColumn(0, "REQ_PRS_STS")) > 0)
+	{
+		gfn_popup_message("modal", "error", "이미 입금완료된 채권사 입니다.", "확인");
+		return;
+	}
+	
+	
+	if(length(DS_AFFAIRCHRG_REQ_LST.GetColumn(0, "REQ_AMT")) == 0)
+	{
+		bValidate = false;
+		cMessage += " 입금요청액 누락 ";
+	}
+	if(length(DS_AFFAIRCHRG_REQ_LST.GetColumn(0, "REQ_NOTE")) == 0)
+	{
+		bValidate = false;
+		cMessage += " 계좌정보 누락 ";
+	}	
+	
+	// 필수항목 누락 
+	if(bValidate == false)
+	{
+		gfn_popup_message("modal", "error", cMessage, "확인");
+	}	
+	
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		
+		if(gfn_popup_message("modal", "confirm", "입금요청 하시겠습니까?", "확인")) 
+		{
+		
+			
+			svcID			= "CPAB06P04.saveChrgReqLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "ac.ACAffairDAO.saveChrgReqLst=DS_AFFAIRCHRG_REQ_LST:A"
+							;
+			
+			outDatasets 	= "";
+			argument    	= " _sqlName=ac.ACAffairDAO.saveChrgReqLst"
+							;
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		}
+
+	}
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  입금요청취소 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_delete()
+{
+	
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+
+	// 바로 저장 
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+	
+		if(gfn_popup_message("modal", "confirm", "요청취소 하시겠습니까?", "확인")) 
+		{
+		
+			
+			svcID			= "CPAB06P04.deleteChrgReqLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "ac.ACAffairDAO.deleteChrgReqLst=DS_AFFAIRCHRG_REQ_LST:A"
+							;
+			
+			outDatasets 	= "";
+			argument    	= " _sqlName=ac.ACAffairDAO.deleteChrgReqLst"
+							;
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		} 
+
+	}
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		
+		//  조회
+		case "CPAB06P04.selectChrgReqLst" :
+
+			
+			if(DS_AFFAIRCHRG_REQ_LST.rowcount < 1)
+			{
+				fn_add();
+			}
+		break;	
+		
+		
+		
+		//  입금요청
+		case "CPAB06P04.saveChrgReqLst" :
+			fn_close();	
+		break;	
+		
+		//  요청취소
+		case "CPAB06P04.deleteChrgReqLst" :
+			fn_close();	
+		break;	
+					
+				
+				
+				
+		
+		default:
+	}
+
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 입금요청 추가
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 
+//*-----------------------------------------------------------------------------------------------
+function fn_add()
+{
+	gfn_get_date('TODAY',0,'YYYYMMDD');
+	
+	// 먼저 채권사 기본정보 가져온다 
+	fn_bnd_info(P_BRCH_ID, P_BND_SEQ);
+	
+	// 행추가시 기존꺼 지우고 한다.
+	//DS_BRCH_BAS.ClearData();	
+	var vRow = DS_AFFAIRCHRG_REQ_LST.AddRow();
+	var tmp_req_amt = 0;
+	
+	
+	// 값이 없으면 해당꺼로 넣기
+	if(P_REQ_AMT == '')
+	{
+		tmp_req_amt = PDS_BOND_ONE.GetColumn(0, "CHRG_AMT");
+	}
+	else
+	{
+		tmp_req_amt = P_REQ_AMT;
+	}
+	
+	
+	
+	// 기초값
+	DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+	DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+	DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"CHK","1");	// 선택됨
+    DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+    
+    DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"BRCH_ID", P_BRCH_ID);// 
+    DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"AFF_SEQ", P_AFF_SEQ);// 
+    DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"REQ_DT", GDS_DATE_TYPE.GetColumn(0,'DATE_VAL'));// 
+    DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"CLT_NM", P_CLT_NM);// 
+    DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"CLT_JMN", P_CLT_JMN);// 
+    DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"BND_SEQ", P_BND_SEQ);// 
+    DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"BND_NM", P_BND_NM);// 
+    DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"PRS_STEP", P_PRS_STEP);// 
+    DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"REQ_AMT", tmp_req_amt);// 
+    DS_AFFAIRCHRG_REQ_LST.SetColumn(vRow,"REQ_NOTE", PDS_BOND_ONE.GetColumn(0, "ACC_NO"));// 채권사 기본정보의 계좌
+    
+    
+    
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2.1 조회 함수 (트랜젝션 일어난후 조회)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 트랜젝션이 일어난 후 조회는 데이터셋을 clear 안하고 조회만 한다.
+//*-----------------------------------------------------------------------------------------------
+function fn_bnd_info(brch_id, bnd_seq)
+{
+
+	PDS_BOND_ONE.ClearData();
+	
+	svcID			= "CPAB06P04.selectBondOne";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "PDS_BOND_ONE=cc.CCBondDAO.selectBondOne"
+							;	
+	;
+	argument    	= " _sqlName=cc.CCBondDAO.selectBondOne"
+							+ " S_BRCH_ID=" + quote(brch_id)
+							+ " S_BND_SEQ=" + quote(bnd_seq)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_SyncTransaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CPAB06P04_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CPAB06P04_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 자동저장
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_AFFAIRCHRG_REQ_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+}
+
+
+
+
+
+
+function BTN_REQ_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", EDT_REQ_DT);
+}
+]]></Script>
+</Window>

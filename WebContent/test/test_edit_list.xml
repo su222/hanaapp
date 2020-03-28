@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="240" Id="form" Left="8" PidAttrib="7" Title="New&#32;Form" ToolTipFont=",0" Top="8" Ver="1.0" Width="368" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_code_value">
+				<Contents>
+					<colinfo id="code_type" size="256" summ="default" type="STRING"/>
+					<colinfo id="code01" size="256" summ="default" type="STRING"/>
+					<colinfo id="code02" size="256" summ="default" type="STRING"/>
+					<record>
+						<code01>TC01</code01>
+						<code02>CD01</code02>
+						<code_type>0001</code_type>
+					</record>
+					<record>
+						<code01>TC02</code01>
+						<code02>CD02</code02>
+						<code_type>0002</code_type>
+					</record>
+					<record>
+						<code01>TC03</code01>
+						<code02>CD03</code02>
+						<code_type>0003</code_type>
+					</record>
+					<record>
+						<code01>TC04</code01>
+						<code02>CD04</code02>
+						<code_type>0004</code_type>
+					</record>
+					<record>
+						<code01>TC05</code01>
+						<code02>CD05</code02>
+						<code_type>0005</code_type>
+					</record>
+					<record>
+						<code01>TC06</code01>
+						<code02>CD06</code02>
+						<code_type>0006</code_type>
+					</record>
+					<record>
+						<code01>TC07</code01>
+						<code02>CD07</code02>
+						<code_type>0007</code_type>
+					</record>
+					<record>
+						<code01>TC08</code01>
+						<code02>CD08</code02>
+						<code_type>0008</code_type>
+					</record>
+					<record>
+						<code01>TC09</code01>
+						<code02>CD09</code02>
+						<code_type>0009</code_type>
+					</record>
+					<record>
+						<code01>TC10</code01>
+						<code02>CD10</code02>
+						<code_type>0010</code_type>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoFit="TRUE" BindDataset="ds_code_value" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="236" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="229" Id="Grid0" InputPanel="FALSE" Left="-1" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnCellClick="Grid0_OnCellClick" Right="365" RowHeight="20" Style="Grid_2" TabOrder="1" TabStop="true" Top="7" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="366">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="129"/>
+						<col width="127"/>
+						<col width="108"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="text" text="CODE_TYPE"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="CODE01"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="CODE02"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="code_type" color="black" display="text"/>
+						<cell align="center" col="1" colid="code01" color="black" display="text"/>
+						<cell align="center" col="2" colid="code02" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="7" Height="7" Id="Shape13" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="366" TabOrder="2" Top="0" Type="Rectangle" Visible="FALSE" Width="366"></Shape>
+	</Form>
+	<Script><![CDATA[
+function Grid0_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var tmpEdtObj = p_edt_obj.split(",");
+
+	parent.object(tmpEdtObj[0]).Text = ds_code_value.GetColumn(nRow,"code_type");
+	parent.object(tmpEdtObj[1]).Text = ds_code_value.GetColumn(nRow,"code01");
+	parent.object(tmpEdtObj[2]).Text = ds_code_value.GetColumn(nRow,"code02");
+	
+	close();
+}
+]]></Script>
+</Window>

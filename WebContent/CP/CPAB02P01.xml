@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="752" Id="CPAB02P01" Left="8" OnLoadCompleted="CPAB02P01_OnLoadCompleted" OnUnloadCompleted="CPAB02P01_OnUnloadCompleted" PidAttrib="7" Title="출력물&#32;테스트" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="900" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_RD_LST" OnColumnChanged="DS_RD_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="CLT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_JMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEB" size="256" summ="default" type="STRING"/>
+					<colinfo id="CARD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNK" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CARD_NOTE" size="256" summ="default" type="STRING"/>
+					<record>
+						<BANK_NOTE>마지막거래일로부터3년</BANK_NOTE>
+						<BNK>1</BNK>
+						<CARD>0</CARD>
+						<CARD_NOTE>마지막거래일로부터2년</CARD_NOTE>
+						<CLT_ADDR>서울특별시&#32;종로구&#32;남대문로&#32;1가</CLT_ADDR>
+						<CLT_JMN>712154-1235487</CLT_JMN>
+						<CLT_NM>김유신</CLT_NM>
+						<CLT_TEL>031-125-3325</CLT_TEL>
+						<DEB>1</DEB>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="96" Height="40" Id="Shape4" Left="10" LineColor="user22" Right="888" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="0" Top="56" Type="RoundRect" Width="878"></Shape>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="1" Transparent="TRUE" Width="896"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="2" Text="출력물테스트" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Image Align="Right" Height="18" Id="Image17" Left="26" LeftMargin="0" Style="Stc_Default_bold" TabOrder="3" Top="66" Transparent="TRUE" Width="51"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="421" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="4" Text="닫기" Top="720" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="96" Height="40" Id="Shape21" Left="11" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="31" TabOrder="5" Top="56" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="6" Top="8" Width="24"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_print" ImageID="Btn_pop_2w" Left="368" LeftMargin="14" OnClick="btn_print_OnClick" Style="Btn_Popup" TabOrder="8" Text="출력" Top="720" Transparent="TRUE" Width="50"></Button>
+		<Report Bottom="704" Height="608" Id="Report0" Left="8" Right="888" Top="96" Width="880"></Report>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static15" Left="98" Style="Stc_Label" TabOrder="10" Text="통장" Top="66" VAlign="Middle" Width="32"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static14" Left="302" Style="Stc_Label" TabOrder="11" Text="카드" Top="66" VAlign="Middle" Width="32"></Static>
+		<Checkbox BindDataset="DS_RD_LST" Column="DEB" Height="12" Id="CHK_REQ_DEB" Left="34" Style="CheckBox" TabOrder="12" Text="부채" TextMargin="0" Top="70" Value="FALSE" Width="54"></Checkbox>
+		<Edit BindDataset="DS_RD_LST" Border="Flat" Column="BANK_NOTE" Height="18" Id="EDT_BNK_NOTE" Left="134" LeftMargin="4" OnKeyDown="EDT_BNK_NOTE_OnKeyDown" Style="Edit" TabOrder="13" Top="67" Width="152"></Edit>
+		<Edit BindDataset="DS_RD_LST" Border="Flat" Column="CARD_NOTE" Height="18" Id="EDT_CARD_NOTE" Left="339" LeftMargin="4" OnKeyDown="EDT_CARD_NOTE_OnKeyDown" Style="Edit" TabOrder="14" Top="67" Width="144"></Edit>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 출력물 테스트팝업
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 출력물 테스트 팝업 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_report.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.Transaction 후 처리 해야 할 내용
+//  1-4.창닫기
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고      
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	// 통장거래기간(팝업에서 사용)
+	gfn_makeCodeDataSet("AD06", "", "DS_BNK_NOTE"); 
+	
+	// 카드 거래기간(팝업에서사용)
+	gfn_makeCodeDataSet("AD07", "", "DS_CARD_NOTE"); 
+
+
+	
+	if(length(P_FORM_SAVE_FILE) == 0)
+	{
+		alert('MRD 파일 누락');
+		close();
+	}
+
+	
+	CHK_REQ_DEB.Value = 1;
+	
+	
+	fn_print();
+}
+
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.2 출력 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고      
+//*------------------------------------------------------------------------
+function fn_print()
+{
+	var mrd = P_FORM_SAVE_FILE;
+	
+	var b_bank_yn = "N";
+	var b_card_yn = "N";
+	
+	
+	if(EDT_BNK_NOTE.Text != '')
+	{
+		b_bank_yn = "Y";
+	}
+	
+	if(EDT_CARD_NOTE.Text != '')
+	{
+		b_card_yn = "Y";
+	}
+
+	var param = "/rv 부채["
+				+gfn_StrYn(DS_RD_LST.GetColumn(0, "DEB"))+"] 내용["
+				+gfn_StrYn(0)+"] 통장["
+				+b_bank_yn+"] 카드["
+				+b_card_yn+"] 신용["
+				+gfn_StrYn(0)+"] /rp ["
+				+"H10] "
+				+"[김유신] " 
+				+"[741101-1475214] " 
+				+"[서울특별시 중구 서소문동 37 ] " 
+				+"[010-9055-6290] "
+				+"[개인회생] " 
+				+"[S] " 
+				+"["+EDT_BNK_NOTE.Text+"] " 
+				+"["+EDT_CARD_NOTE.Text+"] " 
+				+"[10000] " 
+				+"[-999] " 
+				+"[10000] " 
+				+"[-999] " 
+				+"[2013-10-05] "
+				+"["+GlobalURL+"] "
+				+"[법원제출용] "
+				+"[진행담당1] "
+				+"["+gfn_StrYn(DS_RD_LST.GetColumn(0, "DEB"))+"] "
+			    +"[1000000] "
+				;
+	
+	
+	trace('param='+param);
+	
+	
+	
+	
+	
+	
+	
+	gfn_viewReport(Report0, mrd, param, false);	
+
+	//Report0.SetPrintInfo ("", 1, 1, 4); // 프린터 드라이버 이름: HP LaserJet 8150 PCL 6, 인쇄매수:2, 한부씩인쇄:1, 인쇄시 뜨는 대화상자 모두 숨김: 4
+	
+	//trace('------------ bef print');
+	//Report0.CMPrint(); //인쇄 시작
+	//trace('------------ aft print');
+	
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.조회 버튼 클릭  
+//  2-4.확인 버튼 클릭
+//  2-5.닫기 버튼 클릭  
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAB02P01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+    fn_initForm();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 UnLoad 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAB02P01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 출력
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_print_OnClick(obj)
+{
+	fn_print();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+
+
+function DS_RD_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	fn_print();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  통장거래 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function EDT_BNK_NOTE_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_sel_bnk_note();
+	}	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  카드거래 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function EDT_CARD_NOTE_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_sel_card_note();
+	}	
+	
+}
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  통장거래 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_sel_bnk_note()
+{
+	var retArr = gfn_openPopup(this, "CP::CPAB05P04.xml", "", true);
+
+	EDT_BNK_NOTE.Text = retArr[1];
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  카드거래 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_sel_card_note()
+{
+	var retArr = gfn_openPopup(this, "CP::CPAB05P05.xml", "", true);
+
+	EDT_CARD_NOTE.Text = retArr[1];
+}
+
+
+]]></Script>
+</Window>

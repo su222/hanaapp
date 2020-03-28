@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="555" Id="CMC13T1" Left="8" PidAttrib="7" Title="뷰소속&#32;사용" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_corp_mgnt">
+				<Contents>
+					<colinfo id="flag" size="256" summ="default" type="STRING"/>
+					<colinfo id="row_id" size="256" summ="default" type="STRING"/>
+					<colinfo id="operator" size="256" summ="default" type="STRING"/>
+					<colinfo id="inds_gb" size="4" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="4" summ="default" type="STRING"/>
+					<colinfo id="COM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="corp_cd" size="4" summ="default" type="STRING"/>
+					<colinfo id="corp_nm" size="60" summ="default" type="STRING"/>
+					<colinfo id="corp_eng_nm" size="60" summ="default" type="STRING"/>
+					<colinfo id="corp_nik_nm" size="30" summ="default" type="STRING"/>
+					<colinfo id="repr_nm" size="30" summ="default" type="STRING"/>
+					<colinfo id="reg_no" size="10" summ="default" type="STRING"/>
+					<colinfo id="corp_no" size="13" summ="default" type="STRING"/>
+					<colinfo id="open_ymd" size="8" summ="default" type="STRING"/>
+					<colinfo id="pst_no" size="6" summ="default" type="STRING"/>
+					<colinfo id="pst_seq" size="5" summ="default" type="STRING"/>
+					<colinfo id="addr1" size="100" summ="default" type="STRING"/>
+					<colinfo id="addr2" size="100" summ="default" type="STRING"/>
+					<colinfo id="tel_no" size="20" summ="default" type="STRING"/>
+					<colinfo id="fax_no" size="20" summ="default" type="STRING"/>
+					<colinfo id="mail" size="100" summ="default" type="STRING"/>
+					<colinfo id="indk" size="100" summ="default" type="STRING"/>
+					<colinfo id="indcl" size="100" summ="default" type="STRING"/>
+					<colinfo id="htex_id" size="40" summ="default" type="STRING"/>
+					<colinfo id="taxoff_cd" size="3" summ="default" type="STRING"/>
+					<colinfo id="taxoff_prg_cd" size="4" summ="default" type="STRING"/>
+					<colinfo id="sbmit_gb" size="1" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_corp_tree">
+				<Contents>
+					<colinfo id="flag" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="2" summ="default" type="INT"/>
+					<colinfo id="inds_gb" size="4" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="4" summ="default" type="STRING"/>
+					<colinfo id="COM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="corp_cd" size="4" summ="default" type="STRING"/>
+					<colinfo id="tree_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="image_levels" size="3" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="869" Height="885" Id="Shape2" Left="370" LineKind="Vertical" LineStyle="Dot" Right="375" TabOrder="4" Top="-16" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="869" Height="885" Id="Shape7" Left="261" LineColor="tomato" LineKind="Vertical" LineStyle="Dot" Right="266" TabOrder="6" Top="-16" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="885" Height="885" Id="Shape6" Left="575" LineKind="Vertical" LineStyle="Dot" Right="580" TabOrder="5" Top="0" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="885" Height="885" Id="Shape8" Left="528" LineColor="tomato" LineKind="Vertical" LineStyle="Dot" Right="533" TabOrder="7" Top="0" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="877" Height="885" Id="Shape9" Left="185" LineKind="Vertical" LineStyle="Dot" Right="190" TabOrder="3" Top="-8" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="861" Height="885" Id="Shape11" Left="912" LineColor="turquoise" LineKind="Vertical" LineStyle="Dot" Right="917" TabOrder="8" Top="-24" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="Button8" ImageID="Btn_calendar" Left="455" OnClick="Button0_OnClick" TabOrder="9" Text="Button1" Top="120" Width="0"></Button>
+		<Shape BKColor="user63" Bottom="116" Height="1" Id="Shape5" Left="262" LineColor="user63" Right="788" TabOrder="10" Top="115" Width="526"></Shape>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static23" Style="Stc_Label2" TabOrder="11" Text="소속1" Top="113" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static26" Style="Stc_Label2" TabOrder="12" Text="소속2" Top="136" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static4" Style="Stc_Label2" TabOrder="13" Text="소속3" Top="159" VAlign="Middle" Width="100"></Static>
+		<Shape BKColor="user21" Bottom="82" Height="40" Id="Shape0" Left="-1" LineColor="user22" Right="789" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="14" Top="42" Type="RoundRect" Width="790"></Shape>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static1" Style="Stc_Label2" TabOrder="15" Text="소속4" Top="182" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static11" Style="Stc_Label2" TabOrder="16" Text="소속5" Top="205" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static16" Left="-1" Style="Stc_Label2" TabOrder="17" Text="주소1" Top="261" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static12" Left="-1" Style="Stc_Label2" TabOrder="18" Text="주소2" Top="284" VAlign="Middle" Width="100"></Static>
+		<Shape Bottom="396" Height="300" Id="Shape31" Left="600" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="605" TabOrder="19" Top="96" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="354" Height="250" Id="Shape4" Left="627" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="632" TabOrder="20" Top="104" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="346" Height="250" Id="Shape10" Left="899" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="904" TabOrder="21" Top="96" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="ADDR1" Height="18" Id="edt_addr1" Left="104" MaxLength="100" Style="Edit" TabOrder="1" Top="264" Width="370"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="ADDR2" Height="18" Id="edt_addr2" Left="104" MaxLength="100" Style="Edit" TabOrder="2" Top="287" Width="400"></Edit>
+		<Shape Bottom="362" Height="250" Id="Shape14" Left="737" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="742" TabOrder="22" Top="112" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="115" Height="5" Id="Shape12" Left="-3" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="787" TabOrder="23" Top="110" Type="Rectangle" Visible="FALSE" Width="790"></Shape>
+		<Shape Bottom="116" Height="30" Id="Shape13" Left="195" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="200" RoundHeight="10" TabOrder="24" Top="86" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="81" Height="32" Id="Shape17" Left="59" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="69" TabOrder="25" Top="49" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="HTEX_ID" Height="18" Id="Edit0" Left="104" MaxLength="10" Style="Edit" TabOrder="26" Top="115" Width="130"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="HTEX_ID" Height="18" Id="Edit1" Left="104" MaxLength="10" Style="Edit" TabOrder="27" Top="139" Width="130"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="HTEX_ID" Height="18" Id="Edit2" Left="104" MaxLength="10" Style="Edit" TabOrder="28" Top="163" Width="130"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="HTEX_ID" Height="18" Id="Edit3" Left="104" MaxLength="10" Style="Edit" TabOrder="29" Top="187" Width="130"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="HTEX_ID" Height="18" Id="Edit4" Left="104" MaxLength="10" Style="Edit" TabOrder="30" Top="211" Width="130"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="HTEX_ID" Height="18" Id="Edit5" Left="248" MaxLength="10" Style="Edit" TabOrder="31" Top="115" Width="130"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="HTEX_ID" Height="18" Id="Edit6" Left="248" MaxLength="10" Style="Edit" TabOrder="32" Top="139" Width="130"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="HTEX_ID" Height="18" Id="Edit7" Left="248" MaxLength="10" Style="Edit" TabOrder="33" Top="163" Width="130"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="HTEX_ID" Height="18" Id="Edit8" Left="248" MaxLength="10" Style="Edit" TabOrder="34" Top="187" Width="130"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_corp_mgnt" Border="Flat" CheckLength="Byte" Column="HTEX_ID" Height="18" Id="Edit9" Left="248" MaxLength="10" Style="Edit" TabOrder="35" Top="211" Width="130"></Edit>
+		<Button Height="18" Id="pop_pop_name" ImageID="Btn_search" Left="384" OnClick="pop_pop_name_OnClick" TabOrder="36" Text="Button1" Top="115" Width="21"></Button>
+		<Button Height="18" Id="Button0" ImageID="Btn_search" Left="480" OnClick="Button0_OnClick" TabOrder="37" Text="Button1" Top="264" Width="21"></Button>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : CMC13T01(법인관리)
+* 작성자     : 한희경
+* 작성일     : 2011-03-29 : 최초 생성
+* 기능설명   : 법인관리 화면 
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-03-29       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.초기화 함수      
+//  1-3.조회 함수     
+//  1-4.저장 함수    
+//  1-5.삭제 함수    
+//  1-6.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//*------------------------------------------------------------------------
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 초기화 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : //Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 상세내역 조회 함수  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Tree의 회사정보와 폼의 정보를 동기화 함(그래야 나머지 정보를 입력가능)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 삭제
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.초기화 부분
+//  2-4.조회 버튼 클릭     
+//  2-5.저장 버튼 클릭    
+//  2-6.삭제 버튼 클릭    
+//  2-7.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-3.초기화버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-4.조회버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-5.저장버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-6.삭제버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Tree 클릭  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Tree 더블클릭   
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 달력클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function pop_pop_name_OnClick(obj)
+{
+	var retArr 		    = array();
+	
+	var params = "edt_cmpny="+quote(edt_cmpny) +
+    " flag="+quote(S);
+	
+	
+	retArr = gfn_openPopup(this, "COMMON::CMA03P01.xml",params , true);
+	
+	alert(retArr);
+	
+	Edit0.Text = retArr[0];
+	Edit1.Text = retArr[1];
+	Edit2.Text = retArr[2];
+	Edit3.Text = retArr[3];
+	Edit4.Text = retArr[4];
+	Edit5.Text = retArr[5];
+	Edit6.Text = retArr[6];
+	Edit7.Text = retArr[7];
+	Edit8.Text = retArr[8];
+	Edit9.Text = retArr[9];
+}
+]]></Script>
+</Window>

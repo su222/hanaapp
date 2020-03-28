@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_AREA_BAS : 지역, TB_CC_USEAREA_LST: 지사별 사용지역 -->
+<mapper namespace="co.hanaapp.dao.cc.CCBondDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 채권사 Tree  조회 -->
+    <select id="selectBondTree" parameterType="map" resultType ="map">
+        SELECT /* 채권사 기본정보 */
+                NVL(BRCH_ID,' ') AS BRCH_ID,
+				NVL(BND_SEQ,'-99999') AS BND_SEQ,
+				NVL(BND_NM,' ') AS BND_NM,
+				NVL(BND_TEL,' ') AS BND_TEL,
+				NVL(BND_FAX,' ') AS BND_FAX																           
+          FROM TB_CC_BOND_LST A
+         WHERE A.BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+           AND (A.BND_SEQ LIKE  #{S_BND_NM, jdbcType=VARCHAR} || '%' 
+                OR A.BND_NM LIKE '%' || #{S_BND_NM, jdbcType=VARCHAR} || '%'
+                OR A.RLT_NM LIKE '%' || #{S_BND_NM, jdbcType=VARCHAR} || '%'
+                OR A.BUY_BND LIKE '%' || #{S_BND_NM, jdbcType=VARCHAR} || '%'
+                OR A.SEL_ROUT LIKE '%' || #{S_BND_NM, jdbcType=VARCHAR} || '%'           
+           )
+           AND (nvl(A.BND_TEL, ' ') LIKE '%' || #{S_BND_TEL, jdbcType=VARCHAR} || '%' OR nvl(A.BND_FAX, ' ') LIKE '%' || #{S_BND_TEL, jdbcType=VARCHAR} || '%')
+           AND REG_GBN LIKE #{S_REG_GBN, jdbcType=VARCHAR} || '%' 
+           AND FORM_GBN LIKE #{S_FORM_GBN, jdbcType=VARCHAR} || '%'           
+         ORDER BY nvl(A.BND_SEQ,'-99999')
+
+         
+
+    </select>
+
+
+
+   <!-- 채권사 기본정보  조회 -->
+    <select id="selectBondOne" parameterType="map" resultType ="map">
+        SELECT /* 채권사 기본정보 */
+                'N' AS FLAG,
+                ROWIDTOCHAR(ROWID) AS ROW_ID,
+                '0' AS CHK,
+                #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+				NVL(BRCH_ID,' ') AS BRCH_ID,
+				NVL(BND_SEQ,'-99999') AS BND_SEQ,
+				NVL(BND_NM,' ') AS BND_NM,
+				NVL(BND_TEL,' ') AS BND_TEL,
+				NVL(BND_FAX,' ') AS BND_FAX,
+				NVL(BND_ADDR,' ') AS BND_ADDR,
+				NVL(BND_ZIP,' ') AS BND_ZIP,
+				NVL(ZONE_GBN,' ') AS ZONE_GBN,
+				NVL(DT_GBN,' ') AS DT_GBN,
+				NVL(ACC_NO,' ') AS ACC_NO,
+				NVL(CHRG_AMT,'-99999') AS CHRG_AMT,
+				NVL(BIZ_PRT_YN,' ') AS BIZ_PRT_YN,
+				NVL(FORM_FILE,' ') AS FORM_FILE,
+				NVL(FORM_SAVE_FILE,' ') AS FORM_SAVE_FILE,
+				NVL(ISU_EXP_DD,' ') AS ISU_EXP_DD,
+				NVL(RLT_NM,' ') AS RLT_NM,
+				NVL(BUY_BND,' ') AS BUY_BND,
+				NVL(SEL_ROUT,' ') AS SEL_ROUT,
+				NVL(ISU_TIP,' ') AS ISU_TIP ,
+				NVL(ACP_MTD,' ') AS ACP_MTD ,
+				NVL(FORM_GBN,' ') AS FORM_GBN,
+				NVL(ISU_NOTE,' ') AS ISU_NOTE,
+				NVL(REG_GBN,' ') AS REG_GBN,
+				NVL(STP_OUT_GBN,' ') AS STP_OUT_GBN,
+				NVL(BND_FUL_NM,' ') AS BND_FUL_NM,
+				NVL(OLD_ACP_MTD,' ') AS OLD_ACP_MTD,
+				NVL(OLD_FORM_GBN,' ') AS OLD_FORM_GBN,
+				NVL(OLD_BONDSPOT_NM,' ') AS OLD_BONDSPOT_NM,
+				NVL(FORM_NOTE,' ') AS FORM_NOTE,
+				NVL(ACP_CHG_USR,' ') AS ACP_CHG_USR,
+				NVL(FC_CC_GET_USRNAME(BRCH_ID, ACP_CHG_USR), ' ') AS ACP_CHG_USR_NM,
+				NVL(PRT_GBN,' ') AS PRT_GBN,
+				NVL(CLT_OPN_YN,' ') AS CLT_OPN_YN,
+				NVL(JMN_OPN_YN,' ') AS JMN_OPN_YN                 														           
+          FROM TB_CC_BOND_LST A
+         WHERE A.BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+           AND A.BND_SEQ =  #{S_BND_SEQ, jdbcType=VARCHAR}
+
+
+    </select>
+
+   <!-- 채권사 코드채번 -->
+    <select id="selectBndSeq" parameterType="map" resultType ="map">
+		 SELECT /* 채권사 채번 */
+		        SQ_CC_BOND_LST.NEXTVAL AS BND_SEQ
+		   FROM DUAL              
+    </select>
+
+
+
+   	<!-- 채권사정보 추가/수정 -->
+     <insert   id="saveBondLst" parameterType="map" >
+
+        begin
+			UPDATE TB_CC_BOND_LST
+			   SET        BND_NM = #{BND_NM, jdbcType=VARCHAR} , 
+			       BND_FUL_NM = #{BND_FUL_NM, jdbcType=VARCHAR} , 
+			       BND_TEL = #{BND_TEL, jdbcType=VARCHAR} , 
+			       BND_FAX = #{BND_FAX, jdbcType=VARCHAR} , 
+			       BND_ADDR = #{BND_ADDR, jdbcType=VARCHAR} , 
+			       BND_ZIP = #{BND_ZIP, jdbcType=VARCHAR} , 
+			       ZONE_GBN = #{ZONE_GBN, jdbcType=VARCHAR} , 
+			       DT_GBN = #{DT_GBN, jdbcType=VARCHAR} , 
+			       ACC_NO = #{ACC_NO, jdbcType=VARCHAR} , 
+			       CHRG_AMT = #{CHRG_AMT, jdbcType=VARCHAR} , 
+			       BIZ_PRT_YN = #{BIZ_PRT_YN, jdbcType=VARCHAR} ,
+			       FORM_FILE = #{FORM_FILE, jdbcType=VARCHAR} , 
+			       ISU_EXP_DD = #{ISU_EXP_DD, jdbcType=VARCHAR} , 
+			       RLT_NM = #{RLT_NM, jdbcType=VARCHAR} , 
+			       BUY_BND = #{BUY_BND, jdbcType=VARCHAR} , 
+			       SEL_ROUT = #{SEL_ROUT, jdbcType=VARCHAR} , 
+			       ISU_TIP = #{ISU_TIP, jdbcType=VARCHAR} , 
+			       ACP_MTD = #{ACP_MTD, jdbcType=VARCHAR} , 
+			       FORM_GBN = #{FORM_GBN, jdbcType=VARCHAR} , 
+			       ISU_NOTE = #{ISU_NOTE, jdbcType=VARCHAR} , 
+			       REG_GBN = #{REG_GBN, jdbcType=VARCHAR} , 
+			       STP_OUT_GBN = #{STP_OUT_GBN, jdbcType=VARCHAR} , 
+			       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+			       EDT_DT = SYSDATE , 
+			       FORM_SAVE_FILE = #{FORM_SAVE_FILE, jdbcType=VARCHAR} ,
+			       FORM_NOTE = #{FORM_NOTE, jdbcType=VARCHAR},
+			       ACP_CHG_USR = #{ACP_CHG_USR, jdbcType=VARCHAR},
+			       PRT_GBN = #{PRT_GBN, jdbcType=VARCHAR},
+			       CLT_OPN_YN = #{CLT_OPN_YN, jdbcType=VARCHAR},
+			       JMN_OPN_YN = #{JMN_OPN_YN, jdbcType=VARCHAR}                                      
+            where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+
+
+               if sql%rowcount=0 then
+					INSERT INTO TB_CC_BOND_LST
+					        (
+					         BRCH_ID , 
+					         BND_SEQ , 
+					         BND_NM ,
+					         BND_FUL_NM, 
+					         BND_TEL , 
+					         BND_FAX , 
+					         BND_ADDR , 
+					         BND_ZIP , 
+					         ZONE_GBN , 
+					         DT_GBN , 
+					         ACC_NO , 
+					         CHRG_AMT , 
+					         BIZ_PRT_YN , 
+					         FORM_FILE , 
+					         ISU_EXP_DD , 
+					         RLT_NM , 
+					         BUY_BND , 
+					         SEL_ROUT , 
+					         ISU_TIP , 
+					         ACP_MTD,
+					         FORM_GBN,
+					         ISU_NOTE,
+					         REG_GBN,
+					         STP_OUT_GBN,
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT , 
+					         FORM_SAVE_FILE,
+					         FORM_NOTE,
+					         ACP_CHG_USR,
+					         PRT_GBN,
+					         CLT_OPN_YN,
+					         JMN_OPN_YN )
+					 VALUES (
+					         #{BRCH_ID, jdbcType=VARCHAR} , 
+					         #{BND_SEQ, jdbcType=VARCHAR} , 
+					         #{BND_NM, jdbcType=VARCHAR} , 
+					         #{BND_FUL_NM, jdbcType=VARCHAR} ,
+					         #{BND_TEL, jdbcType=VARCHAR} , 
+					         #{BND_FAX, jdbcType=VARCHAR} , 
+					         #{BND_ADDR, jdbcType=VARCHAR} , 
+					         #{BND_ZIP, jdbcType=VARCHAR} , 
+					         #{ZONE_GBN, jdbcType=VARCHAR} , 
+					         #{DT_GBN, jdbcType=VARCHAR} , 
+					         #{ACC_NO, jdbcType=VARCHAR} , 
+					         #{CHRG_AMT, jdbcType=VARCHAR} , 
+					         #{BIZ_PRT_YN, jdbcType=VARCHAR}  , 
+					         #{FORM_FILE, jdbcType=VARCHAR} , 
+					         #{ISU_EXP_DD, jdbcType=VARCHAR} , 
+					         #{RLT_NM, jdbcType=VARCHAR} , 
+					         #{BUY_BND, jdbcType=VARCHAR} , 
+					         #{SEL_ROUT, jdbcType=VARCHAR} , 
+					         #{ISU_TIP, jdbcType=VARCHAR} , 
+					         #{ACP_MTD, jdbcType=VARCHAR} , 
+					         #{FORM_GBN, jdbcType=VARCHAR} , 
+					         #{ISU_NOTE, jdbcType=VARCHAR} , 
+					         #{REG_GBN, jdbcType=VARCHAR} ,
+					         #{STP_OUT_GBN, jdbcType=VARCHAR} ,
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{FORM_SAVE_FILE, jdbcType=VARCHAR},
+					         #{FORM_NOTE, jdbcType=VARCHAR},
+					         #{ACP_CHG_USR, jdbcType=VARCHAR},
+					         #{PRT_GBN, jdbcType=VARCHAR},
+					         #{CLT_OPN_YN, jdbcType=VARCHAR},
+					         #{JMN_OPN_YN, jdbcType=VARCHAR}
+                              );
+                  end if;
+
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_BOND_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 채권사정보 삭제 -->
+    <delete   id="deleteBondLst" parameterType="map" >
+       	BEGIN
+	       	
+	       	DELETE FROM TB_CC_BONDSPOT_LST A
+	       	 WHERE (BRCH_ID, BND_SEQ) IN 
+		       	 (SELECT BRCH_ID, BND_SEQ 
+		       	    FROM TB_CC_BOND_LST
+		       	   WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})   
+		       	 );
+
+	       	DELETE FROM TB_CC_BOND_LST
+			 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR});   
+        exception
+            when others then
+                raise_application_error(-20501,'TB_CC_BOND_LST save error : ' ||SQLERRM);
+        end;  
+   
+    </delete>
+ 
+ 
+  <!-- 채권사 지점정보  조회 -->
+    <select id="selectBondSpotOne" parameterType="map" resultType ="map">
+		SELECT /* 채권사 지점정보 */
+			   'N' AS FLAG,
+			   ROWIDTOCHAR(B.ROWID) AS ROW_ID,
+			   '0' AS CHK,
+			   #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+				NVL(B.BRCH_ID,' ') AS BRCH_ID,
+				NVL(B.BND_SEQ,'-99999') AS BND_SEQ,
+				NVL(B.SPT_SEQ,'-99999') AS SPT_SEQ,
+				NVL(B.SPT_NM,' ') AS SPT_NM,
+				NVL(B.SPT_TEL,' ') AS SPT_TEL,
+				NVL(B.SPT_FAX,' ') AS SPT_FAX,
+				NVL(B.SPT_ADDR,' ') AS SPT_ADDR,
+				NVL(B.ACP_MTD,' ') AS ACP_MTD,
+				NVL(B.ISU_TIP,' ') AS ISU_TIP,
+				NVL(B.ADD_DOC,' ') AS ADD_DOC,
+				NVL(B.ISU_EXP_DD,'-99999') AS ISU_EXP_DD
+		  FROM TB_CC_BOND_LST A, TB_CC_BONDSPOT_LST B
+         WHERE A.BRCH_ID = B.BRCH_ID 
+           AND A.BND_SEQ = B.BND_SEQ
+           AND A.BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+           AND A.BND_SEQ =  #{S_BND_SEQ, jdbcType=VARCHAR}     
+         ORDER BY nvl(B.SPT_SEQ,'-99999')
+
+    </select>
+
+  	<!-- 채권사 사건진행정보 추가/수정 -->
+     <insert   id="saveBondSpotLst" parameterType="map" >
+
+        begin
+            IF #{FLAG, jdbcType=VARCHAR} = 'D' THEN
+                DELETE FROM TB_CC_BONDSPOT_LST
+                 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;              
+            ELSE			
+			
+				UPDATE TB_CC_BONDSPOT_LST
+				   SET        SPT_NM = #{SPT_NM, jdbcType=VARCHAR} , 
+				       SPT_TEL = #{SPT_TEL, jdbcType=VARCHAR} , 
+				       SPT_FAX = #{SPT_FAX, jdbcType=VARCHAR} , 
+				       SPT_ADDR = #{SPT_ADDR, jdbcType=VARCHAR} , 
+				       ACP_MTD = #{ACP_MTD, jdbcType=VARCHAR} , 
+				       ISU_TIP = #{ISU_TIP, jdbcType=VARCHAR} , 
+				       ADD_DOC = #{ADD_DOC, jdbcType=VARCHAR} , 
+				       ISU_EXP_DD = #{ISU_EXP_DD, jdbcType=VARCHAR} , 
+				       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+				       EDT_DT = SYSDATE 
+	            where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+	
+	
+	               if sql%rowcount=0 then
+						
+						INSERT INTO TB_CC_BONDSPOT_LST
+						        (
+						         BRCH_ID , 
+						         BND_SEQ , 
+						         SPT_SEQ , 
+						         SPT_NM , 
+						         SPT_TEL , 
+						         SPT_FAX , 
+						         SPT_ADDR , 
+						         ACP_MTD , 
+						         ISU_TIP , 
+						         ADD_DOC , 
+						         ISU_EXP_DD , 
+						         CRT_USR , 
+						         CRT_DT , 
+						         EDT_USR , 
+						         EDT_DT )
+						 VALUES (
+						         #{BRCH_ID, jdbcType=VARCHAR} , 
+						         #{BND_SEQ, jdbcType=VARCHAR} , 
+						         (select nvl(MAX(SPT_SEQ),0) + 1 FROM TB_CC_BONDSPOT_LST WHERE BRCH_ID = #{BRCH_ID, jdbcType=VARCHAR} AND BND_SEQ = #{BND_SEQ, jdbcType=VARCHAR}),
+						         #{SPT_NM, jdbcType=VARCHAR} , 
+						         #{SPT_TEL, jdbcType=VARCHAR} , 
+						         #{SPT_FAX, jdbcType=VARCHAR} , 
+						         #{SPT_ADDR, jdbcType=VARCHAR} , 
+						         #{ACP_MTD, jdbcType=VARCHAR} , 
+						         #{ISU_TIP, jdbcType=VARCHAR} , 
+						         #{ADD_DOC, jdbcType=VARCHAR} , 
+						         #{ISU_EXP_DD, jdbcType=VARCHAR} , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE );						
+
+	                  end if;
+               END IF;
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_BONDSPOT_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 지점정보 삭제 -->
+    <delete   id="deleteBondSpotLst" parameterType="map" >
+       	DELETE FROM TB_CC_BONDSPOT_LST
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+ 
+ 
+  
+  <!-- 채권사지점팝업   조회 -->
+    <select id="selectBondSpotPopup" parameterType="map" resultType ="map">
+			SELECT /* 채권사지점팝업 */
+				   NVL(A.BRCH_ID,' ') AS BRCH_ID,
+					NVL(A.BND_SEQ,'-99999') AS BND_SEQ,
+					NVL(A.BND_NM,' ') AS BND_NM,
+					NVL(B.SPT_SEQ,'-99999') AS SPT_SEQ,
+					NVL(B.SPT_NM,' ') AS SPT_NM
+			  FROM TB_CC_BOND_LST A, TB_CC_BONDSPOT_LST B
+			 WHERE A.BRCH_ID = B.BRCH_ID
+			   AND A.BND_SEQ = B.BND_SEQ
+			   AND A.BRCH_ID = #{BRCH_ID, jdbcType=VARCHAR}
+			   AND (A.BND_NM LIKE '%' || #{BND_NM, jdbcType=VARCHAR} || '%' OR B.SPT_NM LIKE '%' || #{BND_NM, jdbcType=VARCHAR} || '%')
+			 ORDER BY A.BND_SEQ, B.SPT_SEQ
+
+    </select>
+ 
+
+
+ 
+  
+  <!-- 사건 채권사팝업   조회 -->
+    <select id="selectAffairBondPopup" parameterType="map" resultType ="map">
+SELECT /* 채권사팝업 */
+   '0' as CHK,
+        NVL(A.BRCH_ID,' ') AS BRCH_ID,
+        NVL(A.BND_SEQ,'-99999') AS BND_SEQ,
+        NVL(A.BND_NM,' ') AS BND_NM,
+        NVL(A.BND_TEL,' ') AS BND_TEL,
+        NVL(A.BIZ_PRT_YN,' ') AS BIZ_PRT_YN,
+        NVL(A.ACP_MTD,' ') AS ACP_MTD,
+        NVL(A.PRT_GBN,' ') AS PRT_GBN,
+        NVL(A.FORM_GBN,' ') AS FORM_GBN,
+        NVL(A.JMN_OPN_YN,' ') AS JMN_OPN_YN,
+        NVL(CASE 
+             WHEN FORM_GBN = 'C1' THEN 'PG_CC_BONDFORM_C1.mrd'
+             WHEN FORM_GBN = 'C2' THEN 'PG_CC_BONDFORM_C2.mrd'
+             WHEN FORM_GBN IN  ('S', 'SC1', 'SC2') THEN FORM_SAVE_FILE
+             WHEN FORM_GBN = 'R' THEN 'PG_CC_BONDFORM_S.mrd'
+             ELSE ' '
+        END, ' ')  AS FORM_SAVE_FILE1,  -- 출력물1 (자채_공통의 경우 폼이 1,2 출력이므로 두개로 나눈다.)
+        NVL(CASE 
+             WHEN FORM_GBN = 'SC1' THEN 'PG_CC_BONDFORM_C1.mrd'
+             WHEN FORM_GBN = 'SC2' THEN 'PG_CC_BONDFORM_C2.mrd'
+             ELSE ' '
+        END, ' ')  AS FORM_SAVE_FILE2,  -- 출력물2 (자채_공통의 경우 폼이 1,2 출력이므로 두개로 나눈다.)
+        NVL(A.REG_GBN,' ') AS REG_GBN,
+        NVL(A.DT_GBN,' ') AS DT_GBN
+   FROM (SELECT BRCH_ID,
+                BND_SEQ,
+                BND_NM,
+                BND_TEL,
+                BIZ_PRT_YN,
+                ACP_MTD,
+                PRT_GBN,
+                FORM_GBN,
+                REG_GBN,
+                DT_GBN,
+                FORM_SAVE_FILE,
+                JMN_OPN_YN,
+                CASE
+                     WHEN A.BND_NM = UPPER( #{BND_NM, jdbcType=VARCHAR})  THEN 1
+                     WHEN A.BND_NM LIKE UPPER( #{BND_NM, jdbcType=VARCHAR}) || '%' THEN 2
+                     WHEN A.BND_NM LIKE '%' || UPPER( #{BND_NM, jdbcType=VARCHAR}) || '%' THEN 3
+                     WHEN A.RLT_NM LIKE '%' || UPPER( #{BND_NM, jdbcType=VARCHAR}) || '%' THEN 4
+                     WHEN A.BND_SEQ LIKE '%' || UPPER( #{BND_NM, jdbcType=VARCHAR}) || '%' THEN 5
+                END AS GRP_SEQ             
+            FROM TB_CC_BOND_LST A
+            WHERE A.BRCH_ID =  #{BRCH_ID, jdbcType=VARCHAR}
+            AND (A.BND_SEQ LIKE  UPPER( #{BND_NM, jdbcType=VARCHAR}) || '%' 
+                OR UPPER(A.BND_NM) LIKE '%' || UPPER( #{BND_NM, jdbcType=VARCHAR}) || '%'
+                OR UPPER(A.RLT_NM) LIKE '%' || UPPER( #{BND_NM, jdbcType=VARCHAR}) || '%'
+            )
+            AND  ((#{TMP_YN, jdbcType=VARCHAR} = '1' AND A.REG_GBN = 'P') OR (#{TMP_YN, jdbcType=VARCHAR} = '0' AND A.REG_GBN IN ('A','Z')))
+      ) A      
+    ORDER BY A.GRP_SEQ, A.BND_SEQ
+			 
+			 
+
+    </select>
+
+  <!-- 채권사 출력정보  조회 -->
+    <select id="selectBndPrintInfo" parameterType="map" resultType ="map">
+			SELECT /* 채권사 출력정보 */
+				   NVL(A.BRCH_ID,' ') AS BRCH_ID,
+					NVL(A.BND_SEQ,'-99999') AS BND_SEQ,
+					NVL(A.BND_NM,' ') AS BND_NM,
+					NVL(A.BND_TEL,' ') AS BND_TEL,
+					NVL(A.BIZ_PRT_YN,' ') AS BIZ_PRT_YN,
+                    CASE 
+                         WHEN FORM_GBN = 'C1' THEN 'PG_CC_BONDFORM_C1.mrd'
+                         WHEN FORM_GBN = 'C2' THEN 'PG_CC_BONDFORM_C2.mrd'
+                         WHEN FORM_GBN IN  ('S', 'SC1', 'SC2') THEN FORM_SAVE_FILE
+						 WHEN FORM_GBN = 'R' THEN 'PG_CC_BONDFORM_S.mrd'
+                         ELSE ' '
+                    END  AS FORM_SAVE_FILE1,  -- 출력물1 (자채_공통의 경우 폼이 1,2 출력이므로 두개로 나눈다.)
+                    CASE 
+                         WHEN FORM_GBN = 'SC1' THEN 'PG_CC_BONDFORM_C1.mrd'
+                         WHEN FORM_GBN = 'SC2' THEN 'PG_CC_BONDFORM_C2.mrd'
+                         ELSE ' '
+                    END  AS FORM_SAVE_FILE2,  -- 출력물2 (자채_공통의 경우 폼이 1,2 출력이므로 두개로 나눈다.)
+					NVL(A.DT_GBN, ' ') AS DT_GBN,
+					NVL(A.REG_GBN,' ') AS REG_GBN,
+					NVL(A.CLT_OPN_YN,' ') AS CLT_OPN_YN ,
+					NVL(A.JMN_OPN_YN,' ') AS JMN_OPN_YN ,
+					NVL(A.FORM_GBN,' ') AS FORM_GBN                     
+			  FROM TB_CC_BOND_LST A
+			 WHERE A.BRCH_ID = #{BRCH_ID, jdbcType=VARCHAR}
+			   AND A.BND_SEQ = #{BND_SEQ, jdbcType=VARCHAR}
+
+    </select>
+
+ 
+    	<!-- 임시채권사등록 -->
+     <insert   id="saveTmpBondLst" parameterType="map" >
+		
+		DECLARE
+			V_BND_SEQ NUMBER(5);
+		    V_CHRG_AMT NUMBER(10);
+		
+		BEGIN
+			
+			SELECT SQ_CC_BOND_LST.NEXTVAL
+			  INTO V_BND_SEQ
+			  FROM DUAL;
+			  
+			-- 수수료 받기
+			BEGIN
+				SELECT NVL(ETC_AGC_AMT,0)
+				  INTO V_CHRG_AMT
+				  FROM TB_CC_TIEUP_LST
+				 WHERE BRCH_ID = #{BRCH_ID, jdbcType=VARCHAR} 
+				   AND TUB_SEQ = #{TUB_SEQ, jdbcType=VARCHAR};
+              exception
+                 WHEN NO_DATA_FOUND THEN
+                    V_CHRG_AMT := 0;
+                 when others then
+                     raise_application_error(-20501,'임시채권사 수수료 오류 save error : ' ||SQLERRM);
+              end; 				   
+			
+			
+			INSERT INTO TB_CC_BOND_LST
+					        (
+					         BRCH_ID , 
+					         BND_SEQ , 
+					         BND_NM , 
+					         DT_GBN , 
+					         BIZ_PRT_YN , 
+					         FORM_GBN,
+					         REG_GBN,
+					         PRT_GBN,
+					         CHRG_AMT,
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT
+					         )
+					 VALUES (
+					         #{BRCH_ID, jdbcType=VARCHAR} , 
+					         V_BND_SEQ , 
+					         #{BND_NM, jdbcType=VARCHAR} , 
+					         'N' , 
+					         'N'  , 
+					         'N' , 
+					         'P' ,
+					         'A',
+					         V_CHRG_AMT,
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE
+					         );
+
+                  
+                  
+					INSERT INTO TB_CC_BONDSPOT_LST
+				        (
+				         BRCH_ID , 
+				         BND_SEQ , 
+				         SPT_SEQ , 
+				         SPT_NM , 
+				         CRT_USR , 
+				         CRT_DT , 
+				         EDT_USR , 
+				         EDT_DT )
+				 VALUES (
+				         #{BRCH_ID, jdbcType=VARCHAR} , 
+				         V_BND_SEQ , 
+				         1,
+				         #{BND_NM, jdbcType=VARCHAR} , 
+				         #{OPERATOR, jdbcType=VARCHAR} , 
+				         SYSDATE , 
+				         #{OPERATOR, jdbcType=VARCHAR} , 
+				         SYSDATE );	                 
+
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_BOND_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+
+</mapper>

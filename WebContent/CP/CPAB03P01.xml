@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="536" Id="CPAB03P01" Left="8" OnLoadCompleted="CPAB03P01_OnLoadCompleted" OnUnloadCompleted="CPAB03P01_OnUnloadCompleted" PidAttrib="7" Title="사건제휴사담당선택" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="568" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="PDS_TIEUPCHG_LST">
+				<Contents>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_FAX" size="256" summ="default" type="STRING"/>
+					<colinfo id="HNA_CHG_USR" size="256" summ="default" type="STRING"/>
+					<colinfo id="HNA_CHG_USR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DOC_CARY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIZ_FILE_SAVE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_REG_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_OPN_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_OPN_HP" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="96" Height="40" Id="Shape4" Left="10" LineColor="user22" Right="558" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="17" Top="56" Type="RoundRect" Width="548"></Shape>
+		<Grid AutoEnter="TRUE" BindDataset="PDS_TIEUPCHG_LST" BkColor2="user45" BkSelColor="user44" BoldHead="FALSE" Border="Flat" Bottom="497" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="393" Id="GRD_TIEUPCHG_LST" InputPanel="FALSE" Left="8" LineColor="default" LineType="OnlyVERT" OnCellDBLClick="GRD_TIEUPCHG_LST_OnCellDblClick" OnEnterDown="GRD_TIEUPCHG_LST_OnEnterDown" OnHeadClick="GRD_TIEUPCHG_LST_OnHeadClick" Right="560" RowHeight="20" Style="Grid" TabOrder="0" TabStop="true" Top="104" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="552">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="0"/>
+						<col width="200"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell bkcolor="user41" bkimagealign="stretch" col="0" color="user42" display="text" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="1" color="user42" display="text" InputZeroTime="true" text="회사코드"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="2" color="user42" display="text" InputZeroTime="true" text="제휴사명"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="3" color="user42" display="text" InputZeroTime="true" text="사건담당"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="4" color="user42" display="text" InputZeroTime="true" text="하나담당"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="5" color="user42" display="text" InputZeroTime="true" text="세금계산서"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="6" color="user42" display="text" InputZeroTime="true" text="SIN_GBN"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="7" color="user42" display="text" InputZeroTime="true" text="결재자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="left" col="1" colid="BRCH_ID" display="text" InputZeroTime="true"/>
+						<cell align="left" col="2" colid="TUB_NM" display="text" InputZeroTime="true"/>
+						<cell align="center" col="3" colid="CHG_NM" display="text" InputZeroTime="true"/>
+						<cell align="center" col="4" colid="HNA_CHG_USR_NM" display="text" InputZeroTime="true"/>
+						<cell align="left" col="5" colid="BIZ_FILE_SAVE_NM" display="text" InputZeroTime="true"/>
+						<cell align="left" col="6" colid="SIN_GBN" display="text" InputZeroTime="true"/>
+						<cell align="center" col="7" colid="SIN_NM" display="text" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="4" Transparent="TRUE" Width="560"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="6" Text="제휴사&#32;사건담당선택" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Image Align="Right" Height="18" Id="Image17" Left="26" LeftMargin="0" Style="Stc_Default_bold" TabOrder="7" Top="66" Transparent="TRUE" Width="51"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="221" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="8" Text="닫기" Top="504" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_confirm" ImageID="Btn_pop_2w" Left="168" LeftMargin="14" OnClick="btn_confirm_OnClick" Style="Btn_Popup" TabOrder="9" Text="확인" Top="504" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="96" Height="40" Id="Shape21" Left="11" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="31" TabOrder="10" Top="56" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="11" Top="8" Width="24"></Image>
+		<Image Align="Right" Height="18" Id="Image5" Left="30" LeftMargin="0" Style="Stc_Default_bold" TabOrder="13" Text="제휴사" Top="67" Transparent="TRUE" Width="42"></Image>
+		<Shape Bottom="99" Height="48" Id="Shape9" Left="71" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="81" TabOrder="14" Top="51" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Edit Border="Flat" Height="18" Id="S_TUB_NM" ImeMode="none" Left="81" LeftMargin="4" OnKeyDown="S_CHG_NM_OnKeyDown" Style="Edit" TabOrder="1" Top="67" Width="86"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="496" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="5" Top="65" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Checkbox Height="12" Id="CHK_TMP_TUB" Left="309" Style="CheckBox" TabOrder="3" Text="임시제휴사" Top="71" Value="FALSE" Width="86"></Checkbox>
+		<Image Align="Right" Height="18" Id="Image3" Left="174" LeftMargin="0" Style="Stc_Default_bold" TabOrder="15" Text="담당자" Top="67" Transparent="TRUE" Width="42"></Image>
+		<Shape Bottom="99" Height="48" Id="Shape0" Left="215" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="225" TabOrder="16" Top="51" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Edit Border="Flat" Height="18" Id="S_CHG_NM" ImeMode="none" Left="225" LeftMargin="4" OnKeyDown="S_CHG_NM_OnKeyDown" Style="Edit" TabOrder="2" Top="67" Width="78"></Edit>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 사건담당선택팝업
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 사건담당선택 팝업 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+ 
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.Transaction 후 처리 해야 할 내용
+//  1-4.창닫기
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고      
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	S_CHG_NM.Text = P_CHG_NM; //부모값
+	
+	fn_search();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	PDS_TIEUPCHG_LST.ClearData();
+	
+	svcID			= "CPAB03P01.selectTieUpChgPopup";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "PDS_TIEUPCHG_LST=cc.CCTieUpDAO.selectTieUpChgPopup";
+	argument    	= " _sqlName=cc.CCTieUpDAO.selectTieUpChgPopup"
+					+ " S_BRCH_ID=" + quote(P_BRCH_ID)		// 부모창에서 받은값	
+					+ " S_TUB_NM=" + quote(S_TUB_NM.Text)
+					+ " S_CHG_NM=" + quote(S_CHG_NM.Text)	
+					;
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	gfn_showProgressWindow(false);
+	
+	switch(svcID) 
+	{
+		case "CPAB03P01.selectTieUpChgPopup" :
+			if(PDS_TIEUPCHG_LST.rowcount == 1)
+			{
+				fn_set_tieup_info(0);
+			}
+			else
+			{
+				GRD_TIEUPCHG_LST.SetFocus();
+			}
+
+		break;	
+
+		case "CPAB03P01.saveTmpTieUpChgPopup" :
+			fn_search();
+
+		break;				
+		
+		
+		default:
+			 // alert("기타"); 
+	}
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 코드 값 setting
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_set_tieup_info(c_row)
+{	
+
+	// 부모창에 넘기기
+	
+	var retArr = Array();
+	
+	retArr[0] = PDS_TIEUPCHG_LST.GetColumn(c_row,"BRCH_ID");
+	retArr[1] = PDS_TIEUPCHG_LST.GetColumn(c_row,"TUB_SEQ");
+	retArr[2] = PDS_TIEUPCHG_LST.GetColumn(c_row,"TUB_NM");
+	retArr[3] = PDS_TIEUPCHG_LST.GetColumn(c_row,"CHG_SEQ");
+	retArr[4] = PDS_TIEUPCHG_LST.GetColumn(c_row,"CHG_NM");
+	retArr[5] = PDS_TIEUPCHG_LST.GetColumn(c_row,"TUB_TEL");
+	retArr[6] = PDS_TIEUPCHG_LST.GetColumn(c_row,"TUB_FAX");
+	retArr[7] = PDS_TIEUPCHG_LST.GetColumn(c_row,"HNA_CHG_USR");
+	retArr[8] = PDS_TIEUPCHG_LST.GetColumn(c_row,"HNA_CHG_USR_NM");
+	retArr[9] = PDS_TIEUPCHG_LST.GetColumn(c_row,"DOC_CARY");
+	retArr[10] = PDS_TIEUPCHG_LST.GetColumn(c_row,"BIZ_FILE_SAVE_NM");
+	retArr[11] = PDS_TIEUPCHG_LST.GetColumn(c_row,"AFF_REG_NOTE");
+	retArr[12] = PDS_TIEUPCHG_LST.GetColumn(c_row,"CLT_OPN_YN");
+	retArr[13] = PDS_TIEUPCHG_LST.GetColumn(c_row,"CLT_OPN_HP");
+	retArr[14] = PDS_TIEUPCHG_LST.GetColumn(c_row,"SIN_GBN");
+	retArr[15] = PDS_TIEUPCHG_LST.GetColumn(c_row,"SIN_NM");
+			  
+	close(retArr);	
+
+}
+
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.조회 버튼 클릭  
+//  2-4.확인 버튼 클릭
+//  2-5.닫기 버튼 클릭  
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAB03P01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+    fn_initForm();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 UnLoad 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAB03P01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_search_OnClick(obj)
+{
+	fn_search();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 확인 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_confirm_OnClick(obj)
+{
+	if(CHK_TMP_TUB.Value == '1')
+	{
+		// 임시제휴사 등록
+		if(length(S_TUB_NM.Text) == 0 || length(S_CHG_NM.Text) == 0)
+		{
+			gfn_popup_message("modal", "error", "등록할 임시제휴사명과 담당자명을  입력하세요.", "확인");
+			S_BND_NM.SetFocus();
+		}
+		else
+		{
+			if(gfn_popup_message("modal", "confirm", S_TUB_NM.Text + "를 제휴사로 등록하시겠습니까?", "확인")) 
+			{
+			
+				svcID			= "CPAB03P01.saveTmpTieUpChgPopup";
+				url   			= "service::common/select_mi.do";
+				inDatasets  	= "";
+				outDatasets 	= "";
+				argument    	= " _sqlName=cc.CCTieUpDAO.saveTmpTieUpChgPopup"
+										+ " BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+										+ " TUB_NM=" + quote(S_TUB_NM.Text)
+										+ " CHG_NM=" + quote(S_CHG_NM.Text)
+										+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);		
+				callbackFunc 	= "gfn_callback";	
+			
+			
+				gfn_showProgressWindow(true);
+				gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+			}				
+		}
+		
+		
+		
+	}
+	else
+	{
+		fn_set_tieup_info(PDS_TIEUPCHG_LST.currow);
+	}
+	
+	
+	
+	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 헤더클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_TIEUPCHG_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+
+	gfn_GridSort(GRD_TIEUPCHG_LST, PDS_TIEUPCHG_LST, nCell);	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 더블클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_TIEUPCHG_LST_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	fn_set_tieup_info(nRow);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 엔터
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_TIEUPCHG_LST_OnEnterDown(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	fn_set_tieup_info(nRow);
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회 엔터키 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function S_CHG_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if( nChar == 13 )
+	{
+		fn_search();
+	}	
+}
+
+]]></Script>
+</Window>

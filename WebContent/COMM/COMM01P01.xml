@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="216" Id="COMM01P01" Left="8" OnLoadCompleted="COMM01P01_OnLoadCompleted" PidAttrib="7" Title="파일&#32;업로드" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="448" WorkArea="true">
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg_400" Left="-1" TabOrder="1" Transparent="TRUE" Width="448"></Image>
+		<Image Align="Left" Height="20" Id="Image3" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="2" Text="파일첨부하기" Top="8" Transparent="TRUE" Width="250"></Image>
+		<AxMSIE Bottom="183" Height="126" Id="AxMSIE0" Left="3" MenuBar="false" Right="441" StatusBar="false" Top="57" Width="438"></AxMSIE>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="200" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="4" Text="닫기" Top="188" Transparent="TRUE" Width="50"></Button>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_post_title" ImeMode="native" MaxLength="200" Style="Edit" TabOrder="5" Text="/jeus/webapps/" Top="304" Visible="FALSE" Width="267"></Edit>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : COMM01P01
+* 작성자     : 강동수
+* 작성일     : 2011-04-14 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-04-14      V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID		 = "";
+var url   		 = "";
+var inDatasets   = "";
+var outDatasets  = "";
+var argument     = "";
+var callbackFunc = "";
+var compCd 		 = "";
+var corpCd 		 = "";
+var edu_nm 		 = "";
+var edu_cd 		 = "";
+var edu_gb 		 = "";
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.초기화 함수      
+//  1-3.조회 함수     
+//  1-4.저장 함수    
+//  1-5.삭제 함수    
+//  1-6.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-1. 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//*------------------------------------------------------------------------------------------------
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.초기화 부분
+//  2-4.조회 버튼 클릭     
+//  2-5.저장 버튼 클릭    
+//  2-6.삭제 버튼 클릭    
+//  2-7.엑셀 버튼 클릭
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1. 화면 Load 완료시 실행 스크립트  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+function COMM01P01_OnLoadCompleted(obj)
+{
+	
+	var tmpPath  = "";
+	tmpPath = p_path;
+	//var URL      = "http://59.12.238.168:8088/JSP/upload.jsp?upPath="+quote(tmpPath);
+	var URL      = GlobalURL + "/JSP/upload.jsp?upPath="+quote(tmpPath);
+	//var URL      = "http://localhost:8088/JSP/upload.jsp?upPath="+quote(tmpPath);
+	var PostData = "";
+	var Headers  = "Content-Type: application/x-www-form-urlencoded";
+	AxMSIE0.Navigate(URL,"","",PostData,Headers);
+}
+
+function btn_close_OnClick(obj)
+{
+	var frmHidden = AxMSIE0.Document.forms.namedItem("frmHidden");	
+	var recData = frmHidden.elements.namedItem("fileName").value; //  JSP 페이지의 경로를 받는다.
+
+	//recData = "/jeus/webapps/ftp_upload_data/1231.jpg";
+	
+	var spltFile = split(recData,"/");
+	
+	//alert(spltFile[spltFile.length-1]);
+	
+	close(spltFile[spltFile.length-1]); // 경로를 보내준다.
+}
+
+]]></Script>
+</Window>

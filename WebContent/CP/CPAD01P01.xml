@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="344" Id="CPAD01P01" Left="8" OnLoadCompleted="CPAD01P01_OnLoadCompleted" OnUnloadCompleted="CPAD01P01_OnUnloadCompleted" PidAttrib="7" Title="지점정보" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="760" WorkArea="true">
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="0" Transparent="TRUE" Width="755"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="10" Text="지점정보" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="341" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="9" Text="닫기" Top="312" Transparent="TRUE" Width="50"></Button>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="11" Top="8" Width="24"></Image>
+		<Image Align="Left" Height="14" Id="Image4" ImageID="Title_dot" Left="8" LeftMargin="20" Style="Stc_Subtitle" TabOrder="11" Text="지점기본정보" Top="69" Transparent="TRUE" Width="157"></Image>
+		<Shape BKColor="user7" Bottom="300" Height="206" Id="Shape_edit" Left="8" LineColor="user61" Right="746" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="15" Top="94" Type="RoundRect" Width="738"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static18" Left="13" Style="Stc_Label" TabOrder="14" Text="지점명" Top="99" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static5" Left="345" Style="Stc_Label" TabOrder="16" Text="전화번호" Top="99" VAlign="Middle" Width="80"></Static>
+		<Shape Bottom="272" Height="184" Id="Shape6" Left="337" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="345" TabOrder="17" Top="88" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static8" Left="529" Style="Stc_Label" TabOrder="18" Text="팩스번호" Top="99" VAlign="Middle" Width="80"></Static>
+		<Shape Bottom="272" Height="184" Id="Shape9" Left="521" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="529" TabOrder="19" Top="88" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Edit BindDataset="DS_BONDSPOT_LST" Border="Flat" Column="SPT_NM" Height="18" Id="EDT_BND_NM" Left="97" LeftMargin="4" Style="Edit_Ess" TabOrder="1" Top="100" Width="240"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static0" Left="13" Style="Stc_Label" TabOrder="20" Text="주소" Top="122" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="70" Id="Static6" Left="13" Style="Stc_Label" TabOrder="21" Text="추가서류" Top="221" VAlign="Middle" Width="80"></Static>
+		<TextArea BindDataset="DS_BONDSPOT_LST" Column="ADD_DOC" Height="70" Id="TXT_BUY_BND" ImeMode="none" Left="96" Style="Edit" TabOrder="8" Top="222" Width="640"></TextArea>
+		<Edit BindDataset="DS_BONDSPOT_LST" Border="Flat" Column="SPT_ADDR" Height="18" Id="EDT_BND_ADDR" Left="97" LeftMargin="4" Style="Edit" TabOrder="4" Top="124" Width="240"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static1" Left="345" Style="Stc_Label" TabOrder="22" Text="접수방법" Top="122" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="70" Id="Static2" Left="13" Style="Stc_Label" TabOrder="23" Text="발급팁" Top="146" VAlign="Middle" Width="80"></Static>
+		<TextArea BindDataset="DS_BONDSPOT_LST" Column="ISU_TIP" Height="70" Id="TXT_ISU_TIP" ImeMode="none" Left="96" Style="Edit" TabOrder="7" Top="146" Width="640"></TextArea>
+		<Combo BindDataset="DS_BONDSPOT_LST" Border="Flat" Column="ACP_MTD" Height="18" Id="COB_ACP_MTD" Left="428" ResetIndex="FIRST" ShadowColor="user2" Style="Combo_Ess" TabOrder="5" Top="121" Width="90"></Combo>
+		<Shape Bottom="96" Height="5" Id="Shape3" Left="6" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="757" TabOrder="24" Top="91" Type="Rectangle" Visible="FALSE" Width="751"></Shape>
+		<MaskEdit BindDataset="DS_BONDSPOT_LST" Border="Flat" Column="ISU_EXP_DD" Height="18" Id="MAE_ISU_EXP_DD" Left="613" Style="Edit" TabOrder="6" Top="123" Width="80"></MaskEdit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static14" Left="529" Style="Stc_Label" TabOrder="25" Text="발급예상기간" Top="122" VAlign="Middle" Width="80"></Static>
+		<Static Height="15" Id="Static3" Left="701" TabOrder="26" Text="(일)" Top="126" Width="21"></Static>
+		<Edit BindDataset="DS_BONDSPOT_LST" Border="Flat" Column="SPT_TEL" Height="18" Id="EDT_BND_TEL" Left="429" LeftMargin="4" Style="Edit" TabOrder="2" Top="100" Width="90"></Edit>
+		<Edit BindDataset="DS_BONDSPOT_LST" Border="Flat" Column="SPT_FAX" Height="18" Id="EDT_BND_FAX" Left="613" LeftMargin="4" Style="Edit" TabOrder="3" Top="100" Width="90"></Edit>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 지점  
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 지점 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+#include "lib::lib_file.js";
+
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+	// 서류접수방법 
+	gfn_comCodeCombo(COB_ACP_MTD, "AC09", "","");
+	
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 부모창에 값넣기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_setData()
+{
+	
+}
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CPAD01P01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CPAD01P01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+function btn_confirm_OnClick(obj)
+{
+	fn_setData();
+}
+]]></Script>
+</Window>

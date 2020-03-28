@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_CODE_MST : 코드마스터, TB_CC_CODE_DTL: 코드디테일 -->
+<mapper namespace="co.hanaapp.dao.cc.CCCodeDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 코드마스터 조회 -->
+    <select id="selectCodeMst" parameterType="map" resultType ="map">
+        SELECT /* 코드마스터 목록 */
+               'N' AS FLAG,
+               ROWIDTOCHAR(ROWID) AS ROW_ID,
+               #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+               nvl(MST_CD,' ') AS MST_CD,
+               nvl(MST_NM,' ') AS MST_NM,
+               nvl(TXT_VAL1,' ') AS TXT_VAL1 ,
+               nvl(TXT_VAL2,' ') AS TXT_VAL2,
+               nvl(NUM_VAL1,-99999) AS NUM_VAL1,
+               nvl(NUM_VAL2,-99999) AS NUM_VAL2,
+               nvl(NOTE,' ') AS NOTE,
+               decode(USE_YN,'Y',1,0) USE_YN
+          FROM TB_CC_CODE_MST
+         WHERE MST_CD LIKE '%' || #{S_MST_NM, jdbcType=VARCHAR} || '%' OR MST_NM LIKE '%' ||  #{S_MST_NM, jdbcType=VARCHAR} || '%'
+         ORDER BY MST_CD
+
+    </select>
+
+ 
+    <!-- 코드디테일 조회 -->
+    <select id="selectCodeDtl" parameterType="map" resultType ="map">
+        SELECT /* 코드디테일 목록 */
+               'N' AS FLAG,
+               ROWIDTOCHAR(B.ROWID) AS ROW_ID,
+               #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+               nvl(B.MST_CD,' ') AS MST_CD,
+               nvl(B.DTL_CD,' ') AS DTL_CD,
+               nvl(B.DTL_NM,' ') AS DTL_NM,
+               nvl(B.TXT_VAL1,' ') AS TXT_VAL1 ,
+               nvl(B.TXT_VAL2,' ') AS TXT_VAL2,
+               nvl(B.TXT_VAL3,' ') AS TXT_VAL3,
+               nvl(B.NUM_VAL1,-99999) AS NUM_VAL1,
+               nvl(B.NUM_VAL2,-99999) AS NUM_VAL2,
+               nvl(B.NUM_VAL3,-99999) AS NUM_VAL3,
+               NVL(B.SORT_NO, -99999) AS SORT_NO,
+               nvl(B.NOTE,' ') AS NOTE,
+               decode(B.USE_YN,'Y',1,0) USE_YN
+          FROM TB_CC_CODE_MST A, TB_CC_CODE_DTL B
+         WHERE A.MST_CD = B.MST_CD
+           AND (A.MST_CD LIKE  '%' || #{S_MST_NM, jdbcType=VARCHAR} || '%' OR A.MST_NM LIKE  '%' || #{S_MST_NM, jdbcType=VARCHAR} || '%')
+         ORDER BY A.MST_CD, B.SORT_NO, B.DTL_CD
+
+    </select>
+ 
+ 
+ 	<!-- 코드마스터 추가/수정/삭제 -->
+     <insert   id="saveCodeMst" parameterType="map" >
+           BEGIN
+                IF #{FLAG, jdbcType=VARCHAR} = 'D' THEN
+                   DELETE FROM TB_CC_CODE_MST
+                    WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;              
+               ELSE
+                    UPDATE TB_CC_CODE_MST
+                       SET MST_CD = #{MST_CD, jdbcType=VARCHAR} , 
+                           MST_NM = #{MST_NM, jdbcType=VARCHAR} , 
+                           TXT_VAL1 = #{TXT_VAL1, jdbcType=VARCHAR} , 
+                           TXT_VAL2 = #{TXT_VAL2, jdbcType=VARCHAR} , 
+                           NUM_VAL1 = #{NUM_VAL1, jdbcType=VARCHAR} , 
+                           NUM_VAL2 = #{NUM_VAL2, jdbcType=VARCHAR} , 
+                           NOTE = #{NOTE, jdbcType=VARCHAR} , 
+                           USE_YN = DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N') ,  
+                           EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+                           EDT_DT = SYSDATE 
+                    WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;   
+                 
+                 IF SQL%ROWCOUNT=0 THEN
+                    INSERT INTO TB_CC_CODE_MST
+                            (
+                             MST_CD , 
+                             MST_NM , 
+                             TXT_VAL1 , 
+                             TXT_VAL2 , 
+                             NUM_VAL1 , 
+                             NUM_VAL2 , 
+                             NOTE , 
+                             USE_YN , 
+                             CRT_USR , 
+                             CRT_DT , 
+                             EDT_USR , 
+                             EDT_DT )
+                     VALUES (
+                             #{MST_CD, jdbcType=VARCHAR} , 
+                             #{MST_NM, jdbcType=VARCHAR} , 
+                             #{TXT_VAL1, jdbcType=VARCHAR} , 
+                             #{TXT_VAL2, jdbcType=VARCHAR} , 
+                             #{NUM_VAL1, jdbcType=VARCHAR} , 
+                             #{NUM_VAL2, jdbcType=VARCHAR} , 
+                             #{NOTE, jdbcType=VARCHAR} , 
+                             DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N')  , 
+                             #{OPERATOR, jdbcType=VARCHAR} , 
+                             SYSDATE , 
+                             #{OPERATOR, jdbcType=VARCHAR} , 
+                             SYSDATE );
+                    END IF;
+                END IF;
+            EXCEPTION
+                WHEN OTHERS THEN
+                    RAISE_APPLICATION_ERROR(-20501,'TB_CC_CODE_MST save error : ' ||SQLERRM);
+            END;
+ 
+        
+    </insert>
+ 
+
+ 
+ 
+ 	<!-- 코드디테일 추가/수정/삭제 -->
+     <insert   id="saveCodeDtl" parameterType="map" >
+           BEGIN
+                IF #{FLAG, jdbcType=VARCHAR} = 'D' THEN
+                   DELETE FROM TB_CC_CODE_DTL
+                    WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;              
+               ELSE
+				UPDATE TB_CC_CODE_DTL
+				   SET MST_CD = #{MST_CD, jdbcType=VARCHAR} , 
+				       DTL_CD = #{DTL_CD, jdbcType=VARCHAR} , 
+				       DTL_NM = #{DTL_NM, jdbcType=VARCHAR} , 
+				       TXT_VAL1 = #{TXT_VAL1, jdbcType=VARCHAR} , 
+				       TXT_VAL2 = #{TXT_VAL2, jdbcType=VARCHAR} , 
+				       TXT_VAL3 = #{TXT_VAL3, jdbcType=VARCHAR} , 
+				       NUM_VAL1 = #{NUM_VAL1, jdbcType=VARCHAR} , 
+				       NUM_VAL2 = #{NUM_VAL2, jdbcType=VARCHAR} , 
+				       NUM_VAL3 = #{NUM_VAL3, jdbcType=VARCHAR} , 
+				       NOTE = #{NOTE, jdbcType=VARCHAR} , 
+				       SORT_NO = #{SORT_NO, jdbcType=VARCHAR} , 
+				       USE_YN = DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N') ,
+				       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+				       EDT_DT = SYSDATE 
+				 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ; 
+                 
+                 IF SQL%ROWCOUNT=0 THEN
+					INSERT INTO TB_CC_CODE_DTL
+					        (
+					         MST_CD , 
+					         DTL_CD , 
+					         DTL_NM , 
+					         TXT_VAL1 , 
+					         TXT_VAL2 , 
+					         TXT_VAL3 , 
+					         NUM_VAL1 , 
+					         NUM_VAL2 , 
+					         NUM_VAL3 , 
+					         NOTE , 
+					         SORT_NO , 
+					         USE_YN , 
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT )
+					 VALUES (
+					         #{MST_CD, jdbcType=VARCHAR} , 
+					         #{DTL_CD, jdbcType=VARCHAR} , 
+					         #{DTL_NM, jdbcType=VARCHAR} , 
+					         #{TXT_VAL1, jdbcType=VARCHAR} , 
+					         #{TXT_VAL2, jdbcType=VARCHAR} , 
+					         #{TXT_VAL3, jdbcType=VARCHAR} , 
+					         #{NUM_VAL1, jdbcType=VARCHAR} , 
+					         #{NUM_VAL2, jdbcType=VARCHAR} , 
+					         #{NUM_VAL3, jdbcType=VARCHAR} , 
+					         #{NOTE, jdbcType=VARCHAR} , 
+					         #{SORT_NO, jdbcType=VARCHAR} , 
+					         DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N')  , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE );
+                    END IF;
+                END IF;
+            EXCEPTION
+                WHEN OTHERS THEN
+                    RAISE_APPLICATION_ERROR(-20501,'TB_CC_CODE_DTL save error : ' ||SQLERRM);
+            END;
+ 
+        
+    </insert>
+ 
+ 
+    <!-- 코드팝업 조회 -->
+    <select id="selectCodePopup" parameterType="map" resultType ="map">
+        SELECT /* 코드팝업 목록 */
+               nvl(A.MST_CD,' ') AS MST_CD,
+               nvl(A.MST_NM,' ') AS MST_NM,
+               nvl(B.DTL_CD,' ') AS DTL_CD,
+               nvl(B.DTL_NM,' ') AS DTL_NM
+          FROM TB_CC_CODE_MST A, TB_CC_CODE_DTL B
+         WHERE A.MST_CD = B.MST_CD
+           AND NVL(B.USE_YN,'N') = 'Y'
+           AND A.MST_CD = #{MST_CD, jdbcType=VARCHAR}
+         ORDER BY B.SORT_NO, B.DTL_CD
+
+    </select> 
+
+</mapper>

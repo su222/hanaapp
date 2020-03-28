@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<root>
+	<params>
+		<param id="DEVICE" type="string">win32</param>
+		<param id="SOURCE" type="string">../etc_files</param>
+		<param id="TARGET" type="string">%MIPLATFORM%</param>
+		<param id="FILENAME" type="string"></param>
+		<param id="VERSION" type="string">2007,3,6,1</param>
+		<param id="ACTION" type="string">DOWN</param>
+		<param id="STATUS" type="string">0</param>
+	</params>
+	<dataset id="win32">
+		<colinfo id="DEVICE" type="string" size="255"/>
+		<colinfo id="SOURCE" type="string" size="255"/>
+		<colinfo id="TARGET" type="string" size="255"/>
+		<colinfo id="FILENAME" type="string" size="255"/>
+		<colinfo id="VERSION" type="string" size="255"/>
+		<colinfo id="ACTION" type="string" size="255"/>
+		<colinfo id="STATUS" type="string" size="2"/>
+		<record><FILENAME>hana.ico</FILENAME>
+				<ACTION>DOWN</ACTION>
+				<TARGET>%MIPLATFORM%</TARGET>
+		</record>
+		<record>
+		<FILENAME>resource.xml</FILENAME>
+		<ACTION>DOWN</ACTION>
+		<VERSION>system::2011.8.18.3</VERSION>
+		</record>
+		<record><FILENAME>CyMiPlatformKeyU.dll</FILENAME><VERSION>system::2008,3,26,1</VERSION></record>
+	</dataset>
+</root>

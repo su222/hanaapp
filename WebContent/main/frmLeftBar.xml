@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="574" Id="frmLeftBar" Left="8" OnLoadCompleted="frmLeftBar_OnLoadCompleted" PidAttrib="7" Title="윈쪽메뉴_제어창" Top="8" Ver="1.0" Width="29" WorkArea="true">
+		<Image Height="113" Id="img_leftBar" ImageID="A_Left_Btn_Bar" OnClick="img_leftBar_OnClick" OnMouseOut="img_leftBar_OnMouseOut" OnMouseOver="img_leftBar_OnMouseOver" Static="FALSE" TabOrder="1" Top="4" Width="25"></Image>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : frm_login(폼_로그인)
+* 작성자     : 강동수
+* 작성일     : 2011-03-30 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-03-30       V1.0                  initial ver.
+* 2011-07-08       V2.0        이용재    고도화
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+
+
+function img_leftBar_OnMouseOver(obj,nX,nY)
+{
+	obj.Cursor = "hand";
+//	DocLeft.fn_pdvMenuOpen();
+}
+
+
+
+function frmLeftBar_OnLoadCompleted(obj)
+{
+	// 스타일에 따라 보여지는건데..
+	// 지금은 무조건 A 로 처리
+	//g_skinImage = 'A';
+	
+	gfn_frameImageSet(g_skinImage, DocLeftBar);	
+}
+
+function img_leftBar_OnClick(obj,nX,nY)
+{
+	DocLeft.fn_pdvMenuOpen();
+}
+
+function img_leftBar_OnMouseOut(obj)
+{
+	obj.Cursor = "arrow";
+}
+]]></Script>
+</Window>

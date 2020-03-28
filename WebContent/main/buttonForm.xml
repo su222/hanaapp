@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form BKColor="#e5e5e5" Height="24" Id="buttonForm" Left="8" OnLoadCompleted="buttonForm_OnLoadCompleted" OnUnloadCompleted="buttonForm_OnUnloadCompleted" PidAttrib="7" Title="열린창탭레이어" Top="8" Ver="1.0" Width="1050" WorkArea="true">
+		<Image FillType="STRETCH" Height="24" Id="img_bk" ImageID="A_win_tab_bg2" TabOrder="1" Width="1050"></Image>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : buttonForm(열린창탭레이어)
+* 작성자     : 이용재
+* 작성일     : 2013-01-22 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-22       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID			= "";
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= ""; 
+
+var wn_Left   = 0;
+var wn_btnCnt = 0;
+var wn_w      = 5;	//좌우 이미지 크기
+var wn_margin = 2;
+var imgId = 0;
+
+var wn_LeftSeq = 0;
+var selectedImg = -1;
+
+var f_left = 80;	//버튼생성 디비전 기준 좌표
+var f_right;
+
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-1. 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_initForm()
+{
+	img_bk.ImageID = g_skinImage+"_win_tab_bg2";
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 오픈 프로그램 탭 버튼 생성 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_AddBtn(nRow, strMenuId)
+{
+	var strTitle = gds_OpenForm.GetColumn(nRow, "MENU_NM");
+	var arrTextExtent = ext_GetTextExtent("img_bk", strTitle);
+	var nWidth = arrTextExtent[0] + 25;
+
+	var vAttribute = "";
+	
+	vAttribute += " Static='false'";
+	vAttribute += " ImageID='"+g_skinImage+"_win_tab_off01'";
+	vAttribute += " Top='0'";
+	vAttribute += " Left='"+wn_Left+"'";
+	vAttribute += " Width='"+wn_w+"'";
+	vAttribute += " Height='20'";
+	vAttribute += " UserData='"+strMenuId+"'";
+	vAttribute += " OnClick='img_Title_OnClick'";
+
+	Create("Image", "img_TitleL_"+imgId, vAttribute);
+	
+	wn_Left += wn_w;
+	
+	vAttribute  = " Static='false'";
+	vAttribute += " FillType='STRETCH'";
+	vAttribute += " Align='Left'";
+	vAttribute += " LeftMargin='7'";
+	vAttribute += " ImageID='"+g_skinImage+"_win_tab_off02'";
+	vAttribute += " color='black'";
+	vAttribute += " Top='0'";
+	vAttribute += " Left='"+wn_Left+"'";
+	vAttribute += " Width='" + nWidth + "'";
+	vAttribute += " Height='20'";
+	vAttribute += " Text='" + strTitle + "'";
+	vAttribute += " UserData='"+strMenuId+"'";
+	vAttribute += " OnClick='img_Title_OnClick'";
+
+	Create("Image", "img_Title_"+imgId, vAttribute);
+		
+	wn_Left += nWidth;
+
+	vAttribute  = " Static='false'";
+	vAttribute += " ImageID='"+g_skinImage+"_win_tab_off03'";
+	vAttribute += " Top='0'";
+	vAttribute += " Left='"+wn_Left+"'";
+	vAttribute += " Width='"+wn_w+"'";
+	vAttribute += " Height='20'";
+	vAttribute += " UserData='"+strMenuId+"'";
+	vAttribute += " OnClick='img_Title_OnClick'";
+
+	Create("Image", "img_TitleR_"+imgId, vAttribute);
+
+	wn_Left += wn_w;
+
+	// X버튼 Create
+	Create("Button","btn_Close_"+imgId, 
+		   "ButtonStyle='TRUE' Left='" + (wn_Left - 20) + "' Width='14' UserData='" + strMenuId + "' Cursor='HAND' ImageID='"+g_skinImage+"_win_tab_close' Height='13' Top='3' OnClick='btn_Close_OnClick'");
+	
+	this.width = wn_Left;
+	img_bk.Width = wn_Left;
+	
+	wn_Left += wn_margin;
+	
+	gds_OpenForm.SetColumn(nRow, "IMG_ID", imgId);	
+	gds_OpenForm.SetColumn(nRow, "TEXT_WIDTH", nWidth);	
+	gds_OpenForm.SetColumn(nRow, "IMG_WIDTH", toNumber(wn_w)+toNumber(nWidth)+toNumber(wn_w));	
+	
+	imgId++;
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 탭버튼 삭제
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_removeBtn(pageId)
+{
+	var delRow   = gds_OpenForm.FindRow("MENU_ID", pageId);
+
+	var oImg01;
+	var oImg02;
+	var oImg03;
+	var oBtnClose;
+	var oImg02_Next;
+
+	if(delRow == 0){
+		wn_left = 0;
+	}	
+	else{
+		var preImgId = gds_OpenForm.GetColumn(delRow-1, "IMG_ID");
+		wn_Left = object("img_TitleR_" + preImgId).Right + wn_margin;		
+	}
+	
+	//	기존 버튼 이동
+	for(var i=(delRow+1); i<gds_OpenForm.rowcount; i++)
+	{			
+		var vImgId = gds_OpenForm.GetColumn(i, "IMG_ID");
+
+		oImg01    = object("img_TitleL_" + vImgId);
+		oImg02    = object("img_Title_"  + vImgId);
+		oImg03    = object("img_TitleR_" + vImgId);
+		oBtnClose = object("btn_Close_"  + vImgId);
+		
+		oImg01.left     = wn_Left;
+		wn_Left += oImg01.Width;
+		oImg02.left     = wn_Left;
+		wn_Left += oImg02.Width;
+
+		oImg03.left     = wn_Left;
+		wn_Left += oImg03.Width;
+
+		oBtnClose.Left = wn_Left - 20;
+		wn_Left += wn_margin;
+	}
+
+	var delImgId = gds_OpenForm.GetColumn(delRow, "IMG_ID");
+
+	gds_OpenForm.DeleteRow(delRow);
+	Destroy("img_TitleL_" + delImgId);
+	Destroy("img_Title_"  + delImgId);
+	Destroy("img_TitleR_" + delImgId);
+	Destroy("btn_Close_"  + delImgId);
+
+	this.width = wn_Left;
+	img_bk.Width = wn_Left;
+
+	fn_moveTab("L");
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 탭버튼 선택
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_SelBtn(pageId)
+{
+	this.visible = false;
+
+	var oImg01;
+	var oImg02;
+	var oImg03;
+	var selRow   = gds_OpenForm.FindRow("MENU_ID", pageId);
+	var selImgId = gds_OpenForm.GetColumn(selRow,"IMG_ID");
+	var selFindImg = gds_OpenForm.FindRow("IMG_ID",selectedImg);
+
+	//전에 선택한 탭은 off로 이미지 변경..(삭제 경우 gds_openform 테이터 유무로 파악)
+	if(toNumber(selectedImg) >= 0 && selFindImg > -1)
+	{
+		oImg01  = object("img_TitleL_" + selectedImg);
+		oImg02  = object("img_Title_"  + selectedImg);
+		oImg03  = object("img_TitleR_" + selectedImg);
+		oImg01.ImageID = g_skinImage+"_win_tab_off01";
+		oImg02.ImageID = g_skinImage+"_win_tab_off02";
+		oImg03.ImageID = g_skinImage+"_win_tab_off03";
+		oImg02.color = "black";
+	}
+
+	if(selRow > -1)
+	{
+		oImg01  = object("img_TitleL_" + selImgId);
+		oImg02  = object("img_Title_"  + selImgId);
+		oImg03  = object("img_TitleR_" + selImgId);
+		oImg01.ImageID = g_skinImage+"_win_tab_on01";
+		oImg02.ImageID = g_skinImage+"_win_tab_on02";
+		oImg03.ImageID = g_skinImage+"_win_tab_on03";
+		oImg02.color = "white";
+		selectedImg = gds_OpenForm.GetColumn(selRow,"IMG_ID");
+		
+	
+	}
+	if((this.left + oImg03.Right) > parent.btn_toRight.left)	fn_moveTab("R");
+	if((this.left + oImg01.Left ) < 80 ) fn_moveTab("L");
+
+	this.visible = true;
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 탭버튼 이동 ◀▶
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_moveTab(pFlag)
+{	
+
+	if(pFlag == "L")
+	{	
+		var imgW;
+		for(var i=(gds_OpenForm.rowcount-1); i>=0; i--)
+		{
+			imgW = gds_OpenForm.GetColumn(i, "IMG_WIDTH");
+			f_left += toNumber(imgW);
+			if(f_left > 80)
+			{
+				f_left = 80;
+				break;
+			}	
+		}		
+	}
+	else if(pFlag == "R")
+	{
+		f_right = this.Right;
+
+		if(f_right < parent.btn_toRight.left)	return;
+
+		var imgW;
+		for(var i=0; i<gds_OpenForm.rowcount; i++)
+		{
+			imgW = gds_OpenForm.GetColumn(i, "IMG_WIDTH");
+			f_left  -= toNumber(imgW);
+			f_right -= toNumber(imgW);
+
+			if(f_right < parent.btn_toRight.left)
+			{
+				break;
+			}	
+		}		
+		
+	}
+	else{
+
+	}
+	this.left = f_left;
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 탭버튼 클릭시 해당 프로그램 활성화
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function img_Title_OnClick(obj)
+{
+	var arr = split(obj.id, "_");
+	var sSerialNo = arr[2];
+
+	var formId = gds_OpenForm.LookUp("IMG_ID", sSerialNo, "MENU_ID");
+	
+	gfn_OpenWindowByFormId(formId);
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 탭버튼 X클릭시 해당 프로그램  종료
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function btn_Close_OnClick(obj)
+{
+	var sSerialNo = mid(obj.id, length("btn_Close_"));
+	var formId = gds_OpenForm.LookUp("IMG_ID", sSerialNo, "MENU_ID");
+	gfn_CloseWindowByFormId(formId);
+}
+
+
+// remove All Button
+/*
+function fn_RemoveallButton()
+{
+	wn_btnCnt = gds_OpenForm.count;
+	for(var btnIdx=wn_btnCnt-1; btnIdx > 0 ; btnIdx--)
+	{	
+		var pageId = gds_OpenForm.GetColumn(btnIdx,"MENU_ID");
+		fn_removeBtn(pageId);
+	}
+}
+*/
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.화면크기 조정
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1. 화면 Load 완료시 실행 스크립트  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function buttonForm_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function buttonForm_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();	
+}
+]]></Script>
+</Window>

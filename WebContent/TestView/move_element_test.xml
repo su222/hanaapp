@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="lightgoldenrodyellow" Height="328" Id="frm_move" Left="8" PidAttrib="7" Title="New&#32;Form" ToolTipFont="굴림,8" Top="8" Ver="1.0" Width="520" WorkArea="true">
+		<Static Align="Center" BKColor="bisque" Height="100" Id="st_up" Left="6" TabOrder="1" Text="테스트&#32;상위" Top="5" VAlign="Middle" Width="509"></Static>
+		<Static Align="Center" BKColor="lightblue" Height="99" Id="st_down" Left="6" TabOrder="2" Text="테스트&#32;하위" Top="112" VAlign="Middle" Width="509"></Static>
+		<Div BKColor="yellowgreen" Height="100" Id="Div_Test" Left="4" TabOrder="3" Text="Div0" Top="387" Visible="FALSE" Width="509">
+			<Contents>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_up" ImageID="Btn_sub_5w" Left="209" OnClick="Div_Test_btn_up_OnClick" TabOrder="1" Text="one" Top="44" Width="87"></Button>
+			</Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_up" ImageID="Btn_sub_5w" Left="425" OnClick="btn_up_OnClick" TabOrder="4" Text="펼침" Top="73" Width="87"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_down" ImageID="Btn_sub_5w" Left="425" OnClick="btn_down_OnClick" TabOrder="5" Text="닫음" Top="182" Width="87"></Button>
+	</Form>
+	<Script><![CDATA[
+function btn_up_OnClick(obj)
+{
+	st_down.Top      = 220;
+	st_down.Left     = 6;
+	Div_Test.Top     = 112;
+	Div_Test.Left    = 6;	
+	btn_down.Top     = 282;
+	btn_down.Left    = 425;	
+	Div_Test.Visible = true;
+}
+
+function btn_down_OnClick(obj)
+{
+	st_down.Top      = 112;
+	st_down.Left     = 6;
+	Div_Test.Top     = 530;
+	Div_Test.Left    = 6;
+	btn_down.Top     = 182;
+	btn_down.Left    = 425;
+	Div_Test.Visible = false;
+}
+
+
+function Div_Test_btn_up_OnClick(obj)
+{
+	alert('one');
+}
+
+]]></Script>
+</Window>

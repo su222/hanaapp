@@ -1,0 +1,93 @@
+@charset "utf-8";
+@import url('../css/navigation.css');
+/* 나이스데이터 메인페이지 CSS - 마지막수정 : 2012.01.02(월) */
+
+html, body {width:100%; margin:0; padding:0; background-color:#fff;}
+body {background:url(../images/bg_topheader.gif) repeat-x top}
+* {margin:0; padding:0; font-family:Dotum, Gulim; font-size:12px; color:#8c8c8c;}
+img {border:0;}
+hr {display: none;}
+li {list-style:none}
+a:link {color:#8c8c8c; text-decoration:none;}
+a:visited {color:#8c8c8c; text-decoration:none;}
+a:hover, active {color:#004992; text-decoration:none;}
+
+/* Layout */
+#topHeader {width:100%; height:85px; margin:0 auto;}
+#topMenu {position:relative; width:995px; margin:0 auto;}
+#wrap {width:995px; margin:0 auto; padding-top:50px;} 
+#left {float:left; width:270px}
+#contents {float:left; width:455px; padding-bottom:30px}
+#side {float:left; width:270px}
+#bottom {clear:both; width:100%; margin-top:45px; border-top:1px solid #eaeaea}
+#footer {width:100%; height:90px; border-top:1px solid #eaeaea}
+
+/* Top */
+h1 {position:absolute; top:21px; left:0;}
+.memberMenu {position:absolute; top:19px; left:204px}
+.memberMenu li {float:left}
+.myMenu {position:absolute; top:19px; right:0}
+.myMenu li {float:left}
+.boxMenu {position:absolute; top:44px; right:0; width:140px; height:28px; background:url(../images/bg_boxmenu.gif) no-repeat}
+.boxMenuList {position:absolute; top:7px; left:13px; z-index:30}
+.boxMenuList li {float:left; padding-right:7px}
+
+/* Left */
+.serviceShort {width:270px;}
+.serviceShort img {vertical-align:top}
+.serviceShort dt {padding-bottom:16px}
+.serviceShort dd {float:left; padding-bottom:3px}
+.event {position:relative; clear:left; padding:19px 0 8px 0; width:270px; border-top:1px solid #ebebeb}
+.event .title {position:absolute; top:19px; left:0;}
+.eventPartner {position:relative; padding-top:19px; width:270px; height:120px; border-top:1px solid #ebebeb}
+.eventPartner .title {position:absolute; top:19px; left:0;}
+.eventPartner .event, .dot {position:absolute; top:19px; right:0;}
+.eventPartner .event, .dot li {float:left; padding-left:2px;}
+.eventPartner .event, .dot a:hover {background:url(../images/dot_on.gif) no-repeat 0 0; }
+.eventPartner .slideshow {position:absolute; top:36px; left:0;}
+.eventPartner .slideshow2 {position:absolute; top:36px; left:0;}
+
+/* Contents */
+#main_slideshow {position:relative; height:404px;}
+#main_slideshow img {position:absolute; top:0; left:0; z-index:8;}
+#main_slideshow img.active {z-index:10;}
+#main_slideshow img.last-active {z-index:9;}
+.main_dot {padding-left:200px;}
+.main_dot li {float:left; padding-left:2px;}
+/* .main_dot a:hover {background:url(../images/dot_on.gif) no-repeat 0 0;} */
+.memberLogin {width:270px; height:258px;}
+.memberLogin .userName {height:35px; background:url(../images/loginbox_top.png) no-repeat top;}
+.memberLogin .userName p {padding:13px 0 0 20px; font-size:11px; color:#b0b0b0;}
+.memberLogin .userName .user {color:#717171; font-weight:bold;}
+.memberLogin .userInfo {padding:10px 15px 15px 15px; background:url(../images/loginbox_bg.png) no-repeat bottom;}
+.memberLogin table th {padding:10px 0 3px 7px; font-size:12px; font-weight:bold; color:#607884; text-align:left; background:url(../images/bul01.gif) no-repeat 0 50%}
+.memberLogin table td {padding:2px 0 2px 7px; font-size:11px; color:#c5c5c5;}
+.memberLogin .num {font-size:11px; font-weight:bold; color:#93b9dd;}
+.memberLogin dt {font-size:11px; font-weight:bold; color:#93b9dd;}
+.memberLogin dd {font-size:11px; color:#c5c5c5; line-height:18px;}
+.memberLogin .taxpro {padding:1px; border:1px solid #d5d5d5;}
+.taxHelp {width:270px;}
+.niceTax {width:270px; padding:13px 0 15px 0; border-top:1px solid #ebebeb; border-bottom:1px solid #ebebeb}
+.partnerService {width:270px; padding-top:15px}
+.news {position:relative; width:995px; height:48px; margin:0 auto}
+.news dt {float:left}
+.notice {position:absolute; top:18px; left:0; width:341px}
+.news .taxnews {position:absolute; top:18px; left:376px;  width:341px}
+.news .vatCard {position:absolute; top:13px; right:0}
+.blank10 {padding-left:10px}
+
+/* Foot */
+#foot {position:relative; width:995px; height:90px; margin:0 auto}
+#foot .footMenu {position:absolute; top:14px; left:0}
+#foot .footMenu li {float:left; padding:4px 19px 0 0;background:url(../images/bgline_topmenu.gif) right}
+#foot .footMenu .endMenu {float:left; padding:4px 19px 0 0; background:url(../images/bgline_blank.gif) right}
+#foot .copyright {position:absolute; top:19px; left:0}
+#foot .copyright .line {padding-right:10px; background:url(../images/bgline_topmenu.gif) 0 center;}
+#foot .callCenter {position:absolute; top:14px; right:0}
+
+/* Quick Menu */
+#floatdiv {position:relative; margin: 0 auto; width:1042px; background-color:transparent;}
+#floatdiv img {vertical-align:top;}
+#floatdiv ul {position:absolute; top:50px; left:855px; width:211px; height:149px; list-style:none;}
+#floatdiv li {text-align:right;}
+

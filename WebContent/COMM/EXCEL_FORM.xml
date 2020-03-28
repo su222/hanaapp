@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="152" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="엑셀양식&#32;템플릿" ToolTipFont=",0" Top="8" Ver="1.0" Width="760" WorkArea="true">
+		<Shape BKColor="silver" Bottom="113" Height="108" Id="Shape4" Left="3" LineColor="teal" Right="756" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="3" Top="5" Type="RoundRect" Width="753"></Shape>
+		<Shape BKColor="white" Bottom="103" Height="88" Id="Shape0" Left="12" LineWidth="0" Right="748" TabOrder="4" Top="15" Type="Rectangle" Width="736"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_ok" ImageID="Btn_pop_2w" Left="355" LeftMargin="14" OnClick="btn_ok_OnClick" Style="Btn_Popup" TabOrder="1" Text="확인" Top="121" Transparent="TRUE" Width="50"></Button>
+		<TextArea Border="None" Height="64" Id="edt_message" Left="19" Readonly="TRUE" Style="TextArea" TabOrder="2" Top="28" Width="729"></TextArea>
+	</Form>
+	<Script><![CDATA[
+
+function form_OnLoadCompleted(obj)
+{
+	//if(p_type == "PYPB03T1"){
+		edt_message.Text = p_message;
+	//}
+}
+
+
+function btn_ok_OnClick(obj)
+{
+	close();
+}
+
+
+]]></Script>
+</Window>

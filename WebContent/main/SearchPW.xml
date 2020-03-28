@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="300" Id="SearchPW" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="비밀번호초기화" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="450" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_auth">
+				<Contents>
+					<colinfo id="eno" size="255" summ="default" type="STRING"/>
+					<colinfo id="ssn1" size="255" summ="default" type="STRING"/>
+					<colinfo id="ssn2" size="255" summ="default" type="STRING"/>
+					<colinfo id="hp_tel1" size="255" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_user_info">
+				<Contents>
+					<colinfo id="eno" size="256" summ="default" type="STRING"/>
+					<colinfo id="pre_pwd1" size="256" summ="default" type="STRING"/>
+					<colinfo id="pre_pwd2" size="256" summ="default" type="STRING"/>
+					<colinfo id="pre_pwd3" size="256" summ="default" type="STRING"/>
+					<colinfo id="sary_mail_yn" size="256" summ="default" type="STRING"/>
+					<colinfo id="tmp_pwd" size="256" summ="default" type="STRING"/>
+					<colinfo id="encode_pwd" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="300" Id="Image3" ImageID="popBg_450x300_비번초기화" TabOrder="7" Width="450"></Image>
+		<Static Font="돋움,9" Height="20" Id="Static0" Left="38" Style="Stc_Title" TabOrder="1" Text="임시&#32;비밀번호는&#32;SMS로&#32;발송됩니다." Top="180" Width="250"></Static>
+		<Static Font="돋움,10,Bold" Height="20" Id="Static1" Left="219" Style="Stc_Title" TabOrder="2" Text="-" Top="110" Width="10"></Static>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_eno" Left="112" MaxLength="8" Style="Edit" TabOrder="3" Top="80" Width="100"></Edit>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_ssn1" Left="112" MaxLength="6" Style="Edit" TabOrder="4" Top="108" Width="100"></Edit>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_ssn2" Left="232" MaxLength="7" Password="TRUE" Style="Edit" TabOrder="5" Top="108" Width="100"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_auth" Border="Flat" CheckLength="Byte" Column="hp_tel1" DisableColor="user0" Height="18" Id="edt_phone" Left="112" MaxLength="6" Readonly="TRUE" Style="Edit" TabOrder="6" Top="137" Width="100"></Edit>
+		<Image Height="18" Id="Image5" ImageID="bt_사번" Left="40" TabOrder="8" Top="80" Width="60"></Image>
+		<Image Height="18" Id="Image4" ImageID="txt_주민번호" Left="40" TabOrder="9" Top="108" Width="63"></Image>
+		<Image Height="18" Id="Image6" ImageID="bt_휴대전화" Left="40" TabOrder="10" Top="137" Width="60"></Image>
+		<Image FillType="STRETCH" Height="29" Id="Image7" ImageID="bt_초기화" Left="156" OnClick="btn_pw_reset" OnMouseOver="img_resetButton_OnMouseOver" Static="FALSE" TabOrder="11" Top="239" Width="72"></Image>
+		<Image FillType="STRETCH" Height="29" Id="Image8" ImageID="bt_close" Left="236" OnClick="btn_close_OnClick" OnMouseOver="img_closeButton_OnMouseOver" Static="FALSE" TabOrder="12" Top="239" Transparent="TRUE" Width="72"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="18" Id="Button8" ImageID="Btn_detail_2w" Left="337" LeftMargin="11" OnClick="btn_search_OnClick" Style="Btn_detail" TabOrder="13" Text="인증" Top="108" TopMargin="1" Transparent="TRUE" Width="41"></Button>
+		<Static Font="돋움,9" Height="20" Id="Static2" Left="38" Style="Stc_Title" TabOrder="14" Text="휴대전화&#32;오류&#32;시&#32;인사담당자에게&#32;연락주시기&#32;바랍니다." Top="199" Width="400"></Static>
+		<Shape BKColor="user4" Bottom="70" Height="6" Id="Shape0" Left="26" LineColor="user4" Right="417" TabOrder="15" Top="64" Width="391"></Shape>
+		<Shape BKColor="user4" Bottom="172" Height="6" Id="Shape1" Left="26" LineColor="user4" Right="417" TabOrder="16" Top="166" Width="391"></Shape>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : SearchPW(비밀번호 초기화)
+* 작성자     : 한희경
+* 작성일     : 2011-08-10 최초 생성
+* 기능설명   : 
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011--08-10    V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var sel_flag = "M";					// 회사선택구분(S:단일선택, M:멀티선택)
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+var form_id = "SearchPW";
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function btn_search_OnClick(obj)
+{
+	fn_search();
+}
+
+/**************************************************************************************************
+  * 사용자 Event 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 닫기버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 비밀번호 초기화 버튼 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function btn_pw_reset()
+{
+	fn_pw_reset();
+}
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function fn_search()
+{
+	if(edt_eno.Text == "")
+	{
+		gfn_popup_message("modal", "error", "성명을 입력하세요.", "확인");
+		return;
+	}
+	if(edt_ssn1.Text == "")
+	{
+		gfn_popup_message("modal", "error", "주민번호 앞자리 6자리 입력하세요.", "확인");
+		return;
+	}
+	
+	if(edt_ssn2.Text == "")
+	{
+		gfn_popup_message("modal", "error", "주민번호 뒷자리 7자리를 입력하세요.", "확인");
+		return;
+	}
+	
+	svcID			= "SearchPW.SelectAuth";
+	url   			= "service::SearchPW.SelectAuth.do";
+	inDatasets  	= "";
+	outDatasets 	= "ds_auth=SearchPW.SelectAuth"
+					;
+	argument    	= " _sqlName=SearchPW.SelectAuth"
+					+ " p_eno=" + quote(edt_eno.text)
+					+ " p_ssn1=" + quote(edt_ssn1.text)
+					+ " p_ssn2=" + quote(edt_ssn2.text)																																										
+						;
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+	
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1. 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function form_OnLoadCompleted(obj) 
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+	// 그리드 공통 초기화
+	gfn_grid_init(Grid1);	
+
+}
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1-1. 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//*------------------------------------------------------------------------
+
+function fn_initForm()
+{
+	ds_auth.AddRow();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-6. Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	switch(svcID) 
+	{
+		// 조회
+		case "SearchPW.SelectAuth" :
+			fn_auth();
+		break;	
+		
+		// 기존비빌번호 조회 
+		case "SearchPW.SelectOldpwd" :												
+			fn_save(); // 새로운 비밀번호를 저장한다.
+		break;
+		
+		//  비밀번호 초기화 
+		case "SearchPW.SavePwReset" :
+			gfn_popup_message("modal", "error", "SMS로 임시비밀번호가 발송되었습니다.", "확인");
+			fn_close();
+			return;
+		break;	
+				
+
+		default:
+			  alert("기타"); 
+	}
+}
+
+/**************************************************************************************************
+  * 사용자 Function 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_auth()
+{
+	var auth = ds_auth.GetColumn(0, "hp_tel1");
+
+	if(ds_auth.rowcount == 0)
+	{
+		gfn_popup_message("modal", "error", "사번 또는 주민번호가 일치하지 않습니다.", "확인");
+		return;
+	}
+	
+	if(Length(auth) == 0)
+	{
+		gfn_popup_message("modal", "error", "등록된 휴대폰 번호가 없습니다. \n업무담당자에게 연락주시기 바랍니다.", "확인");
+		return;
+	}
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 닫기- 현재 팝업창을 닫는다
+//* 함수유형     : 
+//* parameter    :  
+//* return value :  
+//*-----------------------------------------------------------------------------------------------
+function fn_close(obj)
+{
+	close(false);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  비밀번호 초기화 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_pw_reset()
+{
+	var auth = ds_auth.GetColumn(0, "hp_tel1");
+	if(Length(auth) == 0)
+	{
+		gfn_popup_message("modal", "error", "정상인증 완료 후 초기화해 주세요.", "확인");
+		return;
+	}
+	
+	// 임시비밀번호 생성하기
+	var tmp_pwd = "";
+	//영어4자리+숫자4자리 일경우
+	//for ( n = 0 ; n < 4 ; n ++ )
+	//{
+	//	tmp_pwd += Chr(Random(97,122)); // 유니코드로 랜덤 영어 4자리 만들기.
+	//}
+
+	tmp_pwd = Random(10000000,99999999) ; // 숫자8자리 생성.
+
+	fn_pwd_search(tmp_pwd);
+
+}
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 비밀번호 조회 함수  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_pwd_search(tmp_pwd)
+{
+	ds_user_info.ClearData();
+
+	svcID			= "SearchPW.SelectOldpwd";
+	url   			= "service::SearchPW.SelectOldpwd.do";
+	inDatasets  	= "";
+	outDatasets 	= "ds_user_info=SearchPW.SelectOldpwd";
+	argument    	= " _sqlName=SearchPW.SelectOldpwd"
+					+ " p_eno=" + quote(edt_eno.text)
+					+ " p_new_pwd=" + quote(tmp_pwd)					
+					;
+	callbackFunc   	= "gfn_callback";
+	
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  임시비밀번호 저장및 sms 발송
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function fn_save()
+{
+	var encode_pwd = ds_user_info.GetColumn(0,"encode_pwd");
+	var password = ds_user_info.GetColumn(0,"pwd");
+	var pre_pwd1 = ds_user_info.GetColumn(0,"pre_pwd1");
+	var pre_pwd2 = ds_user_info.GetColumn(0,"pre_pwd2");
+	var pre_pwd3 = ds_user_info.GetColumn(0,"pre_pwd3");
+	var phone = ds_auth.GetColumn(0,"hp_tel1");
+	var decode_pwd = "";
+	decode_pwd  = "[통합인사정보시스템 임시 비밀번호 안내]
+" ; 
+	decode_pwd  += ds_user_info.GetColumn(0,"tmp_pwd");
+	//alert(decode_pwd);
+	
+	if(encode_pwd == password){
+		gfn_Popup_Message("modal", "confirm", "새 비밀번호가\n\n기존 비밀번호와 같습니다.\n\n다시 입력하십시오.", "확인");
+		return;
+	}else if(encode_pwd == pre_pwd1 || encode_pwd == pre_pwd2 || encode_pwd == pre_pwd3){
+		gfn_Popup_Message("modal", "confirm", "새 비밀번호가\n\n예전 비밀번호와 같습니다.\n\n보안을 위해서 다시 입력하십시오.", "확인");
+		return;
+	}	
+	
+	svcID		= "SearchPW.SavePwReset";              
+	url   		= "service::SearchPW.SavePwReset.do";   
+	inDatasets  = "SearchPW.SavePwReset=ds_auth:U SearchPW.TranSms=ds_auth:U";   //U: 업데이트 된 row만 넘긴다, A:전부 전달, N:delete를 제외한 모든 정보전달                                      
+	outDatasets = ""; 
+	argument    = " _sqlName=SearchPW.SavePwReset,"
+	            + "SearchPW.TranSms"
+				+ " hp_tel=" + quote(phone)
+				+ " eno=" + quote(edt_eno.text)
+				+ " pwd=" + quote(encode_pwd)
+				+ " pre_pwd1=" + quote(password)
+				+ " pre_pwd2=" + quote(pre_pwd1)
+				+ " pre_pwd3=" + quote(pre_pwd2)
+				+ " tmp_pwd=" + quote(decode_pwd)
+				;	  
+	callbackFunc = "gfn_callback"; 	
+	
+/*	
+	svcID		= "SearchPW.SavePwReset";              
+	url   		= "service::SearchPW.SavePwReset.do";   
+	inDatasets  = "SearchPW.SavePwReset=ds_auth:U SearchPW.TranSms=ds_auth:U"   //U: 업데이트 된 row만 넘긴다, A:전부 전달, N:delete를 제외한 모든 정보전달                                      
+	outDatasets = ""; 
+	argument    = " _sqlName=SearchPW.SavePwReset,"
+				+ "SearchPW.TranSms"
+				+ " eno = " + quote(edt_eno.text)
+				+ " pwd = " + quote(encode_pwd)
+				+ " pre_pwd1 = " + quote(password)
+				+ " pre_pwd2= " + quote(pre_pwd1)
+				+ " pre_pwd3= " + quote(pre_pwd2)
+				;	  
+	callbackFunc = "gfn_callback"; 	
+*/		
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  초기화 마우스 오버시
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function img_resetButton_OnMouseOver(obj,nX,nY)
+{
+	obj.Cursor  = "hand";
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  닫기 마우스 오버시
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function img_closeButton_OnMouseOver(obj,nX,nY)
+{
+	obj.Cursor  = "hand";
+}]]></Script>
+</Window>

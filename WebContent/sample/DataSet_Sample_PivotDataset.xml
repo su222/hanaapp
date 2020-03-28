@@ -1,0 +1,1858 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="#e2e8d4" Height="550" Id="frmPivotDS" Left="8" OnLoadCompleted="frmPivotDS_OnLoadCompleted" PidAttrib="7" Title="frmPivotDS" Top="8" Ver="1.0" Width="740" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="dsOrders" OnLoadCompleted="dsOrderPivot_OnLoadCompleted">
+				<Contents>
+					<column id="Const0" type="null"></column>
+					<column id="Const1" type="null"></column>
+					<colinfo id="orderid" size="255" type="STRING"/>
+					<colinfo id="orderdate" size="14" type="DATE"/>
+					<colinfo id="qty" size="5" summ="sum" type="INT"/>
+					<colinfo id="CATEGORYNAME" size="255" type="STRING"/>
+					<colinfo id="DETAILCATEGORYNAME" size="255" type="STRING"/>
+					<colinfo id="MODELNAME" size="255" type="STRING"/>
+					<colinfo id="AGENTNAME" size="255" type="STRING"/>
+					<colinfo id="BIGAGENTNAME" size="255" type="STRING"/>
+					<colinfo id="productid" size="255" type="STRING"/>
+					<colinfo id="COMPANY" size="255" type="STRING"/>
+					<colinfo id="DETAILCATEGORYID" size="255" type="STRING"/>
+					<colinfo id="DISCOUNTRATE" size="5" type="INT"/>
+					<colinfo id="UNITCOST" size="15" summ="sum" type="DECIMAL"/>
+					<colinfo id="CATEGORYID" size="255" type="STRING"/>
+					<record>
+						<AGENTNAME>Gang&#32;neung</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance&#32;</CATEGORYNAME>
+						<COMPANY>KUS</COMPANY>
+						<DETAILCATEGORYID>DE3</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>washer</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>5</DISCOUNTRATE>
+						<MODELNAME>SEW-3HW124</MODELNAME>
+						<orderdate>20030103</orderdate>
+						<orderid>OR201</orderid>
+						<productid>1</productid>
+						<qty>20</qty>
+						<UNITCOST>690900</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Gang&#32;neung</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance&#32;</CATEGORYNAME>
+						<COMPANY>AND</COMPANY>
+						<DETAILCATEGORYID>DE4</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>cleaner</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>V-C712J</MODELNAME>
+						<orderdate>20030301</orderdate>
+						<orderid>OR212</orderid>
+						<productid>35</productid>
+						<qty>35</qty>
+						<UNITCOST>163800</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Gang&#32;neung</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance&#32;</CATEGORYNAME>
+						<COMPANY>&#32;hidachi</COMPANY>
+						<DETAILCATEGORYID>DE1</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>icebox</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>SCR-0150R</MODELNAME>
+						<orderdate>20030331</orderdate>
+						<orderid>OR300</orderid>
+						<productid>29</productid>
+						<qty>26</qty>
+						<UNITCOST>222000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Gang&#32;neung</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance&#32;</CATEGORYNAME>
+						<COMPANY>Han&#32;Media</COMPANY>
+						<DETAILCATEGORYID>DE1</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>icebox</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>HNR-2120T</MODELNAME>
+						<orderdate>20030501</orderdate>
+						<orderid>OR228</orderid>
+						<productid>23</productid>
+						<qty>26</qty>
+						<UNITCOST>1340000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Gang&#32;neung</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance&#32;</CATEGORYNAME>
+						<COMPANY>BTCS</COMPANY>
+						<DETAILCATEGORYID>DE2</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>TV</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>SVP-50L2HXN</MODELNAME>
+						<orderdate>20030701</orderdate>
+						<orderid>OR244</orderid>
+						<productid>46</productid>
+						<qty>5</qty>
+						<UNITCOST>4010000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Gang&#32;neung</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA2</CATEGORYID>
+						<CATEGORYNAME>computer</CATEGORYNAME>
+						<COMPANY>Zerox</COMPANY>
+						<DETAILCATEGORYID>DE10</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>CD-ROM</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>DVD+RW&#32;DVD&#32;300i</MODELNAME>
+						<orderdate>20030801</orderdate>
+						<orderid>OR253</orderid>
+						<productid>186</productid>
+						<qty>21</qty>
+						<UNITCOST>164000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Gang&#32;neung</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance&#32;</CATEGORYNAME>
+						<COMPANY>BaekDoSan</COMPANY>
+						<DETAILCATEGORYID>DE3</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>washer</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>CWB0001</MODELNAME>
+						<orderdate>20030901</orderdate>
+						<orderid>OR260</orderid>
+						<productid>9</productid>
+						<qty>26</qty>
+						<UNITCOST>149000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Gang&#32;neung</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance&#32;</CATEGORYNAME>
+						<COMPANY>HOOXS</COMPANY>
+						<DETAILCATEGORYID>DE5</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>Camera</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>15</DISCOUNTRATE>
+						<MODELNAME>IS-5000QD&#32;(28~140&#32;mm)</MODELNAME>
+						<orderdate>20031010</orderdate>
+						<orderid>OR299</orderid>
+						<productid>60</productid>
+						<qty>26</qty>
+						<UNITCOST>490000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Gang&#32;neung</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance&#32;</CATEGORYNAME>
+						<COMPANY>KUS</COMPANY>
+						<DETAILCATEGORYID>DE3</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>washer</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>10</DISCOUNTRATE>
+						<MODELNAME>DWF-558W</MODELNAME>
+						<orderdate>20031110</orderdate>
+						<orderid>OR294</orderid>
+						<productid>10</productid>
+						<qty>31</qty>
+						<UNITCOST>238000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Gang&#32;neung</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>Absolutes</COMPANY>
+						<DETAILCATEGORYID>DE4</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>cleaner</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>V-C712JN</MODELNAME>
+						<orderdate>20031209</orderdate>
+						<orderid>OR296</orderid>
+						<productid>31</productid>
+						<qty>13</qty>
+						<UNITCOST>174900</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>SokCho</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>KUS</COMPANY>
+						<DETAILCATEGORYID>DE3</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>washer</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>5</DISCOUNTRATE>
+						<MODELNAME>SEW-3HW124</MODELNAME>
+						<orderdate>20030110</orderdate>
+						<orderid>OR204</orderid>
+						<productid>1</productid>
+						<qty>23</qty>
+						<UNITCOST>690900</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>SokCho</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>Phillips</COMPANY>
+						<DETAILCATEGORYID>DE1</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>icebox</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>20</DISCOUNTRATE>
+						<MODELNAME>SR-S686FTI</MODELNAME>
+						<orderdate>20030210</orderdate>
+						<orderid>OR208</orderid>
+						<productid>21</productid>
+						<qty>85</qty>
+						<UNITCOST>1640000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>SokCho</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>COMPEQ</COMPANY>
+						<DETAILCATEGORYID>DE3</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>washer</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>SEW-3HW125W</MODELNAME>
+						<orderdate>20030415</orderdate>
+						<orderid>OR224</orderid>
+						<productid>5</productid>
+						<qty>65</qty>
+						<UNITCOST>837000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>SokCho</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>SunyQ</COMPANY>
+						<DETAILCATEGORYID>DE1</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>icebox</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>DD-1566SD</MODELNAME>
+						<orderdate>20030720</orderdate>
+						<orderid>OR249</orderid>
+						<productid>16</productid>
+						<qty>61</qty>
+						<UNITCOST>833000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>SokCho</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>EPSAN</COMPANY>
+						<DETAILCATEGORYID>DE2</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>TV</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>32FD9954</MODELNAME>
+						<orderdate>20030922</orderdate>
+						<orderid>OR267</orderid>
+						<productid>56</productid>
+						<qty>63</qty>
+						<UNITCOST>4050000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>SokCho</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>IMRIS</COMPANY>
+						<DETAILCATEGORYID>DE5</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>Camera</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>VPC-MZ3(DSC-MZ3)</MODELNAME>
+						<orderdate>20031009</orderdate>
+						<orderid>OR269</orderid>
+						<productid>65</productid>
+						<qty>30</qty>
+						<UNITCOST>335000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>SokCho</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>INTEN</COMPANY>
+						<DETAILCATEGORYID>DE3</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>washer</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>SEW-MA600</MODELNAME>
+						<orderdate>20031121</orderdate>
+						<orderid>OR281</orderid>
+						<productid>7</productid>
+						<qty>32</qty>
+						<UNITCOST>310000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>SokCho</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>IMRIS</COMPANY>
+						<DETAILCATEGORYID>DE5</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>Camera</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>VPC-MZ3(DSC-MZ3)</MODELNAME>
+						<orderdate>20031231</orderdate>
+						<orderid>OR291</orderid>
+						<productid>65</productid>
+						<qty>65</qty>
+						<UNITCOST>335000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>wonju</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>Absolutes</COMPANY>
+						<DETAILCATEGORYID>DE4</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>cleaner</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>V-C712JN</MODELNAME>
+						<orderdate>20030103</orderdate>
+						<orderid>OR202</orderid>
+						<productid>31</productid>
+						<qty>49</qty>
+						<UNITCOST>174900</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>wonju</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>DDR</COMPANY>
+						<DETAILCATEGORYID>DE1</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>icebox</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>R-S684NHJ</MODELNAME>
+						<orderdate>20030223</orderdate>
+						<orderid>OR210</orderid>
+						<productid>12</productid>
+						<qty>23</qty>
+						<UNITCOST>1138000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>wonju</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>FUJATSU</COMPANY>
+						<DETAILCATEGORYID>DE3</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>washer</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>DWD-200DR</MODELNAME>
+						<orderdate>20030513</orderdate>
+						<orderid>OR230</orderid>
+						<productid>6</productid>
+						<qty>78</qty>
+						<UNITCOST>1220000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>wonju</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA4</CATEGORYID>
+						<CATEGORYNAME>office&#32;supplies</CATEGORYNAME>
+						<COMPANY>BaekDoSan</COMPANY>
+						<DETAILCATEGORYID>DE15</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>Fax</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>FB-200</MODELNAME>
+						<orderdate>20030629</orderdate>
+						<orderid>OR297</orderid>
+						<productid>89</productid>
+						<qty>43</qty>
+						<UNITCOST>195000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>wonju</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA2</CATEGORYID>
+						<CATEGORYNAME>computer</CATEGORYNAME>
+						<COMPANY>SunyQ</COMPANY>
+						<DETAILCATEGORYID>DE9</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>mouse</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>10</DISCOUNTRATE>
+						<MODELNAME>DOT&#32;JP-6600</MODELNAME>
+						<orderdate>20030727</orderdate>
+						<orderid>OR252</orderid>
+						<productid>140</productid>
+						<qty>78</qty>
+						<UNITCOST>1595000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>wonju</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>A5Tech</COMPANY>
+						<DETAILCATEGORYID>DE4</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>cleaner</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>VC-L822X</MODELNAME>
+						<orderdate>20030815</orderdate>
+						<orderid>OR295</orderid>
+						<productid>30</productid>
+						<qty>13</qty>
+						<UNITCOST>79500</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>wonju</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>AND</COMPANY>
+						<DETAILCATEGORYID>DE4</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>cleaner</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>V-C391T</MODELNAME>
+						<orderdate>20030827</orderdate>
+						<orderid>OR298</orderid>
+						<productid>33</productid>
+						<qty>26</qty>
+						<UNITCOST>76000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>wonju</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>INTEN</COMPANY>
+						<DETAILCATEGORYID>DE5</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>Camera</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>DSC-T1</MODELNAME>
+						<orderdate>20030921</orderdate>
+						<orderid>OR266</orderid>
+						<productid>67</productid>
+						<qty>27</qty>
+						<UNITCOST>560000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>wonju</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>Phillips</COMPANY>
+						<DETAILCATEGORYID>DE1</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>icebox</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>20</DISCOUNTRATE>
+						<MODELNAME>SR-S686FTI</MODELNAME>
+						<orderdate>20031021</orderdate>
+						<orderid>OR272</orderid>
+						<productid>21</productid>
+						<qty>23</qty>
+						<UNITCOST>1640000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>wonju</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>INTEN</COMPANY>
+						<DETAILCATEGORYID>DE5</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>Camera</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>DSC-T1</MODELNAME>
+						<orderdate>20031121</orderdate>
+						<orderid>OR282</orderid>
+						<productid>67</productid>
+						<qty>24</qty>
+						<UNITCOST>560000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>wonju</AGENTNAME>
+						<BIGAGENTNAME>GangWon</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>BROTHERS</COMPANY>
+						<DETAILCATEGORYID>DE2</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>TV</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>10</DISCOUNTRATE>
+						<MODELNAME>DTQ-29U5</MODELNAME>
+						<orderdate>20031226</orderdate>
+						<orderid>OR288</orderid>
+						<productid>45</productid>
+						<qty>12</qty>
+						<UNITCOST>370000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Seoul</AGENTNAME>
+						<BIGAGENTNAME>Seoul</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>PenMan</COMPANY>
+						<DETAILCATEGORYID>DE3</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>washer</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>10</DISCOUNTRATE>
+						<MODELNAME>WD-120X</MODELNAME>
+						<orderdate>20030201</orderdate>
+						<orderid>OR56</orderid>
+						<productid>2</productid>
+						<qty>4</qty>
+						<UNITCOST>1030000</UNITCOST>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsGridFormat">
+				<Contents>
+					<colinfo Id="value" Size="256" Type="STRING"/>
+					<record>
+						<value>GroupKey1</value>
+					</record>
+					<record>
+						<value>GroupKey4</value>
+					</record>
+					<record>
+						<value>GroupKey3</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsCompID">
+				<Contents>
+					<colinfo Id="Name" Size="256" Type="STRING"/>
+					<record>
+						<Name>dsOrders</Name>
+					</record>
+					<record>
+						<Name>dsOrderPivot</Name>
+					</record>
+					<record>
+						<Name>dsOrderFilter</Name>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsProp_Name" OnColumnChanged="dsProp_OnColumnChanged">
+				<Contents>
+					<colinfo Id="Value" Size="256" Type="STRING"/>
+					<colinfo Id="NAME" Size="32" Type="STRING"/>
+					<colinfo Id="DEFAULT" Size="255" Type="STRING"/>
+					<record>
+						<Value></Value>
+						<NAME>Argument</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>Auto</NAME>
+						<DEFAULT>TRUE</DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>AutoRecalc</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>CodePage</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>Contents</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>DataObject</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>DatasetType</NAME>
+						<DEFAULT>Dataset</DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>Editable</NAME>
+						<DEFAULT>FALSE</DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>FilterExpr</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>FireEvent</NAME>
+						<DEFAULT>TRUE</DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>FireFirstCount</NAME>
+						<DEFAULT>0</DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>FireNextCount</NAME>
+						<DEFAULT>0</DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>GroupKey</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>ID</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>NameSpaceInfo</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>PivotKey</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>ReverseSubSum</NAME>
+						<DEFAULT>FALSE</DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>ServiceDSetID</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>ServiceID</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>UpdateControl</NAME>
+						<DEFAULT>TRUE</DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>XPath</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>colcount</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>constcount</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>count</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>currow</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>firstrow</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>lastrow</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>nextrow</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>pivotIndexcount</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>pivotindex</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>prevrow</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>row</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>rowcount</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>rowlevel</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>rowpos</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+					<record>
+						<Value></Value>
+						<NAME>rowposition</NAME>
+						<DEFAULT></DEFAULT>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsMethod">
+				<Contents>
+					<colinfo Id="NAME" Size="32" Type="STRING"/>
+					<colinfo Id="COMMENT" Size="255" Type="STRING"/>
+					<record>
+						<NAME>Append</NAME>
+						<COMMENT>Append([strURL])</COMMENT>
+					</record>
+					<record>
+						<NAME>GetForm</NAME>
+						<COMMENT>GetForm()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetType</NAME>
+						<COMMENT>GetType()</COMMENT>
+					</record>
+					<record>
+						<NAME>IsComposite</NAME>
+						<COMMENT>IsComposite()</COMMENT>
+					</record>
+					<record>
+						<NAME>Load</NAME>
+						<COMMENT>Load([strURL])</COMMENT>
+					</record>
+					<record>
+						<NAME>LoadFromDataObject</NAME>
+						<COMMENT>LoadFromDataObject([strXPath])</COMMENT>
+					</record>
+					<record>
+						<NAME>AddColumn</NAME>
+						<COMMENT>AddColumn(strColID[,strColType[,nColSize]])</COMMENT>
+					</record>
+					<record>
+						<NAME>AddConstColumn</NAME>
+						<COMMENT>AddConstColumn(strColID,varVal)</COMMENT>
+					</record>
+					<record>
+						<NAME>AddLogicalColumn</NAME>
+						<COMMENT>AddLogicalColumn(strColID,&#32;strMapValue[,strColType[,nColSize]])</COMMENT>
+					</record>
+					<record>
+						<NAME>AddRow</NAME>
+						<COMMENT>AddRow()</COMMENT>
+					</record>
+					<record>
+						<NAME>AppendDataset</NAME>
+						<COMMENT>AppendDataset(objDataset)&#10;AppendDataset(strDataset)</COMMENT>
+					</record>
+					<record>
+						<NAME>AppendRow</NAME>
+						<COMMENT>AppendRow()</COMMENT>
+					</record>
+					<record>
+						<NAME>ApplyChange</NAME>
+						<COMMENT>ApplyChange()</COMMENT>
+					</record>
+					<record>
+						<NAME>Assign</NAME>
+						<COMMENT>Assign(objDataset)&#10;Assign(strDataset)</COMMENT>
+					</record>
+					<record>
+						<NAME>Avg</NAME>
+						<COMMENT>Avg(strColID[,nStart[,nCnt[,nPivotIndex]]]),Avg(strExpr[,nStart[,nCnt[,nPivotIndex]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>AvgNF</NAME>
+						<COMMENT>AvgNF(strColID[,nStart[,nCnt[,nPivotIndex]]]),AvgNF(strExpr[,nStart[,nCnt[,nPivotIndex]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>CaseAvg</NAME>
+						<COMMENT>CaseAvg(strCmpExpr,strValExpr[,nStart[,nCnt[,nPivotIndex[,bCountNull]]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>CaseAvgNF</NAME>
+						<COMMENT>CaseAvgNF(strCmpExpr,strValExpr[,nStart[,nCnt[,nPivotIndex[,bCountNull]]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>CaseCount</NAME>
+						<COMMENT>CaseCount(strCmpExpr[,nStart[,nCnt[,nPivotIndex[,bCountNull]]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>CaseCountNF</NAME>
+						<COMMENT>CaseCountNF(strCmpExpr[,nStart[,nCnt[,nPivotIndex[,bCountNull]]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>CaseMax</NAME>
+						<COMMENT>CaseMax(strCmpExpr,strValExpr[,nStart[,nCnt[,nPivotIndex[,bCountNull]]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>CaseMaxNF</NAME>
+						<COMMENT>CaseMaxNF(strCmpExpr,strValExpr[,nStart[,nCnt[,nPivotIndex[,bCountNull]]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>CaseMin</NAME>
+						<COMMENT>CaseMin(strCmpExpr,strValExpr[,nStart[,nCnt[,nPivotIndex[,bCountNull]]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>CaseMinNF</NAME>
+						<COMMENT>CaseMinNF(strCmpExpr,strValExpr[,nStart[,nCnt[,nPivotIndex[,bCountNull]]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>CaseSum</NAME>
+						<COMMENT>CaseSum(strCmpExpr,strValExpr[,nStart[,nCnt[,nPivotIndex[,bCountNull]]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>CaseSumNF</NAME>
+						<COMMENT>CaseSumNF(strCmpExpr,strValExpr[,nStart[,nCnt[,nPivotIndex[,bCountNull]]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>Clear</NAME>
+						<COMMENT>Clear()</COMMENT>
+					</record>
+					<record>
+						<NAME>ClearData</NAME>
+						<COMMENT>ClearData()</COMMENT>
+					</record>
+					<record>
+						<NAME>ClearSelect</NAME>
+						<COMMENT>ClearSelect()</COMMENT>
+					</record>
+					<record>
+						<NAME>ColCount</NAME>
+						<COMMENT>ColCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>ConstCount</NAME>
+						<COMMENT>ConstCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>Copy</NAME>
+						<COMMENT>Copy(objDataset)&#10;Copy(strDataset)</COMMENT>
+					</record>
+					<record>
+						<NAME>CopyColumn</NAME>
+						<COMMENT>CopyColumn(nRow,nCol,strDataset,nFromRow,nFromCol)&#10;CopyColumn(nRow,strCol,strDataset,nFromRow,strFromCol)&#10;CopyColumn(nRow,nCol,objDataset,nFromRow,nFromCol)&#10;CopyColumn(nRow,strCol,objDataset,nFromRow,strFromCol)</COMMENT>
+					</record>
+					<record>
+						<NAME>CopyF</NAME>
+						<COMMENT>CopyF(objDataset)&#10;CopyF(strDataset)</COMMENT>
+					</record>
+					<record>
+						<NAME>CopyRow</NAME>
+						<COMMENT>CopyRow(nRow,strDataset,nFromRow,strColInfo)&#10;CopyRow(nRow,objDataset,nFromRow,strColInfo)</COMMENT>
+					</record>
+					<record>
+						<NAME>CopytoColumn</NAME>
+						<COMMENT>CopyToColumn(nRow,nCol,strDataset,nToRow,nToCol)&#10;CopyToColumn(nRow,strCol,strDataset,nToRow,strToCol)&#10;CopyToColumn(nRow,nCol,objDataset,nToRow,nToCol)&#10;CopyToColumn(nRow,strCol,objDataset,nToRow,strToCol)</COMMENT>
+					</record>
+					<record>
+						<NAME>CopytoRow</NAME>
+						<COMMENT>CopyToRow(nRow,strDataset,nToRow,strColInfo)&#10;CopyToRow(nRow,objDataset,nToRow,strColInfo)</COMMENT>
+					</record>
+					<record>
+						<NAME>Count</NAME>
+						<COMMENT>Count([nStart[,nCnt[,nPivotIndex]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>CountNF</NAME>
+						<COMMENT>CountNF([nStart[,nCnt[,nPivotIndex]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>DeleteAll</NAME>
+						<COMMENT>DeleteAll()</COMMENT>
+					</record>
+					<record>
+						<NAME>DeleteRow</NAME>
+						<COMMENT>DeleteRow(nRowIdx)</COMMENT>
+					</record>
+					<record>
+						<NAME>DeleteSelected</NAME>
+						<COMMENT>DeleteSelected()</COMMENT>
+					</record>
+					<record>
+						<NAME>ExChangerow</NAME>
+						<COMMENT>ExChangeRow(nRow1,nRow2)</COMMENT>
+					</record>
+					<record>
+						<NAME>Filter</NAME>
+						<COMMENT>Filter(strFilterExpr)</COMMENT>
+					</record>
+					<record>
+						<NAME>FindRow</NAME>
+						<COMMENT>FindRow(strColID,strVal[,nStart[,nEnd]])</COMMENT>
+					</record>
+					<record>
+						<NAME>FindRowAs</NAME>
+						<COMMENT>FindRowAs(strColID,strVal[,nStart[,nEnd]])</COMMENT>
+					</record>
+					<record>
+						<NAME>FindRowNF</NAME>
+						<COMMENT>FindRowNF(strColID,strVal[,nStart[,nEnd]])</COMMENT>
+					</record>
+					<record>
+						<NAME>FindRowNFAs</NAME>
+						<COMMENT>FindRowNFAs(strColID,strVal[,nStart[,nEnd]])</COMMENT>
+					</record>
+					<record>
+						<NAME>GetColCount</NAME>
+						<COMMENT>GetColCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetColID</NAME>
+						<COMMENT>GetColID(nColIdx)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetColIDxbyorder</NAME>
+						<COMMENT>GetColIDXbyorder(nColIdx)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetColIndex</NAME>
+						<COMMENT>GetColIndex(strColID)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetColMapValue</NAME>
+						<COMMENT>GetColMapValue(strColID)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetColSize</NAME>
+						<COMMENT>GetColSize(strColID)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetColType</NAME>
+						<COMMENT>GetColType(strColID)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetColumn</NAME>
+						<COMMENT>GetColumn(nRow,nColIdx[,nPivotIndex])&#10;GetColumn(nRow,strColID[,nPivotIndex])</COMMENT>
+					</record>
+					<record>
+						<NAME>GetColumnNF</NAME>
+						<COMMENT>GetColumnNF(nRow,nColIdx[,nPivotIndex])&#10;GetColumnNF(nRow,strColID[,nPivotIndex])</COMMENT>
+					</record>
+					<record>
+						<NAME>GetColumnSet</NAME>
+						<COMMENT>GetColumnSet(nRow,nColIdx[,nPivotIndex])&#10;GetColumnSet(nRow,strColID[,nPivotIndex])</COMMENT>
+					</record>
+					<record>
+						<NAME>GetConstColID</NAME>
+						<COMMENT>GetConstColID(nConstIdx)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetConstColumn</NAME>
+						<COMMENT>GetConstColumn(nColIdx)&#10;GetConstColumn(strColID)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetConstCount</NAME>
+						<COMMENT>GetConstCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetCount</NAME>
+						<COMMENT>GetCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetCountNF</NAME>
+						<COMMENT>GetCountNF()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetCurrow</NAME>
+						<COMMENT>GetCurrow()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetDelColumn</NAME>
+						<COMMENT>GetDelColumn(nRow,nColIdx)&#10;GetDelColumn(nRow,strColID)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetDelRowCount</NAME>
+						<COMMENT>GetDelRowCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetFirstrow</NAME>
+						<COMMENT>GetFirstrow()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetID</NAME>
+						<COMMENT>GetID()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetLastrow</NAME>
+						<COMMENT>GetLastRow()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetNextrow</NAME>
+						<COMMENT>GetNextRow()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetOrgBuffColumn</NAME>
+						<COMMENT>GetOrgBuffColumn(nRow,nColIdx)&#10;GetOrgBuffColumn(nRow,strColID)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetOrgBuffCount</NAME>
+						<COMMENT>GetOrgBuffCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetOrgBuffType</NAME>
+						<COMMENT>GetOrgBuffType(nRow)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetOrgColumn</NAME>
+						<COMMENT>GetOrgColumn(nRow,nColIdx)&#10;GetOrgColumn(nRow,strColID)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetOrgColumnNF</NAME>
+						<COMMENT>GetOrgColumnNF(nRow,nColIdx)&#10;GetOrgColumnNF(nRow,strColID)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetPivotCount</NAME>
+						<COMMENT>GetPivotCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetPivotIndex</NAME>
+						<COMMENT>GetPivotIndex()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetPrevrow</NAME>
+						<COMMENT>GetPrevRow()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetRangeCount</NAME>
+						<COMMENT>GetRangeCount(nRow)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetRangeStart</NAME>
+						<COMMENT>GetRangeStart(nRow)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetRowCount</NAME>
+						<COMMENT>GetRowCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetRowCountNF</NAME>
+						<COMMENT>GetRowCountNF()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetRowIndexNF</NAME>
+						<COMMENT>GetRowIndexNF(nRow)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetRowLevel</NAME>
+						<COMMENT>GetRowlevel(nRow)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetRowPos</NAME>
+						<COMMENT>GetRowPos()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetRowPosition</NAME>
+						<COMMENT>GetRowPosition()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetRowType</NAME>
+						<COMMENT>GetRowType(nRow)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetRowTypeNF</NAME>
+						<COMMENT>GetRowTypeNF(nRow)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetSelect</NAME>
+						<COMMENT>GetSelect(nRow)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetTotalRowCount</NAME>
+						<COMMENT>GetTotalRowCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>GetTotalRowType</NAME>
+						<COMMENT>GetTotalRowType(nRow)</COMMENT>
+					</record>
+					<record>
+						<NAME>GetUpdate</NAME>
+						<COMMENT>GetUpdate()</COMMENT>
+					</record>
+					<record>
+						<NAME>ID</NAME>
+						<COMMENT>ID()</COMMENT>
+					</record>
+					<record>
+						<NAME>InsertRow</NAME>
+						<COMMENT>InsertRow(nRow)</COMMENT>
+					</record>
+					<record>
+						<NAME>LoadCSV</NAME>
+						<COMMENT>LoadCSV(csvData[,bClear])</COMMENT>
+					</record>
+					<record>
+						<NAME>LoadXML</NAME>
+						<COMMENT>LoadXML(xmlData[,bClear[,bBinary]])</COMMENT>
+					</record>
+					<record>
+						<NAME>Lookup</NAME>
+						<COMMENT>LookUp(strColID,strCmpVal,strOutputColID)</COMMENT>
+					</record>
+					<record>
+						<NAME>Max</NAME>
+						<COMMENT>Max(strColID[,nStart[,nCnt[,nPivotIndex]]]),Max(strExpr[,nStart[,nCnt[,nPivotIndex]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>MaxNF</NAME>
+						<COMMENT>MaxNF(strColID[,nStart[,nCnt[,nPivotIndex]]]),MaxNF(strExpr[,nStart[,nCnt[,nPivotIndex]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>Merge</NAME>
+						<COMMENT>Merge(objDataset)&#10;Merge(strDataset)</COMMENT>
+					</record>
+					<record>
+						<NAME>Min</NAME>
+						<COMMENT>Min(strColID[,nStart[,nCnt[,nPivotIndex]]]),Min(strExpr[,nStart[,nCnt[,nPivotIndex]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>MinNF</NAME>
+						<COMMENT>MinNF(strColID[,nStart[,nCnt[,nPivotIndex]]]),MinNF(strExpr[,nStart[,nCnt[,nPivotIndex]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>ModifyKeyStat</NAME>
+						<COMMENT>ModifyKeyStat(nCallType,nKeyType,strColID[,bAscending,nSubSumType])</COMMENT>
+					</record>
+					<record>
+						<NAME>MoveRow</NAME>
+						<COMMENT>MoveRow(nOldRow,nNewRow)</COMMENT>
+					</record>
+					<record>
+						<NAME>OrgBuffCount</NAME>
+						<COMMENT>OrgBuffCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>PivotAvg</NAME>
+						<COMMENT>PivotAvg(strColID,nPivotRow[,nStart[,nCnt]])&#10;PivotAvg(nColIdx,nPivotRow[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>PivotCount</NAME>
+						<COMMENT>PivotCount(strColID,nPivotRow[,nStart[,nCnt]])&#10;PivotCount(strColID,nPivotRow[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>PivotMax</NAME>
+						<COMMENT>PivotMax(strColID,nPivotRow[,nStart[,nCnt]])&#10;PivotMax(nColIdx,nPivotRow[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>PivotMin</NAME>
+						<COMMENT>PivotMin(strColID,nPivotRow[,nStart[,nCnt]])&#10;PivotMin(nColIdx,nPivotRow[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>PivotSum</NAME>
+						<COMMENT>PivotSum(strColID,nPivotRow[,nStart[,nCnt]])&#10;PivotSum(nColIdx,nPivotRow[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>RecalcPivot</NAME>
+						<COMMENT>RecalcPivot()</COMMENT>
+					</record>
+					<record>
+						<NAME>Reset</NAME>
+						<COMMENT>Reset()</COMMENT>
+					</record>
+					<record>
+						<NAME>RowCount</NAME>
+						<COMMENT>RowCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>RowCountNF</NAME>
+						<COMMENT>RowCountNF()</COMMENT>
+					</record>
+					<record>
+						<NAME>SaveBIN</NAME>
+						<COMMENT>SaveBIN([strID[,strSaveType]])</COMMENT>
+					</record>
+					<record>
+						<NAME>SaveCSV</NAME>
+						<COMMENT>SaveCSV([strID[,strSaveType]])</COMMENT>
+					</record>
+					<record>
+						<NAME>SaveXML</NAME>
+						<COMMENT>SaveXML([strID[,strSaveType[,bHeader]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>SearchRow</NAME>
+						<COMMENT>SearchRow(strCmpExpr[,nStart[,nEnd]])</COMMENT>
+					</record>
+					<record>
+						<NAME>SearchRowNF</NAME>
+						<COMMENT>SearchRowNF(strCmpExpr[,nStart])</COMMENT>
+					</record>
+					<record>
+						<NAME>SelectRow</NAME>
+						<COMMENT>SelectRow(nRow[,bCheck])</COMMENT>
+					</record>
+					<record>
+						<NAME>SetColumn</NAME>
+						<COMMENT>SetColumn(nRow,nColIdx,varVal)&#10;SetColumn(nRow,strColID,varVal)</COMMENT>
+					</record>
+					<record>
+						<NAME>SetColumnNF</NAME>
+						<COMMENT>SetColumnNF(nRow,nColIdx,varVal)&#10;SetColumnNF(nRow,strColID,varVal)</COMMENT>
+					</record>
+					<record>
+						<NAME>SetConstColumn</NAME>
+						<COMMENT>SetConstColumn(nColIdx,varVal)&#10;SetConstColumn(strColID,varVal)</COMMENT>
+					</record>
+					<record>
+						<NAME>SetRowType</NAME>
+						<COMMENT>SetRowType(nRow,strType)</COMMENT>
+					</record>
+					<record>
+						<NAME>SetTotalColumn</NAME>
+						<COMMENT>SetTotalColumn(nRow,nColIdx,varVal)&#10;SetTotalColumn(nRow,strColID,varVal)</COMMENT>
+					</record>
+					<record>
+						<NAME>SetUpdate</NAME>
+						<COMMENT>SetUpdate(bFlag)</COMMENT>
+					</record>
+					<record>
+						<NAME>Sort</NAME>
+						<COMMENT>Sort(strColList[,bFlag[,bBigNull[,bGroupKey]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>Sum</NAME>
+						<COMMENT>Sum(strColID[,nStart[,nCnt[,nPivotIndex]]]),Sum(strExpr[,nStart[,nCnt[,nPivotIndex]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>SumNF</NAME>
+						<COMMENT>SumNF(strColID[,nStart[,nCnt[,nPivotIndex]]]),SumNF(strExpr[,nStart[,nCnt[,nPivotIndex]]])</COMMENT>
+					</record>
+					<record>
+						<NAME>TotalAvg</NAME>
+						<COMMENT>TotalAvg(strColID[,nStart[,nCnt]]),TotalAvg(strExpr[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>TotalCaseAvg</NAME>
+						<COMMENT>TotalCaseAvg(strCmpExpr,strValExpr[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>TotalCaseCount</NAME>
+						<COMMENT>TotalCaseCount(strCmpExpr[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>TotalCaseMax</NAME>
+						<COMMENT>TotalCaseMax(strCmpExpr,strValExpr[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>TotalCaseMin</NAME>
+						<COMMENT>TotalCaseMin(strCmpExpr,strValExpr[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>TotalCaseSum</NAME>
+						<COMMENT>TotalCaseSum(strCmpExpr,strValExpr[,start[,cnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>TotalCount</NAME>
+						<COMMENT>TotalCount(strColID)</COMMENT>
+					</record>
+					<record>
+						<NAME>TotalMax</NAME>
+						<COMMENT>TotalMax(strColID[,nStart[,nCnt]]),TotalMax(strExpr[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>TotalMin</NAME>
+						<COMMENT>TotalMin(strColID[,nStart[,nCnt]]),TotalMin(strExpr[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>TotalRowCount</NAME>
+						<COMMENT>TotalRowCount()</COMMENT>
+					</record>
+					<record>
+						<NAME>TotalSum</NAME>
+						<COMMENT>TotalSum(strColID[,nStart[,nCnt]]),TotalSum(strExpr[,nStart[,nCnt]])</COMMENT>
+					</record>
+					<record>
+						<NAME>UnFilter</NAME>
+						<COMMENT>UnFilter()</COMMENT>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsOrders2" OnLoadCompleted="dsOrderPivot_OnLoadCompleted">
+				<Contents>
+					<column id="Const0" type="null"></column>
+					<colinfo id="orderid" size="255" type="STRING"/>
+					<colinfo id="orderdate" size="14" type="DATE"/>
+					<colinfo id="qty" size="5" summ="sum" type="INT"/>
+					<colinfo id="CATEGORYNAME" size="255" type="STRING"/>
+					<colinfo id="DETAILCATEGORYNAME" size="255" type="STRING"/>
+					<colinfo id="MODELNAME" size="255" type="STRING"/>
+					<colinfo id="AGENTNAME" size="255" type="STRING"/>
+					<colinfo id="BIGAGENTNAME" size="255" type="STRING"/>
+					<colinfo id="productid" size="255" type="STRING"/>
+					<colinfo id="COMPANY" size="255" type="STRING"/>
+					<colinfo id="DESCRIPTION" size="255" type="STRING"/>
+					<colinfo id="DETAILCATEGORYID" size="255" type="STRING"/>
+					<colinfo id="DISCOUNTRATE" size="5" type="INT"/>
+					<colinfo id="UNITCOST" size="15" summ="sum" type="DECIMAL"/>
+					<colinfo id="CATEGORYID" size="255" type="STRING"/>
+					<record>
+						<AGENTNAME>Seoul</AGENTNAME>
+						<BIGAGENTNAME>Metro</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>FUJATSU</COMPANY>
+						<DESCRIPTION>Laundry10KG/Dry4.5KG/삶는세탁/냉온수겸용/82.5L/1000rpm/WhjteSilver</DESCRIPTION>
+						<DETAILCATEGORYID>DE3</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>washer</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>ClaceDWD-200DR</MODELNAME>
+						<orderdate>20030204</orderdate>
+						<orderid>OR57</orderid>
+						<productid>6</productid>
+						<qty>5</qty>
+						<UNITCOST>1220000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Seoul</AGENTNAME>
+						<BIGAGENTNAME>Metro</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>BakduMountain</COMPANY>
+						<DESCRIPTION>10KG/WhiteSilverEon/거름망3개/살균표시등/NobleGold</DESCRIPTION>
+						<DETAILCATEGORYID>DE3</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>washer</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>AirBubble&#32;DWF-107AW</MODELNAME>
+						<orderdate>20030207</orderdate>
+						<orderid>OR58</orderid>
+						<productid>8</productid>
+						<qty>97</qty>
+						<UNITCOST>465000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Seoul</AGENTNAME>
+						<BIGAGENTNAME>Metro</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>DDR</COMPANY>
+						<DESCRIPTION>676Liter/HomeBar/Fridger248L/균일냉각/카프리베이지/초대형사이즈/10yrA/S/Exchangeable</DESCRIPTION>
+						<DETAILCATEGORYID>DE1</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>icebox</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>DiosR-S684NHJ</MODELNAME>
+						<orderdate>20030210</orderdate>
+						<orderid>OR59</orderid>
+						<productid>12</productid>
+						<qty>2</qty>
+						<UNITCOST>1138000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Seoul</AGENTNAME>
+						<BIGAGENTNAME>Metro</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>SunnyQ</COMPANY>
+						<DESCRIPTION>CosmeticIcebox/9.6L/챠빌/열전소자반도체냉각/국내최초화장품icebox/Exchangeable</DESCRIPTION>
+						<DETAILCATEGORYID>DE1</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>icebox</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>ECR-GD960R1</MODELNAME>
+						<orderdate>20030213</orderdate>
+						<orderid>OR60</orderid>
+						<productid>13</productid>
+						<qty>6</qty>
+						<UNITCOST>356000</UNITCOST>
+					</record>
+					<record>
+						<AGENTNAME>Seoul</AGENTNAME>
+						<BIGAGENTNAME>Metro</BIGAGENTNAME>
+						<CATEGORYID>CA1</CATEGORYID>
+						<CATEGORYNAME>home&#32;appliance</CATEGORYNAME>
+						<COMPANY>SunnyQ</COMPANY>
+						<DESCRIPTION>CapType/156L/2Room/FridgerX/WineGold</DESCRIPTION>
+						<DETAILCATEGORYID>DE1</DETAILCATEGORYID>
+						<DETAILCATEGORYNAME>icebox</DETAILCATEGORYNAME>
+						<DISCOUNTRATE>0</DISCOUNTRATE>
+						<MODELNAME>DimchaDD-1566SD</MODELNAME>
+						<orderdate>20030216</orderdate>
+						<orderid>OR61</orderid>
+						<productid>16</productid>
+						<qty>4</qty>
+						<UNITCOST>833000</UNITCOST>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset Auto="false" DataObject="dsOrders" DataSetType="Pivot" GroupKey="BIGAGENTNAME,AGENTNAME,orderdate" Id="dsOrderPivot" OnLoadCompleted="dsOrderPivot_OnLoadCompleted" PivotKey="CATEGORYNAME,DETAILCATEGORYNAME,MODELNAME"></Dataset>
+			<Dataset Auto="false" DataObject="dsOrders" DataSetType="Filter" Id="dsOrderFilter" OnLoadCompleted="dsOrderPivot_OnLoadCompleted"></Dataset>
+		</Datasets>
+		<Tab BKColor="white" Border="Flat" BorderColor="#bcc8a8" Height="513" Id="Tab0" Left="4" TabOrder="1" Top="23" Width="729">
+			<Contents>
+				<TabPage BorderColor="black" Height="488" Id="tab1" ImageID="N_tab" Left="2" TabOrder="1" Text="dsOrders" Top="23" Width="725">
+					<Grid BindDataset="dsOrders" BkColor2="default" BoldHead="true" Border="Flat" Bottom="481" ColSelect="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Height="477" Id="Grid0" InputPanel="FALSE" Left="1" LineColor="default" Right="725" Style="grid01" TabOrder="1" TabStop="true" Top="4" UseDBuff="true" UseSelColor="true" Visible="true" VLineColor="default" Width="724">
+						<contents>
+							<columns>
+								<col width="28"/>
+								<col width="58"/>
+								<col width="74"/>
+								<col width="60"/>
+								<col width="126"/>
+								<col width="169"/>
+								<col width="129"/>
+								<col width="102"/>
+								<col width="137"/>
+								<col width="80"/>
+								<col width="80"/>
+								<col width="153"/>
+								<col width="117"/>
+								<col width="97"/>
+								<col width="91"/>
+							</columns>
+							<head>
+								<cell col="0" display="text" limit="-1" text="no"/>
+								<cell col="1" display="text" limit="-1" text="Order&#32;ID"/>
+								<cell col="2" display="text" limit="-1" text="Order&#32;Date"/>
+								<cell col="3" display="text" limit="-1" text="qty"/>
+								<cell col="4" display="text" limit="-1" text="CATEGORY"/>
+								<cell col="5" display="text" limit="-1" text="Sub&#32;CATEGORY"/>
+								<cell col="6" display="text" limit="-1" text="Model"/>
+								<cell col="7" display="text" limit="-1" text="City"/>
+								<cell col="8" display="text" limit="-1" text="Region"/>
+								<cell col="9" display="text" limit="-1" text="Product&#32;ID"/>
+								<cell col="10" display="text" limit="-1" text="COMPANY"/>
+								<cell col="11" display="text" limit="-1" text="CATEGORY&#32;ID"/>
+								<cell col="12" display="text" limit="-1" text="DISC&#32;RATE"/>
+								<cell col="13" display="text" limit="-1" text="UNIT&#32;COST"/>
+								<cell col="14" display="text" limit="-1" text="CAT&#32;ID"/>
+							</head>
+							<body>
+								<cell align="center" bkcolor2="#f5f6f1" col="0" display="text" edit="normal" expr="row" limit="-1"/>
+								<cell bkcolor="expr:decode(rowlevel,0,&apos;default&apos;,&apos;#C8FFFF&apos;)" bkcolor2="#f5f6f1" col="1" colid="orderid" display="text" edit="normal" limit="-1"/>
+								<cell bkcolor="expr:decode(rowlevel,0,&apos;default&apos;,&apos;#C8FFFF&apos;)" bkcolor2="#f5f6f1" col="2" colid="orderdate" display="date" edit="normal" limit="-1"/>
+								<cell align="right" bkcolor="expr:decode(rowlevel,0,&apos;default&apos;,&apos;#C8FFFF&apos;)" bkcolor2="#f5f6f1" col="3" colid="qty" display="number" edit="normal" limit="-1"/>
+								<cell bkcolor2="#f5f6f1" col="4" colid="CATEGORYNAME" display="text" edit="normal" limit="-1" subsumexpr="CATEGORYNAME&#32;+&#32;&apos;부분합&apos;"/>
+								<cell bkcolor2="#f5f6f1" col="5" colid="DETAILCATEGORYNAME" display="text" edit="normal" limit="-1" subsumexpr="DETAILCATEGORYNAME&#32;+&#32;&apos;부분합&apos;"/>
+								<cell bkcolor2="#f5f6f1" col="6" colid="MODELNAME" display="text" edit="normal" limit="-1" subsumtext="모델&#32;부분합"/>
+								<cell bkcolor="expr:decode(rowlevel,0,&apos;default&apos;,&apos;#C8FFFF&apos;)" bkcolor2="#f5f6f1" col="7" colid="AGENTNAME" display="text" edit="normal" limit="-1"/>
+								<cell bkcolor="expr:decode(rowlevel,0,&apos;default&apos;,&apos;#C8FFFF&apos;)" bkcolor2="#f5f6f1" col="8" colid="BIGAGENTNAME" display="text" edit="normal" limit="-1"/>
+								<cell bkcolor2="#f5f6f1" col="9" colid="productid" display="text" limit="-1"/>
+								<cell bkcolor2="#f5f6f1" col="10" colid="COMPANY" display="text" limit="-1"/>
+								<cell bkcolor2="#f5f6f1" col="11" colid="DETAILCATEGORYID" display="text" limit="-1"/>
+								<cell align="right" bkcolor2="#f5f6f1" col="12" colid="DISCOUNTRATE" display="number" limit="-1"/>
+								<cell bkcolor2="#f5f6f1" col="13" colid="UNITCOST" display="number" edit="normal" limit="-1"/>
+								<cell bkcolor2="#f5f6f1" col="14" colid="CATEGORYID" display="text" limit="-1"/>
+							</body>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="488" Id="tpgPivot" ImageID="N_tab" Left="2" TabOrder="1" Text="dsOrderPivot" Top="23" Width="725">
+					<Grid BindDataset="dsOrderPivot" BkColor2="default" BoldHead="true" Border="Flat" BorderColor="#919b9c" Bottom="480" ColSelect="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FixedColSizing="TRUE" Format="GroupKey3" Height="451" Id="grdPivot" InputPanel="FALSE" LineColor="default" OnCellPosChanged="Tab0_tpgPivot_grdPivot_OnCellPosChanged" Right="727" Style="grid01" TabOrder="1" TabStop="true" Top="29" UseDBuff="true" UseSelColor="true" Visible="true" VLineColor="default" Width="727">
+						<contents>
+							<format id="GroupKey1">
+								<columns>
+									<col fix="left" width="107"/>
+									<col width="80"/>
+									<col width="80"/>
+								</columns>
+								<head>
+									<cell col="0" display="text" limit="-1" text="Category"/>
+									<cell col="1" colid="CATEGORYNAME" colspan="2" display="text" limit="-1" suppress="-1"/>
+									<cell col="0" display="text" limit="-1" row="1" text="Sub&#32;Category"/>
+									<cell col="1" colid="DETAILCATEGORYNAME" colspan="2" display="text" limit="-1" row="1" suppress="-1"/>
+									<cell col="0" display="text" limit="-1" row="2" text="Model"/>
+									<cell col="1" colid="MODELNAME" colspan="2" display="text" limit="-1" row="2"/>
+								</head>
+								<body>
+									<cell col="0" colid="orderdate" display="text" limit="-1"/>
+									<cell bkcolor="expr:decode(rowlevel,0,&apos;default&apos;,&apos;red&apos;)" col="1" colid="qty" display="text" limit="-1"/>
+									<cell col="2" colid="UNITCOST" display="text" limit="-1"/>
+								</body>
+							</format>
+							<format id="GroupKey4">
+								<columns>
+									<col fix="left" width="117"/>
+									<col fix="left" width="100"/>
+									<col fix="left" width="101"/>
+									<col fix="left" width="74"/>
+									<col width="63"/>
+									<col width="74"/>
+									<col width="122"/>
+									<col width="39"/>
+									<col width="74"/>
+									<col fix="right" width="56"/>
+									<col fix="right" width="50"/>
+									<col fix="right" width="83"/>
+								</columns>
+								<head>
+									<cell bkcolor="silver" col="0" colspan="3" display="text" limit="-1" rowspan="2" text="Order"/>
+									<cell bkcolor="silver" col="3" display="text" limit="-1" text="Region"/>
+									<cell col="4" colid="BIGAGENTNAME" colspan="5" display="text" limit="-1" suppress="-1"/>
+									<cell bkcolor="silver" col="3" display="text" limit="-1" row="1" text="City"/>
+									<cell col="4" colid="AGENTNAME" colspan="5" display="text" limit="-1" row="1"/>
+									<cell bkcolor="silver" col="0" display="text" limit="-1" row="2" text="Large&#32;Div."/>
+									<cell bkcolor="silver" col="1" display="text" limit="-1" row="2" text="Small&#32;Div."/>
+									<cell bkcolor="silver" col="2" display="text" limit="-1" row="2" text="Model"/>
+									<cell bkcolor="silver" col="3" display="text" limit="-1" row="2" text="Order&#32;Date"/>
+									<cell col="4" display="text" limit="-1" row="2" text="Order&#32;ID"/>
+									<cell col="5" display="text" limit="-1" row="2" text="COMPANY"/>
+									<cell col="6" display="text" limit="-1" row="2" text="Desc."/>
+									<cell col="7" display="text" limit="-1" row="2" text="qty"/>
+									<cell col="8" display="text" limit="-1" row="2" text="UNITCOST"/>
+									<cell col="9" colspan="3" display="text" limit="-1" rowspan="2" text="Total"/>
+									<cell col="9" display="text" limit="-1" row="2" text="count"/>
+									<cell col="10" display="text" limit="-1" row="2" text="Sum"/>
+									<cell col="11" display="text" limit="-1" row="2" text="Sum.Amount"/>
+								</head>
+								<body>
+									<cell celltype="head" col="0" colid="CATEGORYNAME" display="text" limit="-1" subsumexpr="CATEGORYNAME&#32;+&#32;&apos;부분합&apos;" suppress="1"/>
+									<cell celltype="head" col="1" colid="DETAILCATEGORYNAME" display="text" limit="-1" subsumexpr="DETAILCATEGORYNAME+&apos;부분합&apos;" suppress="2"/>
+									<cell celltype="head" col="2" colid="MODELNAME" display="text" limit="-1" suppress="3"/>
+									<cell celltype="head" col="3" colid="orderdate" display="text" limit="-1"/>
+									<cell col="4" colid="orderid" display="text" limit="-1"/>
+									<cell col="5" colid="COMPANY" display="text" limit="-1"/>
+									<cell col="6" colid="DESCRIPTION" display="text" limit="-1"/>
+									<cell align="right" bkcolor="expr:decode(rowlevel,0,&apos;default&apos;,&apos;red&apos;)" col="7" colid="qty" display="text" limit="-1"/>
+									<cell align="right" col="8" colid="UNITCOST" display="number" limit="-1"/>
+									<cell align="right" celltype="summary" col="9" display="number" limit="-1"/>
+									<cell align="right" celltype="summary" col="10" display="number" limit="-1"/>
+									<cell align="right" celltype="summary" col="11" display="number" limit="-1"/>
+								</body>
+								<summary>
+									<cell col="0" colspan="3" display="text" limit="-1" rowspan="2" text="Total"/>
+									<cell col="3" display="text" limit="-1" text="Sum,Count"/>
+									<cell col="3" display="text" limit="-1" row="1" text="AvgNN,CountNN"/>
+									<cell col="4" display="number" limit="-1"/>
+									<cell col="4" display="number" limit="-1" row="1"/>
+									<cell col="5" display="number" limit="-1"/>
+									<cell col="5" display="number" limit="-1" row="1"/>
+									<cell col="6" display="number" limit="-1"/>
+									<cell col="6" display="number" limit="-1" row="1"/>
+									<cell col="7" display="number" limit="-1"/>
+									<cell col="7" display="number" limit="-1" row="1"/>
+									<cell col="8" display="number" limit="-1"/>
+									<cell col="8" display="number" limit="-1" row="1"/>
+									<cell align="right" celltype="summary" col="9" display="number" limit="-1"/>
+									<cell align="right" celltype="summary" col="10" display="number" limit="-1"/>
+									<cell align="right" celltype="summary" col="11" display="number" limit="-1"/>
+									<cell align="right" celltype="summary" col="9" display="number" limit="-1" row="1"/>
+									<cell align="right" celltype="summary" col="10" display="number" limit="-1" row="1"/>
+									<cell align="right" celltype="summary" col="11" display="number" limit="-1" row="1"/>
+								</summary>
+							</format>
+							<format id="GroupKey3">
+								<columns>
+									<col fix="left" width="69"/>
+									<col fix="left" width="88"/>
+									<col fix="left" width="81"/>
+									<col width="49"/>
+									<col width="41"/>
+									<col width="84"/>
+									<col fix="right" width="44"/>
+									<col fix="right" width="56"/>
+									<col fix="right" width="84"/>
+								</columns>
+								<head>
+									<cell bkcolor="silver" col="0" colspan="2" display="text" limit="-1" rowspan="3" text="Title"/>
+									<cell bkcolor="silver" col="2" display="text" limit="-1" text="Large&#32;Div."/>
+									<cell bkcolor="silver" col="2" display="text" limit="-1" row="1" text="Small&#32;Div."/>
+									<cell bkcolor="silver" col="2" display="text" limit="-1" row="2" text="Model"/>
+									<cell bkcolor="silver" col="0" display="text" limit="-1" row="3" text="Region"/>
+									<cell bkcolor="silver" col="1" display="text" limit="-1" row="3" text="City"/>
+									<cell bkcolor="silver" col="2" display="text" limit="-1" row="3" text="Order&#32;Date"/>
+									<cell col="3" colid="CATEGORYNAME" colspan="3" display="text" limit="-1" suppress="-1"/>
+									<cell col="3" colid="DETAILCATEGORYNAME" colspan="3" display="text" limit="-1" row="1" suppress="-2"/>
+									<cell col="3" colid="MODELNAME" colspan="3" display="text" limit="-1" row="2"/>
+									<cell col="3" display="text" limit="-1" row="3" text="Order&#32;ID"/>
+									<cell col="4" display="text" limit="-1" row="3" text="qty"/>
+									<cell col="5" display="text" limit="-1" row="3" text="UNITCOST"/>
+									<cell col="6" colspan="3" display="text" limit="-1" rowspan="3" text="Total"/>
+									<cell col="6" display="text" limit="-1" row="3" text="Count"/>
+									<cell col="7" display="text" limit="-1" row="3" text="Sum"/>
+									<cell col="8" display="text" limit="-1" row="3" text="Avg.Amount"/>
+								</head>
+								<body>
+									<cell celltype="head" col="0" colid="BIGAGENTNAME" display="text" limit="-1" subsumtext="subtotal" suppress="1"/>
+									<cell celltype="head" col="1" colid="AGENTNAME" display="text" limit="-1" subsumtext="subtotal" suppress="2"/>
+									<cell celltype="head" col="2" colid="orderdate" display="text" limit="-1"/>
+									<cell bkcolor="expr:decode(rowlevel,0,&apos;default&apos;,&apos;#C8FFFF&apos;)" col="3" colid="orderid" display="text" edit="normal" limit="-1"/>
+									<cell align="right" bkcolor="expr:decode(rowlevel,0,&apos;default&apos;,&apos;#C8FFFF&apos;)" col="4" colid="qty" display="number" edit="normal" limit="-1"/>
+									<cell align="right" bkcolor="expr:decode(rowlevel,0,&apos;default&apos;,&apos;#C8FFFF&apos;)" col="5" colid="UNITCOST" display="number" edit="normal" limit="-1"/>
+									<cell align="right" celltype="summary" col="6" display="number" expr="pivotCount(&apos;orderid&apos;,currow)" limit="-1"/>
+									<cell align="right" celltype="summary" col="7" display="number" expr="pivotSum(&apos;qty&apos;,currow)" limit="-1"/>
+									<cell align="right" celltype="summary" col="8" display="number" expr="pivotAvg(&apos;UNITCOST&apos;,currow)" limit="-1" Mask="#,###.00"/>
+								</body>
+								<summary>
+									<cell col="0" colspan="2" display="text" limit="-1" rowspan="2" text="Total"/>
+									<cell col="2" display="text" limit="-1" text="Sum,Count"/>
+									<cell col="2" display="text" limit="-1" row="1" text="Avg,Count"/>
+									<cell col="3" display="number" expr="Count(&apos;orderid&apos;,pivotindex)" limit="-1"/>
+									<cell col="3" display="number" expr="Count(&apos;orderid&apos;,pivotindex)" limit="-1" row="1"/>
+									<cell col="4" display="number" expr="Sum(&apos;qty&apos;,pivotindex)" limit="-1"/>
+									<cell col="4" display="number" expr="Avg(&apos;qty&apos;,pivotindex)" limit="-1" row="1"/>
+									<cell col="5" display="number" expr="Sum(&apos;UNITCOST&apos;,pivotindex)" limit="-1"/>
+									<cell col="5" display="number" expr="Avg(&apos;UNITCOST&apos;,pivotindex)" limit="-1" row="1"/>
+									<cell align="right" celltype="summary" col="6" display="number" expr="TotalCount(&apos;orderid&apos;)" limit="-1"/>
+									<cell align="right" celltype="summary" col="7" display="number" expr="TotalSum(&apos;qty&apos;)" limit="-1"/>
+									<cell align="right" celltype="summary" col="8" display="number" expr="TotalSum(&apos;unitcost&apos;)" limit="-1"/>
+									<cell align="right" celltype="summary" col="6" display="number" expr="TotalSum(&apos;qty&apos;)/TotalCount(&apos;qty&apos;)" limit="-1" Mask="#,###.00" row="1"/>
+									<cell align="right" celltype="summary" col="7" display="number" expr="TotalAvg(&apos;qty&apos;)" limit="-1" Mask="#,###.00" row="1"/>
+									<cell align="right" celltype="summary" col="8" display="number" expr="TotalAvg(&apos;unitcost&apos;)" limit="-1" Mask="#,###.00" row="1"/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+					<Combo Border="Flat" BorderColor="#9ea987" CodeColumn="value" Height="19" Id="cboFormat" INDEX="1" InnerDataset="dsGridFormat" Left="59" OnChanged="Tab0_tab2_cboFormat_OnChanged" TabOrder="2" Top="5" Width="160"></Combo>
+					<Static Height="11" Id="Static0" Left="13" TabOrder="3" Text="Format" Top="9" Width="40"></Static>
+					<Image Height="5" Id="Image0" ImageID="text_icon" Left="3" TabOrder="4" Top="12" Width="5"></Image>
+				</TabPage>
+			</Contents>
+		</Tab>
+		<Static Border="None" Color="#444444" Font="Arial,10,Bold" Height="19" Id="Static4" Left="31" TabOrder="2" Text="Pivot&#32;expression&#32;that&#32;use&#32;Grid" Top="5" VAlign="Middle" Width="193"></Static>
+		<Image Height="14" Id="Image1" ImageID="title_icon01" Left="13" TabOrder="3" Top="7" Width="14"></Image>
+	</Form>
+	<Script><![CDATA[var vCompID = "";
+
+function fn_GetColumnSet_NoPivot(objObject,nRow,strColID)
+{
+    
+    
+	var strEval =  objObject.id+".GetColumnSet("+nRow+", '"+strColID+")";
+	//var Ret = CallScript(strEval);
+    var Ret = objObject.GetColumnSet(nRow,strColID);
+	var preText = ta_MethodCall_Result.text;
+	ta_MethodCall_Result.text = ' var Ret = ' + strEval + chr(10);
+	ta_MethodCall_Result.text += "Ret = ";
+	ta_MethodCall_Result.text += Ret;
+	ta_MethodCall_Result.text += chr(10)+"=================================" + chr(10);			
+	for( var i = 0 ; i < Ret.count ; i ++ )
+	{
+        ta_MethodCall_Result.text += chr(10)+"["+i+"] "+Ret[i].Value;
+	}	
+	ta_MethodCall_Result.text += chr(10)+"[Count] "+Ret.Count;
+	ta_MethodCall_Result.text += chr(10)+"[Sum] "+Ret.Sum;
+	ta_MethodCall_Result.text += chr(10)+"[Avg] "+Ret.Avg;
+	ta_MethodCall_Result.text += chr(10)+"[Max] "+Ret.Max;
+	ta_MethodCall_Result.text += chr(10)+"[Min] "+Ret.Min;
+	
+	ta_MethodCall_Result.text += chr(10)+"--------------------------------" + chr(10);			
+	ta_MethodCall_Result.text += chr(10)+"=================================" + chr(10);			
+	ta_MethodCall_Result.text += preText + chr(10);	    
+}
+
+function fn_GetColumnSet(objObject,nRow,strColID,nPivotIndex)
+{
+    
+    
+	var strEval =  objObject.id+".GetColumnSet("+nRow+", '"+strColID+"', "+nPivotIndex+")";
+	//var Ret = CallScript(strEval);
+    var Ret = objObject.GetColumnSet(nRow,strColID,nPivotIndex);
+	var preText = ta_MethodCall_Result.text;
+	ta_MethodCall_Result.text = ' var Ret = ' + strEval + chr(10);
+	ta_MethodCall_Result.text += "Ret = ";
+	ta_MethodCall_Result.text += Ret;
+	ta_MethodCall_Result.text += chr(10)+"=================================" + chr(10);			
+	for( var i = 0 ; i < Ret.count ; i ++ )
+	{
+        ta_MethodCall_Result.text += chr(10)+"["+i+"] "+Ret[i].Value;
+	}	
+	ta_MethodCall_Result.text += chr(10)+"[Count] "+Ret.Count;
+	ta_MethodCall_Result.text += chr(10)+"[Sum] "+Ret.Sum;
+	ta_MethodCall_Result.text += chr(10)+"[Avg] "+Ret.Avg;
+	ta_MethodCall_Result.text += chr(10)+"[Max] "+Ret.Max;
+	ta_MethodCall_Result.text += chr(10)+"[Min] "+Ret.Min;
+	
+	ta_MethodCall_Result.text += chr(10)+"--------------------------------" + chr(10);			
+	ta_MethodCall_Result.text += chr(10)+"=================================" + chr(10);			
+	ta_MethodCall_Result.text += preText + chr(10);	    
+}
+
+function fn_SetDataColumn(nRow, vORDID,vORDDate)
+{   if(nRow <0)
+        nRow = dsOrders.AddRow();
+    dsOrders.SetColumn(nRow,'orderid',vORDID);
+    dsOrders.SetColumn(nRow,'orderdate',vORDDate);
+    dsOrders.SetColumn(nRow,'qty','20');
+    dsOrders.SetColumn(nRow,'CATEGORYNAME','가전제품');
+    dsOrders.SetColumn(nRow,'DETAILCATEGORYNAME','TV');
+    dsOrders.SetColumn(nRow,'MODELNAME','32FD9954');
+    dsOrders.SetColumn(nRow,'AGENTNAME','강릉');
+    dsOrders.SetColumn(nRow,'BIGAGENTNAME','강원');
+    dsOrders.SetColumn(nRow,'UNITCOST','690900');
+    
+}
+
+function fn_SetProp_Dataset(objObject, PropID, varNewValue)
+{
+    trace("fn_SetProp_Dataset ["+objObject+"]["+PropID+"]["+varNewValue+"]");
+    switch(PropID)
+    {
+        case "Argument": objObject.Argument = varNewValue; break;
+        case "Auto": objObject.Auto = varNewValue; break;
+        case "CodePage": objObject.CodePage = varNewValue; break;
+        case "Contents": objObject.Contents = varNewValue; break;
+        case "DataObject": objObject.DataObject = varNewValue; break;
+        case "DatasetType": objObject.DatasetType = varNewValue; break;
+        case "Editable": objObject.Editable = varNewValue; break;
+        case "FilterExpr": objObject.FilterExpr = varNewValue; break;
+        case "FireEvent": objObject.FireEvent = varNewValue; break;
+        case "FireFirstCount": objObject.FireFirstCount = varNewValue; break;
+        case "FireNextCount": objObject.FireNextCount = varNewValue; break;
+        case "GroupKey": objObject.GroupKey = varNewValue; break;
+        case "ID": objObject.ID = varNewValue; break;
+        case "NameSpaceInfo": objObject.NameSpaceInfo = varNewValue; break;
+        case "PivotKey": objObject.PivotKey = varNewValue; break;
+        case "ReverseSubSum": objObject.ReverseSubSum = varNewValue; break;
+        case "ServiceDSetID": objObject.ServiceDSetID = varNewValue; break;
+        case "ServiceID": objObject.ServiceID = varNewValue; break;
+        case "UpdateControl": objObject.UpdateControl = varNewValue; break;
+        case "XPath": objObject.XPath = varNewValue; break;
+        case "colcount": objObject.colcount = varNewValue; break;
+        case "constcount": objObject.constcount = varNewValue; break;
+        case "count": objObject.count = varNewValue; break;
+        case "currow": objObject.currow = varNewValue; break;
+        case "firstrow": objObject.firstrow = varNewValue; break;
+        case "lastrow": objObject.lastrow = varNewValue; break;
+        case "nextrow": objObject.nextrow = varNewValue; break;
+        case "pivotcount": objObject.pivotIndexcount = varNewValue; break;
+        case "pivotindex": objObject.pivotindex = varNewValue; break;
+        case "prevrow": objObject.prevrow = varNewValue; break;
+        case "row": objObject.row = varNewValue; break;
+        case "rowcount": objObject.rowcount = varNewValue; break;
+        case "rowlevel": objObject.rowlevel = varNewValue; break;
+        case "rowpos": objObject.rowpos = varNewValue; break;
+        case "rowposition": objObject.rowposition = varNewValue; break;
+    }
+}
+
+
+function btnCallScript_OnClick(obj)
+{
+	var strEval =  edtScript.text;
+	var Ret = CallScript(strEval);
+
+	var preText = ta_MethodCall_Result.text;
+	ta_MethodCall_Result.text = ' var Ret = ' + strEval + chr(10);
+	ta_MethodCall_Result.text += "Ret = ";
+	ta_MethodCall_Result.text += Ret;
+	ta_MethodCall_Result.text += chr(10)+"=================================" + chr(10);			
+	ta_MethodCall_Result.text += preText + chr(10);			
+
+/*
+	var MethodID = dsMethod.GetColumn(dsMethod.Row,"NAME");
+	var strEval =  vCompID+"."+MethodID+"("+edArgument.text+")";
+	var Ret = CallScript(strEval);
+
+	var preText = ta_MethodCall_Result.text;
+	ta_MethodCall_Result.text = ' var Ret = ' + strEval + chr(10);
+	ta_MethodCall_Result.text += "Ret = ";
+	ta_MethodCall_Result.text += Ret;
+	ta_MethodCall_Result.text += chr(10)+"=================================" + chr(10);			
+	ta_MethodCall_Result.text += preText + chr(10);		
+*/	
+}
+
+function gridMethod_OnCellDblClick(obj,nRow,nCell,nX,nY)
+{
+//   trace("OnCellDblClick : "+nRow+"  "+nCell);
+    if((nRow >= 0) &&(nCell < 1))
+    {
+        var MethodID = dsMethod.GetColumn(nRow,"COMMENT");
+        var strEval =  vCompID+"."+MethodID;
+        edtScript.Text = strEval;
+        edtScript.SetFocus();
+    }	
+}
+
+function dsOrderPivot_OnRowPosChanged(obj,nOldRow,nRow)
+{
+//    trace("dsOrderPivot_OnRowPosChanged");
+//	fn_Refresh();	
+}
+
+
+function Tab0_tab2_cboFormat_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+//    trace("Tab0_tab2_cboFormat_OnChanged : "+strCode);
+    dsOrderPivot.GroupKey = '';
+    dsOrderPivot.PivotKey = '';
+	switch(strCode)
+	{
+        case 'GroupKey1':
+        {
+            Tab0.tpgPivot.grdPivot.Format = strCode;
+            dsOrderPivot.FireEvent = false;
+            dsOrderPivot.PivotKey = 'CATEGORYNAME,DETAILCATEGORYNAME,MODELNAME';
+            dsOrderPivot.GroupKey = 'orderdate';
+            dsOrderPivot.FireEvent = true;
+            break;
+            //dsOrderPivot.RecalcPivot();
+        }
+        case 'GroupKey3':
+        {
+            Tab0.tpgPivot.grdPivot.Format = strCode;
+            dsOrderPivot.FireEvent = false;
+            dsOrderPivot.PivotKey = 'CATEGORYNAME,DETAILCATEGORYNAME,MODELNAME';
+            dsOrderPivot.GroupKey = 'BIGAGENTNAME,AGENTNAME,orderdate';
+            dsOrderPivot.FireEvent = true;
+            break;
+            //dsOrderPivot.RecalcPivot();
+        }
+        case 'GroupKey4':
+        {
+            Tab0.tpgPivot.grdPivot.Format = strCode;
+            dsOrderPivot.FireEvent = false;
+            dsOrderPivot.PivotKey = 'BIGAGENTNAME,AGENTNAME';
+            dsOrderPivot.GroupKey = 'CATEGORYNAME,DETAILCATEGORYNAME,MODELNAME,orderdate';
+            dsOrderPivot.FireEvent = true;
+            break;
+            //dsOrderPivot.RecalcPivot();
+        }        
+	}
+}
+
+function frmPivotDS_OnLoadCompleted(obj)
+{
+	Tab0.tpgPivot.cboFormat.Value = Tab0.tpgPivot.grdPivot.Format;
+	dsMethod.Sort('NAME');
+	btnGetMap.Click();
+//	dsOrders.Sort('CATEGORYNAME,DETAILCATEGORYNAME,MODELNAME');
+//	dsOrders.GroupKey = 'CATEGORYNAME,DETAILCATEGORYNAME,MODELNAME';
+}
+
+function Tab0_tpgPivot_grdPivot_OnCellPosChanged(obj,nRow,nCell,nOldRow,nOldCell,nPivotIndex,nOldPivotIndex)
+{
+//    if(vCompID == 'dsOrderPivot')
+//        fn_Refresh();	
+}
+function dsOrderPivot_OnLoadCompleted(obj,nErrorCode,strErrorMsg,nReason)
+{
+	trace(obj.id +'_OnLoadCompleted Reason['+nReason);
+}
+
+function cboCompID_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	btnGetMap.Click();
+}
+function edtScript_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	if(nChar == 13)
+	{
+        btnCallScript.Click();
+	}
+}
+
+function cboMethod_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	dsMethod.row = nNewIndex;
+}
+]]></Script>
+</Window>

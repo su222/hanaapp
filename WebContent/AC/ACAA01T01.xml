@@ -1,0 +1,2753 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="650" Id="ACAA01T01" Left="8" OnLoadCompleted="ACAA01T01_OnLoadCompleted" OnUnloadCompleted="ACAA01T01_OnUnloadCompleted" PidAttrib="7" Title="사건진행" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1240" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_PopupPrint">
+				<Contents>
+					<colinfo id="TYPE" size="10" summ="default" type="INT"/>
+					<colinfo id="ID" size="10" summ="default" type="INT"/>
+					<colinfo id="STATUS" size="5" summ="default" type="STRING"/>
+					<colinfo id="CAPTION" size="255" summ="default" type="STRING"/>
+					<record>
+						<CAPTION>출력</CAPTION>
+						<ID>1</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>1</TYPE>
+					</record>
+					<record>
+						<CAPTION>재정렬</CAPTION>
+						<ID>3</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>1</TYPE>
+					</record>
+					<record>
+						<CAPTION>입금요청</CAPTION>
+						<ID>4</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>1</TYPE>
+					</record>
+					<record>
+						<CAPTION>채권사정보</CAPTION>
+						<ID>5</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>1</TYPE>
+					</record>
+					<record>
+						<CAPTION>내근진행특이사항</CAPTION>
+						<ID>6</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>1</TYPE>
+					</record>
+					<record>
+						<CAPTION>채권사추가(첫행)</CAPTION>
+						<ID>7</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>1</TYPE>
+					</record>
+					<record>
+						<CAPTION>채권사추가(선택행뒤)</CAPTION>
+						<ID>8</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>1</TYPE>
+					</record>
+					<record>
+						<CAPTION>행삭제</CAPTION>
+						<ID>9</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>1</TYPE>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_PopupInfo">
+				<Contents>
+					<colinfo id="TYPE" size="10" summ="default" type="INT"/>
+					<colinfo id="ID" size="10" summ="default" type="INT"/>
+					<colinfo id="STATUS" size="5" summ="default" type="STRING"/>
+					<colinfo id="CAPTION" size="255" summ="default" type="STRING"/>
+					<record>
+						<CAPTION>제휴사미수정보</CAPTION>
+						<ID>1</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>1</TYPE>
+					</record>
+					<record>
+						<CAPTION>제휴사특이사항</CAPTION>
+						<ID>2</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>2</TYPE>
+					</record>
+					<record>
+						<CAPTION>진행특이사항</CAPTION>
+						<ID>3</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>3</TYPE>
+					</record>
+					<record>
+						<CAPTION>전체보류</CAPTION>
+						<ID>4</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>4</TYPE>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_AFFAIR_MST" OnColumnChanged="DS_AFFAIR_MST_OnColumnChanged" OnRowPosChanged="DS_AFFAIR_MST_OnRowPosChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_FAX" size="256" summ="default" type="STRING"/>
+					<colinfo id="HNA_CHG_USR" size="256" summ="default" type="STRING"/>
+					<colinfo id="HNA_CHG_USR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_CHG_USR" size="256" summ="default" type="STRING"/>
+					<colinfo id="DOC_CRT_USR" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_ST_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_ED_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_ETC_ED_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_JMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="DOC_CARY" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_PRS_STS_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_PRS_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIZ_FILE_SAVE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_EXP_DD" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_PRS_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_REG_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRT_AFF_ED_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SMT_PLC" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADD_INF_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEF_CLT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEF_CLT_JMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASK_EXP_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_OPN_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_OPN_HP" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_AFFAIR_DTL" OnColumnChanged="DS_AFFAIR_DTL_OnColumnChanged" OnRowPosChanged="DS_AFFAIR_DTL_OnRowPosChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="INT"/>
+					<colinfo id="DTL_SEQ" size="256" summ="default" type="INT"/>
+					<colinfo id="GRP_CD" size="256" summ="default" type="INT"/>
+					<colinfo id="GRP_SEQ" size="256" summ="default" type="INT"/>
+					<colinfo id="REQ_SEQ" size="256" summ="default" type="INT"/>
+					<colinfo id="SORT_NO" size="256" summ="default" type="INT"/>
+					<colinfo id="REQ_BND_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_BND_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_PRS_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_DEB" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_BNK" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_CARD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNK_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CARD_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIZ_REQ_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_PRT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SEQ_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_STS_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SEQ_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_STS_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_DEB" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_COC" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_BNK" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_CARD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_CRDT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNK_CHRG" size="256" summ="default" type="STRING"/>
+					<colinfo id="AGC_CHRG" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLOSE_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOTE2" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_NOTE_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_NOTE_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACP_MTD_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACP_MTD_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_BND_STS_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_STS_1_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_STS_2_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_COLOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="TMP_PRS_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_EDT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRT_EDT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="AMT_EDT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_BAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BAR_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BAR_2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_BND_PRINT_INFO">
+				<Contents>
+					<colinfo id="BND_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_SAVE_FILE1" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_SAVE_FILE2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIZ_PRT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REG_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_OPN_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="JMN_OPN_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_mst_temp"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_dtl_temp"></Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_CHRG_AMT">
+				<Contents>
+					<colinfo id="AGC_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHRG_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="cur_affair_dtl">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="DTL_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="GRP_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_BND_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_BND_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_DEB" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_BNK" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_CARD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNK_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CARD_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIZ_REQ_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_PRT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SEQ_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_STS_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SEQ_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_STS_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SEQ_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_STS_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_DEB" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_COC" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_BNK" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_CARD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISU_CRDT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNK_CHRG" size="256" summ="default" type="STRING"/>
+					<colinfo id="AGC_CHRG" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLOSE_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_AFFNOTE_LST" OnColumnChanged="DS_AFFNOTE_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_note_temp"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_filter_temp"></Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_TIEUPNOTE_LST">
+				<Contents>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOTE_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="JOB_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOTE_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOTE_DESC" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_AFFAIR_PRS_LST">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="DTL_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACP_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACP_MTD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_FAX" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_BONDPAY_LST">
+				<Contents>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_AFFAIR_PRSOUT_LST">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="DTL_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACP_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="OUT_CHG_USR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRS_NOTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_ACP_MTD">
+				<Contents>
+					<colinfo id="ACP_MTD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Report Bottom="24" Height="16" Id="Report0" Left="1264" PrintFinished="Report0_PrintFinished" Right="1272" Top="8" Visible="FALSE" Width="8"></Report>
+		<Shape BKColor="user7" Bottom="240" Height="216" Id="Shape_edit" Left="0" LineColor="user61" Right="400" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="20" Top="24" Type="RoundRect" Width="400"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static18" Left="226" Style="Stc_Label" TabOrder="12" Text="제휴사명" Top="29" VAlign="Middle" Width="64"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static21" Left="5" Style="Stc_Label" TabOrder="12" Text="사건담당" Top="29" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Column="CHG_NM" Height="18" Id="EDT_CHG_NM" Left="88" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="10" Top="30" Width="103"></Edit>
+		<Shape Bottom="122" Height="112" Id="Shape22" Left="84" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="88" TabOrder="14" Top="10" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="26" Height="5" Id="Shape3" Left="-2" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="741" TabOrder="15" Top="21" Type="Rectangle" Visible="FALSE" Width="743"></Shape>
+		<Image Align="Left" Height="14" Id="Image4" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="16" Text="사건기본정보" Top="7" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="648" Height="648" Id="Shape0" Left="1234" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1239" TabOrder="17" Top="0" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="128" Height="110" Id="Shape2" Left="218" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="226" TabOrder="18" Top="18" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Shape Bottom="120" Height="110" Id="Shape8" Left="290" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="294" TabOrder="19" Top="10" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="128" Height="110" Id="Shape6" Left="382" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="390" TabOrder="21" Top="18" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Column="TUB_NM" Height="18" Id="EDT_TUB_NM" Left="294" LeftMargin="4" Readonly="TRUE" Style="Edit" TabOrder="22" TabStop="FALSE" Top="30" Width="88"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static4" Left="5" Style="Stc_Label" TabOrder="24" Text="고객명" Top="75" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static0" Left="5" Style="Stc_Label" TabOrder="25" Text="하나담당" Top="52" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static1" Left="5" Style="Stc_Label" TabOrder="26" Text="시작일" Top="119" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static10" Left="226" Style="Stc_Label" TabOrder="27" Text="전화번호" Top="75" VAlign="Middle" Width="64"></Static>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Column="CLT_NM" Height="18" Id="EDT_CLT_NM" Left="88" LeftMargin="4" Style="Edit_Ess" TabOrder="3" Top="76" Width="130"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static12" Left="5" Style="Stc_Label" TabOrder="28" Text="주민번호" Top="165" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static3" Left="5" Style="Stc_Label" TabOrder="29" Text="주소" Top="97" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Column="CLT_ADDR" Height="18" Id="EDT_CLT_ADDR" Left="88" LeftMargin="4" Style="Edit" TabOrder="7" Top="98" Width="296"></Edit>
+		<Button Height="18" Id="POP_CHG_USR" ImageID="Btn_search" Left="198" OnClick="POP_CHG_USR_OnClick" TabOrder="9" TabStop="FALSE" Text="Button1" Top="30" Width="21"></Button>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Column="HNA_CHG_USR_NM" Height="18" Id="EDT_HNA_CHG_USR_NM" Left="88" LeftMargin="4" OnKeyDown="EDT_HNA_CHG_USR_NM_OnKeyDown" Readonly="TRUE" Style="Edit_Red" TabOrder="11" Top="54" Width="103"></Edit>
+		<Shape Bottom="81" Height="60" Id="Shape18" Left="193" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="198" TabOrder="30" Top="21" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<MaskEdit BindDataset="DS_AFFAIR_MST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="AFF_ST_DT" Height="18" Id="EDT_AFF_ST_DT" Left="91" Mask="####-##-##" OnKeyDown="EDT_AFF_ST_DT_OnKeyDown" Style="Edit_Ess" TabOrder="1" Top="120" Type="STRING" Width="70"></MaskEdit>
+		<Shape Bottom="150" Height="36" Id="Shape20" Left="161" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="166" TabOrder="31" Top="114" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="BTN_AFF_ST_DT" ImageID="Btn_calendar" Left="166" OnClick="BTN_AFF_ST_DT_OnClick" TabOrder="2" TabStop="FALSE" Text="Button1" Top="121" Width="16"></Button>
+		<Shape Bottom="269" Height="32" Id="Shape26" Left="1154" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1159" TabOrder="32" Top="237" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_misu" ImageID="Btn_sub_7w" Left="641" LeftMargin="16" OnClick="btn_misu_OnClick" Style="Btn_sub" TabOrder="33" TabStop="FALSE" Text="제휴사미수정보" Top="1" TopMargin="1" Transparent="TRUE" Width="114"></Button>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static11" Left="5" Style="Stc_Label" TabOrder="34" Text="사건구분" Top="187" VAlign="Middle" Width="80"></Static>
+		<MaskEdit BindDataset="DS_AFFAIR_MST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="CLT_JMN" Height="18" Id="EDT_CLT_JMN" Left="90" Mask="######-#######" Style="Edit_Ess" TabOrder="5" Top="166" Type="STRING" Width="94"></MaskEdit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static6" Left="226" Style="Stc_Label" TabOrder="37" Text="진행담당" Top="52" VAlign="Middle" Width="64"></Static>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Column="PRS_CHG_USR" Height="18" Id="EDT_PRS_CHG_USR" Left="295" LeftMargin="4" Style="Edit" TabOrder="36" TabStop="FALSE" Top="53" Width="88"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static9" Left="5" Style="Stc_Label" TabOrder="39" Text="서류작성자" Top="142" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Column="DOC_CRT_USR" Height="18" Id="EDT_DOC_CRT_USR" Left="90" LeftMargin="4" Style="Edit" TabOrder="38" TabStop="FALSE" Top="143" Width="88"></Edit>
+		<Shape Bottom="273" Height="5" Id="Shape19" Left="3" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1250" TabOrder="40" Top="268" Type="Rectangle" Visible="FALSE" Width="1247"></Shape>
+		<Image Align="Left" Height="18" Id="Image1" ImageID="label_dot" Left="440" LeftMargin="12" Style="Stc_Default_bold" TabOrder="44" Text="자동선택" Top="248" Transparent="TRUE" Width="66"></Image>
+		<Checkbox Height="12" Id="CHK_DEB_YN" Left="520" Style="CheckBox" TabOrder="41" Text="부채" Top="249" Width="46"></Checkbox>
+		<Checkbox Height="12" Id="CHK_BNK_YN" Left="568" Style="CheckBox" TabOrder="42" Text="통장" Top="249" Value="FALSE" Width="54"></Checkbox>
+		<Checkbox Height="12" Id="CHK_CARD_YN" Left="616" Style="CheckBox" TabOrder="43" Text="카드" Top="249" Value="FALSE" Width="46"></Checkbox>
+		<Shape Bottom="246" Height="5" Id="Shape4" Left="-5" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1242" TabOrder="45" Top="241" Type="Rectangle" Visible="FALSE" Width="1247"></Shape>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_AFFAIR_DTL" BkColor2="user55" BkSelColor="user55" BoldHead="FALSE" Border="Flat" Bottom="640" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="368" Id="GRD_AFFAIR_DTL" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_AFFAIR_DTL_OnCellClick" OnEnterDown="GRD_AFFAIR_DTL_OnEnterDown" OnEnterEdit="GRD_AFFAIR_DTL_OnEnterEdit" OnRButtonDown="GRD_AFFAIR_DTL_OnRButtonDown" Right="1232" RowHeight="20" Style="Grid_2" TabOrder="46" TabStop="true" Top="272" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1232">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="40"/>
+						<col width="0"/>
+						<col width="130"/>
+						<col width="70"/>
+						<col width="0"/>
+						<col width="130"/>
+						<col width="70"/>
+						<col width="0"/>
+						<col width="130"/>
+						<col width="70"/>
+						<col width="40"/>
+						<col width="40"/>
+						<col width="40"/>
+						<col width="40"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="50"/>
+						<col width="0"/>
+						<col width="200"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" rowspan="2" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" InputZeroTime="true" rowspan="2" text="회사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" rowspan="2" text="사건순번"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" rowspan="2" text="상세순번"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" rowspan="2" text="그룹코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" rowspan="2" text="그룹순번"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="9" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" rowspan="2" text="의뢰순번"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="10" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" rowspan="2" text="순서"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="11" color="user52" colspan="3" display="text" font="돋움,10,Bold" InputZeroTime="true" text="의뢰채권사"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="14" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="진행1"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="15" color="user52" colspan="2" display="text" font="돋움,10,Bold" InputZeroTime="true" text="진행1"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="17" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="진행2"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="18" color="user52" colspan="2" display="text" font="돋움,10,Bold" InputZeroTime="true" text="진행2"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="20" color="user52" colspan="4" display="text" font="돋움,10,Bold" InputZeroTime="true" text="서류종류"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="24" color="user52" colspan="2" display="text" font="돋움,10,Bold" InputZeroTime="true" text="수수료"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="26" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="26" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="출력"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="27" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" rowspan="2" text="마감"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="28" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="비고(진행1)"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="24" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="은행"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="25" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="대행"/>
+						<cell col="0" display="text" InputZeroTime="true" row="1" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" row="1" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" row="1" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="11" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="12" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="채권사명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="13" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="진행"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="14" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="15" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="채권사명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="16" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="진행"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="17" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="18" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="채권사명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="19" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="진행"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="20" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="부채"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="21" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="통장"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="22" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="카드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="23" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="내용"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="28" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" row="1" text="비고(진행2)"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell align="center" col="3" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="left" col="4" colid="BRCH_ID" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="5" colid="AFF_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="6" colid="DTL_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="7" colid="GRP_CD" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="8" colid="GRP_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="9" colid="REQ_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="10" colid="SORT_NO" display="normal" edit="number" InputZeroTime="true" rowspan="2"/>
+						<cell align="center" col="11" colid="REQ_BND_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="12" colid="REQ_BND_NM" display="normal" edit="normal" InputZeroTime="true" rowspan="2"/>
+						<cell align="left" col="13" colid="REQ_BND_STS_NM" display="normal" edit="normal" InputZeroTime="true" rowspan="2"/>
+						<cell align="center" col="14" colid="BND_SEQ_1" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="15" colid="BND_NM_1" display="normal" edit="normal" font="expr:iif(PRS_STS_1_NM&#32;==&#32;&apos;발급&apos;,&apos;돋움,&#32;11,&#32;Bold&apos;,&#32;&apos;돋움,&#32;9&apos;)" InputZeroTime="true"/>
+						<cell align="center" col="16" colid="PRS_STS_1_NM" display="normal" edit="normal" font="expr:iif(PRS_STS_1_NM&#32;==&#32;&apos;발급&apos;,&apos;돋움,&#32;11,&#32;Bold&apos;,&#32;&apos;돋움,&#32;9&apos;)" InputZeroTime="true" rowspan="2"/>
+						<cell align="center" col="17" colid="BND_SEQ_2" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="18" colid="BND_NM_2" display="normal" edit="normal" font="expr:iif(PRS_STS_2_NM&#32;==&#32;&apos;발급&apos;,&apos;돋움,&#32;11,&#32;Bold&apos;,&#32;&apos;돋움,&#32;9&apos;)" InputZeroTime="true"/>
+						<cell align="center" col="19" colid="PRS_STS_2_NM" display="normal" edit="normal" font="expr:iif(PRS_STS_2_NM&#32;==&#32;&apos;발급&apos;,&apos;돋움,&#32;11,&#32;Bold&apos;,&#32;&apos;돋움,&#32;9&apos;)" InputZeroTime="true" rowspan="2"/>
+						<cell align="center" col="20" colid="ISU_DEB" color="black" display="checkbox" edit='expr:iif(ISU_EDT_YN&#32;=&#32;&apos;Y&apos;,&#32;&quot;checkbox&quot;,&#32;&quot;none&quot;)' InputZeroTime="true" rowspan="2"/>
+						<cell align="center" col="21" colid="ISU_BNK" color="black" display="checkbox" edit='expr:iif(ISU_EDT_YN&#32;=&#32;&apos;Y&apos;,&#32;&quot;checkbox&quot;,&#32;&quot;none&quot;)' InputZeroTime="true" rowspan="2"/>
+						<cell align="center" col="22" colid="ISU_CARD" color="black" display="checkbox" edit='expr:iif(ISU_EDT_YN&#32;=&#32;&apos;Y&apos;,&#32;&quot;checkbox&quot;,&#32;&quot;none&quot;)' InputZeroTime="true" rowspan="2"/>
+						<cell align="center" col="23" colid="ISU_COC" color="black" display="checkbox" edit='expr:iif(ISU_EDT_YN&#32;=&#32;&apos;Y&apos;,&#32;&quot;checkbox&quot;,&#32;&quot;none&quot;)' InputZeroTime="true" rowspan="2"/>
+						<cell align="right" col="24" colid="BNK_CHRG" color="black" display="number" edit='expr:iif(AMT_EDT_YN&#32;=&#32;&quot;Y&quot;,&#32;&quot;number&quot;,&#32;&quot;none&quot;)' InputZeroTime="true" rowspan="2"/>
+						<cell align="right" col="25" colid="AGC_CHRG" color="black" display="number" edit='expr:iif(AMT_EDT_YN&#32;=&#32;&quot;Y&quot;,&#32;&quot;number&quot;,&#32;&quot;none&quot;)' InputZeroTime="true" rowspan="2"/>
+						<cell align="center" col="26" colid="PRT_YN" color="black" display="checkbox" edit='expr:iif(PRT_EDT_YN&#32;=&#32;&apos;Y&apos;,&#32;&quot;checkbox&quot;,&#32;&quot;none&quot;)' InputZeroTime="true" rowspan="2"/>
+						<cell align="left" col="27" colid="CLOSE_YN" color="black" display="normal" edit="normal" InputZeroTime="true"/>
+						<cell col="28" colid="NOTE" display="text" edit="normal" InputZeroTime="true" multiline="true" wordwrap="exchar"/>
+						<cell col="0" display="text" InputZeroTime="true" row="1"/>
+						<cell col="1" display="text" InputZeroTime="true" row="1"/>
+						<cell col="2" display="text" InputZeroTime="true" row="1"/>
+						<cell col="3" display="text" InputZeroTime="true" row="1"/>
+						<cell col="4" display="text" InputZeroTime="true" row="1"/>
+						<cell col="5" display="text" InputZeroTime="true" row="1"/>
+						<cell col="6" display="text" InputZeroTime="true" row="1"/>
+						<cell col="7" display="text" InputZeroTime="true" row="1"/>
+						<cell col="8" display="text" InputZeroTime="true" row="1"/>
+						<cell col="9" display="text" InputZeroTime="true" row="1"/>
+						<cell col="11" display="text" InputZeroTime="true" row="1"/>
+						<cell col="14" display="text" InputZeroTime="true" row="1"/>
+						<cell col="15" colid="PRS_NOTE_1" display="text" InputZeroTime="true" row="1"/>
+						<cell align="center" col="17" colid="ACP_MTD_2" combodisplayrowcnt="20" display="combo" edit="combo" InputZeroTime="true" row="1"/>
+						<cell col="18" colid="PRS_NOTE_2" display="text" InputZeroTime="true" row="1"/>
+						<cell col="27" display="text" InputZeroTime="true" row="1"/>
+						<cell col="28" colid="NOTE2" display="text" edit="normal" InputZeroTime="true" multiline="true" row="1" wordwrap="exchar"/>
+					</body>
+					<summary>
+						<cell col="0" display="text" InputZeroTime="true"/>
+						<cell col="1" display="text" InputZeroTime="true"/>
+						<cell col="2" display="text" InputZeroTime="true"/>
+						<cell col="3" display="text" InputZeroTime="true"/>
+						<cell col="4" display="text" InputZeroTime="true"/>
+						<cell col="5" display="text" InputZeroTime="true"/>
+						<cell col="6" display="text" InputZeroTime="true"/>
+						<cell col="7" display="text" InputZeroTime="true"/>
+						<cell col="8" display="text" InputZeroTime="true"/>
+						<cell col="9" display="text" InputZeroTime="true"/>
+						<cell col="10" display="text" InputZeroTime="true"/>
+						<cell col="11" display="text" InputZeroTime="true"/>
+						<cell col="12" display="text" InputZeroTime="true"/>
+						<cell col="13" display="text" InputZeroTime="true"/>
+						<cell col="14" display="text" InputZeroTime="true"/>
+						<cell col="15" display="text" InputZeroTime="true"/>
+						<cell col="16" display="text" InputZeroTime="true"/>
+						<cell col="17" display="text" InputZeroTime="true"/>
+						<cell col="18" display="text" InputZeroTime="true"/>
+						<cell col="19" display="text" InputZeroTime="true"/>
+						<cell align="right" col="20" display="number" expr='casecount(&quot;ISU_DEB==&apos;1&apos;&#32;&quot;)' InputZeroTime="true"/>
+						<cell align="right" col="21" display="number" expr='casecount(&quot;ISU_BNK==&apos;1&apos;&#32;&quot;)' InputZeroTime="true"/>
+						<cell align="right" col="22" display="number" expr='casecount(&quot;ISU_CARD==&apos;1&apos;&#32;&quot;)' InputZeroTime="true"/>
+						<cell align="right" col="23" display="number" expr='casecount(&quot;ISU_COC==&apos;1&apos;&#32;&quot;)' InputZeroTime="true"/>
+						<cell align="right" col="24" display="number" expr='SUM(&quot;BNK_CHRG&quot;)' InputZeroTime="true"/>
+						<cell align="right" col="25" display="number" expr='SUM(&quot;AGC_CHRG&quot;)' InputZeroTime="true"/>
+						<cell col="26" display="text" InputZeroTime="true"/>
+						<cell col="27" display="text" InputZeroTime="true"/>
+						<cell col="28" display="text" InputZeroTime="true"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="28" Height="36" Id="Shape5" Left="635" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="640" TabOrder="47" Top="-8" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<MaskEdit BindDataset="DS_AFFAIR_MST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="AFF_ED_DT" Height="18" Id="EDT_AFF_ED_DT" Left="302" Mask="####-##-##" OnKeyDown="EDT_AFF_ED_DT_OnKeyDown" Style="Edit" TabOrder="48" Top="120" Type="STRING" Width="70"></MaskEdit>
+		<Shape Bottom="150" Height="36" Id="Shape13" Left="372" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="377" TabOrder="51" Top="114" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="BTN_AFF_ED_DT" ImageID="Btn_calendar" Left="377" OnClick="BTN_AFF_ED_DT_OnClick" TabOrder="49" TabStop="FALSE" Text="Button1" Top="121" Width="16"></Button>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static5" Left="217" Style="Stc_Label" TabOrder="50" Text="종료일" Top="119" VAlign="Middle" Width="80"></Static>
+		<Tab BKSelColor="user6" Border="Flat" BorderColor="user1" Color="user2" Height="215" Id="Tab0" Left="404" MouseOverColor="default" SelColor="default" Style="tab" TabOrder="52" Top="25" Width="588">
+			<Contents>
+				<TabPage BorderColor="black" Height="189" Id="tab1" ImageID="pop_tab_6w" Left="2" scroll="true" Style="tab" TabOrder="90" Text="진행특이사항" Top="24" Width="584">
+					<Div Color="user1" Height="180" Id="Div0" Left="1" TabOrder="1" Text="진행특이사항" Top="4" Url="CP::CPAD03P02.xml" Width="570">
+						<Contents></Contents>
+					</Div>
+				</TabPage>
+				<TabPage BorderColor="black" Height="189" Id="tab2" ImageID="pop_tab_6w" Left="2" TabOrder="91" Text="제휴사특이" Top="24" Width="584">
+					<Div Color="user1" Height="180" Id="Div0" Left="1" TabOrder="2" Text="제휴사특이" Top="5" Url="CP::CPAD03P01.xml" Width="570">
+						<Contents></Contents>
+					</Div>
+				</TabPage>
+				<TabPage BorderColor="black" Height="189" Id="tab3" ImageID="pop_tab_6w" Left="2" TabOrder="92" Text="진행메모" Top="24" Width="584">
+					<Div Color="user1" Height="180" Id="Div0" Left="1" TabOrder="3" Text="진행메모" Top="5" Url="CP::CPAD03P03.xml" Width="570">
+						<Contents></Contents>
+					</Div>
+				</TabPage>
+				<TabPage BorderColor="black" Height="189" Id="tab4" ImageID="pop_tab_6w" Left="2" TabOrder="92" Text="내근진행" Top="24" Width="584">
+					<Div Color="user1" Height="180" Id="Div0" Left="1" TabOrder="4" Text="내근진행" Top="5" Url="CP::CPAD03P04.xml" Width="570">
+						<Contents></Contents>
+					</Div>
+				</TabPage>
+				<TabPage BorderColor="black" Height="189" Id="tab5" ImageID="pop_tab_6w" Left="2" TabOrder="92" Text="외근진행" Top="24" Width="584">
+					<Div Color="user1" Height="180" Id="Div0" Left="1" TabOrder="5" Text="외근진행" Top="5" Url="CP::CPAD03P06.xml" Width="570">
+						<Contents></Contents>
+					</Div>
+				</TabPage>
+			</Contents>
+		</Tab>
+		<Tab BKSelColor="user6" Border="Flat" BorderColor="user1" Color="user2" Height="216" Id="Tab1" Left="1000" MouseOverColor="default" SelColor="default" Style="tab" TabOrder="52" Top="24" Width="233">
+			<Contents>
+				<TabPage BKColor="user0" BorderColor="black" ButtonColor="user0" Height="190" Id="tab1" ImageID="pop_tab_6w" Left="2" TabOrder="91" Text="입금내역" Top="24" Width="229">
+					<Div Color="user1" Height="189" Id="Div0" Left="1" TabOrder="1" Text="입금내역" Top="3" Url="CP::CPAD03P05.xml" Width="228">
+						<Contents></Contents>
+					</Div>
+				</TabPage>
+			</Contents>
+		</Tab>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static2" Left="217" Style="Stc_Label" TabOrder="55" Text="진행상태" Top="187" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Color="crimson" Column="AFF_PRS_STS_NM" Font="돋움,10,Bold" Height="18" Id="EDT_AFF_PRS_STS_NM" Left="302" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="54" TabStop="FALSE" Top="188" Width="80"></Edit>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Column="CLT_TEL" Height="18" Id="EDT_CLT_TEL" Left="294" LeftMargin="4" Style="Edit" TabOrder="4" Top="76" Width="88"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_coc" ImageID="Btn_sub_4w" Left="560" LeftMargin="16" OnClick="btn_coc_OnClick" Style="Btn_sub" TabOrder="56" TabStop="FALSE" Text="내용증명" Top="1" TopMargin="1" Transparent="TRUE" Width="74"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_fax" ImageID="Btn_sub_4w" Left="480" LeftMargin="16" OnClick="btn_fax_OnClick" Style="Btn_sub" TabOrder="58" TabStop="FALSE" Text="팩스표지" Top="1" TopMargin="1" Transparent="TRUE" Width="74"></Button>
+		<Shape Bottom="28" Height="36" Id="Shape17" Left="554" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="559" TabOrder="57" Top="-8" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static15" Left="3" Style="Stc_Label" TabOrder="61" Text="통장거래" Top="247" VAlign="Middle" Width="56"></Static>
+		<Edit Border="Flat" Height="18" Id="EDT_BNK_NOTE" Left="62" LeftMargin="4" OnKeyDown="EDT_BNK_NOTE_OnKeyDown" Style="Edit" TabOrder="59" Top="248" Width="152"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static14" Left="222" Style="Stc_Label" TabOrder="62" Text="카드거래" Top="247" VAlign="Middle" Width="56"></Static>
+		<Edit Border="Flat" Height="18" Id="EDT_CARD_NOTE" Left="283" LeftMargin="4" OnKeyDown="EDT_CARD_NOTE_OnKeyDown" Style="Edit" TabOrder="60" Top="248" Width="144"></Edit>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Column="AFF_GBN" Height="18" Id="EDT_AFF_GBN" ImeMode="none" Left="90" LeftMargin="4" OnKeyDown="EDT_AFF_GBN_OnKeyDown" Style="Edit_Ess" TabOrder="8" Top="188" Width="88"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static7" Left="217" Style="Stc_Label" TabOrder="63" Text="제출처" Top="165" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Column="SMT_PLC" Height="18" Id="EDT_SMT_PLC" ImeMode="none" Left="301" LeftMargin="4" Style="Edit_Ess" TabOrder="6" Top="166" Width="80"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_add_inf" ImageID="Btn_sub_4w" Left="400" LeftMargin="16" OnClick="btn_add_inf_OnClick" Style="Btn_sub" TabOrder="65" TabStop="FALSE" Text="추가정보" Top="1" TopMargin="1" Transparent="TRUE" Width="74"></Button>
+		<Shape Bottom="28" Height="36" Id="Shape7" Left="474" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="479" TabOrder="64" Top="-8" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_print_doc" ImageID="Btn_sub_6w" Left="293" LeftMargin="16" OnClick="btn_print_doc_OnClick" Style="Btn_sub" TabOrder="67" TabStop="FALSE" Text="서류발급내역" Top="1" TopMargin="1" Transparent="TRUE" Width="106"></Button>
+		<Shape Bottom="28" Height="36" Id="Shape12" Left="394" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="399" TabOrder="66" Top="-8" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="21" Id="btn_add_dtl" Left="1024" OnClick="btn_add_dtl_OnClick" TabOrder="68" TabStop="FALSE" Text="채권사&#32;추가(선택행뒤)" Top="247" Width="130"></Button>
+		<Button Height="21" Id="btn_del_dtl" Left="1160" OnClick="btn_del_dtl_OnClick" TabOrder="69" TabStop="FALSE" Text="채권사&#32;삭제" Top="247" Width="74"></Button>
+		<Button Height="21" Id="btn_add_first" Left="912" OnClick="btn_add_first_OnClick" TabOrder="71" TabStop="FALSE" Text="채권사&#32;추가(첫행)" Top="248" Width="106"></Button>
+		<Shape Bottom="269" Height="32" Id="Shape15" Left="1019" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1024" TabOrder="70" Top="237" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="21" Id="btn_isu_yn" Left="765" OnClick="btn_isu_yn_OnClick" TabOrder="72" TabStop="FALSE" Text="수정" Top="277" Width="34"></Button>
+		<Button Height="21" Id="btn_prt_yn" Left="949" OnClick="btn_prt_yn_OnClick" TabOrder="73" TabStop="FALSE" Text="수정" Top="276" Width="34"></Button>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Color="crimson" Column="REQ_BND_SEQ" Font="돋움,10,Bold" Height="18" Id="Edit1" Left="48" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="74" TabStop="FALSE" Top="658" Visible="FALSE" Width="80"></Edit>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Color="crimson" Column="REQ_BND_STS" Font="돋움,10,Bold" Height="18" Id="Edit2" Left="176" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="75" TabStop="FALSE" Top="658" Visible="FALSE" Width="80"></Edit>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Color="crimson" Column="BND_SEQ_1" Font="돋움,10,Bold" Height="18" Id="Edit3" Left="272" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="76" TabStop="FALSE" Top="658" Visible="FALSE" Width="80"></Edit>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Color="crimson" Column="PRS_STS_1" Font="돋움,10,Bold" Height="18" Id="Edit4" Left="376" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="77" TabStop="FALSE" Top="658" Visible="FALSE" Width="80"></Edit>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Color="crimson" Column="BND_SEQ_2" Font="돋움,10,Bold" Height="18" Id="Edit5" Left="464" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="78" TabStop="FALSE" Top="658" Visible="FALSE" Width="80"></Edit>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Color="crimson" Column="PRS_STS_2" Font="돋움,10,Bold" Height="18" Id="Edit6" Left="560" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="79" TabStop="FALSE" Top="658" Visible="FALSE" Width="80"></Edit>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Column="TMP_PRS_STS" Height="18" Id="Edit0" Left="656" LeftMargin="4" Style="Edit" TabOrder="23" TabStop="FALSE" Top="664" Visible="FALSE" Width="80"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static8" Left="217" Style="Stc_Label" TabOrder="81" Text="결재담당자" Top="142" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_AFFAIR_MST" Border="Flat" Column="SIN_NM" Height="18" Id="Edit7" Left="302" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="80" TabStop="FALSE" Top="143" Width="88"></Edit>
+		<Button Height="21" Id="btn_amt" Left="901" OnClick="btn_amt_OnClick" TabOrder="82" TabStop="FALSE" Text="수정" Top="276" Width="34"></Button>
+		<Button Height="21" Id="btn_edit_close" Left="760" OnClick="btn_edit_close_OnClick" TabOrder="83" TabStop="FALSE" Text="수정완료" Top="248" Width="74"></Button>
+		<Button Height="21" Id="btn_mst_edit" Left="104" OnClick="btn_mst_edit_OnClick" TabOrder="84" TabStop="FALSE" Text="기본정보수정" Width="80"></Button>
+		<Button Height="21" Id="btn_mst_ok" Left="187" OnClick="btn_mst_ok_OnClick" TabOrder="85" TabStop="FALSE" Text="수정완료" Width="56"></Button>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Column="PRT_YN" Height="18" Id="Edit8" Left="800" LeftMargin="4" Style="Edit" TabOrder="86" TabStop="FALSE" Top="664" Visible="FALSE" Width="80"></Edit>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Color="crimson" Column="REQ_BAR" Font="돋움,10,Bold" Height="18" Id="Edit9" Left="48" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="87" TabStop="FALSE" Top="680" Width="80"></Edit>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Color="crimson" Column="BAR_1" Font="돋움,10,Bold" Height="18" Id="Edit10" Left="176" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="88" TabStop="FALSE" Top="682" Width="80"></Edit>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Color="crimson" Column="BAR_2" Font="돋움,10,Bold" Height="18" Id="Edit11" Left="272" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="89" TabStop="FALSE" Top="682" Width="80"></Edit>
+	</Form>
+	<Script><![CDATA[
+/***************************************************************************************************
+* FormID(명) : 사건진행
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 사건진행 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+* 2014-01-22       V2.0                  한번에 다 가져오는것이 아니라 더블클릭시 가져오게 
+* 2014-09-12       V2.1                  기간은 기본적으로 1년 셋팅(대신 바로 조회는 안됨) 
+* 2014-09-16       V2.2                  기간은 다시 6개월로 재조정 
+* 2014-10-07       V2.3                  사건리스트 팝업으로  
+
+***************************************************************************************************/
+
+
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+#include "lib::lib_file.js";
+#include "lib::lib_report.js";
+#include "lib::lib_affair.js";
+
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+//var curMstRow          = "";
+var curDtlRow          = "";
+var curNoteRow         = "";
+var curTubNoteRow         = "";
+var curBarCell         = "";
+
+var prtRow = -1;	// 출력행 
+var prtGbn = "";	// 출력구분(사업자 B, 서류: D) : 사업자요구일경우 사업자 먼저 출력하고 서류 출력해야됨 
+var prtDoc = "N";	// 서류발급 내역서 출력유무 
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+
+
+
+// 사건 수정가능 유무 설정
+function fn_affair_edit(isMstEdit, isDtlEdit)
+{
+	// 마스터 수정가능 유무
+	if(isMstEdit == false)
+	{
+		POP_CHG_USR.Visible = false;
+		BTN_AFF_ST_DT.Visible = false;
+		BTN_AFF_ED_DT.Visible = false;
+		EDT_AFF_ST_DT.Readonly = true;
+		EDT_AFF_ED_DT.Readonly = true;
+		EDT_AFF_GBN.Readonly = true;
+		EDT_CLT_NM.Readonly = true;
+		EDT_CLT_TEL.Readonly = true;
+		EDT_CLT_JMN.Readonly = true;
+		EDT_SMT_PLC.Readonly = true;
+		EDT_CLT_ADDR.Readonly = true;
+		EDT_PRS_CHG_USR.Readonly = true;
+		EDT_DOC_CRT_USR.Readonly = true;
+	}
+	else
+	{
+		POP_CHG_USR.Visible = true;
+		BTN_AFF_ST_DT.Visible = true;
+		BTN_AFF_ED_DT.Visible = true;
+		EDT_AFF_ST_DT.Readonly = false;
+		EDT_AFF_ED_DT.Readonly = false;
+		EDT_AFF_GBN.Readonly = false;
+		EDT_CLT_NM.Readonly = false;
+		EDT_CLT_TEL.Readonly = false;
+		EDT_CLT_JMN.Readonly = false;
+		EDT_SMT_PLC.Readonly = false;
+		EDT_CLT_ADDR.Readonly = false;
+		EDT_PRS_CHG_USR.Readonly = false;
+		EDT_DOC_CRT_USR.Readonly = false;		
+	}
+	
+	// 디테일 수정 가능 여부
+	if(isDtlEdit == false)
+	{
+		GRD_AFFAIR_DTL.Editable = false;
+	}
+	else
+	{
+		GRD_AFFAIR_DTL.Editable = true;
+	}
+		
+		
+		
+
+
+
+}
+
+
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	//*------------------------------------------------------------------------
+    //* 리사이즈 컨포넌트 정의
+	//* H: 가로 리사이즈
+	//* W: 세로 리사이즈
+	//* A: 가로세로 리사이즈
+	//* R: Resize
+	//* M: Move
+	//* Quick view로 테스트시 주석처리 후 테스트
+    //*------------------------------------------------------------------------
+	gfn_SetResize(this, "Shape_search:H:R Shape_bnd:H:R GRD_AFFAIR_TREE:H:R GRD_AFFAIR_DTL:A:R btn_add_first:H:M btn_add_dtl:H:M btn_del_dtl:H:M");
+	
+	
+	// 진행상태
+	//gfn_comCodeCombo(S_AFF_PRS_STS, "AD02", "","전체");
+
+	// 사건구분
+	gfn_makeCodeDataSet("AD01", "", "DS_AFF_GBN"); 
+	
+	// 통장거래기간(팝업에서 사용)
+	gfn_makeCodeDataSet("AD06", "", "DS_BNK_NOTE"); 
+	
+	// 카드 거래기간(팝업에서사용)
+	gfn_makeCodeDataSet("AD07", "", "DS_CARD_NOTE"); 
+	
+	// 진행상태
+	//gfn_comCodeCombo(COB_AFF_PRS_STS, "AD02", "","전체");
+
+	// 채권사진행상태
+	gfn_makeCodeDataSet("AD03", "", "DS_BND_STS");   
+	
+	// 접수방법
+	gfn_makeCodeDataSet("AC09", "", "DS_ACP_MTD");   
+	
+	
+	// 채권사 진행상태
+	//gfn_setGridCombo(GRD_AFFAIR_DTL, "DS_BND_STS", 13);
+	//gfn_setGridCombo(GRD_AFFAIR_DTL, "DS_BND_STS", 16);
+	//gfn_setGridCombo(GRD_AFFAIR_DTL, "DS_BND_STS", 19);
+
+	// 접수방법
+	//gfn_setGridCombo(GRD_AFFAIR_DTL, "DS_ACP_MTD",42);
+	//gfn_setGridCombo(GRD_AFFAIR_DTL, "DS_ACP_MTD",45);
+
+	// 기본  + , - 7일 
+	gfn_get_date('TODAY',-180,'YYYYMMDD');
+	S_ST_DT.Text = GDS_DATE_TYPE.GetColumn(0,'DATE_VAL');
+	
+	gfn_get_date('TODAY',7,'YYYYMMDD');
+	S_ED_DT.Text = GDS_DATE_TYPE.GetColumn(0,'DATE_VAL');
+
+
+	// 공통 명령어 조정
+	gfn_set_cbutton("조회:fn_search 저장:fn_save 마감(서류발급내역):fn_close 마감취소:fn_cancel 추가마감:fn_etc_close 추가마감취소:fn_etc_cancel 사건보류:fn_pending 보류취소:fn_pen_cancel");
+	
+
+	// 회사정보의 등기/원격지/내용증명 비용가져오기 
+	// 여기서 다시 가져오는 이유는 회사정보에서 금액 변경의 가능성이 있으므로 항상 다시 가져옴 
+	fn_brch_info();
+	
+	
+	
+	
+	// 팝업창에서 오면 바로 조회
+	
+	if(P_BRCH_ID != "" && P_AFF_SEQ != "")
+	{
+		fn_search_one(P_BRCH_ID, P_AFF_SEQ);
+	}
+	else
+	{
+		fn_search();
+	}
+	
+	
+	// 기본적으로 수정 불가
+	// 발급예정건에서 온거는 무조선 수정가능
+	if(P_EDT_YN == 'Y')
+	{
+		fn_affair_edit(false, true);
+	}
+	else
+	{
+		fn_affair_edit(false, true);
+	}
+	
+	
+	
+		
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 tree
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+
+	var params = "";
+
+	var retArr = gfn_openPopup(this, "CP::CPAB06P07.xml", params, false);
+
+
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 조회 함수 한건
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search_one(BRCH_ID, AFF_SEQ)
+{
+	//curMstRow = DS_AFFAIR_MST.currow;
+	curDtlRow = DS_AFFAIR_DTL.currow;
+	curNoteRow = DS_AFFNOTE_LST.currow;
+	curTubNoteRow = DS_TIEUPNOTE_LST.currow;
+	
+	
+	//DS_AFFAIR_DTL.FireEvent = false;
+	//DS_AFFAIR_DTL.ClearData();
+	//DS_AFFAIR_DTL.DeleteAll();
+	
+	
+	DS_AFFNOTE_LST.ClearData();
+	DS_TIEUPNOTE_LST.ClearData();
+	
+	DS_AFFAIR_PRS_LST.ClearData();
+	DS_AFFAIR_PRSOUT_LST.ClearData();
+	DS_BONDPAY_LST.ClearData();
+	
+
+	
+	svcID			= "ACAA01T01.selectAffairOne";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_AFFAIR_MST=ac.ACAffairDAO.selectAffairMstOne"
+							+ " DS_AFFAIR_DTL=ac.ACAffairDAO.selectAffairDtlOne"
+							+ " DS_AFFNOTE_LST=ac.ACAffairDAO.selectAffNoteOne"	
+							+ " DS_TIEUPNOTE_LST=ac.ACAffairDAO.selectAffTieupNoteOne"						
+							+ " DS_AFFAIR_PRS_LST=ac.ACAffairDAO.selectAffairPrsInfoOne"	
+							+ " DS_AFFAIR_PRSOUT_LST=ac.ACAffairDAO.selectAffairPrsOutOne"	
+							+ " DS_BONDPAY_LST=ac.ACAffairDAO.selecBondPayOne"	
+							;	
+
+	argument    	= " _sqlName=ac.ACAffairDAO.selectAffairMstOne"
+							+ ",ac.ACAffairDAO.selectAffairDtlOne"
+							+ ",ac.ACAffairDAO.selectAffNoteOne"
+							+ ",ac.ACAffairDAO.selectAffTieupNoteOne"
+							+ ",ac.ACAffairDAO.selectAffairPrsInfoOne"
+							+ ",ac.ACAffairDAO.selectAffairPrsOutOne"
+							+ ",ac.ACAffairDAO.selecBondPayOne"
+							+ " S_BRCH_ID=" + quote(BRCH_ID)
+							+ " S_AFF_SEQ=" + quote(AFF_SEQ)				// 한개만 보여주기 
+							+ " S_JOB_GBN=" + quote(200)				// 사건진행 
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+	
+
+
+
+
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 사건진행 정보 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "저장할 사건을 조회 하세요. ", "확인");
+		return;
+	}	
+	
+	
+	//curMstRow = DS_AFFAIR_MST.currow;
+	curDtlRow = DS_AFFAIR_DTL.currow;
+	curNoteRow = DS_AFFNOTE_LST.currow;
+	curTubNoteRow = DS_TIEUPNOTE_LST.currow;
+		
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	var isSave = false;
+	
+	// 필터 
+	DS_AFFAIR_DTL.FireEvent = false;		
+	DS_AFFAIR_DTL.UnFilter();
+	DS_AFFAIR_DTL.Filter("FLAG !='N'");
+
+	DS_AFFNOTE_LST.FireEvent = false;		
+	DS_AFFNOTE_LST.UnFilter();
+	DS_AFFNOTE_LST.Filter("FLAG !='N'");	
+	
+
+	
+	// 사건 상세는 자동 저장이므로 필터링 하지 않는다.
+	// 제휴사공개정보는 자동 저장이므로 필터링 하지 않는다.
+
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		
+		
+		// 저장 메시지는 뺀다.
+		if(1==1)
+		{
+			// 저장할 항목이 있을때만 submit 한다.
+			// 아니면 패스~
+			if(DS_AFFAIR_MST.rowcount > 0 || DS_AFFAIR_DTL.rowcount > 0 || DS_AFFNOTE_LST.rowcount > 0)
+			{
+				
+				//trace('저장항목 있음 OOOOOOOOOOOOOOOOOOOOOO');
+				
+				ds_mst_temp.ClearData();
+				ds_mst_temp.CopyF("DS_AFFAIR_MST");
+				
+				ds_dtl_temp.ClearData();
+				ds_dtl_temp.CopyF("DS_AFFAIR_DTL");
+	
+				ds_note_temp.ClearData();
+				ds_note_temp.CopyF("DS_AFFNOTE_LST");
+				
+				
+				
+				svcID			= "ACAA01T01.saveAffairMst";
+				url   			= "service::common/select_mi.do";
+				inDatasets  	= "ac.ACAffairDAO.saveAffairMst=ds_mst_temp:A"
+								+ " ac.ACAffairDAO.saveAffairDtlAll=ds_dtl_temp:A"
+								+ " ac.ACAffairDAO.saveAffNoteLst=ds_note_temp:A"
+								+ " ac.ACAffairDAO.closeAffairMst=ds_mst_temp:A"
+								;
+				
+				outDatasets 	= "";
+				argument    	= " _sqlName=ac.ACAffairDAO.saveAffairMst"
+								+ ",ac.ACAffairDAO.saveAffairDtlAll"	
+								+ ",ac.ACAffairDAO.saveAffNoteLst"	
+								+ ",ac.ACAffairDAO.closeAffairMst"	
+								;
+				callbackFunc 	= "gfn_callback";	
+			
+			
+				gfn_showProgressWindow(true);
+				
+				gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+				
+					
+			}
+			else
+			{
+				//trace('저장항목 없음 XXXXXXXXXXXXX');
+			}
+		}
+	
+	}
+
+	DS_AFFAIR_DTL.UnFilter();
+	DS_AFFAIR_DTL.Filter("flag != 'D'");
+	DS_AFFAIR_DTL.FireEvent = true;	
+
+
+	DS_AFFNOTE_LST.UnFilter();
+	DS_AFFNOTE_LST.Filter("flag != 'D'");
+	DS_AFFNOTE_LST.FireEvent = true;	
+
+//	DS_AFFAIR_MST.row = 0;
+//	DS_AFFAIR_DTL.row = curDtlRow;
+//	DS_AFFNOTE_LST.row = curNoteRow;	
+//	DS_TIEUPNOTE_LST.row = curTubNoteRow;
+		
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 초기화
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_clear()
+{
+	
+	
+	DS_AFFAIR_DTL.ClearData();
+	DS_AFFNOTE_LST.ClearData();
+	DS_TIEUPNOTE_LST.ClearData();
+	
+	DS_AFFAIR_PRS_LST.ClearData();
+	DS_AFFAIR_PRSOUT_LST.ClearData();
+	DS_BONDPAY_LST.ClearData();
+	
+}
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+//	trace('msg='+svcID+'/'+errorCode+'/'+errorMsg);
+
+	switch(svcID) 
+	{		
+		
+		// TREE조회
+		case "ACAA01T01.selectAffairMstTree" :
+
+		
+		break;			
+		
+		// 조회
+		case "ACAA01T01.selectAffairOne" :
+			
+			// 디테일 데이터가 없을경우 기존의 디테일 데이터를 가져오는 버그가 있다. 
+			// 이부분을 잡기위해 마스터랑 디테일의 키값이 틀리면 클리어함
+			if(DS_AFFAIR_MST.GetColumn(0, "BRCH_ID") != DS_AFFAIR_DTL.GetColumn(0, "BRCH_ID")
+				|| DS_AFFAIR_MST.GetColumn(0, "AFF_SEQ") != DS_AFFAIR_DTL.GetColumn(0, "AFF_SEQ")
+			)
+			{
+				fn_clear();
+			}
+			
+			// 서류 발급내역서 출력 플래그 달리면 출력 
+			if(prtDoc == "Y")
+			{
+				fn_print_doc();
+			}
+			
+			// 수정 가능 불가 유무 체크
+			if(DS_AFFAIR_MST.GetColumn(0, "AFF_PRS_STS") == "20" ||
+				DS_AFFAIR_MST.GetColumn(0, "AFF_PRS_STS") == "25" ||
+				DS_AFFAIR_MST.GetColumn(0, "AFF_PRS_STS") == "30" || 
+				DS_AFFAIR_MST.GetColumn(0, "AFF_PRS_STS") == "40")
+			{
+				// 발급예정에서 오면 무조건 수정가능
+				if(P_EDT_YN == 'Y')
+				{
+					fn_affair_edit(false, true);
+				}
+				else
+				{
+					fn_affair_edit(false, false);
+				}
+				
+				
+				
+			}				
+			else
+			{
+				fn_affair_edit(false, true);
+			}
+			
+			
+			
+		break;	
+
+		// 수정
+		case "ACAA01T01.saveAffairMst" :
+			gfn_setMsg("사건진행/수정 완료.");
+			
+			fn_search_one(DS_AFFAIR_MST.GetColumn(0,"BRCH_ID"), DS_AFFAIR_MST.GetColumn(0,"AFF_SEQ"));		
+			break;	
+		
+
+	}
+
+	/*
+	if(curMstRow != null) 
+	{
+		DS_AFFAIR_MST.row = curMstRow;
+	}
+	*/
+
+	if(curDtlRow != null) 
+	{
+		DS_AFFAIR_DTL.row = curDtlRow;
+	}
+
+	if(curNoteRow != null) 
+	{
+		DS_AFFNOTE_LST.row = curNoteRow;
+	}	
+	
+	if(curTubNoteRow != null) 
+	{
+		DS_TIEUPNOTE_LST.row = curTubNoteRow;
+	}	
+	
+	// 사건번호로 상세, 제휴사공개내용 필터링 
+	fn_affair_dtl(0);
+
+}
+
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function ACAA01T01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function ACAA01T01_OnUnloadCompleted(obj)
+{
+	fn_save();
+	gfn_OnBeforeExit();
+}
+
+
+
+
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  Grid  셀 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_AFFAIR_TREE_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	// 디테일 필터는 dataset change 에서 사용
+	//fn_affair_dtl(nRow);
+	//curMstRow = nRow;
+}
+
+
+function GRD_AFFAIR_DTL_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var cur_col_id = "";
+	
+	// 변경후 이벤트를 여기서 태운다.
+	if(nCell == 13 || nCell == 16 || nCell == 19)
+	{
+		if(nCell == 13)
+		{
+			cur_col_id = "REQ_BND_STS";
+		}
+		else if(nCell == 16)
+		{
+			cur_col_id = "PRS_STS_1";
+		}
+		else if(nCell == 19)
+		{
+			cur_col_id = "PRS_STS_2";
+		}
+		
+		
+//		trace("cur_col_id="+cur_col_id+"/"+DS_AFFAIR_DTL.GetColumn(nRow, cur_col_id));
+		
+		DS_AFFAIR_DTL.SetColumn(nRow, "TMP_PRS_STS", DS_AFFAIR_DTL.GetColumn(nRow, cur_col_id));
+	}
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  Grid  셀 더블 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_AFFAIR_DTL_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_AFFAIR_DTL, DS_AFFAIR_DTL, nCell);	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  Grid  엔터시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_AFFAIR_DTL_OnEnterDown(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	
+	var cur_bnd_seq_col = ""; // 채권사 순번
+	var popup_type = "";   /// 팝업창 종료
+	var cur_prs_sts = "";  // 현재 진행상태 
+	var cur_col_id = "";	// 컬럼 ID
+	
+	
+//	TRACE('nCell='+nCell);
+	
+	
+	
+	// 의뢰 채권사
+	if(nCell == 12 || nCell == 13)
+	{	
+		cur_bnd_seq_col = "REQ_BND_SEQ";
+	}
+	// 진행1
+	else if(nCell == 15 || nCell == 16)
+	{	
+		cur_bnd_seq_col = "BND_SEQ_1";
+	}
+	// 진행2명
+	else if(nCell == 18 || nCell == 19)
+	{	
+		cur_bnd_seq_col = "BND_SEQ_2";
+	}
+	
+	if(nCell == 12 || nCell == 15 || nCell == 18)
+	{
+		popup_type = "bnd_seq";
+	}
+	else if(nCell == 13 || nCell == 16 || nCell == 19)
+	{
+		popup_type = "prs_sts";
+	}
+	else
+	{
+		popup_type = "";
+	}
+	
+	fn_pop_cell_info(nRow, cur_bnd_seq_col, popup_type);
+	
+	
+	// 사건진행이 아닌것은 이벤트를 태우지 않는다 (즉 발급예정건들은 금액들을 바꾸지 않고 해당 상태만 바꾼다)
+	if(DS_AFFAIR_MST.GetColumn(0, "AFF_PRS_STS") > "10")
+	{
+		
+		trace('수정불가~');
+		
+		return;
+	}
+	
+	
+	
+	
+	// 변경후 이벤트를 여기서 태운다.
+	if(nCell == 13 || nCell == 16 || nCell == 19)
+	{
+		if(nCell == 13)
+		{
+			cur_col_id = "REQ_BND_STS";
+		}
+		else if(nCell == 16)
+		{
+			cur_col_id = "PRS_STS_1";
+		}
+		else if(nCell == 19)
+		{
+			cur_col_id = "PRS_STS_2";
+		}
+		
+		
+//		trace("cur_col_id="+cur_col_id+"/"+DS_AFFAIR_DTL.GetColumn(nRow, cur_col_id));
+		
+		DS_AFFAIR_DTL.SetColumn(nRow, "TMP_PRS_STS", DS_AFFAIR_DTL.GetColumn(nRow, cur_col_id));
+		
+		
+						
+
+						
+		// 진행비고 넣고 나서 이벤트 태우기 				
+		set_dtl_event(nRow, cur_col_id);
+
+
+		// 중복체크(중복체크는 발급관련된것만 체크한다.)
+		// 부카, 부통, 부카통, 카통, 카드만, 통장만, 등기완료, 등기+반송완료, 원격완료, 발급예정
+		if(DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "210" 	// 발급
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "230" 	// 부카
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "240" 	// 부통
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "250"	// 부카통
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "260"	// 카통
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "270"	// 카드만
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "280"	// 통장만
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "330"	// 등기완료
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "360"	// 등기+반송완료
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "350"	// 원격완료
+	      )
+	      {
+			
+			//trace("dupl="+nRow+", "+cur_bnd_seq_col);
+			
+			
+			fn_check_duple(nRow, cur_bnd_seq_col);
+		  }
+		  
+		  
+		 // 전체적용 항목
+		 // 동일채권사에서 하나가 해당으로 변경되면 진행이 없는것은 모두 동일하게 처리함 
+		 // 내용증명 , 발급불가, 의뢰취소, 완납, 매각
+		if(DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "290" 	// 내용증명
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "300" 	// 발급불가
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "310" 	// 의뢰취소
+			|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "340"	// 완납
+			//|| DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS") == "110"	// 매각
+	      )
+	      {
+			
+			//trace("dupl="+nRow+", "+cur_bnd_seq_col);
+			
+			
+			fn_check_auto(nRow, cur_bnd_seq_col);
+		  }		  
+
+	
+	}
+	
+	/*
+	// 자동저장되는것들
+	if(nCell == 12 
+		|| nCell == 13
+		|| nCell == 15
+		|| nCell == 16
+		|| nCell == 18
+		|| nCell == 19
+	)
+	{
+		fn_save();
+	}
+	*/
+	
+}
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 수정 엔터시
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function GRD_AFFAIR_DTL_OnEnterEdit(obj,nRow,nCell,nPivotIndex)
+{
+	// 글자수 체크해서 길경우 팝업창 띄우기
+	if(nCell == 28)
+	{
+		if(Length(DS_AFFAIR_DTL.GetColumn(nRow, "NOTE")) > 20)
+		{
+			var retArr = gfn_openPopup(this, "CP::CPAF01P01.xml", "", true);	
+		}
+	
+	}
+	else if(nCell == 45)
+	{
+		if(Length(DS_AFFAIR_DTL.GetColumn(nRow, "NOTE2")) > 20)
+		{
+			var retArr = gfn_openPopup(this, "CP::CPAF01P02.xml", "", true);	
+		}	
+	}
+	
+	
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 마우스 오른쪽 클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function GRD_AFFAIR_DTL_OnRButtonDown(obj,nPosX,nPosY,nRow,nCell,nPivotIndex)
+{
+	TrackPopupMenu("ds_PopupPrint", "", "ID", "CAPTION", "STATUS", "", nPosX, nPosY, "fn_affair_dtl_RPopUp", obj, nRow, nCell);
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  팝업메뉴
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고: 입금요청에서 상세순번은 제거한다. 왜? 중복시 상세순번과 관련없이 채권사별로 이동해버린다.   :
+// 
+//*-----------------------------------------------------------------------------------------------
+function fn_affair_dtl_RPopUp(obj, menuid, nRow, nCell)
+{
+	
+	var tmp_seq_code = "";
+	var tmp_nm_code = "";
+	var tmp_bnd_seq = "";
+	var tmp_bnd_nm = "";
+	var tmp_prs_step = "";
+	
+	// 출력 
+	if(menuid == '1')
+	{
+	
+		// 의뢰 채권사
+		if(nCell == 12)
+		{	
+			tmp_seq_code = "REQ_BND_SEQ";
+			tmp_nm_code = "REQ_BND_NM";
+		}
+		// 진행1
+		else if(nCell == 15)
+		{	
+			tmp_seq_code = "BND_SEQ_1";
+			tmp_nm_code = "BND_NM_1";
+		}
+		// 진행2
+		else if(nCell == 18)
+		{	
+			tmp_seq_code = "BND_SEQ_2";
+			tmp_nm_code = "BND_NM_2";
+		}
+
+		else
+		{	
+			gfn_popup_message("modal", "ico_info", "출력할 채권사를 선택한 후 출력하세요.", "확인");
+			return;
+		}
+				
+		// 채권사코드 설정
+		tmp_bnd_seq = DS_AFFAIR_DTL.GetColumn(nRow,tmp_seq_code);
+		
+		fn_get_bnd_print_info(tmp_bnd_seq);
+		
+		
+		// 출력전에 셀을 저장
+		curBarCell = nCell;
+
+		
+		// 출력하자. 
+		fn_bef_print(nRow);
+				
+	}
+	
+	// 순번 재정렬
+	if(menuid == '3')
+	{
+		if(gfn_popup_message("modal", "confirm", "순번을 다시 설정하시겠습니까?", "확인") == false) 
+		{
+			return;
+		}
+		
+		fn_set_dtl_sort(DS_AFFAIR_MST.GetColumn(0, "AFF_SEQ"));
+		
+		fn_save();
+				
+	}	
+
+	// 입금요청
+	if(menuid == '4')
+	{
+		// 의뢰 채권사
+		if(nCell == 12)
+		{	
+			tmp_seq_code = "REQ_BND_SEQ";
+			tmp_nm_code = "REQ_BND_NM";
+			tmp_prs_step = "1";
+		}
+		// 진행1
+		else if(nCell == 15)
+		{	
+			tmp_seq_code = "BND_SEQ_1";
+			tmp_nm_code = "BND_NM_1";
+			tmp_prs_step = "1";
+		}
+		// 진행2
+		else if(nCell == 18)
+		{	
+			tmp_seq_code = "BND_SEQ_2";
+			tmp_nm_code = "BND_NM_2";
+			tmp_prs_step = "2";
+		}
+		else
+		{	
+			gfn_popup_message("modal", "ico_info", "입금요청할 채권사를 선택한 후 출력하세요.", "확인");
+			return;
+		}
+			
+		// 저장전이면 반드시 저장 시킨다.
+		if(length(DS_AFFAIR_DTL.GetColumn(nRow,"DTL_SEQ")) == 0)
+		{
+			gfn_popup_message("modal", "ico_info", "먼저 해당 사건을 저장 후 입금 요청 하세요.", "확인");
+			return;
+		}
+			
+			
+		// 채권사코드 설정
+		tmp_bnd_seq = DS_AFFAIR_DTL.GetColumn(nRow,tmp_seq_code);
+		tmp_bnd_nm = DS_AFFAIR_DTL.GetColumn(nRow,tmp_nm_code);
+
+		
+		
+		// 입금요청 팝업 띄우기
+		var params = "P_BRCH_ID=" + quote(DS_AFFAIR_MST.GetColumn(0, "BRCH_ID"))
+				   + " P_AFF_SEQ=" + quote(DS_AFFAIR_MST.GetColumn(0, "AFF_SEQ"))
+				   + " P_CLT_NM=" + quote(DS_AFFAIR_MST.GetColumn(0, "CLT_NM"))
+				   + " P_CLT_JMN=" + quote(DS_AFFAIR_MST.GetColumn(0, "CLT_JMN"))
+				   //+ " P_DTL_SEQ=" + quote(DS_AFFAIR_DTL.GetColumn(nRow,"DTL_SEQ"))
+				   + " P_BND_SEQ=" + quote(tmp_bnd_seq)
+				   + " P_BND_NM=" + quote(tmp_bnd_nm)
+				   + " P_PRS_STEP=" + quote(tmp_prs_step)
+				   + " P_REQ_AMT=" + quote(DS_AFFAIR_DTL.GetColumn(nRow, "BNK_CHRG"))
+				   ;
+				   
+				   
+		//trace('params='+params);	   
+		
+		
+		var retArr = gfn_openPopup(this, "CP::CPAB06P04.xml", params, true);
+				
+	}	
+
+	// 채권사팝업
+	if(menuid == '5')
+	{
+		// 의뢰 채권사
+		if(nCell == 12)
+		{	
+			tmp_seq_code = "REQ_BND_SEQ";
+			tmp_nm_code = "REQ_BND_NM";
+			tmp_prs_step = "1";
+		}
+		// 진행1
+		else if(nCell == 15)
+		{	
+			tmp_seq_code = "BND_SEQ_1";
+			tmp_nm_code = "BND_NM_1";
+			tmp_prs_step = "1";
+		}
+		// 진행2
+		else if(nCell == 18)
+		{	
+			tmp_seq_code = "BND_SEQ_2";
+			tmp_nm_code = "BND_NM_2";
+			tmp_prs_step = "2";
+		}
+		else
+		{	
+			gfn_popup_message("modal", "ico_info", "먼저 채권사를 선택 하세요.", "확인");
+			return;
+		}	
+		
+		// 채권사코드 설정
+		tmp_bnd_seq = DS_AFFAIR_DTL.GetColumn(nRow,tmp_seq_code);
+		
+		
+		// 사건조회 이동
+		// 파라미터는 사건번호, 시작일 FROM, 시작일TO 
+		var params = "P_MENU_ID=" + quote("CCAA02T01")
+				   + " P_URL=" + quote("CC::CCAA02T01.xml")
+				   + " P_TITLE=" + quote("채권사정보")
+				   + " P_BRCH_ID=" + quote(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"BRCH_ID"))
+				   + " P_BND_SEQ=" + quote(tmp_bnd_seq)
+				   ;
+//		trace('params='+params);
+		
+		var retArr = gfn_openPopupSize(this, "main::commPopForm.xml",params , false);				
+	}	
+
+	// 내근진행특이사항 
+	if(menuid == '6')
+	{
+		// 의뢰 채권사
+		if(nCell == 12)
+		{	
+			tmp_seq_code = "REQ_BND_SEQ";
+			tmp_nm_code = "REQ_BND_NM";
+			tmp_prs_step = "1";
+		}
+		// 진행1
+		else if(nCell == 15)
+		{	
+			tmp_seq_code = "BND_SEQ_1";
+			tmp_nm_code = "BND_NM_1";
+			tmp_prs_step = "1";
+		}
+		// 진행2
+		else if(nCell == 18)
+		{	
+			tmp_seq_code = "BND_SEQ_2";
+			tmp_nm_code = "BND_NM_2";
+			tmp_prs_step = "2";
+		}
+		else
+		{	
+			gfn_popup_message("modal", "ico_info", "먼저 채권사를 선택 하세요.", "확인");
+			return;
+		}	
+		
+		// 채권사코드 설정
+		tmp_bnd_seq = DS_AFFAIR_DTL.GetColumn(nRow,tmp_seq_code);
+		
+		
+		// 사건조회 이동
+		// 파라미터는 사건번호, 시작일 FROM, 시작일TO 
+		var params = " P_BRCH_ID=" + quote(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"BRCH_ID"))
+				   + " P_AFF_SEQ=" + quote(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_SEQ"))
+				   + " P_BND_SEQ=" + quote(tmp_bnd_seq)
+				   ;
+		trace('params='+params);
+		
+		var retArr = gfn_openPopup(this, "CP::CPAB08P01.xml", params, true);				
+	}
+		
+		
+	
+	// 채권사추가(첫행)
+	if(menuid == '7')
+	{
+		
+		fn_add_dtl("FIRST");		
+	}			
+
+
+	// 채권사추가(선택행뒤)
+	if(menuid == '8')
+	{
+		
+		fn_add_dtl("CENTER");		
+	}
+
+	// 행삭제
+	if(menuid == '9')
+	{
+		
+		btn_del_dtl_OnClick();	
+	}
+
+
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 출력완료시 출력완료 FLAG 넣기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function Report0_PrintFinished(obj)
+{
+	// 사업자 출력한 경우면 실제 출력해야됨
+	if(prtGbn == "BIZ")
+	{
+		
+		// 장표2가 있으면 계속 진행 으로 한다. 
+		if(length(DS_BND_PRINT_INFO.GetColumn(0, "FORM_SAVE_FILE2")) > 0)
+		{
+			prtGbn = "CONTINUE";
+		}
+		else
+		{
+			prtGbn = "END1";
+		}			
+		
+		fn_print(prtRow);	
+	}
+	else if(prtGbn == "CONTINUE")
+	{
+		// 장표2가 있으면 계속 진행 으로 한다. 
+		if(length(DS_BND_PRINT_INFO.GetColumn(0, "FORM_SAVE_FILE2")) > 0)
+		{
+			prtGbn = "END2";
+			fn_print(prtRow);
+		}
+		else
+		{
+			prtGbn = "";
+		}		
+	}
+	else if(prtGbn == "END2")
+	{
+		fn_print(prtRow);
+	}		
+	else
+	{
+		prtGbn = "";
+	}
+	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 마감 서류발급내역서 출력 버튼 클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "마감할 사건기본정보를 선택하세요. ", "확인");
+		return;
+	}
+			
+	// 이미 마감, 추가마감 된 사건은 경고  
+	if(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS") == "20" || DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS") == "25")
+	{
+		gfn_popup_message("modal", "error", "이미 마감/추가마감 된 사건입니다. ", "확인");
+		return;
+	}
+			
+	
+	if(gfn_popup_message("modal", "confirm", "해당 사건을 마감(서류발급내역서 출력) 하시겠습니까?", "확인")) 
+	{	
+	
+		// 종료일 없으면 종료일 먼저 넣는다.
+		if(gfn_isNullDate(EDT_AFF_ED_DT.Text) == true)
+		{
+			gfn_get_date('TODAY',0,'YYYYMMDD');
+			EDT_AFF_ED_DT.Text = GDS_DATE_TYPE.GetColumn(0,'DATE_VAL');
+		}
+	
+		// 사건도 서류 마감처리 한다.
+		IF(DS_AFFAIR_MST.GetColumn(0, "AFF_PRS_STS") == "10")
+		{
+			DS_AFFAIR_MST.SetColumn(0, "AFF_PRS_STS", "20");
+		}
+		
+		
+		// 먼저 저장 
+		prtDoc = "Y";
+			
+		fn_save();
+	}
+	
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 마감취소 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_cancel()
+{
+
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "마감취소할 사건기본정보를 선택하세요. ", "확인");
+		return;
+	}
+			
+	// 마감취소 대상 확인 
+	if(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS") != "20")
+	{
+		gfn_popup_message("modal", "error", "마감취소 대상이 아닙니다. ", "확인");
+		return;
+	}	
+	
+	if(gfn_popup_message("modal", "confirm", "선택된 사건 마감 취소 하시겠습니까?", "확인") == true) 
+	{
+		DS_AFFAIR_MST.SetColumn(0,"AFF_PRS_STS","10");
+		DS_AFFAIR_MST.SetColumn(0,"AFF_ED_DT","");
+		fn_save();
+	}	
+
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 추가마감
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_etc_close()
+{
+	
+//	TRACE('PRS_STS='+DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS"));
+	
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "추가 마감할 사건기본정보를 선택하세요. ", "확인");
+		return;
+	}
+			
+	// 마감/추가마감상태 아니면 추가마감 대상아님  
+	if(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS") != "20" && DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS") != "25")
+	{
+		gfn_popup_message("modal", "error", "추가마감 대상 사건이 아닙니다. ", "확인");
+		return;
+	}			
+			
+	
+	if(gfn_popup_message("modal", "confirm", "해당 사건을 추가마감(서류발급내역서 출력) 하시겠습니까?", "확인")) 
+	{	
+	
+		// 종료일 없으면 종료일 먼저 넣는다.
+		gfn_get_date('TODAY',0,'YYYYMMDD');
+		DS_AFFAIR_MST.SetColumn(0, "AFF_ETC_ED_DT", GDS_DATE_TYPE.GetColumn(0,'DATE_VAL'));
+	
+		DS_AFFAIR_MST.SetColumn(0, "AFF_PRS_STS", "25");
+		
+		
+		// 먼저 저장 
+		prtDoc = "Y";
+			
+		fn_save();
+	}
+	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 추가마감취소 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_etc_cancel()
+{
+
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "추가마감취소할 사건기본정보를 선택하세요. ", "확인");
+		return;
+	}
+			
+	// 추가 마감취소 대상 확인  
+	if(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS") != "25")
+	{
+		gfn_popup_message("modal", "error", "추가 마감취소 대상이 아닙니다. ", "확인");
+		return;
+	}	
+	
+	if(gfn_popup_message("modal", "confirm", "선택된 사건 추가마감 취소 하시겠습니까?", "확인") == true) 
+	{
+		DS_AFFAIR_MST.SetColumn(0,"AFF_PRS_STS","20");
+		DS_AFFAIR_MST.SetColumn(0,"AFF_ETC_ED_DT","");
+		fn_save();
+	}	
+
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 사건보류 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_pending()
+{
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "사건보류할 사건기본정보를 선택하세요. ", "확인");
+		return;
+	}
+
+	// 등록 아니면 보류 대상아님  
+	if(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS") != "10")
+	{
+		gfn_popup_message("modal", "error", "사건보류 대상 사건이 아닙니다. ", "확인");
+		return;
+	}			
+		
+	if(gfn_popup_message("modal", "confirm", "선택된 사건을 사건보류 하시겠습니까?", "확인") == true) 
+	{
+		DS_AFFAIR_MST.SetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS","90");
+		fn_save();
+	}		
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 보류취소 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_pen_cancel()
+{
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "사건보류 취소할 사건기본정보를 선택하세요. ", "확인");
+		return;
+	}
+
+	// 보류 아니면 보류취소 대상아님  
+	if(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS") != "90")
+	{
+		gfn_popup_message("modal", "error", "사건보류취소 대상 사건이 아닙니다. ", "확인");
+		return;
+	}			
+		
+	if(gfn_popup_message("modal", "confirm", "선택된 사건을 사건보류취소 하시겠습니까?", "확인") == true) 
+	{
+		DS_AFFAIR_MST.SetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS","10");
+		fn_save();
+	}		
+	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가(첫행) 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_add_first_OnClick(obj)
+{
+	
+	fn_add_dtl("FIRST");
+	
+	//fn_save();
+}
+ 
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가(중간) 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_add_dtl_OnClick(obj)
+{
+	
+	fn_add_dtl("CENTER");
+	
+	//fn_save();
+}
+ 
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행삭제 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_del_dtl_OnClick(obj)
+{
+
+	// 수정 가능 불가 유무 체크
+	if(DS_AFFAIR_MST.GetColumn(0, "AFF_PRS_STS") == "20" ||
+		DS_AFFAIR_MST.GetColumn(0, "AFF_PRS_STS") == "25" ||
+		DS_AFFAIR_MST.GetColumn(0, "AFF_PRS_STS") == "30" || 
+		DS_AFFAIR_MST.GetColumn(0, "AFF_PRS_STS") == "40")
+	{
+		// 발급예정에서 오면 무조건 수정가능
+		if(P_EDT_YN == 'Y')
+		{
+		}
+		else
+		{
+			gfn_popup_message("modal", "error", "마감된 사건은 채권사 삭제가 불가능 합니다.", "확인");
+			return;
+		
+		}
+	}
+
+
+	//  확인 두번 하기 
+	if(gfn_popup_message("modal", "confirm", "선택된 행을 삭제 하시겠습니까?", "확인") == false) 
+	{
+		return;
+	}
+	
+	
+
+	
+	
+	/*
+	if(gfn_popup_message("modal", "confirm", "선택된 행의 채권사 정보가 모두 삭제 됩니다. 정말 삭제 하시겠습니까?", "확인") == false) 
+	{
+		return;
+	}
+	*/	
+
+	// 추가된것은 DB저장전이므로 그냥 DataSet에서 삭제
+	if(DS_AFFAIR_DTL.GetColumn(curDtlRow,"FLAG") == "I")
+	{
+		DS_AFFAIR_DTL.DeleteRow(curDtlRow);
+	}
+	// 아닌것은 실제로 DB에 삭제해야되므로 flag를 D로 두고 마지막에 filter한다.
+	else
+	{
+		DS_AFFAIR_DTL.SetColumn(curDtlRow,"FLAG", "D");
+	}	
+	
+	fn_affair_dtl(0);
+	
+	fn_set_dtl_sort(DS_AFFAIR_MST.GetColumn(0, "AFF_SEQ"));
+	
+	//fn_save();
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 자동저장
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_AFFAIR_MST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+	
+	
+
+//	trace('DS_AFFAIR_MST_OnColumnChanged Start!!!!');
+//	trace('strColumnID=>'+strColumnID);
+	
+	
+	// 변경되는 컬럼만 이벤트 태움
+	if(strColumnID == 'CHG_NM' || 
+		strColumnID == 'AFF_ST_DT' || 
+		strColumnID == 'AFF_ED_DT' ||
+		strColumnID == 'AFF_GBN' ||
+		strColumnID == 'DOC_CRT_USR' ||
+		strColumnID == 'CLT_NM' ||
+		strColumnID == 'CLT_TEL' ||
+		strColumnID == 'CLT_JMN' ||
+		strColumnID == 'SMT_PLC' ||
+		strColumnID == 'CLT_ADDR'
+	 )
+	{
+//		trace('저장됨 !!!!');	
+	
+//		fn_save();
+	}
+
+	
+}
+
+
+
+function DS_AFFAIR_DTL_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+
+	var cur_bnd_seq_col = ""; // 채권사 순번
+	var cur_col_id = "";	// 컬럼 ID
+	var isClear = false;	// 초기화 유무
+
+
+
+//	trace('DS_AFFAIR_DTL_OnColumnChanged Start!!!!');
+//	trace('strColumnID=>'+strColumnID);
+
+
+//	DS_AFFAIR_DTL.FireEvent = false;	
+	
+
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+	
+	// 채권사 명이 없으면 코드는 자동 삭제함 
+	if(strColumnID == 'REQ_BND_NM' && length(DS_AFFAIR_DTL.GetColumn(nRow, "REQ_BND_NM")) == 0)
+	{
+		DS_AFFAIR_DTL.SetColumn(nRow, "REQ_BND_SEQ", "");
+	}
+
+	if(strColumnID == 'BND_NM_1' && length(DS_AFFAIR_DTL.GetColumn(nRow, "BND_NM_1")) == 0)
+	{
+		DS_AFFAIR_DTL.SetColumn(nRow, "BND_SEQ_1", "");
+	}
+	
+	if(strColumnID == 'BND_NM_2' && length(DS_AFFAIR_DTL.GetColumn(nRow, "BND_NM_2")) == 0)
+	{
+		DS_AFFAIR_DTL.SetColumn(nRow, "BND_SEQ_2", "");
+	}
+	
+	
+	/*
+	// 진행상태가 없으면 코드 자동 삭제, 삭제 이벤트 태움
+	if(strColumnID == 'REQ_BND_STS_NM' && length(DS_AFFAIR_DTL.GetColumn(nRow, "REQ_BND_STS_NM")) == 0)
+	{
+		cur_bnd_seq_col = "REQ_BND_SEQ";
+		cur_col_id = "REQ_BND_STS";
+		isClear = true;
+	}
+	*/
+
+	if(strColumnID == 'PRS_STS_1_NM' && length(DS_AFFAIR_DTL.GetColumn(nRow, "PRS_STS_1_NM")) == 0)
+	{
+		cur_bnd_seq_col = "BND_SEQ_1";
+		cur_col_id = "PRS_STS_1";
+		isClear = true;
+	}	
+
+	if(strColumnID == 'PRS_STS_2_NM' && length(DS_AFFAIR_DTL.GetColumn(nRow, "PRS_STS_2_NM")) == 0)
+	{
+		cur_bnd_seq_col = "BND_SEQ_2";
+		cur_col_id = "PRS_STS_2";
+		isClear = true;
+	}
+			
+	// 무한루프 버그 있으니 TMP_PRS_STS도 체크한다.
+	if(isClear == true && length(DS_AFFAIR_DTL.GetColumn(nRow, "TMP_PRS_STS")) != 0)
+	{
+		
+		
+//		TRACE('CLEAR1!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+		
+		
+		// 리셋태움 
+		DS_AFFAIR_DTL.SetColumn(nRow, "TMP_PRS_STS", "");
+
+		// 진행비고 넣고 나서 이벤트 태우기 				
+		set_dtl_event(nRow, cur_col_id);
+
+
+		// 중복체크 
+		fn_check_duple(nRow, cur_bnd_seq_col);	
+	}
+		
+	
+//	DS_AFFAIR_DTL.FireEvent = true;	
+
+
+
+}
+
+
+
+
+
+
+
+
+function DS_AFFNOTE_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	
+	// 등록일과 등록 내용이 있을떄만 저장한다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+		
+		fn_save();
+	}
+	
+	
+	
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  팝업메뉴
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 사건담당 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function POP_CHG_USR_OnClick(obj)
+{
+	fn_chg_popup();	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 사건담당 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function EDT_CHG_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_chg_popup();	
+	}		
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 하나담당 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function POP_HNA_CHG_USR_OnClick(obj)
+{
+	fn_hna_popup();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 하나담당 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function EDT_HNA_CHG_USR_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_hna_popup();	
+	}	
+}
+
+
+
+function BTN_AFF_ST_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", EDT_AFF_ST_DT);
+}
+
+function BTN_AFF_ED_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", EDT_AFF_ED_DT);
+}
+
+
+function EDT_AFF_ST_DT_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar==13){				
+		gfn_SetCalendarDate(obj, "D", EDT_AFF_ST_DT);
+	}	
+}
+
+function EDT_AFF_ED_DT_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar==13){				
+		gfn_SetCalendarDate(obj, "D", EDT_AFF_ED_DT);
+	}	
+}
+
+
+function S_TUB_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_search();
+	}	
+	
+}
+
+
+
+
+function DS_AFFAIR_MST_OnRowPosChanged(obj,nOldRow,nRow)
+{
+	fn_affair_dtl(nRow);
+}
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 내용증명 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_coc_OnClick(obj)
+{
+	
+	if(length(DS_AFFAIR_MST.GetColumn(0, "BRCH_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "먼저 사건을 선택하세요. ", "확인");
+		return;	
+	}
+	else
+	{		
+		
+		var params = "P_BRCH_ID=" + quote(DS_AFFAIR_MST.GetColumn(0, "BRCH_ID"))
+				   + " P_AFF_SEQ=" + quote(DS_AFFAIR_MST.GetColumn(0, "AFF_SEQ"))
+				   + " P_CLT_NM=" + quote(DS_AFFAIR_MST.GetColumn(0, "CLT_NM"))
+				   + " P_CLT_JMN=" + quote(DS_AFFAIR_MST.GetColumn(0, "CLT_JMN"))
+				   ;
+		
+		
+		var retArr = gfn_openPopup(this, "CP::CPAB06P01.xml", params, true);		
+	}
+		
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 팩스표지  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_fax_OnClick(obj)
+{
+	if(length(DS_AFFAIR_MST.GetColumn(0, "BRCH_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "먼저 사건을 선택하세요. ", "확인");
+		return;	
+	}
+	else
+	{		
+	
+		var params = "P_BRCH_ID=" + quote(DS_AFFAIR_MST.GetColumn(0, "BRCH_ID"))
+				   + " P_AFF_SEQ=" + quote(DS_AFFAIR_MST.GetColumn(0, "AFF_SEQ"))
+				   + " P_CLT_NM=" + quote(DS_AFFAIR_MST.GetColumn(0, "CLT_NM"))
+				   + " P_CLT_JMN=" + quote(DS_AFFAIR_MST.GetColumn(0, "CLT_JMN"))
+				   ;
+		
+		
+		var retArr = gfn_openPopup(this, "CP::CPAB06P02.xml", params, true);
+	}	
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 시작일 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function BTN_ST_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", S_ST_DT);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 종료일 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function BTN_ED_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", S_ED_DT);
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  통장거래 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function EDT_BNK_NOTE_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_sel_bnk_note();
+	}	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  카드거래 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function EDT_CARD_NOTE_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_sel_card_note();
+	}	
+	
+}
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  통장거래 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_sel_bnk_note()
+{
+	var retArr = gfn_openPopup(this, "CP::CPAB05P04.xml", "", true);
+
+	EDT_BNK_NOTE.Text = retArr[1];
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  카드거래 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_sel_card_note()
+{
+	var retArr = gfn_openPopup(this, "CP::CPAB05P05.xml", "", true);
+
+	EDT_CARD_NOTE.Text = retArr[1];
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  사건구분 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function EDT_AFF_GBN_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		var retArr = gfn_openPopup(this, "CP::CPAB05P06.xml", "", true);
+	
+//		TRACE('retArr[1]='+retArr[1]);
+		
+		
+		DS_AFFAIR_MST.SetColumn(0,"AFF_GBN", retArr[1]);	// 코드 안쓰고 이름만 한다
+	}		
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  내외근 진행 변경
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function DS_AFFAIR_DTL_OnRowPosChanged(obj,nOldRow,nRow)
+{
+
+//	trace('DS_AFFAIR_DTL_OnRowPosChanged Start!!!!');
+	
+	
+	curDtlRow = DS_AFFAIR_DTL.currow;
+	curNoteRow = DS_AFFNOTE_LST.currow;
+	curTubNoteRow = DS_TIEUPNOTE_LST.currow;
+	
+	
+	var AFF_SEQ = DS_AFFAIR_DTL.GetColumn(nRow,"AFF_SEQ");
+	var DTL_SEQ = DS_AFFAIR_DTL.GetColumn(nRow,"DTL_SEQ");
+	
+	fn_affair_prs(AFF_SEQ, DTL_SEQ);
+		
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  내외근 진행 변경
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고 : 마스터 한건만 사용하므로 해당 함수 사용안함  
+//*-----------------------------------------------------------------------------------------------
+function fn_affair_prs(c_aff_seq, c_dtl_seq)
+{
+	// 내외근진행 필터링 
+	DS_AFFAIR_PRS_LST.FireEvent = false;		
+	DS_AFFAIR_PRSOUT_LST.FireEvent = false;		
+		
+	DS_AFFAIR_PRS_LST.UnFilter();
+	DS_AFFAIR_PRSOUT_LST.UnFilter();
+	
+	DS_AFFAIR_PRS_LST.Filter("AFF_SEQ ='"+c_aff_seq+"' && DTL_SEQ ='"+c_dtl_seq+"'" );	
+	DS_AFFAIR_PRSOUT_LST.Filter("AFF_SEQ ='"+c_aff_seq+"' && DTL_SEQ ='"+c_dtl_seq+"'" );	
+
+	DS_AFFAIR_PRS_LST.FireEvent = true;		
+	DS_AFFAIR_PRSOUT_LST.FireEvent = true;	
+}
+
+// 추가정보 클릭 
+function btn_add_inf_OnClick(obj)
+{
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "먼저 사건등록 기본정보를 선택 해야 합니다. ", "확인");
+		return;
+	}
+		
+
+	var params = "";
+			   	
+	
+	var retArr = gfn_openPopup(this, "CP::CPAD05P01.xml",params , false);		
+}
+
+// 진행특이사항  클릭 
+function btn_ing_OnClick(obj)
+{
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "먼저 사건등록 기본정보를 선택 해야 합니다. ", "확인");
+		return;
+	}
+		
+
+	var params = "";
+			   	
+	
+	var retArr = gfn_openPopup(this, "CP::CPAD03P02.xml",params , false);		
+	
+}
+
+
+
+// 제휴사 미수정보 
+function btn_misu_OnClick(obj)
+{
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"BRCH_ID")) == 0 || length(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"TUB_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "먼저 제휴사를 선택 해야 합니다. ", "확인");
+		return;
+	}	
+
+	var params = "P_BRCH_ID="+DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"BRCH_ID")+ " P_TUB_SEQ="+DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"TUB_SEQ");
+		
+	var retArr = gfn_openPopup(this, "CP::CPAB07P01.xml",params , false);		
+
+
+}
+
+
+
+
+// 서류발급내역서만 출력 
+function btn_print_doc_OnClick(obj)
+{
+	// 사건등록상태는  출력 안되게 한다.
+	if(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_PRS_STS") == "10")
+	{
+		gfn_popup_message("modal", "error", "마감 후 서류 발급내역서 출력이 가능합니다. ", "확인");
+		return;
+	}	
+	
+	fn_print_doc();
+}
+
+
+// 서류종류 수정 가능 여부
+function btn_isu_yn_OnClick(obj)
+{
+	for(var i=0;i < DS_AFFAIR_DTL.rowcount;i++)
+	{
+		DS_AFFAIR_DTL.SetColumn(i,"ISU_EDT_YN", "Y");
+	}
+}
+
+// 출력 수정 가능 여부 
+function btn_prt_yn_OnClick(obj)
+{
+	for(var i=0;i < DS_AFFAIR_DTL.rowcount;i++)
+	{
+		DS_AFFAIR_DTL.SetColumn(i,"PRT_EDT_YN", "Y");
+	}	
+}
+
+// 수수료 수정여부
+function btn_amt_OnClick(obj)
+{
+	for(var i=0;i < DS_AFFAIR_DTL.rowcount;i++)
+	{
+		DS_AFFAIR_DTL.SetColumn(i,"AMT_EDT_YN", "Y");
+	}		
+}
+
+// 수정완료 처리
+// 수정불가 처리 
+function btn_edit_close_OnClick(obj)
+{
+	for(var i=0;i < DS_AFFAIR_DTL.rowcount;i++)
+	{
+		DS_AFFAIR_DTL.SetColumn(i,"ISU_EDT_YN", "N");
+		DS_AFFAIR_DTL.SetColumn(i,"PRT_EDT_YN", "N");
+		DS_AFFAIR_DTL.SetColumn(i,"AMT_EDT_YN", "N");
+	}	
+}
+
+
+// 기본정보 수정
+function btn_mst_edit_OnClick(obj)
+{
+	fn_affair_edit(true, true);
+}
+
+// 기본정보 수정완료
+function btn_mst_ok_OnClick(obj)
+{
+	fn_affair_edit(false, true);
+}
+]]></Script>
+</Window>

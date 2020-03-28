@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="555" Id="form" Left="8" PidAttrib="7" Title="New&#32;Form" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_test_data">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+					<colinfo id="index" size="256" summ="default" type="STRING"/>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+					<colinfo id="manager" size="256" summ="default" type="STRING"/>
+					<colinfo id="join_date" size="256" summ="default" type="STRING"/>
+					<colinfo id="dept_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="image_level" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_detail_data">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+					<colinfo id="index" size="256" summ="default" type="STRING"/>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+					<colinfo id="manager" size="256" summ="default" type="STRING"/>
+					<colinfo id="join_date" size="256" summ="default" type="STRING"/>
+					<colinfo id="dept_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="image_level" size="256" summ="default" type="STRING"/>
+					<colinfo id="birth_day" size="256" summ="default" type="STRING"/>
+					<colinfo id="position_nm" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Border="Flat" Height="24" Id="Static5" Left="264" Style="Stc_LabelBody" TabOrder="21" Top="185" VAlign="Middle" Width="526"></Static>
+		<Static Border="Flat" Height="24" Id="Static0" Left="264" Style="Stc_LabelBody" TabOrder="23" Top="162" VAlign="Middle" Width="526"></Static>
+		<Static Border="Flat" Height="24" Id="Static1" Left="264" Style="Stc_LabelBody" TabOrder="26" Top="139" VAlign="Middle" Width="526"></Static>
+		<Static Border="Flat" Height="24" Id="Static10" Left="264" Style="Stc_LabelBody" TabOrder="27" Top="116" VAlign="Middle" Width="526"></Static>
+		<Static Height="20" Id="Static8" Style="Stc_Title" TabOrder="1" Text="Template6" Width="208"></Static>
+		<Image Align="Left" Height="14" Id="Image3" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="2" Text="메뉴명" Top="97" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="116" Height="5" Id="Shape15" Left="-2" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="800" TabOrder="3" Top="111" Type="Rectangle" Visible="FALSE" Width="802"></Shape>
+		<Shape Bottom="41" Height="7" Id="Shape10" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="790" TabOrder="4" Top="34" Type="Rectangle" Visible="FALSE" Width="790"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_insert" ImageID="Btn_com_2w" Left="738" LeftMargin="12" OnClick="btn_selectUser_OnClick" Style="Btn_Com" TabOrder="5" Text="저장" Top="13" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<TreeView BindDataset="ds_test_data" Border="None" Expand="FALSE" ExpandImageIndex="0" Height="432" Id="TreeView0" ImageColumn="image_level" ImageID="treeview_org_img" ImageIndex="0" InnerImageCount="3" LevelColumn="levels" OnDblClick="TreeView0_OnDblClick" Style="Tree_Sub" TabOrder="5" TEXTColumn="menu_nm" Top="116" Width="250"></TreeView>
+		<Shape Bottom="553" Height="460" Id="Shape43" Left="259" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="264" TabOrder="5" Top="93" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape BKColor="user21" Bottom="81" Height="40" Id="Shape2" Left="0" LineColor="user22" Right="790" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="11" Top="41" Type="RoundRect" Width="790"></Shape>
+		<Image Align="Left" Height="18" Id="Image1" Left="22" LeftMargin="0" Style="Stc_Default_bold" TabOrder="6" Text="입력값" Top="48" Transparent="TRUE" Width="59"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="728" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="8" Top="49" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="90" Height="56" Id="Shape11" Left="0" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="20" TabOrder="7" Top="34" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="73" Height="32" Id="Shape3" Left="62" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="72" TabOrder="9" Top="41" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Shape Bottom="96" Height="15" Id="Shape6" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="10" Top="81" Type="Rectangle" Visible="FALSE" Width="794"></Shape>
+		<Image Align="Left" Height="14" Id="Image2" ImageID="Title_dot" Left="264" LeftMargin="20" Style="Stc_Subtitle" TabOrder="12" Text="메뉴정보" Top="97" Transparent="TRUE" Width="157"></Image>
+		<Image Align="Left" Height="14" Id="Image4" ImageID="Title_dot" Left="264" LeftMargin="20" Style="Stc_Subtitle" TabOrder="15" Text="관리자정보" Top="224" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="243" Height="5" Id="Shape28" Left="262" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="792" TabOrder="16" Top="238" Type="Rectangle" Visible="FALSE" Width="530"></Shape>
+		<Shape Bottom="212" Height="100" Id="Shape0" Left="784" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="789" TabOrder="17" Top="112" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="212" Height="100" Id="Shape5" Left="324" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="329" TabOrder="18" Top="112" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_menu_nm" Left="329" MaxLength="20" Readonly="TRUE" Style="Edit" TabOrder="19" Top="119" Width="192"></Edit>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static6" Left="264" Style="Stc_Label2" TabOrder="20" Text="비고" Top="185" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static4" Left="264" Style="Stc_Label2" TabOrder="22" Text="URL" Top="162" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static12" Left="264" Style="Stc_Label2" TabOrder="24" Text="섹션" Top="139" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static41" Left="264" Style="Stc_Label2" TabOrder="25" Text="메뉴명" Top="116" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static18" Left="527" Style="Stc_Label2" TabOrder="28" Text="레벨" Top="116" VAlign="Middle" Width="60"></Static>
+		<Shape Bottom="164" Height="52" Id="Shape4" Left="521" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="526" TabOrder="29" Top="112" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_levels" Left="592" MaxLength="20" Readonly="TRUE" Style="Edit" TabOrder="30" Top="119" Width="192"></Edit>
+		<Shape Bottom="164" Height="52" Id="Shape7" Left="587" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="592" TabOrder="31" Top="112" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_section" Left="329" MaxLength="20" Readonly="TRUE" Style="Edit" TabOrder="32" Top="142" Width="192"></Edit>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static19" Left="527" Style="Stc_Label2" TabOrder="33" Text="시퀀스" Top="139" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_lvl_seq" Left="592" MaxLength="20" Readonly="TRUE" Style="Edit" TabOrder="34" Top="142" Width="192"></Edit>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_page_url" Left="329" MaxLength="50" Readonly="TRUE" Style="Edit" TabOrder="35" Top="165" Width="456"></Edit>
+		<Static Border="Flat" Height="24" Id="Static22" Left="264" Style="Stc_LabelBody" TabOrder="37" Top="266" VAlign="Middle" Width="526"></Static>
+		<Static Border="Flat" Height="24" Id="Static23" Left="264" Style="Stc_LabelBody" TabOrder="39" Top="243" VAlign="Middle" Width="526"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static24" Left="264" Style="Stc_Label2" TabOrder="36" Text="부서" Top="266" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static25" Left="264" Style="Stc_Label2" TabOrder="38" Text="관리자" Top="243" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_etc" Left="329" MaxLength="50" Style="Edit" TabOrder="40" Top="188" Width="456"></Edit>
+		<Shape Bottom="224" Height="15" Id="Shape8" Left="264" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="41" Top="209" Type="Rectangle" Visible="FALSE" Width="530"></Shape>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_manager" Left="329" MaxLength="50" Readonly="TRUE" Style="Edit" TabOrder="42" Top="246" Width="456"></Edit>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_dept_nm" Left="329" MaxLength="50" Readonly="TRUE" Style="Edit" TabOrder="43" Top="269" Width="456"></Edit>
+		<Static Border="Flat" Height="24" Id="Static2" Left="264" Style="Stc_LabelBody" TabOrder="45" Top="312" VAlign="Middle" Width="526"></Static>
+		<Static Border="Flat" Height="24" Id="Static3" Left="264" Style="Stc_LabelBody" TabOrder="47" Top="289" VAlign="Middle" Width="526"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static7" Left="264" Style="Stc_Label2" TabOrder="44" Text="입사일" Top="312" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static9" Left="264" Style="Stc_Label2" TabOrder="46" Text="직위호칭" Top="289" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_position_nm" Left="329" MaxLength="50" Readonly="TRUE" Style="Edit" TabOrder="48" Top="292" Width="456"></Edit>
+		<Static Border="Flat" Height="24" Id="Static11" Left="264" Style="Stc_LabelBody" TabOrder="50" Top="335" VAlign="Middle" Width="526"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static13" Left="264" Style="Stc_Label2" TabOrder="49" Text="생일" Top="335" VAlign="Middle" Width="60"></Static>
+		<Button Height="16" Id="Button7" ImageID="Btn_calendar" Left="404" OnClick="Button7_OnClick" TabOrder="51" Text="Button1" Top="316" Width="16"></Button>
+		<Shape Bottom="345" Height="36" Id="Shape9" Left="399" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="404" TabOrder="53" Top="309" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="edt_join_date" Left="329" Mask="@@@@-@@-@@" Readonly="TRUE" TabOrder="52" Top="315" Type="STRING" Width="70"></MaskEdit>
+		<Button Height="16" Id="Button0" ImageID="Btn_calendar" Left="404" OnClick="Button0_OnClick" TabOrder="54" Text="Button1" Top="339" Width="16"></Button>
+		<Shape Bottom="368" Height="36" Id="Shape13" Left="399" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="404" TabOrder="56" Top="332" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="edt_birth_day" Left="329" Mask="@@@@-@@-@@" Readonly="TRUE" TabOrder="55" Top="338" Type="STRING" Width="70"></MaskEdit>
+		<Shape Bottom="365" Height="124" Id="Shape12" Left="324" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="329" TabOrder="57" Top="241" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="365" Height="124" Id="Shape14" Left="784" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="789" TabOrder="58" Top="241" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Edit Border="Flat" Height="18" Id="edt_menuName" Left="72" LeftMargin="4" Readonly="TRUE" Style="Edit_Ess" TabOrder="59" Text="테스트용&#32;(&#32;조회&#32;클릭&#32;)" Top="48" Width="130"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button5" ImageID="Btn_com_3w" Left="671" LeftMargin="12" OnClick="Button5_OnClick" Style="Btn_Com" TabOrder="60" Text="초기화" Top="13" Transparent="TRUE" Width="62"></Button>
+		<Shape Bottom="40" Height="32" Id="Shape1" Left="733" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="738" TabOrder="61" Top="8" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+	</Form>
+	<Script><![CDATA[#include "script::cmnFunction.js";
+
+var currentID = ""; //저장을 하기 위해서 현제의 아이디를 저장한다.
+
+
+/* 조회*/
+function btn_search_OnClick(obj)
+{
+	edt_menu_nm.Text     = "";
+	edt_levels.Text      = "";
+	edt_section.Text     = "";
+	edt_lvl_seq.Text     = "";
+	edt_page_url.Text    = "";
+	edt_etc.Text         = "";
+	edt_manager.Text     = "";
+	edt_dept_nm.Text     = "";
+	edt_position_nm.Text = "";
+	edt_join_date.Text   = "";
+	edt_birth_day.Text   = "";
+	
+	currentID = "";
+	
+	getTreeLevelValues();
+}
+
+
+/* 트리 내용 조회*/
+function getTreeLevelValues()
+{
+	var svcID			= "CMC001M.testTreeLevelSearch";
+	var url   			= "service::CMC001M.testTreeLevelSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_test_data=CMC001M.testTreeLevelSearch";
+	var argument    	= " _sqlName=CMC001M.testTreeLevelSearch"
+						;
+	var callbackFunc 	= "fn_test_callback";
+	
+	Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 트리 내용을 더블클릭하면 왼편 에디트 창에 내용을 보낸다.*/
+function TreeView0_OnDblClick(obj,nRow)
+{
+
+	currentID = ds_test_data.GetColumn(nRow,"id");
+	
+	if(ds_test_data.GetColumn(nRow,"levels") == 2){
+		getDetailValues(ds_test_data.GetColumn(nRow,"id"));
+	}	
+}
+
+
+/* 메뉴, 관리자 상세내용 조회*/
+function getDetailValues(id)
+{
+	var svcID			= "CMC001M.testTreeLevelSearch";
+	var url   			= "service::CMC001M.testTreeLevelSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_detail_data=TST001V.getTreeDetailValues";
+	var argument    	= " _sqlName=TST001V.getTreeDetailValues"
+						+ " P_ID=" + quote(id)
+						;
+	var callbackFunc 	= "fn_getDetailValues_callback";
+	
+	Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 상세내용을 에디트 창에 보낸다.*/
+function fn_getDetailValues_callback()
+{
+	edt_menu_nm.Text     = ds_detail_data.GetColumn(0,"menu_nm");
+	edt_levels.Text      = ds_detail_data.GetColumn(0,"levels");
+	edt_section.Text     = ds_detail_data.GetColumn(0,"section");
+	edt_lvl_seq.Text     = ds_detail_data.GetColumn(0,"lvl_seq");
+	edt_page_url.Text    = ds_detail_data.GetColumn(0,"page_url");
+	edt_etc.Text         = ds_detail_data.GetColumn(0,"etc");
+	edt_manager.Text     = ds_detail_data.GetColumn(0,"manager");
+	edt_dept_nm.Text     = ds_detail_data.GetColumn(0,"dept_nm");
+	edt_position_nm.Text = ds_detail_data.GetColumn(0,"position_nm");
+	edt_join_date.Text   = ds_detail_data.GetColumn(0,"join_date");
+	edt_birth_day.Text   = ds_detail_data.GetColumn(0,"birth_day");
+}
+
+
+/* 테스트 날짜 입력 */
+function Button7_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", edt_join_date);
+}
+
+
+/* 테스트 날짜 입력 */
+function Button0_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", edt_birth_day);
+}
+
+
+/* 저장*/
+function btn_selectUser_OnClick(obj)
+{
+	var tmpEtc = "";
+	
+	if(edt_etc.Text == ""){
+		tmpEtc = " ";
+	}else{
+		tmpEtc = edt_etc.Text;
+	}
+
+	var svcID			= "TST001V.testFunctionSave";
+	var url   			= "service::TST001V.testFunctionSave.do";
+	var inDatasets      = "";
+	var outDatasets 	= "";
+	var argument    	= " _sqlName=TST001V.updateTestTableData"
+						+ " P_ID=" + quote(currentID)
+						+ " P_ETC=" + quote(tmpEtc)
+						;
+	
+	var callbackFunc 	= "fn_btn_save_OnClick_callback";
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 초기화*/
+function Button5_OnClick(obj)
+{
+	edt_menu_nm.Text     = "";
+	edt_levels.Text      = "";
+	edt_section.Text     = "";
+	edt_lvl_seq.Text     = "";
+	edt_page_url.Text    = "";
+	edt_etc.Text         = "";
+	edt_manager.Text     = "";
+	edt_dept_nm.Text     = "";
+	edt_position_nm.Text = "";
+	edt_join_date.Text   = "";
+	edt_birth_day.Text   = "";
+	
+	currentID = "";
+		
+	ds_test_data.ClearData();
+}
+]]></Script>
+</Window>

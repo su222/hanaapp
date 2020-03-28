@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_AC_COC_LST : 내용증명, TB_AC_COCBOND_LST: 내용증명 채권사 -->
+<mapper namespace="co.hanaapp.dao.ac.ACCocDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 내용증명 채권사 조회 -->
+    <select id="selectCocBondLst" parameterType="map" resultType ="map">
+        SELECT /* 내용증명 채권사 */
+                'N' AS FLAG,
+                ROWIDTOCHAR(A.ROWID) AS ROW_ID,
+                '0' AS CHK,
+                #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+                NVL(A.BRCH_ID,' ') AS  BRCH_ID,
+                NVL(A.BND_SEQ,'-99999') AS  BND_SEQ,
+                NVL(A.BND_NM,' ') AS  BND_NM,
+                NVL(A.BND_TEL,' ') AS  BND_TEL,
+                NVL(A.BND_ADDR,' ') AS  BND_ADDR,
+                NVL(A.BND_ZIP,' ') AS BND_ZIP,
+                '사용' as PRT_BTN
+          FROM TB_AC_COCBOND_LST A
+         WHERE (A.BND_NM LIKE  '%' || #{S_BND_NM, jdbcType=VARCHAR} || '%'
+		        OR A.BND_TEL LIKE  '%' || #{S_BND_NM, jdbcType=VARCHAR} || '%'
+		        OR A.BND_ADDR LIKE  '%' || #{S_BND_NM, jdbcType=VARCHAR} || '%'
+               )		        
+         ORDER BY A.BND_SEQ
+
+    </select>
+
+   <!-- 내용증명  조회 -->
+    <select id="selectCocLst" parameterType="map" resultType ="map">
+        SELECT /* 내용증명  */
+                'N' AS FLAG,
+                ROWIDTOCHAR(A.ROWID) AS ROW_ID,
+                '0' AS CHK,
+                #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+                NVL(BRCH_ID,' ') AS BRCH_ID  ,
+                NVL(AFF_SEQ,'-99999') AS AFF_SEQ  ,
+                NVL(ASK_SEQ,'-99999') AS ASK_SEQ  ,
+                NVL(FORM_GBN,' ') AS FORM_GBN  ,
+                NVL(TO_CHAR(REQ_DT,'YYYYMMDD'),' ') AS REQ_DT  ,
+                NVL(BND_NM,' ') AS BND_NM  ,
+                NVL(BND_TEL,' ') AS BND_TEL  ,
+                NVL(BND_ADDR,' ') AS BND_ADDR  ,
+                NVL(BND_ZIP,' ') AS BND_ZIP  ,
+                NVL(CLT_NM,' ') AS CLT_NM  ,
+                NVL(CLT_JMN,' ') AS CLT_JMN  ,
+                '1' AS NO_1, 
+                NVL(OCC_DT_1,' ') AS OCC_DT_1  ,
+                NVL(BND_SBJ_1,' ') AS BND_SBJ_1  ,
+                NVL(BND_AMT_1,'-99999') AS BND_AMT_1  ,
+                NVL(CUR_PSP_1,'-99999') AS CUR_PSP_1  ,
+                NVL(CUR_ITR_1,'-99999') AS CUR_ITR_1  ,
+                NVL(TOT_AMT_1,'-99999') AS TOT_AMT_1  ,
+                '2' AS NO_2,
+                NVL(OCC_DT_2,' ') AS OCC_DT_2  ,
+                NVL(BND_SBJ_2,' ') AS BND_SBJ_2  ,
+                NVL(BND_AMT_2,'-99999') AS BND_AMT_2  ,
+                NVL(CUR_PSP_2,'-99999') AS CUR_PSP_2  ,
+                NVL(CUR_ITR_2,'-99999') AS CUR_ITR_2  ,
+                NVL(TOT_AMT_2,'-99999') AS TOT_AMT_2  ,
+                '3' AS NO_3,
+                NVL(OCC_DT_3,' ') AS OCC_DT_3  ,
+                NVL(BND_SBJ_3,' ') AS BND_SBJ_3  ,
+                NVL(BND_AMT_3,'-99999') AS BND_AMT_3  ,
+                NVL(CUR_PSP_3,'-99999') AS CUR_PSP_3  ,
+                NVL(CUR_ITR_3,'-99999') AS CUR_ITR_3  ,
+                NVL(TOT_AMT_3,'-99999') AS TOT_AMT_3  ,
+                NVL(BND_NO_1,' ') AS BND_NO_1  ,
+                NVL(SCA_NOTE_1,' ') AS SCA_NOTE_1  ,
+                NVL(SCA_AMT_1,'-99999') AS SCA_AMT_1  ,
+                NVL(SCA_OBJ_1,'-99999') AS SCA_OBJ_1  ,
+                NVL(SCA_SIS_1,'-99999') AS SCA_SIS_1  ,
+                NVL(BND_NO_2,' ') AS BND_NO_2  ,
+                NVL(SCA_NOTE_2,' ') AS SCA_NOTE_2  ,
+                NVL(SCA_AMT_2,'-99999') AS SCA_AMT_2  ,
+                NVL(SCA_OBJ_2,'-99999') AS SCA_OBJ_2  ,
+                NVL(SCA_SIS_2,'-99999') AS SCA_SIS_2  ,
+                NVL(BND_NO_3,' ') AS BND_NO_3  ,
+                NVL(SCA_NOTE_3,' ') AS SCA_NOTE_3  ,
+                NVL(SCA_AMT_3,'-99999') AS SCA_AMT_3  ,
+                NVL(SCA_OBJ_3,'-99999') AS SCA_OBJ_3  ,
+                NVL(SCA_SIS_3,'-99999') AS SCA_SIS_3  
+          FROM TB_AC_COC_LST A
+         WHERE A.BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+		   AND A.AFF_SEQ = #{S_AFF_SEQ, jdbcType=VARCHAR}
+         ORDER BY A.ASK_SEQ
+
+    </select>
+
+
+  	<!-- 내용증명  추가/수정/삭제 -->
+     <insert   id="saveCocLst" parameterType="map" >
+
+        begin
+            IF #{FLAG, jdbcType=VARCHAR} = 'D' THEN
+                DELETE FROM TB_AC_COC_LST
+                 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;              
+            ELSE			
+			
+				UPDATE TB_AC_COC_LST
+				   SET FORM_GBN = #{FORM_GBN, jdbcType=VARCHAR} , 
+				       REQ_DT = #{REQ_DT, jdbcType=VARCHAR} , 
+				       BND_NM = #{BND_NM, jdbcType=VARCHAR} , 
+				       BND_TEL = #{BND_TEL, jdbcType=VARCHAR} , 
+				       BND_ADDR = #{BND_ADDR, jdbcType=VARCHAR} , 
+				       BND_ZIP = #{BND_ZIP, jdbcType=VARCHAR} , 
+				       CLT_NM = #{CLT_NM, jdbcType=VARCHAR} , 
+				       CLT_JMN = #{CLT_JMN, jdbcType=VARCHAR} , 
+				       OCC_DT_1 = #{OCC_DT_1, jdbcType=VARCHAR} , 
+				       BND_SBJ_1 = #{BND_SBJ_1, jdbcType=VARCHAR} , 
+				       BND_AMT_1 = #{BND_AMT_1, jdbcType=VARCHAR} , 
+				       CUR_PSP_1 = #{CUR_PSP_1, jdbcType=VARCHAR} , 
+				       CUR_ITR_1 = #{CUR_ITR_1, jdbcType=VARCHAR} , 
+				       TOT_AMT_1 = #{TOT_AMT_1, jdbcType=VARCHAR} , 
+				       OCC_DT_2 = #{OCC_DT_2, jdbcType=VARCHAR} , 
+				       BND_SBJ_2 = #{BND_SBJ_2, jdbcType=VARCHAR} , 
+				       BND_AMT_2 = #{BND_AMT_2, jdbcType=VARCHAR} , 
+				       CUR_PSP_2 = #{CUR_PSP_2, jdbcType=VARCHAR} , 
+				       CUR_ITR_2 = #{CUR_ITR_2, jdbcType=VARCHAR} , 
+				       TOT_AMT_2 = #{TOT_AMT_2, jdbcType=VARCHAR} , 
+				       OCC_DT_3 = #{OCC_DT_3, jdbcType=VARCHAR} , 
+				       BND_SBJ_3 = #{BND_SBJ_3, jdbcType=VARCHAR} , 
+				       BND_AMT_3 = #{BND_AMT_3, jdbcType=VARCHAR} , 
+				       CUR_PSP_3 = #{CUR_PSP_3, jdbcType=VARCHAR} , 
+				       CUR_ITR_3 = #{CUR_ITR_3, jdbcType=VARCHAR} , 
+				       TOT_AMT_3 = #{TOT_AMT_3, jdbcType=VARCHAR} , 
+				       BND_NO_1 = #{BND_NO_1, jdbcType=VARCHAR} , 
+				       SCA_NOTE_1 = #{SCA_NOTE_1, jdbcType=VARCHAR} , 
+				       SCA_AMT_1 = #{SCA_AMT_1, jdbcType=VARCHAR} , 
+				       SCA_OBJ_1 = #{SCA_OBJ_1, jdbcType=VARCHAR} , 
+				       SCA_SIS_1 = #{SCA_SIS_1, jdbcType=VARCHAR} , 
+				       BND_NO_2 = #{BND_NO_2, jdbcType=VARCHAR} , 
+				       SCA_NOTE_2 = #{SCA_NOTE_2, jdbcType=VARCHAR} , 
+				       SCA_AMT_2 = #{SCA_AMT_2, jdbcType=VARCHAR} , 
+				       SCA_OBJ_2 = #{SCA_OBJ_2, jdbcType=VARCHAR} , 
+				       SCA_SIS_2 = #{SCA_SIS_2, jdbcType=VARCHAR} , 
+				       BND_NO_3 = #{BND_NO_3, jdbcType=VARCHAR} , 
+				       SCA_NOTE_3 = #{SCA_NOTE_3, jdbcType=VARCHAR} , 
+				       SCA_AMT_3 = #{SCA_AMT_3, jdbcType=VARCHAR} , 
+				       SCA_OBJ_3 = #{SCA_OBJ_3, jdbcType=VARCHAR} , 
+				       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+				       EDT_DT = SYSDATE , 
+				       SCA_SIS_3 = #{SCA_SIS_3, jdbcType=VARCHAR} 
+			    where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+	
+	
+	               if sql%rowcount=0 then
+						
+						
+						INSERT INTO TB_AC_COC_LST
+						        (
+						         BRCH_ID , 
+						         AFF_SEQ , 
+						         ASK_SEQ , 
+						         FORM_GBN , 
+						         REQ_DT , 
+						         BND_NM , 
+						         BND_TEL , 
+						         BND_ADDR , 
+						         BND_ZIP , 
+						         CLT_NM , 
+						         CLT_JMN , 
+						         OCC_DT_1 , 
+						         BND_SBJ_1 , 
+						         BND_AMT_1 , 
+						         CUR_PSP_1 , 
+						         CUR_ITR_1 , 
+						         TOT_AMT_1 , 
+						         OCC_DT_2 , 
+						         BND_SBJ_2 , 
+						         BND_AMT_2 , 
+						         CUR_PSP_2 , 
+						         CUR_ITR_2 , 
+						         TOT_AMT_2 , 
+						         OCC_DT_3 , 
+						         BND_SBJ_3 , 
+						         BND_AMT_3 , 
+						         CUR_PSP_3 , 
+						         CUR_ITR_3 , 
+						         TOT_AMT_3 , 
+						         BND_NO_1 , 
+						         SCA_NOTE_1 , 
+						         SCA_AMT_1 , 
+						         SCA_OBJ_1 , 
+						         SCA_SIS_1 , 
+						         BND_NO_2 , 
+						         SCA_NOTE_2 , 
+						         SCA_AMT_2 , 
+						         SCA_OBJ_2 , 
+						         SCA_SIS_2 , 
+						         BND_NO_3 , 
+						         SCA_NOTE_3 , 
+						         SCA_AMT_3 , 
+						         SCA_OBJ_3 , 
+						         CRT_USR , 
+						         CRT_DT , 
+						         EDT_USR , 
+						         EDT_DT , 
+						         SCA_SIS_3 )
+						 VALUES (
+						         #{BRCH_ID, jdbcType=VARCHAR} , 
+						         #{AFF_SEQ, jdbcType=VARCHAR} , 
+						         #{ASK_SEQ, jdbcType=VARCHAR} , 
+						         #{FORM_GBN, jdbcType=VARCHAR} , 
+						         #{REQ_DT, jdbcType=VARCHAR} , 
+						         #{BND_NM, jdbcType=VARCHAR} , 
+						         #{BND_TEL, jdbcType=VARCHAR} , 
+						         #{BND_ADDR, jdbcType=VARCHAR} , 
+						         #{BND_ZIP, jdbcType=VARCHAR} , 
+						         #{CLT_NM, jdbcType=VARCHAR} , 
+						         #{CLT_JMN, jdbcType=VARCHAR} , 
+						         #{OCC_DT_1, jdbcType=VARCHAR} , 
+						         #{BND_SBJ_1, jdbcType=VARCHAR} , 
+						         #{BND_AMT_1, jdbcType=VARCHAR} , 
+						         #{CUR_PSP_1, jdbcType=VARCHAR} , 
+						         #{CUR_ITR_1, jdbcType=VARCHAR} , 
+						         #{TOT_AMT_1, jdbcType=VARCHAR} , 
+						         #{OCC_DT_2, jdbcType=VARCHAR} , 
+						         #{BND_SBJ_2, jdbcType=VARCHAR} , 
+						         #{BND_AMT_2, jdbcType=VARCHAR} , 
+						         #{CUR_PSP_2, jdbcType=VARCHAR} , 
+						         #{CUR_ITR_2, jdbcType=VARCHAR} , 
+						         #{TOT_AMT_2, jdbcType=VARCHAR} , 
+						         #{OCC_DT_3, jdbcType=VARCHAR} , 
+						         #{BND_SBJ_3, jdbcType=VARCHAR} , 
+						         #{BND_AMT_3, jdbcType=VARCHAR} , 
+						         #{CUR_PSP_3, jdbcType=VARCHAR} , 
+						         #{CUR_ITR_3, jdbcType=VARCHAR} , 
+						         #{TOT_AMT_3, jdbcType=VARCHAR} , 
+						         #{BND_NO_1, jdbcType=VARCHAR} , 
+						         #{SCA_NOTE_1, jdbcType=VARCHAR} , 
+						         #{SCA_AMT_1, jdbcType=VARCHAR} , 
+						         #{SCA_OBJ_1, jdbcType=VARCHAR} , 
+						         #{SCA_SIS_1, jdbcType=VARCHAR} , 
+						         #{BND_NO_2, jdbcType=VARCHAR} , 
+						         #{SCA_NOTE_2, jdbcType=VARCHAR} , 
+						         #{SCA_AMT_2, jdbcType=VARCHAR} , 
+						         #{SCA_OBJ_2, jdbcType=VARCHAR} , 
+						         #{SCA_SIS_2, jdbcType=VARCHAR} , 
+						         #{BND_NO_3, jdbcType=VARCHAR} , 
+						         #{SCA_NOTE_3, jdbcType=VARCHAR} , 
+						         #{SCA_AMT_3, jdbcType=VARCHAR} , 
+						         #{SCA_OBJ_3, jdbcType=VARCHAR} , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE , 
+						         #{OPERATOR, jdbcType=VARCHAR} , 
+						         SYSDATE , 
+						         #{SCA_SIS_3, jdbcType=VARCHAR} );				
+			
+
+	                  end if;
+               END IF;
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_AC_COC_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 내용증명  삭제 -->
+    <delete   id="deleteCocLst" parameterType="map" >
+       	DELETE FROM TB_AC_COC_LST
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+
+
+
+  	<!-- 내용증명 채권사 추가/수정/삭제 -->
+     <insert   id="saveCocBondLst" parameterType="map" >
+
+        begin
+            IF #{FLAG, jdbcType=VARCHAR} = 'D' THEN
+                DELETE FROM TB_AC_COCBOND_LST
+                 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;              
+            ELSE			
+			
+				UPDATE TB_AC_COCBOND_LST
+				   SET BND_NM = #{BND_NM, jdbcType=VARCHAR} , 
+				       BND_TEL = #{BND_TEL, jdbcType=VARCHAR} , 
+				       BND_ADDR = #{BND_ADDR, jdbcType=VARCHAR} , 
+				       BND_ZIP = #{BND_ZIP, jdbcType=VARCHAR} , 
+				       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+				       EDT_DT = SYSDATE 
+			    where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+	
+	
+	               if sql%rowcount=0 then
+						
+						
+					INSERT INTO TB_AC_COCBOND_LST
+					        (
+					         BRCH_ID , 
+					         BND_SEQ , 
+					         BND_NM , 
+					         BND_TEL , 
+					         BND_ADDR , 
+					         BND_ZIP , 
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT )
+					 VALUES (
+					         #{BRCH_ID, jdbcType=VARCHAR} , 
+					         (select nvl(MAX(BND_SEQ),0) + 1 FROM TB_AC_COCBOND_LST WHERE BRCH_ID = #{BRCH_ID, jdbcType=VARCHAR}) , 
+					         #{BND_NM, jdbcType=VARCHAR} , 
+					         #{BND_TEL, jdbcType=VARCHAR} , 
+					         #{BND_ADDR, jdbcType=VARCHAR} , 
+					         #{BND_ZIP, jdbcType=VARCHAR} , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE );						
+			
+
+	                  end if;
+               END IF;
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_AC_COCBOND_LST save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 내용증명 채권사 삭제 -->
+    <delete   id="deleteCocBondLst" parameterType="map" >
+       	DELETE FROM TB_AC_COCBOND_LST
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+
+   <!-- 내용증명 코드채번 -->
+    <select id="selectAskSeq" parameterType="map" resultType ="map">
+		 SELECT /* 내용증명 채번 */
+		        SQ_AC_COC_LST.NEXTVAL AS ASK_SEQ
+		   FROM DUAL              
+    </select>
+ 
+
+
+</mapper>

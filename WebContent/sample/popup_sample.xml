@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="450" Id="CMC01T01" Left="8" OnLoadCompleted="fn_onLoadCompleted" PidAttrib="7" scroll="false" Title="공통코드조회" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="400" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_codeList">
+				<Contents>
+					<colinfo id="DTL_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DTL_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="96" Height="40" Id="Shape4" Left="10" LineColor="user22" Right="390" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="4" Top="56" Type="RoundRect" Width="380"></Shape>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_codeList" BkColor2="user45" BkSelColor="user44" BoldHead="FALSE" Border="Flat" Bottom="420" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="309" Id="grd_codeList" InputPanel="FALSE" Left="9" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnCellDBLClick="grd_codeList_OnCellDblClick" Right="389" RowHeight="20" Style="Grid" TabOrder="1" TabStop="true" Top="111" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="380">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="124"/>
+						<col width="162"/>
+					</columns>
+					<head>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="0" color="user42" display="text" text="코드"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="1" color="user42" display="text" text="코드명"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="DTL_CD" display="text"/>
+						<cell align="center" col="1" colid="DTL_NM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg_400" TabOrder="2" Transparent="TRUE" Width="400"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="3" Text="공통코드조회" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Image Align="Right" Height="18" Id="Image17" Left="26" LeftMargin="0" Style="Stc_Default_bold" TabOrder="5" Top="66" Transparent="TRUE" Width="51"></Image>
+		<Image Align="Right" Height="21" Id="Image3" Left="24" LeftMargin="0" Style="Stc_Default_bold" TabOrder="6" Text="코드/코드명" Top="67" Transparent="TRUE" Width="80"></Image>
+		<Shape Bottom="92" Height="32" Id="Shape13" Left="104" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="114" TabOrder="7" Top="60" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Edit Border="Flat" Height="18" Id="edt_code_name" ImeMode="none" Left="114" LeftMargin="4" Style="Edit_Ess" TabOrder="6" Top="67" Width="130"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="330" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="8" Top="66" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="163" LeftMargin="14" OnClick="fn_close" Style="Btn_Popup" TabOrder="10" Text="닫기" Top="423" Transparent="TRUE" Width="50"></Button>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : popup_sample(공통코드 팝업)
+* 작성자     : 이용재
+* 작성일     : 2011-03-24 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-03-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var ret_str      = ""; // 리턴 파라메터 확인
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_onLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 조회조건에 넣기
+	edt_code_name.Text = p_value;
+	
+	// 조회조건이 있다면 바로 조회
+	if(edt_code_name.Text != "")
+	{
+		fn_search();
+	}
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_search_OnClick(obj)
+{
+	fn_search();
+}
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  2-1.초기화 부분
+//  2-2.조회 버튼 클릭     
+//  2-3.추가 버튼 클릭    
+//  2-4.저장 버튼 클릭    
+//  2-5.삭제 버튼 클릭    
+//  2-6.취소 버튼 클릭    
+//  2-7.인쇄 버튼 클릭 
+//  2-8.Transaction 후 처리 해야 할 내용
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	var svcID			= "common.selectCodeDListMap";
+	var url   			= "service::common/select_mi.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_codeList=cc.CCCodeDDAO.selectCodeDListMap";
+	var argument    	= " _sqlName=cc.CCCodeDDAO.selectCodeDListMap"
+						;
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : //Transaction 호출후 결과값 확인 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	gfn_showProgressWindow(false);
+	
+	switch(svcID) 
+	{
+		case "common.selectCodeDListMap" :
+			
+			//alert("Dataset="+gfn_dsToString(ds_codeList));
+
+		break;	
+		
+		default:
+			  alert("기타"); 
+	}
+
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 코드 값 setting
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function set_code(p_code, p_name)
+{
+	
+	var retArr = Array();
+	
+	retArr[0] = p_code;
+	retArr[1] = p_name;
+			  
+	close(retArr);
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close(obj)
+{
+	close("");
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 더블클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function grd_codeList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if(ds_codeList.GetColumn(nRow,"DTL_CD") != "" && ds_codeList.GetColumn(nRow,"DTL_NM") != "")
+	{
+		set_code(ds_codeList.GetColumn(nRow,"DTL_CD"), ds_codeList.GetColumn(nRow,"DTL_NM"));
+	}
+	else
+	{
+		alert('선택된 값이 없습니다.');
+	}
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회 엔터키 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function edt_name_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if( nChar == 13 )
+	{
+		fn_search();
+	}	
+}
+]]></Script>
+</Window>

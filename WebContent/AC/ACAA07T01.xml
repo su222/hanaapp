@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="650" Id="ACAA07T01" Left="8" OnLoadCompleted="ACAA07T01_OnLoadCompleted" OnUnloadCompleted="ACAA07T01_OnUnloadCompleted" PidAttrib="7" Title="사건진행보고서" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1240" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_TIEUP_LST">
+				<Contents>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="DOC_CARY" size="256" summ="default" type="STRING"/>
+					<colinfo id="HNA_CHG_USR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BTN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="46" Height="40" Id="Shape_search" Left="1" LineColor="user22" Right="1227" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="0" Top="6" Type="RoundRect" Width="1226"></Shape>
+		<Shape Bottom="48" Height="40" Id="Shape21" Left="196" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="216" TabOrder="4" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="61" Height="15" Id="Shape1" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="1231" TabOrder="5" Top="46" Type="Rectangle" Visible="FALSE" Width="1231"></Shape>
+		<Image Align="Left" Height="14" Id="Image0" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="6" Text="조회내역" Top="69" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="89" Height="5" Id="Shape2" Left="-5" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1226" TabOrder="7" Top="84" Type="Rectangle" Visible="FALSE" Width="1231"></Shape>
+		<Shape Bottom="5" Height="5" Id="Shape15" Left="5" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1236" TabOrder="8" Top="0" Type="Rectangle" Visible="FALSE" Width="1231"></Shape>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_TIEUP_LST" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="641" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="553" Id="GRD_TIEUP_LST" InputPanel="FALSE" Left="1" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_TIEUP_LST_OnCellClick" OnHeadClick="GRD_TIEUP_LST_OnHeadClick" Right="1232" RowHeight="20" Style="Grid_2" TabOrder="2" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1231">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="300"/>
+						<col width="150"/>
+						<col width="150"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="150"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" col="0" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="1" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="회사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="2" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="결재자"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="결재자연락처"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="하나담당"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="서류운송방법"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="center" col="1" colid="BRCH_ID" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="2" colid="TUB_SEQ" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="3" colid="TUB_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="4" colid="SIN_NM" color="black" display="text" InputZeroTime="true"/>
+						<cell align="center" col="5" colid="SIN_TEL" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="6" colid="HNA_CHG_USR_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="7" colid="DOC_CARY" color="black" display="text" InputZeroTime="true"/>
+						<cell align="center" col="8" colid="BTN" color="black" display="button" edit="button" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="648" Height="648" Id="Shape4" Left="1233" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1238" TabOrder="9" Top="0" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Image Align="Left" Height="18" Id="Image3" ImageID="label_dot" Left="10" LeftMargin="12" Style="Stc_Default_bold" TabOrder="10" Text="제휴사명/사건담당/하나담당" Top="17" Transparent="TRUE" Width="184"></Image>
+		<Edit Border="Flat" Height="18" Id="S_TUB_NM" Left="216" LeftMargin="4" OnKeyDown="S_TUB_NM_OnKeyDown" Style="Edit" TabOrder="1" Top="17" Width="250"></Edit>
+		<Image Align="Left" Height="18" Id="Image7" ImageID="label_dot" Left="490" LeftMargin="12" Style="Stc_Default_bold" TabOrder="11" Text="서류운송방법" Top="17" Transparent="TRUE" Width="90"></Image>
+		<Combo Border="Flat" Height="18" Id="S_DOC_CARY" Left="600" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="12" Top="16" Width="66"></Combo>
+		<Shape Bottom="48" Height="40" Id="Shape0" Left="580" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="600" TabOrder="13" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="S_ED_DT" Left="785" Mask="####-##-##" TabOrder="14" ToolTipText="날짜를&#32;입력안하시면&#32;전체&#32;기간&#32;검색&#32;가능합니다" Top="16" Type="STRING" Width="70"></MaskEdit>
+		<Shape Bottom="46" Height="36" Id="Shape16" Left="856" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="861" TabOrder="15" Top="10" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="BTN_ED_DT" ImageID="Btn_calendar" Left="860" OnClick="BTN_ED_DT_OnClick" TabOrder="16" Text="Button1" Top="17" Width="16"></Button>
+		<Image Align="Left" Height="18" Id="Image1" ImageID="label_dot" Left="698" LeftMargin="12" Style="Stc_Default_bold" TabOrder="17" Text="마감일자" Top="17" Transparent="TRUE" Width="66"></Image>
+		<Shape Bottom="48" Height="40" Id="Shape3" Left="764" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="784" TabOrder="18" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Report Bottom="33" Height="16" Id="Report0" Left="960" Right="968" Top="17" Visible="FALSE" Width="8"></Report>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 사건진행보고서
+* 작성자     : 이용재
+* 작성일     : 2013-01-24 : 최초 생성
+* 기능설명   :  관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+#include "lib::lib_report.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+//var curRow          = "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	//*------------------------------------------------------------------------
+    //* 리사이즈 컨포넌트 정의
+	//* H: 가로 리사이즈
+	//* W: 세로 리사이즈
+	//* A: 가로세로 리사이즈
+	//* R: Resize
+	//* M: Move
+	//* Quick view로 테스트시 주석처리 후 테스트
+    //*------------------------------------------------------------------------
+	gfn_SetResize(this, "Shape_search:H:R GRD_TIEUP_LST:A:R");
+	
+ 
+ 	// 서류운송방법
+	gfn_comCodeCombo(S_DOC_CARY, "AC05", "","전체");
+ 
+ 	// 마감일자
+	gfn_get_date('TODAY',0,'YYYYMMDD');
+	S_ED_DT.Text = GDS_DATE_TYPE.GetColumn(0,'DATE_VAL');	
+ 
+ 
+ 	// 공통 명령어 조정
+	gfn_set_cbutton("조회:fn_search");   
+
+	fn_search();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	
+	DS_TIEUP_LST.ClearData();
+	
+	svcID			= "ACAA07T01.selectAffairCloseLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_TIEUP_LST=ac.ACAffairDAO.selectAffairCloseLst";
+	argument    	= " _sqlName=ac.ACAffairDAO.selectAffairCloseLst"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " S_TUB_NM=" + quote(S_TUB_NM.Text)
+							+ " S_DOC_CARY=" + quote(S_DOC_CARY.Value)
+							+ " S_ED_DT=" + quote(S_ED_DT.Text)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "ACAA07T01.selectAffairCloseLst" :
+			
+		break;	
+
+		
+		default:
+	}
+
+
+}
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function ACAA07T01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function ACAA07T01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid  클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_TIEUP_LST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if(nCell == 8)
+	{	
+		var mrd = "";
+		var param = "";
+	
+		mrd = "PG_AC_AFFAIRCLOSE_LST.mrd";
+		
+		
+		param = "/rp ["
+				+DS_TIEUP_LST.GetColumn(nRow, "BRCH_ID")+"] ["        // 회사코드 1
+				+DS_TIEUP_LST.GetColumn(nRow, "TUB_SEQ")+"] ["  // 제휴사
+				+S_ED_DT.Text+"]"  // 마감일자
+				;
+				
+		trace('rp param='+param);		
+				
+	
+		gfn_viewReport(Report0, mrd, param, true);						
+	}	
+}
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_TIEUP_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_TIEUP_LST, DS_TIEUP_LST, nCell);	
+}
+
+
+
+
+function BTN_ED_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", S_ED_DT);
+}
+
+function S_TUB_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_search();	
+	}		
+}
+]]></Script>
+</Window>

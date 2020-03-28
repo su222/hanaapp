@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="650" Id="CCAB07T01" Left="8" OnLoadCompleted="CCAB07T01_OnLoadCompleted" OnUnloadCompleted="CCAB07T01_OnUnloadCompleted" PidAttrib="7" Title="사용자별권한그룹관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_TEMP"></Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_USERPMS_LST" OnColumnChanged="DS_USERPMS_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMS_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_COM_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNG_BRCH_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMS_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_USER_LST" OnColumnChanged="DS_USER_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMS_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMS_YN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_PMS_CODE">
+				<Contents>
+					<colinfo id="PMS_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMS_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="46" Height="40" Id="Shape_search" Left="0" LineColor="user22" Right="995" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="0" Top="6" Type="RoundRect" Width="995"></Shape>
+		<Shape Bottom="44" Height="40" Id="Shape21" Left="75" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="95" TabOrder="4" Top="4" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="61" Height="15" Id="Shape1" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="995" TabOrder="5" Top="46" Type="Rectangle" Visible="FALSE" Width="995"></Shape>
+		<Shape Bottom="5" Height="5" Id="Shape15" Left="-11" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="984" TabOrder="6" Top="0" Type="Rectangle" Visible="FALSE" Width="995"></Shape>
+		<Shape Bottom="88" Height="5" Id="Shape0" Left="-8" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="987" TabOrder="8" Top="83" Type="Rectangle" Visible="FALSE" Width="995"></Shape>
+		<Image Align="Left" Height="14" Id="Image2" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="7" Text="사용자&#32;목록" Top="69" Transparent="TRUE" Width="157"></Image>
+		<Image Align="Left" Height="14" Id="Image0" ImageID="Title_dot" Left="448" LeftMargin="20" Style="Stc_Subtitle" TabOrder="9" Text="회사/지사&#32;목록" Top="67" Transparent="TRUE" Width="157"></Image>
+		<Image Align="Left" Height="18" Id="Image1" ImageID="label_dot" Left="10" LeftMargin="12" Style="Stc_Default_bold" TabOrder="10" Text="권한그룹" Top="17" Transparent="TRUE" Width="70"></Image>
+		<Combo Border="Flat" Height="18" Id="S_PMS_CD" Left="95" OnChanged="S_PMS_CD_OnChanged" ResetIndex="FIRST" ShadowColor="user2" Style="Combo_Ess" TabOrder="1" Top="16" Width="200"></Combo>
+		<Image Align="Left" Height="18" Id="Image4" ImageID="label_dot" Left="448" LeftMargin="12" Style="Stc_Default_bold" TabOrder="11" Text="사용자ID/이름" Top="16" Transparent="TRUE" Width="120"></Image>
+		<Edit Border="Flat" Height="18" Id="S_USR_ID" Left="566" LeftMargin="4" OnChanged="S_USR_ID_OnChanged" OnKeyDown="S_USR_ID_OnKeyDown" Style="Edit" TabOrder="2" Top="17" Width="160"></Edit>
+		<Shape Bottom="47" Height="40" Id="Shape2" Left="546" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="566" TabOrder="12" Top="7" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="240" Height="184" Id="Shape4" Left="497" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="501" TabOrder="13" Top="56" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Grid AreaSelect="true" AutoEnter="TRUE" AutoFitEndLine="Hide" BindDataset="DS_MENU_BAS" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="656" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="560" Id="GRD_MENU_BAS" InputPanel="FALSE" Left="8" LineColor="default" LineType="OnlyVERT" OnHeadClick="GRD_MENU_BAS_OnHeadClick" Right="488" RowHeight="20" Style="Grid_2" TabOrder="14" TabStop="true" Top="96" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="480">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="30"/>
+						<col width="70"/>
+						<col width="100"/>
+						<col width="70"/>
+						<col width="50"/>
+						<col width="100"/>
+						<col width="50"/>
+					</columns>
+					<head>
+						<cell col="-1" display="text">
+							<cell col="0" display="text"/>
+							<cell col="1" color="user52" display="text" text="출고번호"/>
+						</cell>
+						<cell col="0" display="text" text="FLAG"/>
+						<cell col="1" display="text" text="ROW_ID"/>
+						<cell col="2" display="text" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" text="메뉴ID"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" text="메뉴명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" text="상위메뉴ID"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" text="레벨"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" text="URL"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="9" color="user52" display="text" font="돋움,10,Bold" text="순서"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text"/>
+						<cell col="1" colid="ROW_ID" display="text"/>
+						<cell col="2" colid="OPERATOR" display="text"/>
+						<cell align="center" col="3" colid="chk" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="left" col="4" colid="MENU_ID" color="black" display="text"/>
+						<cell align="left" col="5" colid="MENU_NM" color="black" display="text"/>
+						<cell align="left" col="6" colid="UP_MENU_ID" color="black" display="text"/>
+						<cell align="left" col="7" colid="MENU_LVL" color="black" display="text"/>
+						<cell align="left" col="8" colid="MENU_URL" color="black" display="text"/>
+						<cell align="right" col="9" colid="SORT_NO" color="black" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 사용자별권한그룹 관리
+* 작성자     : 이용재
+* 작성일     : 2013-01-24 : 최초 생성
+* 기능설명   : 사용자별권한그룹 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	//*------------------------------------------------------------------------
+    //* 리사이즈 컨포넌트 정의
+	//* H: 가로 리사이즈
+	//* W: 세로 리사이즈
+	//* A: 가로세로 리사이즈
+	//* R: Resize
+	//* M: Move
+	//* Quick view로 테스트시 주석처리 후 테스트
+    //*------------------------------------------------------------------------
+	gfn_SetResize(this, "Shape_search:H:R GRD_USER_LST:W:R GRD_USERPMS_LST:W:R");
+	
+	
+	// 권한그룹 가져오기 
+	fn_search_pms_bas();	
+	
+ 	// 공통 명령어 조정
+	gfn_set_cbutton("조회:fn_search 저장:fn_save");  
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	
+	DS_USER_LST.ClearData();
+	DS_USERPMS_LST.ClearData();
+	
+	svcID			= "CCAB06T01.selectUserPmsLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_USER_LST=cc.CCMenuPmsDAO.selectUserPmsYnLst";
+	argument    	= " _sqlName=cc.CCMenuPmsDAO.selectUserPmsYnLst"
+							+ " S_USR_ID=" + quote(S_USR_ID.Text)
+							+ " S_PMS_CD=" + quote(S_PMS_CD.Value)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 일괄 삭제 후 추가하는 방식으로 해야 안꼬임
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	var isSave = false;
+	
+	// 필터 
+	DS_USERPMS_LST.FireEvent = false;		
+	DS_USERPMS_LST.UnFilter();
+	DS_USERPMS_LST.Filter("FLAG !='N'");	// 변경된것 모두 필터링  (저장/삭제) 
+	
+	
+	if(DS_USERPMS_LST.rowcount > 0)
+	{
+	}
+	else
+	{
+		gfn_popup_message("modal", "error", "저장할 항목이 없습니다.", "확인");
+		bValidate = false;		
+	
+	}
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		// 저장 
+		if(gfn_popup_message("modal", "confirm", "저장/삭제 하시겠습니까?", "확인")) 
+		{
+
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			DS_TEMP.ClearData();
+			DS_TEMP.CopyF("DS_USERPMS_LST");			
+			
+			svcID			= "CCAB06T01.saveUserPmsLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "cc.CCMenuPmsDAO.saveUserPmsLst=DS_TEMP:A";
+
+			outDatasets 	= "";
+			argument    	= " _sqlName=cc.CCMenuPmsDAO.saveUserPmsLst";
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		}
+	
+	}
+
+
+	DS_USERPMS_LST.UnFilter();
+	DS_USERPMS_LST.Filter("flag != 'D'");
+	DS_USERPMS_LST.FireEvent = true;	
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 삭제 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_delete()
+{
+	// 추가/수정/삭제가 일괄 처리되므로 저장을 호출
+	fn_save();
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "CCAB06T01.selectUserPmsLst" :
+		
+			
+		break;	
+
+		// 저장
+		case "CCAB06T01.saveUserPmsLst" :
+		
+			gfn_popup_message("modal", "ico_info", "저장/삭제 완료.", "확인");	
+			fn_search();		
+		break;	
+		
+		// 권한그룹 콤보
+		case "CCAB06T01.selectPmsCode" :
+		
+			// 권한그룹 채우기 
+			gfn_DSCombo(S_PMS_CD, "DS_PMS_CODE", "PMS_CD", "PMS_NM",  "", "");
+			
+			fn_search();
+		break;	
+
+
+		// 권한목록
+		case "CCAB06T01.selectUserPmsLst" :
+		
+
+		break;	
+
+
+		
+		default:
+			  alert("기타"); 
+	}
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 권한그룹 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search_pms_bas()
+{
+	svcID			= "CCAB06T01.selectPmsCode";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_PMS_CODE=cc.CCMenuPmsDAO.selectPmsCode";
+	argument    	= " _sqlName=cc.CCMenuPmsDAO.selectPmsCode";
+							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 사용자의 권한부여 지사 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search_userpms_lst(BRCH_ID, usr_id, pms_cd)
+{
+	svcID			= "CCAB06T01.selectUserPmsLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_USERPMS_LST=cc.CCMenuPmsDAO.selectUserPmsLst";
+	argument    	= " _sqlName=cc.CCMenuPmsDAO.selectUserPmsLst"
+							+ " BRCH_ID=" + quote(BRCH_ID)
+							+ " USR_ID=" + quote(usr_id)
+							+ " PMS_CD=" + quote(pms_cd)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAB06T01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAB06T01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-7.엑셀버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_excel_OnClick(obj)
+{
+	gfn_exportExcel(Grid1,"sheet1");
+}
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_USER_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	// SORTING
+	gfn_GridSort(GRD_USER_LST, DS_USER_LST, nCell);	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 셀 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_USER_LST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	
+	// 권한그룹에 대한 사용회사 목록 가져오기
+	var brch_id = DS_USER_LST.GetColumn(nRow,"brch_id");
+	var usr_id = DS_USER_LST.GetColumn(nRow,"USR_ID");
+	var pms_cd = DS_USER_LST.GetColumn(nRow,"PMS_CD");
+	fn_search_userpms_lst(brch_id, usr_id, pms_cd);
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_USERPMS_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+
+	// 체크박스 클릭시
+	if(nCell == 3)
+	{
+		gfn_SetCheckBoxAllSelected(nCell, GRD_USERPMS_LST, DS_USERPMS_LST, "CHK");
+	}
+	// 나머지는 Sorting
+	else
+	{
+		gfn_GridSort(GRD_USERPMS_LST, DS_USERPMS_LST, nCell);	
+	}		
+	
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 엑셀다운로드 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_excel_download_OnClick(obj)
+{
+	gfn_exportExcel(GRD_CMPNY_BAS,"회사목록");
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : USER_LST DataSet 변경시 flag 설정
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_USER_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	// 즉 조회된거를 수정하면 U로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : USERPMS_LST DataSet 변경시 flag 설정
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_USERPMS_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	// 즉 조회된거를 수정하면 U로 바꾼다.
+	if(obj.GetColumn(nRow, "PMS_YN") == "1" )
+	{
+		obj.SetColumn(nRow, "FLAG", "I");	// 추가
+	}
+	else
+	{
+		obj.SetColumn(nRow, "FLAG", "D");	// 삭제 
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 메뉴분류 선택 변경시 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function S_MENU_GBN_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+
+	// 조회데이터는 초기화
+	DS_USER_LST.ClearData();
+	DS_USERPMS_LST.ClearData();	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 권한그룹 선택 변경시 조회내역 초기화
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function S_PMS_CD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	// 조회데이터는 초기화
+	DS_USER_LST.ClearData();
+	DS_USERPMS_LST.ClearData();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 엔터키 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function S_USR_ID_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_search();	
+	}	
+}
+
+
+
+function S_USR_ID_OnChanged(obj,strText)
+{
+	
+}
+]]></Script>
+</Window>

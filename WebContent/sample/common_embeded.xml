@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="700" Id="common_embeded" Left="8" OnLoadCompleted="common_embeded_OnLoadCompleted" PidAttrib="7" Title="common_embeded" TooltipFont="Default,0" Top="8" Ver="1.0" Width="880" WorkArea="true">
+		<Image Align="Right" Height="18" Id="Image1" Left="63" LeftMargin="0" Style="Stc_Default_bold" TabOrder="1" Text="페이지URL" Top="23" Transparent="TRUE" Width="67"></Image>
+		<Shape Bottom="10" Height="10" Id="Shape12" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="2" Top="0" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<Shape Bottom="700" Height="10" Id="Shape3" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="3" Top="690" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<AxMSIE Bottom="689" Height="633" Id="AxMSIE" Right="875" Top="56" Width="875"></AxMSIE>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_url" Left="133" LeftMargin="4" OnKeyDown="edt_url_OnKeyDown" Style="edit" TabOrder="5" Top="22" Width="522"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_moveSite" ImageID="btn_a_02" Left="659" LeftMargin="8" OnClick="btn_moveSite_OnClick" Style="btn_a" TabOrder="6" Text="이동" Top="21" Width="50"></Button>
+		<Shape Bottom="536" Height="520" Id="Shape4" Left="131" LineKind="Vertical" LineStyle="Dot" Right="134" TabOrder="7" Top="16" Visible="FALSE" Width="3"></Shape>
+		<Shape Bottom="537" Height="520" Id="Shape7" Left="449" LineKind="Vertical" LineStyle="Dot" Right="452" TabOrder="8" Top="17" Visible="FALSE" Width="3"></Shape>
+		<Shape BKColor="user21" Bottom="50" Height="39" Id="Shape0" Left="0" LineColor="user22" Right="878" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="9" Top="11" Type="RoundRect" Width="878"></Shape>
+	</Form>
+	<Script><![CDATA[/********************************************************************************
+* FormID(명) : common_embeded
+* Form 설명  : sample
+* 작성자     : DaMaNeGi
+* 작성일     : 2010-12-21
+* ===============================================================================
+* ===============================================================================
+* 변경내역 : 
+* YYYYMMDD 담당자명 변경내용(Why?,What?)
+* ===============================================================================
+*********************************************************************************/
+
+#include script::common.js
+
+var JSESSIONID;
+/**
+ * 태광산업인사정보시스템 URL 접속 : http://213.175.91.41:8090
+ * http://localhost:8088/TKS/index.html
+ */
+function btn_moveSite_OnClick(obj)
+{
+	//AxMSIE.Navigate(edt_url.Text, Flags, TargetFrameName, PostData, Headers);
+	AxMSIE.Navigate(edt_url.Text, false, "_self");
+
+	/*
+	AxMSIE.Navigate("about:blank");
+	AxMSIE.Navigate("javascript:window.open('"+edt_url.Text+"','main','width=0px,height=0px,top=0,left=3000,menubar=no,toolbar=no,location=no,directories=1,status=1,status=no,scrollbars=no')");
+	*/
+}
+
+function common_embeded_OnLoadCompleted(obj)
+{
+	//var commonURL = "http://localhost:8088/TKS/index.html";
+	//edt_url.Text = commonURL;
+}
+
+function edt_url_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {
+		btn_moveSite_OnClick();
+	}
+}
+]]></Script>
+</Window>

@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="white" Color="white" Font="Arial,9,Bold" Height="196" Id="fm_Cal_Day" Left="8" OnKeyDown="form_OnKeyDown" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="Calendar" Top="8" Ver="1.0" Width="179" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_calendar">
+				<Contents>
+					<colinfo id="a" size="256" type="STRING"/>
+					<colinfo id="b" size="256" type="STRING"/>
+					<colinfo id="d1" size="256" type="STRING"/>
+					<colinfo id="d11" size="256" type="STRING"/>
+					<colinfo id="d2" size="256" type="STRING"/>
+					<colinfo id="d22" size="256" type="STRING"/>
+					<colinfo id="d3" size="256" type="STRING"/>
+					<colinfo id="d33" size="256" type="STRING"/>
+					<colinfo id="d4" size="256" type="STRING"/>
+					<colinfo id="d44" size="256" type="STRING"/>
+					<colinfo id="d5" size="256" type="STRING"/>
+					<colinfo id="d55" size="256" type="STRING"/>
+					<colinfo id="d6" size="256" type="STRING"/>
+					<colinfo id="d66" size="256" type="STRING"/>
+					<colinfo id="d7" size="256" type="STRING"/>
+					<record>
+						<a></a>
+						<b></b>
+						<d1>1</d1>
+						<d11></d11>
+						<d2>2</d2>
+						<d22></d22>
+						<d3>3</d3>
+						<d33></d33>
+						<d4>4</d4>
+						<d44></d44>
+						<d5>5</d5>
+						<d55></d55>
+						<d6>6</d6>
+						<d66></d66>
+						<d7>7</d7>
+					</record>
+					<record>
+						<a>10</a>
+						<b></b>
+						<d1>8</d1>
+						<d11></d11>
+						<d2>9</d2>
+						<d22></d22>
+						<d3></d3>
+						<d33></d33>
+						<d4></d4>
+						<d44></d44>
+						<d5></d5>
+						<d55></d55>
+						<d6></d6>
+						<d66></d66>
+						<d7></d7>
+					</record>
+					<record>
+						<a>11</a>
+						<b></b>
+						<d1></d1>
+						<d11></d11>
+						<d2></d2>
+						<d22></d22>
+						<d3></d3>
+						<d33></d33>
+						<d4></d4>
+						<d44></d44>
+						<d5></d5>
+						<d55></d55>
+						<d6></d6>
+						<d66></d66>
+						<d7></d7>
+					</record>
+					<record>
+						<a>12</a>
+						<b></b>
+						<d1></d1>
+						<d11></d11>
+						<d2></d2>
+						<d22></d22>
+						<d3></d3>
+						<d33></d33>
+						<d4></d4>
+						<d44></d44>
+						<d5></d5>
+						<d55></d55>
+						<d6></d6>
+						<d66></d66>
+						<d7></d7>
+					</record>
+					<record>
+						<a>13</a>
+						<b></b>
+						<d1></d1>
+						<d11></d11>
+						<d2></d2>
+						<d22></d22>
+						<d3></d3>
+						<d33></d33>
+						<d4></d4>
+						<d44></d44>
+						<d5></d5>
+						<d55></d55>
+						<d6></d6>
+						<d66></d66>
+						<d7></d7>
+					</record>
+					<record>
+						<a></a>
+						<b></b>
+						<d1></d1>
+						<d11></d11>
+						<d2></d2>
+						<d22></d22>
+						<d3></d3>
+						<d33></d33>
+						<d4></d4>
+						<d44></d44>
+						<d5></d5>
+						<d55></d55>
+						<d6></d6>
+						<d66></d66>
+						<d7></d7>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_CalMonth">
+				<Contents>
+					<colinfo id="Mon" size="256" type="STRING"/>
+					<colinfo id="chk" size="256" type="STRING"/>
+					<record>
+						<chk></chk>
+						<Mon>JAN</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>FEB</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>MAR</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>APR</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>MAY</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>JUN</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>JUL</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>AUG</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>SEP</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>OCT</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>NOV</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>DEC</Mon>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Year">
+				<Contents>
+					<colinfo id="year" size="256" type="STRING"/>
+					<record>
+						<year>2000</year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year>2009</year>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_month">
+				<Contents>
+					<colinfo id="code" size="256" type="STRING"/>
+					<record>
+						<code>JAN</code>
+					</record>
+					<record>
+						<code>FEB</code>
+					</record>
+					<record>
+						<code>MAR</code>
+					</record>
+					<record>
+						<code>APR</code>
+					</record>
+					<record>
+						<code>MAY</code>
+					</record>
+					<record>
+						<code>JUN</code>
+					</record>
+					<record>
+						<code>JUL</code>
+					</record>
+					<record>
+						<code>AUG</code>
+					</record>
+					<record>
+						<code>SEP</code>
+					</record>
+					<record>
+						<code>OCT</code>
+					</record>
+					<record>
+						<code>NOV</code>
+					</record>
+					<record>
+						<code>DEC</code>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Border="Flat" BorderColor="#949494" Height="196" Id="Static10" TabOrder="65" Width="179"></Static>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#e21309" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d1" Left="38" OnClick="DayClick" TabOrder="1" Top="78" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d2" Left="57" OnClick="DayClick" TabOrder="2" Top="78" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d3" Left="76" OnClick="DayClick" TabOrder="3" Top="78" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d4" Left="95" OnClick="DayClick" TabOrder="4" Top="78" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d5" Left="114" OnClick="DayClick" TabOrder="5" Top="78" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d6" Left="133" OnClick="DayClick" TabOrder="6" Top="78" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#207bd0" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d7" Left="152" OnClick="DayClick" TabOrder="7" Top="78" Visible="FALSE" Width="20"></Button>
+		<Static Align="Center" BKColor="#eeeae1" Border="None" BorderColor="#949494" Color="#282826" Font="Tahom,8,Bold" Height="20" Id="Static0" Left="38" TabOrder="8" Text="S" Top="55" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" BKColor="#eeeae1" Border="None" BorderColor="#949494" Color="#282826" Font="Tahom,8,Bold" Height="20" Id="Static1" Left="57" TabOrder="9" Text="M" Top="55" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" BKColor="#eeeae1" Border="None" BorderColor="#949494" Color="#282826" Font="Tahom,8,Bold" Height="20" Id="Static2" Left="76" TabOrder="10" Text="T" Top="55" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" BKColor="#eeeae1" Border="None" BorderColor="#949494" Color="#282826" Font="Tahom,8,Bold" Height="20" Id="Static3" Left="95" TabOrder="11" Text="W" Top="55" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" BKColor="#eeeae1" Border="None" BorderColor="#949494" Color="#282826" Font="Tahom,8,Bold" Height="20" Id="Static4" Left="114" TabOrder="12" Text="T" Top="55" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" BKColor="#eeeae1" Border="None" BorderColor="#949494" Color="#282826" Font="Tahom,8,Bold" Height="20" Id="Static5" Left="133" TabOrder="13" Text="F" Top="55" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" BKColor="#eeeae1" Border="None" BorderColor="#949494" Color="#282826" Font="Tahom,8,Bold" Height="20" Id="Static6" Left="152" TabOrder="14" Text="S" Top="55" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" BKColor="#eeeae1" Border="None" BorderColor="#949494" Color="#282826" Font="Tahom,8,Bold" Height="20" Id="Static7" Left="7" TabOrder="15" Text="W" Top="55" VAlign="Middle" Width="26"></Static>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#008291" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="w1" Left="7" OnClick="WeekClick" TabOrder="16" Top="78" Visible="FALSE" Width="26"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#e21309" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d8" Left="38" OnClick="DayClick" TabOrder="17" Top="97" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d9" Left="57" OnClick="DayClick" TabOrder="18" Top="97" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d10" Left="76" OnClick="DayClick" TabOrder="19" Top="97" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d11" Left="95" OnClick="DayClick" TabOrder="20" Top="97" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d12" Left="114" OnClick="DayClick" TabOrder="21" Top="97" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d13" Left="133" OnClick="DayClick" TabOrder="22" Top="97" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#207bd0" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d14" Left="152" OnClick="DayClick" TabOrder="23" Top="97" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#008291" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="w2" Left="7" OnClick="WeekClick" TabOrder="24" Top="97" Visible="FALSE" Width="26"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#e21309" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d15" Left="38" OnClick="DayClick" TabOrder="25" Top="116" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d16" Left="57" OnClick="DayClick" TabOrder="26" Top="116" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d17" Left="76" OnClick="DayClick" TabOrder="27" Top="116" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d18" Left="95" OnClick="DayClick" TabOrder="28" Top="116" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d19" Left="114" OnClick="DayClick" TabOrder="29" Top="116" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d20" Left="133" OnClick="DayClick" TabOrder="30" Top="116" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#207bd0" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d21" Left="152" OnClick="DayClick" TabOrder="31" Top="116" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#008291" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="w3" Left="7" OnClick="WeekClick" TabOrder="32" Top="116" Visible="FALSE" Width="26"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#e21309" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d22" Left="38" OnClick="DayClick" TabOrder="33" Top="135" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d23" Left="57" OnClick="DayClick" TabOrder="34" Top="135" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d24" Left="76" OnClick="DayClick" TabOrder="35" Top="135" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d25" Left="95" OnClick="DayClick" TabOrder="36" Top="135" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d26" Left="114" OnClick="DayClick" TabOrder="37" Top="135" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d27" Left="133" OnClick="DayClick" TabOrder="38" Top="135" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#207bd0" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d28" Left="152" OnClick="DayClick" TabOrder="39" Top="135" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#008291" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="w4" Left="7" OnClick="WeekClick" TabOrder="40" Top="135" Visible="FALSE" Width="26"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#e21309" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d29" Left="38" OnClick="DayClick" TabOrder="41" Top="154" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d30" Left="57" OnClick="DayClick" TabOrder="42" Top="154" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d31" Left="76" OnClick="DayClick" TabOrder="43" Top="154" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d32" Left="95" OnClick="DayClick" TabOrder="44" Top="154" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d33" Left="114" OnClick="DayClick" TabOrder="45" Top="154" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d34" Left="133" OnClick="DayClick" TabOrder="46" Top="154" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#207bd0" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d35" Left="152" OnClick="DayClick" TabOrder="47" Top="154" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#008291" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="w5" Left="7" OnClick="WeekClick" TabOrder="48" Top="154" Visible="FALSE" Width="26"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#e21309" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d36" Left="38" OnClick="DayClick" TabOrder="49" Top="173" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d37" Left="57" OnClick="DayClick" TabOrder="50" Top="173" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d38" Left="76" OnClick="DayClick" TabOrder="51" Top="173" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d39" Left="95" OnClick="DayClick" TabOrder="52" Top="173" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d40" Left="114" OnClick="DayClick" TabOrder="53" Top="173" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#282826" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d41" Left="133" OnClick="DayClick" TabOrder="54" Top="173" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#207bd0" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="d42" Left="152" OnClick="DayClick" TabOrder="55" Top="173" Visible="FALSE" Width="20"></Button>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="#e2e4e3" ButtonStyle="TRUE" Color="#008291" Cursor="HAND" DisableBKColor="white" Font="Tahom,8" Height="20" Id="w6" Left="7" OnClick="WeekClick" TabOrder="56" Top="173" Visible="FALSE" Width="26"></Button>
+		<Image Height="30" Id="Image0" ImageID="gls_cal_top" TabOrder="57" Width="179"></Image>
+		<Image Height="15" Id="img_close" ImageID="gls_cal_close" Left="156" OnClick="img_close_OnClick" Static="FALSE" TabOrder="58" Top="8" Width="15"></Image>
+		<Image Cursor="HAND" Height="11" Id="im_preYear" ImageID="gls_cal_left" Left="63" OnClick="im_preYear_OnClick" Static="FALSE" TabOrder="59" Top="10" Width="6"></Image>
+		<Static Align="Center" Color="black" Font="Tahom,9,Bold" Height="15" Id="st_year" Left="71" TabOrder="60" Text="2007" Top="9" VAlign="Middle" Width="31"></Static>
+		<Image Cursor="HAND" Height="11" Id="img_nextYear" ImageID="gls_cal_right" Left="104" OnClick="img_nextYear_OnClick" Static="FALSE" TabOrder="61" Top="10" Width="6"></Image>
+		<Combo Border="Flat" BorderColor="#aeadb1" CodeColumn="code" Color="#343539" DataColumn="code" Font="Tahom,8" Height="19" Id="cb_mon" InnerDataset="ds_month" Left="62" OnChanged="cb_mon_OnChanged" TabOrder="62" Top="33" Width="50"></Combo>
+		<Image Cursor="HAND" Height="11" Id="img_premon" ImageID="gls_cal_bleft" Left="49" OnClick="img_premon_OnClick" Static="FALSE" TabOrder="63" Top="38" Width="6"></Image>
+		<Image Cursor="HAND" Height="11" Id="img_nextmon" ImageID="gls_cal_bright" Left="119" OnClick="img_nextmon_OnClick" Static="FALSE" TabOrder="64" Top="38" Width="6"></Image>
+		<Button Appearance="FLAT" BKColor="white" BorderColor="white" Height="8" Id="Button0" Left="104" TabOrder="66" Text="Button0" Top="232" Width="11"></Button>
+	</Form>
+	<Script><![CDATA[var fv_arrMonth = [31,0,31,30,31,30,31,31,30,31,30,31];
+var fv_Today;
+var fv_ArgValue;
+var fv_DataFg = "WAB";
+var fv_SundayPosition = "F";
+// 일~토 가한주면 fv_SundayPosition = "F"
+// 월~일 가한주면 fv_SundayPosition = "L"
+/*----------------------------------------------------------------------*/
+//  Calendar Load
+/*----------------------------------------------------------------------*/
+function form_OnLoadCompleted(obj)
+{
+	fn_TitleSet();
+	
+	fv_DataFg = gfv_CalendarDateFg;
+	fv_ArgValue = gfv_CalendarValue;
+	
+	if(fv_ArgValue.length() == 0) {
+		fv_Today = mid(GetDate(),0,8);
+	} else {
+		switch(fv_DataFg) {
+			case "WAB" :
+					var nWeek = fn_FindWeek(mid(fv_ArgValue,0,4),
+										toNumber(mid(fv_ArgValue,4,2)), mid(fv_ArgValue,6,1));
+					fv_Today = mid(fv_ArgValue,0,4) + lpad(nWeek,"0",2);
+					break;
+			case "D" :
+					fv_Today = fv_ArgValue;
+					break;
+			default  :
+		}
+	}
+
+	var strYY = mid(fv_Today,0,4);
+	var strMM = mid(fv_Today,4,2);
+	var strDD = mid(fv_Today,6,2);
+
+	fn_SetCalendar(strYY,strMM,strDD);
+}
+
+/*----------------------------------------------------------------------*/
+//  주차 찾기
+/*----------------------------------------------------------------------*/
+function fn_FindWeek(strYY,nWeek,weekSeq)
+{
+	var arrMonth = fv_arrMonth;
+	if(DateTime(toNumber(strYY),2,29) == "00000101") {
+		arrMonth[1] = 28;
+	} else {
+		arrMonth[1] = 29;
+	}
+	var nAddDay = 0;
+	//arrMonth[0] = arrMonth[0] + (GetDay(strYY+"0101")-1);
+	arrMonth[0] = arrMonth[0] + GetDay(strYY+"0101");
+	
+	for(var i=0;i<12;i++) {
+		nAddDay += arrMonth[i];
+		//if(toInteger(nAddDay/7) > nWeek) {		
+		//trace(i+1 + "월 : " + nAddDay + " : " + toInteger(nAddDay/7) + " > " + nWeek);
+		if(toInteger(nAddDay/7) >= nWeek) {
+		
+			if (weekSeq == "A") 
+				return i;
+			else
+				return i+1;
+		}
+	}
+	return 12;
+}
+
+/*----------------------------------------------------------------------*/
+//  Calendar Load
+/*----------------------------------------------------------------------*/
+function fn_TitleSet()
+{
+	if(fv_SundayPosition == "L") {
+		Static0.Text = "M";
+		Static1.Text = "T";
+		Static2.Text = "W";
+		Static3.Text = "T";
+		Static4.Text = "F";
+		Static5.Text = "S";
+		Static6.Text = "S";
+	} else {
+		Static0.Text = "S";
+		Static1.Text = "M";
+		Static2.Text = "T";
+		Static3.Text = "W";
+		Static4.Text = "T";
+		Static5.Text = "F";
+		Static6.Text = "S";
+	}
+}
+/*----------------------------------------------------------------------*/
+//  Calendar Load
+/*----------------------------------------------------------------------*/
+function fn_SetCalendar(strYY,strMM,strDD)
+{
+	Button0.SetFocus();
+	
+	var bSelMonth = false;
+	var bCurMonth = false;
+	if((mid(fv_Today,0,4) == strYY) && (mid(fv_Today,4,2) == strMM)) {
+		bSelMonth = true;
+	}
+	if((mid(GetDate(),0,4) == strYY) && (mid(GetDate(),4,2) == strMM)) {
+		bCurMonth = true;
+	}
+	
+	ds_calendar.ClearData();
+
+	var nLastDay = fv_arrMonth[toNumber(strMM)-1];
+	cb_mon.Index = toNumber(strMM)-1;
+	st_year.Text = strYY;
+	
+	if(toNumber(strMM) == 2) {
+		if(DateTime(toNumber(strYY),toNumber(strMM),29) == "00000101") {
+			nLastDay = 28;
+		} else {
+			nLastDay = 29;
+		}
+	}
+	
+	var nFDay = GetDay(strYY + strMM + "01");
+	if(fv_SundayPosition == "L") {
+		nFDay = decode(nFDay,0,7,nFDay);
+	} else{
+		nFDay++; // 시작일자 요일 
+	}
+	var svnFDay = nFDay;
+	var nLDay = GetDay(strYY + strMM + lpad(nLastDay,"0",2));
+	if(fv_SundayPosition == "L") {
+		nLDay = decode(nLDay,0,7,nLDay);
+	} else{
+		nLDay++;
+	}
+	
+	var nLineCnt = toInteger((31 + (nFDay-1) + (7-nLDay)) / 7);
+	var objDay,objWeek;
+	
+	var nSundayValue = 1;
+	if(fv_SundayPosition == "L") {
+		nSundayValue = 0;
+	} else {
+		nSundayValue = 1;
+	}
+	//------ day 초기화	
+	for(var i=1;i<=42;i++) {	
+		objDay = object("d" + i);
+		objDay.BKColor = "white";
+		objDay.Font = "Tahom,8";
+		objDay.Text = "";
+		objDay.Visible = false;
+		objDay.DisableColor = objDay.Color;
+		objDay.DisableBkColor = "white";
+		if(fv_DataFg != "D") {
+			objDay.Enable = false;
+		}
+	}
+	//----- week 초기화	
+	for(var i=1;i<=6;i++) {			
+		objWeek = object("w" + i);
+		objWeek.Visible = false;
+		objWeek.Text = "";
+		objWeek.DisableColor = objWeek.Color;
+		objWeek.DisableBkColor = "white";
+		if(fv_DataFg != "WAB") {
+			objWeek.Enable = false;
+		}
+	}
+
+	// dummy 자리
+	for(var i=1;i<nFDay;i++) {
+		objDay = object("d" + i);
+		objDay.Visible = true;
+	}
+	
+	var strSvDate;
+	var nCurLine;
+	for(var i=1;i<=nLastDay;i++) {
+		objDay = object("d" + nFDay);
+		objDay.Text = i;
+		if(((nFDay%7) == 1) || (i == 1)) {  //월요일이거나1일인경우 week
+			nCurLine++;
+			objWeek = object("w" + nCurLine);
+			if((i == 1) && (nFDay!=1)) {
+				strSvDate = AddDate(strYY + strMM + "01",-(nFDay-(nSundayValue+1)));
+				objWeek.Text = WeekNbr(mid(strSvDate,0,4),mid(strSvDate,4,2),toNumber(mid(strSvDate,6,2)));
+				objWeek.Text += "B";
+			} else {				
+				objWeek.Text = WeekNbr(strYY,strMM,i+nSundayValue);
+			}
+			objWeek.Visible = true;
+		}		
+		
+		// 오늘
+		if(bCurMonth) {
+			if(toNumber(mid(GetDate(),6,2)) == i) {
+				objDay.BKColor = "#FFF582";
+			}
+		}
+		// 넘어온 일자와 같은날
+		//if(bSelMonth) {
+			//if(toNumber(mid(fv_Today,6,2)) == i) {
+				//objDay.Font = "Tahom,8,Bold";
+				//objDay.SetFocus();
+			//}
+		//}
+		objDay.Visible = true;
+		nFDay++;
+	}
+	
+	// 마지막 주차의 마지막날이 토요일이 아니라면 
+	if (length(trim(object("d" + (nCurLine * 7)).Text)) == 0) {
+		objWeek.Text += "A";
+	}
+	
+	// dummy 자리
+	var nDum;
+	if(nFDay <= 29) {
+		nDum = 28;
+	} else if(nFDay <= 36) {
+		nDum = 35;
+	} else {
+		nDum = 42;
+	}
+	for(var i=(nLastDay+1);i<=nDum;i++) {
+		objDay = object("d" + i);
+		objDay.Visible = true;
+	}	
+}
+
+/*----------------------------------------------------------------------*/
+//  Work Week Check
+//	월요일 기준으로 계산됨
+/*----------------------------------------------------------------------*/
+function WeekNbr(year,month,day) {
+	year = toNumber(year);
+	month = toNumber(month);
+	
+	var a = toInteger((14-month) / 12);
+	var y = year + 4800 - a;
+	var m = month + 12 * a - 3;
+	var b = toInteger(y/4) - toInteger(y/100) + toInteger(y/400);
+	var J = day + toInteger((153 * m + 2) / 5) + 365 * y + b - 32045;
+	var d4 = (((J + 31741 - (J % 7)) % 146097) % 36524) % 1461;
+	var L = toInteger(d4 / 1460);
+	var d1 = ((d4 - L) % 365) + L;
+	var week = toInteger(d1/7) + 1;
+	
+	return week;
+} 
+
+
+/*----------------------------------------------------------------------*/
+//  Month Change
+/*----------------------------------------------------------------------*/
+var fv_PopupDiv1Open = false;
+function img_mon_OnClick(obj,nX,nY)
+{
+	var div_y = ClientToScreenY(obj, 16);
+	var div_x = ClientToScreenX(obj, 0);
+	
+	var nFindRow = ds_CalMonth.FindRow("Mon",st_mon.Text);
+	if(nFindRow >= 0) {
+		ds_CalMonth.Row = nFindRow;
+	}
+	
+	PopupDiv0.TrackPopup(div_x,div_y);
+}
+
+/*----------------------------------------------------------------------*/
+//  Day Click
+/*----------------------------------------------------------------------*/
+function DayClick(obj)
+{
+	if((fv_DataFg == "D") && (length(obj.text) > 0)) {
+		var strDate = st_year.Text + lpad(cb_mon.index+1,"0",2) + lpad(obj.Text,"0",2);
+		ClosePopup(strDate);
+	}
+}
+
+/*----------------------------------------------------------------------*/
+//  Week Click
+/*----------------------------------------------------------------------*/
+function WeekClick(obj)
+{
+	var selWeek = "";
+	var weekSeq = "";
+	if (pos(obj.text, "A") > -1) {
+		selWeek = replace(obj.text, "A", "");
+		weekSeq = "A";
+	} else if (pos(obj.text, "B") > -1) {
+		selWeek = replace(obj.text, "B", "");
+		weekSeq = "B";
+	} else {
+		selWeek = obj.text;
+		weekSeq = "";
+	}
+
+	if((fv_DataFg == "WAB") && (length(trim(selWeek)) > 0)) {
+	var strDate;
+		if((lpad(cb_mon.index+1,"0",2) =="12") && (left(selWeek, 1) =="1")) {
+			var str_Year = toNumber(st_year.Text) + 1;
+			strDate = toString(str_Year) + lpad(selWeek,"0",2) + weekSeq;
+		}else{
+			strDate = st_year.Text + lpad(selWeek,"0",2) + weekSeq;
+		}	
+		
+		ClosePopup(strDate);
+	}
+}
+
+function img_year_OnClick(obj,nX,nY)
+{
+	var nF = toNumber(st_year.Text) - 4;
+	var nL = toNumber(st_year.Text) + 5;
+	var nSeq = 0;
+	for(var i=nF;i<=nL;i++) {
+		ds_Year.SetColumn(nSeq,"year",i);
+		nSeq++;
+	}
+	
+	var div_y = ClientToScreenY(obj, 16);
+	var div_x = ClientToScreenX(obj, 0);
+	
+	PopupDiv1.TrackPopup(div_x,div_y);	
+}
+
+/*----------------------------------------------------------------------*/
+//  Pre Year
+/*----------------------------------------------------------------------*/
+function img_nextYear_OnClick(obj,nX,nY)
+{
+	var strYY = st_year.Text;
+	st_year.Text = toString(toNumber(strYY) + 1);
+	strYY = st_year.Text;
+
+	var nM = cb_mon.index + 1;
+	var strMM = lpad(nM,"0",2);
+	fn_SetCalendar(strYY,strMM,"");		
+}
+
+/*----------------------------------------------------------------------*/
+//  Next Year
+/*----------------------------------------------------------------------*/
+function im_preYear_OnClick(obj,nX,nY)
+{
+	var strYY = st_year.Text;
+	st_year.Text = toString(toNumber(strYY) - 1);
+	strYY = st_year.Text;
+
+	var nM = cb_mon.index + 1;
+	var strMM = lpad(nM,"0",2);
+	fn_SetCalendar(strYY,strMM,"");	
+}
+
+/*----------------------------------------------------------------------*/
+//  Pre Month
+/*----------------------------------------------------------------------*/
+function img_premon_OnClick(obj,nX,nY)
+{
+	var strYY = st_year.Text;
+	var nM = decode(cb_mon.index,0,12,cb_mon.index);
+	if(nM==12) {
+		st_year.Text = toString(toNumber(strYY) - 1);
+		strYY = st_year.Text;
+	}
+
+	var strMM = lpad(nM,"0",2);
+	fn_SetCalendar(strYY,strMM,"");
+}
+
+/*----------------------------------------------------------------------*/
+//  Next Month
+/*----------------------------------------------------------------------*/
+function img_nextmon_OnClick(obj,nX,nY)
+{
+	var strYY = st_year.Text;
+	var nM = decode(cb_mon.index,11,1,cb_mon.index+2);
+	if(nM==1) {
+		st_year.Text = toString(toNumber(strYY) + 1);
+		strYY = st_year.Text;
+	}
+	
+	var strMM = lpad(nM,"0",2);
+	fn_SetCalendar(strYY,strMM,"");
+}
+
+/*----------------------------------------------------------------------*/
+//  Combo 변경
+/*----------------------------------------------------------------------*/
+function cb_mon_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	var strYY = st_year.Text;
+	var nM = nNewIndex + 1;
+	var strMM = lpad(trim(nM),"0",2);
+	fn_SetCalendar(strYY,strMM,"");
+}
+
+/*----------------------------------------------------------------------*/
+//  Close
+/*----------------------------------------------------------------------*/
+function img_close_OnClick(obj,nX,nY)
+{
+	ClosePopup();
+}
+
+/*----------------------------------------------------------------------*/
+//  Close
+/*----------------------------------------------------------------------*/
+function form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 27) {
+		ClosePopup();
+	}
+}]]></Script>
+</Window>

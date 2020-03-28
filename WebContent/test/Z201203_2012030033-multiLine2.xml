@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="543" Id="form" Left="8" PidAttrib="7" Title="New&#32;Form" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0">
+				<Contents>
+					<colinfo id="column0" size="256" summ="default" type="STRING"/>
+					<record>
+						<column0>서울시&#32;강남구&#32;삼성동&#32;인탑스&#32;빌딩&#32;기술지원센터&#32;1588-7895.co.kr&#32;연락부탁드립니다</column0>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid BindDataset="Dataset0" BkColor2="default" BoldHead="true" Bottom="264" Enable="true" EndLineColor="default" Height="128" Id="Grid0" InputPanel="FALSE" Left="88" LineColor="default" Right="248" TabOrder="1" TabStop="true" Top="136" UseAutoSizing="Row" UseDBuff="true" UseExSizing="Row" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="160">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="152"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="column0"/>
+					</head>
+					<body>
+						<cell col="0" colid="column0" display="text" multiline="true" wordwrap="exchar"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="92" Id="Static0" Left="288" TabOrder="2" Text="속성&#13;&#10;multiline&#32;=&#32;true&#13;&#10;wordwrap&#32;=exchar&#13;&#10;&#13;&#10;useAutoSizing&#32;=row&#13;&#10;useExsizing&#32;=row&#13;&#10;&#13;&#10;" Top="136" Width="146"></Static>
+	</Form>
+	<Script><![CDATA[ ]]></Script>
+</Window>

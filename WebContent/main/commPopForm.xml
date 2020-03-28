@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="760" Id="commPopForm" Left="8" OnLoadCompleted="commForm_OnLoadCompleted" OnSize="commPopForm_OnSize" OnUnloadCompleted="commForm_Unloading" PidAttrib="7" Title="작업창(팝업)" Top="8" Ver="1.0" Width="1050" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_commBtn">
+				<Contents>
+					<colinfo id="ID" size="256" type="STRING"/>
+					<colinfo id="TEXT" size="256" type="STRING"/>
+					<colinfo id="IMAGEID" size="256" type="STRING"/>
+					<colinfo id="WIDTH" size="256" type="STRING"/>
+					<colinfo id="TABORDER" size="256" type="STRING"/>
+					<colinfo id="VISIBLE" size="256" type="STRING"/>
+					<record>
+						<ID>SEARCH</ID>
+						<IMAGEID></IMAGEID>
+						<TABORDER>900</TABORDER>
+						<TEXT>조회</TEXT>
+						<VISIBLE></VISIBLE>
+						<WIDTH></WIDTH>
+					</record>
+					<record>
+						<ID>UPDATE</ID>
+						<IMAGEID></IMAGEID>
+						<TABORDER>910</TABORDER>
+						<TEXT>수정</TEXT>
+						<VISIBLE></VISIBLE>
+						<WIDTH></WIDTH>
+					</record>
+					<record>
+						<ID>INSERT</ID>
+						<IMAGEID></IMAGEID>
+						<TABORDER>920</TABORDER>
+						<TEXT>추가</TEXT>
+						<VISIBLE></VISIBLE>
+						<WIDTH></WIDTH>
+					</record>
+					<record>
+						<ID>SAVE</ID>
+						<IMAGEID></IMAGEID>
+						<TABORDER>930</TABORDER>
+						<TEXT>저장</TEXT>
+						<VISIBLE></VISIBLE>
+						<WIDTH></WIDTH>
+					</record>
+					<record>
+						<ID>DELETE</ID>
+						<IMAGEID></IMAGEID>
+						<TABORDER>940</TABORDER>
+						<TEXT>삭제</TEXT>
+						<VISIBLE></VISIBLE>
+						<WIDTH></WIDTH>
+					</record>
+					<record>
+						<ID>PRINT</ID>
+						<IMAGEID></IMAGEID>
+						<TABORDER>950</TABORDER>
+						<TEXT>인쇄</TEXT>
+						<VISIBLE></VISIBLE>
+						<WIDTH></WIDTH>
+					</record>
+					<record>
+						<ID>EXCEL</ID>
+						<IMAGEID></IMAGEID>
+						<TABORDER>960</TABORDER>
+						<TEXT>엑셀</TEXT>
+						<VISIBLE></VISIBLE>
+						<WIDTH></WIDTH>
+					</record>
+					<record>
+						<ID>CLOSE</ID>
+						<IMAGEID></IMAGEID>
+						<TABORDER>970</TABORDER>
+						<TEXT>닫기</TEXT>
+						<VISIBLE></VISIBLE>
+						<WIDTH></WIDTH>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="31" Id="img_topBg" ImageID="A_Body_TopBg_02" Left="36" TabOrder="8" Top="6" Width="995"></Image>
+		<Image Height="31" Id="img_topBgL" ImageID="A_Body_TopBg_01" Left="8" TabOrder="7" Top="6" Width="28"></Image>
+		<Static Border="None" Font="굴림,10,Bold" Height="25" Id="stc_path" Left="96" TabOrder="4" Top="8" VAlign="Middle" Width="52"></Static>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_Close" ImageID="A_BtnCom2W_ESC" Left="952" LeftMargin="40" OnClick="btn_Close_OnClick" RightMargin="5" Style="Btn_Com" TabOrder="2" TabStop="FALSE" Text="닫기" Top="12" Width="67"></Button>
+		<Static Height="20" Id="st_title" Left="39" Style="Stc_BodyTitle" TabOrder="3" Text="화면명" Top="15" Width="97"></Static>
+		<FileDialog Bottom="40" Height="24" Id="FileDialog_Excel" Left="1056" Right="1080" TabOrder="14" Top="16" Width="24"></FileDialog>
+		<Split BKColor="blue" Direct="VERT" Height="2" Id="splVert" Left="985" Top="747" Visible="FALSE" Width="50">
+			<Contents>
+				<LeftOrTop>
+					<Bind BindType="Resize" CompID="img_midBgL"/>
+					<Bind BindType="Resize" CompID="img_midBgR"/>
+					<Bind BindType="Move" CompID="img_bottomBgL"/>
+					<Bind BindType="Move" CompID="img_bottomBg"/>
+					<Bind BindType="Move" CompID="img_bottomBgR"/>
+					<Bind BindType="Resize" CompID="divApp"/>
+				</LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+		<Split BKColor="red" Height="66" Id="splHorz" Left="1035" Top="678" Visible="FALSE" Width="2">
+			<Contents>
+				<LeftOrTop>
+					<Bind BindType="Move" CompID="img_topBgR"/>
+					<Bind BindType="Move" CompID="img_midBgR"/>
+					<Bind BindType="Move" CompID="img_bottomBgR"/>
+					<Bind BindType="Move" CompID="btn_Close"/>
+					<Bind BindType="Resize" CompID="img_topBg"/>
+					<Bind BindType="Resize" CompID="divApp"/>
+					<Bind BindType="Resize" CompID="img_bottomBg"/>
+				</LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+		<Image Height="31" Id="img_topBgR" ImageID="A_Body_TopBg_03" Left="1022" TabOrder="9" Top="6" Width="11"></Image>
+		<Image FillType="STRETCH" Height="700" Id="img_midBgL" ImageID="A_Body_CenterBg_01" Left="8" TabOrder="10" Top="37" Width="8"></Image>
+		<Image FillType="STRETCH" Height="700" Id="img_midBgR" ImageID="A_Body_CenterBg_02" Left="1025" TabOrder="11" Top="37" Width="8"></Image>
+		<Div Height="690" Id="divApp" Left="18" OnDeactivate="divApp_OnDeactivate" SyncContents="true" TabOrder="1" Text="Div3" Top="47" Width="1000">
+			<Contents></Contents>
+		</Div>
+		<Image Height="10" Id="img_bottomBgL" ImageID="A_Body_BottomBg_01" Left="8" TabOrder="12" Top="736" Width="11"></Image>
+		<Image FillType="STRETCH" Height="10" Id="img_bottomBg" ImageID="A_Body_BottomBg_02" Left="16" TabOrder="13" Top="736" Width="1006"></Image>
+		<Image Height="10" Id="img_bottomBgR" ImageID="A_Body_BottomBg_03" Left="1022" TabOrder="14" Top="736" Width="11"></Image>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : frmLeftMenu(좌측메뉴)
+* 작성자     : 이용재
+* 작성일     : 2013-01-22 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-22       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID			= "";
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= ""; 
+
+//var ARG_URL = "";
+//var ARG_MENUID = "";
+//var ARG_TITLE = "";
+
+var gv_cuurentFunctions;
+
+
+
+
+// 공통버튼 
+var arrImgId = ["A_BtnCom_2W","A_BtnCom_3W","A_BtnCom_4W","A_BtnCom_5W","A_BtnCom_6W","A_BtnCom_7W","A_BtnCom_8W"];
+var arrImgId_f = ["A_BtnCom2W_F2", "A_BtnCom2W_F3", "A_BtnCom2W_F4", "A_BtnCom2W_F5", "A_BtnCom2W_F6"];
+var arrImgWidth = ["50","61","72","83","94","105","116"];
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-1. 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_initForm()
+{
+	if(g_nX == "" || g_nX < FORM_X) g_nX = FORM_X;
+	if(g_nY == "" || g_nY < FORM_Y) g_nY = FORM_Y;
+
+	divApp.Url = P_URL;
+	this.title = P_TITLE;
+	//st_Title.Text = ARG_TITLE+" ["+ARG_URL+"]";
+	st_Title.Text = P_TITLE;
+	formHandle = this.gethandle();
+	DocStatus.fn_AddButton(P_MENUID, P_TITLE, formHandle);	
+
+	//공통버튼 생성
+	//fn_commBtnAdd();	
+
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+/***********************************************************************
+ 공통 버튼 생성
+***********************************************************************/
+function fn_commBtnAdd()
+{
+	var gdsObj = object("gds_function");
+	
+	gv_cuurentFunctions = object("tempDs_"+GetTopWindow().id);
+	if(gv_cuurentFunctions == null){
+		Create("Dataset","tempDs_"+GetTopWindow().id);
+		gv_cuurentFunctions = object("tempDs_"+GetTopWindow().id);
+	}else{
+		gv_cuurentFunctions.ClearData();
+	}
+
+	if(Find("tempDs_"+GetTopWindow().id)== null){
+		Create("Dataset","tempDs_"+GetTopWindow().id);
+		gv_cuurentFunctions = object("tempDs_"+GetTopWindow().id);
+	}else{
+		gv_cuurentFunctions = object("tempDs_"+GetTopWindow().id);
+		gv_cuurentFunctions.ClearData();
+	}
+	gv_cuurentFunctions.CopyF(gds_function);
+	
+	var vRowCnt = gdsObj.rowcount;
+	if(vRowCnt < 1)	return;
+	
+	var f_btnId = "";
+	var f_btnText = "";
+	var f_btnTextLen = 0;
+	var f_imgId = "";
+	var f_width = 0;
+	var f_left = 0;
+	var f_right = btn_Close.Left - 4 ;// 기준 X좌표 //this.width - 10; //810;
+	var f_mid = 4;	//버튼 사이 간격
+	var f_Horz = "<Contents><LeftOrTop>";
+	var functionImageLeftMargin = "";
+	for(var i=(vRowCnt-1); i>=0; i--){
+		f_btnId = "btn_comm"+toUpper(gdsObj.GetColumn(i, "BTN_ID"));
+		f_btnText = gdsObj.GetColumn(i, "BTN_NM");
+
+		f_btnTextLen = length(f_btnText);
+		if(f_btnTextLen < 2)		f_btnTextLen = 2;
+		else if(f_btnTextLen > 8)	f_btnTextLen = 8;
+
+		if(IndexOf(f_btnText, "::") > -1){		//Function Key 걸려있는 버튼
+			var imageIndex = left(substr(f_btnText,1,1));	//F1 ~ F9
+			f_imgId = arrImgId_f[parseInt(imageIndex)-2];
+			f_width = "67";
+			f_btnText = substr(f_btnText ,IndexOf(f_btnText, "::")+2, length(f_btnText));
+			functionImageLeftMargin = " LeftMargin=" + quote(35);
+		}else{								//Function Key 없는 버튼
+			f_imgId = arrImgId[f_btnTextLen-2];
+			f_width = arrImgWidth[f_btnTextLen-2];
+			functionImageLeftMargin = " LeftMargin=" + quote(20);
+		}
+
+		f_function = gdsObj.GetColumn(i, "EVENT_NM");	//버튼 함수명
+		
+		
+		//trace("func="+f_function);
+		
+		f_left = f_right - toNumber(f_width);
+		Create("button", 
+		       f_btnId,
+			   "Top='12' Height='20' ButtonStyle='true' OnClick='fn_CommBtnOnClick'"
+			   + " Style='Btn_Com' LeftMargin='20' RightMargin='5'"
+			   + " Text=" + quote(f_btnText)
+			   + " UserData=" + quote(f_function)
+//			   + " TabOrder=" + quote(sOrder)
+			   + " ImageID=" + quote(f_imgId)
+			   + " Width=" + quote(f_width)
+			   + " Left=" + quote(f_left)
+			   + " Cursor=" + quote("HAND")
+			   + " TabStop=" + quote("false")
+			   + functionImageLeftMargin
+			   );
+		f_right = f_left - f_mid;	   
+
+		f_Horz += "<Bind BindType='Move' CompID="+quote(f_btnId)+"/>";
+		
+	}
+	f_Horz += "<Bind BindType='Move' CompID='btn_Close'/>";
+	f_Horz += "<Bind BindType='Resize' CompID='divApp'/>";
+	f_Horz += "<Bind BindType='Move' CompID='img_topBgR'/>";
+	f_Horz += "<Bind BindType='Move' CompID='img_midBgR'/>";
+	f_Horz += "<Bind BindType='Move' CompID='img_bottomBgR'/>";
+	f_Horz += "<Bind BindType='Resize' CompID='img_topBg'/>";
+	f_Horz += "<Bind BindType='Resize' CompID='img_bottomBg'/>";
+	f_Horz += "</LeftOrTop><RightOrBottom></RightOrBottom></Contents>";
+	splHorz.Contents = f_Horz;	//생성한 버튼 resize로 split contents 재생성
+
+}
+
+
+function fn_CommBtnOnClick(obj)
+{
+	var f_funNm = obj.UserData;
+	
+	if(length(f_funNm) > 0)
+	{
+		if(divApp.IsExistFunc(f_funNm,true)) 
+		{
+			CallScript("divApp." + f_funNm + "(" + obj.id + ")");
+		}
+	}
+}
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.화면크기 조정
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1. 화면 Load 완료시 실행 스크립트  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function commForm_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function commForm_Unloading(obj)
+{
+	gfn_OnBeforeExit();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-3.화면 크기변환시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function commPopForm_OnSize(obj,nCx,nCy,nState)
+{
+	
+	/*
+	if(nCx < COMM_X || nCy < COMM_Y){
+		nCx = COMM_X;
+		nCy = COMM_Y;
+	}
+	*/
+	
+	gfn_SplitOnSize(splHorz, splVert, obj, nCx, nCy, nState);	
+	
+	g_nX = divApp.Width;
+	g_nY = divApp.Height;
+	
+	if(g_nX < FORM_X)	g_nX = FORM_X;
+	if(g_nY < FORM_Y)	g_nY = FORM_Y;
+
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+function commForm_OnActivate(obj) {
+	DocStatus.fn_OnActivate(this.id);
+	//각 form에 OnActivate 이벤트 발생하기 위해 fn_OnActivate생성
+	// fn_OnActivate()에서 form_OnActivate() 호출
+	if(divApp.IsExistFunc("fn_OnActivate")) {
+		CallScript("divApp.fn_OnActivate()");
+	}	
+}
+
+
+
+function btn_Close_OnClick(obj)
+{
+	/*
+	이건 개별화면에 Form_unload 시 적용
+	if(divApp.fn_check_unsave() == true)
+	{
+		if(gfn_popup_message("modal", "ico_info", "저장되지 않은 항목이 있습니다. 저장하시겠습니까?", "확인"))
+		{
+			divApp.fn_save();
+		}
+		else
+		{
+			this.Close();
+		}
+	}
+	else 
+	{
+		this.Close();
+	}
+	*/
+	
+	this.Close();
+	
+}
+
+function commForm_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+	gfn_formOnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam);	
+}
+
+
+function divApp_OnDeactivate(obj)
+{
+	gfn_commMsg("", "");	//화면 바뀔때마다 메세지 초기화	
+}
+
+// 비활성화시 저장  호출한다.
+// 비활성화시 호출하면 안된다. (팝업창에 포커스 갈때마다 비활성화 호출 뜨므로 대안 강구해야됨)
+function commForm_OnDeactivate(obj)
+{
+	//if(divApp.IsExistFunc("fn_save")) {
+	//	CallScript("divApp.fn_save()");
+	//}	
+}
+
+
+]]></Script>
+</Window>

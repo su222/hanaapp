@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="336" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="그리드&#32;정렬" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="304" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_sortlist" OnColumnChanged="ds_sortlist_OnColumnChanged">
+				<Contents>
+					<colinfo id="col_id" size="20" type="STRING"/>
+					<colinfo id="col_sort" size="1" type="STRING"/>
+					<colinfo id="col_seq" size="2" type="INT"/>
+					<colinfo id="col_nm" size="256" type="STRING"/>
+					<colinfo id="col_index" size="2" type="INT"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_sort">
+				<Contents>
+					<colinfo id="code" size="256" summ="default" type="STRING"/>
+					<colinfo id="name" size="256" summ="default" type="STRING"/>
+					<record>
+						<code>N</code>
+						<name></name>
+					</record>
+					<record>
+						<code>A</code>
+						<name>오름차순</name>
+					</record>
+					<record>
+						<code>D</code>
+						<name>내림차순</name>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button1" ImageID="Btn_pop_2w" Left="88" LeftMargin="13" OnClick="btn_ok_OnClick" Style="Btn_Com" TabOrder="1" Text="정렬" Top="304" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button2" ImageID="Btn_pop_2w" Left="160" LeftMargin="13" OnClick="btn_cancel_OnClick" Style="Btn_Com" TabOrder="2" Text="닫기" Top="304" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_sortlist" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="294" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="288" Id="Grid_sort" InputPanel="FALSE" Left="8" LineColor="default" LineType="OnlyVERT" MinWidth="100" Right="296" RowHeight="20" Style="Grid_2" TabOrder="3" TabStop="true" Top="6" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="288">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="106"/>
+						<col width="101"/>
+						<col width="96"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="text" text="flag"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="1" color="user42" display="text" text="row_id"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="2" color="user42" display="text" text="operator"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="3" color="user42" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="4" color="user42" combocol="code" combodataset="ds_INDS_GB" combotext="value" display="text" text="항목"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="5" color="user42" display="text" text="정렬&#32;구분"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="6" color="user42" display="text" text="우선순위"/>
+					</head>
+					<body>
+						<cell col="0" colid="flag" display="text" edit="normal"/>
+						<cell col="1" colid="row_id" display="text" edit="normal" expandsize="0"/>
+						<cell col="2" colid="operator" display="text"/>
+						<cell align="center" col="3" colid="chk" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="4" colid="col_id" display="text"/>
+						<cell align="center" col="5" colid="col_sort" combocol="code" combodataset="ds_sort" combotext="name" display="combo" edit="combo"/>
+						<cell align="center" col="6" colid="col_seq" display="number" edit="integer"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[var ds_grid;
+
+
+function form_OnLoadCompleted(obj)
+{
+	var nRow;
+	// ds_grid = object("Grid1");  //Paretn의 Grid명을 읽어온다.
+	
+	var nColnm, nCol;	
+	nCol = parent.object(arg_grid).GetColCount();
+	
+	Grid_sort.Redraw = false;
+	
+	//for(i=0; i<nCol; i++)
+	for(i=startColum; i<nCol; i++) // 체크박스 등을 안보이게 한다.
+	{
+		nRow = ds_sortlist.AddRow();
+		nColnm = replace(replace(parent.object(arg_grid).GetCellProp("head",i,"text"),"▲"),"▼");
+		
+		//ds_grid.GetCellProp("head",i,"text");
+		
+		ds_sortlist.SetColumn(nRow, "col_id", nColnm);
+		ds_sortlist.SetColumn(nRow, "col_nm", parent.object(arg_grid).GetCellProp("body",i,"colid"));
+		ds_sortlist.SetColumn(nRow, "col_sort", "N");
+		ds_sortlist.SetColumn(nRow, "col_index", i);
+	}
+	
+	ds_sortlist.row = 0;
+	Grid_sort.Redraw = true;
+}
+
+var fb_work = false;
+
+function ds_sortlist_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue)
+{
+	var ll_maxseq;
+	
+	if ( fb_work ) return;
+	
+	fb_work = true;
+	
+	if ( strColumnID == "col_sort")
+	{
+		if ( varNewValue == "N" )
+		{
+			ds_sortlist.SetColumn(nRow, "col_seq", null);
+		}
+		else
+		{
+			//trace("col_seq : " + ds_sortlist.Max("col_seq") );
+			if ( varOldValue == "N" )
+			{
+				ll_maxseq = (ds_sortlist.Max("tonumber(col_seq)")) + 1;
+				ds_sortlist.SetColumn(nRow, "col_seq", ll_maxseq);
+			}
+		}
+	} else if ( strColumnID == "col_seq" )
+	{
+		//ds_sortlist.SetColumn(nRow, "col_seq", "");
+	}
+	
+	fb_work = false;
+}
+
+function btn_ok_OnClick(obj)
+{
+	var strTitle, arg_str = "";
+	var int_cell, nCnt, strSort;
+	
+	nCnt = ds_sortlist.rowcount;
+	
+	ds_sortlist.Sort("col_seq",true);	
+	for ( i=0; i<nCnt; i++ )
+	{
+		strSort = ds_sortlist.GetColumn(i, "col_sort");
+		int_cell = ds_sortlist.GetColumn(i, "col_index");
+		strTitle = ds_sortlist.GetColumn(i, "col_id");
+		
+		if ( strSort <> "N" )
+		{
+			if ( arg_str <> "" ) arg_str += ",";
+			arg_str += ds_sortlist.GetColumn(i, "col_nm") + ":" + strSort;
+			
+			// Head Sort 표시 추가..
+			if ( strSort == "A" )
+				parent.object(arg_grid).SetCellProp("head",int_cell,"text",strTitle+"▲");
+			else
+				parent.object(arg_grid).SetCellProp("head",int_cell,"text",strTitle+"▼");
+		} else
+			parent.object(arg_grid).SetCellProp("head",int_cell,"text",strTitle);
+	}
+	if(strDivFlag)
+	{
+	//Popupdiv로 오픈한 경우 사용 
+		closePopUp(arg_str);
+	} else {
+	//Dialog인 경우 사용
+		close(arg_str);   
+	}
+	
+}  
+
+function btn_cancel_OnClick(obj)
+{
+	if(strDivFlag)
+	{
+	//Popupdiv로 오픈한 경우 사용 
+		closePopUp("");
+	} else {
+	//Dialog인 경우 사용
+		close("");   
+	}
+
+}
+  
+
+function Button1_OnClick(obj)
+{
+	
+}
+]]></Script>
+</Window>

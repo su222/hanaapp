@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>NICEPAY :: 전자결제 시스템</title>
+<link rel="stylesheet" href="/css/nicepay/basic.css" type="text/css" />
+<link rel="stylesheet" href="/css/nicepay/style.css" type="text/css" />
+<script language="javascript">
+<!--
+function goPay() {
+	var payURL = './nicepayRequest.jsp';
+	location.href = payURL;
+}
+
+function goCancelPay() {
+	var cxlURL = './mainCancelPay.jsp';
+	location.href = cxlURL;
+}
+
+-->
+</script>
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+   	  <td align="center" valign="middle">
+        	<table width="632px" height="296px" cellpadding="0" cellspacing="0">
+            	<tr>
+                	<td align="left" valign="top" background="/images/nicepay/index.gif"><table width="632" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="65" height="160">&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td height="20">&nbsp;</td>
+                        <td align="left" valign="middle"><img src="/images/nicepay/indexbullet.gif" class="indexbullet" /><a href="javascript:goPay();">결제요청</a></td>
+                      </tr>
+                      <tr>
+                        <td height="20">&nbsp;</td>
+                        <td align="left" valign="middle"><img src="/images/nicepay/indexbullet.gif" class="indexbullet" /><a href="javascript:goCancelPay();">취소요청</a></td>
+                      </tr>
+                     
+                    </table></td>
+                </tr>
+            </table>
+      </td>
+    </tr>
+</table>
+</body>
+</html>

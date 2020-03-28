@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_MENU_BAS : 메뉴등 -->
+<mapper namespace="co.hanaapp.dao.cc.CCMainDAO">
+
+    <!-- 전체 메뉴 가져오기 -->
+     <select id="selectMenu" parameterType="map" resultType="map">
+     
+        SELECT /* 권한별 메뉴 조회*/
+               NVL(A.MENU_ID,' ') AS MENU_ID, 
+               NVL(A.MENU_NM,' ') AS MENU_NM, 
+               NVL(A.MENU_GBN,' ') AS MENU_GBN, 
+               NVL(A.UP_MENU_ID,' ') AS UP_MENU_ID, 
+               NVL(A.MENU_LVL,'-99999') AS MENU_LVL, 
+               NVL(A.IMG_ID,' ') AS IMG_ID,
+               NVL(A.IMG_WIDTH,'-99999') AS IMG_WIDTH, 
+               NVL(A.MENU_URL,' ') AS MENU_URL
+          FROM TB_CC_MENU_BAS A, TB_CC_USER_LST B, TB_CC_PMSMENU_LST C
+         WHERE A.MENU_ID = C.MENU_ID
+           AND B.PMS_GBN = C.PMS_CD 
+           AND A.USE_YN = 'Y'
+           AND B.USR_ID = #{S_USR_ID, jdbcType=VARCHAR}
+         ORDER BY A.SORT_NO, A.MENU_ID  
+
+    </select>
+    
+     <!-- 금일사건 가져오기 -->
+     <select id="selectTodayCnt" parameterType="map" resultType="map">
+     
+        SELECT /* 금일사건 현황 */ 
+               count(*) as CNT
+          from TB_AC_AFFAIR_MST
+         WHERE AFF_ST_DT BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE) + 0.99999
+
+    </select>
+    
+    
+
+    <!-- 경고현황 가져오기 -->
+     <select id="selectWrnLst" parameterType="map" resultType="map">
+     
+		SELECT FC_CC_GET_CODENAME('EQ18',A.WRN_GBN) AS WRN_NM,
+		       COUNT(*) AS CNT
+		  FROM TB_EQ_WARN_BAS A, 
+		       (SELECT WRN_CD,
+		               WRN_OCC_DT
+		          FROM TB_EQ_WARN_HST
+		         WHERE WRN_OCC_DT BETWEEN TRUNC(SYSDATE) AND TRUNC(SYSDATE) + 0.99999
+		         GROUP BY WRN_CD, WRN_OCC_DT 
+		        ) B
+		 WHERE A.WRN_CD = B.WRN_CD
+		  GROUP BY A.WRN_GBN
+		  ORDER BY A.WRN_GBN 
+
+    </select>
+
+
+
+    <!-- 보온재건조상태 가져오기 -->
+     <select id="selectLagDrySts" parameterType="map" resultType="map">
+     
+		SELECT LAG_DRY_STS_NM  AS LAG_DRY_STS_NM,
+		       CNT
+		  FROM (SELECT /* 보온재건조상태 */
+                       LAG_DRY_STS,
+                       FC_CC_GET_CODENAME('DT04', LAG_DRY_STS) AS LAG_DRY_STS_NM,
+                       COUNT(LAG_DRY_STS) AS CNT
+                  FROM TB_EQ_LOOP_LST
+                 WHERE BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+                   AND LAG_DRY_STS IS NOT NULL
+                 GROUP BY LAG_DRY_STS, FC_CC_GET_CODENAME('DT04', LAG_DRY_STS)
+               
+		      ) A     
+		ORDER BY LAG_DRY_STS  DESC    
+
+
+    </select>
+
+
+    <!-- 감지선상태 가져오기 -->
+     <select id="selectCblSts" parameterType="map" resultType="map">
+     
+		SELECT CBL_STS_NM  AS CBL_STS_NM,
+		       CNT
+		  FROM (SELECT /* 감지선상태 */
+                       CBL_STS,
+                       FC_CC_GET_CODENAME('DT05', CBL_STS) AS CBL_STS_NM,
+                       COUNT(CBL_STS) AS CNT
+                  FROM TB_EQ_LOOP_LST
+                 WHERE BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+                   AND CBL_STS IS NOT NULL
+                 GROUP BY CBL_STS, FC_CC_GET_CODENAME('DT05', CBL_STS)
+               
+		      ) A     
+		ORDER BY CBL_STS  DESC    
+
+
+    </select>
+
+
+
+    <!-- 통신 가져오기 -->
+     <select id="selectCmnSts" parameterType="map" resultType="map">
+     
+		SELECT CMN_STS_NM  AS CMN_STS_NM,
+		       CNT
+		  FROM (SELECT /* 통신상태 */
+                       CMN_STS,
+                       FC_CC_GET_CODENAME('DT06', CMN_STS) AS CMN_STS_NM,
+                       COUNT(CMN_STS) AS CNT
+                  FROM TB_EQ_LOOP_LST
+                 WHERE BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+                   AND CMN_STS IS NOT NULL
+                 GROUP BY CMN_STS, FC_CC_GET_CODENAME('DT06', CMN_STS)
+               
+		      ) A     
+		ORDER BY CMN_STS  DESC     
+
+
+    </select>
+
+
+    <!-- 장비 가져오기 -->
+     <select id="selectDvcGbn" parameterType="map" resultType="map">
+     
+		SELECT DVC_GBN_NM AS DVC_GBN_NM,
+		       CNT
+		  FROM (SELECT /* 장비현황 */
+		               B.TXT_VAL1 AS DVC_GBN_NM,               
+		               COUNT(DVC_GBN) AS CNT
+		          FROM TB_EQ_DEVICE_LST A, TB_CC_CODE_DTL B
+		         WHERE A.DVC_GBN = B.DTL_CD
+		           AND B.MST_CD = 'EQ04'
+		           AND A.BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+		           AND A.DVC_GBN IS NOT NULL
+		           AND B.TXT_VAL1 IS NOT NULL
+		         GROUP BY B.TXT_VAL1
+		      ) A     
+		ORDER BY DVC_GBN_NM       
+
+
+    </select>
+
+
+    <!-- 위험도 가져오기 -->
+     <select id="selectTotGde" parameterType="map" resultType="map">
+     
+		SELECT TOT_GDE_NM  AS TOT_GDE_NM,
+		       CNT
+		  FROM (SELECT /* 위험도 */
+                       TOT_GDE,
+                       FC_CC_GET_CODENAME('AN03', TOT_GDE) AS TOT_GDE_NM,
+                       COUNT(TOT_GDE) AS CNT
+                  FROM TB_EQ_LOOP_LST
+                 WHERE BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+                   AND TOT_GDE IS NOT NULL
+                 GROUP BY TOT_GDE, FC_CC_GET_CODENAME('AN03', TOT_GDE)
+               
+		      ) A     
+		ORDER BY TOT_GDE  DESC    
+
+
+    </select>
+
+
+    <!-- 절연레벨현황 가져오기 -->
+     <select id="selectIslLvl" parameterType="map" resultType="map">
+     
+         SELECT /* 절연레벨 */
+               ISL_LVL,
+               FC_ID_GET_LVLNAME(ISL_LVL) AS ISL_LVL_NM,
+               COUNT(*) AS CNT
+          FROM TB_EQ_LOOP_LST
+         WHERE BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+           AND LAG_DRY_STS IS NOT NULL
+         GROUP BY ISL_LVL,
+               FC_ID_GET_LVLNAME(ISL_LVL)
+         ORDER BY ISL_LVL   
+
+    </select>
+
+</mapper>

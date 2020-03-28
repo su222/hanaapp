@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="536" Id="CPAB05P01" Left="8" OnKeyDown="CPAB05P01_OnKeyDown" OnLoadCompleted="CPAB05P01_OnLoadCompleted" OnUnloadCompleted="CPAB05P01_OnUnloadCompleted" PidAttrib="7" Title="사건채권사선택" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="464" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="PDS_BOND_LST">
+				<Contents>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIZ_PRT_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_SAVE_FILE1" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_SAVE_FILE2" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACP_MTD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REG_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DT_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="JMN_OPN_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_BAR" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_RAD_BANK_NOTE">
+				<Contents>
+					<colinfo id="DTL_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DTL_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<DTL_CD>0</DTL_CD>
+						<DTL_NM>없음</DTL_NM>
+					</record>
+					<record>
+						<DTL_CD>2</DTL_CD>
+						<DTL_NM>2년</DTL_NM>
+					</record>
+					<record>
+						<DTL_CD>3</DTL_CD>
+						<DTL_NM>3년</DTL_NM>
+					</record>
+					<record>
+						<DTL_CD>1</DTL_CD>
+						<DTL_NM>1년</DTL_NM>
+					</record>
+					<record>
+						<DTL_CD>9</DTL_CD>
+						<DTL_NM>기타</DTL_NM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_RAD_CARD_NOTE">
+				<Contents>
+					<colinfo id="DTL_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DTL_NM" size="256" summ="default" type="STRING"/>
+					<record>
+						<DTL_CD>0</DTL_CD>
+						<DTL_NM>없음</DTL_NM>
+					</record>
+					<record>
+						<DTL_CD>2</DTL_CD>
+						<DTL_NM>2년</DTL_NM>
+					</record>
+					<record>
+						<DTL_CD>3</DTL_CD>
+						<DTL_NM>3년</DTL_NM>
+					</record>
+					<record>
+						<DTL_CD>1</DTL_CD>
+						<DTL_NM>1년</DTL_NM>
+					</record>
+					<record>
+						<DTL_CD>9</DTL_CD>
+						<DTL_NM>기타</DTL_NM>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user7" Bottom="154" Height="52" Id="Shape_edit" Left="9" LineColor="user61" Right="451" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="23" Top="102" Type="RoundRect" Width="442"></Shape>
+		<Shape BKColor="user21" Bottom="96" Height="40" Id="Shape4" Left="10" LineColor="user22" Right="454" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="0" Top="56" Type="RoundRect" Width="444"></Shape>
+		<Grid AutoEnter="TRUE" BindDataset="PDS_BOND_LST" BkColor2="user45" BkSelColor="user44" BoldHead="FALSE" Border="Flat" Bottom="497" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="337" Id="GRD_BOND_LST" InputPanel="FALSE" Left="8" LineColor="default" LineType="OnlyVERT" OnCellDBLClick="GRD_BOND_LST_OnCellDblClick" OnEnterDown="GRD_BOND_LST_OnEnterDown" OnHeadClick="GRD_BOND_LST_OnHeadClick" Right="452" RowHeight="20" Style="Grid" TabOrder="1" TabStop="true" Top="160" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="444">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="230"/>
+						<col width="100"/>
+						<col width="60"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+					</columns>
+					<head>
+						<cell bkcolor="user41" bkimagealign="stretch" col="0" color="user42" display="text" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="1" color="user42" display="text" InputZeroTime="true" text="회사코드"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="2" color="user42" display="text" InputZeroTime="true" text="채권사코드"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="3" color="user42" display="text" InputZeroTime="true" text="채권사명"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="4" color="user42" display="text" InputZeroTime="true" text="전화"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="5" color="user42" display="text" InputZeroTime="true" text="접수방법"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="6" color="user42" display="text" InputZeroTime="true" text="사업자"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="7" color="user42" display="text" InputZeroTime="true" text="양식파일"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="8" color="user42" display="text" InputZeroTime="true" text="FILE1"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="9" color="user42" display="text" InputZeroTime="true" text="FILE2"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="10" color="user42" display="text" InputZeroTime="true" text="출력방식"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="left" col="1" colid="BRCH_ID" display="text" InputZeroTime="true"/>
+						<cell align="left" col="2" colid="BND_SEQ" display="text" InputZeroTime="true"/>
+						<cell align="left" col="3" colid="BND_NM" display="text" InputZeroTime="true"/>
+						<cell align="left" col="4" colid="BND_TEL" display="text" InputZeroTime="true"/>
+						<cell align="center" col="5" colid="ACP_MTD" display="combo" InputZeroTime="true"/>
+						<cell align="left" col="6" colid="BIZ_PRT_YN" display="text" InputZeroTime="true"/>
+						<cell align="left" col="7" colid="FORM_SAVE_FILE" display="text" InputZeroTime="true"/>
+						<cell align="left" col="8" colid="FORM_SAVE_FILE1" display="combo" InputZeroTime="true"/>
+						<cell align="left" col="9" colid="FORM_SAVE_FILE2" display="combo" InputZeroTime="true"/>
+						<cell align="center" col="10" colid="PRT_GBN" display="combo" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="6" Transparent="TRUE" Width="456"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="7" Text="채권사선택&#32;" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Image Align="Right" Height="18" Id="Image17" Left="26" LeftMargin="0" Style="Stc_Default_bold" TabOrder="8" Top="66" Transparent="TRUE" Width="51"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="229" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="5" Text="닫기" Top="504" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_confirm" ImageID="Btn_pop_2w" Left="176" LeftMargin="14" OnClick="btn_confirm_OnClick" Style="Btn_Popup" TabOrder="2" Text="확인" Top="504" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="96" Height="40" Id="Shape21" Left="11" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="31" TabOrder="9" Top="56" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="10" Top="8" Width="24"></Image>
+		<Image Align="Right" Height="18" Id="Image5" Left="28" LeftMargin="0" Style="Stc_Default_bold" TabOrder="12" Text="채권사" Top="67" Transparent="TRUE" Width="42"></Image>
+		<Shape Bottom="99" Height="48" Id="Shape9" Left="71" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="81" TabOrder="13" Top="51" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Edit Border="Flat" Column="FORM_NOTE" Height="18" Id="S_BND_NM" ImeMode="none" Left="81" LeftMargin="4" Style="Edit" TabOrder="3" Top="67" Width="150"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="400" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="4" Top="65" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Checkbox Height="12" Id="CHK_TMP_BND" Left="246" Style="CheckBox" TabOrder="14" Text="임시채권사" Top="69" Value="FALSE" Width="110"></Checkbox>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Column="BNK_NOTE_ETC" Height="18" Id="EDT_BNK_NOTE_ETC" ImeMode="none" Left="344" LeftMargin="4" Style="Edit" TabOrder="15" Top="108" Width="80"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static15" Left="16" Style="Stc_Label" TabOrder="16" Text="통장거래" Top="107" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static14" Left="16" Style="Stc_Label" TabOrder="19" Text="카드거래" Top="130" VAlign="Middle" Width="80"></Static>
+		<Radio BindDataset="DS_AFFAIR_DTL" Border="None" CodeColumn="DTL_CD" Column="CARD_NOTE_TRM" ColumnCount="5" DataColumn="DTL_NM" Height="18" Id="RAD_CARD_NOTE_TRM" INDEX="-1" InnerDataset="DS_RAD_CARD_NOTE" Left="111" TabOrder="17" Top="131" Width="220"></Radio>
+		<Edit BindDataset="DS_AFFAIR_DTL" Border="Flat" Column="CARD_NOTE_ETC" Height="18" Id="EDT_CARD_NOTE_ETC" ImeMode="none" Left="343" LeftMargin="4" Style="Edit" TabOrder="18" Top="131" Width="80"></Edit>
+		<Radio BindDataset="DS_AFFAIR_DTL" Border="None" CodeColumn="DTL_CD" Column="BNK_NOTE_TRM" ColumnCount="5" DataColumn="DTL_NM" Height="18" Id="RAD_BANK_NOTE_TRM" INDEX="-1" InnerDataset="DS_RAD_BANK_NOTE" Left="111" TabOrder="20" Top="111" Width="220"></Radio>
+		<Shape Bottom="102" Height="5" Id="Shape0" Left="10" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="453" TabOrder="21" Top="97" Type="Rectangle" Visible="FALSE" Width="443"></Shape>
+		<Shape Bottom="160" Height="5" Id="Shape1" Left="12" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="455" TabOrder="22" Top="155" Type="Rectangle" Visible="FALSE" Width="443"></Shape>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 사건채권사선택팝업
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 사건채권사선택 팝업 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.Transaction 후 처리 해야 할 내용
+//  1-4.창닫기
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고      
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+	
+	// 접수방법
+	gfn_makeCodeDataSet("AC09", "", "DS_ACP_MTD");   
+	gfn_setGridCombo(GRD_BOND_LST, "DS_ACP_MTD",5);
+	
+	
+	S_BND_NM.text = P_BND_NM;
+	
+	fn_search();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	PDS_BOND_LST.ClearData();
+	
+	svcID			= "CPAB05P01.selectAffairBondPopup";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "PDS_BOND_LST=cc.CCBondDAO.selectAffairBondPopup";
+	argument    	= " _sqlName=cc.CCBondDAO.selectAffairBondPopup"
+					+ " BRCH_ID=" + quote(P_BRCH_ID)		// 부모창에서 받은값	
+					+ " BND_NM=" + quote(S_BND_NM.Text)	
+					+ " TMP_YN=" + quote(CHK_TMP_BND.Value)
+					;
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	gfn_showProgressWindow(false);
+	
+	switch(svcID) 
+	{
+		case "CPAB05P01.selectAffairBondPopup" :
+			
+			if(PDS_BOND_LST.rowcount == 1)
+			{
+				
+				// 간편출력이면 바로 출력 아니면 설정 후 출력
+				if(PDS_BOND_LST.GetColumn(0,"PRT_GBN") == 'A')
+				{
+					fn_set_bond_info(0);
+				}
+				
+			}
+		
+			
+		break;	
+		
+		
+		case "CPAB05P01.saveTmpBondLst" :
+			fn_search();
+
+		break;			
+		
+		
+		
+		
+		default:
+			 // alert("기타"); 
+			 
+	}
+	
+	GRD_BOND_LST.SetFocus();
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 코드 값 setting
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_set_bond_info(c_row)
+{	
+
+	var bar_code = gfn_barcode_info();
+
+
+
+	var retArr = Array();
+	
+	retArr[0] = PDS_BOND_LST.GetColumn(c_row,"BRCH_ID");
+	retArr[1] = PDS_BOND_LST.GetColumn(c_row,"BND_SEQ");
+	retArr[2] = PDS_BOND_LST.GetColumn(c_row,"BND_NM");
+	retArr[3] = PDS_BOND_LST.GetColumn(c_row,"BIZ_PRT_YN");
+	retArr[4] = PDS_BOND_LST.GetColumn(c_row,"FORM_SAVE_FILE1"); 
+	retArr[5] = PDS_BOND_LST.GetColumn(c_row,"ACP_MTD"); 
+	retArr[6] = PDS_BOND_LST.GetColumn(c_row,"FORM_SAVE_FILE2"); 
+	retArr[7] = PDS_BOND_LST.GetColumn(c_row,"PRT_GBN"); 
+	retArr[8] = PDS_BOND_LST.GetColumn(c_row,"REG_GBN"); 
+	retArr[9] = PDS_BOND_LST.GetColumn(c_row,"FORM_GBN");
+	retArr[10] = PDS_BOND_LST.GetColumn(c_row,"DT_GBN");
+	retArr[11] = PDS_BOND_LST.GetColumn(c_row,"JMN_OPN_YN");
+	retArr[12] = bar_code;
+			  
+	close(retArr);	
+
+}
+
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.조회 버튼 클릭  
+//  2-4.확인 버튼 클릭
+//  2-5.닫기 버튼 클릭  
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAB05P01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+    fn_initForm();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 UnLoad 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAB05P01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_search_OnClick(obj)
+{
+	fn_search();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 확인 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_confirm_OnClick(obj)
+{
+	if(CHK_TMP_BND.Value == '1')
+	{
+		// 임시채권사 등록
+		if(length(S_BND_NM.Text) == 0)
+		{
+			gfn_popup_message("modal", "error", "등록할 임시채권사명을 입력하세요.", "확인");
+			S_BND_NM.SetFocus();
+		}
+		else
+		{
+			if(gfn_popup_message("modal", "confirm", S_BND_NM.Text + "를 임시채권사로 등록하시겠습니까?", "확인")) 
+			{
+			
+				svcID			= "CPAB05P01.saveTmpBondLst";
+				url   			= "service::common/select_mi.do";
+				inDatasets  	= "";
+				outDatasets 	= "";
+				argument    	= " _sqlName=cc.CCBondDAO.saveTmpBondLst"
+										+ " BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+										+ " TUB_SEQ=" + quote(P_TUB_SEQ)
+										+ " BND_NM=" + quote(S_BND_NM.Text)
+										+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);		
+				callbackFunc 	= "gfn_callback";	
+			
+			
+				gfn_showProgressWindow(true);
+				gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+			}				
+		}
+		
+		
+		
+	}
+	else
+	{
+		fn_set_bond_info(PDS_BOND_LST.currow);
+	}
+	
+	
+	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 헤더클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_BOND_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+
+	gfn_GridSort(GRD_BOND_LST, PDS_BOND_LST, nCell);	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 더블클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_BOND_LST_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	fn_set_bond_info(nRow);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회 엔터키 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function S_BND_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if( nChar == 13 )
+	{
+		fn_search();
+	}	
+}
+
+function GRD_BOND_LST_OnEnterDown(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	fn_set_bond_info(nRow);
+}
+
+// 폼에 엔터키 치면 그리드 선택된거 설정 
+function CPAB05P01_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+	if( nChar == 13 )
+	{
+		if(PDS_BOND_LST.rowcount >= 1)
+		{
+			fn_set_bond_info(PDS_BOND_LST.currow);
+		}
+	}		
+}
+
+]]></Script>
+</Window>

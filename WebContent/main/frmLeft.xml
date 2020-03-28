@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="770" Id="frmLeft" Left="8" OnLoadCompleted="frmLeft_OnLoadCompleted" OnSize="frmLeft_OnSize" OnUnloadCompleted="frmLeft_OnUnloadCompleted" PidAttrib="7" Title="왼쪽메뉴_레이어" Top="8" Ver="1.0" Width="198" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_PopupMenu">
+				<Contents>
+					<colinfo id="TYPE" size="10" type="INT"/>
+					<colinfo id="ID" size="10" type="INT"/>
+					<colinfo id="STATUS" size="5" type="STRING"/>
+					<colinfo id="CAPTION" size="255" type="STRING"/>
+					<record>
+						<CAPTION>MyMenu추가</CAPTION>
+						<ID>110</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>1</TYPE>
+					</record>
+					<record>
+						<CAPTION>MyMenu제거</CAPTION>
+						<ID>210</ID>
+						<STATUS>TRUE</STATUS>
+						<TYPE>2</TYPE>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<PopupDiv Height="767" Id="pdv_Menu" Left="204" TabStop="FALSE" Top="3" Url="main::frmLeftMenu.xml" Width="198">
+			<Contents></Contents>
+		</PopupDiv>
+		<Div Height="767" Id="div_menu" TabOrder="2" Text="Div0" Top="3" Url="main::frmLeftMenu.xml" Width="198">
+			<Contents></Contents>
+		</Div>
+		<Split BKColor="blue" Direct="VERT" Height="2" Id="splVert" Left="142" Top="766" Visible="FALSE" Width="52">
+			<Contents>
+				<LeftOrTop>
+					<Bind BindType="Resize" CompID="div_menu"/>
+					<Bind BindType="Resize" CompID="pdv_Menu"/>
+				</LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+		<Split BKColor="red" Height="66" Id="splHorz" Left="193" Top="694" Visible="FALSE" Width="2">
+			<Contents>
+				<LeftOrTop></LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : frmLeft (메인 좌측메뉴레이어)
+* 작성자     : 이용재
+* 작성일     : 2013-01-22 : 최초 생성
+* 기능설명   : 메인 화면의 상단 메뉴 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-22       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID			= "";
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= ""; 
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-1. 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	if(g_menuForm == "2")
+	{
+		fn_MenuShow(true);
+	}else{
+		fn_MenuShow(false);
+	}
+	
+}
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 좌츠메뉴 데이터 로딩
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : TopMenu에서 해당 함수 호출
+//*-----------------------------------------------------------------------------------------------
+function fn_LoadMenu(MENU_ID) 
+{
+	
+	div_menu.tv_menu.Redraw = false;
+	
+	gds_LeftMenu.ClearData();
+	
+	// 하위 메뉴 구분컬럼값이 없음
+	// 현재 MENU_ID row 부터 레벨이 같을때까지 돌면서 rowcopy
+	var menuRow   = gds_menu.FindRow("UP_MENU_ID", MENU_ID);
+	
+	var menuLevel = gds_menu.Lookup("UP_MENU_ID", MENU_ID, "MENU_LVL");
+	
+	for(var i= menuRow ; i<gds_menu.rowcount; i++ )
+	{
+		if(gds_menu.GetColumn(i, "MENU_LVL") < menuLevel) break;	// 자기와 동일 또는 하위레벨의 메뉴들만 쭈욱 보임~
+		
+		gds_LeftMenu.addRow();
+		gds_LeftMenu.copyrow(gds_LeftMenu.row,"gds_menu",i);
+	}
+	
+	
+	gds_LeftMenu.row = 0;
+	div_menu.tv_menu.Redraw = true;
+
+
+	// 왼쪽 메뉴 데이터셋중 레벨이 3인 첫번째를 오픈한다.
+	for(var i=0;i<gds_LeftMenu.rowcount;i++)
+	{
+		if(gds_LeftMenu.GetColumn(i,"MENU_LVL") == '3')
+		{
+			gfn_MenuOpenWindow(gds_LeftMenu.GetColumn(i,"MENU_ID"), gds_LeftMenu);
+			
+			gds_LeftMenu.row = i;
+			
+			return;
+		}
+	}
+	
+
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 좌측메뉴 보이기/숨기기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_MenuShow(aFlag)
+{
+	 //메뉴 고정
+	 if(aFlag == true)
+	 {				
+		DocLeft.visible = true;
+		DocLeftBar.visible = false;
+		if(pdv_menu.IsPopup())	pdv_menu.ClosePopup();
+		g_LeftMenuMode = "FIX";
+		div_menu.btn_fix.ImageID = g_skinImage+"_Left_Btn_Hide";
+		
+		/*
+		if(Global.AppStatus != "Max")
+		{
+			//Global.window.width = COMM_X ;
+			
+			Global.window.width = Global.window.width + DocLeft.width - DocLeftbar.width;
+		}
+		*/
+	 }
+	 //자동숨김
+	 else
+	 {							
+		DocLeft.visible = false;
+		DocLeftBar.visible = true;				
+		g_LeftMenuMode = "HIDE";
+		pdv_menu.btn_fix.ImageID = g_skinImage+"_Left_Btn_Pin";
+		
+		/*
+		if(Global.AppStatus != "Max")
+		{
+			//Global.window.width = COMM_X - DocLeft.width + DocLeftbar.width;
+			Global.window.width = Global.window.width - DocLeft.width + DocLeftbar.width;
+		}
+		*/
+	 }
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 좌측메뉴 div 열기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : TopMenu에서 호출
+//*-----------------------------------------------------------------------------------------------
+function fn_pdvMenuOpen()
+{
+	var nXPos = ClientToScreenX(div_Menu, 0);
+	var nYPos = ClientToScreenY(div_Menu, 0);
+
+	pdv_Menu.Width  = div_Menu.Width;
+
+	if( DocLeft.Visible ) {
+		pdv_Menu.Height = this.Window.Height;
+	} 
+	else {
+		pdv_Menu.Height = DocLeftBar.Height - 3;
+	}
+
+	// 기능이 작동 안되서 아예 보여주기로 함
+	//pdv_Menu.TrackPopup(nXPos, nYPos);
+	
+	DocLeft.fn_MenuShow(true);
+}
+
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.화면크기 조정
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1. 화면 Load 완료시 실행 스크립트  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function frmLeft_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function frmLeft_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();	
+}
+
+
+
+
+
+
+function frmLeft_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_SplitOnSize(splHorz, splVert, obj, nCx, nCy, nState);
+}
+]]></Script>
+</Window>

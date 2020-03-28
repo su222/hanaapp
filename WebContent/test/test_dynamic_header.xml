@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="555" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="다이나믹&#32;헤더" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_manager_info">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="manager_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="birth_day" size="256" summ="default" type="STRING"/>
+					<colinfo id="dept_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="position_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_menu_data">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+					<colinfo id="index" size="256" summ="default" type="STRING"/>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+					<colinfo id="manager" size="256" summ="default" type="STRING"/>
+					<colinfo id="join_date" size="256" summ="default" type="STRING"/>
+					<colinfo id="dept_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="image_level" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="80" Height="40" Id="Shape5" Left="0" LineColor="user22" Right="790" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="14" Top="40" Type="RoundRect" Width="790"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="728" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="2" Top="48" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="89" Height="56" Id="Shape11" Left="0" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="20" TabOrder="1" Top="33" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Static Height="20" Id="Static8" Style="Stc_Title" TabOrder="3" Text="테스트&#32;헤더&#32;변경" Width="304"></Static>
+		<Shape Bottom="40" Height="7" Id="Shape13" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="790" TabOrder="4" Top="33" Type="Rectangle" Visible="FALSE" Width="790"></Shape>
+		<Image Align="Left" Height="14" Id="Image2" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="5" Text="테스트&#32;조회" Top="102" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="121" Height="5" Id="Shape20" Left="-8" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="802" TabOrder="7" Top="116" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Grid AutoFit="TRUE" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="548" CellMoving="TRUE" ColSelect="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="427" Id="Grid1" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnHeadClick="Grid1_OnHeadClick" Right="790" RowHeight="20" Style="Grid_2" TabOrder="6" TabStop="true" Top="121" UseAutoSizing="Both" UseDBuff="true" UseExSizing="Both" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="790">
+			<contents>
+				<format id="Default"></format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_del_row" ImageID="Btn_sub_rowdel" Left="624" OnClick="btn_del_row_OnClick" Style="Btn_sub" TabOrder="9" Text="&#32;&#32;&#32;행삭제" Top="95" Width="61"></Button>
+		<Shape Bottom="121" Height="32" Id="Shape19" Left="619" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="624" TabOrder="10" Top="89" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_add_row" ImageID="Btn_sub_rowadd" Left="558" OnClick="btn_add_row_OnClick" Style="Btn_sub" TabOrder="8" Text="&#32;&#32;&#32;행추가" Top="95" Width="61"></Button>
+		<Shape Bottom="95" Height="15" Id="Shape2" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="11" Top="80" Type="Rectangle" Visible="FALSE" Width="794"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button35" ImageID="Btn_sub_ex_down" Left="690" LeftMargin="16" OnClick="btn_print_OnClick" Style="Btn_sub" TabOrder="12" Top="95" TopMargin="1" Transparent="TRUE" Width="99"></Button>
+		<FileDialog Bottom="118" Filter="All(*.*)|*.*|" Height="24" Id="FileDialog0" Left="816" Right="840" TabOrder="24" Top="94" Type="Save" Width="24"></FileDialog>
+		<Shape Bottom="121" Height="32" Id="Shape4" Left="685" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="690" TabOrder="13" Top="89" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button10" ImageID="Btn_com_4w" Left="28" LeftMargin="12" OnClick="Button10_OnClick2" Style="Btn_Com" TabOrder="15" Text="헤더변경" Top="50" TopMargin="1" Transparent="TRUE" Width="75"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button0" ImageID="Btn_com_4w" Left="116" LeftMargin="12" OnClick="setHeaderInit2" Style="Btn_Com" TabOrder="16" Text="헤더복원" Top="50" TopMargin="1" Transparent="TRUE" Width="75"></Button>
+	</Form>
+	<Script><![CDATA[#include "lib::lib_comm.js";
+
+
+function form_OnLoadCompleted(obj)
+{
+	setHeaderInit2();
+}
+
+
+/* 해더명을 글로벌 데이터셋으로 전달하는 경우 */
+function setHeaderInit2()
+{
+	Grid1.Contents = "";
+	gfn_SetGridHeaderBodyValue(Grid1, gds_test_menu_info, "ds_menu_data","NO");
+}
+
+
+/* 해더명을 글로벌 데이터셋으로 전달하는 경우 */
+function Button10_OnClick2(obj)
+{
+	Grid1.Contents = "";
+	gfn_SetGridHeaderBodyValue(Grid1, gds_test_manager_info, "ds_manager_info","NO");
+}
+
+
+function btn_search_OnClick(obj)
+{
+	if(Grid1.BindDataset == "ds_menu_data"){
+		search_menu_values();
+	}else{
+		search_manager_values();
+	}
+}
+
+
+function search_menu_values(obj)
+{
+	var svcID			= "TST001V.testFunctionSearch";
+	var url   			= "service::TST001V.testFunctionSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_menu_data=TST001V.selectTestTable";
+	var argument    	= " _sqlName=TST001V.selectTestTable"
+						;
+	var callbackFunc 	= "fn_btn_search_OnClick_callback";
+
+	gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+function search_manager_values(obj)
+{
+	var svcID			= "TST001V.testManagerSearch";
+	var url   			= "service::TST001V.testManagerSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_manager_info=TST001V.selectTestManagerInfo";
+	var argument    	= " _sqlName=TST001V.selectTestManagerInfo"
+						;
+	var callbackFunc 	= "";
+
+	gfn_transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+function Grid1_OnCellBoundDBLClick(obj,nRow,nCell,nType,bZero,nX,nY,nPivotIndex)
+{
+	if(Grid1.BindDataset == "ds_menu_data"){
+		alert("ds_menu_data Click!");
+	}else{
+		alert("ds_manager_info Click!");
+	}
+}
+
+
+function Grid1_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	// 체크박스 클릭시
+	if(nCell == 0){
+		
+		if(Grid1.BindDataset == "ds_menu_data"){
+			gfn_SetCheckBoxAllSelected(nCell, Grid1, ds_menu_data, "checked");
+		}else{
+			gfn_SetCheckBoxAllSelected(nCell, Grid1, ds_manager_info, "checked");
+		}			
+		
+	}
+
+}
+
+
+function btn_add_row_OnClick(obj)
+{
+	if(Grid1.BindDataset == "ds_menu_data"){
+		gfn_AddColumn(ds_menu_data, 'checked');
+	}else{
+		gfn_AddColumn(ds_manager_info, 'checked');
+	}		
+}
+
+
+function btn_del_row_OnClick(obj)
+{
+
+	
+	if(Grid1.BindDataset == "ds_menu_data"){
+		
+		Grid1.SetCellProp("head", 0, "Text", 0); //삭제하면 자동조회를 하므로 헤더의 체크박스를 해제한다.
+	
+		// 삭제되면서 총 로우수가 변하므로 로우수가 큰 것부터 삭제한다.
+		for(var i=ds_menu_data.rowcount; i >= 0; i--)
+		{
+			if(ds_menu_data.GetColumn(i,"checked") == 1){
+				ds_menu_data.DeleteRow(i);
+			}
+		}
+	}else{
+		
+		Grid1.SetCellProp("head", 0, "Text", 0); //삭제하면 자동조회를 하므로 헤더의 체크박스를 해제한다.
+	
+		// 삭제되면서 총 로우수가 변하므로 로우수가 큰 것부터 삭제한다.
+		for(var i=ds_manager_info.rowcount; i >= 0; i--)
+		{
+			if(ds_manager_info.GetColumn(i,"checked") == 1){
+				ds_manager_info.DeleteRow(i);
+			}
+		}
+	}	
+}
+
+
+function btn_print_OnClick(obj)
+{
+	gfn_SaveExcelContents(FileDialog0, Grid1, "C:\\", "TestExcel_"+gfn_GetNowDateTime(), "테스트 보고서", true);
+}
+
+]]></Script>
+</Window>

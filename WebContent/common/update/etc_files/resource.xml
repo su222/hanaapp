@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<ROOT>
+<params>
+<param id="MainICon" type="string">%MIPLATFORM%/hana.ico</param> 
+<param id="SubICon" type="string">%MIPLATFORM%//hana.ico</param> 
+</params>
+</ROOT>  

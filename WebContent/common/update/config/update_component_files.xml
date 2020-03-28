@@ -1,0 +1,46 @@
+﻿<?xml version='1.0' encoding="utf-8" ?>
+<root>
+  <params>
+    <param id='DEVICE' type='string'>Win32</param>
+    <param id='SOURCE' type='string'>../component_files</param>
+    <param id="TARGET" type="string">%Component%</param>
+    <param id='FILENAME' type='string'></param>
+    <param id='VERSION' type='string'>2009,03,10,1</param>
+    <param id='ACTION' type='string'>DOWN</param>
+    <param id='STATUS' type='string'>0</param>
+  </params>
+  <dataset id='output'>
+    <colinfo id='DEVICE' type="string" size='255'/>
+    <colinfo id='SOURCE' type="string" size='255'/>
+    <colinfo id='TARGET' type="string" size='255'/>
+    <colinfo id='FILENAME' type="string" size='255'/>
+    <colinfo id='VERSION' type="string" size='255'/>
+    <colinfo id='ACTION' type="string" size='255'/>
+    <colinfo id='STATUS' type="string" size='2'/>
+	<colinfo id='ARGUMENT' type="string" size='255'/>
+    <record><FILENAME>AdaptComTcpU.dll</FILENAME><VERSION>system::2007,10,2,1</VERSION></record>
+    <record><FILENAME>AdaptDBAdoCeU.dll</FILENAME><VERSION>system::2007,5,2,1</VERSION></record>
+    <record><FILENAME>AdaptDBAdoU.dll</FILENAME><VERSION>system::2009,5,21,1</VERSION></record>
+    <record><FILENAME>AdaptDBOdbcU.dll</FILENAME><VERSION>system::2009,4,23,1</VERSION></record>
+    <record><FILENAME>AdaptDBOraU.dll</FILENAME><VERSION>system::2007,10,2,1</VERSION></record>
+    <record><FILENAME>AdaptDBSqliteU.dll</FILENAME><VERSION>system::2008,4,11,1</VERSION></record>
+	<record><FILENAME>CyAxVsReportU.dll</FILENAME><VERSION>system::2007,11,27,1</VERSION></record>
+	<record><FILENAME>CyAxVsViewU.dll</FILENAME><VERSION>system::2007,10,2,1</VERSION></record>
+	<record><FILENAME>CyCalendarExU.dll</FILENAME><VERSION>system::2010,5,19,1</VERSION></record>
+	<record><FILENAME>CyFtpExU.dll</FILENAME><VERSION>system::2007,10,2,1</VERSION></record>
+	<record><FILENAME>CyGridU.dll</FILENAME><VERSION>system::2010,6,14,1</VERSION></record>
+	<record><FILENAME>CyHttpFileU.dll</FILENAME><VERSION>system::2010,6,14,1</VERSION></record>
+	<record><FILENAME>CyLiteDBAdpU.dll</FILENAME><VERSION>system::2009,12,4,1</VERSION></record>
+	<record><FILENAME>CyMenuBarU.dll</FILENAME><VERSION>system::2009,9,28,1</VERSION></record>
+	<record><FILENAME>CyMultiLineTabU.dll</FILENAME><VERSION>system::2009,11,6,1</VERSION></record>
+	<record><FILENAME>CyRSSAdpU.dll</FILENAME><VERSION>system::2009,9,17,1</VERSION></record>
+	<record><FILENAME>CySignU.dll</FILENAME><VERSION>system::2009,8,21,1</VERSION></record>
+	<record><FILENAME>CySplitU.dll</FILENAME><VERSION>system::2009,5,15,1</VERSION></record>
+	<record><FILENAME>CySwFlashU.dll</FILENAME><VERSION>system::2007,10,2,1</VERSION></record>
+	<record><FILENAME>CyTreeViewU.dll</FILENAME><VERSION>system::2010,4,30,1</VERSION></record>
+	<record><FILENAME>CyWebBrowserU.dll</FILENAME><VERSION>system::2010,1,15,1</VERSION></record>
+	<record><FILENAME>ExtCommonApiU.dll</FILENAME><VERSION>system::2008,5,14,2</VERSION></record>
+  </dataset>
+</root>
+
+

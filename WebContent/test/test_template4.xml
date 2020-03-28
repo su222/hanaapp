@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="555" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="New&#32;Form" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_big_menu">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_small_menu">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_test_data">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+					<colinfo id="index" size="256" summ="default" type="STRING"/>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+					<colinfo id="manager" size="256" summ="default" type="STRING"/>
+					<colinfo id="join_date" size="256" summ="default" type="STRING"/>
+					<colinfo id="dept_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="image_level" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="77" Height="40" Id="Shape5" Left="0" LineColor="user22" Right="790" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="11" Top="37" Type="RoundRect" Width="790"></Shape>
+		<Image Align="Left" Height="18" Id="Image1" Left="20" LeftMargin="0" Style="Stc_Default_bold" TabOrder="1" Text="대메뉴" Top="47" Transparent="TRUE" Width="59"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="728" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="3" Top="45" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="72" Height="32" Id="Shape12" Left="60" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="70" TabOrder="4" Top="40" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Combo Border="Flat" DataColumn="menu_nm" Height="18" Id="cob_big_menu" ImeMode="none" InnerDataset="ds_big_menu" Left="69" OnChanged="cob_big_menu_OnChanged" OnKeyDown="cob_big_menu_OnKeyDown" Style="Combo" TabOrder="5" Top="46" Width="160"></Combo>
+		<Static Height="20" Id="Static8" Style="Stc_Title" TabOrder="6" Text="Template4" Top="-3" Width="304"></Static>
+		<Shape Bottom="37" Height="7" Id="Shape13" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="790" TabOrder="7" Top="30" Type="Rectangle" Visible="FALSE" Width="790"></Shape>
+		<Image Align="Left" Height="18" Id="Image0" Left="252" LeftMargin="0" Style="Stc_Default_bold" TabOrder="8" Text="소메뉴" Top="47" Transparent="TRUE" Width="59"></Image>
+		<Shape Bottom="72" Height="32" Id="Shape1" Left="292" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="302" TabOrder="9" Top="40" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Combo Border="Flat" DataColumn="menu_nm" Editable="TRUE" Height="18" Id="cob_small_menu" InnerDataset="ds_small_menu" Left="301" OnChanged="cob_small_menu_OnChanged" OnKeyDown="cob_small_menu_OnKeyDown" Style="Combo" TabOrder="10" Top="46" Width="160"></Combo>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_save" ImageID="Btn_com_2w" Left="738" LeftMargin="12" OnClick="btn_save_OnClick" Style="Btn_Com" TabOrder="10" Text="저장" Top="9" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="92" Height="15" Id="Shape3" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="12" Top="77" Type="Rectangle" Visible="FALSE" Width="794"></Shape>
+		<Shape Bottom="94" Height="64" Id="Shape11" Left="0" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="20" TabOrder="2" Top="30" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button5" ImageID="Btn_com_3w" Left="671" LeftMargin="12" OnClick="Button5_OnClick" Style="Btn_Com" TabOrder="13" Text="초기화" Top="9" Transparent="TRUE" Width="62"></Button>
+		<Shape Bottom="36" Height="32" Id="Shape0" Left="733" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="738" TabOrder="14" Top="4" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Static Border="Flat" Height="24" Id="Static19" Style="Stc_LabelBody" TabOrder="17" Text="Static5" Top="113" VAlign="Middle" Width="790"></Static>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_menu_nm" ImeMode="none" Left="84" MaxLength="50" Readonly="TRUE" Style="Edit" TabOrder="16" Top="116" Width="307"></Edit>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static21" Style="Stc_Label" TabOrder="18" Text="메뉴명" Top="113" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static7" Left="395" Style="Stc_Label" TabOrder="19" Text="URL" Top="113" VAlign="Middle" Width="80"></Static>
+		<Static Border="Flat" Height="24" Id="Static0" Style="Stc_LabelBody" TabOrder="20" Text="Static5" Top="136" VAlign="Middle" Width="790"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static1" Style="Stc_Label" TabOrder="21" Text="관리자명" Top="136" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static3" Left="395" Style="Stc_Label" TabOrder="22" Text="입사일" Top="136" VAlign="Middle" Width="80"></Static>
+		<Static Border="Flat" Height="24" Id="Static5" Style="Stc_LabelBody" TabOrder="23" Text="Static5" Top="159" VAlign="Middle" Width="790"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static6" Style="Stc_Label" TabOrder="24" Text="부서명" Top="159" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static10" Left="395" Style="Stc_Label" TabOrder="25" Text="비고" Top="159" VAlign="Middle" Width="80"></Static>
+		<Shape Bottom="185" Height="72" Id="Shape2" Left="80" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="85" TabOrder="26" Top="113" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="185" Height="72" Id="Shape4" Left="390" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="395" TabOrder="27" Top="113" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="185" Height="72" Id="Shape6" Left="475" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="480" TabOrder="28" Top="113" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="193" Height="80" Id="Shape7" Left="784" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="789" TabOrder="29" Top="113" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_manager" ImeMode="native" Left="84" MaxLength="50" Style="Edit" TabOrder="30" Top="139" Width="307"></Edit>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_dept_nm" ImeMode="native" Left="84" MaxLength="50" Style="Edit" TabOrder="31" Top="162" Width="307"></Edit>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_etc" ImeMode="native" Left="480" MaxLength="50" Style="Edit" TabOrder="32" Top="162" Width="304"></Edit>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_page_url" ImeMode="none" Left="480" MaxLength="50" Readonly="TRUE" Style="Edit" TabOrder="33" Top="116" Width="304"></Edit>
+		<Button Height="16" Id="Button7" ImageID="Btn_calendar" Left="555" OnClick="Button7_OnClick" TabOrder="34" Text="Button1" Top="140" Width="16"></Button>
+		<Shape Bottom="169" Height="36" Id="Shape10" Left="550" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="555" TabOrder="36" Top="133" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="edt_join_date" Left="480" Mask="@@@@-@@-@@" OnKeyDown="edt_join_date_OnKeyDown" TabOrder="35" Top="139" Type="STRING" Width="70"></MaskEdit>
+		<Shape Bottom="113" Height="5" Id="Shape15" Left="-2" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="800" TabOrder="38" Top="108" Type="Rectangle" Visible="FALSE" Width="802"></Shape>
+		<Image Align="Left" Height="14" Id="Image3" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="37" Text="테스트&#32;상세&#32;항목" Top="94" Transparent="TRUE" Width="157"></Image>
+	</Form>
+	<Script><![CDATA[#include "script::cmnFunction.js";
+
+var big_section = ''; // 대메뉴를 구분하기 위한 전역변수
+var small_seq   = ''; // 소메뉴를 구분하기 위한 전역변수
+
+
+function form_OnLoadCompleted(obj)
+{
+	// 화면이 로드될 때 대메뉴를 조회한다.
+	getBigMenuName();
+}
+
+
+/* 대메뉴 조회 */
+function getBigMenuName()
+{
+	var svcID			= "TST001V.bigMenuNameSearch";
+	var url   			= "service::TST001V.bigMenuNameSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_big_menu=TST001V.selectBigMenuName";
+	var argument    	= " _sqlName=TST001V.selectBigMenuName"
+						;
+	var callbackFunc 	= "fn_get_big_menu_callback";
+
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+
+/* 대메뉴 조회 콜백 함수 - 콤보의 첫번째 값으로 [전체]를 넣어준다.*/
+function fn_get_big_menu_callback()
+{
+	gfn_AddComboData(0, ds_big_menu, "id", "0", "menu_nm", "[전체]");
+	cob_big_menu.Index  = 0;
+	ds_small_menu.ClearData();
+	gfn_AddComboData(0, ds_small_menu, "id", "0", "menu_nm", "[전체]");
+	cob_small_menu.Index = 0;
+}
+
+
+/* 소메뉴 조회 */
+function cob_big_menu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(nNewIndex == 0){ // 대매뉴에서 [전체]를 선택한 경우
+		ds_small_menu.ClearData();
+		
+		gfn_AddComboData(0, ds_small_menu, "id", "0", "menu_nm", "[전체]");
+		cob_small_menu.Index = 0;
+
+		big_section = '';
+		small_seq   = '';
+		return;
+	}
+
+	big_section = ds_big_menu.GetColumn(nNewIndex,'section');
+
+	var svcID			= "TST001V.smallMenuNameSearch";
+	var url   			= "service::TST001V.smallMenuNameSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_small_menu=TST001V.selectSmallMenuName";
+	var argument    	= " _sqlName=TST001V.selectSmallMenuName"
+						+ " p_section=" + quote(ds_big_menu.GetColumn(nNewIndex,'section'))				
+						;
+	var callbackFunc 	= "fn_cob_big_menu_callback";
+
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 소메뉴 조회 콜백 함수 - 콤보의 첫번째 값으로 [전체]를 넣어준다.*/
+function fn_cob_big_menu_callback()
+{
+	small_seq = '';
+	gfn_AddComboData(0, ds_small_menu, "id", "0", "menu_nm", "[전체]");
+	cob_small_menu.Index = 0;
+}
+
+
+/* 소매뉴 콤보를 선택하였을때 조회를 위해서 small_seq 변수에 LVL_SEQ 컬럼값을 넣어준다. */
+function cob_small_menu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	small_seq = ds_small_menu.GetColumn(nNewIndex,'LVL_SEQ');
+}
+
+
+/* 조회버튼 - 조회한다. */
+function btn_search_OnClick(obj)
+{
+	if(cob_small_menu.Index == 0){
+		alert("소메뉴까지 선택을 해야 합니다!");
+		return;
+	}
+
+	ds_test_data.ClearData();
+
+	var svcID			= "TST001V.testFunctionSearch";
+	var url   			= "service::TST001V.testFunctionSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_test_data=TST001V.selectTestTable";
+	var argument    	= " _sqlName=TST001V.selectTestTable"
+						+ " p_section=" + quote(big_section)
+						+ " p_lvl_seq=" + quote(small_seq)
+						;
+	var callbackFunc 	= "fn_btn_search_OnClick";
+
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 조회 콜백함수 */
+function fn_btn_search_OnClick()
+{
+	edt_menu_nm.Text   = ds_test_data.GetColumn(0,"menu_nm");
+	edt_manager.Text   = ds_test_data.GetColumn(0,"manager");
+	edt_join_date.Text = ds_test_data.GetColumn(0,"join_date");
+	edt_dept_nm.Text   = ds_test_data.GetColumn(0,"dept_nm");
+	edt_page_url.Text  = ds_test_data.GetColumn(0,"page_url");
+	edt_etc.Text       = ds_test_data.GetColumn(0,"etc");
+}
+
+
+/* 초기화*/
+function Button5_OnClick(obj)
+{
+	big_section = ""; 
+	small_seq   = "";
+
+	edt_menu_nm.Text   = "";
+	edt_manager.Text   = "";
+	edt_join_date.Text = "";
+	edt_dept_nm.Text   = "";
+	edt_page_url.Text  = "";
+	edt_etc.Text       = "";	
+	
+	cob_big_menu.Index  = 0;
+	ds_small_menu.ClearData();
+	gfn_AddComboData(0, ds_small_menu, "id", "0", "menu_nm", "[전체]");
+	cob_small_menu.Index = 0;	
+}
+
+
+/* 날짜 선택*/
+function Button7_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", edt_join_date);
+}
+
+
+/* 저장*/
+function btn_save_OnClick(obj)
+{
+	var tmpEtc = "";
+	
+	if(edt_etc.Text == ""){
+		tmpEtc = " ";
+	}else{
+		tmpEtc = edt_etc.Text;
+	}
+
+	var svcID			= "TST001V.testFunctionSave";
+	var url   			= "service::TST001V.testFunctionSave.do";
+	var inDatasets      = "";
+	var outDatasets 	= "";
+	var argument    	= " _sqlName=TST001V.updateTestTableData"
+						+ " P_ID=" + quote(ds_test_data.GetColumn(0,"id"))
+						+ " P_ETC=" + quote(tmpEtc)
+						+ " P_MANAGER=" + quote(edt_manager.Text)
+						+ " P_JOIN_DATE=" + quote(edt_join_date.Text)
+						+ " P_DEPT_NM=" + quote(edt_dept_nm.Text)
+						;
+	
+	var callbackFunc 	= "fn_btn_save_OnClick_callback";
+	transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 저장 콜백*/
+function fn_btn_save_OnClick_callback()
+{
+	btn_search_OnClick();
+}
+
+]]></Script>
+</Window>

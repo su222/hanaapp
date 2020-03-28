@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="700" Id="common_multipart" Left="8" PidAttrib="7" Title="common_multipart" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="920" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" FireNextCount="10" Id="ds_grd_multipart">
+				<Contents>
+					<colinfo id="filename" size="256" summ="default" type="STRING"/>
+					<colinfo id="param1" size="256" summ="default" type="STRING"/>
+					<colinfo id="param2" size="256" summ="default" type="STRING"/>
+					<colinfo id="param3" size="256" summ="default" type="STRING"/>
+					<colinfo id="check_val" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="386" Height="185" Id="Shape0" Left="80" LineColor="user22" Right="909" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="13" Top="201" Type="RoundRect" Width="829"></Shape>
+		<Shape BKColor="user21" Bottom="50" Height="39" Id="Shape1" Left="11" LineColor="user22" Right="909" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="10" Top="11" Type="RoundRect" Width="898"></Shape>
+		<Shape Bottom="700" Height="700" Id="Shape5" Left="910" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="920" TabOrder="4" Top="0" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Shape Bottom="700" Height="700" Id="Shape6" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="10" TabOrder="5" Top="0" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Shape Bottom="700" Height="10" Id="Shape3" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="3" Top="690" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<Shape Bottom="10" Height="10" Id="Shape2" Left="0" LineColor="seagreen" LineWidth="5" Right="920" TabOrder="5" Top="0" Type="Rectangle" Visible="FALSE" Width="920"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_filePlus" ImageID="btn_a_05" Left="240" LeftMargin="8" OnClick="btn_filePlus_OnClick" Style="btn_a" TabOrder="2" Text="파일더하기" Top="20" Width="86"></Button>
+		<Shape Bottom="537" Height="520" Id="Shape7" Left="435" LineKind="Vertical" LineStyle="Dot" Right="438" TabOrder="1" Top="17" Visible="FALSE" Width="3"></Shape>
+		<Shape Bottom="536" Height="520" Id="Shape4" Left="117" LineKind="Vertical" LineStyle="Dot" Right="120" TabOrder="7" Top="16" Visible="FALSE" Width="3"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_fileSend" ImageID="btn_a_04" Left="410" LeftMargin="8" OnClick="btn_fileSend_OnClick" Style="btn_a" TabOrder="8" Text="파일전송" Top="20" Width="74"></Button>
+		<HttpFile Height="24" Id="mulitHttpFile" Left="921" Width="24"></HttpFile>
+		<FileDialog Bottom="49" Height="24" Id="FileDlg" Left="921" MultiSelect="TRUE" Right="945" TabOrder="12" Top="25" Width="24"></FileDialog>
+		<Grid AutoFit="TRUE" BindDataset="ds_grd_multipart" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="190" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="139" Id="grd_multipart" InputPanel="FALSE" Left="12" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnHeadClick="grd_multipart_OnHeadClick" Right="909" RowHeight="20" Style="Grid_2" TabOrder="9" TabStop="true" Top="51" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="897">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col fix="left" width="30"/>
+						<col width="395"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" colid="allchk" color="user52" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="파일경로"/>
+					</head>
+					<body>
+						<cell col="0" colid="CHECK_VAL" display="checkbox" edit="checkbox"/>
+						<cell align="left" col="1" colid="filename" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Align="Right" Height="18" Id="Image1" Left="60" LeftMargin="0" Style="Stc_Default_bold" TabOrder="11" Text="Multipart&#32;Request&#32;Sample" Top="21" Transparent="TRUE" Width="171"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_fileMinus" ImageID="btn_a_04" Left="331" LeftMargin="8" OnClick="btn_fileMinus_OnClick" Style="btn_a" TabOrder="12" Text="파일빼기" Top="20" Width="74"></Button>
+		<Image Align="Left" Height="152" Id="Image0" Left="96" LeftMargin="0" Style="Stc_Default_bold" TabOrder="14" Text="1.&#32;파일더하기&#32;버튼을&#32;통해서&#32;여러개&#32;파일&#32;한번에&#32;선택가능.&#13;&#10;2.&#32;콤보박스를&#32;선택하여&#32;선택삭제&#32;가능.&#13;&#10;3.&#32;그리드에&#32;보이는&#32;모든&#32;리스트&#32;파일전송.&#13;&#10;&#13;&#10;※&#32;httpFtp&#32;Component&#32;가&#32;최신버전이&#32;아닌경우&#32;다음처럼&#32;따라해주세요~~&#13;&#10;&#13;&#10;1.&#32;CyHttpFileU.dll&#32;복사.&#13;&#10;파일경로&#32;C:\workspace\thisapp\WebContent\common\update\component_files&#13;&#10;&#10;&#13;&#10;2.&#32;로컬&#32;컴포넌트에&#32;등록.&#13;&#10;파일경로&#32;C:\Documents&#32;and&#32;Settings\user\Local&#32;Settings\Application&#32;Data\TOBESOFT\MiPlatform320U\Component&#13;&#10;&#13;&#10;이래도&#32;안된다!!&#32;그럼&#32;010-8785-8127&#32;전화주세요&#32;ㅎㅎ" Top="216" Transparent="TRUE" Width="808"></Image>
+		<File Bottom="75" Height="24" Id="File" Left="920" Right="944" TabOrder="15" Top="51" Width="24"></File>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btn_fileRead" ImageID="btn_a_04" Left="832" LeftMargin="8" OnClick="btn_fileRead_OnClick" Style="btn_a" TabOrder="15" Text="파일읽기" Top="664" Width="74"></Button>
+	</Form>
+	<Script><![CDATA[/********************************************************************************
+* FormID(명) : common_multipart
+* Form 설명  : sample
+* 작성자     : DaMaNeGi
+* 작성일     : 2011-01-31
+* ===============================================================================
+* ds_multipart
+* ===============================================================================
+* 변경내역 : 
+* YYYYMMDD 담당자명 변경내용(Why?,What?)
+* ===============================================================================
+*********************************************************************************/
+
+#include script::common.js
+
+
+function btn_filePlus_OnClick(obj)
+{
+	if (!FileDlg.Open()) return;
+	var fileName = FileDlg.FilePath + "\\"; 
+	array = FileDlg.FileNameList;
+
+	for (i = 0; i < array.length; i++) {
+		ds_grd_multipart.addRow();
+		ds_grd_multipart.SetColumn(ds_grd_multipart.row, "filename", fileName + "\\" + array[i]);
+	}	
+}
+
+function btn_fileSend_OnClick(obj)
+{
+	mulitHttpFile.MultiInit(); //* 시작전에 초기화 처리
+
+	//* 폼변수 전송
+	mulitHttpFile.MultiAddArguments("userName", "TEST", false); //* 폼변수:false
+	//* 데이터셋 넘기기
+	mulitHttpFile.MultiAddArguments("xmldata", ds_grd_multipart.SaveXML(), false); //* 폼변수:false
+	
+    //fileFullName 값은 로컬파일 경로 + 파일명 이고 마지막 Argument가 True.	
+	for (i = 0; i < ds_grd_multipart.rowcount; i++) {
+		mulitHttpFile.MultiAddArguments("upfile", ds_grd_multipart.GetColumn(i, "filename"), true); //* 파일:true
+	}
+
+	var rtn = mulitHttpFile.MultiRequest("http://localhost:8088/sample.multipart.do");
+	
+	//* 호출 성공 여부.
+	if (rtn == 1) {
+		//* 서버의 성공/실패 결과값을 받고싶으면 ErrorMsg로 전송받아 처리한다.
+		alert("HTTP STATUS CODE : " + mulitHttpFile.StatCode);
+	
+	} else {
+		alert("HTTP STATUS CODE : " + mulitHttpFile.StatCode);
+	} 
+				
+}
+
+
+function btn_fileMinus_OnClick(obj)
+{
+	for (var i = ds_grd_multipart.GetRowCount(); i >= 0 ; i--) {
+
+		if (ds_grd_multipart.GetColumn(i, "check_val") == true) {
+			
+			ds_grd_multipart.DeleteRow(i);
+			
+		}
+	}
+}
+
+
+function grd_multipart_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	if (nCell = 0) gfn_checkAll(grd_multipart, ds_grd_multipart, "check_val");
+}
+
+
+
+function btn_fileRead_OnClick(obj)
+{
+	/* FileDialog 이용.
+	if (!FileDlg.Open()) return;
+	var fileName = FileDlg.FilePath + "\\" + FileDlg.FileName; 
+	*/
+	
+	//* filepath direct 지정.
+	var fileName = "C:\\Documents and Settings\\user\\My Documents\\IP-Phone Setting.txt";
+	
+	File.FileName = fileName;
+	File.Open();
+	
+	var statement = File.Read();
+	File.Close();
+	trace(fileName);
+	trace(statement);
+}
+]]></Script>
+</Window>

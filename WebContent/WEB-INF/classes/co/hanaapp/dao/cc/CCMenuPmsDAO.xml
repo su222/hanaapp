@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_MENU_BAS : 메뉴 -->
+<mapper namespace="co.hanaapp.dao.cc.CCMenuPmsDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 메뉴 조회 -->
+    <select id="selectMenuLst" parameterType="map" resultType ="map">
+        SELECT /* 메뉴 목록 */
+               'N' AS FLAG,
+               ROWIDTOCHAR(ROWID) AS ROW_ID,
+               '0' AS CHK,
+               #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+                nvl(MENU_ID,' ') AS MENU_ID,
+                nvl(MENU_NM,' ') AS MENU_NM,
+                nvl(MENU_GBN,' ') AS MENU_GBN,
+                nvl(UP_MENU_ID,' ') AS UP_MENU_ID,
+                nvl(MENU_LVL,'-99999') AS MENU_LVL,
+                nvl(IMG_ID,' ') AS IMG_ID,
+                nvl(IMG_WIDTH,'-99999') AS IMG_WIDTH,
+                nvl(MENU_URL,' ') AS MENU_URL,
+                nvl(SORT_NO,'-99999') AS SORT_NO,
+                nvl(NOTE,' ') AS NOTE ,
+               decode(USE_YN,'Y',1,0) USE_YN
+          FROM TB_CC_MENU_BAS
+         WHERE MENU_iD LIKE '%' || #{S_MENU_ID, jdbcType=VARCHAR} || '%' OR MENU_NM  LIKE '%' || #{S_MENU_ID, jdbcType=VARCHAR} || '%'
+         ORDER BY SORT_NO, MENU_ID
+
+    </select>
+
+ 
+ 	<!-- 메뉴 추가/수정 -->
+     <insert   id="saveMenuLst" parameterType="map" >
+
+        begin
+			UPDATE TB_CC_MENU_BAS
+			   SET MENU_ID = #{MENU_ID, jdbcType=VARCHAR} , 
+			       MENU_NM = #{MENU_NM, jdbcType=VARCHAR} , 
+			       MENU_GBN = #{MENU_GBN, jdbcType=VARCHAR} , 
+			       UP_MENU_ID = #{UP_MENU_ID, jdbcType=VARCHAR} , 
+			       MENU_LVL = #{MENU_LVL, jdbcType=VARCHAR} , 
+			       IMG_ID = #{IMG_ID, jdbcType=VARCHAR} , 
+			       IMG_WIDTH = #{IMG_WIDTH, jdbcType=VARCHAR} , 
+			       MENU_URL = #{MENU_URL, jdbcType=VARCHAR} , 
+			       SORT_NO = #{SORT_NO, jdbcType=VARCHAR} , 
+			       USE_YN = DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N')  , 
+			       NOTE = #{NOTE, jdbcType=VARCHAR} , 
+			       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+			       EDT_DT = SYSDATE 
+            where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+
+
+               if sql%rowcount=0 then
+					INSERT INTO TB_CC_MENU_BAS
+					        (
+					         MENU_ID , 
+					         MENU_NM , 
+					         MENU_GBN , 
+					         UP_MENU_ID , 
+					         MENU_LVL , 
+					         IMG_ID , 
+					         IMG_WIDTH , 
+					         MENU_URL , 
+					         SORT_NO , 
+					         USE_YN , 
+					         NOTE , 
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT )
+					 VALUES (
+					         #{MENU_ID, jdbcType=VARCHAR} , 
+					         #{MENU_NM, jdbcType=VARCHAR} , 
+					         #{MENU_GBN, jdbcType=VARCHAR} , 
+					         #{UP_MENU_ID, jdbcType=VARCHAR} , 
+					         #{MENU_LVL, jdbcType=VARCHAR} , 
+					         #{IMG_ID, jdbcType=VARCHAR} , 
+					         #{IMG_WIDTH, jdbcType=VARCHAR} , 
+					         #{MENU_URL, jdbcType=VARCHAR} , 
+					         #{SORT_NO, jdbcType=VARCHAR} , 
+					         DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N') , 
+					         #{NOTE, jdbcType=VARCHAR} , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE );
+                  end if;
+
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_MENU_BAS save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 메뉴정보 삭제 -->
+    <delete   id="deleteMenuLst" parameterType="map" >
+       	DELETE FROM TB_CC_MENU_BAS
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+ 
+ 
+   <!-- 카테고리용 조회 -->
+    <select id="selectCatePopup" parameterType="map" resultType ="map">
+		SELECT /* 카테고리 목록 */
+		        nvl(MENU_ID,' ') AS CATE_ID,
+		        DECODE(MENU_LVL,1,'  ',2,'    ',3, '      ') || MENU_NM AS CATE_NM
+		  FROM TB_CC_MENU_BAS
+		 ORDER BY SORT_NO, MENU_ID
+
+    </select>
+ 
+ 
+ 
+  <!-- 권한그룹 조회 -->
+    <select id="selectPmsLst" parameterType="map" resultType ="map">
+        SELECT /* 권한그룹 목록 */
+               'N' AS FLAG,
+               ROWIDTOCHAR(ROWID) AS ROW_ID,
+               '0' AS CHK,
+               #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+                nvl(PMS_CD,' ') AS PMS_CD,
+                nvl(PMS_NM,' ') AS PMS_NM,
+                nvl(NOTE,' ') AS NOTE ,
+               decode(USE_YN,'Y',1,0) USE_YN
+          FROM TB_CC_PMS_BAS
+         WHERE PMS_CD LIKE '%' || #{S_PMS_CD, jdbcType=VARCHAR} || '%' OR PMS_NM  LIKE '%' || #{S_PMS_CD, jdbcType=VARCHAR} || '%'
+         ORDER BY PMS_CD
+
+    </select>
+
+ 	<!-- 권한그룹 추가/수정 -->
+     <insert   id="savePmsLst" parameterType="map" >
+
+        begin
+			UPDATE TB_CC_PMS_BAS
+			   SET PMS_CD = #{PMS_CD, jdbcType=VARCHAR} , 
+			       PMS_NM = #{PMS_NM, jdbcType=VARCHAR} , 
+			       USE_YN = DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N')  , 
+			       NOTE = #{NOTE, jdbcType=VARCHAR} , 
+			       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+			       EDT_DT = SYSDATE 
+            where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+
+
+               if sql%rowcount=0 then
+					INSERT INTO TB_CC_PMS_BAS
+					        (
+					         PMS_CD , 
+					         PMS_NM , 
+					         USE_YN , 
+					         NOTE , 
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT )
+					 VALUES (
+					         #{PMS_CD, jdbcType=VARCHAR} , 
+					         #{PMS_NM, jdbcType=VARCHAR} , 
+					         DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N')   , 
+					         #{NOTE, jdbcType=VARCHAR} , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE );
+                  end if;
+
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_PMS_BAS save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 메뉴정보 삭제 -->
+    <delete   id="deletePmsLst" parameterType="map" >
+       	DELETE FROM TB_CC_PMS_BAS
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+
+
+
+   <!-- 그룹별 미사용 메뉴 조회 -->
+    <select id="selectNonPmsMenuLst" parameterType="map" resultType ="map">
+        SELECT /* 그룹별 미사용 메뉴 목록 */
+               'N' AS FLAG,
+               ROWIDTOCHAR(ROWID) AS ROW_ID,
+               '0' AS CHK,
+               #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+                nvl(MENU_ID,' ') AS MENU_ID,
+                nvl(MENU_NM,' ') AS MENU_NM,
+                nvl(MENU_GBN,' ') AS MENU_GBN,
+                nvl(UP_MENU_ID,' ') AS UP_MENU_ID,
+                nvl(MENU_LVL,'-99999') AS MENU_LVL,
+                nvl(MENU_URL,' ') AS MENU_URL,
+                nvl(SORT_NO,'-99999') AS SORT_NO
+          FROM TB_CC_MENU_BAS
+         WHERE MENU_GBN LIKE #{S_MENU_GBN, jdbcType=VARCHAR} || '%'  
+           AND MENU_ID NOT IN (SELECT MENU_ID
+                                 FROM TB_CC_PMSMENU_LST
+                                WHERE PMS_CD = #{S_PMS_CD, jdbcType=VARCHAR}         
+                              )
+         ORDER BY SORT_NO, MENU_ID
+         
+
+    </select>
+ 
+   <!-- 그룹별 사용 메뉴 조회 -->
+    <select id="selectPmsMenuLst" parameterType="map" resultType ="map">
+        SELECT /* 그룹별 사용 메뉴 목록 */
+               'N' AS FLAG,
+               ROWIDTOCHAR(B.ROWID) AS ROW_ID,
+               '0' AS CHK,
+               #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+                NVL(B.PMS_CD, ' ') AS PMS_CD,
+                nvl(A.MENU_ID,' ') AS MENU_ID,
+                nvl(A.MENU_NM,' ') AS MENU_NM,
+                nvl(A.UP_MENU_ID,' ') AS UP_MENU_ID,
+                nvl(A.MENU_LVL,'-99999') AS MENU_LVL,
+                nvl(A.MENU_URL,' ') AS MENU_URL,
+                nvl(A.SORT_NO,'-99999') AS SORT_NO,
+                decode(B.SEL_PMS,'Y',1,0) SEL_PMS,
+                decode(B.TRN_PMS,'Y',1,0) TRN_PMS
+          FROM TB_CC_MENU_BAS A, TB_CC_PMSMENU_LST B
+         WHERE A.MENU_ID = B.MENU_ID
+           AND A.MENU_GBN LIKE #{S_MENU_GBN, jdbcType=VARCHAR} || '%'  
+           AND B.PMS_CD = #{S_PMS_CD, jdbcType=VARCHAR}         
+         ORDER BY A.SORT_NO, A.MENU_ID
+
+    </select>
+
+
+ 	<!-- 그룹별 사용 메뉴 추가/수정/삭제 -->
+     <insert   id="savePmsMenuLst" parameterType="map" >
+           BEGIN
+                IF #{FLAG, jdbcType=VARCHAR} = 'D' THEN
+                   DELETE FROM TB_CC_PMSMENU_LST
+                    WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;              
+               ELSE
+					UPDATE TB_CC_PMSMENU_LST
+					   SET PMS_CD = #{PMS_CD, jdbcType=VARCHAR} , 
+					       MENU_ID = #{MENU_ID, jdbcType=VARCHAR} , 
+					       SEL_PMS = DECODE(#{SEL_PMS, jdbcType=VARCHAR},'1','Y','N') , 
+					       TRN_PMS = DECODE(#{TRN_PMS, jdbcType=VARCHAR},'1','Y','N'), 
+					       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+					       EDT_DT = SYSDATE 
+                    WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR}) ;   
+                 
+                 IF SQL%ROWCOUNT=0 THEN
+					INSERT INTO TB_CC_PMSMENU_LST
+					        (
+					         PMS_CD , 
+					         MENU_ID , 
+					         SEL_PMS , 
+					         TRN_PMS , 
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT )
+					 VALUES (
+					         #{PMS_CD, jdbcType=VARCHAR} , 
+					         #{MENU_ID, jdbcType=VARCHAR} , 
+					         DECODE(#{SEL_PMS, jdbcType=VARCHAR},'1','Y','N')  , 
+					         DECODE(#{TRN_PMS, jdbcType=VARCHAR},'1','Y','N') , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE );
+                    END IF;
+                END IF;
+            EXCEPTION
+                WHEN OTHERS THEN
+                    RAISE_APPLICATION_ERROR(-20501,'TB_CC_USEAREA_LST save error : ' ||SQLERRM);
+            END;
+ 
+        
+    </insert>
+ 
+
+ 
+   <!-- 권한그룹 코드 조회 -->
+    <select id="selectPmsCode" parameterType="map" resultType ="map">
+		SELECT /* 권한그룹 코드 */
+		       nvl(PMS_CD,' ') PMS_CD, 
+		       nvl(PMS_NM,' ') PMS_NM		      
+		  FROM TB_CC_PMS_BAS
+		 WHERE USE_YN = 'Y'
+		 ORDER BY PMS_CD
+
+    </select>
+
+
+
+   <!-- 사용자 권한부여 여부 조회 -->
+    <select id="selectUserPmsYnLst" parameterType="map" resultType ="map">
+        SELECT /* 사용자 목록 */
+               'N' AS FLAG,
+               ROWIDTOCHAR(A.ROWID) AS ROW_ID,
+               '0' AS CHK,
+               #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+               NVL(A.BRCH_ID, ' ') AS BRCH_ID,
+               #{S_PMS_CD, jdbcType=VARCHAR} AS PMS_CD,
+               NVL(A.USR_ID, ' ') AS USR_ID,
+               NVL(A.USR_NM, ' ') AS USR_NM,
+               NVL(FC_CC_GET_DEPTNAME(A.BRCH_ID, A.DEPT_CD), ' ') AS DEPT_NM,
+               DECODE(NVL(B.CNT,0),0,'X','O')  AS PMS_YN              
+          FROM TB_CC_USER_LST A, 
+               (SELECT BRCH_ID,
+                       USR_ID,
+                       COUNT(*) AS CNT
+                  FROM TB_CC_USERPMS_LST
+                 WHERE PMS_CD = #{S_PMS_CD, jdbcType=VARCHAR}
+              GROUP BY BRCH_ID, USR_ID 
+               ) B
+         WHERE A.BRCH_ID = B.BRCH_ID(+)
+           AND A.USR_ID = B.USR_ID(+)
+           AND (A.USR_ID LIKE '%' || #{S_USR_ID, jdbcType=VARCHAR} || '%' OR A.USR_NM LIKE '%' || #{S_USR_ID, jdbcType=VARCHAR} || '%')
+         ORDER BY A.USR_ID
+
+    </select>
+
+
+   <!-- 사용자별 권한그룹 조회 -->
+    <select id="selectUserPmsLst" parameterType="map" resultType ="map">
+		 SELECT /* 사용자별 권한그룹 */
+		        'N' AS FLAG,
+		        ROWIDTOCHAR(B.ROWID) AS ROW_ID,
+		        '0' AS CHK,
+		        #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+		        #{BRCH_ID, jdbcType=VARCHAR} AS BRCH_ID,
+		        #{USR_ID, jdbcType=VARCHAR} AS USR_ID,
+		        #{PMS_CD, jdbcType=VARCHAR} AS PMS_CD,
+		        DECODE(B.PMS_CD,NULL,'0','1') AS PMS_YN
+		   FROM TB_CC_BRCH_BAS A,  TB_CC_USERPMS_LST B
+		  WHERE A.BRCH_ID = B.MNG_BRCH_ID(+)
+		    AND B.BRCH_ID(+) = #{BRCH_ID, jdbcType=VARCHAR}
+		    AND B.USR_ID(+) = #{USR_ID, jdbcType=VARCHAR}
+		    AND B.PMS_CD(+) = #{PMS_CD, jdbcType=VARCHAR}
+		  ORDER BY A.SORT_NO , A.BRCH_ID 
+
+    </select>
+
+
+ 	<!-- 사용자별 권한그룹 추가/삭제 -->
+     <insert   id="saveUserPmsLst" parameterType="map" >
+           BEGIN
+   				-- 먼저 삭제 후 추가 대상만 추가
+               DELETE FROM TB_CC_USERPMS_LST
+				 where USR_ID = #{USR_ID, jdbcType=VARCHAR}
+				   and BRCH_ID = #{BRCH_ID, jdbcType=VARCHAR}
+				   and PMS_CD = #{PMS_CD, jdbcType=VARCHAR};
+   
+                IF #{FLAG, jdbcType=VARCHAR} != 'D' THEN
+             
+					INSERT INTO TB_CC_USERPMS_LST
+					        (
+					         BRCH_ID , 
+					         USR_ID , 
+					         PMS_CD , 
+					         USE_YN , 
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT )
+					 VALUES (
+					         #{BRCH_ID, jdbcType=VARCHAR} , 
+					         #{USR_ID, jdbcType=VARCHAR} , 
+					         #{PMS_CD, jdbcType=VARCHAR} , 
+					         'Y' , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE );
+                END IF;
+            EXCEPTION
+                WHEN OTHERS THEN
+                    RAISE_APPLICATION_ERROR(-20501,'TB_CC_USERPMS_LST save error : ' ||SQLERRM);
+            END;
+ 
+        
+    </insert>
+ 
+
+</mapper>

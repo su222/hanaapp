@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.hanaapp.dao.cc.CCCommonDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 날짜 타입별 조회 조회 -->
+    <select id="selectDateVal" parameterType="map" resultType ="map">
+        SELECT /* 날짜 타입별 목록 */
+               FC_CC_GET_DATEVAL(#{DATE_TYPE, jdbcType=VARCHAR}, SYSDATE, #{CNT, jdbcType=VARCHAR}, #{DATE_FORMAT, jdbcType=VARCHAR}) AS DATE_VAL
+          FROM DUAL
+
+    </select>
+
+ 
+
+</mapper>

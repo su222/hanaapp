@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_BRCH_BAS : 회사 -->
+<mapper namespace="co.hanaapp.dao.cc.CCBrchDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 회사정보 조회 -->
+    <select id="selectBrchLst" parameterType="map" resultType ="map">
+		SELECT /* 회사정보 */ 
+		       'N' AS FLAG,
+		       ROWIDTOCHAR(ROWID) AS ROW_ID,
+		       '0' AS CHK,
+		       #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+		       nvl(BRCH_ID, ' ') AS BRCH_ID, 
+		       nvl(BRCH_NM, ' ') AS BRCH_NM, 
+		       nvl(CORP_NO,  ' ') AS CORP_NO,
+		       nvl(BIZ_NO,  ' ') AS BIZ_NO,
+		       nvl(TEL_NO,  ' ') AS TEL_NO,
+		       nvl(FAX_NO,  ' ') AS FAX_NO,
+		       nvl(ADDR_NM,  ' ') AS ADDR_NM,
+		       nvl(ZIP_CD,  ' ') AS ZIP_CD,
+		       nvl(CHG_NM,  ' ') AS CHG_NM,
+		       nvl(HP_NO,  ' ') AS HP_NO,
+		       nvl(HP_NO2,  ' ') AS HP_NO2,
+		       nvl(OWN_NM, ' ') AS OWN_NM,
+		       nvl(FAX_CHG_USR, ' ') AS FAX_CHG_USR,
+		       NVL(FC_CC_GET_USRNAME(BRCH_ID, FAX_CHG_USR), ' ') AS FAX_CHG_USR_NM,
+		       nvl(REGS_AMT, '-99999') AS REGS_AMT,
+		       nvl(RMT_AMT, '-99999') AS RMT_AMT,
+		       nvl(COC_AMT, '-99999') AS COC_AMT,
+		       nvl(CRDT_AMT, '-99999') AS CRDT_AMT,
+		       nvl(COC_AMT2, '-99999') AS COC_AMT2,
+               nvl(CRDT_AMT2, '-99999') AS CRDT_AMT2               			       	       
+		  FROM TB_CC_BRCH_BAS
+		 WHERE BRCH_NM LIKE '%' || #{S_BRCH_NM, jdbcType=VARCHAR} || '%'
+		 ORDER BY SORT_NO, BRCH_NM
+
+    </select>
+
+ 
+ 	<!-- 회사정보 추가/수정 -->
+     <insert   id="saveBrchLst" parameterType="map" >
+
+        begin
+			UPDATE TB_CC_BRCH_BAS
+			   SET        BRCH_NM = #{BRCH_NM, jdbcType=VARCHAR} , 
+			       CORP_NO = #{CORP_NO, jdbcType=VARCHAR} , 
+			       BIZ_NO = #{BIZ_NO, jdbcType=VARCHAR} , 
+			       TEL_NO = #{TEL_NO, jdbcType=VARCHAR} , 
+			       FAX_NO = #{FAX_NO, jdbcType=VARCHAR} , 
+			       ADDR_NM = #{ADDR_NM, jdbcType=VARCHAR} , 
+			       ZIP_CD = #{ZIP_CD, jdbcType=VARCHAR} , 
+			       CHG_NM = #{CHG_NM, jdbcType=VARCHAR} , 
+			       FAX_CHG_USR = #{FAX_CHG_USR, jdbcType=VARCHAR} ,
+			       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+			       EDT_DT = SYSDATE , 
+			       HP_NO = #{HP_NO, jdbcType=VARCHAR} ,
+			       HP_NO2 = #{HP_NO2, jdbcType=VARCHAR} , 
+			       OWN_NM = #{OWN_NM, jdbcType=VARCHAR},
+			       REGS_AMT = #{REGS_AMT, jdbcType=VARCHAR},
+			       RMT_AMT = #{RMT_AMT, jdbcType=VARCHAR},
+			       COC_AMT = #{COC_AMT, jdbcType=VARCHAR},
+			       CRDT_AMT = #{CRDT_AMT, jdbcType=VARCHAR},
+			       COC_AMT2 = #{COC_AMT2, jdbcType=VARCHAR},
+                   CRDT_AMT2 = #{CRDT_AMT2, jdbcType=VARCHAR}                   			       			        
+			where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+
+
+               if sql%rowcount=0 then
+				INSERT INTO TB_CC_BRCH_BAS
+				        (
+				         BRCH_ID , 
+				         BRCH_NM , 
+				         CORP_NO , 
+				         BIZ_NO , 
+				         TEL_NO , 
+				         FAX_NO , 
+				         ADDR_NM , 
+				         ZIP_CD , 
+				         CHG_NM , 
+				         USE_YN , 
+				         CRT_USR , 
+				         CRT_DT , 
+				         EDT_USR , 
+				         EDT_DT , 
+				         SORT_NO , 
+				         HP_NO , 
+				         HP_NO2,
+				         OWN_NM,
+				         FAX_CHG_USR,
+				         REGS_AMT,
+				         RMT_AMT,
+				         COC_AMT,
+				         CRDT_AMT,
+				         COC_AMT2,
+                         CRDT_AMT2
+                          )
+				 VALUES (
+				         #{BRCH_ID, jdbcType=VARCHAR} , 
+				         #{BRCH_NM, jdbcType=VARCHAR} , 
+				         #{CORP_NO, jdbcType=VARCHAR} , 
+				         #{BIZ_NO, jdbcType=VARCHAR} , 
+				         #{TEL_NO, jdbcType=VARCHAR} , 
+				         #{FAX_NO, jdbcType=VARCHAR} , 
+				         #{ADDR_NM, jdbcType=VARCHAR} , 
+				         #{ZIP_CD, jdbcType=VARCHAR} , 
+				         #{CHG_NM, jdbcType=VARCHAR} , 
+				         'Y' , 
+				         #{OPERATOR, jdbcType=VARCHAR} , 
+				         SYSDATE , 
+				         #{OPERATOR, jdbcType=VARCHAR} , 
+				         SYSDATE , 
+				         1 , 
+				         #{HP_NO, jdbcType=VARCHAR} ,
+				         #{HP_NO2, jdbcType=VARCHAR} , 
+				         #{OWN_NM, jdbcType=VARCHAR},
+				         #{FAX_CHG_USR, jdbcType=VARCHAR},
+				         #{REGS_AMT, jdbcType=VARCHAR},
+				         #{RMT_AMT, jdbcType=VARCHAR},
+				         #{COC_AMT, jdbcType=VARCHAR},
+				         #{CRDT_AMT, jdbcType=VARCHAR},
+				         #{COC_AMT2, jdbcType=VARCHAR},
+                         #{CRDT_AMT2, jdbcType=VARCHAR}                         				         
+				          );
+                  end if;
+
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_BRCH_BAS save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 회사정보 삭제 -->
+    <delete   id="deleteBrchLst" parameterType="map" >
+       	DELETE FROM TB_CC_BRCH_BAS
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+ 
+
+   <!-- 회사정보 코드 조회 -->
+    <select id="selectBrchCode" parameterType="map" resultType ="map">
+		SELECT /* 회사정보 코드 */
+		       nvl(BRCH_ID,' ') BRCH_ID, 
+		       nvl(BRCH_NM,' ') BRCH_NM		      
+		  FROM TB_CC_BRCH_BAS
+		 WHERE USE_YN = 'Y'
+		   AND COM_ID =  #{S_COM_ID, jdbcType=VARCHAR}
+		 ORDER BY SORT_NO, BRCH_ID
+
+    </select>
+
+
+   <!-- 회사정보 한건 조회 -->
+    <select id="selectBrchOne" parameterType="map" resultType ="map">
+		SELECT /* 회사정보 한건 */ 
+		       nvl(BRCH_ID, ' ') AS BRCH_ID, 
+		       nvl(BRCH_NM, ' ') AS BRCH_NM, 
+		       nvl(CORP_NO,  ' ') AS CORP_NO,
+		       nvl(BIZ_NO,  ' ') AS BIZ_NO,
+		       nvl(TEL_NO,  ' ') AS TEL_NO,
+		       nvl(FAX_NO,  ' ') AS FAX_NO,
+		       nvl(ADDR_NM,  ' ') AS ADDR_NM,
+		       nvl(ZIP_CD,  ' ') AS ZIP_CD,
+		       nvl(CHG_NM,  ' ') AS CHG_NM,
+		       nvl(HP_NO,  ' ') AS HP_NO,
+		       nvl(OWN_NM, ' ') AS OWN_NM,
+		       nvl(FAX_CHG_USR, ' ') AS FAX_CHG_USR,
+		       NVL(FC_CC_GET_USRNAME(BRCH_ID, FAX_CHG_USR), ' ') AS FAX_CHG_USR_NM,
+		       nvl(REGS_AMT, '-99999') AS REGS_AMT,
+		       nvl(RMT_AMT, '-99999') AS RMT_AMT,
+		       nvl(COC_AMT, '-99999') AS COC_AMT,
+		       nvl(CRDT_AMT, '-99999') AS CRDT_AMT,
+		       nvl(COC_AMT2, '-99999') AS COC_AMT2,
+               nvl(CRDT_AMT2, '-99999') AS CRDT_AMT2               		       		       	       
+		  FROM TB_CC_BRCH_BAS
+		 WHERE BRCH_ID = #{S_BRCH_ID, jdbcType=VARCHAR}
+
+    </select>
+
+</mapper>

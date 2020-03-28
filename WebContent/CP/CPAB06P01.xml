@@ -1,0 +1,1252 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="712" Id="CPAB06P01" Left="8" OnLoadCompleted="CPAB06P01_OnLoadCompleted" OnUnloadCompleted="CPAB06P01_OnUnloadCompleted" PidAttrib="7" Title="내용증명" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="760" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_COC_LST" OnColumnChanged="DS_COC_LST_OnColumnChanged" OnRowPosChanged="DS_COC_LST_OnRowPosChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASK_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_JMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="NO_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="OCC_DT_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SBJ_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_AMT_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_PSP_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_ITR_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="NO_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="OCC_DT_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SBJ_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_AMT_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_PSP_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_ITR_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="NO_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="OCC_DT_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SBJ_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_AMT_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_PSP_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_ITR_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NO_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_NOTE_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_AMT_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_OBJ_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_SIS_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NO_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_NOTE_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_AMT_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_OBJ_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_SIS_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NO_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_NOTE_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_AMT_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_OBJ_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_SIS_3" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_COCBOND_LST" OnColumnChanged="DS_COCBOND_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRT_BTN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_TEMP"></Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_ASK_SEQ">
+				<Contents>
+					<colinfo id="ASK_SEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_COC_TEMP"></Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_COC_TREE">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASK_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="FORM_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REQ_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_ZIP" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_JMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="NO_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="OCC_DT_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SBJ_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_AMT_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_PSP_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_ITR_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="NO_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="OCC_DT_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SBJ_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_AMT_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_PSP_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_ITR_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="NO_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="OCC_DT_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SBJ_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_AMT_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_PSP_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="CUR_ITR_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NO_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_NOTE_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_AMT_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_OBJ_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_SIS_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NO_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_NOTE_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_AMT_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_OBJ_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_SIS_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NO_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_NOTE_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_AMT_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_OBJ_3" size="256" summ="default" type="STRING"/>
+					<colinfo id="SCA_SIS_3" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user7" Bottom="340" Height="52" Id="Shape_edit" Left="176" LineColor="user61" Right="754" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="28" Top="288" Type="RoundRect" Width="578"></Shape>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="0" Transparent="TRUE" Width="755"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="0" Text="내용증명" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="1" Top="8" Width="24"></Image>
+		<Shape Bottom="284" Height="5" Id="Shape14" Left="8" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="747" TabOrder="3" Top="279" Type="Rectangle" Visible="FALSE" Width="739"></Shape>
+		<Image Align="Left" Height="14" Id="Image6" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="3" Text="내용증명&#32;목록" Top="264" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="83" Height="5" Id="Shape0" Left="7" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="746" TabOrder="6" Top="78" Type="Rectangle" Visible="FALSE" Width="739"></Shape>
+		<Shape Bottom="91" Height="48" Id="Shape1" Left="85" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="95" TabOrder="7" Top="43" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Edit Border="Flat" Height="18" Id="S_BND_NM" ImeMode="none" Left="95" LeftMargin="4" OnKeyDown="S_BND_NM_OnKeyDown" Style="Edit" TabOrder="8" Top="59" Width="150"></Edit>
+		<Image Align="Right" Height="18" Id="Image5" Left="34" LeftMargin="0" Style="Stc_Default_bold" TabOrder="9" Text="채권사명" Top="59" Transparent="TRUE" Width="50"></Image>
+		<Shape Bottom="80" Height="40" Id="Shape21" Left="9" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="29" TabOrder="10" Top="40" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="252" LeftMargin="16" OnClick="fn_search_cocbond" Style="Btn_sub" TabOrder="11" Top="56" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Button Height="21" Id="btn_add_dtl" Left="516" OnClick="btn_add_dtl_OnClick" TabOrder="13" TabStop="FALSE" Text="채권사&#32;추가" Top="55" Width="74"></Button>
+		<Button Height="21" Id="btn_del_dtl" Left="596" OnClick="btn_del_dtl_OnClick" TabOrder="14" TabStop="FALSE" Text="채권사&#32;삭제" Top="55" Width="74"></Button>
+		<Shape Bottom="82" Height="32" Id="Shape24" Left="590" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="595" TabOrder="12" Top="50" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="259" Height="5" Id="Shape3" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="751" TabOrder="16" Top="254" Type="Rectangle" Visible="FALSE" Width="751"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static22" Left="377" Style="Stc_Label" TabOrder="17" Text="양식구분" Top="315" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static10" Left="377" Style="Stc_Label" TabOrder="18" Text="주소" Top="292" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_COC_LST" Border="Flat" Column="BND_ADDR" Height="18" Id="EDT_BND_ADDR" Left="461" LeftMargin="4" Style="Edit" TabOrder="19" Top="293" Width="96"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static0" Left="181" Style="Stc_Label" TabOrder="20" Text="신청인" Top="315" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_COC_LST" Border="Flat" Column="BND_NM" Height="18" Id="EDT_BND_NM" Left="266" LeftMargin="4" Style="Edit" TabOrder="21" Top="293" Width="100"></Edit>
+		<Shape Bottom="336" Height="56" Id="Shape10" Left="647" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="651" TabOrder="22" Top="280" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="336" Height="56" Id="Shape6" Left="559" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="567" TabOrder="23" Top="280" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Shape Bottom="336" Height="56" Id="Shape8" Left="457" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="461" TabOrder="24" Top="280" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="336" Height="56" Id="Shape2" Left="368" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="376" TabOrder="25" Top="280" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Shape Bottom="336" Height="56" Id="Shape22" Left="261" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="265" TabOrder="26" Top="280" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static21" Left="181" Style="Stc_Label" TabOrder="27" Text="채권사명" Top="292" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static1" Left="567" Style="Stc_Label" TabOrder="29" Text="신청일자" Top="315" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_COC_LST" Border="Flat" Column="CLT_NM" Height="18" Id="EDT_CLT_NM" Left="266" LeftMargin="4" Style="Edit" TabOrder="30" Top="316" Width="100"></Edit>
+		<MaskEdit BindDataset="DS_COC_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="REQ_DT" Height="18" Id="EDT_REQ_DT" Left="652" Mask="####-##-##" OnKeyDown="EDT_AFF_ST_DT_OnKeyDown" Style="Edit" TabOrder="31" TabStop="FALSE" Top="316" Type="STRING" Width="70"></MaskEdit>
+		<Button Height="16" Id="BTN_REQ_DT" ImageID="Btn_calendar" Left="727" OnClick="BTN_REQ_DT_OnClick" TabOrder="32" TabStop="FALSE" Text="Button1" Top="317" Width="16"></Button>
+		<Shape Bottom="346" Height="36" Id="Shape20" Left="722" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="727" TabOrder="33" Top="310" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Image Align="Left" Height="14" Id="Image3" ImageID="Title_dot" Left="176" LeftMargin="20" Style="Stc_Subtitle" TabOrder="34" Text="채권내역" Top="347" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="367" Height="5" Id="Shape4" Left="180" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="751" TabOrder="34" Top="362" Type="Rectangle" Visible="FALSE" Width="571"></Shape>
+		<Shape Bottom="345" Height="5" Id="Shape5" Left="180" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="751" TabOrder="36" Top="340" Type="Rectangle" Visible="FALSE" Width="571"></Shape>
+		<Image Align="Left" Height="14" Id="Image4" ImageID="Title_dot" Left="175" LeftMargin="20" Style="Stc_Subtitle" TabOrder="38" Text="담보부&#32;대출" Top="512" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="532" Height="5" Id="Shape7" Left="179" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="750" TabOrder="38" Top="527" Type="Rectangle" Visible="FALSE" Width="571"></Shape>
+		<Shape Bottom="510" Height="5" Id="Shape9" Left="179" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="750" TabOrder="39" Top="505" Type="Rectangle" Visible="FALSE" Width="571"></Shape>
+		<Grid AutoEnter="TRUE" BindDataset="DS_COCBOND_LST" BkColor2="user45" BkSelColor="user44" BoldHead="FALSE" Border="Flat" Bottom="249" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="169" Id="GRD_COCBOND_LST" InputPanel="FALSE" Left="8" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_COCBOND_LST_OnCellClick" OnCellDBLClick="GRD_COCBOND_LST_OnCellDblClick" OnHeadClick="GRD_COCBOND_LST_OnHeadClick" Right="748" RowHeight="20" Style="Grid" TabOrder="39" TabStop="true" Top="80" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="740">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="0"/>
+						<col width="100"/>
+						<col width="300"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="50"/>
+					</columns>
+					<head>
+						<cell bkcolor="user41" bkimagealign="stretch" col="0" color="user42" display="text" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="1" color="user42" display="text" InputZeroTime="true" text="채권사코드"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="2" color="user42" display="text" InputZeroTime="true" text="채권사명"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="3" color="user42" display="text" InputZeroTime="true" text="채권사주소"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="4" color="user42" display="text" InputZeroTime="true" text="전화번호"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="5" color="user42" display="text" InputZeroTime="true" text="우편번호"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="6" color="user42" display="text" InputZeroTime="true"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="left" col="1" colid="BND_SEQ" display="text" edit="normal" InputZeroTime="true"/>
+						<cell align="left" col="2" colid="BND_NM" display="text" edit="normal" InputZeroTime="true"/>
+						<cell align="left" col="3" colid="BND_ADDR" display="text" edit="normal" InputZeroTime="true"/>
+						<cell align="center" col="4" colid="BND_TEL" display="text" edit="normal" InputZeroTime="true"/>
+						<cell align="center" col="5" colid="BND_ZIP" display="text" edit="normal" InputZeroTime="true" Mask="###-###"/>
+						<cell align="center" col="6" colid="PRT_BTN" color="black" display="button" edit="button" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoEnter="TRUE" BindDataset="DS_COC_TREE" BkColor2="user45" BkSelColor="user44" BoldHead="FALSE" Border="Flat" Bottom="673" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="393" Id="GRD_COC_LST" InputPanel="FALSE" Left="8" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_COC_LST_OnCellClick" Right="172" RowHeight="20" Style="Grid" TabOrder="40" TabStop="true" Top="280" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="164">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="50"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell col="3" display="text" InputZeroTime="true" text="회사코드"/>
+						<cell col="4" display="text" InputZeroTime="true" text="사건번호"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="5" color="user42" display="text" InputZeroTime="true" text="번호"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="6" color="user42" display="text" InputZeroTime="true" text="채권사명"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell col="3" colid="BRCH_ID" display="text" InputZeroTime="true"/>
+						<cell col="4" colid="AFF_SEQ" display="text" InputZeroTime="true"/>
+						<cell col="5" colid="ASK_SEQ" display="text" InputZeroTime="true"/>
+						<cell align="left" col="6" colid="BND_NM" display="text" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoEnter="TRUE" BindDataset="DS_COC_LST" BkColor2="user45" BkSelColor="user44" BoldHead="FALSE" Border="Flat" Bottom="505" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="137" Id="Grid2" InputPanel="FALSE" Left="184" LineColor="default" LineType="OnlyVERT" Right="756" RowHeight="20" Style="Grid" TabOrder="41" TabStop="true" Top="368" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="572">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell bkcolor="user41" bkimagealign="stretch" col="0" color="user42" display="text" InputZeroTime="true" rowspan="2" text="No"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="1" color="user42" colspan="3" display="text" InputZeroTime="true" text="채권의원인"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="4" color="user42" display="text" InputZeroTime="true" rowspan="2" text="원금&#32;현잔액"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="5" color="user42" display="text" InputZeroTime="true" rowspan="2" text="이자&#32;현잔액"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="6" color="user42" display="text" InputZeroTime="true" rowspan="2" text="합&#32;계"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="1" color="user42" display="text" InputZeroTime="true" row="1" text="발생일자"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="2" color="user42" display="text" InputZeroTime="true" row="1" text="채권과목"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="3" color="user42" display="text" InputZeroTime="true" row="1" text="채권금액"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="NO_1" display="text" InputZeroTime="true"/>
+						<cell align="center" col="1" colid="OCC_DT_1" display="text" edit="normal" InputZeroTime="true" Mask="####-##-##"/>
+						<cell align="left" col="2" colid="BND_SBJ_1" display="text" edit="normal" InputZeroTime="true"/>
+						<cell align="right" col="3" colid="BND_AMT_1" display="number" edit="number" InputZeroTime="true"/>
+						<cell align="right" col="4" colid="CUR_PSP_1" display="number" edit="number" InputZeroTime="true"/>
+						<cell align="right" col="5" colid="CUR_ITR_1" display="number" edit="number" InputZeroTime="true"/>
+						<cell align="right" col="6" colid="TOT_AMT_1" display="number" InputZeroTime="true"/>
+						<cell align="center" col="0" colid="NO_2" display="text" InputZeroTime="true" row="1"/>
+						<cell align="center" col="1" colid="OCC_DT_2" display="text" edit="normal" InputZeroTime="true" Mask="####-##-##" row="1"/>
+						<cell align="left" col="2" colid="BND_SBJ_2" display="text" edit="normal" InputZeroTime="true" row="1"/>
+						<cell align="right" col="3" colid="BND_AMT_2" display="number" edit="number" InputZeroTime="true" row="1"/>
+						<cell align="right" col="4" colid="CUR_PSP_2" display="number" edit="number" InputZeroTime="true" row="1"/>
+						<cell align="right" col="5" colid="CUR_ITR_2" display="number" edit="number" InputZeroTime="true" row="1"/>
+						<cell align="right" col="6" colid="TOT_AMT_2" display="number" InputZeroTime="true" row="1"/>
+						<cell align="center" col="0" colid="NO_3" display="text" InputZeroTime="true" row="2"/>
+						<cell align="center" col="1" colid="OCC_DT_3" display="text" edit="normal" InputZeroTime="true" Mask="####-##-##" row="2"/>
+						<cell align="left" col="2" colid="BND_SBJ_3" display="text" edit="normal" InputZeroTime="true" row="2"/>
+						<cell align="right" col="3" colid="BND_AMT_3" display="number" edit="number" InputZeroTime="true" row="2"/>
+						<cell align="right" col="4" colid="CUR_PSP_3" display="number" edit="number" InputZeroTime="true" row="2"/>
+						<cell align="right" col="5" colid="CUR_ITR_3" display="number" edit="number" InputZeroTime="true" row="2"/>
+						<cell align="right" col="6" colid="TOT_AMT_3" display="number" InputZeroTime="true" row="2"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoEnter="TRUE" BindDataset="DS_COC_LST" BkColor2="user45" BkSelColor="user44" BoldHead="FALSE" Border="Flat" Bottom="670" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="137" Id="Grid3" InputPanel="FALSE" Left="183" LineColor="default" LineType="OnlyVERT" Right="755" RowHeight="20" Style="Grid" TabOrder="42" TabStop="true" Top="533" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="572">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="150"/>
+						<col width="80"/>
+						<col width="150"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell bkcolor="user41" bkimagealign="stretch" col="0" color="user42" display="text" InputZeroTime="true" text="채권번호"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="1" color="user42" display="text" InputZeroTime="true" text="피담보내용&#32;및&#32;목적물"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="2" color="user42" display="text" InputZeroTime="true" text="피담보채권액"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="3" color="user42" display="text" InputZeroTime="true" text="피담보목적물&#32;가액"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="4" color="user42" display="text" InputZeroTime="true" text="담보부족예상액"/>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="BND_NO_1" display="text" edit="normal" InputZeroTime="true"/>
+						<cell align="left" col="1" colid="SCA_NOTE_1" display="text" edit="normal" InputZeroTime="true"/>
+						<cell align="right" col="2" colid="SCA_AMT_1" display="number" edit="number" InputZeroTime="true"/>
+						<cell align="right" col="3" colid="SCA_OBJ_1" display="number" edit="number" InputZeroTime="true"/>
+						<cell align="right" col="4" colid="SCA_SIS_1" display="number" edit="number" InputZeroTime="true"/>
+						<cell align="left" col="0" colid="BND_NO_2" display="text" edit="normal" InputZeroTime="true" row="1"/>
+						<cell align="left" col="1" colid="SCA_NOTE_2" display="text" edit="normal" InputZeroTime="true" row="1"/>
+						<cell align="right" col="2" colid="SCA_AMT_2" display="number" edit="number" InputZeroTime="true" row="1"/>
+						<cell align="right" col="3" colid="SCA_OBJ_2" display="number" edit="number" InputZeroTime="true" row="1"/>
+						<cell align="right" col="4" colid="SCA_SIS_2" display="number" edit="number" InputZeroTime="true" row="1"/>
+						<cell align="left" col="0" colid="BND_NO_3" display="text" edit="normal" InputZeroTime="true" row="2"/>
+						<cell align="left" col="1" colid="SCA_NOTE_3" display="text" edit="normal" InputZeroTime="true" row="2"/>
+						<cell align="right" col="2" colid="SCA_AMT_3" display="number" edit="number" InputZeroTime="true" row="2"/>
+						<cell align="right" col="3" colid="SCA_OBJ_3" display="number" edit="number" InputZeroTime="true" row="2"/>
+						<cell align="right" col="4" colid="SCA_SIS_3" display="number" edit="number" InputZeroTime="true" row="2"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Combo BindDataset="DS_COC_LST" Border="Flat" Column="FORM_GBN" Height="18" Id="COB_FORM_GBN" Left="461" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="43" Top="315" Width="96"></Combo>
+		<Shape Bottom="82" Height="32" Id="Shape11" Left="670" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="675" TabOrder="44" Top="50" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="21" Id="btn_save_bond" Left="676" OnClick="btn_save_bond_OnClick" TabOrder="45" TabStop="FALSE" Text="채권사&#32;저장" Top="55" Width="74"></Button>
+		<Button Height="21" Id="btn_add" Left="561" OnClick="btn_add_OnClick" TabOrder="46" TabStop="FALSE" Text="내용증명&#32;추가" Top="258" Width="90"></Button>
+		<Button Height="21" Id="btn_save_coc" Left="657" OnClick="fn_save_coc" TabOrder="47" TabStop="FALSE" Text="내용증명&#32;저장" Top="258" Width="90"></Button>
+		<Report Bottom="73" Height="16" Id="Report0" Left="488" Right="496" Top="57" Visible="FALSE" Width="8"></Report>
+		<Edit BindDataset="DS_COC_LST" Border="Flat" Column="AFF_SEQ" Height="18" Id="Edit0" Left="450" LeftMargin="4" Style="Edit" TabOrder="49" Top="260" Visible="FALSE" Width="100"></Edit>
+		<Button Height="21" Id="btn_print" Left="248" OnClick="btn_print_OnClick" TabOrder="50" TabStop="FALSE" Text="내용증명출력" Top="686" Width="89"></Button>
+		<Button Height="21" Id="Button2" Left="416" OnClick="fn_close" TabOrder="51" TabStop="FALSE" Text="닫기" Top="686" Width="49"></Button>
+		<Button Height="21" Id="btn_evt" Left="344" OnClick="btn_evt_OnClick" TabOrder="52" TabStop="FALSE" Text="봉투출력" Top="686" Width="65"></Button>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static12" Left="567" Style="Stc_Label" TabOrder="54" Text="주민번호" Top="293" VAlign="Middle" Width="80"></Static>
+		<MaskEdit BindDataset="DS_COC_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="CLT_JMN" Height="18" Id="EDT_CLT_JMN" Left="651" Mask="######-#######" Style="Edit" TabOrder="53" Top="294" Type="STRING" Width="94"></MaskEdit>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 내용증명 
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 내용증명
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+#include "lib::lib_file.js";
+#include "lib::lib_report.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+var curCocRow          = "";
+var curCocBondRow          = "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	// 양식구분
+	gfn_comCodeCombo(COB_FORM_GBN, "AD09", "","");
+	
+	
+	
+	fn_search();
+		
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2.0 조회 함수 (전체)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 데이터셋 clear 후 조회 (만약 안하면 기존 데이터 남아서 조회값이 없어도 있는것 처럼 보임)
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	DS_COC_LST.ClearData();
+	DS_COCBOND_LST.ClearData();
+	
+	fn_search_cocbond();
+	fn_search_coc();
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2.1 조회 함수  (채권사조회)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 별도의 트랜젝션이 발생하므로 조회를 나눈다.
+//*-----------------------------------------------------------------------------------------------
+function fn_search_cocbond()
+{
+	
+	DS_COCBOND_LST.ClearData();
+	
+	curCocRow = DS_COC_TREE.curRow;
+	curCocBondRow = DS_COCBOND_LST.curRow;
+	
+	svcID			= "CPAB06P01.selectCocBondLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_COCBOND_LST=ac.ACCocDAO.selectCocBondLst"
+							;	
+	
+	argument    	= " _sqlName=ac.ACCocDAO.selectCocBondLst"
+							+ " S_BND_NM=" + quote(S_BND_NM.Text)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2.2 조회 함수  (내용증명)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 별도의 트랜젝션이 발생하므로 조회를 나눈다.
+//*-----------------------------------------------------------------------------------------------
+function fn_search_coc()
+{
+	
+	curCocRow = DS_COC_TREE.curRow;
+	
+	svcID			= "CPAB06P01.selectCocLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_COC_TREE=ac.ACCocDAO.selectCocLst"
+							;	
+	
+	argument    	= " _sqlName=ac.ACCocDAO.selectCocLst"
+							+ " S_BRCH_ID=" + quote(P_BRCH_ID)
+							+ " S_AFF_SEQ=" + quote(P_AFF_SEQ)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 채권사 정보 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_save_bond_OnClick(obj)
+{
+	
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	var isSave = false;
+		
+	curCocBondRow = DS_COCBOND_LST.curRow;		
+	
+	DS_COCBOND_LST.FireEvent = false;		
+	DS_COCBOND_LST.UnFilter();
+	DS_COCBOND_LST.Filter("FLAG !='N'");
+
+	// 채권사 
+	if(DS_COCBOND_LST.rowcount > 0)
+	{
+	
+		// 필수체크
+		for(var i=0;i<DS_COCBOND_LST.rowcount;i++)
+		{
+			
+			cMessage = "";
+			
+			if(length(DS_COCBOND_LST.GetColumn(i, "BND_NM")) == 0)
+			{
+				bValidate = false;
+				cMessage += "채권사명 누락 ";
+			}
+
+			if(bValidate == false)
+			{
+				pMessage += "\n ["+i+"] " + cMessage;
+			}
+		}
+		
+		// 필수항목 누락 
+		if(bValidate == false)
+		{
+			gfn_popup_message("modal", "error", pMessage, "확인");
+		}
+		else
+		{
+			isSave = true;
+		}	
+	}
+
+
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			DS_TEMP.ClearData();
+			DS_TEMP.CopyF("DS_COCBOND_LST");
+			
+			
+			svcID			= "CPAB06P01.saveCocBondLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "ac.ACCocDAO.saveCocBondLst=DS_TEMP:A"
+							;
+			
+			outDatasets 	= "";
+			argument    	= " _sqlName=ac.ACCocDAO.saveCocBondLst"
+							;
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+	
+	}
+
+	DS_COCBOND_LST.UnFilter();
+	DS_COCBOND_LST.Filter("flag != 'D'");
+	DS_COCBOND_LST.FireEvent = true;	
+
+	DS_COCBOND_LST.row = curCocBondRow;
+		
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 내용증명 정보 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_save_coc()
+{
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	var isSave = false;
+
+	curCocRow = DS_COC_TREE.curRow;
+		
+		
+	// 필터 
+	DS_COC_LST.FireEvent = false;		
+	DS_COC_LST.UnFilter();
+	DS_COC_LST.Filter("FLAG !='N'");
+	
+
+	// 자료송부서
+	if(DS_COC_LST.rowcount > 0)
+	{
+		// 필수체크
+		for(var i=0;i<DS_COC_LST.rowcount;i++)
+		{
+			
+			cMessage = ""; 
+		
+			if(length(DS_COC_LST.GetColumn(i, "AFF_SEQ")) == 0)
+			{
+				bValidate = false;
+				cMessage += "사건 누락 ";
+			}
+		
+			if(length(DS_COC_LST.GetColumn(i, "FORM_GBN")) == 0)
+			{
+				bValidate = false;
+				cMessage += "양식구분 누락 ";
+			}			
+			
+			if(length(DS_COC_LST.GetColumn(i, "BND_NM")) == 0)
+			{
+				bValidate = false;
+				cMessage += "채권사명 누락 ";
+			}
+		
+			if(gfn_isNullDate(DS_COC_LST.GetColumn(i, "REQ_DT")) == true)
+			{
+				bValidate = false;
+				cMessage += "신청일자 누락 ";
+			}			
+		
+	
+
+			if(bValidate == false)
+			{
+				pMessage += "\n ["+i+"] " + cMessage;
+			}
+		}
+		
+		// 필수항목 누락 
+		if(bValidate == false)
+		{
+			gfn_popup_message("modal", "error", pMessage, "확인");
+		}		
+		
+	}
+	else
+	{
+		gfn_popup_message("modal", "error", "저장할 항목이 없습니다.", "확인");
+		bValidate = false;		
+	
+	}
+		
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		// 저장 
+		// 새로운 DataSet에 담아서 보내야됨
+		// 아니면 변경된 모든것들을 보내버리므로 안됨.
+		DS_COC_TEMP.ClearData();
+		DS_COC_TEMP.CopyF("DS_COC_LST");
+		
+		svcID			= "CPAB06P01.saveCocLst";
+		url   			= "service::common/select_mi.do";
+		inDatasets  	= "ac.ACCocDAO.saveCocLst=DS_COC_TEMP:A"
+						;
+		
+		outDatasets 	= "";
+		argument    	= " _sqlName=ac.ACCocDAO.saveCocLst"
+						;
+		callbackFunc 	= "gfn_callback";	
+	
+	
+		gfn_showProgressWindow(true);
+		gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+	
+	}
+
+	DS_COC_LST.UnFilter();
+	DS_COC_LST.Filter("flag != 'D'");
+	DS_COC_LST.FireEvent = true;	
+
+	DS_COC_TREE.row = curCocRow;
+
+	fn_coc_filter(curCocRow); 
+	
+}
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		
+		//  채권사조회
+		case "CPAB06P01.selectCocBondLst" :
+				
+		break;	
+		
+		//  내용증명조회
+		case "CPAB06P01.selectCocLst" :
+		
+			DS_COC_LST.ClearData();
+			DS_COC_LST.CopyF("DS_COC_TREE");			
+			
+				
+		break;	
+		
+	
+		
+		//  채권사저장
+		case "CPAB06P01.saveCocBondLst" :
+			gfn_setMsg("내용증명 채권사 추가/수정/삭제 완료.");
+			fn_search_cocbond();		
+		break;	
+		
+		
+		//  내용증명 저장
+		case "CPAB06P01.saveCocLst" :
+			gfn_setMsg("내용증명 추가/수정 완료.");
+			fn_search_coc();		
+		break;	
+				
+		
+		default:
+	}
+
+
+	if(curCocRow > -1) 
+	{
+		DS_COC_TREE.row = curCocRow;
+		
+		//trace('yes!!!!!!!!!!');
+	}
+	else
+	{
+		//trace('no!!!!!!!!!!');
+		
+		curCocRow = 0;
+	}
+
+	if(curCocBondRow != null) 
+	{
+		DS_COCBOND_LST.row = curCocBondRow;
+	}
+	
+	fn_coc_filter(curCocRow); 
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 내용증명 추가
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_add()
+{
+	var vRow = DS_COC_TREE.AddRow();
+
+    curCocRow = vRow;
+    
+    
+	gfn_get_date('TODAY',0,'YYYYMMDD');
+	
+	// 기초값
+	DS_COC_TREE.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+	DS_COC_TREE.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+	DS_COC_TREE.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+    
+    DS_COC_TREE.SetColumn(vRow,"BRCH_ID", P_BRCH_ID);// 
+    DS_COC_TREE.SetColumn(vRow,"AFF_SEQ", P_AFF_SEQ);// 
+    DS_COC_TREE.SetColumn(vRow,"ASK_SEQ", fn_get_ask_seq());// 
+    
+    
+	DS_COC_TREE.SetColumn(vRow,"FORM_GBN", "B");// 양식구분(기본양식)
+	DS_COC_TREE.SetColumn(vRow,"CLT_NM", P_CLT_NM);// 
+	DS_COC_TREE.SetColumn(vRow,"CLT_JMN", P_CLT_JMN);// 
+	DS_COC_TREE.SetColumn(vRow,"REQ_DT", GDS_DATE_TYPE.GetColumn(0,'DATE_VAL'));// 신청일자(오늘)
+	DS_COC_TREE.SetColumn(vRow,"NO_1", 1);// 
+	DS_COC_TREE.SetColumn(vRow,"NO_2", 2);// 
+	DS_COC_TREE.SetColumn(vRow,"NO_3", 3);// 
+
+	    
+	fn_coc_filter(curCocRow);    
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 내용증명 필터링
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_coc_filter(c_row)
+{
+
+	var ASK_SEQ = DS_COC_TREE.GetColumn(c_row,"ASK_SEQ");
+
+	//TRACE('C_ROW/ASK_SEQ='+C_ROW+'/'+ASK_SEQ);
+
+
+	// 해당 내용증명 필터 
+	DS_COC_TREE.FireEvent = false;		
+	DS_COC_TREE.UnFilter();
+	DS_COC_TREE.Filter("ASK_SEQ ='"+ASK_SEQ+"' && flag != 'D'");	
+
+	DS_COC_LST.ClearData();
+	DS_COC_LST.CopyF("DS_COC_TREE");	
+	
+	DS_COC_TREE.UnFilter();
+
+	DS_COC_TREE.FireEvent = true;
+
+	DS_COC_TREE.row = c_row;
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 내용증명 코드 채번
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_get_ask_seq()
+{
+	
+	svcID			= "CPAB06P01.selectAskSeq";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_ASK_SEQ=ac.ACCocDAO.selectAskSeq";	
+	
+	argument    	= " _sqlName=ac.ACCocDAO.selectAskSeq";	
+
+	callbackFunc 	= "gfn_callback";
+
+	gfn_SyncTransaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+	  
+//	TRACE('ASK_SEQ='+DS_ASK_SEQ.GetColumn(0, "ASK_SEQ"));    
+	    
+	    
+	return DS_ASK_SEQ.GetColumn(0, "ASK_SEQ");    
+	    
+    
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CPAB06P01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CPAB06P01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2.3출력
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_print_OnClick(obj)
+{
+	var mrd = "";
+	var param = "";
+
+	// 선택된 행의 ROWID가 없으면 즉 저장 안된 상태면 경고창
+	if(length(DS_COC_LST.GetColumn(DS_COC_LST.curRow,"ROW_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "먼저 선택된 채권사의 내용증명 저장 후 출력 하세요. ", "확인");
+		return;
+	}
+	
+	// 출력
+	// 기본양식
+	if(DS_COC_LST.GetColumn(DS_COC_LST.curRow,"FORM_GBN") == 'B')
+	{
+		mrd = "PG_AC_COC_LST_B.mrd";
+	}
+	// 개인양식
+	else
+	{
+		mrd = "PG_AC_COC_LST_P.mrd";
+	}
+	
+	
+	param = "/rp ["
+			+DS_COC_LST.GetColumn(DS_COC_LST.curRow, "BRCH_ID")+"] ["        // 회사코드 1
+			+DS_COC_LST.GetColumn(DS_COC_LST.curRow, "AFF_SEQ")+"] ["   // 사건순번
+			+DS_COC_LST.GetColumn(DS_COC_LST.curRow, "ASK_SEQ")+"]"  // 내용증명순번
+			;
+			
+	trace('mrd/parm='+mrd+'/'+ param);		
+			
+
+	gfn_viewReport(Report0, mrd, param, true);	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2.4 봉투 출력
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_evt_OnClick(obj)
+{
+	var mrd = "";
+	var param = "";
+
+	// 선택된 행의 ROWID가 없으면 즉 저장 안된 상태면 경고창
+	if(length(DS_COC_LST.GetColumn(DS_COC_LST.curRow,"ROW_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "먼저 선택된 채권사의 내용증명 저장 후 출력 하세요. ", "확인");
+		return;
+	}
+	
+	mrd = "PG_AC_COCEVT_LST.mrd";
+	
+	
+	param = "/rp ["
+			+DS_COC_LST.GetColumn(DS_COC_LST.curRow, "BND_NM")+"] ["        // 채권사명
+			+DS_COC_LST.GetColumn(DS_COC_LST.curRow, "BND_ADDR")+"] ["   // 주소
+			+DS_COC_LST.GetColumn(DS_COC_LST.curRow, "BND_ZIP")+"]"  // 우편번호
+			+DS_COC_LST.GetColumn(DS_COC_LST.curRow, "CLT_NM")+"]"  // 고객명
+			;
+		
+			
+			
+			
+	//trace('rp mrd='+mrd);		
+			
+
+	gfn_viewReport(Report0, mrd, param, true);	
+
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 셀 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_COCBOND_LST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	curCocBondRow = nRow;
+	
+	if(nCell == 6)
+	{	
+		// 채권사 사용
+		// 기본정보가 선택되지 않으면 경고 
+		if(length(DS_COCBOND_LST.GetColumn(DS_COCBOND_LST.curRow,"BND_SEQ")) == 0)
+		{
+			gfn_popup_message("modal", "error", "먼저 채권사 저장 후 선택 하세요. ", "확인");
+			return;
+		}
+		
+		// 선택된 내용증명이 없다면 행추가
+		if(curCocRow < 0)
+		{
+			fn_add();
+		}
+		
+		// 채권사 정보 넣기 
+		// 필터되는건 항상 1개 
+		DS_COC_LST.SetColumn(0,"BND_NM", DS_COCBOND_LST.GetColumn(nRow,"BND_NM"));
+		DS_COC_LST.SetColumn(0,"BND_TEL", DS_COCBOND_LST.GetColumn(nRow,"BND_TEL"));
+		DS_COC_LST.SetColumn(0,"BND_ADDR", DS_COCBOND_LST.GetColumn(nRow,"BND_ADDR"));
+		DS_COC_LST.SetColumn(0,"BND_ZIP", DS_COCBOND_LST.GetColumn(nRow,"BND_ZIP"));
+		
+	}	
+	
+}
+
+function GRD_COC_LST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	curCocRow = nRow;
+	
+	TRACE('NROW='+NROW);
+	
+	fn_coc_filter(nRow);
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 셀 드블클릭시 (추가모드)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_COCBOND_LST_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_COCBOND_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_COCBOND_LST, DS_COCBOND_LST, nCell);	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_add_dtl_OnClick(obj)
+{
+	
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(P_BRCH_ID) == 0)
+	{
+		gfn_popup_message("modal", "error", "회사정보 누락 관리자에게 문의하세요.. ", "확인");
+		return;
+	}
+	
+	var vRow = DS_COCBOND_LST.AddRow();
+	
+	// 기초값
+	DS_COCBOND_LST.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+	DS_COCBOND_LST.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+	DS_COCBOND_LST.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+    
+    DS_COCBOND_LST.SetColumn(vRow,"BRCH_ID", P_BRCH_ID);// 
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행삭제 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_del_dtl_OnClick(obj)
+{
+	// 추가된것은 DB저장전이므로 그냥 DataSet에서 삭제
+	if(DS_COCBOND_LST.GetColumn(row,"FLAG") == "I")
+	{
+		DS_COCBOND_LST.DeleteRow(DS_COCBOND_LST.currow);
+	}
+	// 아닌것은 실제로 DB에 삭제해야되므로 flag를 D로 두고 마지막에 filter한다.
+	else
+	{
+		DS_COCBOND_LST.SetColumn(DS_COCBOND_LST.currow,"FLAG", "D");
+	}	
+	
+	DS_COCBOND_LST.Filter("flag != 'D'");	// 삭제된거는 필터링
+	
+}
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 자동저장
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_COC_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+	
+	// 합계 계산
+	if(strColumnID == 'CUR_PSP_1' || strColumnID == 'CUR_ITR_1')
+	{
+		obj.SetColumn(nRow, "TOT_AMT_1", ToNumber(obj.getColumn(nRow, "CUR_PSP_1")) + ToNumber(obj.getColumn(nRow, "CUR_ITR_1")));
+	}
+	
+	if(strColumnID == 'CUR_PSP_2' || strColumnID == 'CUR_ITR_2')
+	{
+		obj.SetColumn(nRow, "TOT_AMT_2", ToNumber(obj.getColumn(nRow, "CUR_PSP_2")) + ToNumber(obj.getColumn(nRow, "CUR_ITR_2")));
+	}
+	
+	if(strColumnID == 'CUR_PSP_3' || strColumnID == 'CUR_ITR_3')
+	{
+		obj.SetColumn(nRow, "TOT_AMT_3", ToNumber(obj.getColumn(nRow, "CUR_PSP_3")) + ToNumber(obj.getColumn(nRow, "CUR_ITR_3")));
+	}
+	
+}
+
+
+
+function DS_COCBOND_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}	
+}
+
+
+
+function BTN_REQ_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", EDT_REQ_DT);
+}
+
+
+
+
+
+
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+function btn_confirm_OnClick(obj)
+{
+	fn_save_coc();
+}
+
+function BTN_FILE_DEL_OnClick(obj)
+{
+	
+}
+
+
+
+
+function S_BND_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_search();
+	}		
+}
+
+
+
+function btn_add_OnClick(obj)
+{
+	fn_add();
+}
+
+function DS_COC_LST_OnRowPosChanged(obj,nOldRow,nRow)
+{
+	//fn_coc_filter(nRow);
+}
+
+
+function Button1_OnClick(obj)
+{
+	
+}
+
+
+
+]]></Script>
+</Window>

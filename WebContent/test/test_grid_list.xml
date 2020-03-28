@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="288" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="New&#32;Form" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="368" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_code_value">
+				<Contents>
+					<colinfo id="code_type" size="256" summ="default" type="STRING"/>
+					<colinfo id="code01" size="256" summ="default" type="STRING"/>
+					<colinfo id="code02" size="256" summ="default" type="STRING"/>
+					<record>
+						<code01>TC01</code01>
+						<code02>CD01</code02>
+						<code_type>0001</code_type>
+					</record>
+					<record>
+						<code01>TC02</code01>
+						<code02>CD02</code02>
+						<code_type>0002</code_type>
+					</record>
+					<record>
+						<code01>TC03</code01>
+						<code02>CD03</code02>
+						<code_type>0003</code_type>
+					</record>
+					<record>
+						<code01>TC04</code01>
+						<code02>CD04</code02>
+						<code_type>0004</code_type>
+					</record>
+					<record>
+						<code01>TC05</code01>
+						<code02>CD05</code02>
+						<code_type>0005</code_type>
+					</record>
+					<record>
+						<code01>TC06</code01>
+						<code02>CD06</code02>
+						<code_type>0006</code_type>
+					</record>
+					<record>
+						<code01>TC07</code01>
+						<code02>CD07</code02>
+						<code_type>0007</code_type>
+					</record>
+					<record>
+						<code01>TC08</code01>
+						<code02>CD08</code02>
+						<code_type>0008</code_type>
+					</record>
+					<record>
+						<code01>TC09</code01>
+						<code02>CD09</code02>
+						<code_type>0009</code_type>
+					</record>
+					<record>
+						<code01>TC10</code01>
+						<code02>CD10</code02>
+						<code_type>0010</code_type>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="46" Height="40" Id="Shape5" Left="0" LineColor="user22" Right="366" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="3" Top="6" Type="RoundRect" Width="366"></Shape>
+		<Edit Height="21" Id="ed_popup" Left="67" TabOrder="1" Top="17" Width="144"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_Search" ImageID="Btn_com_2w" Left="232" LeftMargin="12" OnClick="btn_Search_OnClick" Style="Btn_Com" TabOrder="2" Text="확인" Top="17" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Image Align="Left" Height="18" Id="Image1" Left="9" LeftMargin="0" Style="Stc_Default_bold" TabOrder="4" Text="한건입력" Top="18" Transparent="TRUE" Width="59"></Image>
+		<Grid AutoFit="TRUE" BindDataset="ds_code_value" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="279" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="229" Id="Grid0" InputPanel="FALSE" Left="-1" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnCellClick="Grid0_OnCellClick" Right="365" RowHeight="20" Style="Grid_2" TabOrder="5" TabStop="true" Top="50" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="366">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="129"/>
+						<col width="127"/>
+						<col width="108"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="text" text="CODE_TYPE"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="CODE01"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="CODE02"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="code_type" color="black" display="text"/>
+						<cell align="center" col="1" colid="code01" color="black" display="text"/>
+						<cell align="center" col="2" colid="code02" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[//#include "script::cmn_function.js";
+
+#include "lib::lib_comm.js";
+
+function form_OnLoadCompleted(obj)
+{
+	/*
+	Gv_objGrid   = parent.object(p_obj);
+	var oForm    = parent.object(p_obj).getForm();	
+	var objBDs   = Gv_objGrid.BindDataset;
+	
+	Gv_objBindDs = oForm.object(objBDS).id;
+	Gv_grdRow    = p_nRow;
+	Gv_grdColId  = Gv_objGrid.GetCellProp("Body", p_nCell, "ColId");
+	
+	// 부모폼의 해당 리스트의 값을 가져온다.
+	var tmpParam = oForm.object(Gv_objBindDs).GetColumn(p_nRow, Gv_grdColId, '');
+	*/
+	
+	var tmpParam = gfn_SetPopupGridDataForOnLoadCompleted(p_obj, p_nCell, p_nRow);
+	ed_popup.Text = tmpParam;
+}
+
+
+function btn_Search_OnClick(obj)
+{
+	/*
+	Gv_objGrid   = parent.object(p_obj);
+	var oForm    = parent.object(p_obj).getForm();
+	var objBDs   = Gv_objGrid.BindDataset;
+	
+	Gv_objBindDs = oForm.object(objBDS).id;
+	Gv_grdRow    = p_nRow;
+	Gv_grdColId  = Gv_objGrid.GetCellProp("Body", p_nCell, "ColId");
+	
+	// 그리드에 값을 넣어준다.
+	oForm.object(Gv_objBindDs).SetColumn(p_nRow, Gv_grdColId, ed_popup.Text);	
+	*/
+	
+	gfn_SetPopupGridDataOne(p_obj, p_nCell, p_nRow, ed_popup.Text);
+
+	close();
+}
+
+
+function Grid0_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	/*
+	Gv_objGrid   = parent.object(p_obj);
+	var oForm    = parent.object(p_obj).getForm();	
+	var objBDs   = Gv_objGrid.BindDataset;
+	
+	Gv_objBindDs = oForm.object(objBDS).id;
+	Gv_grdRow    = p_nRow;
+	
+	Gv_grdColId1 = Gv_objGrid.GetCellProp("Body", 3, "ColId");
+	Gv_grdColId2 = Gv_objGrid.GetCellProp("Body", 5, "ColId");
+	Gv_grdColId3 = Gv_objGrid.GetCellProp("Body", 6, "ColId");
+	
+	// 그리드에 값을 넣어준다.
+	oForm.object(Gv_objBindDs).SetColumn(p_nRow, Gv_grdColId1, ds_code_value.GetColumn(nRow,"code_type"));	
+	oForm.object(Gv_objBindDs).SetColumn(p_nRow, Gv_grdColId2, ds_code_value.GetColumn(nRow,"code01"));
+	oForm.object(Gv_objBindDs).SetColumn(p_nRow, Gv_grdColId3, ds_code_value.GetColumn(nRow,"code02"));
+	*/
+	
+	var paramArr = "3,code_type/5,code01/6,code02";
+	
+	gfn_SetPopupGridDataMulti(p_obj, p_nRow, nRow, ds_code_value,paramArr);
+	close();
+}
+
+]]></Script>
+</Window>

@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="650" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" OnUnloadCompleted="form_OnUnloadCompleted" PidAttrib="7" Title="차트&#32;테스트" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_CHART_LST">
+				<Contents>
+					<colinfo id="LOOP_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="GET_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LAG_DRY_STS" size="256" summ="default" type="STRING"/>
+					<colinfo id="LAG_DRY_STS_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Border="Flat" Height="24" Id="Static12" Left="6" Style="Stc_LabelBody" TabOrder="6" Text="Static5" Top="93" VAlign="Middle" Width="990"></Static>
+		<TeeChart Bottom="440" Height="320" Id="TEECHART" Language="laEnglish" Languaged="laEnglish" Left="8" Right="992" Top="120" Width="984"></TeeChart>
+		<Shape BKColor="user21" Bottom="46" Height="40" Id="Shape_search" Left="0" LineColor="user22" Right="998" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="2" Top="6" Type="RoundRect" Width="998"></Shape>
+		<Shape Bottom="61" Height="15" Id="Shape1" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="994" TabOrder="3" Top="46" Type="Rectangle" Visible="FALSE" Width="994"></Shape>
+		<Shape Bottom="46" Height="40" Id="Shape21" Left="0" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="20" TabOrder="5" Top="6" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="5" Height="5" Id="Shape15" Left="-11" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="999" TabOrder="4" Top="0" Type="Rectangle" Visible="FALSE" Width="1010"></Shape>
+		<Static Align="Center" BKColor="user21" Border="Flat" Height="24" Id="Static13" Left="8" Style="Stc_Label" TabOrder="7" Text="차트종류" Top="93" VAlign="Middle" Width="70"></Static>
+		<Combo Border="Flat" Height="18" Id="CH_TYPE" ImeMode="none" Left="81" OnChanged="CH_TYPE_OnChanged" Style="Combo" TabOrder="8" Top="95" Width="100"></Combo>
+		<Shape Bottom="115" Height="24" Id="Shape26" Left="78" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="82" TabOrder="9" Top="91" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Checkbox Height="12" Id="CH_3D" Left="313" OnClick="CH_3D_OnClick" Style="CheckBox" TabOrder="10" Text="3D" Top="99" Value="FALSE" Width="46"></Checkbox>
+		<Checkbox Height="12" Id="CH_VIEW" Left="369" OnClick="CH_VIEW_OnClick" Style="CheckBox" TabOrder="11" Text="값보기" Top="99" Value="FALSE" Width="62"></Checkbox>
+		<Button Align="Left" Appearance="FLAT" BorderColor="user22" ButtonStyle="TRUE" Cursor="HAND" Height="18" Id="CH_FIRST" Left="558" LeftMargin="16" OnClick="CH_FIRST_OnClick" Style="Btn_sub" TabOrder="12" Text="&lt;&lt;" Top="96" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" Appearance="FLAT" BorderColor="user22" ButtonStyle="TRUE" Cursor="HAND" Height="18" Id="CH_PREV" Left="609" LeftMargin="16" OnClick="CH_PREV_OnClick" Style="Btn_sub" TabOrder="13" Text="&lt;" Top="96" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" Appearance="FLAT" BorderColor="user22" ButtonStyle="TRUE" Cursor="HAND" Height="18" Id="CH_NEXT" Left="661" LeftMargin="16" OnClick="CH_NEXT_OnClick" Style="Btn_sub" TabOrder="14" Text="&gt;" Top="96" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" Appearance="FLAT" BorderColor="user22" ButtonStyle="TRUE" Cursor="HAND" Height="18" Id="CH_LAST" Left="712" LeftMargin="16" OnClick="CH_LAST_OnClick" Style="Btn_sub" TabOrder="15" Text="&gt;&gt;" Top="96" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="CH_EDIT" ImageID="Btn_sub_4w" Left="774" LeftMargin="16" OnClick="CH_EDIT_OnClick" Style="Btn_sub" TabOrder="16" Text="차트편집" Top="95" TopMargin="1" Transparent="TRUE" Width="74"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="CH_PRINT" ImageID="Btn_sub_3w" Left="852" LeftMargin="16" OnClick="CH_PRINT_OnClick" Style="Btn_sub" TabOrder="17" Text="프린트" Top="95" TopMargin="1" Transparent="TRUE" Width="74"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="CH_DOWNLOAD" ImageID="Btn_sub_4w" Left="917" LeftMargin="16" OnClick="CH_DOWNLOAD_OnClick" Style="Btn_sub" TabOrder="18" Text="파일받기" Top="95" TopMargin="1" Transparent="TRUE" Width="74"></Button>
+		<Shape Bottom="115" Height="24" Id="Shape0" Left="991" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="995" TabOrder="19" Top="91" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="116" Height="24" Id="Shape2" Left="913" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="917" TabOrder="20" Top="92" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="116" Height="24" Id="Shape3" Left="848" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="852" TabOrder="21" Top="92" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Static Align="Center" BKColor="user21" Border="Flat" Height="24" Id="Static0" Left="184" Style="Stc_Label" TabOrder="22" Text="표시갯수" Top="93" VAlign="Middle" Width="70"></Static>
+		<Shape Bottom="115" Height="24" Id="Shape4" Left="180" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="184" TabOrder="23" Top="91" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="115" Height="24" Id="Shape5" Left="254" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="258" TabOrder="24" Top="91" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Combo Border="Flat" Height="18" Id="CH_CNT" ImeMode="none" Left="256" OnChanged="CH_CNT_OnChanged" Style="Combo" TabOrder="25" Top="95" Width="50"></Combo>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : form_grid_temp(폼_그리드템플릿)
+* 작성자     : 이용재
+* 작성일     : 2011-03-24 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-03-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_chart.js";
+#include "lib::lib_chart_const.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+//var popupValue 		= ""; 		// 팝업창에서 받아온 값을 넣어주기 위해서 전역변수로 선언 (현제 쓰이지는 않는다)
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.초기화 함수      
+//  1-3.조회 함수     
+//  1-4.저장 함수    
+//  1-5.삭제 함수    
+//  1-6.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+	// 차트타입 설정
+	gfn_chartTypeCombo(CH_TYPE,"");
+	
+	// pagecont 만들기
+	gfn_chartPageCombo(CH_CNT,"20");
+	
+	gfn_init_chart(TEECHART,"매출그래프(월별누적)","단위(원)","","",true, false);
+	
+	// page Count 설정
+	gfn_set_pagecount(TEECHART, CH_CNT.Value);
+		
+
+	fn_search();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 초기화 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_reset()
+{
+	// dataset reset
+	//ds_grid_temp1.ClearData();
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	
+	DS_CHART_LST.ClearData();
+	
+	svcID			= "test_template1.selectSample";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_CHART_LST=cc.CCTestDAO.selectChart2";
+	argument    	= " _sqlName=cc.CCTestDAO.selectChart2"
+							+ " OPERATOR=" + quote("KOMM");
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : //Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	
+	switch(svcID) 
+	{
+		// 조회
+		case "test_template1.selectSample" :
+		
+			fn_draw_chart();
+			
+		break;	
+
+		
+		default:
+			  alert("기타"); 
+	}
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+// 차트 그리기 
+function fn_draw_chart()
+{
+	gfn_reset_chart(TEECHART);
+	
+	var loop_no = "";
+	var arrX = Array();
+	var arrY = Array();
+	
+	var index = 0;
+	var sTitle = "";
+	
+	var r = 0;
+	if(DS_CHART_LST.rowcount > 0)
+	{
+		for(var row=0;row<DS_CHART_LST.rowcount;row++)
+		{
+			if(loop_no == "") 
+			{
+				loop_no = DS_CHART_LST.GetColumn(row, "LOOP_NO");
+			}
+			
+			// 동일 Series
+			if(loop_no == DS_CHART_LST.GetColumn(row, "LOOP_NO"))
+			{
+				sTitle = DS_CHART_LST.GetColumn(row, "LOOP_NO");
+			
+				arrX[r] = DS_CHART_LST.GetColumn(row, "GET_DT");
+				arrY[r] = DS_CHART_LST.GetColumn(row, "ISL_LVL");
+				r++;
+			}
+			// 틀린 Series
+			else
+			{
+				loop_no = DS_CHART_LST.GetColumn(row, "LOOP_NO");
+				
+				gfn_add_series(TEECHART, sTitle, index, CH_TYPE.Value, arrX, arrY);
+				index++;
+				r = 0;
+				arrX = Array();
+				arrY = Array();
+			}
+		}
+		
+		// 다 돌고남은것도 넣기
+		gfn_add_series(TEECHART, sTitle, index, CH_TYPE.Value, arrX, arrY);	
+	}	
+		
+	gfn_view_3d(TEECHART, CH_3D.Value);		// 3D
+	gfn_view_chart_value(TEECHART, CH_VIEW.Value);	// 값보기	
+	
+	//gfn_set_subtitle(TEECHART, "테스트");
+
+
+  // Y축 변환
+	TEECHART.Axis.Left.Labels.Clear();
+	TEECHART.Axis.Left.Labels.Add(13, "Lv0");
+	TEECHART.Axis.Left.Labels.Add(12, "Lv12");
+	TEECHART.Axis.Left.Labels.Add(11, "Lv11");	
+	TEECHART.Axis.Left.Labels.Add(10, "Lv10");	
+	TEECHART.Axis.Left.Labels.Add(9, "Lv9");	
+	TEECHART.Axis.Left.Labels.Add(8, "Lv8");	
+	TEECHART.Axis.Left.Labels.Add(7, "Lv7");	
+	TEECHART.Axis.Left.Labels.Add(6, "Lv6");	
+	TEECHART.Axis.Left.Labels.Add(5, "Lv5");	
+	TEECHART.Axis.Left.Labels.Add(4, "Lv4");	
+	TEECHART.Axis.Left.Labels.Add(3, "Lv3");	
+	TEECHART.Axis.Left.Labels.Add(2, "Lv2");	
+	TEECHART.Axis.Left.Labels.Add(1, "Lv1");
+
+}
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.초기화 부분
+//  2-4.조회 버튼 클릭     
+//  2-5.저장 버튼 클릭    
+//  2-6.삭제 버튼 클릭    
+//  2-7.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function form_OnLoadCompleted(obj) 
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+
+	// 초기화 
+	fn_reset();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function form_OnUnloadCompleted(obj) 
+{
+	gfn_OnBeforeExit();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-3.초기화  클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_reset_OnClick(obj)
+{
+	fn_reset();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-4.조회버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_search_OnClick(obj)
+{
+	fn_search();
+}
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+
+
+
+function CH_TYPE_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	fn_draw_chart();
+}
+
+function CH_3D_OnClick(obj,strValue)
+{
+	fn_draw_chart();
+}
+
+function CH_VIEW_OnClick(obj,strValue)
+{
+	fn_draw_chart();
+}
+
+// 첨으로
+function CH_FIRST_OnClick(obj)
+{
+	gfn_set_paging(TEECHART, "BEGIN");
+}
+
+
+// 이전
+function CH_PREV_OnClick(obj)
+{
+	gfn_set_paging(TEECHART, "PREV");	
+}
+
+// 다음
+function CH_NEXT_OnClick(obj)
+{
+	gfn_set_paging(TEECHART, "NEXT");
+}
+
+// 마지막
+function CH_LAST_OnClick(obj)
+{
+	gfn_set_paging(TEECHART, "END");
+}
+
+// 차트 편집
+function CH_EDIT_OnClick(obj)
+{
+	gfn_view_editor(TEECHART);
+}
+
+
+// 프린트
+function CH_PRINT_OnClick(obj)
+{
+	gfn_view_print(TEECHART);
+}
+
+
+// 파일받기
+function CH_DOWNLOAD_OnClick(obj)
+{
+	gfn_view_export(TEECHART);
+}
+
+
+// 페이징갯수 변경시
+function CH_CNT_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	gfn_set_pagecount(TEECHART, CH_CNT.Value);
+}
+]]></Script>
+</Window>

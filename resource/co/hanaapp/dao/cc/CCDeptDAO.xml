@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_DEPT_BAS : 부서 -->
+<mapper namespace="co.hanaapp.dao.cc.CCDeptDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 부서정보 조회 -->
+    <select id="selectDeptLst" parameterType="map" resultType ="map">
+        SELECT /* 부서정보 목록 */
+               'N' AS FLAG,
+               ROWIDTOCHAR(ROWID) AS ROW_ID,
+               '0' AS CHK,
+               #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+               nvl(COM_ID,' ') AS COM_ID,
+               nvl(DEPT_CD,' ') AS DEPT_CD,
+               nvl(DEPT_NM,' ') AS DEPT_NM,
+               substr('         ',1,(DEPT_LVL-1)*3) || DEPT_NM as DEPT_TREE,
+               nvl(UP_DEPT_CD,' ') AS UP_DEPT_CD,
+               nvl(FC_CC_GET_DEPTNAME(COM_ID, UP_DEPT_CD),' ') AS UP_DEPT_NM,
+               nvl(DEPT_LVL,'-99999') AS DEPT_LVL,
+               NVL(NOTE, ' ') AS NOTE,
+               decode(USE_YN,'Y',1,0) USE_YN
+          FROM TB_CC_DEPT_BAS
+         WHERE COM_ID = #{S_COM_ID, jdbcType=VARCHAR}
+         ORDER BY DEPT_CD
+
+    </select>
+
+ 
+ 	<!-- 부서정보 추가/수정 -->
+     <insert   id="saveDeptLst" parameterType="map" >
+
+        begin
+			UPDATE TB_CC_DEPT_BAS
+			   SET COM_ID = #{COM_ID, jdbcType=VARCHAR} , 
+			       DEPT_CD = #{DEPT_CD, jdbcType=VARCHAR} , 
+			       DEPT_NM = #{DEPT_NM, jdbcType=VARCHAR} , 
+			       UP_DEPT_CD = #{UP_DEPT_CD, jdbcType=VARCHAR} , 
+			       DEPT_LVL = #{DEPT_LVL, jdbcType=VARCHAR} , 
+			       NOTE = #{NOTE, jdbcType=VARCHAR} , 
+			       USE_YN = DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N')  , 
+			       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+			       EDT_DT = SYSDATE 
+			where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+
+
+               if sql%rowcount=0 then
+					INSERT INTO TB_CC_DEPT_BAS
+					        (
+					         COM_ID , 
+					         DEPT_CD , 
+					         DEPT_NM , 
+					         UP_DEPT_CD , 
+					         DEPT_LVL , 
+					         NOTE , 
+					         USE_YN , 
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT )
+					 VALUES (
+					         #{COM_ID, jdbcType=VARCHAR} , 
+					         #{DEPT_CD, jdbcType=VARCHAR} , 
+					         #{DEPT_NM, jdbcType=VARCHAR} , 
+					         #{UP_DEPT_CD, jdbcType=VARCHAR} , 
+					         #{DEPT_LVL, jdbcType=VARCHAR} , 
+					         #{NOTE, jdbcType=VARCHAR} , 
+					         DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N')  , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE );
+                  end if;
+
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_DEPT_BAS save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 지사정보 삭제 -->
+    <delete   id="deleteDeptLst" parameterType="map" >
+       	DELETE FROM TB_CC_DEPT_BAS
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+ 
+
+   <!-- 부서정보 코드 조회 -->
+    <select id="selectDeptCode" parameterType="map" resultType ="map">
+		SELECT /* 부서정보 코드 */
+		       nvl(DEPT_CD,' ') DTL_CD, 
+		       nvl(DEPT_NM,' ') DTL_NM		      
+		  FROM TB_CC_DEPT_BAS
+		 WHERE USE_YN = 'Y'
+		   AND BRCH_ID =  #{S_BRCH_ID, jdbcType=VARCHAR}
+		   AND (DEPT_CD LIKE  #{S_DEPT_CD, jdbcType=VARCHAR} || '%' OR DEPT_NM LIKE  #{S_DEPT_CD, jdbcType=VARCHAR} || '%')
+		   AND DEPT_LVL = 2		   
+		 ORDER BY DEPT_CD
+
+    </select>
+
+</mapper>

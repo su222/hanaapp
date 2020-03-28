@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="592" Id="CPAB05P03" Left="8" OnLoadCompleted="CPAB05P03_OnLoadCompleted" OnUnloadCompleted="CPAB05P03_OnUnloadCompleted" PidAttrib="7" Title="진행선택" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="192" WorkArea="true">
+		<Grid AutoEnter="TRUE" BindDataset="DS_BND_STS" BkColor2="user45" BkSelColor="user44" BoldHead="FALSE" Border="Flat" Bottom="553" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="553" Id="GRD_USR_LST" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnCellDBLClick="GRD_USR_LST_OnCellDblClick" OnEnterDown="GRD_USR_LST_OnEnterDown" OnHeadClick="GRD_USR_LST_OnHeadClick" Right="188" RowHeight="20" Style="Grid" TabOrder="0" TabStop="true" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="188">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="50"/>
+						<col width="110"/>
+					</columns>
+					<head>
+						<cell bkcolor="user41" bkimagealign="stretch" col="0" color="user42" display="text" InputZeroTime="true" text="코드"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="1" color="user42" display="text" InputZeroTime="true" text="진행상태"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="DTL_CD" display="text" InputZeroTime="true"/>
+						<cell align="left" col="1" colid="TXT_VAL1" display="text" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button Height="25" Id="btn_close" Left="7" OnClick="btn_close_OnClick" TabOrder="2" Text="닫기" Top="561" Width="176"></Button>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 진행선택팝업
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 진행선택 팝업 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+ 
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.Transaction 후 처리 해야 할 내용
+//  1-4.창닫기
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고      
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	DS_BND_STS.UnFilter();
+	
+	// 파라미터 값으로 필터링 해서 1개 뿐이면 걍 셋팅
+	if(length(P_STS_CODE_NM) > 0)
+	{
+		DS_BND_STS.Filter("TXT_VAL1 ='"+P_STS_CODE_NM+"'");	
+		
+//		trace('rowcount='+DS_BND_STS.rowcount);
+		
+		
+		if(DS_BND_STS.rowcount == 1)
+		{
+			fn_set_code_info(0);
+		}
+		else
+		{
+			DS_BND_STS.UnFilter();
+		}
+	}
+		
+	GRD_USR_LST.SetFocus();	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 코드 값 setting
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_set_code_info(c_row)
+{	
+
+	// 부모창에 넘기기
+	
+	var retArr = Array();
+	
+	retArr[0] = DS_BND_STS.GetColumn(c_row,"DTL_CD");
+	retArr[1] = DS_BND_STS.GetColumn(c_row,"DTL_NM");
+			  
+	close(retArr);	
+
+}
+
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.조회 버튼 클릭  
+//  2-4.확인 버튼 클릭
+//  2-5.닫기 버튼 클릭  
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAB05P03_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+    fn_initForm();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 UnLoad 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAB05P03_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_search_OnClick(obj)
+{
+	fn_search();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 확인 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_confirm_OnClick(obj)
+{
+	fn_set_code_info(PDS_USR_LST.currow);
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj)
+{
+	// 수정안함 넘기기 
+	
+	var retArr = Array();
+	
+	// 더미 코트들 날림
+	retArr[0] = "";
+	retArr[1] = "";
+			  
+	close(retArr);	
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 헤더클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_USR_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+
+	gfn_GridSort(GRD_USR_LST, PDS_USR_LST, nCell);	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 더블클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_USR_LST_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	fn_set_code_info(nRow);
+}
+
+
+
+function GRD_USR_LST_OnEnterDown(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	fn_set_code_info(nRow);
+}
+
+// 삭제
+function btn_delete_OnClick(obj)
+{
+	// 공백을 넘기기 
+	
+	var retArr = Array();
+	
+	retArr[0] = "100";
+	retArr[1] = "";
+			  
+	close(retArr);		
+}
+]]></Script>
+</Window>

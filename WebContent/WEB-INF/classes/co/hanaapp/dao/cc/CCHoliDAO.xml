@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_HOLI_BAS : 휴일 -->
+<mapper namespace="co.hanaapp.dao.cc.CCHoliDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 휴일정보 조회 -->
+    <select id="selectHoliLst" parameterType="map" resultType ="map">
+        SELECT /* 휴일정보 목록 */
+               'N' AS FLAG,
+               ROWIDTOCHAR(ROWID) AS ROW_ID,
+               '0' AS CHK,
+               #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+               nvl(TO_CHAR(HOLI_ST_DT,'YYYYMMDD'),' ') HOLI_ST_DT, 
+               nvl(TO_CHAR(HOLI_ED_DT,'YYYYMMDD'),' ') HOLI_ED_DT, 
+               nvl(HOLI_NM,' ') HOLI_NM, 
+               nvl(NOTE,' ') NOTE
+          FROM TB_ID_HOLI_BAS
+         WHERE HOLI_ST_DT BETWEEN TO_DATE(#{S_YYYY, jdbcType=VARCHAR} || '0101') AND TO_DATE(#{S_YYYY, jdbcType=VARCHAR} || '1231')
+         ORDER BY HOLI_ST_DT
+
+    </select>
+
+ 
+ 	<!-- 휴일정보 추가/수정 -->
+     <insert   id="saveHoliLst" parameterType="map" >
+
+        begin
+			UPDATE TB_ID_HOLI_BAS
+			   SET HOLI_ST_DT = SUBSTR(#{HOLI_ST_DT, jdbcType=VARCHAR},1,8), 
+			       HOLI_ED_DT = SUBSTR(#{HOLI_ED_DT, jdbcType=VARCHAR},1,8) , 
+			       HOLI_NM = #{HOLI_NM, jdbcType=VARCHAR} , 
+			       NOTE = #{NOTE, jdbcType=VARCHAR} , 
+			       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+			       EDT_DT = SYSDATE 
+            where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+
+
+               if sql%rowcount=0 then
+					INSERT INTO TB_ID_HOLI_BAS
+					        (
+					         HOLI_ST_DT ,
+					         HOLI_ED_DT, 
+					         HOLI_NM , 
+					         NOTE , 
+					         CRT_USR , 
+					         CRT_DT , 
+					         EDT_USR , 
+					         EDT_DT )
+					 VALUES (
+					         SUBSTR(#{HOLI_ST_DT, jdbcType=VARCHAR},1,8) , 
+					         SUBSTR(#{HOLI_ED_DT, jdbcType=VARCHAR},1,8) , 
+					         #{HOLI_NM, jdbcType=VARCHAR} , 
+					         #{NOTE, jdbcType=VARCHAR} , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE , 
+					         #{OPERATOR, jdbcType=VARCHAR} , 
+					         SYSDATE );
+                  end if;
+
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_ID_HOLI_BAS save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 휴일정보 삭제 -->
+    <delete   id="deleteHoliLst" parameterType="map" >
+       	DELETE FROM TB_ID_HOLI_BAS
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+ 
+ 
+
+</mapper>

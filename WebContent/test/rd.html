@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+
+ <SCRIPT LANGUAGE="JavaScript">
+ <!--
+   
+    function fn_init()
+    {
+
+        var svc_url = "http://213.175.94.247:8282/RDServer/rdagent.jsp";
+	    var svc_name = "this_dev";
+               
+        var rd_url = "http://localhost:8088/MRD/";
+        
+        var mrd = "pypc16r01.mrd";
+        
+        var realpath = "/rxlsfullhorz [1] /rcontype [RDAGENT] /rfn ["+svc_url+"] /rsn ["+svc_name+"] ";
+        //var realpath = "/rxlsfullhorz [1] /rcontype [RDAGENT] /rfn [http://erp.tsis.co.kr:7090/RDServer/rdagent.jsp] /rsn [tkserp] /rp [S110] [J000000] [201104]";
+        var param = "/rp [H110] [100] [201106]";
+        
+        rd_ans_mst.FileOpen(rd_url+mrd,realpath + param);
+
+    } 
+
+ //-->
+ </SCRIPT>
+ 
+ </HEAD>
+
+
+
+ <BODY onLoad="fn_init()">
+ <script src="rdviewer.js"></script>
+</HTML>

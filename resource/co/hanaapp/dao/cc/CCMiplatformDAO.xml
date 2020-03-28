@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_FA_SLIP_M, TABLE COMMENT : 전표마스타 -->
+<mapper namespace="co.hanaapp.dao.cc.CCMiplatformDAO">
+
+
+    <!-- 템플릿1 -->
+    <select id="selectSample1" parameterType="map" resultType="map" >
+        	SELECT /*테스트 데이터 조회  11111 */
+        	       '0' as chk,
+        	       keycol,
+			       strcol,
+			       to_char(datecol,'yyyy-mm-dd') as datecol,
+			       numcol
+			  FROM zz_test_1
+			 where keycol like #{KEY_COL, jdbcType=VARCHAR} || '%'
+			   and strcol like #{STR_COL, jdbcType=VARCHAR} || '%'
+        
+
+    </select>
+
+
+    <insert  id="insertSample1" parameterType="map" >
+		insert into zz_test_1
+		        (
+		         keycol , 
+		         strcol , 
+		         datecol , 
+		         numcol )
+		 values (
+		         #{KEYCOL, jdbcType=VARCHAR}  * ROUND(DBMS_RANDOM.VALUE(100, 999),0) , 
+		         #{STRCOL, jdbcType=VARCHAR} || ROUND(DBMS_RANDOM.VALUE(100, 999),0), 
+		         #{DATECOL, jdbcType=VARCHAR} , 
+		         #{NUMCOL, jdbcType=VARCHAR} * ROUND(DBMS_RANDOM.VALUE(100, 999),0))
+        
+    </insert>
+
+
+    <update  id="updateSample1" parameterType="map" >
+		update zz_test_1
+		   set keycol = #{KEYCOL, jdbcType=VARCHAR}  , 
+		       strcol = #{STRCOL, jdbcType=VARCHAR} , 
+		       datecol = #{DATECOL, jdbcType=VARCHAR} , 
+		       numcol = #{NUMCOL, jdbcType=VARCHAR} 
+		 where keycol = #{KEYCOL, jdbcType=VARCHAR} || '99999'
+        
+    </update>
+
+
+    <delete  id="deleteSample1" parameterType="map" >
+		delete from zz_test_1
+		 where keycol = #{KEYCOL, jdbcType=VARCHAR} 
+
+        
+    </delete>
+
+
+</mapper>

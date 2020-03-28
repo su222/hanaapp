@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="560" Id="BOAD02T02" Left="8" OnLoadCompleted="BOAD02T02_OnLoadCompleted" OnUnloadCompleted="BOAD02T02_OnUnloadCompleted" PidAttrib="7" Title="FAQ&#32;게시판&#32;사용자" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_search_flag">
+				<Contents>
+					<colinfo id="name" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<name>제목</name>
+						<value>title</value>
+					</record>
+					<record>
+						<name>내용</name>
+						<value>contents</value>
+					</record>
+					<record>
+						<name>등록자</name>
+						<value>name</value>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_faqboard_mst">
+				<Contents>
+					<colinfo id="eno" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="corp_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_title" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_contents" size="256" summ="default" type="STRING"/>
+					<colinfo id="kor_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="operator" size="256" summ="default" type="STRING"/>
+					<colinfo id="flag" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_file_path" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_BRCH_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="division" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="81" Height="40" Id="Shape4" Left="0" LineColor="user22" Right="790" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="22" Top="41" Type="RoundRect" Width="790"></Shape>
+		<Shape Bottom="96" Height="15" Id="Shape1" Left="-8" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="6" Top="81" Type="Rectangle" Visible="FALSE" Width="802"></Shape>
+		<Shape Bottom="122" Height="5" Id="Shape15" Left="-6" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="796" TabOrder="3" Top="117" Type="Rectangle" Visible="FALSE" Width="802"></Shape>
+		<Grid AutoFit="TRUE" AutoFitEndLine="Hide" BindDataset="ds_faqboard_mst" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="559" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="437" Id="grd_faqboard_mst" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" MinWidth="100" OnCellDBLClick="grd_faqboard_mst_OnCellDblClick" Right="790" RowHeight="20" Style="Grid_2" TabOrder="7" TabStop="true" Top="122" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="790">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="30"/>
+						<col width="522"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="32"/>
+						<col width="80"/>
+						<col width="0"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" colid="flag" color="user52" display="text" text="flag"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="row_id"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="operator"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="3" color="user52" display="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="4" color="user52" display="text" text="NO"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="5" color="user52" display="text" text="제목"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="6" color="user52" display="text" text="구분"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="7" color="user52" display="text" text="등록자"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="8" color="user52" display="text" text="첨부"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="9" color="user52" display="text" text="등록일"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="10" color="user52" display="text" text="상태"/>
+					</head>
+					<body>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text"/>
+						<cell col="2" colid="operator" display="text"/>
+						<cell col="3" colid="chk" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="4" display="text" expr="row&#32;+&#32;1"/>
+						<cell align="left" col="5" colid="board_title" display="text"/>
+						<cell align="center" col="6" colid="division" display="text"/>
+						<cell align="center" col="7" colid="kor_nm" display="text"/>
+						<cell align="center" bkimageid='expr:decode(board_file_path,&#32;null,&#32;&quot;&quot;,&#32;&quot;&quot;,&#32;&quot;&quot;,&#32;&quot;Btn_search_s3&quot;)' col="8" display="text"/>
+						<cell align="center" col="9" colid="reg_ymd" display="text"/>
+						<cell align="center" col="10" colid="progress_state" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="83" Height="48" Id="Shape0" Left="0" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="20" TabOrder="8" Top="35" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="735" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="5" Top="52" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="41" Height="7" Id="Shape6" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="790" TabOrder="9" Top="34" Type="Rectangle" Visible="FALSE" Width="790"></Shape>
+		<Shape Bottom="77" Height="32" Id="Shape8" Left="43" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="53" TabOrder="17" Top="45" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Image Align="Left" Height="18" Id="Image7" Left="19" LeftMargin="0" Style="Stc_Default_bold" TabOrder="10" Text="검색" Top="52" Transparent="TRUE" Width="27"></Image>
+		<Combo Border="Flat" CodeColumn="value" DataColumn="name" Height="18" Id="cob_search_flag" INDEX="0" InnerDataset="ds_search_flag" Left="52" OnChanged="cob_search_flag_OnChanged" Style="Combo" TabOrder="1" Top="51" Width="91"></Combo>
+		<Shape Bottom="72" Height="24" Id="Shape9" Left="142" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="147" TabOrder="18" Top="48" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Edit Border="Flat" Height="18" Id="edt_search_condition" ImeMode="native" Left="147" LeftMargin="4" OnKeyDown="edt_search_condition_OnKeyDown" Style="Edit_Red" TabOrder="2" Top="51" Width="244"></Edit>
+		<Image Align="Right" Height="18" Id="Image18" Left="410" LeftMargin="0" Style="Stc_Default_bold" TabOrder="11" Text="등록일" Top="52" Transparent="TRUE" Width="43"></Image>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="s_edt_start_date" Left="461" Mask="####-##-##" Readonly="TRUE" Style="Edit" TabOrder="13" Top="51" Type="STRING" Width="73"></MaskEdit>
+		<Shape Bottom="72" Height="24" Id="Shape5" Left="534" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="539" TabOrder="15" Top="48" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="btn_start_date" ImageID="Btn_calendar" Left="539" OnClick="btn_start_date_OnClick" TabOrder="3" Text="Button1" Top="52" Width="16"></Button>
+		<Static Height="13" Id="Static0" Left="558" Style="Stc_Default" TabOrder="12" Text="~" Top="56" Width="15"></Static>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="s_edt_end_date" Left="570" Mask="####-##-##" Readonly="TRUE" Style="Edit" TabOrder="14" Top="51" Type="STRING" Width="73"></MaskEdit>
+		<Shape Bottom="72" Height="24" Id="Shape2" Left="643" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="648" TabOrder="16" Top="48" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="btn_end_date" ImageID="Btn_calendar" Left="648" OnClick="btn_end_date_OnClick" TabOrder="4" Text="Button1" Top="52" Width="16"></Button>
+		<Image Align="Left" Height="14" Id="Image0" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="19" Text="조회내역" Top="103" Transparent="TRUE" Width="157"></Image>
+		<Static Height="20" Id="Static8" Left="3" Style="Stc_Title" TabOrder="21" Text="FAQ&#32;조회" Width="208"></Static>
+		<Edit Border="Flat" Height="18" Id="s_edt_corp_list" ImeMode="native" Left="40" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="23" Top="640" Visible="FALSE" Width="200"></Edit>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : BOAD02T02
+* 작성자     : 강동수
+* 작성일     : 
+* 기능설명   : 
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-04-14      V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID		 = "";
+var url   		 = "";
+var inDatasets   = "";
+var outDatasets  = "";
+var argument     = "";
+var callbackFunc = "";
+var compCd 		 = "";
+var corpCd 		 = "";
+
+var sel_flag = "M";					// 회사선택구분(S:단일선택, M:멀티선택)
+var form_id  = "PYPA01T01";
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.초기화 함수      
+//  1-3.조회 함수     
+//  1-4.저장 함수    
+//  1-5.삭제 함수    
+//  1-6.Transaction 후 처리 해야 할 내용
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-1. 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//*------------------------------------------------------------------------------------------------
+function fn_initForm()
+{
+    // 사용가능 법인 인증 
+    gfn_corp_auth(form_id, sel_flag);
+    
+	// 회사목록을 조회하면에 뿌려준다.
+	s_edt_COM_NM.Text = gfn_getDSString(GDS_BRCH_BAS, "BRCH_NM",",");
+	
+	//GDS_BRCH_BAS.InsertRow();	
+	//GDS_BRCH_BAS.SetColumn(0,"BRCH_ID",GDS_USER_INFO.BRCH_ID);	
+	//s_edt_corp_list.Text = GDS_USER_INFO.COM_NM;
+	
+	fn_search(); // 처음에 조회한다.
+	
+	//parent.div_tab.createTabMenu("BOAD01T01","공지사항");
+}
+
+function fn_search()
+{
+	var title    = "";
+	var contents = "";
+	var kor_nm   = "";
+	var strt_ymd = "";
+	var end_ymd  = "";
+	
+	if(cob_search_flag.Value == "title"){
+		title    = edt_search_condition.Text;
+		contents = "";
+		kor_nm   = "";
+	}else if(cob_search_flag.Value == "contents"){
+		title    = "";
+		contents = edt_search_condition.Text;
+		kor_nm   = "";
+	}else if(cob_search_flag.Value == "name"){
+		title    = "";
+		contents = "";
+		kor_nm   = edt_search_condition.Text;
+	}
+	
+	if(gfn_IsTelNumber(s_edt_start_date.Text) == 0 && gfn_IsTelNumber(s_edt_end_date.Text) == -1){
+		gfn_Popup_Message("modal", "confirm", "기간의 종료일을 선택하십시오.", "확인");
+		return;		
+	}
+	
+	if(gfn_IsTelNumber(s_edt_start_date.Text) == -1 && gfn_IsTelNumber(s_edt_end_date.Text) == 0){
+		gfn_Popup_Message("modal", "confirm", "기간의 시작일을 선택하십시오.", "확인");
+		return;		
+	}
+		
+	if(gfn_IsTelNumber(s_edt_start_date.Text) == 0){
+		strt_ymd = s_edt_start_date.Text;
+	}
+	
+	if(gfn_IsTelNumber(s_edt_end_date.Text) == 0){
+		end_ymd  = s_edt_end_date.Text;
+	}		
+	
+	ds_faqboard_mst.ClearData();
+	
+	svcID		 = "BOAD02T01.searchFAQBoardMst";
+	url   		 = "service::BOAD02T01.searchFAQBoardMst.do";
+	inDatasets   = "";
+	outDatasets  = "ds_faqboard_mst=BOAD02T01.searchFAQBoardMst";
+	argument     = " _sqlName=BOAD02T01.searchFAQBoardMst"
+				 //+ " corp_list=" + quote(GDS_USER_INFO.BRCH_ID)
+				 + " p_title=" + quote(title)
+				 + " p_contents=" + quote(contents)
+				 //+ " p_reg_kor_nm=" + quote(kor_nm)
+				 + " p_strt_ymd=" + quote(strt_ymd)
+				 + " p_end_ymd=" + quote(end_ymd)
+ 				 //+ " operator=" + quote(GDS_USER_INFO.eno)
+				 ;		 
+	callbackFunc = "gfn_callback";
+	
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.초기화 부분
+//  2-4.조회 버튼 클릭   
+//  2-5.저장 버튼 클릭   
+//  2-6.삭제 버튼 클릭    
+//  2-7.엑셀 버튼 클릭
+
+function BOAD02T02_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+	
+	// 그리드 공통 초기화 
+	gfn_grid_init(ds_faqboard_mst);
+}
+
+function BOAD02T02_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+function btn_start_date_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", s_edt_start_date);
+}
+
+
+function btn_end_date_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", s_edt_end_date);
+}
+
+function btn_search_OnClick(obj)
+{
+	fn_search();
+}
+
+function grd_faqboard_mst_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var flag   = "read";
+	var params = " p_flag="+quote(flag);
+	var flags = gfn_openPopup(this, "COMM::BOAD02P02.xml", params, true);	
+}
+
+function edt_search_condition_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){
+		btn_search_OnClick();
+	}		
+}
+
+
+]]></Script>
+</Window>

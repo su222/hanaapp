@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="white" Color="white" Font="Arial,9,Bold" Height="168" Id="comm_co04_d001" Left="8" OnKeyDown="form_OnKeyDown" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="Calendar" TooltipFont="Default,0" Top="8" Ver="1.0" Width="179" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_calendar">
+				<Contents>
+					<colinfo id="a" size="256" type="STRING"/>
+					<colinfo id="b" size="256" type="STRING"/>
+					<colinfo id="d1" size="256" type="STRING"/>
+					<colinfo id="d11" size="256" type="STRING"/>
+					<colinfo id="d2" size="256" type="STRING"/>
+					<colinfo id="d22" size="256" type="STRING"/>
+					<colinfo id="d3" size="256" type="STRING"/>
+					<colinfo id="d33" size="256" type="STRING"/>
+					<colinfo id="d4" size="256" type="STRING"/>
+					<colinfo id="d44" size="256" type="STRING"/>
+					<colinfo id="d5" size="256" type="STRING"/>
+					<colinfo id="d55" size="256" type="STRING"/>
+					<colinfo id="d6" size="256" type="STRING"/>
+					<colinfo id="d66" size="256" type="STRING"/>
+					<colinfo id="d7" size="256" type="STRING"/>
+					<record>
+						<a></a>
+						<b></b>
+						<d1>1</d1>
+						<d11></d11>
+						<d2>2</d2>
+						<d22></d22>
+						<d3>3</d3>
+						<d33></d33>
+						<d4>4</d4>
+						<d44></d44>
+						<d5>5</d5>
+						<d55></d55>
+						<d6>6</d6>
+						<d66></d66>
+						<d7>7</d7>
+					</record>
+					<record>
+						<a>10</a>
+						<b></b>
+						<d1>8</d1>
+						<d11></d11>
+						<d2>9</d2>
+						<d22></d22>
+						<d3></d3>
+						<d33></d33>
+						<d4></d4>
+						<d44></d44>
+						<d5></d5>
+						<d55></d55>
+						<d6></d6>
+						<d66></d66>
+						<d7></d7>
+					</record>
+					<record>
+						<a>11</a>
+						<b></b>
+						<d1></d1>
+						<d11></d11>
+						<d2></d2>
+						<d22></d22>
+						<d3></d3>
+						<d33></d33>
+						<d4></d4>
+						<d44></d44>
+						<d5></d5>
+						<d55></d55>
+						<d6></d6>
+						<d66></d66>
+						<d7></d7>
+					</record>
+					<record>
+						<a>12</a>
+						<b></b>
+						<d1></d1>
+						<d11></d11>
+						<d2></d2>
+						<d22></d22>
+						<d3></d3>
+						<d33></d33>
+						<d4></d4>
+						<d44></d44>
+						<d5></d5>
+						<d55></d55>
+						<d6></d6>
+						<d66></d66>
+						<d7></d7>
+					</record>
+					<record>
+						<a>13</a>
+						<b></b>
+						<d1></d1>
+						<d11></d11>
+						<d2></d2>
+						<d22></d22>
+						<d3></d3>
+						<d33></d33>
+						<d4></d4>
+						<d44></d44>
+						<d5></d5>
+						<d55></d55>
+						<d6></d6>
+						<d66></d66>
+						<d7></d7>
+					</record>
+					<record>
+						<a></a>
+						<b></b>
+						<d1></d1>
+						<d11></d11>
+						<d2></d2>
+						<d22></d22>
+						<d3></d3>
+						<d33></d33>
+						<d4></d4>
+						<d44></d44>
+						<d5></d5>
+						<d55></d55>
+						<d6></d6>
+						<d66></d66>
+						<d7></d7>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_CalMonth">
+				<Contents>
+					<colinfo id="Mon" size="256" type="STRING"/>
+					<colinfo id="chk" size="256" type="STRING"/>
+					<record>
+						<chk></chk>
+						<Mon>JAN</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>FEB</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>MAR</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>APR</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>MAY</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>JUN</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>JUL</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>AUG</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>SEP</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>OCT</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>NOV</Mon>
+					</record>
+					<record>
+						<chk></chk>
+						<Mon>DEC</Mon>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Year">
+				<Contents>
+					<colinfo id="year" size="256" type="STRING"/>
+					<record>
+						<year>2000</year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year></year>
+					</record>
+					<record>
+						<year>2009</year>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Border="Flat" BorderColor="#949494" Height="168" Id="Static10" TabOrder="17" Width="179"></Static>
+		<Image Height="30" Id="Image0" ImageID="gls_cal_top" TabOrder="1" Width="179"></Image>
+		<Image Height="15" Id="img_close" ImageID="gls_cal_close" Left="156" OnClick="img_close_OnClick" Static="FALSE" TabOrder="2" Top="8" Width="15"></Image>
+		<Image Cursor="HAND" Height="11" Id="im_preYear" ImageID="gls_cal_left" Left="63" OnClick="im_preYear_OnClick" Static="FALSE" TabOrder="3" Top="10" Width="6"></Image>
+		<Static Align="Center" Color="black" Font="Tahom,9,Bold" Height="15" Id="st_year" Left="71" TabOrder="4" Text="2010" Top="9" VAlign="Middle" Width="31"></Static>
+		<Image Cursor="HAND" Height="11" Id="img_nextYear" ImageID="gls_cal_right" Left="104" OnClick="img_nextYear_OnClick" Static="FALSE" TabOrder="5" Top="10" Width="6"></Image>
+		<Image Cursor="HAND" Height="27" Id="M1" ImageID="gls_cal01" Left="10" OnClick="MonthClick" Static="FALSE" TabOrder="6" Top="47" UserData="1" Width="31"></Image>
+		<Image Cursor="HAND" Height="27" Id="M2" ImageID="gls_cal02" Left="51" OnClick="MonthClick" Static="FALSE" TabOrder="7" Top="47" UserData="2" Width="32"></Image>
+		<Image Cursor="HAND" Height="27" Id="M3" ImageID="gls_cal03" Left="93" OnClick="MonthClick" Static="FALSE" TabOrder="8" Top="47" Width="32"></Image>
+		<Image Cursor="HAND" Height="27" Id="M4" ImageID="gls_cal04" Left="135" OnClick="MonthClick" Static="FALSE" TabOrder="9" Top="47" Width="32"></Image>
+		<Image Cursor="HAND" Height="27" Id="M5" ImageID="gls_cal05" Left="10" OnClick="MonthClick" Static="FALSE" TabOrder="10" Top="84" Width="31"></Image>
+		<Image Cursor="HAND" Height="27" Id="M9" ImageID="gls_cal09" Left="10" OnClick="MonthClick" Static="FALSE" TabOrder="11" Top="121" Width="31"></Image>
+		<Image Cursor="HAND" Height="27" Id="M10" ImageID="gls_cal10" Left="51" OnClick="MonthClick" Static="FALSE" TabOrder="12" Top="121" Width="32"></Image>
+		<Image Cursor="HAND" Height="27" Id="M6" ImageID="gls_cal06" Left="51" OnClick="MonthClick" Static="FALSE" TabOrder="13" Top="84" Width="32"></Image>
+		<Image Cursor="HAND" Height="27" Id="M11" ImageID="gls_cal11" Left="93" OnClick="MonthClick" Static="FALSE" TabOrder="14" Top="121" Width="32"></Image>
+		<Image Cursor="HAND" Height="27" Id="M8" ImageID="gls_cal08" Left="135" OnClick="MonthClick" Static="FALSE" TabOrder="15" Top="84" Width="32"></Image>
+		<Image Cursor="HAND" Height="27" Id="M12" ImageID="gls_cal12" Left="135" OnClick="MonthClick" Static="FALSE" TabOrder="16" Top="121" Width="32"></Image>
+		<Image Cursor="HAND" Height="27" Id="M7" ImageID="gls_cal07" Left="93" OnClick="MonthClick" Static="FALSE" TabOrder="18" Top="84" Width="32"></Image>
+	</Form>
+	<Script><![CDATA[var fv_ArgValue;
+var fv_preMonth;
+/*----------------------------------------------------------------------*/
+//  Calendar Load
+/*----------------------------------------------------------------------*/
+function form_OnLoadCompleted(obj)
+{
+	st_year = substr(today(), 0, 4);
+		
+	if (fv_ArgValue.length() == 0) {
+		fv_ArgValue = mid(GetDate(), 0, 6);
+	}
+
+	var strYY = mid(fv_ArgValue, 0, 4);
+	var strMM = mid(fv_ArgValue, 4, 2);
+
+	fn_SetCalendar(strYY, strMM);
+}
+
+/*----------------------------------------------------------------------*/
+//  Calendar Load
+/*----------------------------------------------------------------------*/
+function fn_SetCalendar(strYY, strMM)
+{
+	var obj;
+	var strId;
+	// 색 초기화
+	if (trim(fv_preMonth).length() > 0) {
+		obj = object("M" + toNumber(fv_preMonth));
+		strId = "gls_cal" + lpad(fv_preMonth, "0", 2);
+		obj.ImageID = strId;
+	}
+	
+	if (length(trim(strMM)) == 0) return;
+	
+	// 색 선택
+	st_year.Text = strYY;
+	obj = object("M" + toNumber(strMM));
+	strId = "gls_cal" + lpad(strMM, "0", 2);
+	obj.ImageID = strId + "_1";
+	fv_preMonth = toNumber(strMM);
+}
+
+/*----------------------------------------------------------------------*/
+//  Month Click
+/*----------------------------------------------------------------------*/
+function MonthClick(obj)
+{
+	var strDate = st_year.Text + lpad(replace(obj.id, "M", ""), "0", 2);
+
+	closePopup(strDate);
+}
+
+/*----------------------------------------------------------------------*/
+//  Pre Year
+/*----------------------------------------------------------------------*/
+function img_nextYear_OnClick(obj, nX, nY)
+{
+	var strYY = st_year.Text;
+	st_year.Text = toString(toNumber(strYY) + 1);
+	strYY = st_year.Text;
+
+	fn_SetCalendar(strYY, "");		
+}
+
+/*----------------------------------------------------------------------*/
+//  Next Year
+/*----------------------------------------------------------------------*/
+function im_preYear_OnClick(obj, nX, nY)
+{
+	var strYY = st_year.Text;
+	st_year.Text = toString(toNumber(strYY) - 1);
+	strYY = st_year.Text;
+	fn_SetCalendar(strYY, "");	
+}
+
+
+/*----------------------------------------------------------------------*/
+//  Close
+/*----------------------------------------------------------------------*/
+function img_close_OnClick(obj, nX, nY)
+{
+	closePopup();
+}
+
+/*----------------------------------------------------------------------*/
+//  Close
+/*----------------------------------------------------------------------*/
+function form_OnKeyDown(obj, objSenderObj, nChar, bShift, bControl, bAlt, nLLParam, nHLParam)
+{
+	if (nChar == 27) {
+		closePopup();
+	}
+}
+
+
+function closePopup(retDate)
+{
+	if (isValidObject(parent)) {
+		parent.closePopse(retDate);
+		this.visible = false;
+	} else {
+		this.Close();
+	}
+}
+]]></Script>
+</Window>

@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="120" Id="frm_login" Left="8" OnKeyDown="frm_login_OnKeyDown" OnLoadCompleted="form_OnLoadCompleted" OnUnloadCompleted="form_OnUnloadCompleted" PidAttrib="7" Title="로그인" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="360" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_login_check">
+				<Contents>
+					<colinfo id="USR_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="PWD_MATCH" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Checkbox Height="18" Id="chk_saveId" Left="88" TabOrder="1" Text="아이디&#32;저장" Top="78" Width="90"></Checkbox>
+		<Image Cursor="HAND" Height="20" Id="btn_pwReset" ImageID="btn_pwReset" Left="240" OnClick="btn_resetpw" Static="FALSE" TabOrder="2" Top="77" Width="87"></Image>
+		<Edit Height="20" Id="edt_usr_id" Left="88" LeftMargin="4" Style="Login_Edit" TabOrder="3" Top="24" Width="140"></Edit>
+		<Edit Height="20" Id="edt_password" Left="88" LeftMargin="4" OnKeyDown="edt_password_OnKeyDown" Password="TRUE" Style="Login_Edit" TabOrder="4" Top="49" Width="140"></Edit>
+		<Image Align="Left" DropMode="TRUE" Height="48" Id="btn_login" ImageID="login_bt" Left="240" LeftMargin="15" OnClick="btn_login_OnClick" Static="FALSE" TabOrder="5" Top="23" Width="87"></Image>
+		<Image Align="Right" Height="18" Id="Image5" Left="4" LeftMargin="0" Style="Stc_Default_bold" TabOrder="6" Text="아이디/이름" Top="27" Transparent="TRUE" Width="74"></Image>
+		<Image Align="Right" Height="18" Id="Image0" Left="4" LeftMargin="0" Style="Stc_Default_bold" TabOrder="7" Text="비밀번호" Top="51" Transparent="TRUE" Width="74"></Image>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : frm_login(폼_로그인)
+* 작성자     : 이용재
+* 작성일     : 2013-01-22 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-22       V1.0        이용재    init Ver
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+var JSESSIONID;
+var lgFailNo = 0;	// 비번오류횟수
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.로그인 함수 
+//  1-3.Transaction 후 처리 해야 할 내용
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_initForm() 
+{
+	var ret = split(getReg("GlobalVal"),',');
+	
+	// 파라미터가 있다면  글로벌 변수에 넣는다.
+	g_param1 = ret[1];	// 0번째는 이상한 문자열 있음
+
+	g_closeFlag = true;
+	
+
+	JSESSIONID = GetReg("GlobalVal");	
+	
+	lgFailNo = 0;	// 	비번오류횟수 초기화 
+	
+	
+	var saveIdFlag = GetReg("SaveIdFlag");
+	
+	if(saveIdFlag == "1" || saveIdFlag == ""){
+		chk_saveId.Value = "1";
+		edt_usr_id.Text = GetReg("UserId");
+	}
+	else{
+		chk_saveId.Value = "0";
+		edt_usr_id.Text = "";
+	}
+		
+	// 임시넣기
+	edt_usr_id.Text = "이용재";
+	edt_password.Text = "1234";
+		
+		
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-2 로그인 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_login() 
+{
+	InitSession(true);
+	 
+	
+	if(length(edt_usr_id.Text) == 0)
+	{
+		alert('아이디를 입력하세요.');
+		edt_usr_id.SetFocus();
+		return;
+	}
+	
+	if(length(edt_password.Text) == 0)
+	{
+		alert('비밀번호를 입력하세요.');
+		edt_password.SetFocus();
+		return;
+	}
+	
+	// 아이디 기억
+	fn_saveId();
+	
+	//g_menuForm = '1';	// 최초 좌측메뉴는 닫기
+	g_menuForm = '2';	// 임시로 열기 
+	
+
+	svcID			= "LOGIN.CheckLogin";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "ds_login_check=cc.CCLoginDAO.CheckLogin";
+	argument    	= " _sqlName=cc.CCLoginDAO.CheckLogin"
+					+ " USR_ID=" + quote(edt_usr_id.Text)
+					+ " USR_PWD=" + quote(edt_password.Text)
+					;
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-3 콜백 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg) 
+{	
+	// 사용자ID 레지스트리 등록
+	SetReg("UserId", trim(edt_usr_id.Text));
+	
+	switch(svcID) 
+	{
+		// 로그인체크
+		case "LOGIN.CheckLogin" :
+			close();
+			//fn_check_user();
+		break;
+				
+		// 로그인실패시
+		// 실패횟수를 화면에 보여줌.
+		case "LOGIN.saveFailCnt" :
+			gfn_popup_message("modal", "error", "비밀번호가 일치하지 않습니다. \n\n로그인실패 [" + lgFailNo + "회] 입니다.\n\n"+gds_system.login_fail_limit+"회 이상 비밀번호가 오류시 계정이 자동으로 잠깁니다.", "확인");
+		break;
+
+		// 로그인성공시
+		case "LOGIN.saveSuccess" :
+			fn_selectGlobalData();
+		break;
+
+		// 글로벌 데이터 조회후
+		case "LOGIN.selectGlobalData" :
+			g_closeFlag = false;
+			
+			g_menuForm = '1';	// 최초 좌측메뉴는 닫기
+			//g_menuForm = '2';	// 임시로 열기 
+			
+			
+			// 로그인 창이 닫기면 프레임셋이 열림
+			close();
+		break;
+		
+		default:
+			g_closeFlag = true;
+			gfn_Popup_Message("modal", "confirm", "시스템 오류 등의 상황이 발생했습니다.", "확인");
+	}
+}
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 아이디 저장
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_saveId() 
+{
+	if(chk_saveId){
+		SetReg("SaveIdFlag", "1");
+		SetReg("UserId", trim(edt_usr_id.Text));
+	}
+	else{
+		SetReg("SaveIdFlag", "0");
+		SetReg("UserId", "");
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 로그인 체크 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_check_user() 
+{
+	
+	// 해당 사용자가 존재하지 않으면 끝
+	if(ds_login_check.rowcount == 0) 
+	{
+		gfn_Popup_Message("modal", "confirm", "해당 아이디는 존재하지 않습니다.", "확인");
+		return;
+	}
+	
+	// 계정잠김 사용불가
+	if(ds_login_check.GetColumn(0, "lock_yn") == "Y") 
+	{
+		gfn_Popup_Message("modal", "confirm", "계정이 잠김상태입니다. 비밀번호 초기화 하시기바랍니다.", "확인");
+		return;
+	}
+	
+	// 비밀번호 틀리면 로그인 실패 횟수 증가.
+	if(ds_login_check.GetColumn(0, "pwd_match") != "Y") 
+	{
+		fn_saveFailCnt();
+		return;
+	}
+	
+	// 비밀번호의 타입에 따라 처리방식 달리함
+	// 비밀번호가 최초일경우 본인 비밀번호 수정창 팝업이 뜸
+	if(ds_login_check.GetColumn(0, "PWD_TP") != "N") 
+	{
+		fn_chgPwd(ds_login_check.GetColumn(0, "PWD_TP"));
+		return;
+	}	
+
+	// 로그인 성공정보 넣기
+	fn_saveSuccessCnt();
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 글로벌 데이타 조회 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 사용자정보, 공통코드 일괄 글로벌 데이터셋에 넣기 
+//*-----------------------------------------------------------------------------------------------
+function fn_selectGlobalData() 
+{
+	// 글로벌 변수 초기화
+	GDS_USER_INFO.ClearData();
+	gds_code.ClearData();
+
+	svcID			= "LOGIN.selectGlobalData";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "GDS_USER_INFO=cc.CCLoginDAO.selectUserInfo"
+					+ " gds_code=cc.CCCodeDDAO.selectCodeDListMap" 
+					+ " GDS_TODAY=cc.CCMainDAO.selectTodayCnt" 
+					;
+					
+	argument    	= " _sqlName=cc.CCLoginDAO.selectUserInfo"
+								+",cc.CCCodeDDAO.selectCodeDListMap"
+								+",cc.CCMainDAO.selectTodayCnt"
+					+ " USR_ID=" + quote(ds_login_check.GetColumn(0, "USR_ID"))
+					;
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 로그인 성공 처리 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 로그인실패횟수 초기화, 잠금제거, 최종로그인시간 update
+//*-----------------------------------------------------------------------------------------------
+function fn_saveSuccessCnt() 
+{
+	svcID			= "LOGIN.saveSuccess";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "";
+	argument    	= " _sqlName=cc.CCLoginDAO.saveSuccess"
+					+ " USR_ID=" + quote(ds_login_check.GetColumn(0, "USR_ID"))
+					+ " USR_IP=" + quote(ext_GetIPAddress())
+					;
+	callbackFunc 	= "gfn_callback";
+	
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 로그인 실패 처리 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 로그인실패횟수 증가, 잠금대상일경우 잠금
+//*-----------------------------------------------------------------------------------------------
+function fn_saveFailCnt() 
+{
+	
+	lgFailNo = parseInt(ds_login_check.GetColumn(0,"login_fail_cnt"))+1;
+	
+	svcID			= "LOGIN.saveFailCnt";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "";
+	argument    	= " _sqlName=cc.CCLoginDAO.saveFailCnt"
+					+ " USR_ID=" + quote(ds_login_check.GetColumn(0, "USR_ID"))	// 사용자 ID로 체크
+					+ " FAIL_CNT=" + quote(lgFailNo)
+					+ " LOGIN_FAIL_LIMIT=" + quote(gds_system.login_fail_limit)	// 잠김여부는 gds_system의 login_fail_limit 이상일경우 잠김
+					;
+	callbackFunc 	= "gfn_callback";
+	
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 비밀번호 변경창 띄움
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 
+//*-----------------------------------------------------------------------------------------------
+function fn_chgPwd(PWD_TP) 
+{
+	initsession(true);
+	edt_password.Text = "";
+	var params = "USR_ID="+quote(ds_login_check.GetColumn(0, "USR_ID"))+" PWD_TP="+quote(PWD_TP);
+	var flag = gfn_openPopup(this, "main::ChangePW.xml", params, true);	
+}
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1. 화면 Load 완료시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 
+//*-----------------------------------------------------------------------------------------------
+function form_OnLoadCompleted(obj) 
+{
+
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 UnLoad 완료시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 
+//*-----------------------------------------------------------------------------------------------
+function form_OnUnloadCompleted(obj) 
+{
+	// 해당 flag로 전체 나가기 한다.
+	if(g_closeFlag){
+		exit();
+	}
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 로그인 버튼 클릭 함수
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고  
+//*-----------------------------------------------------------------------------------------------
+function btn_login_OnClick(obj,nX,nY) 
+{
+	fn_login();
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 로그인 엔터키
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고  
+//*-----------------------------------------------------------------------------------------------
+function edt_password_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) 
+{
+	// 엔터키 입력
+	if(nChar == 13)
+	{
+		fn_login();
+	}
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 비밀번호 초기화
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고  
+//*-----------------------------------------------------------------------------------------------
+function btn_resetpw(obj,nX,nY) 
+{
+	initsession(true);
+	var params = "";
+	edt_password.Text = "";
+	var flags = gfn_openPopup(this, "main::SearchPW.xml", params, true);	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 폼 키 다운 이벤트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고  
+//*-----------------------------------------------------------------------------------------------
+function frm_login_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 13)
+	{
+		if(ToUpperCase(objSenderObj.GetType()) == "IMAGE")
+		{
+		   objSenderObj.click();
+		}else
+		{
+			obj.GetNextComponent(true).setFocus();
+		}
+	}else if(nChar == 27){
+		fn_login();
+	}
+}
+
+
+]]></Script>
+</Window>

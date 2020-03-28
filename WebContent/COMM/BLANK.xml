@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="560" Id="WHITEBOD01" Left="8" PidAttrib="7" Title="빈화면&#32;탭&#32;없음" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true"></Form>
+	<Script></Script>
+</Window>

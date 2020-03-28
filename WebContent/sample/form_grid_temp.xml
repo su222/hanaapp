@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="792" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" OnUnloadCompleted="form_OnUnloadCompleted" PidAttrib="7" Title="폼_그리드템플릿" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_test_data">
+				<Contents>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+					<colinfo id="radio_data" size="256" summ="default" type="STRING"/>a
+					<colinfo id="currency_data" size="256" summ="default" type="STRING"/>
+					<colinfo id="commbo_data" size="256" summ="default" type="STRING"/>
+					<colinfo id="popup_data" size="256" summ="default" type="STRING"/>
+					<colinfo id="calendar_data" size="256" summ="default" type="STRING"/>
+					<colinfo id="code01" size="256" summ="default" type="STRING"/>
+					<colinfo id="code02" size="256" summ="default" type="STRING"/>
+					<record>
+						<calendar_data></calendar_data>
+						<checked>1</checked>
+						<code01></code01>
+						<code02></code02>
+						<commbo_data>CM0002</commbo_data>
+						<currency_data>10000000000</currency_data>
+						<popup_data></popup_data>
+						<radio_data>1</radio_data>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_cmn_code">
+				<Contents>
+					<colinfo id="common_code" size="256" summ="default" type="STRING"/>
+					<colinfo id="code_name" size="256" summ="default" type="STRING"/>
+					<record>
+						<code_name>박지성</code_name>
+						<common_code>CM0001</common_code>
+					</record>
+					<record>
+						<code_name>이영표</code_name>
+						<common_code>CM0002</common_code>
+					</record>
+					<record>
+						<code_name>이청용</code_name>
+						<common_code>CM0003</common_code>
+					</record>
+					<record>
+						<code_name>차두리</code_name>
+						<common_code>CM0004</common_code>
+					</record>
+					<record>
+						<code_name>홍명보</code_name>
+						<common_code>CM0005</common_code>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_test">
+				<Contents>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_grid_temp" OnColumnChanged="ds_grid_temp_OnColumnChanged">
+				<Contents>
+					<colinfo id="flag" size="256" summ="default" type="STRING"/>
+					<colinfo id="row_id" size="256" summ="default" type="STRING"/>
+					<colinfo id="operator" size="256" summ="default" type="STRING"/>
+					<colinfo id="chk" size="256" summ="default" type="STRING"/>
+					<colinfo id="save_date" size="256" summ="default" type="DATE"/>
+					<colinfo id="text_val" size="256" summ="default" type="STRING"/>
+					<colinfo id="currency_data" size="256" summ="default" type="STRING"/>
+					<colinfo id="test_code" size="256" summ="default" type="STRING"/>
+					<colinfo id="code_sel" size="256" summ="default" type="STRING"/>
+					<colinfo id="ds_sel" size="256" summ="default" type="STRING"/>
+					<colinfo id="com_list" size="256" summ="default" type="STRING"/>
+					<colinfo id="com_list_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="chk_item_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="chk_item_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="pop_code" size="256" summ="default" type="STRING"/>
+					<colinfo id="pop_name" size="256" summ="default" type="STRING"/>
+					<colinfo id="desc_value" size="256" summ="default" type="STRING"/>
+					<colinfo id="must_input" size="256" summ="default" type="STRING"/>
+					<colinfo id="read_only" size="256" summ="default" type="STRING"/>
+					<colinfo id="option_input" size="256" summ="default" type="STRING"/>
+					<record>
+						<chk></chk>
+						<chk_item_1></chk_item_1>
+						<chk_item_2></chk_item_2>
+						<code_sel></code_sel>
+						<com_list></com_list>
+						<com_list_2></com_list_2>
+						<currency_data></currency_data>
+						<desc_value></desc_value>
+						<ds_sel></ds_sel>
+						<flag></flag>
+						<must_input></must_input>
+						<operator></operator>
+						<option_input></option_input>
+						<pop_code></pop_code>
+						<pop_name></pop_name>
+						<read_only></read_only>
+						<row_id></row_id>
+						<save_date/>
+						<test_code></test_code>
+						<text_val></text_val>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Border="Flat" Height="24" Id="Static1" Style="Stc_LabelBody" TabOrder="72" Text="Static5" Top="213" VAlign="Middle" Width="790"></Static>
+		<Static Border="Flat" Height="24" Id="Static15" Style="Stc_LabelBody" TabOrder="55" Text="Static5" Top="236" VAlign="Middle" Width="790"></Static>
+		<Static Border="Flat" Height="24" Id="Static7" Left="8" Style="Stc_LabelBody" TabOrder="41" Text="Static5" Top="333" VAlign="Middle" Width="782"></Static>
+		<Static Border="Flat" Height="54" Id="Static4" Style="Stc_LabelBody" TabOrder="37" Text="Static5" Top="282" VAlign="Middle" Width="790"></Static>
+		<Static Height="20" Id="Static8" Style="Stc_Title" TabOrder="1" Text="폼과&#32;그리드&#32;저장의&#32;템플릿" Width="304"></Static>
+		<Shape Bottom="40" Height="7" Id="Shape13" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="790" TabOrder="2" Top="33" Type="Rectangle" Visible="FALSE" Width="790"></Shape>
+		<Shape Bottom="409" Height="5" Id="Shape20" Left="-8" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="802" TabOrder="3" Top="404" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Shape BKColor="user21" Bottom="81" Height="40" Id="Shape31" Left="0" LineColor="user22" Right="790" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="19" Top="41" Type="RoundRect" Width="790"></Shape>
+		<Static Border="Flat" Height="24" Id="Static43" Style="Stc_LabelBody" TabOrder="17" Text="Static5" Top="189" VAlign="Middle" Width="790"></Static>
+		<Shape Bottom="96" Height="15" Id="Shape3" Left="-16" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="4" Top="81" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Static Border="Flat" Height="24" Id="Static14" Style="Stc_LabelBody" TabOrder="6" Text="Static5" Top="143" VAlign="Middle" Width="790"></Static>
+		<Static Border="Flat" Height="24" Id="Static10" Style="Stc_LabelBody" TabOrder="7" Text="Static5" Top="120" VAlign="Middle" Width="790"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static18" Style="Stc_Label" TabOrder="8" Text="텍스트박스" Top="120" VAlign="Middle" Width="104"></Static>
+		<Static Border="Flat" Height="24" Id="Static19" Style="Stc_LabelBody" TabOrder="9" Text="Static5" Top="97" VAlign="Middle" Width="790"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static21" Style="Stc_Label" TabOrder="10" Text="달력" Top="97" VAlign="Middle" Width="104"></Static>
+		<Static Border="Flat" Height="24" Id="Static33" Style="Stc_LabelBody" TabOrder="11" Text="Static5" Top="166" VAlign="Middle" Width="790"></Static>
+		<Edit AutoSkip="TRUE" BindDataset="ds_grid_temp" Border="Flat" CheckLength="Byte" Column="text_val" Height="21" Id="edt_text_val" Left="108" MaxLength="20" Style="Edit" TabOrder="5" Top="123" Width="156"></Edit>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static3" Style="Stc_Label" TabOrder="12" Text="공통코드(단순)" Top="143" VAlign="Middle" Width="104"></Static>
+		<Shape BKColor="user63" Bottom="97" Height="1" Id="Shape0" Left="-9" LineColor="user63" Right="781" TabOrder="13" Top="96" Width="790"></Shape>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static9" Style="Stc_Label" TabOrder="15" Text="라디오(단순)" Top="189" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static5" Style="Stc_Label" TabOrder="16" Text="체크박스리스트" Top="166" VAlign="Middle" Width="104"></Static>
+		<Shape Bottom="382" Height="15" Id="Shape1" Left="-16" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="794" TabOrder="18" Top="367" Type="Rectangle" Visible="FALSE" Width="810"></Shape>
+		<Shape Bottom="120" Height="19" Id="Shape14" Left="176" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="182" TabOrder="18" Top="101" Type="Rectangle" Visible="FALSE" Width="6"></Shape>
+		<Static Border="Flat" Height="24" Id="Static70" Style="Stc_LabelBody" TabOrder="20" Text="Static5" Top="260" VAlign="Middle" Width="790"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static74" Style="Stc_Label" TabOrder="21" Text="공통코드팝업" Top="260" VAlign="Middle" Width="104"></Static>
+		<Shape Bottom="356" Height="260" Id="Shape22" Left="104" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="108" TabOrder="14" Top="96" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_del_row" ImageID="Btn_sub_rowdel" Left="727" OnClick="btn_del_row_OnClick" Style="Btn_sub" TabOrder="23" Text="&#32;&#32;&#32;행삭제" Top="383" Width="61"></Button>
+		<Button ButtonStyle="TRUE" Height="21" Id="btn_add_row" ImageID="Btn_sub_rowadd" Left="661" OnClick="btn_add_row_OnClick" Style="Btn_sub" TabOrder="24" Text="&#32;&#32;&#32;행추가" Top="383" Width="61"></Button>
+		<Shape Bottom="409" Height="32" Id="Shape19" Left="722" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="727" TabOrder="25" Top="377" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Image Align="Left" Height="14" Id="Image2" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="26" Text="테스트&#32;조회" Top="390" Transparent="TRUE" Width="157"></Image>
+		<MaskEdit BindDataset="ds_grid_temp" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="save_date" Height="18" Id="cal_saveDate" Left="108" Mask="@@@@-@@-@@" TabOrder="28" Top="101" Type="STRING" Width="70"></MaskEdit>
+		<Button Height="16" Id="btn_cal_sel" ImageID="Btn_calendar" Left="184" OnClick="btn_cal_sel_OnClick" TabOrder="27" Text="Button1" Top="104" Width="16"></Button>
+		<Combo BindDataset="ds_grid_temp" Border="Flat" Column="test_code" Height="18" Id="cob_test_code" ImeMode="none" Left="104" OnChanged="cob_test_code_OnChanged" Style="Combo" TabOrder="29" Top="144" Width="160"></Combo>
+		<Combo BindDataset="ds_grid_temp" Border="Flat" Column="code_sel" Height="18" Id="cob_code_sel" ImeMode="none" Left="379" Style="Combo" TabOrder="30" Top="144" Width="160"></Combo>
+		<Radio BindDataset="ds_grid_temp" Column="com_list" ColumnCount="10" Height="21" Id="rad_com_list" INDEX="-1" Left="108" OnClick="rad_comList_OnClick" Style="CheckBox" TabOrder="31" Top="191" Width="539"></Radio>
+		<Edit AutoSkip="TRUE" BindDataset="ds_grid_temp" Border="Flat" CheckLength="Byte" Column="pop_code" Height="21" Id="edt_pop_code" ImeMode="none" Left="109" MaxLength="20" Readonly="TRUE" Style="Edit_Red" TabOrder="32" Top="261" Width="116"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_grid_temp" Border="Flat" CheckLength="Byte" Column="pop_name" Height="21" Id="edt_pop_name" Left="230" MaxLength="20" OnKeyDown="edt_name_OnKeyDown" Style="Edit" TabOrder="33" Top="261" Width="116"></Edit>
+		<Button Height="18" Id="pop_pop_name" ImageID="Btn_search" Left="351" OnClick="pop_pop_name_OnClick" TabOrder="34" Text="Button1" Top="263" Width="21"></Button>
+		<Shape Bottom="257" Height="19" Id="Shape5" Left="224" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="230" TabOrder="35" Top="238" Type="Rectangle" Visible="FALSE" Width="6"></Shape>
+		<Shape Bottom="257" Height="19" Id="Shape6" Left="346" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="352" TabOrder="36" Top="238" Type="Rectangle" Visible="FALSE" Width="6"></Shape>
+		<Static Align="Center" Border="Flat" Height="54" Id="Static2" Style="Stc_Label" TabOrder="38" Text="텍스트에어리어" Top="282" VAlign="Middle" Width="104"></Static>
+		<TextArea BindDataset="ds_grid_temp" Border="Flat" Column="desc_value" Height="48" Id="ta_desc_value" Left="109" Style="Edit" TabOrder="39" Top="285" VScroll="TRUE" Width="552"></TextArea>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static6" Style="Stc_Label" TabOrder="40" Text="필수입력" Top="333" VAlign="Middle" Width="104"></Static>
+		<Edit AutoSkip="TRUE" BindDataset="ds_grid_temp" Border="Flat" CheckLength="Byte" Column="must_input" Height="21" Id="edt_must_input" Left="112" MaxLength="20" Style="Edit_Ess" TabOrder="42" Top="336" Width="116"></Edit>
+		<Shape Bottom="353" Height="19" Id="Shape8" Left="224" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="230" TabOrder="43" Top="334" Type="Rectangle" Visible="FALSE" Width="6"></Shape>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static11" Left="231" Style="Stc_Label" TabOrder="44" Text="읽기전용" Top="334" VAlign="Middle" Width="104"></Static>
+		<Edit AutoSkip="TRUE" BindDataset="ds_grid_temp" Border="Flat" CheckLength="Byte" Column="read_only" Height="21" Id="edt_read_only" Left="340" MaxLength="20" Readonly="TRUE" Style="Edit_Red" TabOrder="45" Top="335" Width="116"></Edit>
+		<Shape Bottom="353" Height="19" Id="Shape9" Left="335" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="341" TabOrder="46" Top="334" Type="Rectangle" Visible="FALSE" Width="6"></Shape>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static12" Left="462" Style="Stc_Label" TabOrder="47" Text="선택입력" Top="334" VAlign="Middle" Width="104"></Static>
+		<Shape Bottom="353" Height="19" Id="Shape10" Left="566" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="572" TabOrder="49" Top="334" Type="Rectangle" Visible="FALSE" Width="6"></Shape>
+		<Edit AutoSkip="TRUE" BindDataset="ds_grid_temp" Border="Flat" CheckLength="Byte" Column="option_input" Height="21" Id="edt_option_input" Left="568" MaxLength="20" Style="Edit" TabOrder="48" Top="336" Width="116"></Edit>
+		<Shape Bottom="353" Height="19" Id="Shape11" Left="455" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="461" TabOrder="50" Top="334" Type="Rectangle" Visible="FALSE" Width="6"></Shape>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static16" Left="273" Style="Stc_Label" TabOrder="51" Text="공통코드(선택)" Top="143" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static17" Left="544" Style="Stc_Label" TabOrder="53" Text="데이터셋선택" Top="144" VAlign="Middle" Width="104"></Static>
+		<Combo BindDataset="ds_grid_temp" Border="Flat" Column="ds_sel" Height="24" Id="cbo_ds_sel" ImeMode="none" Left="648" Style="Combo" TabOrder="52" Top="144" Width="136"></Combo>
+		<Button Height="21" Id="btn_view" Left="616" OnClick="btn_view_OnClick" TabOrder="54" Text="Dataset보기" Top="48" Width="79"></Button>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static13" Style="Stc_Label" TabOrder="56" Text="체크박스" Top="236" VAlign="Middle" Width="104"></Static>
+		<Checkbox BindDataset="ds_grid_temp" Column="chk_item_1" Height="15" Id="chk_item_1" Left="112" Style="CheckBox" TabOrder="57" Text="수당유무" Top="241" Value="FALSE" Width="96"></Checkbox>
+		<Checkbox BindDataset="ds_grid_temp" Column="chk_item_2" Height="15" Id="chk_item_2" Left="216" Style="CheckBox" TabOrder="58" Text="공제유무" Top="240" Value="FALSE" Width="92"></Checkbox>
+		<Button Height="21" Id="btn_search" Left="704" OnClick="btn_search_OnClick" TabOrder="59" Text="조회" Top="48" Width="79"></Button>
+		<Button Height="21" Id="btn_save" Left="512" OnClick="btn_save_OnClick" TabOrder="60" Text="저장" Top="8" Width="95"></Button>
+		<Button Height="21" Id="btn_delete" Left="616" OnClick="btn_delete_OnClick" TabOrder="61" Text="삭제" Top="8" Width="79"></Button>
+		<Image Align="Right" Height="21" Id="Image3" Left="392" LeftMargin="0" Style="Stc_Default_bold" TabOrder="62" Text="코드/코드명" Top="51" Transparent="TRUE" Width="80"></Image>
+		<Shape Bottom="76" Height="32" Id="Shape2" Left="472" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="482" TabOrder="63" Top="44" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Edit Border="Flat" Height="18" Id="s_edt_code_name" ImeMode="none" Left="482" LeftMargin="4" OnKeyDown="edt_name_OnKeyDown" Style="Edit_Ess" TabOrder="62" Top="51" Width="130"></Edit>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static20" Left="272" Style="Stc_Label" TabOrder="65" Text="통화형식" Top="120" VAlign="Middle" Width="104"></Static>
+		<MaskEdit BindDataset="ds_grid_temp" Border="Flat" Column="currency_data" Height="21" Id="msk_dcshg_01" Left="381" Style="Edit" TabOrder="66" Top="120" Width="155"></MaskEdit>
+		<Combo Border="Flat" Height="18" Id="s_cob_test_code" ImeMode="none" Left="216" Style="Combo" TabOrder="67" Top="53" Width="160"></Combo>
+		<Image Align="Right" Height="21" Id="Image0" Left="120" LeftMargin="0" Style="Stc_Default_bold" TabOrder="68" Text="장비상태" Top="51" Transparent="TRUE" Width="80"></Image>
+		<Shape Bottom="76" Height="32" Id="Shape4" Left="200" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="210" TabOrder="69" Top="44" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static0" Style="Stc_Label" TabOrder="70" Text="라디오(DataSet)" Top="212" VAlign="Middle" Width="104"></Static>
+		<Radio BindDataset="ds_grid_temp" Column="com_list_2" ColumnCount="10" Height="21" Id="rad_com_list_2" INDEX="-1" Left="108" OnClick="rad_comList_OnClick" Style="CheckBox" TabOrder="71" Top="214" Width="539"></Radio>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static22" Left="272" Style="Stc_Label" TabOrder="74" Text="기본값" Top="95" VAlign="Middle" Width="104"></Static>
+		<Edit AutoSkip="TRUE" BindDataset="ds_grid_temp" Border="Flat" CheckLength="Byte" Column="flag" Height="21" Id="Edit0" Left="404" MaxLength="20" Style="Edit" TabOrder="73" Top="98" Width="44"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_grid_temp" Border="Flat" CheckLength="Byte" Column="row_id" Height="21" Id="Edit1" Left="500" MaxLength="20" Style="Edit" TabOrder="75" Top="98" Width="100"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="ds_grid_temp" Border="Flat" CheckLength="Byte" Column="operator" Height="21" Id="Edit2" Left="684" MaxLength="20" Style="Edit" TabOrder="76" Top="98" Width="100"></Edit>
+		<Static Height="15" Id="Static23" Left="381" TabOrder="77" Text="flag" Top="104" Width="31"></Static>
+		<Static Height="23" Id="Static24" Left="456" TabOrder="78" Text="row_id" Top="104" Width="48"></Static>
+		<Static Height="23" Id="Static25" Left="632" TabOrder="79" Text="operator" Top="104" Width="48"></Static>
+		<Button Height="21" Id="btn_excel" Left="704" OnClick="btn_excel_OnClick" TabOrder="80" Text="엑셀" Top="8" Width="79"></Button>
+		<Button Height="21" Id="btn_reset" Left="408" OnClick="btn_reset_OnClick" TabOrder="81" Text="초기화" Top="8" Width="95"></Button>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="ds_grid_temp" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="680" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="272" Id="Grid1" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnExpandEdit="Grid1_OnExpandEdit" OnHeadClick="Grid1_OnHeadClick" OnKeyDown="Grid1_OnKeyDown" Right="790" RowHeight="20" Style="Grid_2" TabOrder="82" TabStop="true" Top="408" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="790">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="42"/>
+						<col width="65"/>
+						<col width="40"/>
+						<col width="96"/>
+						<col width="101"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="81"/>
+						<col width="135"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="104"/>
+						<col width="104"/>
+						<col width="104"/>
+						<col width="104"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="text" text="flag"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="row_id"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="operator"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="3" color="user52" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="4" color="user52" combocol="code" combodataset="ds_INDS_GB" combotext="value" display="text" text="달력"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="5" color="user52" display="text" text="텍스트박스"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="6" color="user52" display="text" text="통화형식"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="7" color="user52" display="text" text="공통코드(단순)"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="8" color="user52" display="text" text="공통코드(선택)"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="9" color="user52" display="text" text="데이터셋선택"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="10" color="user52" display="text" text="라디오리스트(DataSet)"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="11" color="user52" display="text" text="수당유무"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="12" color="user52" display="text" text="공제유무"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="13" color="user52" display="text" text="팝업코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="14" color="user52" display="text" text="팝업명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="15" color="user52" display="text" text="텍스트에어리어"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="16" color="user52" display="text" text="필수입력"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="17" color="user52" display="text" text="읽기전용"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="18" color="user52" display="text" text="선택입력"/>
+					</head>
+					<body>
+						<cell col="0" colid="flag" display="text" edit="normal"/>
+						<cell col="1" colid="row_id" display="text" edit="normal" expandsize="0"/>
+						<cell col="2" colid="operator" display="text"/>
+						<cell align="center" col="3" colid="chk" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="4" colid="save_date" display="normal" edit="date" expandimage="Btn_calendar" expandshow="true"/>
+						<cell col="5" colid="text_val" display="text" edit="normal"/>
+						<cell align="right" col="6" colid="currency_data" display="number" edit="integer"/>
+						<cell align="left" col="7" colid="test_code" combodisplaynltext="true" display="combo" edit="combo"/>
+						<cell align="left" col="8" colid="code_sel" combodisplaynltext="true" display="combo" edit="combo"/>
+						<cell align="left" col="9" colid="ds_sel" combodisplaynltext="true" display="combo" edit="combo"/>
+						<cell align="left" col="10" colid="com_list_2" combodisplaynltext="true" display="combo" edit="combo"/>
+						<cell align="center" col="11" colid="chk_item_1" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="12" colid="chk_item_2" color="black" display="checkbox" edit="checkbox"/>
+						<cell col="13" colid="pop_code" display="text"/>
+						<cell bkimagealign="right" col="14" colid="pop_name" display="text" edit="button" expandchar="..." expandshow="true" expandsize="21"/>
+						<cell col="15" colid="desc_value" display="text" edit="normal"/>
+						<cell col="16" colid="must_input" display="text" edit="normal"/>
+						<cell col="17" colid="read_only" display="text"/>
+						<cell col="18" colid="option_input" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : form_grid_temp(폼_그리드템플릿)
+* 작성자     : 이용재
+* 작성일     : 2011-03-24 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-03-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+//var popupValue 		= ""; 		// 팝업창에서 받아온 값을 넣어주기 위해서 전역변수로 선언 (현제 쓰이지는 않는다)
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.초기화 함수      
+//  1-3.조회 함수     
+//  1-4.저장 함수    
+//  1-5.삭제 함수    
+//  1-6.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+    
+	// 콤보박스 
+	// 데이터셋이 필요없이 단순하게 콤보만 만드는 함수
+	// 해당 함수는 그리드등 다른 오브젝트와 DataSet을 공유하지 않고 일회성 DataSet을 생성한다.
+	gfn_comCodeCombo(s_cob_test_code, "EQ06", "10","전체");
+	
+	
+    // 단순 라디오 리스트 
+    // 데이터셋이 필요없이 단순하게 라디오리스트만  만드는 함수
+	// 해당 함수는 그리드등 다른 오브젝트와 DataSet을 공유하지 않고 일회성 DataSet을 생성한다.
+	gfn_comCodeRadio(rad_com_list, "EQ08","2"); 
+
+	
+	// Dataset을 공유하는 오브젝트 사용법
+	
+    // 1. 공통코드용 데이터셋을 생성한다..
+    // 생성된 DataSet은 따로 파라미터 지정하지 않아도 사용가능하다.
+    gfn_makeCodeDataSet("EQ14", "", "ds_test_code"); // 공통코드(단순) 용!
+    gfn_makeCodeDataSet("EQ02", "", "ds_code_sel"); // 공통코드(선택) 용!
+    gfn_makeCodeDataSet("EQ03", "", "ds_com_list_2"); // 라디오리스트 
+    
+	// 2. 생성된 데이터셋과 콤보 매핑 
+	gfn_comCodeDSCombo(cob_test_code, "ds_test_code", "1", "");	// 선택될 값 지정
+	gfn_comCodeDSCombo(cob_code_sel, "ds_code_sel", "0", "-----");		//  
+
+    //  3. 생성된 DataSet과 라디오 매핑하기 
+    gfn_comCodeDSRadio(rad_com_list_2, "100", "ds_com_list_2");
+     
+ 	// 4. 일반 데이터셋 생성하기(예: 회사선택)
+	// 화면 Loading시 데이터셋은 Sync로 가져온다.
+	fn_getTestData();
+	
+	gfn_DSCombo(cbo_ds_sel, "ds_test", "BRCH_ID", "BRCH_NM",  "", "--회사선택--");
+
+    // DataSet 직접 매핑  
+    //gfn_DSRadio(rad_com_list_2, "213", "ds_test", "BRCH_ID", "BRCH_NM"); 
+    
+     
+	// Grid의 컬럼에 매핑 해보자 .
+	gfn_setGridCombo(Grid1, "ds_test_code", 7);
+	gfn_setGridCombo(Grid1, "ds_code_sel", 8);
+	gfn_setGridCombo(Grid1, "ds_test", 9, "BRCH_ID", "BRCH_NM");
+	
+	// 라디오리스트는 Grid의 콤보와 매핑한다. (그리드는 라디오 리스트 지원안함)
+	gfn_setGridCombo(Grid1, "ds_com_list_2",100);
+	
+	// 체크박스 리스트
+	// 파라미터: 컨트롤명(문자열), 공통코드, 선택값, onClick시발생함수, left, top, width, 행열유무(row:행, col:열)
+	// 주의)체크박스 리스트는 바인딩이 되지않는다
+	//gfn_SetCmnCheckBox("chk_test","EQ18", "20","chk_test_OnClick", 108, 171,120, "row");
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 초기화 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_reset()
+{
+	// dataset reset
+	ds_grid_temp.ClearData();
+	
+	var vRow = ds_grid_temp.AddRow();
+	
+	// 기초값
+	ds_grid_temp.SetColumn(vRow,"flag","I");	// 추가 flag 넣기
+	ds_grid_temp.SetColumn(vRow,"row_id","");	// row_id(조회후 셋팅됨)
+    ds_grid_temp.SetColumn(vRow,"operator", GDS_USER_INFO.eno);// 등록자, 수정자 넣기
+
+
+	// 콤보의 기본값이 있다면 선택된 상태로 둔다.
+	ds_grid_temp.SetColumn(vRow,"test_code","");
+	ds_grid_temp.SetColumn(vRow,"code_sel","200");
+	ds_grid_temp.SetColumn(vRow,"ds_sel","");
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	
+	svcID			= "test_template1.selectSample";
+	url   			= "service::test_template1.selectSample.do";
+	inDatasets  	= "";
+	outDatasets 	= "ds_grid_temp=test_template1.selectSample";
+	argument    	= " _sqlName=test_template1.selectSample"
+							+ " text_val=" + quote(s_edt_code_name.Text)
+							+ " operator=" + quote(GDS_USER_INFO.eno)
+						;
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	
+	var bValidate = true;
+	var pMessage = "";
+	
+	ds_grid_temp.FireEvent = false;		// DataSet filter 하더라도 Grid에 영향을 끼치지 않게.
+	
+	// 삭제된것도 포함되게Unfilter 한다.
+	ds_grid_temp.UnFilter();
+	
+	ds_grid_temp.Filter("flag !='N'");	// 변경된것 모두 필터링  (저장/삭제) 
+	
+	if(ds_grid_temp.rowcount > 0)
+	{
+		// 필수체크
+		for(var i=0;i<ds_grid_temp.rowcount;i++)
+		{
+			if(length(ds_grid_temp.GetColumn(i, "must_input")) == 0)
+			{
+				bValidate = false;
+				pMessage += "\n" + "["+i+"행] 누락:  필수항목";
+			}
+		}
+		
+		// 필수항목 누락 
+		if(bValidate == false)
+		{
+			gfn_popup_message("modal", "error", pMessage, "확인");
+		}
+		// 저장 
+		else if(gfn_popup_message("modal", "confirm", "저장하시겠습니까?", "확인")) 
+		{
+			svcID		= "test_template1.transSample";              
+			url   		= "service::test_template1.transSample.do";   
+			inDatasets  = "test_template1.transSample=ds_grid_temp:A";   //U: 업데이트 된 row만 넘긴다, A:전부 전달, N:delete를 제외한 모든 정보전달                                      
+			outDatasets = ""; 
+			argument    = " _sqlName=test_template1.transSample"
+							;	  
+			callbackFunc = "gfn_callback"; 
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		}
+	}
+	else
+	{
+		gfn_popup_message("modal", "ico_alert", "저장할 내용이 없습니다.", "확인");	
+	}
+
+	ds_grid_temp.UnFilter();
+	ds_grid_temp.Filter("flag != 'D'");	// 삭제된거는 계속 필터링
+
+	ds_grid_temp.FireEvent = true;		// 이벤트 계속 사용 
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 삭제 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_delete()
+{
+
+	ds_grid_temp.FireEvent = false;		// DataSet filter 하더라도 Grid에 영향을 끼치지 않게.
+	
+	// 삭제된것도 포함되게Unfilter 한다.
+	ds_grid_temp.UnFilter();
+	
+	ds_grid_temp.Filter("flag ='D'");	// 삭제된것 
+	
+	if(ds_grid_temp.rowcount > 0)
+	{
+		if(gfn_popup_message("modal", "confirm", "삭제하시겠습니까?", "확인")) 
+		{
+			svcID		= "test_template1.transSample";              
+			url   		= "service::test_template1.transSample.do";   
+			inDatasets  = "test_template1.transSample=ds_grid_temp:A";   //U: 업데이트 된 row만 넘긴다, A:전부 전달, N:delete를 제외한 모든 정보전달                                      
+			outDatasets = ""; 
+			argument    = " _sqlName=test_template1.transSample"
+							;	  
+			callbackFunc = "gfn_callback"; 
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		}
+	}
+	else
+	{
+		gfn_popup_message("modal", "ico_alert", "삭제할 항목이 없습니다.", "확인");	
+	}
+
+	ds_grid_temp.UnFilter();
+	ds_grid_temp.Filter("flag != 'D'");	// 삭제된거는 필터링
+
+	ds_grid_temp.FireEvent = true;
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : //Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	
+	switch(svcID) 
+	{
+		// 조회
+		case "test_template1.selectSample" :
+			
+			// 조회 결과 없으면 1행 추가한다.
+			if(ds_grid_temp.rowcount < 1) { fn_add_row();}
+			
+			//Grid1.SetColProp(0,"width",0);
+			//Grid1.SetColProp(1,"width",0);
+			//Grid1.SetColProp(2,"width",0);
+			
+		break;	
+
+		// 저장/삭제 
+		case "test_template1.transSample" :
+			fn_search();		
+		break;	
+		
+		// Test DataSet 조회 
+		case "test.selectComId" :
+		break;	
+		
+		default:
+			  alert("기타"); 
+	}
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_add_row()
+{
+	var vRow = ds_grid_temp.AddRow();
+	
+	// 기초값
+	ds_grid_temp.SetColumn(vRow,"flag","I");	// 추가 flag 넣기
+	ds_grid_temp.SetColumn(vRow,"row_id","");	// row_id(조회후 셋팅됨)
+    ds_grid_temp.SetColumn(vRow,"operator", GDS_USER_INFO.eno);// 등록자, 수정자 넣기
+
+	
+	// 콤보의 기본값이 있다면 선택된 상태로 둔다.
+	ds_grid_temp.SetColumn(vRow,"test_code","");
+	ds_grid_temp.SetColumn(vRow,"code_sel","200");
+	ds_grid_temp.SetColumn(vRow,"ds_sel","");
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행삭제
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_delete_row()
+{
+	for(var i = ds_grid_temp.rowcount; i >= 0; i--)
+	{	
+		if(ds_grid_temp.GetColumn(i,"chk") == 1)
+		{
+			// 추가된것은 DB저장전이므로 그냥 DataSet에서 삭제
+			if(ds_grid_temp.GetColumn(i,"flag") == "I")
+			{
+				ds_grid_temp.DeleteRow(i);
+			}
+			// 아닌것은 실제로 DB에 삭제해야되므로 flag를 D로 두고 마지막에 filter한다.
+			else
+			{
+				ds_grid_temp.SetColumn(i,"flag", "D");
+			}
+		}
+	}
+	
+	ds_grid_temp.Filter("flag != 'D'");	// 삭제된거는 필터링
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 테스트 데이터셋 가져오기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_getTestData()
+{
+	
+	svcID			= "test.selectComId";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "ds_test=sm.CSamplePlatformDAO.selectBrchId";
+	argument    	= " _sqlName=sm.CSamplePlatformDAO.selectBrchId"
+							+ " COM_ID=" + quote("A10")		
+						;
+	callbackFunc 	= "gfn_callback";
+
+	gfn_SyncTransaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+	
+}
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.초기화 부분
+//  2-4.조회 버튼 클릭     
+//  2-5.저장 버튼 클릭    
+//  2-6.삭제 버튼 클릭    
+//  2-7.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function form_OnLoadCompleted(obj) 
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+	// 그리드 공통 초기화 
+	gfn_grid_init(Grid1);	
+
+	// 초기화 
+	//fn_reset();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function form_OnUnloadCompleted(obj) 
+{
+	gfn_OnBeforeExit();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-3.초기화  클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_reset_OnClick(obj)
+{
+	fn_initForm();
+	
+	//fn_reset();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-4.조회버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_search_OnClick(obj)
+{
+	fn_search();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-5.저장버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_save_OnClick(obj)
+{
+	fn_save();
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-6.삭제버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_delete_OnClick(obj)
+{
+	// 먼저 선택된 행을 삭제한다.
+	fn_delete_row();
+	
+	// 그다음에 DB 삭제한다. 
+	fn_delete();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-7.엑셀버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_excel_OnClick(obj)
+{
+	gfn_exportExcel(Grid1,"sheet1");
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_add_row_OnClick(obj)
+{
+	fn_add_row();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행삭제 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_del_row_OnClick(obj)
+{
+	fn_delete_row();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 공통코드 팝업 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function pop_pop_name_OnClick(obj)
+{
+	var params = "p_code="+quote(edt_pop_code.Text) +
+				 " p_value="+quote(edt_pop_name.Text);
+	
+	var retArr = gfn_openPopup(this, "sample::popup_sample",params , true);
+
+	edt_pop_code.Text = retArr[0];
+	edt_pop_name.Text = retArr[1];
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 보기 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_view_OnClick(obj)
+{
+	alert(gfn_dsToString(ds_grid_temp));
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function Grid1_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	// 체크박스 클릭시
+	if(nCell == 3)
+	{
+		gfn_SetCheckBoxAllSelected(nCell, Grid1, ds_grid_temp, "chk");
+	}
+	// 나머지는 Sorting
+	else
+	{
+		gfn_GridSort(Grid1, ds_grid_temp, nCell);	
+	}
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 셀클릭시 Popup창 컨트롤 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function Grid1_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{	
+	// 달력
+	if(nCell == 4)
+	{
+		gfn_PopupGridCalendar(obj, nRow, nCell);
+	}
+	
+	// 팝업
+	if(nCell == 14)
+	{
+		var params = "p_code="+quote(edt_pop_code.Text) +
+					 " p_value="+quote(edt_pop_name.Text);
+		
+		var retArr = gfn_openPopup(this, "sample::popup_sample",params , true);
+		
+		ds_grid_temp.SetColumn(nRow, "pop_code", retArr[0]);
+		ds_grid_temp.SetColumn(nRow, "pop_name", retArr[1]);
+
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 flag 설정 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function ds_grid_temp_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	
+	// 체크박스 선택은 패스한다.
+	if(ToUpper(strColumnID) == "CHK") return;
+	
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	// 즉 조회된거를 수정하면 U로 바꾼다.
+	if(obj.GetColumn(nRow, "flag") == "N")
+	{
+		obj.SetColumn(nRow, "flag", "U");	// 수정했다는 표시 
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid Ctrl+A, Ctrl+C로 클립보드에 넣기  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function Grid1_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	gfn_gridCopy(obj, ds_grid_temp, nChar, bCtrl);
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid Ctrl+A, Ctrl+C로 클립보드에 넣기  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_cal_sel_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", cal_saveDate);
+}
+
+function cob_test_code_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	alert(cob_test_code.Value);
+}
+
+]]></Script>
+</Window>

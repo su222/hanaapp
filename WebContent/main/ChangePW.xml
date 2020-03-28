@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="300" Id="ChangePW" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="비밀번호변경" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="450" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_user_info">
+				<Contents>
+					<colinfo id="USR_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="PWD_TP" size="256" summ="default" type="STRING"/>
+					<colinfo id="PWD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="300" Id="Image3" ImageID="newpw_bg" TabOrder="4" Width="450"></Image>
+		<Static Font="돋움,9" Height="40" Id="lbl_msg" Left="51" Style="Stc_Title" TabOrder="3" Text="주민번호는&#32;비밀번호로&#32;사용&#32;할&#32;수&#32;없습니다." Top="168" Width="378"></Static>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_pwd1" Left="152" OnKeyDown="edt_pwd1_OnKeyDown" Password="TRUE" Style="Edit" TabOrder="1" Top="80" Width="100"></Edit>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_pwd2" Left="152" OnKeyDown="edt_pwd2_OnKeyDown" Password="TRUE" Style="Edit" TabOrder="2" Top="108" Width="100"></Edit>
+		<Image FillType="STRETCH" Height="29" Id="btn_change" ImageID="bt_modify" Left="140" OnClick="btn_change_OnClick" OnMouseOut="btn_change_OnMouseOut" OnMouseOver="btn_change_OnMouseOver" Static="FALSE" TabOrder="5" Top="215" Width="72"></Image>
+		<Image FillType="STRETCH" Height="29" Id="btn_close" ImageID="bt_close" Left="220" OnClick="btn_close_OnClick" OnMouseOut="btn_close_OnMouseOut" OnMouseOver="btn_close_OnMouseOver" Static="FALSE" TabOrder="6" Top="215" Transparent="TRUE" Width="72"></Image>
+		<Shape BKColor="user4" Bottom="70" Height="6" Id="Shape0" Left="26" LineColor="user4" Right="417" TabOrder="7" Top="64" Width="391"></Shape>
+		<Shape BKColor="user4" Bottom="148" Height="6" Id="Shape1" Left="26" LineColor="user4" Right="417" TabOrder="8" Top="142" Width="391"></Shape>
+		<Image Height="18" Id="Image4" ImageID="txt_newpwOk" Left="40" TabOrder="9" Top="108" Width="103"></Image>
+		<Image Height="18" Id="Image5" ImageID="txt_newpw" Left="41" TabOrder="10" Top="80" Width="76"></Image>
+		<Image Height="18" Id="Image0" ImageID="icon_msg" Left="24" TabOrder="11" Top="164" Width="23"></Image>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : ChangePW(비밀번호 초기화)
+* 작성자     : 한희경
+* 작성일     : 2011-08-10 최초 생성
+* 기능설명   : 
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011--08-10    V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var sel_flag = "M";					// 회사선택구분(S:단일선택, M:멀티선택)
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+var form_id = "ChangePW";
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+
+/**************************************************************************************************
+  * 사용자 Event 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 닫기버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function fn_search()
+{
+	if(USR_ID == "")
+	{
+		alert('사용자 ID가 없습니다. 관리자에게 문의하세요.');
+		return;
+	}
+	
+	svcID			= "ChangePW.SelectAuth";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "ds_user_info=cc.CCLoginDAO.ChangePWAuth"
+					;
+	argument    	= " _sqlName=cc.CCLoginDAO.ChangePWAuth"
+					+ " USR_ID=" + quote(USR_ID)
+						;
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+	
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  비밀번호 변경및 sms 발송
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function fn_save()
+{
+	if(Length(edt_pwd1.Text) < 4)
+	{
+		alert('비밀번호는 4자리 이상이어야 합니다.');
+		edt_pwd1.SetFocus();
+		return;
+	}	
+	
+	if(Length(edt_pwd2.Text) < 4)
+	{
+		alert('비밀번호는 4자리 이상이어야 합니다.');
+		edt_pwd2.SetFocus();
+		return;
+	}	
+	
+	if(edt_pwd1.Text != edt_pwd2.Text)
+	{
+		alert('새비밀번호와 새비밀번호 확인의 입력된 값이 틀립니다.');
+		edt_pwd1.SetFocus();
+		return;
+	}
+	
+	if(edt_pwd1.Text == ds_user_info.GetColumn(0, "ssn"))
+	{
+		alert('주민번호는 비밀번호로 사용이 불가능 합니다.');
+		edt_pwd1.SetFocus();
+		return;
+	}
+		
+	
+	svcID		= "ChangePW.SavePw";              
+	url   		= "service::common/select_mi.do";   
+	inDatasets  = "";   
+	outDatasets = ""; 
+	argument    = " _sqlName=cc.CCLoginDAO.ChangePWSave"
+	            + " USR_ID=" + quote(USR_ID)
+				+ " USR_PWD=" + quote(edt_pwd1.text)
+				+ " PWD_TP=N";	  
+	callbackFunc = "gfn_callback"; 	
+	
+		
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-6. Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	switch(svcID) 
+	{
+		// 조회
+		case "ChangePW.SelectAuth" :
+			fn_message();	// 메시지 뿌려주기
+		break;	
+		
+				
+		//  비밀번호 변경 
+		case "ChangePW.SavePw" :
+			alert('비밀번호가 변경되었습니다.');
+			
+			close(true);
+		break;	
+				
+
+		default:
+			  alert("기타"); 
+	}
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-7 비밀번호 타입에 따른 메시지 뿌려주기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_message()
+{
+	// 메시지가 없다면 비정상이므로 창닫기 
+	if(ds_user_info.rowcount == 0)
+	{
+		alert('변경할 사용자 정보가 없습니다.');
+		close(false);
+	}
+	
+	if(ds_user_info.GetColumn(0, "PWD_TP") == "I")
+	{
+		lbl_msg.Text = "주민번호를 비밀번호로 사용불가능합니다. \n비밀번호 변경 후 로그인 가능합니다.";
+	}
+
+	if(ds_user_info.GetColumn(0, "PWD_TP") == "R")
+	{
+		lbl_msg.Text = "임시 비빌번호는 비밀번호 변경 후 로그인 가능합니다.";
+	}
+	
+
+
+}
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1. 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function form_OnLoadCompleted(obj) 
+{
+	
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+	// 그리드 공통 초기화 
+	gfn_grid_init(Grid1);	
+
+}
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1-1. 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//*------------------------------------------------------------------------
+
+function fn_initForm()
+{
+	fn_search();
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 닫기- 현재 팝업창을 닫는다
+//* 함수유형     : 
+//* parameter    :  
+//* return value :  
+//*-----------------------------------------------------------------------------------------------
+function fn_close(obj)
+{
+	close(false);
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  비밀번호 변경
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_change_OnClick(obj)
+{
+	fn_save();
+}
+
+function Button0_OnClick(obj)
+{
+	alert(gfn_dsToString(ds_user_info));
+}
+
+
+function btn_change_OnMouseOver(obj,nX,nY)
+{
+	obj.Cursor  = "hand";
+}
+
+function btn_close_OnMouseOver(obj,nX,nY)
+{
+	obj.Cursor  = "hand";
+}
+
+function btn_change_OnMouseOut(obj)
+{
+	obj.Cursor  = "arrow";
+}
+
+function btn_close_OnMouseOut(obj)
+{
+	obj.Cursor  = "arrow";
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 비밀번호1 key
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function edt_pwd1_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		edt_pwd2.SetFocus();
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 비밀번호2 key
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function edt_pwd2_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_save();
+	}
+}
+]]></Script>
+</Window>

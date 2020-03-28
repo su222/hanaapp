@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_CMPNY_BAS : 회사 -->
+<mapper namespace="co.hanaapp.dao.cc.CCCmpnyDAO">
+
+ <!-- 
+ 
+ 	주의) null 값이 있는 항목은 무조건 nvl(항목, ' ') 처리 해야한다.
+ 	mybatis 3 버젼부터 null 이면 result의 map에 해당 항목 자체가 없으므로 반드시 nvl 처리 해야함!@@@@@
+ 	
+ 	공백은 heweb에서 공백만 있을경우 "" 처리 함
+ 
+  -->
+ 
+
+
+   <!-- 회사정보 조회 -->
+    <select id="selectCmpnyLst" parameterType="map" resultType ="map">
+		SELECT /* 회사정보 목록 */
+		       'N' AS FLAG,
+		       ROWIDTOCHAR(ROWID) AS ROW_ID,
+		       '0' AS CHK,
+		       #{OPERATOR, jdbcType=VARCHAR} AS OPERATOR,
+		       nvl(COM_ID,' ') COM_ID, 
+		       nvl(COM_NM,' ') COM_NM, 
+		       nvl(OWNER_NM,' ') OWNER_NM, 
+		       nvl(TEL_NO,' ') TEL_NO, 
+		       nvl(FAX_NO,' ') FAX_NO, 
+		       nvl(ADDR_NM,' ') ADDR_NM, 
+		       nvl(ZIP_CD,' ') ZIP_CD, 
+		       decode(USE_YN,'Y',1,0) USE_YN
+		  FROM TB_CC_CMPNY_BAS
+		 WHERE COM_NM LIKE '%' || #{COM_NM, jdbcType=VARCHAR} || '%'
+		 ORDER BY COM_ID
+
+    </select>
+
+ 
+ 	<!-- 회사정보 추가/수정 -->
+     <insert   id="saveCmpnyLst" parameterType="map" >
+
+        begin
+			UPDATE TB_CC_CMPNY_BAS
+			   SET COM_ID = #{COM_ID, jdbcType=VARCHAR} , 
+			       COM_NM = #{COM_NM, jdbcType=VARCHAR} , 
+			       OWNER_NM = #{OWNER_NM, jdbcType=VARCHAR} , 
+			       TEL_NO = #{TEL_NO, jdbcType=VARCHAR} , 
+			       FAX_NO = #{FAX_NO, jdbcType=VARCHAR} , 
+			       ADDR_NM = #{ADDR_NM, jdbcType=VARCHAR} , 
+			       ZIP_CD = #{ZIP_CD, jdbcType=VARCHAR} , 
+			       USE_YN = DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N') , 
+			       EDT_USR = #{OPERATOR, jdbcType=VARCHAR} , 
+			       EDT_DT = SYSDATE 
+			where rowid = chartorowid(#{ROW_ID, jdbcType=VARCHAR});      
+
+
+               if sql%rowcount=0 then
+			INSERT INTO TB_CC_CMPNY_BAS
+			        (
+			         COM_ID , 
+			         COM_NM , 
+			         OWNER_NM , 
+			         TEL_NO , 
+			         FAX_NO , 
+			         ADDR_NM , 
+			         ZIP_CD , 
+			         USE_YN , 
+			         CRT_USR , 
+			         CRT_DT , 
+			         EDT_USR , 
+			         EDT_DT )
+			 VALUES (
+			         #{COM_ID, jdbcType=VARCHAR} , 
+			         #{COM_NM, jdbcType=VARCHAR} , 
+			         #{OWNER_NM, jdbcType=VARCHAR} , 
+			         #{TEL_NO, jdbcType=VARCHAR} , 
+			         #{FAX_NO, jdbcType=VARCHAR} , 
+			         #{ADDR_NM, jdbcType=VARCHAR} , 
+			         #{ZIP_CD, jdbcType=VARCHAR} , 
+			         DECODE(#{USE_YN, jdbcType=VARCHAR},'1','Y','N') , 
+			         #{OPERATOR, jdbcType=VARCHAR} , 
+			         SYSDATE , 
+			         #{OPERATOR, jdbcType=VARCHAR} , 
+			         SYSDATE );
+                  end if;
+
+            exception
+                when others then
+                    raise_application_error(-20501,'TB_CC_CMPNY_BAS save error : ' ||SQLERRM);
+            end;
+        
+    </insert>
+ 
+	<!-- 회사정보 삭제 -->
+    <delete   id="deleteCmpnyLst" parameterType="map" >
+       	DELETE FROM TB_CC_CMPNY_BAS
+		 WHERE ROWID = chartorowid(#{ROW_ID, jdbcType=VARCHAR})    
+    </delete>
+ 
+ 
+ 
+   <!-- 회사정보 코드 조회 -->
+    <select id="selectCmpnyCode" parameterType="map" resultType ="map">
+		SELECT /* 회사정보 코드 */
+		       nvl(COM_ID,' ') COM_ID, 
+		       nvl(COM_NM,' ') COM_NM		      
+		  FROM TB_CC_CMPNY_BAS
+		 WHERE USE_YN = 'Y'
+		 ORDER BY COM_ID
+
+    </select>
+ 
+ 
+
+</mapper>

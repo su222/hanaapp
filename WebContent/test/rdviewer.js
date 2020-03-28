@@ -1,0 +1,1 @@
+document.write('<object id=rd_ans_mst name=rd_ans_mst width=80% height=50% classid="clsid:ADB6D20D-80A1-4aa4-88AE-B2DC820DA076" codebase="http://59.12.238.168:8088/common/update/cab_files/rdviewer50.cab"></object>');

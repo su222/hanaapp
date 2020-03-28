@@ -1,0 +1,1381 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="650" Id="ACAD02T01" Left="8" OnLoadCompleted="ACAD02T01_OnLoadCompleted" OnUnloadCompleted="ACAD02T01_OnUnloadCompleted" PidAttrib="7" Title="입금처리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1240" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_TIEUPPAY_NOT_LST" OnColumnChanged="DS_TIEUPPAY_NOT_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASK_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASK_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASK_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LST_ASK_DT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_PAY_LST" OnColumnChanged="DS_PAY_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_GBN_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_pay_temp"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_dtl_temp"></Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_TIEUPPAY_SIN_LST" OnColumnChanged="DS_TIEUPPAY_SIN_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_PAY_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASK_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASK_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_PAY_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_GBN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_GBN_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_TIEUPPAY_YES_LST" OnColumnChanged="DS_TIEUPPAY_YES_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_PAY_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASK_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASK_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_PAY_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDT_DT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_TIEUPPAY_ING_LST">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_PAY_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="70" Height="64" Id="Shape8" Left="928" LineColor="user22" Right="1232" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="48" Top="6" Type="RoundRect" Width="304"></Shape>
+		<Shape BKColor="user21" Bottom="70" Height="64" Id="Shape_Out" Left="488" LineColor="user22" Right="904" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="9" Top="6" Type="RoundRect" Width="416"></Shape>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_PAY_LST" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="394" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="290" Id="GRD_PAY_LST" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_TIEUPPAY_NOT_LST_OnCellClick" OnExpandEdit="GRD_PAY_LST_OnExpandEdit" OnHeadClick="GRD_TIEUPPAY_NOT_LST_OnHeadClick" Right="475" RowHeight="20" Style="Grid_2" TabOrder="0" TabStop="FALSE" Top="104" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="475">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="140"/>
+						<col width="80"/>
+						<col width="70"/>
+						<col width="0"/>
+						<col width="0"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="입금일자"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="입금액"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="적요"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="은행구분"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="9" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="처리현황"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="10" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="기준시작일"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="11" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="기준종료일"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell align="center" col="3" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="center" col="4" colid="TUB_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="5" colid="PAY_DT" display="date" edit="date" expandimage="Btn_calendar" expandshow="true" InputZeroTime="true"/>
+						<cell align="right" col="6" colid="PAY_AMT" display="number" edit="number" InputZeroTime="true"/>
+						<cell align="left" col="7" colid="PAY_NOTE" display="normal" edit="normal" InputZeroTime="true"/>
+						<cell align="center" col="8" colid="BANK_GBN" display="combo" edit="combo" InputZeroTime="true"/>
+						<cell align="center" col="9" colid="SIN_GBN_NM" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="10" colid="BAS_ST_DT" display="date" InputZeroTime="true"/>
+						<cell align="center" col="11" colid="BAS_ED_DT" display="date" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="648" Height="648" Id="Shape0" Left="1234" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1239" TabOrder="1" Top="0" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Image Align="Left" Height="14" Id="Image0" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="4" Text="결제요청" Top="403" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="422" Height="5" Id="Shape1" Left="-2" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="925" TabOrder="3" Top="417" Type="Rectangle" Visible="FALSE" Width="927"></Shape>
+		<Shape Bottom="396" Height="5" Id="Shape16" Left="-5" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="922" TabOrder="5" Top="391" Type="Rectangle" Visible="FALSE" Width="927"></Shape>
+		<Shape BKColor="user21" Bottom="70" Height="64" Id="Shape_search" Left="0" LineColor="user22" Right="475" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="7" Top="6" Type="RoundRect" Width="475"></Shape>
+		<Shape Bottom="5" Height="5" Id="Shape15" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1239" TabOrder="8" Top="0" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Image Align="Left" Height="18" Id="Image8" ImageID="label_dot" Left="520" LeftMargin="12" Style="Stc_Default_bold" TabOrder="10" Text="기간" Top="16" Transparent="TRUE" Width="42"></Image>
+		<Image Align="Left" Height="14" Id="Image1" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="12" Text="입금내역" Top="83" Transparent="TRUE" Width="157"></Image>
+		<Image Align="Left" Height="14" Id="Image4" ImageID="Title_dot" Left="488" LeftMargin="20" Style="Stc_Subtitle" TabOrder="13" Text="검색제휴사" Top="80" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="102" Height="5" Id="Shape5" Left="-2" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1237" TabOrder="11" Top="97" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Shape Bottom="75" Height="5" Id="Shape2" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1239" TabOrder="13" Top="70" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="S_ST_DT" Left="565" Mask="####-##-##" TabOrder="15" ToolTipText="날짜를&#32;입력안하시면&#32;전체&#32;기간&#32;검색&#32;가능합니다." Top="17" Type="STRING" Width="70"></MaskEdit>
+		<Shape Bottom="48" Height="36" Id="Shape14" Left="636" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="641" TabOrder="18" Top="12" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="BTN_ST_DT" ImageID="Btn_calendar" Left="640" OnClick="BTN_ST_DT_OnClick" TabOrder="20" Text="Button1" Top="19" Width="16"></Button>
+		<Static Height="13" Id="Static72" Left="660" Style="Stc_Default" TabOrder="17" Text="~" Top="22" Width="15"></Static>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="S_ED_DT" Left="672" Mask="####-##-##" TabOrder="16" ToolTipText="날짜를&#32;입력안하시면&#32;전체&#32;기간&#32;검색&#32;가능합니다" Top="17" Type="STRING" Width="70"></MaskEdit>
+		<Shape Bottom="47" Height="36" Id="Shape3" Left="743" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="748" TabOrder="19" Top="11" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="BTN_ED_DT" ImageID="Btn_calendar" Left="747" OnClick="BTN_ED_DT_OnClick" TabOrder="20" Text="Button1" Top="18" Width="16"></Button>
+		<Button Height="21" Id="btn_pay_not_add" Left="360" OnClick="fn_pay_not_add" TabOrder="22" TabStop="FALSE" Text="입금확인불가등록" Top="76" Width="114"></Button>
+		<Button Height="21" Id="btn_add" Left="119" OnClick="btn_add_OnClick" TabOrder="23" TabStop="FALSE" Text="+입금추가" Top="76" Width="74"></Button>
+		<Shape Bottom="102" Height="32" Id="Shape10" Left="354" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="359" TabOrder="21" Top="70" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="102" Height="32" Id="Shape11" Left="473" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="478" TabOrder="24" Top="70" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="37" Id="btn_no_pay" Left="976" OnClick="btn_no_pay_OnClick" TabOrder="25" TabStop="FALSE" Text="입금확인불가목록" Top="19" Width="106"></Button>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_TIEUPPAY_NOT_LST" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="392" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="290" Id="GRD_TIEUPPAY_NOT_LST" InputPanel="FALSE" Left="488" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_TIEUPPAY_YES_LST_OnCellClick" OnHeadClick="GRD_TIEUPPAY_YES_LST_OnHeadClick" Right="907" RowHeight="20" Style="Grid_2" TabOrder="26" TabStop="FALSE" Top="102" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="419">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="150"/>
+						<col width="100"/>
+						<col width="80"/>
+						<col width="90"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="결제담당자"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="미수금"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="마지막청구일"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell align="center" col="3" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="center" col="4" colid="TUB_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="5" colid="TUB_NM" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="6" colid="SIN_NM" display="normal" InputZeroTime="true"/>
+						<cell align="right" col="7" colid="ASK_AMT" display="number" InputZeroTime="true"/>
+						<cell align="center" col="8" colid="LST_ASK_DT" display="date" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="S_PAY_ST_DT" Left="82" Mask="####-##-##" TabOrder="28" Top="17" Type="STRING" Width="70"></MaskEdit>
+		<Button Height="16" Id="BTN_PAY_ST_DT" ImageID="Btn_calendar" Left="157" OnClick="BTN_PAY_ST_DT_OnClick" TabOrder="33" Text="Button1" Top="19" Width="16"></Button>
+		<Shape Bottom="48" Height="36" Id="Shape4" Left="153" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="158" TabOrder="31" Top="12" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Static Height="13" Id="Static1" Left="177" Style="Stc_Default" TabOrder="30" Text="~" Top="22" Width="15"></Static>
+		<MaskEdit Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Height="18" Id="S_PAY_ED_DT" Left="189" Mask="####-##-##" TabOrder="29" Top="17" Type="STRING" Width="70"></MaskEdit>
+		<Button Height="16" Id="BTN_PAY_ED_DT" ImageID="Btn_calendar" Left="264" OnClick="BTN_PAY_ED_DT_OnClick" TabOrder="34" Text="Button1" Top="18" Width="16"></Button>
+		<Shape Bottom="47" Height="36" Id="Shape7" Left="260" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="265" TabOrder="32" Top="11" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="61" Height="56" Id="Shape12" Left="73" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="81" TabOrder="35" Top="5" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Image Align="Left" Height="18" Id="Image2" ImageID="label_dot" Left="8" LeftMargin="12" Style="Stc_Default_bold" TabOrder="27" Text="입금일자" Top="16" Transparent="TRUE" Width="66"></Image>
+		<Image Align="Left" Height="18" Id="Image3" ImageID="label_dot" Left="8" LeftMargin="12" Style="Stc_Default_bold" TabOrder="36" Text="검색" Top="41" Transparent="TRUE" Width="50"></Image>
+		<Edit Border="Flat" Height="18" Id="S_PAY_NOTE" ImeMode="none" Left="82" LeftMargin="4" OnKeyDown="S_PAY_NOTE_OnKeyDown" Style="Edit" TabOrder="37" Top="41" Width="100"></Edit>
+		<Image Align="Left" Height="18" Id="Image6" ImageID="label_dot" Left="293" LeftMargin="12" Style="Stc_Default_bold" TabOrder="38" Text="은행구분" Top="41" Transparent="TRUE" Width="66"></Image>
+		<Shape Bottom="69" Height="40" Id="Shape13" Left="357" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="365" TabOrder="40" Top="29" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Combo Border="Flat" Height="18" Id="S_BANK_GBN" Left="364" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="39" Top="40" Width="76"></Combo>
+		<Image Align="Left" Height="18" Id="Image9" ImageID="label_dot" Left="293" LeftMargin="12" Style="Stc_Default_bold" TabOrder="41" Text="처리현황" Top="17" Transparent="TRUE" Width="66"></Image>
+		<Combo Border="Flat" Height="18" Id="S_SIN_GBN" Left="364" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="42" Top="16" Width="76"></Combo>
+		<Shape Bottom="45" Height="40" Id="Shape17" Left="357" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="365" TabOrder="43" Top="5" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Shape Bottom="69" Height="64" Id="Shape6" Left="557" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="565" TabOrder="44" Top="5" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Image Align="Left" Height="18" Id="Image5" ImageID="label_dot" Left="520" LeftMargin="12" Style="Stc_Default_bold" TabOrder="45" Text="검색" Top="41" Transparent="TRUE" Width="50"></Image>
+		<Edit Border="Flat" Height="18" Id="S_TUB_NM_N" ImeMode="none" Left="565" LeftMargin="4" OnKeyDown="S_TUB_NM_N_OnKeyDown" Style="Edit" TabOrder="46" Top="41" Width="100"></Edit>
+		<Image Align="Left" Height="14" Id="Image7" ImageID="Title_dot" Left="928" LeftMargin="20" Style="Stc_Subtitle" TabOrder="47" Text="미결재목록" Top="80" Transparent="TRUE" Width="157"></Image>
+		<Button Height="37" Id="btn_tub_pay" Left="1088" OnClick="btn_tub_pay_OnClick" TabOrder="49" TabStop="FALSE" Text="제휴사비용거래목록" Top="19" Width="122"></Button>
+		<Image Align="Left" Height="14" Id="Image10" ImageID="Title_dot" Left="488" LeftMargin="20" Style="Stc_Subtitle" TabOrder="50" Text="입금처리내역" Top="403" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="102" Height="32" Id="Shape9" Left="274" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="279" TabOrder="51" Top="70" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="21" Id="btn_del" Left="280" OnClick="btn_del_OnClick" TabOrder="52" TabStop="FALSE" Text="-입금삭제" Top="76" Width="74"></Button>
+		<Button Height="21" Id="btn_all_pay" Left="713" OnClick="fn_all_pay" TabOrder="56" TabStop="FALSE" Text="전액입금처리" Top="76" Width="82"></Button>
+		<Shape Bottom="102" Height="32" Id="Shape18" Left="795" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="800" TabOrder="53" Top="70" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="21" Id="btn_part_pay" Left="800" OnClick="fn_part_pay" TabOrder="54" TabStop="FALSE" Text="일부입금처리" Top="76" Width="82"></Button>
+		<Shape Bottom="102" Height="32" Id="Shape19" Left="881" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="886" TabOrder="55" Top="70" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="21" Id="btn_req_cancel" Left="286" OnClick="fn_req_cancel" TabOrder="57" TabStop="FALSE" Text="결재요청취소" Top="396" Width="88"></Button>
+		<Shape Bottom="424" Height="32" Id="Shape20" Left="374" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="379" TabOrder="58" Top="392" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="422" Height="32" Id="Shape21" Left="473" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="478" TabOrder="59" Top="390" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="21" Id="btn_sin" Left="379" OnClick="fn_sin_ok" TabOrder="60" TabStop="FALSE" Text="결재(권한필요)" Top="396" Width="96"></Button>
+		<Button Height="21" Id="btn_pay_save" Left="199" OnClick="fn_save" TabOrder="61" TabStop="FALSE" Text="입금저장" Top="76" Width="74"></Button>
+		<Shape Bottom="102" Height="32" Id="Shape23" Left="194" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="199" TabOrder="62" Top="70" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_TIEUPPAY_SIN_LST" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="642" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="218" Id="GRD_TIEUPPAY_SIN_LST" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_TIEUPPAY_SIN_LST_OnCellClick" OnHeadClick="GRD_TIEUPPAY_SIN_LST_OnHeadClick" Right="475" RowHeight="20" Style="Grid_2" TabOrder="63" TabStop="FALSE" Top="424" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="475">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="130"/>
+						<col width="100"/>
+						<col width="80"/>
+						<col width="70"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="결제담당자"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="처리비용"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="입금구분"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="9" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="결재현황"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell align="center" col="3" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="center" col="4" colid="TUB_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="5" colid="TUB_NM" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="6" colid="SIN_NM" display="normal" InputZeroTime="true"/>
+						<cell align="right" col="7" colid="PAY_AMT" display="number" InputZeroTime="true"/>
+						<cell align="center" col="8" colid="PAY_GBN_NM" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="9" colid="SIN_GBN_NM" display="normal" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_TIEUPPAY_YES_LST" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="642" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="218" Id="GRD_TIEUPPAY_YES_LST" InputPanel="FALSE" Left="488" LineColor="default" LineType="OnlyVERT" OnHeadClick="GRD_TIEUPPAY_YES_LST_OnHeadClick" Right="907" RowHeight="20" Style="Grid_2" TabOrder="64" TabStop="FALSE" Top="424" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="419">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="130"/>
+						<col width="100"/>
+						<col width="80"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="결제담당자"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="처리비용"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="처리일자"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell align="center" col="3" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="center" col="4" colid="TUB_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="5" colid="TUB_NM" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="6" colid="SIN_NM" display="normal" InputZeroTime="true"/>
+						<cell align="right" col="7" colid="PAY_AMT" display="number" InputZeroTime="true"/>
+						<cell align="center" col="8" colid="EDT_DT" display="date" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button Height="21" Id="btn_sin_cancel" Left="786" OnClick="fn_sin_cancel" TabOrder="65" TabStop="FALSE" Text="결재취소(권한필요)" Top="396" Width="120"></Button>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_TIEUPPAY_ING_LST" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="640" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="538" Id="GRD_TIEUPPAY_ING_LST" InputPanel="FALSE" Left="928" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_TIEUPPAY_ING_LST_OnCellClick" OnCellDBLClick="GRD_TIEUPPAY_ING_LST_OnCellDblClick" OnHeadClick="GRD_TIEUPPAY_ING_LST_OnHeadClick" Right="1235" RowHeight="20" Style="Grid_2" TabOrder="66" TabStop="FALSE" Top="102" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="307">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="130"/>
+						<col width="80"/>
+						<col width="71"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="결제담당자"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="처리비용"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell align="center" col="3" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="center" col="4" colid="TUB_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="5" colid="TUB_NM" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="6" colid="SIN_NM" display="normal" InputZeroTime="true"/>
+						<cell align="right" col="7" colid="PAY_AMT" display="number" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 입금처리
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 입금처리 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+#include "lib::lib_file.js";
+#include "lib::lib_report.js";
+
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+var curIngRow          = "";
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	//*------------------------------------------------------------------------
+    //* 리사이즈 컨포넌트 정의
+	//* H: 가로 리사이즈
+	//* W: 세로 리사이즈
+	//* A: 가로세로 리사이즈
+	//* R: Resize
+	//* M: Move
+	//* Quick view로 테스트시 주석처리 후 테스트
+    //*------------------------------------------------------------------------
+	gfn_SetResize(this, "Shape8:H:R GRD_TIEUPPAY_SIN_LST:W:R GRD_TIEUPPAY_YES_LST:W:R GRD_TIEUPPAY_ING_LST:A:R btn_no_pay:H:M btn_tub_pay:H:M");
+
+	//gfn_SetResize(this, "GRD_BONDSPOT_LST:H:R GRD_AFFAIRDELAY_LST:H:R ");
+
+
+	// 처리현황(입금결재구분)
+	gfn_comCodeCombo(S_SIN_GBN, "AD15", "","전체");
+
+	// 입금통장
+	gfn_comCodeCombo(S_BANK_GBN, "AD16", "","전체");
+
+	gfn_makeCodeDataSet("AD16", "", "DS_BANK_GBN");   
+
+	gfn_setGridCombo(GRD_PAY_LST, "DS_BANK_GBN", 8);
+
+	
+	// 공통 명령어 조정
+	gfn_set_cbutton("조회:fn_search 저장:fn_save");
+	
+	// 기본 기간은 오늘  
+	gfn_get_date('TODAY',0,'YYYYMMDD');	
+	
+	S_PAY_ST_DT.Text = GDS_DATE_TYPE.GetColumn(0,'DATE_VAL');
+	S_PAY_ED_DT.Text = GDS_DATE_TYPE.GetColumn(0,'DATE_VAL');
+	S_ST_DT.Text = GDS_DATE_TYPE.GetColumn(0,'DATE_VAL');
+	S_ED_DT.Text = GDS_DATE_TYPE.GetColumn(0,'DATE_VAL');
+	
+	fn_search();
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	DS_PAY_LST.ClearData();
+	DS_TIEUPPAY_NOT_LST.ClearData();
+	DS_TIEUPPAY_SIN_LST.ClearData();
+	DS_TIEUPPAY_YES_LST.ClearData();
+	DS_TIEUPPAY_ING_LST.ClearData();
+	
+	
+	svcID			= "ACAD02T01.selectAllLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_PAY_LST=ac.ACAffairDAO.selectPayLst"
+					+ " DS_TIEUPPAY_NOT_LST=ac.ACAffairDAO.selectPayNotLst"
+					+ " DS_TIEUPPAY_SIN_LST=ac.ACAffairDAO.selectPaySinLst"	
+					+ " DS_TIEUPPAY_YES_LST=ac.ACAffairDAO.selectPayYesLst"	
+					+ " DS_TIEUPPAY_ING_LST=ac.ACAffairDAO.selectPayIngLst"	
+					;		
+
+	argument    	= " _sqlName=ac.ACAffairDAO.selectPayLst"
+							+ ",ac.ACAffairDAO.selectPayNotLst"
+							+ ",ac.ACAffairDAO.selectPaySinLst"
+							+ ",ac.ACAffairDAO.selectPayYesLst"
+							+ ",ac.ACAffairDAO.selectPayIngLst"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " S_PAY_NOTE="+quote(S_PAY_NOTE.Text)
+							+ " S_PAY_ST_DT="+quote(S_PAY_ST_DT.Value)
+							+ " S_PAY_ED_DT="+quote(S_PAY_ED_DT.Value)
+							+ " S_SIN_GBN="+quote(S_SIN_GBN.Value)
+							+ " S_BANK_GBN="+quote(S_BANK_GBN.Value)
+							+ " S_TUB_NM="+quote(S_TUB_NM_N.Text)
+							+ " S_ST_DT="+quote(S_ST_DT.Text)
+							+ " S_ED_DT="+quote(S_ED_DT.Text)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  입금내역 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	var isSave = false;
+	
+	// 필터 
+	DS_PAY_LST.FireEvent = false;		
+	DS_PAY_LST.UnFilter();
+	DS_PAY_LST.Filter("FLAG !='N'");
+	
+	if(DS_PAY_LST.rowcount > 0)
+	{
+		// 필수체크
+		for(var i=0;i<DS_PAY_LST.rowcount;i++)
+		{
+			
+			cMessage = ""; 
+		
+			if(length(DS_PAY_LST.GetColumn(i, "PAY_DT")) == 0)
+			{
+				bValidate = false;
+				cMessage += "입금일자 누락 ";
+			}
+		
+			if(length(DS_PAY_LST.GetColumn(i, "PAY_AMT")) == 0)
+			{
+				bValidate = false;
+				cMessage += "입금액 누락 ";
+			}			
+			
+			if(length(DS_PAY_LST.GetColumn(i, "BANK_GBN")) == 0)
+			{
+				bValidate = false;
+				cMessage += "은행구분 누락 ";
+			}
+
+			if(DS_PAY_LST.GetColumn(i, "SIN_GBN") == "20")
+			{
+				bValidate = false;
+				cMessage += "결재중인 항목은 저장이 불가능 합니다. ";
+			}		
+		
+			if(bValidate == false)
+			{
+				pMessage += "\n ["+i+"] " + cMessage;
+			}
+		}
+	}
+
+	if(bValidate == false)
+	{
+		gfn_popup_message("modal", "error", cMessage, "확인");
+	}
+	else
+	{
+		isSave = true;
+	}	
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		// 저장 
+		//if(gfn_popup_message("modal", "confirm", "저장하시겠습니까?", "확인")) 
+		//{
+
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			ds_pay_temp.ClearData();
+			ds_pay_temp.CopyF("DS_PAY_LST");
+			
+			svcID			= "ACAD02T01.savePayLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "ac.ACAffairDAO.savePayLst=ds_pay_temp:A"
+							;
+							
+			
+			outDatasets 	= "";
+			argument    	= " _sqlName=ac.ACAffairDAO.savePayLst"
+							;
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		//}
+	
+	}
+
+	DS_PAY_LST.UnFilter();
+	DS_PAY_LST.Filter("flag != 'D'");
+	DS_PAY_LST.FireEvent = true;	
+
+}
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+//	trace('call mst/dtl/note='+curNotRow+'/'+curYesRow+'/'+curNoteRow);
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "ACAD02T01.selectAllLst" :
+			
+			// 미결재목록은 선택된거 유지함
+			DS_TIEUPPAY_ING_LST.row = curIngRow;
+		
+		break;	
+
+
+		
+		case "ACAD02T01.savePayLst" :
+			gfn_setMsg("입금내역 저장 완료.");
+			fn_search();			
+			break;	
+
+		
+		// 입금확인 불가 
+		case "ACAD02T01.savePayNot" :
+			gfn_setMsg("입금확인불가 완료.");
+			fn_search();
+			break;			
+		
+		// 제휴사입금등록 
+		case "ACAD02T01.saveTieupPayLst" :
+			gfn_setMsg("제휴사 입금등록 완료.");
+			fn_search();
+		break;	
+
+		// 결재요청 취소
+		case "ACAD02T01.deleteTieupPayLst" :
+			gfn_setMsg("결재요청 취소 완료.");
+			fn_search();
+		break;			
+
+		// 결재처리 
+		case "ACAD02T01.closeTieupPayLst" :
+			gfn_setMsg("결재처리 완료.");
+			fn_search();
+		break;		
+		
+		// 결재취소 
+		case "ACAD02T01.cancelTieupPayLst" :
+			gfn_setMsg("결재취소 완료.");
+			fn_search();
+		break;			
+		
+
+		default:
+	}
+
+
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+
+***************************************************************************************************/
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  입금확인불가 등록 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_pay_not_add()
+{
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	
+	// 선택된 입금항목 확인불가 처리  
+	if(length(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"ROW_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "입금확인 불가 항목이 없습니다. 먼저 저장 후 확인 불가 처리 하세요", "확인");
+		bValidate = false;	
+		return;
+	}
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		//삭제 
+		if(gfn_popup_message("modal", "confirm", "선택된 항목을 입금확인불가 등록 하시겠습니까? ", "확인")) 
+		{
+		
+			svcID			= "ACAD02T01.savePayNot";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "";
+			outDatasets 	= "";
+			argument    	= " _sqlName=ac.ACAffairDAO.savePayNot"
+							+ " ROW_ID=" + quote(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"ROW_ID"))
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+				
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		}
+	
+	}	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 전액입금처리 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_all_pay()
+{
+	
+	
+	// 선택유무 체크  
+	if(length(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"ROW_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "선택된 입금내역을 먼저 저장 후 진행 하세요.", "확인");
+		return;
+	}
+	
+	// 결재중이면 입금처리 못함 
+	if(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"SIN_GBN") != '' && DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"SIN_GBN") != '10')
+	{
+		gfn_popup_message("modal", "error", "선택된 입금내역은 이미 입금 처리중인 항목이라 중복 선택 불가능 합니다.", "확인");
+		return;
+	}	
+	
+	if(length(DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"TUB_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "전액입금처리할  항목을 먼저 선택하세요.", "확인");
+		return;
+	}
+	
+	// 입금내역과 미수금액 차이가 있을때 경고 메시지
+	if(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"PAY_AMT") != DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"ASK_AMT"))
+	{
+		gfn_popup_message("modal", "error", "선택된 입금내역의 금액과 미수금이 일치 하지 않습니다.[입금액:"+DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"PAY_AMT")+"/미수금:"+DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"ASK_AMT")+" ]", "확인");
+		return;		
+	}
+	
+
+	// 전액입금 
+	if(gfn_popup_message("modal", "confirm", "선택된 항목을  전액입금처리 하시겠습니까?", "확인")) 
+	{	
+		
+		svcID			= "ACAD02T01.savePayLst";
+		url   			= "service::common/select_mi.do";
+		inDatasets  	= "";
+		outDatasets 	= "";
+		argument    	= " _sqlName=ac.ACAffairDAO.saveTieupPayLst"
+						+ " BRCH_ID=" + quote(DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"BRCH_ID"))
+						+ " TUB_SEQ=" + quote(DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"TUB_SEQ"))
+						+ " TUB_PAY_DT=" + quote(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"PAY_DT"))
+						+ " PAY_SEQ=" + quote(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"PAY_SEQ"))
+						+ " ASK_DT=" + quote(DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"ASK_DT"))
+						+ " ASK_AMT=" + quote(DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"ASK_AMT"))
+						+ " PAY_AMT=" + quote(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"PAY_AMT"))
+						+ " PAY_GBN=" + quote("A")
+						+ " SIN_GBN=" + quote("20")
+						+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);	
+							
+		callbackFunc 	= "gfn_callback";	
+	
+	
+		gfn_showProgressWindow(true);
+		gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+	
+	
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 일부입금처리 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_part_pay()
+{
+	
+	
+	// 선택유무 체크  
+	if(length(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"ROW_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "선택된 입금내역을 먼저 저장 후 진행 하세요.", "확인");
+		return;
+	}
+
+	
+	// 결재중이면 입금처리 못함 
+	if(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"SIN_GBN") != '' && DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"SIN_GBN") != '10')
+	{
+		gfn_popup_message("modal", "error", "선택된 입금내역은 이미 입금 처리중인 항목이라 중복 선택 불가능 합니다.", "확인");
+		return;
+	}
+	
+	
+	if(length(DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"TUB_SEQ")) == 0)
+	{
+		gfn_popup_message("modal", "error", "일부입금처리할  항목을 먼저 선택하세요.", "확인");
+		return;
+	}
+	
+	// 전액입금 
+	if(gfn_popup_message("modal", "confirm", "선택된 항목을  일부입금처리 하시겠습니까?", "확인")) 
+	{	
+		
+		svcID			= "ACAD02T01.savePayLst";
+		url   			= "service::common/select_mi.do";
+		inDatasets  	= "";
+		outDatasets 	= "";
+		argument    	= " _sqlName=ac.ACAffairDAO.saveTieupPayLst"
+						+ " BRCH_ID=" + quote(DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"BRCH_ID"))
+						+ " TUB_SEQ=" + quote(DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"TUB_SEQ"))
+						+ " TUB_PAY_DT=" + quote(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"PAY_DT"))
+						+ " PAY_SEQ=" + quote(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"PAY_SEQ"))
+						+ " ASK_SEQ=" + quote(DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"ASK_SEQ"))
+						+ " ASK_DT=" + quote(DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"ASK_DT"))
+						+ " ASK_AMT=" + quote(DS_TIEUPPAY_NOT_LST.GetColumn(DS_TIEUPPAY_NOT_LST.currow,"ASK_AMT"))
+						+ " PAY_AMT=" + quote(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"PAY_AMT"))
+						+ " PAY_GBN=" + quote("P")
+						+ " SIN_GBN=" + quote("20")
+						+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);	
+							
+		callbackFunc 	= "gfn_callback";	
+	
+	
+		gfn_showProgressWindow(true);
+		gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+	
+	
+	}
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  결재요청 취소 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_req_cancel()
+{
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	
+	// 선택된 입금항목 확인불가 처리  
+	if(length(DS_TIEUPPAY_SIN_LST.GetColumn(DS_TIEUPPAY_SIN_LST.currow,"ROW_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "결재요청 취소 항목이 없습니다. 먼저 선택 후 결재요청 취소 처리 하세요", "확인");
+		bValidate = false;	
+		return;
+	}
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		//삭제 
+		if(gfn_popup_message("modal", "confirm", "선택된 항목을 결재요청 취소 하시겠습니까? ", "확인")) 
+		{
+		
+			svcID			= "ACAD02T01.deleteTieupPayLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "";
+			outDatasets 	= "";
+			argument    	= " _sqlName=ac.ACAffairDAO.deleteTieupPayLst"
+							+ " ROW_ID=" + quote(DS_TIEUPPAY_SIN_LST.GetColumn(DS_TIEUPPAY_SIN_LST.currow,"ROW_ID"))
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+				
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		}
+	
+	}	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  결재하기  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_sin_ok()
+{
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	
+	// 선택된 입금항목 확인불가 처리  
+	if(length(DS_TIEUPPAY_SIN_LST.GetColumn(DS_TIEUPPAY_SIN_LST.currow,"ROW_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "결재처리 항목이 없습니다. 먼저 선택 후 결재처리 처리 하세요", "확인");
+		bValidate = false;	
+		return;
+	}
+	
+
+	// 결재권한있는지 체크 
+	if(GDS_USER_INFO.PMS_GBN != '30')
+	{
+		gfn_popup_message("modal", "error", "결재권한이 없습니다. 관리자에게 문의하세요.", "확인");
+		bValidate = false;	
+		return;
+	}
+	
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		//결재  
+		if(gfn_popup_message("modal", "confirm", "선택된 항목을 결재처리 하시겠습니까? ", "확인")) 
+		{
+		
+			svcID			= "ACAD02T01.closeTieupPayLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "";
+			outDatasets 	= "";
+			argument    	= " _sqlName=ac.ACAffairDAO.closeTieupPayLst"
+							+ " ROW_ID=" + quote(DS_TIEUPPAY_SIN_LST.GetColumn(DS_TIEUPPAY_SIN_LST.currow,"ROW_ID"))
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+				
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		}
+	
+	}	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  결재취소  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_sin_cancel()
+{
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	
+	// 선택된 입금항목 확인불가 처리  
+	if(length(DS_TIEUPPAY_YES_LST.GetColumn(DS_TIEUPPAY_YES_LST.currow,"ROW_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "결재취소 항목이 없습니다. 먼저 선택 후 결재취소 처리 하세요", "확인");
+		bValidate = false;	
+		return;
+	}
+	
+	// 결재권한있는지 체크 
+	if(GDS_USER_INFO.PMS_GBN != '30')
+	{
+		gfn_popup_message("modal", "error", "결재권한이 없습니다. 관리자에게 문의하세요.", "확인");
+		bValidate = false;	
+		return;
+	}	
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		//취소 
+		if(gfn_popup_message("modal", "confirm", "선택된 항목을 결재취소 하시겠습니까? ", "확인")) 
+		{
+		
+			svcID			= "ACAD02T01.cancelTieupPayLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "";
+			outDatasets 	= "";
+			argument    	= " _sqlName=ac.ACAffairDAO.cancelTieupPayLst"
+							+ " ROW_ID=" + quote(DS_TIEUPPAY_YES_LST.GetColumn(DS_TIEUPPAY_YES_LST.currow,"ROW_ID"))
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+				
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		}
+	
+	}	
+}
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function ACAD02T01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function ACAD02T01_OnUnloadCompleted(obj)
+{
+	fn_save();
+	gfn_OnBeforeExit();
+}
+
+
+
+
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  Grid  셀 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_TIEUPPAY_NOT_LST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+
+}
+
+
+function GRD_TIEUPPAY_SIN_LST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	
+}
+
+
+
+function GRD_TIEUPPAY_YES_LST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+
+}
+
+function GRD_TIEUPPAY_ING_LST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 더블 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_TIEUPPAY_ING_LST_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	//해당 입금 정보로 조회조건 변경 후 조회 
+	S_TUB_NM_N.Text = DS_TIEUPPAY_ING_LST.GetColumn(nRow, "TUB_NM");
+	S_ST_DT.Text = DS_TIEUPPAY_ING_LST.GetColumn(nRow, "TUB_PAY_DT");
+	S_ED_DT.Text = DS_TIEUPPAY_ING_LST.GetColumn(nRow, "TUB_PAY_DT");
+	
+	curIngRow = nRow;
+	
+	fn_search();
+	
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_TIEUPPAY_NOT_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_TIEUPPAY_NOT_LST, DS_TIEUPASK_NOT_N_LST, nCell);	
+}
+
+
+function GRD_TIEUPPAY_YES_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_TIEUPPAY_YES_LST, DS_TIEUPPAY_YES_LST, nCell);	
+}
+
+function GRD_PAY_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_PAY_LST, DS_PAY_LST, nCell);	
+}
+
+
+function GRD_TIEUPPAY_SIN_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_TIEUPPAY_SIN_LST, DS_TIEUPPAY_SIN_LST, nCell);	
+}
+
+function GRD_TIEUPPAY_ING_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_TIEUPPAY_ING_LST, DS_TIEUPPAY_ING_LST, nCell);	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 달력 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_PAY_LST_OnExpandEdit(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	// 달력
+	if(nCell == 5)
+	{
+		gfn_PopupGridCalendar(obj, nRow, nCell);
+	}		
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 입금추가
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_add_OnClick(obj)
+{
+	var vRow = DS_PAY_LST.AddRow();
+	
+	// 기초값
+	DS_PAY_LST.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+	DS_PAY_LST.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+	DS_PAY_LST.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+	
+    DS_PAY_LST.SetColumn(vRow,"BRCH_ID", GDS_USER_INFO.GetColumn(0, "BRCH_ID"));// 
+	DS_PAY_LST.SetColumn(vRow,"PAY_DT", gfnGetToday(''));// // 입금일자 오늘 
+    
+
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 입금삭제
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_del_OnClick(obj)
+{
+	
+	// 등록이 아니면 삭제 불가 
+	if(DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"SIN_GBN") == '20' || DS_PAY_LST.GetColumn(DS_PAY_LST.currow,"SIN_GBN") == '30')
+	{
+		gfn_popup_message("modal", "error", "결재 진행상태가 결재중, 결재완료 일때는 삭제가 불가능 합니다.", "확인");
+		return;
+	}
+		
+	
+	//  확인
+	if(gfn_popup_message("modal", "confirm", "선택된 행을 삭제 하시겠습니까?", "확인") == false) 
+	{
+		return;
+	}
+	
+	// 추가된것은 DB저장전이므로 그냥 DataSet에서 삭제
+	if(DS_PAY_LST.GetColumn(DS_PAY_LST.curRow,"FLAG") == "I")
+	{
+		DS_PAY_LST.DeleteRow(DS_PAY_LST.curRow);
+	}
+	// 아닌것은 실제로 DB에 삭제해야되므로 flag를 D로 두고 마지막에 filter한다.
+	else
+	{
+		DS_PAY_LST.SetColumn(DS_PAY_LST.curRow,"FLAG", "D");
+	}	
+	
+	DS_PAY_LST.Filter("flag != 'D'");	// 삭제된거는 필터링
+		
+	fn_save();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 자동저장
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_PAY_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}	
+}
+
+
+
+function DS_TIEUPPAY_NOT_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+}
+
+
+function DS_TIEUPPAY_SIN_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+	
+}
+
+
+
+function DS_TIEUPPAY_YES_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+}
+
+
+function S_PAY_NOTE_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_search_pay();
+	}	
+}
+
+
+
+function S_TUB_NM_N_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_search_not();
+	}		
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 입금확인불가 목록
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_no_pay_OnClick(obj)
+{
+	//  입금확인 불가  팝업 
+	var params = "" ;
+					
+	var retArr = gfn_openPopup(this, "CP::CPAE03P01.xml", params, true);	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 시작일 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function BTN_PAY_ST_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", S_PAY_ST_DT);
+}
+
+
+function BTN_ST_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", S_ST_DT);
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 종료일 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function BTN_PAY_ED_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", S_PAY_ED_DT);
+}
+
+function BTN_ED_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", S_ED_DT);
+}
+
+
+
+// 제휴사 비용거래 목록 
+function btn_tub_pay_OnClick(obj)
+{
+	var params = "" ;
+					
+	var retArr = gfn_openPopup(this, "CP::CPAE03P02.xml", params, true);		
+}
+
+]]></Script>
+</Window>

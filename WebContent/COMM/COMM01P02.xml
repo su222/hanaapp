@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="230" Id="COMM01P02" Left="8" OnLoadCompleted="COMM01P02_OnLoadCompleted" OnUnloadCompleted="COMM01P02_OnUnloadCompleted" PidAttrib="7" Title="개인정보변경" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="424" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_user_info">
+				<Contents>
+					<colinfo id="eno" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="corp_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="pwd" size="256" summ="default" type="STRING"/>
+					<colinfo id="pre_pwd1" size="256" summ="default" type="STRING"/>
+					<colinfo id="pre_pwd2" size="256" summ="default" type="STRING"/>
+					<colinfo id="pre_pwd3" size="256" summ="default" type="STRING"/>
+					<colinfo id="sary_mail_yn" size="256" summ="default" type="STRING"/>
+					<colinfo id="encode_pwd" size="256" summ="default" type="STRING"/>
+					<colinfo id="ssn" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_sary_info">
+				<Contents>
+					<colinfo id="eno" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="corp_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="sary_mail_yn" size="256" summ="default" type="STRING"/>
+					<colinfo id="birth_conf" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_save_info">
+				<Contents>
+					<colinfo id="eno" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="corp_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="pwd" size="256" summ="default" type="STRING"/>
+					<colinfo id="pre_pwd1" size="256" summ="default" type="STRING"/>
+					<colinfo id="pre_pwd2" size="256" summ="default" type="STRING"/>
+					<colinfo id="pre_pwd3" size="256" summ="default" type="STRING"/>
+					<colinfo id="sary_mail_yn" size="256" summ="default" type="STRING"/>
+					<colinfo id="encode_pwd" size="256" summ="default" type="STRING"/>
+					<colinfo id="birth_conf" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_vw_pla">
+				<Contents>
+					<colinfo id="lev" size="256" summ="default" type="STRING"/>
+					<colinfo id="vw_pla_cd" size="256" summ="default" type="STRING"/>
+					<colinfo id="vw_pla_nm" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Border="Flat" Height="24" Id="Static27" Left="14" Style="Stc_LabelBody" TabOrder="5" Top="82" VAlign="Middle" Width="398"></Static>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg_400" Left="-1" TabOrder="1" Transparent="TRUE" Width="424"></Image>
+		<Image Align="Left" Height="20" Id="Image3" Left="41" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="2" Text="개인정보변경" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static56" Left="14" Style="Stc_Label" TabOrder="3" Text="기존&#32;비밀번호" Top="82" VAlign="Middle" Width="136"></Static>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_old_pwd" Left="155" MaxLength="20" Password="TRUE" Style="Edit" TabOrder="4" Top="85" Width="251"></Edit>
+		<Static Border="Flat" Height="24" Id="Static0" Left="14" Style="Stc_LabelBody" TabOrder="8" Top="105" VAlign="Middle" Width="398"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static1" Left="14" Style="Stc_Label" TabOrder="6" Text="새&#32;비밀번호" Top="105" VAlign="Middle" Width="136"></Static>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_new_pwd" Left="155" MaxLength="20" Password="TRUE" Style="Edit" TabOrder="7" Top="108" Width="251"></Edit>
+		<Static Border="Flat" Height="24" Id="Static2" Left="14" Style="Stc_LabelBody" TabOrder="11" Top="128" VAlign="Middle" Width="398"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static3" Left="14" Style="Stc_Label" TabOrder="9" Text="새&#32;비밀번호&#32;확인" Top="128" VAlign="Middle" Width="136"></Static>
+		<Edit AutoSkip="TRUE" Border="Flat" CheckLength="Byte" Height="18" Id="edt_new_pwd_check" Left="155" MaxLength="20" Password="TRUE" Style="Edit" TabOrder="10" Top="131" Width="251"></Edit>
+		<Static Border="Flat" Height="24" Id="Static4" Left="14" Style="Stc_LabelBody" TabOrder="15" Top="59" VAlign="Middle" Width="398"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static5" Left="14" Style="Stc_Label" TabOrder="14" Text="급여메일수신여부" Top="59" VAlign="Middle" Width="136"></Static>
+		<Checkbox Font="돋움,9" Height="13" Id="chk_sary_mail_yn" Left="155" TabOrder="16" Text="수신여부" Top="65" Value="FALSE" Width="72"></Checkbox>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_confirm" ImageID="Btn_pop_2w" Left="159" LeftMargin="14" OnClick="btn_confirm_OnClick" Style="Btn_Popup" TabOrder="17" Text="확인" Top="190" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="214" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="17" Text="닫기" Top="190" Transparent="TRUE" Width="50"></Button>
+		<Static Border="Flat" Height="24" Id="Static9" Left="14" Style="Stc_LabelBody" TabOrder="19" Top="150" VAlign="Middle" Width="398"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="stc_vw_pla_nm1" Left="14" Style="Stc_Label" TabOrder="20" Text="생일자현황&#32;레벨&#32;설정" Top="150" VAlign="Middle" Width="136"></Static>
+		<Combo Border="Flat" Height="18" Id="cob_vw_pla" Left="155" OnChanged="cob_vw_pla_OnChanged" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="21" Top="152" Width="150"></Combo>
+		<Shape Bottom="177" Height="120" Id="Shape2" Left="150" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="155" TabOrder="12" Top="57" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="177" Height="120" Id="Shape0" Left="406" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="411" TabOrder="13" Top="57" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : COMM01P02
+* 작성자     : 강동수
+* 작성일     : 
+* 기능설명   : 
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-04-14      V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID		 = "";
+var url   		 = "";
+var inDatasets   = "";
+var outDatasets  = "";
+var argument     = "";
+var callbackFunc = "";
+var compCd 		 = "";
+var corpCd 		 = "";
+var sel_flag     = "S";	// 회사선택구분(S:단일선택, M:멀티선택)
+var form_id      = "COMM01P02";
+
+var encode_pwd   = ""; // 인코드 된 새로운 비밀번호
+var password     = ""; // 비밀번호 확인을 위한 변수
+var pre_pwd1     = ""; // 이전 비밀번호1 (이전 비밀번호는 사용하지 못하게 하기 위해서 조회한다)
+var pre_pwd2     = ""; // 이전 비밀번호2 
+var pre_pwd3     = ""; // 이전 비밀번호3
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.초기화 함수      
+//  1-3.조회 함수     
+//  1-4.저장 함수    
+//  1-5.삭제 함수    
+//  1-6.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-1. 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//*------------------------------------------------------------------------------------------------
+function fn_initForm()
+{
+    // 사용가능 법인 인증 
+    gfn_corp_auth(form_id, sel_flag);
+    
+	// 회사목록을 조회하면에 뿌려준다.
+	s_edt_COM_NM.Text = gfn_getDSString(GDS_BRCH_BAS, "BRCH_NM",",");		
+	
+	// 로그인 사용자의 소속코드 레벨별조회 (콤보박스 데이터셋 생성)
+	fn_searchPla();
+
+	// 생일자현황 레벨설정 콤보 데이터셋 맵핑
+	gfn_DSCombo(cob_vw_pla, "ds_vw_pla", "lev", "vw_pla_nm",  "1", "");
+	
+	fn_search_sary();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-3-1. 사용자소속코드레벨별조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_searchPla()
+{
+	ds_vw_pla.ClearData();
+
+	svcID			= "COMM01P02.searchsearchPla";
+	url   			= "service::COMM01P02.searchsearchPla.do";
+	inDatasets  	= "";
+	outDatasets 	= "ds_vw_pla=COMM01P02.searchsearchPla";
+	argument    	= " _sqlName=COMM01P02.searchsearchPla"
+					+ " p_eno=" + quote(GDS_USER_INFO.eno)
+					+ " p_COM_ID=" + quote(GDS_USER_INFO.COM_ID)				
+					;
+	callbackFunc   	= "gfn_callback";
+	
+	gfn_showProgressWindow(true);
+	gfn_SyncTransaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-3-1. 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	ds_user_info.ClearData();
+
+	svcID			= "COMM01P02.searchPersonalInfo";
+	url   			= "service::COMM01P02.searchPersonalInfo.do";
+	inDatasets  	= "";
+	outDatasets 	= "ds_user_info=COMM01P02.searchPersonalInfo";
+	argument    	= " _sqlName=COMM01P02.searchPersonalInfo"
+					+ " p_eno=" + quote(GDS_USER_INFO.eno)
+					+ " p_COM_ID=" + quote(GDS_USER_INFO.COM_ID)
+					+ " p_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+					+ " p_corp_seq=" + quote(GDS_USER_INFO.corp_seq)
+					+ " p_pwd=" + quote(edt_old_pwd.Text)
+					+ " p_new_pwd=" + quote(edt_new_pwd_check.Text)					
+					;
+	callbackFunc   	= "gfn_callback";
+	
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-3-2. 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_search_sary()
+{
+	ds_sary_info.ClearData();
+
+	svcID			= "COMM01P02.searchSaryMailInfo";
+	url   			= "service::COMM01P02.searchSaryMailInfo.do";
+	inDatasets  	= "";
+	outDatasets 	= "ds_sary_info=COMM01P02.searchSaryMailInfo";
+	argument    	= " _sqlName=COMM01P02.searchSaryMailInfo"
+					+ " p_eno=" + quote(GDS_USER_INFO.eno)
+					+ " p_COM_ID=" + quote(GDS_USER_INFO.COM_ID)
+					+ " p_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+					+ " p_corp_seq=" + quote(GDS_USER_INFO.corp_seq)
+					;
+	callbackFunc   	= "gfn_callback";
+	
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1-6.Transaction 후 처리 해야 할 내용
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	switch(svcID) 
+	{		
+		// 사용자 소속레벨명 데이터셋 생성
+		case "COMM01P02.searchsearchPla" :
+/*
+			var pla_lv = ds_vw_pla.getcolumn(0, "vw_pla_lev"); 			// 사용자 소속레벨
+			alert(pla_lv);
+			// 소속레벨 하위 필터링 (하위소속은 동일)
+			for(i=0; i < 5; i++)
+			{
+				if(i >= toNumber(pla_lv))
+				{
+					var filterStr = "'lev !=' + i";
+					ds_vw_pla.filter(filterStr);
+				}
+			}
+*/		
+			// 소속레벨 하위 필터링 (동일한 소속일경우 필터링)
+			for(i=0; i<5; i++)
+			{
+				for(j=i+1; j<5; j++)
+				{
+				//alert(ds_vw_pla.getcolumn(i, "vw_pla_cd") + '///' + ds_vw_pla.getcolumn(j, "vw_pla_cd"));
+					if(ds_vw_pla.getcolumn(i, "vw_pla_cd") == ds_vw_pla.getcolumn(j, "vw_pla_cd"))
+					{
+						var filterStr = "'lev !=' + j";
+						ds_vw_pla.filter(filterStr);
+					}
+				}
+			
+			}
+			break;
+	
+		case "COMM01P02.searchSaryMailInfo" :
+			
+			//alert(ds_sary_info.rowcount+"/"+ds_sary_info.GetColumn(0,"sary_mail_yn"));
+			
+			if(ds_sary_info.GetColumn(0,"sary_mail_yn") == "Y"){
+				chk_sary_mail_yn.Value = true;
+			}else{
+				chk_sary_mail_yn.Value = false;
+			}
+			
+			// 생일자 현황 레벨설정값 셋팅
+
+			cob_vw_pla.index = ds_sary_info.getcolumn(0, "birth_conf");
+
+		break;
+		
+		case "COMM01P02.searchPersonalInfo" :
+		
+			// 기존의 비밀번호 정보가 맞는 경우
+			if(ds_user_info.rowcount > 0){
+			
+				encode_pwd = ds_user_info.GetColumn(0,"encode_pwd");
+			
+				password = ds_user_info.GetColumn(0,"pwd");
+				pre_pwd1 = ds_user_info.GetColumn(0,"pre_pwd1");
+				pre_pwd2 = ds_user_info.GetColumn(0,"pre_pwd2");
+				pre_pwd3 = ds_user_info.GetColumn(0,"pre_pwd3");
+				ssn      = ds_user_info.GetColumn(0,"ssn");
+				
+				if(edt_new_pwd.Text == ssn){
+					gfn_Popup_Message("modal", "confirm", "새 비밀번호가\n\n주민번호와 같습니다.\n\n다시 입력하십시오.", "확인");
+					return;
+				}
+				
+				if(encode_pwd == password){
+					gfn_Popup_Message("modal", "confirm", "새 비밀번호가\n\n기존 비밀번호와 같습니다.\n\n다시 입력하십시오.", "확인");
+					return;
+				}else if(encode_pwd == pre_pwd1 || encode_pwd == pre_pwd2 || encode_pwd == pre_pwd3){
+					gfn_Popup_Message("modal", "confirm", "새 비밀번호가\n\n예전 비밀번호와 같습니다.\n\n보안을 위해서 다시 입력하십시오.", "확인");
+					return;
+				}										
+				
+				fn_save(); // 새로운 비밀번호를 저장한다.
+			}
+			// 기존의 비밀번호 정보가 틀린 경우
+			else{
+				gfn_Popup_Message("modal", "confirm", "기존 비밀번호가 정보가 틀립니다.\n\n다시 확인하십시오.", "확인");
+			}
+			
+		break;
+		
+		case "COMM01P02.savePersonalInfo3" :
+			
+			//alert("COMM01P02.savePersonalInfo3");
+			gfn_Popup_Message("modal", "confirm", "저장되었습니다.", "확인");
+			
+			// 생일자 현황레벨 글로벌 데이터셋 저장(유저정보)
+			if(GDS_USER_INFO.getcolumn(0, "birth_conf") != cob_vw_pla.value)
+			{
+				GDS_USER_INFO.setcolumn(0, "birth_conf", cob_vw_pla.value);
+				div_main.reload();
+			}
+			close();
+		
+		break;				
+			
+		default:
+			 // alert("기타");
+	}
+}
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.초기화 부분
+//  2-4.조회 버튼 클릭     
+//  2-5.저장 버튼 클릭    
+//  2-6.삭제 버튼 클릭    
+//  2-7.엑셀 버튼 클릭
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+
+function btn_close_OnClick(obj)
+{
+	close(false);
+}
+
+function btn_confirm_OnClick(obj)
+{
+	// 에디트창이 전부 비어있을 경우에는 급여메일수신여부만을 수정한다.
+	if(edt_old_pwd.Text == "" && edt_new_pwd.Text == "" && edt_new_pwd_check.Text == ""){	
+		if(gfn_Popup_Message("modal", "confirm", "개인정보를 변경하시겠습니까?", "확인")){
+			fn_save_saryMail();
+		}				
+	}else{		
+		if(edt_old_pwd.Text == ""){
+			gfn_Popup_Message("modal", "confirm", "기존 비밀번호를 입력하십시오.", "확인");
+			return;
+		}
+		if(edt_new_pwd.Text == ""){
+			gfn_Popup_Message("modal", "confirm", "새 비밀번호를 입력하십시오.", "확인");
+			return;
+		}		
+		if(edt_new_pwd_check.Text == ""){
+			gfn_Popup_Message("modal", "confirm", "새 비밀번호 확인번호를 입력하십시오.", "확인");
+			return;
+		}		
+		if(edt_new_pwd.Text != edt_new_pwd_check.Text){
+			gfn_Popup_Message("modal", "confirm", "새 비밀번호와\n\n새 비밀번호 확인번호가 틀립니다.", "확인");
+			return;
+		}
+		fn_search(); // 우선 기존의 비밀번호가 맞는지 알아본다.
+	}
+}
+
+function COMM01P02_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+	
+	// 그리드 공통 초기화 
+	//gfn_grid_init(grd_eduemp_rslt);
+}
+
+function COMM01P02_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+function fn_save()
+{
+	var sary_mail_yn = "";
+	if(chk_sary_mail_yn.Value == true){
+		sary_mail_yn = "Y";
+	}else{
+		sary_mail_yn = "N";
+	}
+	
+	ds_save_info.ClearData();
+	ds_save_info.InsertRow(0);
+	ds_save_info.SetColumn(0, "eno",      GDS_USER_INFO.eno);
+	ds_save_info.SetColumn(0, "COM_ID", GDS_USER_INFO.COM_ID);
+	ds_save_info.SetColumn(0, "BRCH_ID",  GDS_USER_INFO.BRCH_ID);
+	ds_save_info.SetColumn(0, "corp_seq", GDS_USER_INFO.corp_seq);
+	ds_save_info.SetColumn(0, "pwd",      encode_pwd);
+	ds_save_info.SetColumn(0, "pre_pwd1", password);
+	ds_save_info.SetColumn(0, "pre_pwd2", pre_pwd1);
+	ds_save_info.SetColumn(0, "pre_pwd3", pre_pwd2);
+	ds_save_info.SetColumn(0, "sary_mail_yn", sary_mail_yn);
+	
+	svcID		= "COMM01P02.savePersonalInfo3";              
+	url   		= "service::COMM01P02.savePersonalInfo3.do";   
+	inDatasets  = "COMM01P02.savePersonalInfo3=ds_save_info:U";   //U: 데이터셋의 업데이트 된 row만 넘긴다, A:전부 전달, N:delete를 제외한 모든 정보전달                                      
+	outDatasets = "";
+	argument    = " _sqlName=COMM01P02.savePersonalInfo3"
+				+ " p_birth_conf=" + quote(cob_vw_pla.value)
+				;
+	callbackFunc = "gfn_callback";
+	
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+function fn_save_saryMail()
+{
+	var sary_mail_yn = "";
+	if(chk_sary_mail_yn.Value == true){
+		sary_mail_yn = "Y";
+	}else{
+		sary_mail_yn = "N";
+	}
+	
+	ds_save_info.ClearData();
+	ds_save_info.InsertRow(0);
+	ds_save_info.SetColumn(0, "eno",      GDS_USER_INFO.eno);
+	ds_save_info.SetColumn(0, "COM_ID", GDS_USER_INFO.COM_ID);
+	ds_save_info.SetColumn(0, "BRCH_ID",  GDS_USER_INFO.BRCH_ID);
+	ds_save_info.SetColumn(0, "corp_seq", GDS_USER_INFO.corp_seq);
+	ds_save_info.SetColumn(0, "sary_mail_yn", sary_mail_yn);
+	
+	svcID		= "COMM01P02.savePersonalInfo3";              
+	url   		= "service::COMM01P02.savePersonalInfo3.do";   
+	inDatasets  = "COMM01P02.saveSaryMailYn=ds_save_info:U";   //U: 데이터셋의 업데이트 된 row만 넘긴다, A:전부 전달, N:delete를 제외한 모든 정보전달                                      
+	outDatasets = "";
+	argument    = " _sqlName=COMM01P02.saveSaryMailYn"
+				+ " p_birth_conf=" + quote(cob_vw_pla.value)
+				;
+	callbackFunc = "gfn_callback";	
+	
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 생일자현황 레벨설정 콤보변경시
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function cob_vw_pla_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	// 변경된 코드값을 데이터셋에 저장
+//	ds_save_info.SetColumn(0, "birth_conf") == obj.value;
+
+}
+]]></Script>
+</Window>

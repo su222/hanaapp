@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="648" Id="CPAB06P07" Left="8" OnLoadCompleted="CPAB06P07_OnLoadCompleted" OnUnloadCompleted="CPAB06P07_OnUnloadCompleted" PidAttrib="7" Title="사건리스트" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="944" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="PDS_AFFAIR_TREE" OnColumnChanged="PDS_AFFAIR_TREE_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_ST_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_ED_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_HP" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_FAX" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="0" Transparent="TRUE" Width="936"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="40" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="1" Text="사건리스트" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Image Align="Right" Height="18" Id="Image17" Left="26" LeftMargin="0" Style="Stc_Default_bold" TabOrder="2" Top="66" Transparent="TRUE" Width="51"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="416" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="3" Text="닫기" Top="616" Transparent="TRUE" Width="50"></Button>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="4" Top="8" Width="24"></Image>
+		<Shape Bottom="104" Height="5" Id="Shape14" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="603" TabOrder="6" Top="99" Type="Rectangle" Visible="FALSE" Width="603"></Shape>
+		<Shape BKColor="user21" Bottom="98" Height="40" Id="Shape4" Left="0" LineColor="user22" Right="936" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="13" Top="58" Type="RoundRect" Width="936"></Shape>
+		<Image Align="Right" Height="18" Id="Image3" Left="16" LeftMargin="0" Style="Stc_Default_bold" TabOrder="9" Top="68" Transparent="TRUE" Width="51"></Image>
+		<Shape Bottom="98" Height="40" Id="Shape21" Left="1" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="21" TabOrder="10" Top="58" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Image Align="Right" Height="18" Id="Image5" Left="28" LeftMargin="0" Style="Stc_Default_bold" TabOrder="11" Text="검색조건" Top="69" Transparent="TRUE" Width="58"></Image>
+		<Shape Bottom="101" Height="48" Id="Shape9" Left="85" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="95" TabOrder="12" Top="53" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Edit Border="Flat" Height="18" Id="S_CLT_NM" ImeMode="none" Left="95" LeftMargin="4" OnKeyDown="S_CLT_NM_OnKeyDown" Style="Edit" TabOrder="7" Top="69" Width="188"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="876" LeftMargin="16" OnClick="fn_search" Style="Btn_sub" TabOrder="8" Top="67" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="PDS_AFFAIR_TREE" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="609" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="505" Id="GRD_AFFAIR_MST" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_AFFAIR_MST_OnCellClick" OnCellDBLClick="GRD_AFFAIR_MST_OnCellDblClick" OnHeadClick="GRD_AFFAIR_MST_OnHeadClick" Right="935" RowHeight="20" Style="Grid_2" TabOrder="14" TabStop="true" Top="104" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="935">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="150"/>
+						<col width="110"/>
+						<col width="120"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" col="0" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="1" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="고객명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="2" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="시작일"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="마감일"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" colspan="2" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="사건담당자"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="H.P"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="전화번호"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="9" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="팩스번호"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="10" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="사건번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="center" col="1" colid="CLT_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="2" colid="AFF_ST_DT" color="black" display="date" InputZeroTime="true"/>
+						<cell align="center" col="3" colid="AFF_ED_DT" color="black" display="date" InputZeroTime="true"/>
+						<cell align="left" col="4" colid="TUB_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="5" colid="SIN_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="6" colid="CHG_NM" color="black" display="text" InputZeroTime="true"/>
+						<cell align="center" col="7" colid="CHG_HP" color="black" display="text" InputZeroTime="true"/>
+						<cell align="center" col="8" colid="CHG_TEL" color="black" display="text" InputZeroTime="true"/>
+						<cell align="center" col="9" colid="CHG_FAX" color="black" display="text" InputZeroTime="true"/>
+						<cell align="center" col="10" colid="AFF_SEQ" color="black" display="text" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button Height="21" Id="btn_my_affair" Left="528" OnClick="btn_my_affair_OnClick" TabOrder="15" TabStop="FALSE" Text="내사건조회(진행중인사건)" Top="67" Width="152"></Button>
+		<Button Height="21" Id="btn_team_affair" Left="685" OnClick="btn_mst_edit_OnClick" TabOrder="16" TabStop="FALSE" Text="우리팀사건조회(진행중인사건)" Top="67" Width="184"></Button>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 사건리스트
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 사건리스트 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.Transaction 후 처리 해야 할 내용
+//  1-4.창닫기
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고      
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+	
+	fn_ing_search();
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+
+	// 입력값이 없으면 완료안된 전체 사건  보여줌
+	if(length(S_CLT_NM.Text) == 0)
+	{
+		fn_ing_search();
+		
+		return;
+	}
+
+	PDS_AFFAIR_TREE.ClearData();
+	
+	svcID			= "CPAB06P07.selectAffairPopTree";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "PDS_AFFAIR_TREE=ac.ACAffairDAO.selectAffairPopTree";
+	argument    	= " _sqlName=ac.ACAffairDAO.selectAffairPopTree"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " S_CLT_NM=" + quote(gfnFullSearchStr(S_CLT_NM.Text))
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);		 
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 완료안된 전체사건   
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_ing_search()
+{
+
+	PDS_AFFAIR_TREE.ClearData();
+	
+	svcID			= "CPAB06P07.selectAffairPopIng";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "PDS_AFFAIR_TREE=ac.ACAffairDAO.selectAffairPopIng";
+	argument    	= " _sqlName=ac.ACAffairDAO.selectAffairPopIng"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 내사건조회  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_my_affair_OnClick(obj)
+{
+
+	PDS_AFFAIR_TREE.ClearData();
+	
+	svcID			= "CPAB06P07.selectAffairPopMy";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "PDS_AFFAIR_TREE=ac.ACAffairDAO.selectAffairPopMy";
+	argument    	= " _sqlName=ac.ACAffairDAO.selectAffairPopMy"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " S_CLT_NM=" + quote(gfnFullSearchStr(S_CLT_NM.Text))
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+
+	
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 우리팀 사건 조회   
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_mst_edit_OnClick(obj)
+{
+	PDS_AFFAIR_TREE.ClearData();
+	
+	svcID			= "CPAB06P07.selectAffairPopTeam";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "PDS_AFFAIR_TREE=ac.ACAffairDAO.selectAffairPopTeam";
+	argument    	= " _sqlName=ac.ACAffairDAO.selectAffairPopTeam"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " S_CLT_NM=" + quote(gfnFullSearchStr(S_CLT_NM.Text))
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+//	trace('call mst/dtl/note='+curNotRow+'/'+curYesRow+'/'+curNoteRow);
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "CPAB06P07.selectAffairPopTree" :
+		
+			
+		break;	
+
+
+		// 진행중 전체
+		case "CPAB06P07.selectAffairPopIng" :
+		
+
+		break;			
+	
+		
+
+		// 내사건
+		case "CPAB06P07.selectAffairPopMy" :
+		
+
+		break;		
+
+		
+
+		// 내사건
+		case "CPAB06P07.selectAffairPopTeam" :
+		
+
+		break;		
+
+		
+		
+		default:
+	}
+
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.조회 버튼 클릭  
+//  2-4.확인 버튼 클릭
+//  2-5.닫기 버튼 클릭  
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAB06P07_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+    fn_initForm();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 UnLoad 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAB06P07_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid  클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_AFFAIR_MST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid  더블 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_AFFAIR_MST_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	
+	parent.fn_search_one(PDS_AFFAIR_TREE.GetColumn(PDS_AFFAIR_TREE.curRow,"BRCH_ID"), PDS_AFFAIR_TREE.GetColumn(PDS_AFFAIR_TREE.curRow,"AFF_SEQ"));
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_AFFAIR_MST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_AFFAIR_MST, PDS_AFFAIR_TREE, nCell);	
+}
+
+
+
+function S_CLT_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_search();
+	}		
+}
+
+
+
+
+
+]]></Script>
+</Window>

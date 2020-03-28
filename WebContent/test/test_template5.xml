@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="555" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="New&#32;Form" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="790" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_big_menu">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_small_menu">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_new_id">
+				<Contents>
+					<colinfo id="new_id" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_test_ins_data">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+					<colinfo id="index" size="256" summ="default" type="STRING"/>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+					<colinfo id="manager" size="256" summ="default" type="STRING"/>
+					<colinfo id="join_date" size="256" summ="default" type="STRING"/>
+					<colinfo id="dept_nm" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_test_data">
+				<Contents>
+					<colinfo id="id" size="256" summ="default" type="STRING"/>
+					<colinfo id="levels" size="256" summ="default" type="STRING"/>
+					<colinfo id="section" size="256" summ="default" type="STRING"/>
+					<colinfo id="lvl_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="menu_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="page_url" size="256" summ="default" type="STRING"/>
+					<colinfo id="etc" size="256" summ="default" type="STRING"/>
+					<colinfo id="index" size="256" summ="default" type="STRING"/>
+					<colinfo id="checked" size="256" summ="default" type="STRING"/>
+					<colinfo id="manager" size="256" summ="default" type="STRING"/>
+					<colinfo id="join_date" size="256" summ="default" type="STRING"/>
+					<colinfo id="dept_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="image_level" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="555" Height="515" Id="Shape0" Left="-2" LineColor="user22" Right="368" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="1" Top="40" Type="RoundRect" Width="370"></Shape>
+		<Shape BKColor="user0" Bottom="551" Height="507" Id="Shape10" Left="2" LineColor="#e6e6e6" Right="364" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="2" Top="44" Type="RoundRect" Width="362"></Shape>
+		<Shape BKColor="user21" Bottom="555" Height="515" Id="Shape12" Left="418" LineColor="user22" Right="788" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="3" Top="40" Type="RoundRect" Width="370"></Shape>
+		<Shape BKColor="user0" Bottom="551" Height="507" Id="Shape13" Left="422" LineColor="#e6e6e6" Right="784" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="4" Top="44" Type="RoundRect" Width="362"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="53" Id="Button30" ImageID="Btn_sub_nextarr" Left="376" LeftMargin="16" OnClick="Button30_OnClick" Style="Btn_sub" TabOrder="5" Top="264" TopMargin="1" Transparent="TRUE" Width="27"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="53" Id="Button31" ImageID="Btn_sub_prearr" Left="378" LeftMargin="16" OnClick="Button31_OnClick" Style="Btn_sub" TabOrder="6" Top="310" TopMargin="1" Transparent="TRUE" Width="27"></Button>
+		<Shape BKColor="user21" Bottom="118" Height="64" Id="Shape3" Left="433" LineColor="user22" Right="773" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="7" Top="54" Type="RoundRect" Width="340"></Shape>
+		<Shape BKColor="user21" Bottom="118" Height="64" Id="Shape8" Left="13" LineColor="user22" Right="353" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="8" Top="54" Type="RoundRect" Width="340"></Shape>
+		<Image Align="Left" Height="18" Id="Image1" Left="30" LeftMargin="0" Style="Stc_Default_bold" TabOrder="9" Text="대메뉴" Top="63" Transparent="TRUE" Width="59"></Image>
+		<Shape Bottom="90" Height="32" Id="Shape1" Left="70" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="80" TabOrder="10" Top="58" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Combo Border="Flat" DataColumn="menu_nm" Height="18" Id="cob_big_menu" ImeMode="none" InnerDataset="ds_big_menu" Left="79" OnChanged="cob_big_menu_OnChanged" Style="Combo" TabOrder="11" Top="62" Width="200"></Combo>
+		<Image Align="Left" Height="18" Id="Image0" Left="30" LeftMargin="0" Style="Stc_Default_bold" TabOrder="12" Text="소메뉴" Top="92" Transparent="TRUE" Width="59"></Image>
+		<Shape Bottom="119" Height="32" Id="Shape2" Left="70" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="80" TabOrder="13" Top="87" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Combo Border="Flat" DataColumn="menu_nm" Editable="TRUE" Height="18" Id="cob_small_menu" InnerDataset="ds_small_menu" Left="79" OnChanged="cob_small_menu_OnChanged" Style="Combo" TabOrder="14" Top="91" Width="200"></Combo>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="294" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="15" Top="89" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Grid BindDataset="ds_test_data" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="545" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="417" Id="Grid1" InputPanel="FALSE" Left="8" LineColor="default" LineType="OnlyVERT" OnCellClick="Grid1_OnCellClick" OnHeadClick="Grid1_OnHeadClick" Right="350" RowHeight="20" Style="Grid_2" TabOrder="16" TabStop="true" Top="128" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="342">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="22"/>
+						<col width="43"/>
+						<col width="159"/>
+						<col width="60"/>
+						<col width="131"/>
+						<col width="148"/>
+						<col width="152"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="checkbox" edit="checkbox" text="No."/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="NO"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="메뉴명"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="3" color="user52" display="text" text="관리자"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="4" color="user52" display="text" text="URL"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="5" color="user52" display="text" text="부서"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="6" color="user52" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="checked" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="index" color="black" display="text" expr="row+1"/>
+						<cell align="left" col="2" colid="menu_nm" display="text"/>
+						<cell align="left" col="3" colid="manager" display="text"/>
+						<cell align="left" col="4" colid="page_url" display="text"/>
+						<cell align="left" col="5" colid="dept_nm" display="text"/>
+						<cell align="left" col="6" colid="etc" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="Button10" ImageID="Btn_com_4w" Left="446" LeftMargin="12" OnClick="Button10_OnClick" Style="Btn_Com" TabOrder="17" Text="선택삭제" Top="89" TopMargin="1" Transparent="TRUE" Width="75"></Button>
+		<Static Height="20" Id="Static8" Style="Stc_Title" TabOrder="18" Text="Template5" Width="304"></Static>
+		<Shape Bottom="40" Height="7" Id="Shape4" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="790" TabOrder="19" Top="33" Type="Rectangle" Visible="FALSE" Width="790"></Shape>
+		<Grid BindDataset="ds_test_ins_data" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="545" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="417" Id="Grid2" InputPanel="FALSE" Left="431" LineColor="default" LineType="OnlyVERT" OnCellClick="Grid1_OnCellClick" OnHeadClick="Grid2_OnHeadClick" Right="773" RowHeight="20" Style="Grid_2" TabOrder="20" TabStop="true" Top="128" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="342">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="22"/>
+						<col width="43"/>
+						<col width="159"/>
+						<col width="60"/>
+						<col width="131"/>
+						<col width="148"/>
+						<col width="152"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="checkbox" edit="checkbox" text="No."/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="1" color="user52" display="text" text="NO"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="2" color="user52" display="text" text="메뉴명"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="3" color="user52" display="text" text="관리자"/>
+						<cell align="center" bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="4" color="user52" display="text" text="URL"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="5" color="user52" display="text" text="부서"/>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="6" color="user52" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="checked" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="index" color="black" display="text" expr="row+1"/>
+						<cell align="left" col="2" colid="menu_nm" display="text"/>
+						<cell align="left" col="3" colid="manager" display="text"/>
+						<cell align="left" col="4" colid="page_url" display="text"/>
+						<cell align="left" col="5" colid="dept_nm" display="text"/>
+						<cell align="left" col="6" colid="etc" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "script::cmnFunction.js";
+
+var big_section = '';
+var small_seq   = '';
+var checked_cnt = 0;  // 체크된 리스트의 수를 위한 전역변수
+
+
+function form_OnLoadCompleted(obj)
+{
+	getBigMenuName();
+}
+
+
+/* 대메뉴 조회 */
+function getBigMenuName()
+{
+	var svcID			= "TST001V.bigMenuNameSearch";
+	var url   			= "service::TST001V.bigMenuNameSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_big_menu=TST001V.selectBigMenuName";
+	var argument    	= " _sqlName=TST001V.selectBigMenuName"
+						;
+	var callbackFunc 	= "fn_get_big_menu_callback";
+
+	Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+
+/* 대메뉴 조회 콜백 함수 - 콤보의 첫번째 값으로 [전체]를 넣어준다.*/
+function fn_get_big_menu_callback()
+{
+	//ds_big_menu.Filter("checked == 0"); // <- 참고 사항!
+	//ds_big_menu.FindRow("MenuID", MenuID);  // <- 참고 사항!
+
+	gfn_AddComboData(0, ds_big_menu, "id", "0", "menu_nm", "[전체]");
+	cob_big_menu.Index  = 0;
+	ds_small_menu.ClearData();
+	gfn_AddComboData(0, ds_small_menu, "id", "0", "menu_nm", "[전체]");
+	cob_small_menu.Index = 0;	
+}
+
+
+/* 소메뉴 조회 */
+function cob_big_menu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(nNewIndex == 0){
+		ds_small_menu.ClearData();
+		
+		addComboValue(0, ds_small_menu, "id", "0", "menu_nm", "[전체]");
+		cob_small_menu.Index = 0;
+
+		big_section = '';
+		small_seq   = '';
+		return;
+	}
+
+	big_section = ds_big_menu.GetColumn(nNewIndex,'section');
+
+	var svcID			= "TST001V.smallMenuNameSearch";
+	var url   			= "service::TST001V.smallMenuNameSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_small_menu=TST001V.selectSmallMenuName";
+	var argument    	= " _sqlName=TST001V.selectSmallMenuName"
+						+ " p_section=" + quote(ds_big_menu.GetColumn(nNewIndex,'section'),"")				
+						;
+	var callbackFunc 	= "fn_cob_big_menu_callback";
+
+	Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	
+}
+
+
+/* 소메뉴 조회 콜백 함수 - 콤보의 첫번째 값으로 [전체]를 넣어준다.*/
+function fn_cob_big_menu_callback()
+{
+	small_seq = '';
+	addComboValue(0, ds_small_menu, "id", "0", "menu_nm", "[전체]");
+	cob_small_menu.Index = 0;
+}
+
+
+/* 소매뉴 콤보를 선택하였을때 조회를 위해서 small_seq 변수에 LVL_SEQ 컬럼값을 넣어준다. */
+function cob_small_menu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	small_seq = ds_small_menu.GetColumn(nNewIndex,'LVL_SEQ');
+}
+
+
+/* 조회*/
+function btn_search_OnClick(obj)
+{
+	Grid1.SetCellProp("head", 0, "Text", 0);
+	
+	var svcID			= "TST001V.testFunctionSearch";
+	var url   			= "service::TST001V.testFunctionSearch.do";
+	var inDatasets  	= "";
+	var outDatasets 	= "ds_test_data=TST001V.selectTestTable";
+	var argument    	= " _sqlName=TST001V.selectTestTable"
+						+ " p_section=" + quote(big_section)
+						+ " p_lvl_seq=" + quote(small_seq)
+						;
+	var callbackFunc 	= "";
+
+	Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+/* 조회된 내용을 왼편으로 이동*/
+function Button30_OnClick(obj)
+{
+	if(ds_test_data.RowCount() < 1){
+		return;
+	}
+
+	for(i=0;i<ds_test_data.RowCount();i++)
+	{	
+		// 체크된 대상만 이동
+		if(ds_test_data.GetColumn(i, "checked") == 1){
+			
+			// 대상리스트 추가
+			if(ds_test_ins_data.FindRow("id", ds_test_data.GetColumn(i, "id")) > -1){
+				
+				ds_test_data.SetColumn(i, "checked", 0);
+				
+			}else{
+				ds_test_ins_data.AddRow();
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "checked", 0);
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "id", ds_test_data.GetColumn(i, "id"));
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "levels", ds_test_data.GetColumn(i, "levels"));
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "section", ds_test_data.GetColumn(i, "section"));
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "lvl_seq", ds_test_data.GetColumn(i, "lvl_seq"));
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "menu_nm", ds_test_data.GetColumn(i, "menu_nm"));
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "page_url", ds_test_data.GetColumn(i, "page_url"));
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "index", ds_test_data.GetColumn(i, "index"));
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "etc", ds_test_data.GetColumn(i, "etc"));
+				
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "manager", ds_test_data.GetColumn(i, "manager"));
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "join_date", ds_test_data.GetColumn(i, "join_date"));
+				ds_test_ins_data.SetColumn(ds_test_ins_data.RowCount()-1, "dept_nm", ds_test_data.GetColumn(i, "dept_nm"));
+			}
+		}
+	}
+	
+	ds_test_data.Filter("checked == 0");
+	Grid1.SetCellProp("head", 0, "Text", 0);
+	Grid2.SetCellProp("head", 0, "Text", 0);
+}
+
+
+/* 삭제 */
+function Button10_OnClick(obj)
+{
+	if(ds_test_ins_data.rowcount<1){
+		return;
+	}
+	
+	if(!confirm('정말로 삭제하시겠습니까?')){
+		return;
+	}
+
+	gfn_DeleteColumn(ds_test_ins_data,"checked");
+	
+	Grid2.SetCellProp("head", 0, "Text", 0);
+}
+
+
+/* 헤더에서 체크박스를 선택할 경우에 전부 선택이 되게 한다. */
+function Grid1_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	if(nCell == 0){
+		gfn_SetCheckBoxAllSelected(nCell, Grid1, ds_test_data, "checked");
+	}
+}
+
+
+/* 헤더에서 체크박스를 선택할 경우에 전부 선택이 되게 한다. */
+function Grid2_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	if(nCell == 0){
+		gfn_SetCheckBoxAllSelected(nCell, Grid2, ds_test_ins_data, "checked");
+	}		
+}
+
+
+/* 왼쪽 리스트의 내용을 오른편으로 이동*/
+function Button31_OnClick(obj)
+{
+	if(ds_test_ins_data.RowCount() < 1){
+		return;
+	}
+
+	// 대상리스트 삭제 & 좌측 고개정보 표시
+	for(var i=0;i<ds_test_ins_data.RowCount();i++)
+	{
+		if(ds_test_ins_data.GetColumn(i, "checked") == 1){
+		
+			for(var j=0;j<ds_test_data.GetCountNF();j++)
+			{
+				if(ds_test_ins_data.GetColumn(i, "id") == ds_test_data.GetColumnNF(j, "id")){
+					ds_test_data.SetColumnNF(j, "checked", 0);
+				}
+			}
+			
+		}
+	}
+	
+	ds_test_ins_data.Filter("checked == 0");
+	ds_test_data.Filter("checked == 0");
+	Grid1.SetCellProp("head", 0, "Text", 0);
+	Grid2.SetCellProp("head", 0, "Text", 0);
+}
+
+function Grid1_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	
+}
+]]></Script>
+</Window>

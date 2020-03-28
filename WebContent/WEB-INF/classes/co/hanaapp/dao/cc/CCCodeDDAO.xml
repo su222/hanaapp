@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CM_CODE_D, TABLE COMMENT : 코드디테일 -->
+<mapper namespace="co.hanaapp.dao.cc.CCCodeDDAO">
+
+
+    <!--  공통코드를 Map 형태로 조회 -->
+    <select id="selectCodeDListMap" parameterType="map" resultType="map" >
+	    SELECT /* 공통코드 DTL */
+	           NVL(MST_CD,' ') AS MST_CD, 
+	           NVL(DTL_CD,' ') AS  DTL_CD,
+	           NVL(DTL_NM,' ') AS DTL_NM,
+	           NVL(TXT_VAL1,' ') AS TXT_VAL1, 
+	           NVL(TXT_VAL2,' ') AS TXT_VAL2, 
+	           NVL(TXT_VAL3,' ') AS TXT_VAL3, 
+	           NVL(NUM_VAL1,'-99999') AS NUM_VAL1, 
+	           NVL(NUM_VAL2,'-99999') AS NUM_VAL2, 
+	           NVL(NUM_VAL3,'-99999') AS NUM_VAL3, 
+	           NVL(SORT_NO,'-99999') AS SORT_NO, 
+	           NVL(USE_YN,' ') AS USE_YN
+	      FROM TB_CC_CODE_DTL
+	     WHERE NVL(USE_YN,'N') = 'Y'
+	     ORDER BY MST_CD, 
+	              SORT_NO,
+	              DTL_CD
+        
+
+    </select>
+
+
+    <!--  공통코드의 추가정보로 조회 Map 형태로 조회 -->
+    <select id="selectCodeDListMapEtc" parameterType="map" resultType="map" >
+	    SELECT /* 공통코드 DTL */
+	           NVL(MST_CD,' ') AS MST_CD, 
+	           NVL(DTL_CD,' ') AS  DTL_CD,
+	           NVL(DTL_NM,' ') AS DTL_NM,
+	           NVL(TXT_VAL1,' ') AS TXT_VAL1, 
+	           NVL(TXT_VAL2,' ') AS TXT_VAL2, 
+	           NVL(TXT_VAL3,' ') AS TXT_VAL3, 
+	           NVL(NUM_VAL1,'-99999') AS NUM_VAL1, 
+	           NVL(NUM_VAL2,'-99999') AS NUM_VAL2, 
+	           NVL(NUM_VAL3,'-99999') AS NUM_VAL3, 
+	           NVL(SORT_NO,'-99999') AS SORT_NO, 
+	           NVL(USE_YN,' ') AS USE_YN
+	      FROM TB_CC_CODE_DTL
+	     WHERE MST_CD = #{MST_CD, jdbcType=VARCHAR}
+	       AND NVL(TXT_VAL1,' ') LIKE #{TXT_VAL1, jdbcType=VARCHAR} || '%' 
+	       AND NVL(TXT_VAL2,' ') LIKE #{TXT_VAL2, jdbcType=VARCHAR} || '%' 
+	       AND NVL(TXT_VAL3,' ') LIKE #{TXT_VAL3, jdbcType=VARCHAR} || '%' 
+	     ORDER BY MST_CD, 
+	              SORT_NO,
+	              DTL_CD
+        
+
+    </select>
+
+
+
+
+</mapper>

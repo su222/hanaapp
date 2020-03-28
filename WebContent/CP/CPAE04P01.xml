@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="240" Id="CPAB06P04" Left="8" OnLoadCompleted="CPAB06P04_OnLoadCompleted" OnUnloadCompleted="CPAB06P04_OnUnloadCompleted" PidAttrib="7" Title="입금등록" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="376" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="PDS_PAY_LST" OnColumnChanged="DS_PAY_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAY_NOTE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIN_GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_pay_temp"></Dataset>
+		</Datasets>
+		<Shape BKColor="user7" Bottom="232" Height="136" Id="Shape_edit" Left="2" LineColor="user61" Right="370" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="13" Top="96" Type="RoundRect" Width="368"></Shape>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="0" Transparent="TRUE" Width="371"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="0" Text="입금등록" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_save" ImageID="Btn_pop_2w" Left="123" LeftMargin="14" OnClick="fn_save" Style="Btn_Popup" TabOrder="5" Text="저장" Top="201" Transparent="TRUE" Width="58"></Button>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="7" Top="8" Width="24"></Image>
+		<Shape Bottom="92" Height="5" Id="Shape14" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="371" TabOrder="9" Top="87" Type="Rectangle" Visible="FALSE" Width="371"></Shape>
+		<Image Align="Left" Height="14" Id="Image6" ImageID="Title_dot" Left="8" LeftMargin="20" Style="Stc_Subtitle" TabOrder="9" Text="입금등록&#32;내역" Top="72" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="67" Height="5" Id="Shape3" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="367" TabOrder="13" Top="62" Type="Rectangle" Visible="FALSE" Width="367"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static7" Left="13" Style="Stc_Label" TabOrder="15" Text="입금일자" Top="102" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static8" Left="13" Style="Stc_Label" TabOrder="14" Text="입금액" Top="125" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static9" Left="13" Style="Stc_Label" TabOrder="17" Text="적요" Top="150" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static11" Left="13" Style="Stc_Label" TabOrder="16" Text="은행구분" Top="173" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="PDS_PAY_LST" Border="Flat" Column="PAY_NOTE" Height="18" Id="Edit11" Left="99" LeftMargin="4" Style="Edit_Ess" TabOrder="3" Top="151" Width="260"></Edit>
+		<Shape Bottom="204" Height="108" Id="Shape0" Left="94" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="99" TabOrder="18" Top="96" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<MaskEdit BindDataset="PDS_PAY_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="PAY_DT" Height="18" Id="EDT_PAY_DT" Left="99" Mask="####-##-##" Style="Edit_Ess" TabOrder="19" TabStop="FALSE" Top="103" Type="STRING" Width="70"></MaskEdit>
+		<Button Height="16" Id="BTN_PAY_DT" ImageID="Btn_calendar" Left="174" OnClick="BTN_PAY_DT_OnClick" TabOrder="1" TabStop="FALSE" Text="Button1" Top="104" Width="16"></Button>
+		<MaskEdit BindDataset="PDS_PAY_LST" Border="Flat" Column="PAY_AMT" Height="18" Id="EDT_CHRG_AMT_N" Left="99" Style="Edit_Ess" TabOrder="2" Top="126" Width="160"></MaskEdit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="BTN_CLOSE" ImageID="Btn_pop_2w" Left="178" LeftMargin="14" OnClick="fn_close" Style="Btn_Popup" TabOrder="6" Text="닫기" Top="201" Transparent="TRUE" Width="58"></Button>
+		<Combo BindDataset="PDS_PAY_LST" Border="Flat" Column="BANK_GBN" Height="18" Id="COB_BANK_GBN" Left="98" ResetIndex="FIRST" ShadowColor="user2" Style="Combo_Ess" TabOrder="4" Top="173" Width="160"></Combo>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 입금등록 
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 입금등록
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+#include "lib::lib_file.js";
+#include "lib::lib_report.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	// 통장구분
+	gfn_comCodeCombo(COB_BANK_GBN, "AD16", "","");
+
+
+	fn_search();
+		
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2.0 조회 함수 (전체)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         : 데이터셋 clear 후 조회 (만약 안하면 기존 데이터 남아서 조회값이 없어도 있는것 처럼 보임)
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	PDS_PAY_LST.ClearData();
+	
+	
+	svcID			= "CPAB06P04.selectPayOne";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "PDS_PAY_LST=ac.ACAffairDAO.selectPayOne"
+							;	
+	
+	argument    	= " _sqlName=ac.ACAffairDAO.selectPayOne"
+							+ " S_BRCH_ID=" + quote(P_BRCH_ID)
+							+ " S_PAY_SEQ=" + quote(P_PAY_SEQ)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+}
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     :  입금내역 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	var isSave = false;
+	
+	if(PDS_PAY_LST.rowcount > 0)
+	{
+		// 필수체크
+		for(var i=0;i<PDS_PAY_LST.rowcount;i++)
+		{
+			
+			cMessage = ""; 
+		
+			if(length(PDS_PAY_LST.GetColumn(i, "PAY_DT")) == 0)
+			{
+				bValidate = false;
+				cMessage += "입금일자 누락 ";
+			}
+		
+			if(length(PDS_PAY_LST.GetColumn(i, "PAY_AMT")) == 0)
+			{
+				bValidate = false;
+				cMessage += "입금액 누락 ";
+			}			
+			
+			if(length(PDS_PAY_LST.GetColumn(i, "BANK_GBN")) == 0)
+			{
+				bValidate = false;
+				cMessage += "은행구분 누락 ";
+			}
+
+			if(PDS_PAY_LST.GetColumn(i, "SIN_GBN") == "20" || PDS_PAY_LST.GetColumn(i, "SIN_GBN") == "30")
+			{
+				bValidate = false;
+				cMessage += "결재중/결재완료인 항목은 수정이 불가능 합니다. ";
+			}		
+		
+			if(bValidate == false)
+			{
+				pMessage += "\n ["+i+"] " + cMessage;
+			}
+		}
+	}
+
+	if(bValidate == false)
+	{
+		gfn_popup_message("modal", "error", cMessage, "확인");
+	}
+	else
+	{
+		isSave = true;
+	}	
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		// 저장 
+		//if(gfn_popup_message("modal", "confirm", "저장하시겠습니까?", "확인")) 
+		//{
+
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			ds_pay_temp.ClearData();
+			ds_pay_temp.CopyF("PDS_PAY_LST");
+			
+			svcID			= "CPAB06P04.savePayLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "ac.ACAffairDAO.savePayLst=ds_pay_temp:A"
+							;
+							
+			
+			outDatasets 	= "";
+			argument    	= " _sqlName=ac.ACAffairDAO.savePayLst"
+							;
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		//}
+	
+	}
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		
+		//  조회
+		case "CPAB06P04.selectPayOne" :
+
+			
+			if(PDS_PAY_LST.rowcount < 1)
+			{
+				fn_add();
+			}
+		break;	
+		
+		
+		
+		//  입금등록
+		case "CPAB06P04.savePayLst" :
+			if(P_MODE == 'ADD')
+			{
+				fn_add();
+			}
+		break;	
+		
+				
+		
+		default:
+	}
+
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 입금등록 추가
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 
+//*-----------------------------------------------------------------------------------------------
+function fn_add()
+{
+	gfn_get_date('TODAY',0,'YYYYMMDD');
+	
+	// 행추가시 기존꺼 지우고 한다.
+	//DS_BRCH_BAS.ClearData();	
+	var vRow = PDS_PAY_LST.AddRow();
+	
+	
+	// 기초값
+	PDS_PAY_LST.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+	PDS_PAY_LST.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+	PDS_PAY_LST.SetColumn(vRow,"CHK","1");	// 선택됨
+    PDS_PAY_LST.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+    
+    PDS_PAY_LST.SetColumn(vRow,"BRCH_ID", GDS_USER_INFO.GetColumn(0, "BRCH_ID"));// 
+    PDS_PAY_LST.SetColumn(vRow,"PAY_SEQ", "");// 저장시 등록됨
+    PDS_PAY_LST.SetColumn(vRow,"PAY_DT", GDS_DATE_TYPE.GetColumn(0,'DATE_VAL'));// 
+    PDS_PAY_LST.SetColumn(vRow,"SIN_GBN", "10");// 
+    
+    
+    
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CPAB06P04_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CPAB06P04_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 자동저장
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_PAY_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+}
+
+
+
+
+function BTN_PAY_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", EDT_PAY_DT);
+}
+]]></Script>
+</Window>

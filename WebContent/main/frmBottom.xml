@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Font="Arial,9" Height="32" Id="frmBottom" Left="8" OnLoadCompleted="frmBottom_OnLoadCompleted" OnSize="frmBottom_OnSize" PidAttrib="7" Title="하단메뉴_제어" Top="8" Ver="1.0" Width="1050" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_RClose">
+				<Contents>
+					<colinfo id="LEVEL" size="256" type="STRING"/>
+					<colinfo id="ID" size="256" type="STRING"/>
+					<colinfo id="VALUE" size="256" type="STRING"/>
+					<colinfo id="STATUS" size="256" type="STRING"/>
+					<colinfo id="IMG" size="256" type="STRING"/>
+					<colinfo id="MENUID" size="256" type="STRING"/>
+					<record>
+						<ID></ID>
+						<IMG></IMG>
+						<LEVEL></LEVEL>
+						<MENUID></MENUID>
+						<STATUS></STATUS>
+						<VALUE></VALUE>
+					</record>
+					<record>
+						<ID>101</ID>
+						<IMG></IMG>
+						<LEVEL>1</LEVEL>
+						<MENUID></MENUID>
+						<STATUS></STATUS>
+						<VALUE>닫기</VALUE>
+					</record>
+					<record>
+						<ID>102</ID>
+						<IMG></IMG>
+						<LEVEL>1</LEVEL>
+						<MENUID>ALL</MENUID>
+						<STATUS></STATUS>
+						<VALUE>전체&#32;닫기</VALUE>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="TILE" Height="32" Id="img_bottomBg" ImageID="A_Bottom_Bg" TabOrder="3" Top="-1" Width="1048"></Image>
+		<Split BKColor="red" Height="30" Id="splHorz" Left="1046" Visible="FALSE" Width="2">
+			<Contents>
+				<LeftOrTop>
+					<Bind BindType="Resize" CompID="img_bottomBg"/>
+				</LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+		<Split BKColor="blue" Direct="VERT" Height="2" Id="splVert" Left="1015" Top="30" Visible="FALSE" Width="32">
+			<Contents>
+				<LeftOrTop></LeftOrTop>
+				<RightOrBottom></RightOrBottom>
+			</Contents>
+		</Split>
+		<Image Height="17" Id="Image0" ImageID="A_Bottom_Icon" Left="280" TabOrder="4" Top="7" Width="16"></Image>
+		<TextArea Color="darkcyan" Font="돋움체,8" Height="28" Id="TXT_MSG" Left="304" Readonly="TRUE" TabOrder="5" TabStop="FALSE" Top="1" VScroll="TRUE" Width="679"></TextArea>
+		<Button Height="21" Id="btn_reset" Left="992" OnClick="btn_reset_OnClick" TabOrder="6" TabStop="FALSE" Text="초기화" Top="6" Width="49"></Button>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static21" Left="4" Style="Stc_Label" TabOrder="7" Text="당일사건" Top="5" VAlign="Middle" Width="80"></Static>
+		<Static Height="15" Id="Static0" Left="177" TabOrder="8" Text="건" Top="8" Width="28"></Static>
+		<MaskEdit BindDataset="GDS_TODAY" Border="Flat" Column="CNT" Height="18" Id="G_CNT" Left="88" Readonly="TRUE" Style="Edit" TabOrder="9" Top="6" Width="86"></MaskEdit>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : frmBottom(하단메뉴)
+* 작성자     : 이용재
+* 작성일     : 2013-01-20 : 최초 생성
+* 기능설명   : 템플릿 화면
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-20       V1.0        이용재    initVer
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_platform.js";
+
+
+function frmBottom_OnSize(obj,nCx,nCy,nState)
+{
+	gfn_SplitOnSize(splHorz, splVert, obj, nCx, nCy, nState);
+}
+
+
+
+function frmBottom_OnLoadCompleted(obj)
+{
+
+	//gfn_frameImageSet(g_skinImage, DocBottom);		
+}
+]]></Script>
+</Window>

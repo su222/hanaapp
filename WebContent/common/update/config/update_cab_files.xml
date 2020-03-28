@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>																						
+<root>                                                                      
+	<params>                                                                    
+		<param id='DEVICE' type='string'>Win32</param>                            
+		<param id='SOURCE' type='string'>../cab_files</param>           
+		<param id='TARGET' type="string">%system%</param>   
+		<param id='FILENAME' type='string'></param>         
+		<param id='VERSION' type='string'>2007,10,4,1</param>                     
+		<param id='ACTION' type='string'>DOWN</param>        
+		<param id='STATUS' type='string'>0</param>                                
+	</params>                                                                   
+	<dataset id='output'>                                                       
+		<colinfo id='DEVICE' type="string" size='255'/>                           
+		<colinfo id='SOURCE' type="string" size='255'/>                           
+		<colinfo id='TARGET' type="string" size='255'/>                           
+		<colinfo id='FILENAME' type="string" size='255'/>                         
+		<colinfo id='VERSION' type="string" size='255'/>                          
+		<colinfo id='ACTION' type="string" size='255'/>                           
+		<colinfo id='STATUS' type="string" size='2'/>        
+		<record>                                                                  
+			<TARGET>{A8104DA4-B6DB-41BD-B2C9-5CE2FE7A7F12}</TARGET>
+			<FILENAME>MiPlatform_InstallBase320.cab</FILENAME>
+			<VERSION>System::2007,10,4,1</VERSION>
+	  		<ACTION>DOWN</ACTION> 
+		</record>
+		<record>                                                                  
+			<TARGET>{FCB4B50A-E3F1-4174-BD18-54C3B3287258}</TARGET>
+			<FILENAME>teechart2013.cab</FILENAME>
+			<VERSION>System::9,2013,1,0</VERSION>
+	  		<ACTION>DOWN</ACTION> 
+		</record>
+		<record>                                                                  
+			<TARGET>{ADB6D20D-80A1-4aa4-88AE-B2DC820DA076}</TARGET>
+			<FILENAME>rdviewer50.cab</FILENAME>
+			<VERSION>System::5,0,0,326</VERSION>
+	  		<ACTION>DOWN</ACTION> 
+		</record>						
+	</dataset>
+</root>

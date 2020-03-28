@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="450" Id="CPAE01P01" Left="8" OnLoadCompleted="CPAE01P01_OnLoadCompleted" OnUnloadCompleted="CPAE01P01_OnUnloadCompleted" PidAttrib="7" Title="카테고리선택" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="400" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="PDS_MENU_BAS">
+				<Contents>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="CATE_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CATE_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="96" Height="40" Id="Shape4" Left="10" LineColor="user22" Right="390" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="1" Top="56" Type="RoundRect" Width="380"></Shape>
+		<Grid AutoEnter="TRUE" BindDataset="PDS_MENU_BAS" BkColor2="user45" BkSelColor="user44" BoldHead="FALSE" Border="Flat" Bottom="417" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="305" Id="GRD_MENU_BAS" InputPanel="FALSE" Left="8" LineColor="default" LineType="OnlyVERT" OnCellDBLClick="GRD_MENU_BAS_OnCellDblClick" OnHeadClick="GRD_MENU_BAS_OnHeadClick" Right="388" RowHeight="20" Style="Grid" TabOrder="1" TabStop="true" Top="112" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="380">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="100"/>
+						<col width="200"/>
+					</columns>
+					<head>
+						<cell bkcolor="user41" bkimagealign="stretch" col="0" color="user42" display="text" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="1" color="user42" display="text" InputZeroTime="true" text="카테고리ID"/>
+						<cell bkcolor="user41" bkimagealign="stretch" col="2" color="user42" display="text" InputZeroTime="true" text="카테고리명"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="center" col="1" colid="CATE_ID" display="text" InputZeroTime="true"/>
+						<cell align="left" col="2" colid="CATE_NM" display="text" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="2" Transparent="TRUE" Width="400"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="3" Text="카테고리선택&#32;" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Image Align="Right" Height="18" Id="Image17" Left="26" LeftMargin="0" Style="Stc_Default_bold" TabOrder="4" Top="66" Transparent="TRUE" Width="51"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="197" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="5" Text="닫기" Top="424" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_confirm" ImageID="Btn_pop_2w" Left="144" LeftMargin="14" OnClick="btn_confirm_OnClick" Style="Btn_Popup" TabOrder="6" Text="확인" Top="424" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="96" Height="40" Id="Shape21" Left="11" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="31" TabOrder="7" Top="56" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="8" Top="8" Width="24"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="336" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="10" Top="65" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 카테고리선택팝업
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 카테고리선택 팝업 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+ 
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.Transaction 후 처리 해야 할 내용
+//  1-4.창닫기
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고      
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+
+	S_USR_NM.Text = P_USR_NM; //부모값
+	
+	fn_search();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	PDS_MENU_BAS.ClearData();
+	
+	svcID			= "CPAE01P01.selectCatePopup";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "PDS_MENU_BAS=cc.CCMenuPmsDAO.selectCatePopup";
+	argument    	= " _sqlName=cc.CCMenuPmsDAO.selectCatePopup"
+					;
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	gfn_showProgressWindow(false);
+	
+	switch(svcID) 
+	{
+		case "CPAE01P01.selectCatePopup" :
+			if(PDS_MENU_BAS.rowcount == 1)
+			{
+				fn_set_usr_info(0);
+			}
+
+		break;	
+		
+		default:
+			 // alert("기타"); 
+	}
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 코드 값 setting
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_set_usr_info(c_row)
+{	
+
+	// 부모창에 넘기기
+	
+	var retArr = Array();
+	
+	retArr[0] = PDS_MENU_BAS.GetColumn(c_row,"CATE_ID");
+	retArr[1] = PDS_MENU_BAS.GetColumn(c_row,"CATE_NM");
+			  
+	close(retArr);	
+
+}
+
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.조회 버튼 클릭  
+//  2-4.확인 버튼 클릭
+//  2-5.닫기 버튼 클릭  
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAE01P01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+    fn_initForm();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 UnLoad 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAE01P01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_search_OnClick(obj)
+{
+	fn_search();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 확인 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_confirm_OnClick(obj)
+{
+	fn_set_usr_info(PDS_MENU_BAS.currow);
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 헤더클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_MENU_BAS_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+
+	gfn_GridSort(GRD_MENU_BAS, PDS_MENU_BAS, nCell);	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 더블클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_MENU_BAS_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	fn_set_usr_info(nRow);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회 엔터키 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+
+function S_USR_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if( nChar == 13 )
+	{
+		fn_search();
+	}	
+}
+]]></Script>
+</Window>

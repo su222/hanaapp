@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="450" Id="CPAA03P01" Left="8" OnLoadCompleted="CPAA03P01_OnLoadCompleted" OnUnloadCompleted="CPAA03P01_OnUnloadCompleted" PidAttrib="7" Title="서류출력" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="848" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0">
+				<Contents>
+					<colinfo id="column0" size="256" summ="default" type="STRING"/>
+					<colinfo id="column1" size="256" summ="default" type="STRING"/>
+					<record>
+						<column0>부채증명</column0>
+						<column1></column1>
+					</record>
+					<record>
+						<column0>내용증명</column0>
+						<column1></column1>
+					</record>
+					<record>
+						<column0>카드내역</column0>
+						<column1></column1>
+					</record>
+					<record>
+						<column0>통장거래</column0>
+						<column1></column1>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image FillType="STRETCH" Height="56" Id="Image0" ImageID="pop_titile_bg" TabOrder="0" Transparent="TRUE" Width="848"></Image>
+		<Image Align="Left" Height="20" Id="Image1" Left="39" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="1" Text="서류출력" Top="8" Transparent="TRUE" Width="250"></Image>
+		<Image Align="Right" Height="18" Id="Image17" Left="26" LeftMargin="0" Style="Stc_Default_bold" TabOrder="2" Top="66" Transparent="TRUE" Width="51"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="413" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="3" Text="닫기" Top="424" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_confirm" ImageID="Btn_pop_2w" Left="360" LeftMargin="14" OnClick="btn_confirm_OnClick" Style="Btn_Popup" TabOrder="4" Text="확인" Top="424" Transparent="TRUE" Width="50"></Button>
+		<Image Height="18" Id="Image2" ImageID="pop_titile_dot" Left="12" TabOrder="5" Top="8" Width="24"></Image>
+		<Report Bottom="416" Height="305" Id="Report0" Left="10" Right="840" Top="111" Width="830" ZoomRatio="9"></Report>
+		<Image Align="Right" Height="18" Id="Image3" Left="42" LeftMargin="0" Style="Stc_Default_bold" TabOrder="8" Top="74" Transparent="TRUE" Width="51"></Image>
+		<Shape BKColor="user21" Bottom="104" Height="40" Id="Shape4" Left="9" LineColor="user22" Right="837" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="9" Top="64" Type="RoundRect" Width="828"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_search" ImageID="Btn_com_search" Left="773" LeftMargin="16" OnClick="btn_search_OnClick" Style="Btn_sub" TabOrder="10" Top="72" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Image Align="Right" Height="18" Id="Image5" Left="30" LeftMargin="0" Style="Stc_Default_bold" TabOrder="11" Text="서류종류" Top="73" Transparent="TRUE" Width="74"></Image>
+		<Shape Bottom="107" Height="48" Id="Shape9" Left="105" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="115" TabOrder="12" Top="59" Type="Rectangle" Visible="FALSE" Width="10"></Shape>
+		<Combo Border="Flat" DataColumn="column0" Height="18" Id="PS_BCS" InnerDataset="Dataset0" Left="114" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="13" Top="72" Width="160"></Combo>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 서류출력팝업
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 서류출력 팝업 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.Transaction 후 처리 해야 할 내용
+//  1-4.창닫기
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고      
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+	
+
+  
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	DS_BRCH_BAS.ClearData();
+	
+	svcID			= "AUTH.selectAuthBrchLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_BRCH_BAS=cc.CCAuthDAO.selectAuthBrchLst";
+	argument    	= " _sqlName=cc.CCAuthDAO.selectAuthBrchLst"
+					+ " USR_ID=" + quote(GDS_USER_INFO.USR_ID)		
+					+ " FORM_ID=" + quote(P_FORM_ID)	// 부모창에서 받은값	
+					+ " AUTH_USE=" + quote(gds_system.BRCH_AUTH_USE);
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	gfn_showProgressWindow(false);
+	
+	switch(svcID) 
+	{
+		case "AUTH.selectAuthBrchLst" :
+			
+
+		break;	
+		
+		default:
+			 // alert("기타"); 
+	}
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_close()
+{
+	close(false);
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 코드 값 setting
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function sel_corp_list()
+{	
+	// 멀티선택일경우 더블클릭해도 입력안되게/
+	if(P_SEL_FLAG == "S")
+	{
+		var vRow;
+		
+		// 지사목록을 clear하고 다시 셋팅
+		GDS_BRCH_BAS.ClearData();
+		
+		vRow = GDS_BRCH_BAS.AddRow();
+				
+		GDS_BRCH_BAS.SetColumn(vRow,"COM_ID",DS_BRCH_BAS.GetColumn(DS_BRCH_BAS.currow,"MNG_COM_ID"));
+		GDS_BRCH_BAS.SetColumn(vRow,"COM_NM",DS_BRCH_BAS.GetColumn(DS_BRCH_BAS.currow,"MNG_COM_NM"));
+		GDS_BRCH_BAS.SetColumn(vRow,"BRCH_ID",DS_BRCH_BAS.GetColumn(DS_BRCH_BAS.currow,"MNG_BRCH_ID"));
+		GDS_BRCH_BAS.SetColumn(vRow,"BRCH_NM",DS_BRCH_BAS.GetColumn(DS_BRCH_BAS.currow,"MNG_BRCH_NM"));
+
+		close(true);
+		
+	}else{
+		var vRow;
+		
+		// 현재 선택된 회사를 loop를 돌면서 회사목록에 추가한다.
+		GDS_BRCH_BAS.ClearData();
+		
+		for(var i = 0; i < DS_BRCH_BAS.rowcount; i++)
+		{
+			
+			if(DS_BRCH_BAS.GetColumn(i,"chk") == 1)
+			{
+			
+				vRow = GDS_BRCH_BAS.AddRow();
+				
+				GDS_BRCH_BAS.SetColumn(vRow,"COM_ID",DS_BRCH_BAS.GetColumn(i,"MNG_COM_ID"));
+				GDS_BRCH_BAS.SetColumn(vRow,"COM_NM",DS_BRCH_BAS.GetColumn(i,"MNG_COM_NM"));
+				GDS_BRCH_BAS.SetColumn(vRow,"BRCH_ID",DS_BRCH_BAS.GetColumn(i,"MNG_BRCH_ID"));
+				GDS_BRCH_BAS.SetColumn(vRow,"BRCH_NM",DS_BRCH_BAS.GetColumn(i,"MNG_BRCH_NM"));
+			
+			}
+		}
+		
+		close(true);
+	}
+
+}
+
+
+
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.조회 버튼 클릭  
+//  2-4.확인 버튼 클릭
+//  2-5.닫기 버튼 클릭  
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAA03P01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+    fn_initForm();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 UnLoad 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function CPAA03P01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_search_OnClick(obj)
+{
+	fn_search();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 확인 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_confirm_OnClick(obj)
+{
+	sel_corp_list();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 창닫기
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function btn_close_OnClick(obj)
+{
+	fn_close();
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 헤더클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_BRCH_BAS_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	// 체크박스 클릭시
+	if(nCell == 0)
+	{
+		gfn_SetCheckBoxAllSelected(nCell, GRD_BRCH_BAS, DS_BRCH_BAS, "chk");
+	}
+	// 나머지는 Sorting
+	else
+	{
+		gfn_GridSort(GRD_BRCH_BAS, DS_BRCH_BAS, nCell);	
+	}
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 그리드 더블클릭
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_BRCH_BAS_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	// 멀티선택일경우 더블클릭해도 입력안되게/
+	if(P_SEL_FLAG == "S")
+	{
+		// 회사목록을 clear하고 다시 셋팅
+		GDS_BRCH_BAS.ClearData();
+		GDS_BRCH_BAS.AppendRow();
+
+		
+		GDS_BRCH_BAS.SetColumn(0,"COM_ID",DS_BRCH_BAS.GetColumn(nRow,"MNG_COM_ID"));
+		GDS_BRCH_BAS.SetColumn(0,"COM_NM",DS_BRCH_BAS.GetColumn(nRow,"MNG_COM_NM"));
+		GDS_BRCH_BAS.SetColumn(0,"BRCH_ID",DS_BRCH_BAS.GetColumn(nRow,"MNG_BRCH_ID"));
+		GDS_BRCH_BAS.SetColumn(0,"BRCH_NM",DS_BRCH_BAS.GetColumn(nRow,"MNG_BRCH_NM"));
+		
+		close(true);
+	}	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 조회 엔터키 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function S_BRCH_ID_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if( nChar == 13 )
+	{
+		fn_search();
+	}		
+}
+]]></Script>
+</Window>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="504" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="Calendar&#32;Sample" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="744" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0">
+				<Contents>
+					<colinfo id="code" size="256" type="STRING"/>
+					<colinfo id="name" size="256" type="STRING"/>
+					<record>
+						<code>M</code>
+						<name>&#32;month</name>
+					</record>
+					<record>
+						<code>W</code>
+						<name>&#32;week</name>
+					</record>
+					<record>
+						<code>D</code>
+						<name>&#32;day</name>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Button Appearance="FLAT" ButtonStyle="TRUE" Height="16" Id="g_cal_ymd" ImageID="Btn_calendar" Left="99" OnClick="btn_cal_ymd_OnClick" Style="SCM_BTN" TabOrder="1" Top="121" Width="16"></Button>
+		<Combo Border="Flat" BorderColor="gainsboro" CodeColumn="code" DataColumn="name" Height="21" Id="Combo0" InnerDataset="Dataset0" Left="24" OnChanged="Combo0_OnChanged" TabOrder="2" Top="79" Width="81"></Combo>
+		<Static Border="None" Color="#444444" Font="Arial,10,Bold" Height="19" Id="lbPartRental" Left="31" TabOrder="3" Text="Calendar&#32;Sample" Top="5" VAlign="Middle" Width="193"></Static>
+		<Image Height="14" Id="Image1" ImageID="title_icon01" Left="13" TabOrder="4" Top="7" Width="14"></Image>
+		<Static Height="13" Id="Static1" Left="18" TabOrder="5" Text="달력종류를&#32;선택하신&#32;후&#32;달력&#32;버튼을&#32;누르세요!!!" Top="53" Width="273"></Static>
+		<MaskEdit Border="Flat" Height="18" Id="ma_edate" Left="26" Mask="@@@@-@@-@@" MaxLength="6" OnChar="div_cal_ma_edate_OnChar" OnCharChanged="div_cal_ma_edate_OnCharChanged" Style="Edit" TabOrder="6" Top="120" Type="STRING" Width="70"></MaskEdit>
+		<MaskEdit Border="Flat" Height="18" Id="MaskEdit0" Left="26" Mask="@@@@-@@" MaxLength="6" OnChar="div_cal_ma_edate_OnChar" OnCharChanged="div_cal_ma_edate_OnCharChanged" Style="Edit" TabOrder="7" Top="152" Type="STRING" Value="201102" Width="55"></MaskEdit>
+		<Static BKColor="wheat" Height="24" Id="Static0" Left="128" TabOrder="8" Text="월달력&#32;사용시&#32;width=55" Top="152" Width="273"></Static>
+		<Button Appearance="FLAT" ButtonStyle="TRUE" Height="16" Id="g_cal_ym" ImageID="Btn_calendar" Left="84" OnClick="btn_cal_ym_OnClick" Style="SCM_BTN" TabOrder="9" Top="153" Width="16"></Button>
+		<Static BKColor="wheat" Height="24" Id="Static2" Left="129" TabOrder="10" Text="일달력" Top="123" Width="273"></Static>
+		<Combo Border="Flat" Height="18" Id="Combo2" Left="24" Style="Combo" TabOrder="11" Text="2011년" Top="184" Width="65"></Combo>
+		<Static BKColor="wheat" Height="24" Id="Static3" Left="128" TabOrder="12" Text="년&#32;선택시" Top="184" Width="273"></Static>
+	</Form>
+	<Script><![CDATA[function btn_cal_ymd_OnClick(obj)
+{
+	strCode = "D";
+	//if(strCode == ""){
+	// alert("달력종류를 선택하세요"); 
+	// return;
+	//} 
+	var nX = div_cal.btn_cal.Width - btn_cal.Width;
+	var nY = div_cal.btn_cal.Height;
+
+	var nrtn = gfn_Calendar(obj,nX,nY,strCode,"");
+
+	if(nrtn.trim().length() > 0) {
+			ma_edate.Visible = true;
+			ma_edate.value = nrtn;
+
+	}
+
+}
+
+function btn_cal_ym_OnClick(obj)
+{
+	strCode = "M";
+	//if(strCode == ""){
+	// alert("달력종류를 선택하세요"); 
+	// return;
+	//} 
+	var nX = div_cal.btn_cal.Width - btn_cal.Width;
+	var nY = div_cal.btn_cal.Height;
+
+	var nrtn = gfn_Calendar(obj,nX,nY,strCode,"");
+
+	if(nrtn.trim().length() > 0) {
+			MaskEdit0.Visible = true;
+			MaskEdit0.value = nrtn;
+
+	}
+
+}
+
+
+/*===============================================================
+= 기능 : gfn_Calendar(obj,nX,nY,strGb,strDate,posFg)
+= 인수 :	
+		obj : click된 image object
+		nX : click된 image object의 screen x value
+		nY : click된 image object의 screen y value
+		strGb : 일자 구분 "M","W","D"
+		strDate : 선택된 일자
+		posFg : Position(X,Y)값이 실제 SCREEN X,Y가 아닐경우 FALSE
+	return :
+		선택된 DATE VALUE
+		
+==============================================================*/
+var gfv_CalendarDateFg;
+var gfv_CalendarValue;
+var gfv_CalendarNaviFq = true;
+
+function gfn_Calendar(obj,nX,nY,strGb,strDate,posFg)
+{
+	var strUrl;
+	var objCal;
+	switch(strGb) {
+		case "W" :
+			strUrl =  "Templet::fm_Cal_Week.xml";
+			Create("PopupDiv", "PopDiv_CalendarW", 'Border="None" Color="white" Height="196" Width="179"');
+			objCal = PopDiv_CalendarW;
+			break;
+		case "WAB" :
+			strUrl =  "Templet::fm_Cal_WeekAB.xml";
+			Create("PopupDiv", "PopDiv_CalendarWAB", 'Border="None" Color="white" Height="196" Width="179"');
+			objCal = PopDiv_CalendarWAB;
+			break;			
+		case "D" :
+			strUrl =  "Templet::fm_Cal_Day.xml";
+			Create("PopupDiv", "PopDiv_CalendarD", 'Border="None" Color="white" Height="196" Width="179"');
+			objCal = PopDiv_CalendarD;
+			break;
+		case "M" :
+			strUrl =  "Templet::fm_Cal_Month.xml";
+			Create("PopupDiv", "PopDiv_CalendarM", 'Border="None" Color="white" Height="168" Width="179"');
+			objCal = PopDiv_CalendarM;
+			break;
+		case "Q" :
+			strUrl =  "Templet::fm_Cal_Quarter.xml";
+			Create("PopupDiv", "PopDiv_CalendarQ", 'Border="None" Color="white" Height="91" Width="179"');
+			objCal = PopDiv_CalendarQ;
+			break;
+		case "H" :
+			strUrl =  "Templet::fm_Cal_HalfYear.xml";
+			Create("PopupDiv", "PopDiv_CalendarH", 'Border="None" Color="white" Height="91" Width="179"');
+			objCal = PopDiv_CalendarH;
+			break;
+		default:
+	}
+	
+	objCal.Url = strUrl;
+	
+	gfv_CalendarDateFg = strGb;
+	gfv_CalendarValue  = strDate;
+	
+	if (posFg != true) {
+		nX = ClientToScreenX(obj,nX);
+		nY = ClientToScreenY(obj,nY);
+	}
+	var rtn = objCal.TrackPopup(nX,nY);
+
+	//objCal.Url = "";
+	Destroy(objCal.id);
+	return rtn;
+}
+function Combo0_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+		div_cal.ma_edate.Value = "";
+		switch(strCode) {
+	
+		case "M" :
+				div_cal.ma_edate.Mask = "@@@@-@@";
+			break;
+		
+		case "W" : 
+				div_cal.ma_edate.Mask = "@@@@-@@";
+			break;
+		case "D" : 
+				div_cal.ma_edate.Mask = "@@@@-@@-@@";
+			break;
+		default :
+		
+	}
+}
+
+function form_OnLoadCompleted(obj)
+{
+	var nRow = Dataset0.insertrow(0);
+	Dataset0.SetColumn(nRow, "code", "");
+	Dataset0.SetColumn(nRow, "name", " 선택");
+	Combo0.Index = 0;
+}
+]]></Script>
+</Window>

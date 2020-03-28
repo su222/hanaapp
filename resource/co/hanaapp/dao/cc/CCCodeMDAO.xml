@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TABLE NAME : TB_CC_CODE_M, TABLE COMMENT : 코드마스타 -->
+<mapper namespace="co.hanaapp.dao.cc.CCCodeMDAO">
+    <resultMap type="CCCodeM" id="CCCodeM">
+        <id     column="MST_CD"      property="mstCd"     jdbcType="VARCHAR" />   <!-- 그룹코드 -->
+        <result column="MST_NM" property="mstNm" jdbcType="VARCHAR" />   <!-- 그룹코드명 -->
+        <result column="TXT_VAL1"            property="txtVal1"          jdbcType="VARCHAR" />   <!-- 문자열1 -->
+        <result column="TXT_VAL2"            property="txtVal2"          jdbcType="VARCHAR" />   <!-- 문자열2 -->
+        <result column="NUM_VAL1"            property="numVal1"          jdbcType="DECIMAL" />   <!-- 숫자1 -->
+        <result column="NUM_VAL2"            property="numVal2"          jdbcType="DECIMAL" />   <!-- 숫자2 -->
+        <result column="NOTE"            property="note"          jdbcType="VARCHAR" />   <!-- 비고 -->
+        <result column="USE_YN"        property="useYn"       jdbcType="VARCHAR" />   <!-- 사용유무 -->
+        <result column="CRT_DT"      property="crtDt"     jdbcType="TIMESTAMP" /> <!-- 입력일시 -->
+        <result column="CRT_USR"          property="crtUsr"        jdbcType="VARCHAR" />   <!-- 입력자 -->
+        <result column="EDT_DT"     property="edtDt"    jdbcType="TIMESTAMP" /> <!-- 변경일시 -->
+        <result column="EDT_USR"          property="edtUsr"        jdbcType="VARCHAR" />   <!-- 변경자 -->
+    </resultMap>
+
+    <sql id="baseColumnList">
+        MST_CD, MST_NM, TXT_VAL1, TXT_VAL2, NUM_VAL1, NUM_VAL2, NOTE, USE_YN, CRT_USR, CRT_DT, EDT_USR, EDT_DT
+    </sql>
+
+    
+
+    <select id="selectCodeM" parameterType="string" resultMap="CCCodeM">
+        /* CCCodeMDAO - selectCodeM */
+        select
+            <include refid="baseColumnList" />
+          from TB_CC_CODE_M
+         where MST_CD = #{mstCd, jdbcType=VARCHAR}
+    </select>
+</mapper>

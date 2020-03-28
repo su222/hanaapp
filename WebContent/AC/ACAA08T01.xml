@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="650" Id="ACAA08T01" Left="8" OnLoadCompleted="ACAA08T01_OnLoadCompleted" OnUnloadCompleted="ACAA08T01_OnUnloadCompleted" PidAttrib="7" Title="발급예정건" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1240" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_AFFAIR_MST" OnColumnChanged="DS_AFFAIR_MST_OnColumnChanged">
+				<Contents>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TUB_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFF_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLT_JMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASK_AMT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_temp"></Dataset>
+		</Datasets>
+		<Shape BKColor="user21" Bottom="46" Height="40" Id="Shape_search" Left="1" LineColor="user22" Right="1227" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="0" Top="6" Type="RoundRect" Width="1226"></Shape>
+		<Shape Bottom="48" Height="40" Id="Shape21" Left="180" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="200" TabOrder="4" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="61" Height="15" Id="Shape1" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="1231" TabOrder="5" Top="46" Type="Rectangle" Visible="FALSE" Width="1231"></Shape>
+		<Image Align="Left" Height="14" Id="Image0" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="6" Text="조회내역" Top="69" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="89" Height="5" Id="Shape2" Left="-5" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1226" TabOrder="7" Top="84" Type="Rectangle" Visible="FALSE" Width="1231"></Shape>
+		<Shape Bottom="5" Height="5" Id="Shape15" Left="5" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1236" TabOrder="8" Top="0" Type="Rectangle" Visible="FALSE" Width="1231"></Shape>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_AFFAIR_MST" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="641" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="553" Id="GRD_AFFAIR_MST" InputPanel="FALSE" Left="1" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_AFFAIR_MST_OnCellClick" OnCellDBLClick="GRD_AFFAIR_MST_OnCellDblClick" OnHeadClick="GRD_AFFAIR_MST_OnHeadClick" Right="1232" RowHeight="20" Style="Grid_2" TabOrder="2" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1231">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="200"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="150"/>
+						<col width="300"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" col="0" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="1" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="제휴사명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="2" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="담당자"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="고객명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="주민번호"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="진행일자"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="비용청구금액"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="left" col="1" colid="TUB_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="2" colid="CHG_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="3" colid="CLT_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="4" colid="CLT_JMN" color="black" display="text" InputZeroTime="true" Mask="######-#######"/>
+						<cell align="center" col="5" colid="AFF_DT" color="black" display="normal" InputZeroTime="true"/>
+						<cell align="right" col="6" colid="ASK_AMT" color="black" display="number" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="648" Height="648" Id="Shape4" Left="1233" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1238" TabOrder="9" Top="0" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Image Align="Left" Height="18" Id="Image3" ImageID="label_dot" Left="10" LeftMargin="12" Style="Stc_Default_bold" TabOrder="10" Text="고객명/주민번호/제휴사명" Top="17" Transparent="TRUE" Width="176"></Image>
+		<Edit Border="Flat" Height="18" Id="S_CLT_NM" Left="200" LeftMargin="4" OnKeyDown="S_CLT_NM_OnKeyDown" Style="Edit" TabOrder="1" Top="17" Width="250"></Edit>
+		<Shape Bottom="48" Height="40" Id="Shape19" Left="552" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="572" TabOrder="11" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Image Align="Left" Height="18" Id="Image8" ImageID="label_dot" Left="488" LeftMargin="12" Style="Stc_Default_bold" TabOrder="12" Text="사건담당" Top="16" Transparent="TRUE" Width="66"></Image>
+		<Edit Border="Flat" Height="18" Id="S_CHG_USR_NM" Left="572" LeftMargin="4" OnKeyDown="S_CHG_USR_NM_OnKeyDown" Style="Edit" TabOrder="13" Top="18" Width="103"></Edit>
+		<Shape Bottom="37" Height="28" Id="Shape18" Left="677" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="682" TabOrder="15" Top="9" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="18" Id="POP_HNA_CHG_USR" ImageID="Btn_search" Left="682" OnClick="POP_HNA_CHG_USR_OnClick" TabOrder="14" TabStop="FALSE" Text="Button1" Top="18" Width="21"></Button>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 발급예정건
+* 작성자     : 이용재
+* 작성일     : 2013-01-24 : 최초 생성
+* 기능설명   : 지역정보 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+//var curRow          = "";
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	//*------------------------------------------------------------------------
+    //* 리사이즈 컨포넌트 정의
+	//* H: 가로 리사이즈
+	//* W: 세로 리사이즈
+	//* A: 가로세로 리사이즈
+	//* R: Resize
+	//* M: Move
+	//* Quick view로 테스트시 주석처리 후 테스트
+    //*------------------------------------------------------------------------
+	gfn_SetResize(this, "Shape_search:H:R GRD_AFFAIR_MST:A:R btn_add:H:M");
+	
+ 
+ 	// 공통 명령어 조정
+	gfn_set_cbutton("조회:fn_search");   
+	
+	// 기본적으로 담당자는 로그인한 사람
+	S_CHG_USR_NM.Text = GDS_USER_INFO.GetColumn(0, "USR_NM");
+
+
+	fn_search();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	
+	DS_AFFAIR_MST.ClearData();
+	
+	svcID			= "ACAA08T01.selectAffairExpLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_AFFAIR_MST=ac.ACAffairDAO.selectAffairExpLst";
+	argument    	= " _sqlName=ac.ACAffairDAO.selectAffairExpLst"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " S_CLT_NM=" + quote(S_CLT_NM.Text)
+							+ " S_CHG_USR_NM=" + quote(S_CHG_USR_NM.Text)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "ACAA08T01.selectAffairExpLst" :
+		
+			// 조회 결과 없으면 메시지를 띄운다.
+			if(DS_AFFAIR_MST.rowcount < 1) 
+			{ 
+				gfn_popup_message("modal", "ico_info", "조회된 내용이 없습니다.", "확인");	
+			}
+			
+			
+		break;	
+
+		
+		default:
+	}
+
+
+}
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function ACAA08T01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function ACAA08T01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid  클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_AFFAIR_MST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid  더블 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_AFFAIR_MST_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	
+	
+	// 사건조회 이동
+	// 파라미터는 사건번호, 시작일 FROM, 시작일TO 
+	var params = "P_MENU_ID=" + quote("ACAA01T01")
+			   + " P_URL=" + quote("AC::ACAA01T01.xml")
+			   + " P_TITLE=" + quote("사건진행")
+			   + " P_BRCH_ID=" + quote(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"BRCH_ID"))
+			   + " P_AFF_SEQ=" + quote(DS_AFFAIR_MST.GetColumn(DS_AFFAIR_MST.curRow,"AFF_SEQ"))
+			   + " P_EDT_YN=Y"	// 사건수정 가능 여부
+			   ;
+//	trace('params='+params);
+	
+	var retArr = gfn_openPopupSize(this, "main::commPopForm.xml",params , false);
+
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_AFFAIR_MST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_AFFAIR_MST, DS_AFFAIR_MST, nCell);	
+}
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 flag 설정
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_AFFAIR_MST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+
+}
+
+
+
+function Button0_OnClick(obj)
+{
+	alert(gfn_dsToString(DS_AFFAIR_MST));
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 엔터키 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function S_CLT_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_search();	
+	}	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 하나담당 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function POP_HNA_CHG_USR_OnClick(obj)
+{
+	fn_hna_popup();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 하나담당 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function S_CHG_USR_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_hna_popup();	
+	}	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 하나담당 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_hna_popup()
+{
+
+		
+	var params = "P_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+			   + " P_USR_NM=" + quote(S_CHG_USR_NM.Text);
+			   	
+			   	
+	var retArr = gfn_openPopup(this, "CP::CPAB04P01.xml", params, true);
+	
+	
+	S_CHG_USR_NM.Text = retArr[1];
+	
+	fn_search();
+
+}
+]]></Script>
+</Window>

@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="650" Id="CCAA04T01" Left="8" OnLoadCompleted="CCAA04T01_OnLoadCompleted" OnUnloadCompleted="CCAA04T01_OnUnloadCompleted" PidAttrib="7" Title="회사관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1240" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_BRCH_BAS" OnColumnChanged="DS_BRCH_BAS_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CORP_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIZ_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TEL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="FAX_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIP_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="HP_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="OWN_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FAX_CHG_USR" size="256" summ="default" type="STRING"/>
+					<colinfo id="FAX_CHG_USR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="REGS_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COC_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRDT_AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="HP_NO2" size="256" summ="default" type="STRING"/>
+					<colinfo id="COC_AMT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRDT_AMT2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_temp"></Dataset>
+		</Datasets>
+		<Shape BKColor="user7" Bottom="322" Height="98" Id="Shape10" Left="0" LineColor="user6" Right="1235" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="59" Top="224" Type="RoundRect" Width="1235"></Shape>
+		<Shape BKColor="user7" Bottom="186" Height="98" Id="Shape_edit" Left="0" LineColor="user6" Right="1235" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="29" Top="88" Type="RoundRect" Width="1235"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static18" Left="310" Style="Stc_Label" TabOrder="11" Text="회사명" Top="93" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static21" Left="5" Style="Stc_Label" TabOrder="12" Text="회사코드" Top="93" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static22" Left="310" Style="Stc_Label" TabOrder="13" Text="담당자명" Top="139" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static6" Left="5" Style="Stc_Label" TabOrder="14" Text="대표자명" Top="139" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static2" Left="310" Style="Stc_Label" TabOrder="10" Text="팩스번호" Top="116" VAlign="Middle" Width="90"></Static>
+		<Shape BKColor="user21" Bottom="46" Height="40" Id="Shape_search" Left="0" LineColor="user22" Right="1234" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="14" Top="6" Type="RoundRect" Width="1234"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_add" ImageID="Btn_sub_add" Left="1183" LeftMargin="16" OnClick="btn_add_OnClick" Style="Btn_sub" TabOrder="8" Text="추가" Top="62" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Edit BindDataset="DS_BRCH_BAS" Border="Flat" Column="BRCH_NM" Height="18" Id="edt_brch_nm" Left="404" LeftMargin="4" MaxLength="50" Style="Edit_Ess" TabOrder="3" Top="94" Width="160"></Edit>
+		<Edit BindDataset="DS_BRCH_BAS" Border="Flat" Column="BRCH_ID" Height="18" Id="edt_com_id" Left="99" LeftMargin="4" MaxLength="3" Style="Edit_Ess" TabOrder="2" Top="94" Width="160"></Edit>
+		<Edit BindDataset="DS_BRCH_BAS" Border="Flat" Column="OWN_NM" Height="18" Id="edt_fax_no" Left="99" LeftMargin="4" Style="Edit" TabOrder="4" Top="140" Width="160"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static0" Left="5" Style="Stc_Label" TabOrder="16" Text="전화번호" Top="116" VAlign="Middle" Width="90"></Static>
+		<Edit Border="Flat" Height="18" Id="S_BRCH_NM" Left="81" LeftMargin="4" OnKeyDown="s_edt_brch_nm_OnKeyDown" Style="Edit" TabOrder="1" Top="17" Width="250"></Edit>
+		<Shape Bottom="216" Height="144" Id="Shape22" Left="95" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="99" TabOrder="17" Top="72" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="160" Height="88" Id="Shape6" Left="400" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="404" TabOrder="18" Top="72" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Edit Align="CENTER" AutoSkip="TRUE" BindDataset="DS_BRCH_BAS" Border="Flat" CheckLength="Byte" Column="ZIP_CD" Height="18" Id="edt_zip_cd" Left="403" MaxLength="7" Style="Edit" TabOrder="5" Top="163" Width="76"></Edit>
+		<Edit AutoSkip="TRUE" BindDataset="DS_BRCH_BAS" Border="Flat" CheckLength="Byte" Column="ADDR_NM" Height="18" Id="edt_addr_nm" Left="483" Style="Edit" TabOrder="6" Top="163" Width="382"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static3" Left="309" Style="Stc_Label" TabOrder="19" Text="주소" Top="162" VAlign="Middle" Width="90"></Static>
+		<Shape Bottom="48" Height="40" Id="Shape21" Left="61" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="81" TabOrder="20" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Image Align="Left" Height="18" Id="Image3" ImageID="label_dot" Left="10" LeftMargin="12" Style="Stc_Default_bold" TabOrder="21" Text="회사명" Top="17" Transparent="TRUE" Width="50"></Image>
+		<Shape Bottom="61" Height="15" Id="Shape1" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="1239" TabOrder="22" Top="46" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Image Align="Left" Height="14" Id="Image4" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="23" Text="회사기본정보" Top="69" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="88" Height="5" Id="Shape3" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1239" TabOrder="24" Top="83" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Image Align="Left" Height="14" Id="Image0" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="25" Text="조회내역" Top="345" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="364" Height="5" Id="Shape2" Left="-5" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1234" TabOrder="26" Top="359" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Shape Bottom="338" Height="15" Id="Shape12" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="1239" TabOrder="27" Top="323" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_excel_download" ImageID="Btn_sub_ex_down" Left="1136" LeftMargin="16" OnClick="btn_excel_download_OnClick" Style="Btn_sub" TabOrder="9" Top="338" TopMargin="1" Transparent="TRUE" Width="104"></Button>
+		<Shape Bottom="5" Height="5" Id="Shape15" Left="-1" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1238" TabOrder="28" Top="0" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_BRCH_BAS" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="644" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="281" Id="GRD_BRCH_BAS" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_BRCH_BAS_OnCellClick" OnHeadClick="GRD_BRCH_BAS_OnHeadClick" Right="1235" RowHeight="20" Style="Grid_2" TabOrder="7" TabStop="true" Top="363" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1235">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="30"/>
+						<col width="80"/>
+						<col width="150"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="100"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="70"/>
+						<col width="400"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="checkbox" edit="checkbox" InputZeroTime="true"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="회사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="회사명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="대표자명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="전화"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="FAX"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="9" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="FAX&#32;담당"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="10" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="휴대폰1"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="11" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="휴대폰2"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="12" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="우편번호"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="13" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="주소"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell align="center" col="3" colid="chk" color="black" display="checkbox" edit="checkbox" InputZeroTime="true"/>
+						<cell col="4" colid="BRCH_ID" display="normal" InputZeroTime="true"/>
+						<cell col="5" colid="BRCH_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell col="6" colid="OWN_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell col="7" colid="TEL_NO" display="normal" InputZeroTime="true"/>
+						<cell col="8" colid="FAX_NO" display="normal" InputZeroTime="true"/>
+						<cell col="9" colid="FAX_CHG_USR_NM" display="normal" InputZeroTime="true"/>
+						<cell col="10" colid="HP_NO" display="normal" InputZeroTime="true"/>
+						<cell col="11" colid="HP_NO2" display="normal" InputZeroTime="true"/>
+						<cell col="12" colid="ZIP_CD" display="normal" InputZeroTime="true"/>
+						<cell col="13" colid="ADDR_NM" display="normal" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="240" Height="184" Id="Shape4" Left="497" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="501" TabOrder="30" Top="56" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static1" Left="614" Style="Stc_Label" TabOrder="33" Text="법인번호" Top="93" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static4" Left="614" Style="Stc_Label" TabOrder="34" Text="사업자번호" Top="139" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static5" Left="614" Style="Stc_Label" TabOrder="32" Text="휴대폰번호1/2" Top="116" VAlign="Middle" Width="90"></Static>
+		<Edit BindDataset="DS_BRCH_BAS" Border="Flat" Column="CORP_NO" Height="18" Id="Edit0" Left="708" LeftMargin="4" MaxLength="50" Style="Edit_Ess" TabOrder="31" Top="94" Width="160"></Edit>
+		<Shape Bottom="160" Height="88" Id="Shape5" Left="704" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="708" TabOrder="35" Top="72" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Edit BindDataset="DS_BRCH_BAS" Border="Flat" Column="BIZ_NO" Height="18" Id="Edit2" Left="708" LeftMargin="4" Style="Edit" TabOrder="36" Top="140" Width="160"></Edit>
+		<Edit BindDataset="DS_BRCH_BAS" Border="Flat" Column="CHG_NM" Height="18" Id="Edit3" Left="404" LeftMargin="4" Style="Edit" TabOrder="37" Top="139" Width="160"></Edit>
+		<Shape Bottom="645" Height="640" Id="Shape7" Left="1234" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1239" TabOrder="38" Top="5" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static7" Left="5" Style="Stc_Label" TabOrder="39" Text="팩스담당" Top="163" VAlign="Middle" Width="90"></Static>
+		<Edit BindDataset="DS_BRCH_BAS" Border="Flat" Column="FAX_CHG_USR_NM" Height="18" Id="EDT_FAX_CHG_USR_NM" Left="100" LeftMargin="4" OnKeyDown="EDT_FAX_CHG_USR_NM_OnKeyDown" Style="Edit_Ess" TabOrder="41" TabStop="FALSE" Top="163" Width="105"></Edit>
+		<Button Height="18" Id="POP_FAX_CHG_USR" ImageID="Btn_search" Left="209" OnClick="POP_FAX_CHG_USR_OnClick" TabOrder="40" TabStop="FALSE" Text="Button1" Top="161" Width="21"></Button>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static8" Left="99" Style="Stc_Label" TabOrder="43" Text="등기" Top="227" VAlign="Middle" Width="98"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static9" Left="99" Style="Stc_Label" TabOrder="44" Text="내용증명" Top="273" VAlign="Middle" Width="98"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static10" Left="99" Style="Stc_Label" TabOrder="42" Text="원격지" Top="250" VAlign="Middle" Width="98"></Static>
+		<Shape Bottom="160" Height="88" Id="Shape0" Left="1000" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1004" TabOrder="45" Top="72" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<MaskEdit BindDataset="DS_BRCH_BAS" Border="Flat" Column="REGS_AMT" Height="18" Id="EDT_REGS_AMT" Left="202" Style="Edit" TabOrder="46" Top="229" Width="160"></MaskEdit>
+		<MaskEdit BindDataset="DS_BRCH_BAS" Border="Flat" Column="RMT_AMT" Height="18" Id="EDT_RMT_AMT" Left="202" Style="Edit" TabOrder="47" Top="250" Width="160"></MaskEdit>
+		<MaskEdit BindDataset="DS_BRCH_BAS" Border="Flat" Column="COC_AMT" Height="18" Id="EDT_COC_AMT" Left="202" Style="Edit" TabOrder="48" Top="272" Width="160"></MaskEdit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static11" Left="99" Style="Stc_Label" TabOrder="49" Text="신용조회" Top="296" VAlign="Middle" Width="98"></Static>
+		<MaskEdit BindDataset="DS_BRCH_BAS" Border="Flat" Column="CRDT_AMT" Height="18" Id="EDT_CRDT_AMT" Left="202" Style="Edit" TabOrder="50" Top="295" Width="160"></MaskEdit>
+		<Edit BindDataset="DS_BRCH_BAS" Border="Flat" Column="TEL_NO" Height="18" Id="EDT_TEL_NO" Left="99" LeftMargin="4" Style="Edit" TabOrder="51" Top="117" Width="160"></Edit>
+		<Edit BindDataset="DS_BRCH_BAS" Border="Flat" Column="FAX_NO" Height="18" Id="Edit1" Left="404" LeftMargin="4" Style="Edit" TabOrder="52" Top="117" Width="160"></Edit>
+		<Edit BindDataset="DS_BRCH_BAS" Border="Flat" Column="HP_NO" Height="18" Id="Edit4" Left="708" LeftMargin="4" Style="Edit" TabOrder="53" Top="117" Width="88"></Edit>
+		<Edit BindDataset="DS_BRCH_BAS" Border="Flat" Column="HP_NO2" Height="18" Id="Edit5" Left="800" LeftMargin="4" Style="Edit" TabOrder="54" Top="117" Width="88"></Edit>
+		<Static Align="Center" Border="Flat" Height="84" Id="Static12" Left="5" Style="Stc_Label" TabOrder="55" Text="은행수수료" Top="228" VAlign="Middle" Width="90"></Static>
+		<Image Align="Left" Height="14" Id="Image1" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="56" Text="수수료정보" Top="205" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="224" Height="5" Id="Shape8" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1239" TabOrder="57" Top="219" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Shape Bottom="202" Height="15" Id="Shape9" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="1239" TabOrder="58" Top="187" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static14" Left="595" Style="Stc_Label" TabOrder="60" Text="내용증명" Top="229" VAlign="Middle" Width="98"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static16" Left="595" Style="Stc_Label" TabOrder="61" Text="신용조회" Top="252" VAlign="Middle" Width="98"></Static>
+		<Static Align="Center" Border="Flat" Height="84" Id="Static17" Left="501" Style="Stc_Label" TabOrder="62" Text="대행수수료" Top="228" VAlign="Middle" Width="90"></Static>
+		<MaskEdit BindDataset="DS_BRCH_BAS" Border="Flat" Column="COC_AMT2" Height="18" Id="MaskEdit0" Left="698" Style="Edit" TabOrder="63" Top="229" Width="160"></MaskEdit>
+		<MaskEdit BindDataset="DS_BRCH_BAS" Border="Flat" Column="CRDT_AMT2" Height="18" Id="MaskEdit1" Left="698" Style="Edit" TabOrder="64" Top="250" Width="160"></MaskEdit>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 회사관리
+* 작성자     : 이용재
+* 작성일     : 2013-01-24 : 최초 생성
+* 기능설명   : 회사정보 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-01-24       V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+var curRow          = "";
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	//*------------------------------------------------------------------------
+    //* 리사이즈 컨포넌트 정의
+	//* H: 가로 리사이즈
+	//* W: 세로 리사이즈
+	//* A: 가로세로 리사이즈
+	//* R: Resize
+	//* M: Move
+	//* Quick view로 테스트시 주석처리 후 테스트
+    //*------------------------------------------------------------------------
+	gfn_SetResize(this, "Shape_search:H:R GRD_BRCH_BAS:A:R Shape_edit:H:R btn_add:H:M btn_excel_download:H:M");
+	
+	
+	// 공통 명령어 조정
+	gfn_set_cbutton("조회:fn_search 저장:fn_save 삭제:fn_delete");
+	
+	fn_search();
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	
+	DS_BRCH_BAS.ClearData();
+	
+	svcID			= "CCAA04T01.selectBrchLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_BRCH_BAS=cc.CCBrchDAO.selectBrchLst";
+	argument    	= " _sqlName=cc.CCBrchDAO.selectBrchLst"
+							+ " S_BRCH_NM=" + quote(S_BRCH_NM.Text)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.GetColumn(0, "USR_ID"));
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.3 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	curRow = DS_BRCH_BAS.currow;
+		
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	
+	// 필터 
+	DS_BRCH_BAS.FireEvent = false;		
+	DS_BRCH_BAS.UnFilter();
+	DS_BRCH_BAS.Filter("FLAG !='N'");
+	
+	
+	// 회사 체크 
+	if(DS_BRCH_BAS.rowcount > 0)
+	{
+		// 필수체크
+		for(var i=0;i<DS_BRCH_BAS.rowcount;i++)
+		{
+			
+			cMessage = "";
+			
+			
+			if(length(DS_BRCH_BAS.GetColumn(i, "BRCH_ID")) == 0)
+			{
+				bValidate = false;
+				cMessage += "회사코드 누락 ";
+			}
+			if(length(DS_BRCH_BAS.GetColumn(i, "BRCH_NM")) == 0)
+			{
+				bValidate = false;
+				cMessage += "회사명 누락 ";
+			}
+			
+
+			if(bValidate == false)
+			{
+				pMessage += "\n ["+i+"] " + cMessage;
+			}
+		}
+		
+		// 필수항목 누락 
+		if(bValidate == false)
+		{
+			gfn_popup_message("modal", "error", pMessage, "확인");
+		}
+	}
+	else
+	{
+		gfn_popup_message("modal", "error", "저장할 항목이 없습니다.", "확인");
+		bValidate = false;		
+	
+	}
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		// 저장 
+		//if(gfn_popup_message("modal", "confirm", "저장하시겠습니까?", "확인")) 
+		//{
+
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			ds_temp.ClearData();
+			ds_temp.CopyF("DS_BRCH_BAS");
+			
+			svcID			= "CCAA04T01.saveBrchLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "cc.CCBrchDAO.saveBrchLst=ds_temp:A";
+			outDatasets 	= "";
+			argument    	= " _sqlName=cc.CCBrchDAO.saveBrchLst";
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		//}
+	
+	}
+
+	DS_BRCH_BAS.UnFilter();
+	DS_BRCH_BAS.Filter("flag != 'D'");
+	DS_BRCH_BAS.FireEvent = true;	
+
+	DS_BRCH_BAS.row = curRow;
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 삭제 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_delete()
+{
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	
+	// 필터 
+	DS_BRCH_BAS.FireEvent = false;		
+	DS_BRCH_BAS.UnFilter();
+	DS_BRCH_BAS.Filter("CHK ='1'");
+	
+	
+	// 회사 체크 
+	if(DS_BRCH_BAS.rowcount > 0)
+	{
+		// 필수체크
+		for(var i=0;i<DS_BRCH_BAS.rowcount;i++)
+		{
+		}
+		
+		// 필수항목 누락 
+		if(bValidate == false)
+		{
+			gfn_popup_message("modal", "error", pMessage, "확인");
+		}
+	}
+	else
+	{
+		gfn_popup_message("modal", "error", "삭제할 항목이 없습니다.", "확인");
+		bValidate = false;		
+	
+	}
+	
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		//삭제 
+		//if(gfn_popup_message("modal", "confirm", "삭제하시겠습니까?", "확인")) 
+		//{
+		
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			ds_temp.ClearData();
+			ds_temp.CopyF("DS_BRCH_BAS");		
+		
+			svcID			= "CCAA04T01.deleteBrchLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "cc.CCBrchDAO.deleteBrchLst=ds_temp:A";
+			outDatasets 	= "";
+			argument    	= " _sqlName=cc.CCBrchDAO.deleteBrchLst";
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		//}
+	
+	}
+
+	DS_BRCH_BAS.UnFilter();
+	DS_BRCH_BAS.Filter("FLAG != 'D'");
+	DS_BRCH_BAS.FireEvent = true;	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "CCAA04T01.selectBrchLst" :
+		
+			// 조회 결과 없으면 메시지를 띄운다.
+			//if(DS_BRCH_BAS.rowcount < 1) 
+			//{ 
+			//	gfn_popup_message("modal", "ico_info", "조회된 내용이 없습니다.", "확인");	
+			//}
+			
+			
+		break;	
+
+		// 저장
+		case "CCAA04T01.saveBrchLst" :
+		
+			gfn_popup_message("modal", "ico_info", "추가/수정완료.", "확인");	
+			fn_search();		
+		break;	
+		
+		// 삭제
+		case "CCAA04T01.deleteBrchLst" :
+		
+			gfn_popup_message("modal", "ico_info", "삭제완료.", "확인");	
+			fn_search();		
+		break;	
+		
+		default:
+			  alert("기타"); 
+	}
+	
+	if(curRow != null) 
+	{
+		DS_BRCH_BAS.row = curRow;
+	}
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_add_row()
+{
+
+	
+	// 행추가시 기존꺼 지우고 한다.
+	//DS_BRCH_BAS.ClearData();	
+	var vRow = DS_BRCH_BAS.AddRow();
+	
+	// 기초값
+	DS_BRCH_BAS.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+	DS_BRCH_BAS.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+	DS_BRCH_BAS.SetColumn(vRow,"CHK","1");	// 선택됨
+    DS_BRCH_BAS.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+    
+    DS_BRCH_BAS.SetColumn(vRow,"BRCH_ID", "");// 
+    DS_BRCH_BAS.SetColumn(vRow,"BRCH_NM", "");// 
+    DS_BRCH_BAS.SetColumn(vRow,"OWNER_NM", "");// 
+    DS_BRCH_BAS.SetColumn(vRow,"TEL_NO", "");// 
+    DS_BRCH_BAS.SetColumn(vRow,"FAX_NO", "");// 
+    DS_BRCH_BAS.SetColumn(vRow,"ADDR_NM", "");// 
+    DS_BRCH_BAS.SetColumn(vRow,"ZIP_CD", "");// 
+    DS_BRCH_BAS.SetColumn(vRow,"USE_YN", "");// 
+    
+}
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAA04T01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAA04T01_OnUnloadCompleted(obj)
+{
+	fn_save();
+	gfn_OnBeforeExit();
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-7.엑셀버튼 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_excel_OnClick(obj)
+{
+	gfn_exportExcel(Grid1,"sheet1");
+}
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid  클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_BRCH_BAS_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	curRow = nRow;
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_BRCH_BAS_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	// 체크박스 클릭시
+	if(nCell == 3)
+	{
+		gfn_SetCheckBoxAllSelected(nCell, GRD_BRCH_BAS, DS_BRCH_BAS, "CHK");
+	}
+	// 나머지는 Sorting
+	else
+	{
+		gfn_GridSort(GRD_BRCH_BAS, DS_BRCH_BAS, nCell);	
+	}
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_add_OnClick(obj)
+{
+	fn_add_row();
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 엑셀다운로드 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_excel_download_OnClick(obj)
+{
+	gfn_exportExcel(GRD_BRCH_BAS,"회사목록");
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 flag 설정
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_BRCH_BAS_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	// 즉 조회된거를 수정하면 U로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" && ToUpper(strColumnID) != "CHK")
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+		obj.SetColumn(nRow, "CHK", "1");	// 자동 체크 처리
+	}
+}
+
+
+
+function Button0_OnClick(obj)
+{
+	alert(gfn_dsToString(DS_BRCH_BAS));
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 엔터키 조회
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function S_BRCH_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_search();	
+	}	
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 팩스담당 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function POP_FAX_CHG_USR_OnClick(obj)
+{
+	fn_fax_popup();	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 팩스담당 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function EDT_FAX_CHG_USR_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_fax_popup();	
+	}		
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 팩스담당 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_fax_popup()
+{
+	
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_BRCH_BAS.GetColumn(DS_BRCH_BAS.curRow,"BRCH_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "회사를 선택 해야 합니다. ", "확인");
+		return;
+	}
+		
+	var params = "P_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+			   + " P_USR_NM=";
+			   	
+			   	
+	var retArr = gfn_openPopup(this, "CP::CPAB04P01.xml", params, true);
+
+	DS_BRCH_BAS.SetColumn(DS_BRCH_BAS.curRow,"FAX_CHG_USR", retArr[0]);
+	DS_BRCH_BAS.SetColumn(DS_BRCH_BAS.curRow,"FAX_CHG_USR_NM", retArr[1]);
+
+}
+
+
+]]></Script>
+</Window>

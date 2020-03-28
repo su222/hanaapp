@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="480" Id="BOAD02P01" Left="8" OnLoadCompleted="BOAD02P01_OnLoadCompleted" OnUnloadCompleted="BOAD02P01_OnUnloadCompleted" PidAttrib="7" Title="FAQ&#32;게시판&#32;팝업&#32;(관리자)" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="710" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_faqboard_mst">
+				<Contents>
+					<colinfo id="eno" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="corp_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_title" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_contents" size="256" summ="default" type="STRING"/>
+					<colinfo id="kor_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="operator" size="256" summ="default" type="STRING"/>
+					<colinfo id="flag" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_file_path" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_BRCH_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="division" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_tmp_faqboard_mst">
+				<Contents>
+					<colinfo id="eno" size="256" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="corp_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_seq" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_title" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_contents" size="256" summ="default" type="STRING"/>
+					<colinfo id="kor_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="operator" size="256" summ="default" type="STRING"/>
+					<colinfo id="flag" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_file_path" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="board_BRCH_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="division" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_division">
+				<Contents>
+					<colinfo id="name" size="256" summ="default" type="STRING"/>
+					<colinfo id="value" size="256" summ="default" type="STRING"/>
+					<record>
+						<name>복리후생</name>
+						<value>복리후생</value>
+					</record>
+					<record>
+						<name>인사</name>
+						<value>인사</value>
+					</record>
+					<record>
+						<name>교육</name>
+						<value>교육</value>
+					</record>
+					<record>
+						<name>급여</name>
+						<value>급여</value>
+					</record>
+					<record>
+						<name>기타</name>
+						<value>기타</value>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Border="Flat" Height="280" Id="Static20" Style="Stc_LabelBody" TabOrder="9" Top="153" VAlign="Middle" Width="710"></Static>
+		<Static Border="Flat" Height="24" Id="Static6" Left="-1" Style="Stc_LabelBody" TabOrder="7" Top="84" VAlign="Middle" Width="710"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static28" Style="Stc_Label" TabOrder="6" Text="등록자" Top="84" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" Border="Flat" Height="281" Id="Static21" Style="Stc_Label" TabOrder="8" Text="내용" Top="153" VAlign="Middle" Width="96"></Static>
+		<TextArea BindDataset="ds_faqboard_mst" Border="Flat" Column="board_contents" Height="273" Id="edt_board_contents" ImeMode="native" Left="101" Style="TextArea" TabOrder="4" Top="156" VScroll="TRUE" Width="603"></TextArea>
+		<Edit Align="CENTER" AutoSkip="TRUE" BindDataset="ds_faqboard_mst" Border="Flat" CheckLength="Byte" Column="kor_nm" Enable="FALSE" Height="18" Id="edt_eno" ImeMode="native" Left="101" MaxLength="100" Readonly="TRUE" Style="Edit" TabOrder="5" Top="87" Width="94"></Edit>
+		<Shape Bottom="84" Height="7" Id="Shape2" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="2" Right="710" TabOrder="3" Top="77" Type="Rectangle" Visible="FALSE" Width="710"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_close" ImageID="Btn_pop_2w" Left="328" LeftMargin="14" OnClick="btn_close_OnClick" Style="Btn_Popup" TabOrder="11" Text="닫기" Top="447" Transparent="TRUE" Width="50"></Button>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_delete" ImageID="Btn_pop_2w" Left="658" LeftMargin="14" OnClick="btn_delete_OnClick" Style="Btn_Popup" TabOrder="12" Text="삭제" Top="56" Transparent="TRUE" Width="50"></Button>
+		<Image Align="Left" Height="20" Id="img_selCMPNY" Left="40" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="13" Text="교육코드선택" Top="33" Transparent="TRUE" Width="250"></Image>
+		<Image Align="Left" Height="20" Id="Image2" Left="48" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="14" Text="공지사항" Top="28" Transparent="TRUE" Width="154"></Image>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_save" ImageID="Btn_pop_2w" Left="603" LeftMargin="14" OnClick="btn_save_OnClick" Style="Btn_Popup" TabOrder="15" Text="저장" Top="56" Transparent="TRUE" Width="50"></Button>
+		<Shape Bottom="80" Height="24" Id="Shape7" Left="653" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="658" TabOrder="16" Top="56" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Image FillType="STRETCH" Height="56" Id="Image1" ImageID="pop_titile_bg_600" Left="-1" TabOrder="17" Transparent="TRUE" Width="712"></Image>
+		<Image Align="Left" Height="20" Id="Image0" Left="48" LeftMargin="0" Style="Stc_PopupTitle" TabOrder="18" Text="FAQ" Top="8" Transparent="TRUE" Width="146"></Image>
+		<Static Border="Flat" Height="24" Id="Static1" Left="-1" Style="Stc_LabelBody" TabOrder="21" Top="107" VAlign="Middle" Width="710"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static2" Style="Stc_Label" TabOrder="20" Text="첨부" Top="107" VAlign="Middle" Width="96"></Static>
+		<Edit AutoSkip="TRUE" BindDataset="ds_faqboard_mst" Border="Flat" CheckLength="Byte" Column="board_file_path" Height="18" Id="edt_board_file" ImeMode="native" Left="101" MaxLength="200" Readonly="TRUE" Style="Edit" TabOrder="19" Top="110" Width="469"></Edit>
+		<Static Border="Flat" Height="24" Id="Static5" Left="-1" Style="Stc_LabelBody" TabOrder="23" Top="130" VAlign="Middle" Width="710"></Static>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static7" Style="Stc_Label" TabOrder="22" Text="제목" Top="130" VAlign="Middle" Width="96"></Static>
+		<Edit AutoSkip="TRUE" BindDataset="ds_faqboard_mst" Border="Flat" CheckLength="Byte" Column="board_title" Height="18" Id="edt_board_title" ImeMode="native" Left="101" MaxLength="200" Style="Edit" TabOrder="3" Top="133" Width="603"></Edit>
+		<Shape Bottom="435" Height="352" Id="Shape1" Left="704" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="709" TabOrder="21" Top="83" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="435" Height="352" Id="Shape0" Left="96" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="101" TabOrder="10" Top="83" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="18" Id="btn_add_file" ImageID="Btn_detail_4w" Left="575" LeftMargin="11" OnClick="btn_add_file_OnClick" Style="Btn_detail" TabOrder="2" Text="파일첨부" Top="110" TopMargin="1" Transparent="TRUE" Width="62"></Button>
+		<Shape Bottom="132" Height="24" Id="Shape4" Left="570" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="575" TabOrder="24" Top="108" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<HttpFile Height="24" Id="multipart_http0" Left="720" Top="140" Width="24"></HttpFile>
+		<FileDialog Bottom="130" Filter="All(*.*)|*.*|" Height="24" Id="FileDlg" Left="720" Right="744" TabOrder="43" Top="106" Type="Save" Width="24"></FileDialog>
+		<Edit Border="Flat" Height="18" Id="s_edt_corp_list" ImeMode="native" Left="16" LeftMargin="4" Readonly="TRUE" Style="Edit_Red" TabOrder="26" Top="616" Visible="FALSE" Width="200"></Edit>
+		<Static Align="Center" Border="Flat" Height="24" Id="Static0" Left="392" Style="Stc_Label" TabOrder="27" Text="구분" Top="84" VAlign="Middle" Width="96"></Static>
+		<Shape Bottom="108" Height="24" Id="Shape5" Left="488" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="493" TabOrder="29" Top="84" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Combo BindDataset="ds_faqboard_mst" Border="Flat" CodeColumn="value" Column="division" DataColumn="name" Height="18" Id="cob_division" ImeMode="none" INDEX="0" InnerDataset="ds_division" Left="492" Style="Combo" TabOrder="28" Top="86" Width="96"></Combo>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="18" Id="btn_get_file" ImageID="Btn_detail_4w" Left="642" LeftMargin="11" OnClick="btn_get_file_OnClick" Style="Btn_detail" TabOrder="31" Text="파일받기" Top="111" TopMargin="1" Transparent="TRUE" Width="62"></Button>
+		<Shape Bottom="133" Height="24" Id="Shape6" Left="637" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="642" TabOrder="30" Top="109" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : BOAD02P01
+* 작성자     : 강동수
+* 작성일     : 
+* 기능설명   : 
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-04-14      V1.0                  initial ver.
+***************************************************************************************************/
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+var svcID		 = "";
+var url   		 = "";
+var inDatasets   = "";
+var outDatasets  = "";
+var argument     = "";
+var callbackFunc = "";
+var compCd 		 = "";
+var corpCd 		 = "";
+
+var sel_flag = "M";					// 회사선택구분(S:단일선택, M:멀티선택)
+var form_id  = "PYPA01T01";
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.초기화 함수      
+//  1-3.조회 함수     
+//  1-4.저장 함수    
+//  1-5.삭제 함수    
+//  1-6.Transaction 후 처리 해야 할 내용
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3.초기화 부분
+//  2-4.조회 버튼 클릭   
+//  2-5.저장 버튼 클릭   
+//  2-6.삭제 버튼 클릭    
+//  2-7.엑셀 버튼 클릭
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+function fn_initForm()
+{
+    // 사용가능 법인 인증 
+    gfn_corp_auth(form_id, sel_flag);
+    
+	// 회사목록을 조회하면에 뿌려준다.
+	s_edt_COM_NM.Text = gfn_getDSString(GDS_BRCH_BAS, "BRCH_NM",",");	
+	ds_faqboard_mst.InsertRow();	
+	cob_division.Index = 0;
+	
+	if(p_flag == "read"){
+		
+		ds_tmp_faqboard_mst.Copy(parent.ds_faqboard_mst);
+		ds_faqboard_mst.CopyRow(0,"ds_tmp_faqboard_mst",parent.ds_faqboard_mst.currow,"");		
+		ds_faqboard_mst.SetColumn(0, "flag", "U");
+		
+	}else if(p_flag == "new"){
+		
+		//alert(GDS_USER_INFO.eno+"/"+GDS_USER_INFO.kor_nm+"/"+GDS_USER_INFO.COM_ID+"/"+GDS_USER_INFO.BRCH_ID+"/"+GDS_USER_INFO.corp_seq);	
+		
+		ds_faqboard_mst.SetColumn(0, "eno",      GDS_USER_INFO.eno);
+		ds_faqboard_mst.SetColumn(0, "kor_nm",   GDS_USER_INFO.kor_nm);
+		ds_faqboard_mst.SetColumn(0, "operator", GDS_USER_INFO.eno);
+		ds_faqboard_mst.SetColumn(0, "COM_ID", GDS_USER_INFO.COM_ID);
+		ds_faqboard_mst.SetColumn(0, "BRCH_ID",  GDS_USER_INFO.BRCH_ID);
+		ds_faqboard_mst.SetColumn(0, "corp_seq", GDS_USER_INFO.corp_seq);
+		ds_faqboard_mst.SetColumn(0, "flag",     "I");
+	}		
+}
+
+function btn_add_file_OnClick(obj)
+{
+	var params = " p_path= "+Globalpath+"UPFILE/BOARD/"; // 경로는 여기서 설정한다.
+	var filePath = gfn_openPopup(this, "COMM::COMM01P01.xml", params, true);
+	if(filePath == null){
+		return;
+	}
+	var spltData = filePath.split("\\");
+	var fileName = spltData[spltData.length-1];
+	edt_board_file.Text = fileName;
+}
+
+function btn_get_file_OnClick(obj)
+{
+	var tmpFileName = edt_board_file.text;
+	var tmpPath = Globalpath+"UPFILE/BOARD/"; // 경로는 여기서 설정한다.	
+
+	if(tmpFileName == null){
+		gfn_Popup_Message("modal", "confirm", "첨부된 파일이 없습니다.", "확인");
+		return;
+	}
+	var tmp = GlobalURL + "JSP/filedown_web.jsp?filepath="+tmpPath+"&filename="+tmpFileName;
+
+	var PostData = "";
+	var Headers  = "Content-Type: application/x-www-form-urlencoded";
+	AxMSIE0.Navigate(tmp,"","",PostData,Headers);
+}
+
+function btn_close_OnClick(obj)
+{
+	close();
+}
+
+function btn_save_OnClick(obj)
+{	
+	if(edt_board_title.Text == ""){
+		gfn_Popup_Message("modal", "confirm", "제목을 입력하십시오.", "확인");
+		return;
+	}
+	
+	if(edt_board_contents.Value == ""){
+		gfn_Popup_Message("modal", "confirm", "내용을 입력하십시오.", "확인");
+		return;
+	}
+	
+	ds_faqboard_mst.SetColumn(0,"eno",);
+	
+	fn_save();
+}
+
+function fn_save()
+{
+	svcID		 = "BOAD02P01.saveFAQBoardMst";
+	url   		 = "service::BOAD02P01.saveFAQBoardMst.do";
+	inDatasets   = "BOAD02P01.saveFAQBoardMst=ds_faqboard_mst:U";  //U: 데이터셋의 업데이트 된 row만 넘긴다, A:전부 전달, N:delete를 제외한 모든 정보전달 
+	outDatasets  = "";
+	argument     = " _sqlName=BOAD02P01.saveFAQBoardMst"
+				 ;
+	callbackFunc = "gfn_callback";
+	
+	if(gfn_Popup_Message("modal", "confirm", "저장하시겠습니까?", "확인")){
+		gfn_showProgressWindow(true);
+		gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);
+	}
+}
+
+
+function btn_delete_OnClick(obj)
+{
+	if(p_flag == "new"){
+		gfn_Popup_Message("modal", "confirm", "아직 등록되지 않았습니다.", "확인");
+		return;
+	}
+
+	ds_faqboard_mst.SetColumn(0, "flag", "D");
+	
+	fn_save();	
+}
+
+function BOAD02P01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+	
+	// 그리드 공통 초기화 
+	//gfn_grid_init(grd_eduemp_rslt);
+}
+
+function BOAD02P01_OnUnloadCompleted(obj)
+{
+	gfn_OnBeforeExit();
+}
+
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	switch(svcID) 
+	{
+		case "BOAD02P01.saveFAQBoardMst" :
+			
+			parent.fn_search();
+			close();
+			
+		break;
+			
+			
+		default:
+			 // alert("기타");
+	}
+}
+]]></Script>
+</Window>

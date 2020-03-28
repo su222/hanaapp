@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="168" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="테스트&#32;팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="336" WorkArea="true">
+		<Static Font="굴림,16,Bold,Italic" Height="31" Id="Static0" Left="96" TabOrder="1" Text="테스트&#32;팝업" Top="24" Width="130"></Static>
+		<Edit Height="21" Id="ed_popup" Left="88" TabOrder="2" Top="68" Width="144"></Edit>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_Search" ImageID="Btn_com_2w" Left="136" LeftMargin="12" OnClick="btn_Search_OnClick" Style="Btn_Com" TabOrder="3" Text="확인" Top="120" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+	</Form>
+	<Script><![CDATA[
+function form_OnLoadCompleted(obj)
+{
+	 ed_popup.Text = p_text; // p_text는 팝업시에 부모창에서 파라미터로 보내는 값이다.
+}
+
+function btn_Search_OnClick(obj)
+{
+	parent.ed_popup_value.text = ed_popup.Text;
+	close();
+}
+]]></Script>
+</Window>

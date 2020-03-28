@@ -1,0 +1,1102 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="650" Id="CCAA03T01" Left="8" OnLoadCompleted="CCAA03T01_OnLoadCompleted" OnUnloadCompleted="CCAA03T01_OnUnloadCompleted" PidAttrib="7" Title="사용자관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1240" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_USER_LST" OnColumnChanged="DS_USER_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TEL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="HP_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="ST_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ED_DT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_PWD" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_IP" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_JMN" size="256" summ="default" type="STRING"/>
+					<colinfo id="STP_FILE" size="256" summ="default" type="STRING"/>
+					<colinfo id="STP_SAVE_FILE" size="256" summ="default" type="STRING"/>
+					<colinfo id="FAX_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMS_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="OUT_NOTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_USERBOND_LST" OnColumnChanged="DS_USERBOND_LST_OnColumnChanged">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="BND_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPT_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SORT_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="NOTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_USER_TREE">
+				<Contents>
+					<colinfo id="FLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROW_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPERATOR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BRCH_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="USR_GBN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMS_GBN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_TEMP"></Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_DEPT_CODE">
+				<Contents>
+					<colinfo id="DEPT_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPT_NM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape BKColor="user7" Bottom="252" Height="166" Id="Shape_edit" Left="320" LineColor="user61" Right="1234" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="24" Top="86" Type="RoundRect" Width="914"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static18" Left="588" Style="Stc_Label" TabOrder="3" Text="비밀번호" Top="91" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static21" Left="325" Style="Stc_Label" TabOrder="4" Text="사용자ID" Top="91" VAlign="Middle" Width="80"></Static>
+		<Shape BKColor="user21" Bottom="46" Height="40" Id="Shape_search" Left="2" LineColor="user22" Right="1234" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="4" Top="6" Type="RoundRect" Width="1232"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_add" ImageID="Btn_sub_add" Left="1092" LeftMargin="16" OnClick="btn_add_OnClick" Style="Btn_sub" TabOrder="2" Text="추가" Top="62" TopMargin="1" Transparent="TRUE" Width="50"></Button>
+		<Edit BindDataset="DS_USER_LST" Border="Flat" Column="USR_ID" Height="18" Id="EDT_USR_ID" Left="409" LeftMargin="4" Style="Edit_Ess" TabOrder="1" Top="92" Width="170"></Edit>
+		<Shape Bottom="200" Height="128" Id="Shape22" Left="405" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="409" TabOrder="6" Top="72" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Shape Bottom="61" Height="15" Id="Shape1" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="1239" TabOrder="7" Top="46" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Shape Bottom="88" Height="5" Id="Shape3" Left="-2" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1237" TabOrder="8" Top="83" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Image Align="Left" Height="14" Id="Image0" ImageID="Title_dot" LeftMargin="20" Style="Stc_Subtitle" TabOrder="9" Text="사용자목록" Top="68" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="5" Height="5" Id="Shape15" Left="0" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1239" TabOrder="10" Top="0" Type="Rectangle" Visible="FALSE" Width="1239"></Shape>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_USER_TREE" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="641" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="553" Id="GRD_USER_TREE" InputPanel="FALSE" LineColor="default" LineType="OnlyVERT" OnCellDBLClick="GRD_USER_TREE_OnCellDblClick" OnExpandEdit="GRD_USER_TREE_OnExpandEdit" OnHeadClick="GRD_USER_TREE_OnHeadClick" Right="315" RowHeight="20" Style="Grid_2" TabOrder="11" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="315">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="30"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="81"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" InputZeroTime="true" text="회사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="사용자ID"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="이름"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="구분"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="권한"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell col="3" colid="BRCH_ID" display="normal" InputZeroTime="true"/>
+						<cell align="center" col="4" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell col="5" colid="USR_ID" display="normal" InputZeroTime="true"/>
+						<cell col="6" colid="USR_NM" color="black" display="normal" InputZeroTime="true"/>
+						<cell col="7" colid="USR_GBN" color="black" display="normal" InputZeroTime="true"/>
+						<cell col="8" colid="PMS_GBN" color="black" display="normal" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Align="Left" Height="14" Id="Image4" ImageID="Title_dot" Left="320" LeftMargin="20" Style="Stc_Subtitle" TabOrder="12" Text="사용자기본정보" Top="69" Transparent="TRUE" Width="157"></Image>
+		<Image Align="Left" Height="18" Id="Image3" ImageID="label_dot" Left="10" LeftMargin="12" Style="Stc_Default_bold" TabOrder="14" Text="사용자ID/이름" Top="17" Transparent="TRUE" Width="98"></Image>
+		<Shape Bottom="48" Height="40" Id="Shape21" Left="106" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="126" TabOrder="13" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="645" Height="640" Id="Shape0" Left="1234" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1239" TabOrder="15" Top="5" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="168" Height="88" Id="Shape2" Left="580" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="588" TabOrder="16" Top="80" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Edit Border="Flat" BottomMargin="9" Height="18" Id="S_USR_NM" Left="127" LeftMargin="4" OnKeyDown="S_USR_NM_OnKeyDown" Style="Edit" TabOrder="17" Top="17" Width="100"></Edit>
+		<Image Align="Left" Height="18" Id="Image1" ImageID="label_dot" Left="289" LeftMargin="12" Style="Stc_Default_bold" TabOrder="19" Text="구분" Top="17" Transparent="TRUE" Width="42"></Image>
+		<Shape Bottom="48" Height="40" Id="Shape4" Left="327" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="347" TabOrder="18" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Shape Bottom="48" Height="40" Id="Shape5" Left="599" LineColor="sienna" LineKind="Vertical" LineWidth="10" Right="619" TabOrder="20" Top="8" Type="Rectangle" Visible="FALSE" Width="20"></Shape>
+		<Edit Border="Flat" Height="18" Id="S_TEL_NO" Left="620" LeftMargin="4" OnKeyDown="S_TEL_NO_OnKeyDown" Style="Edit" TabOrder="22" Top="17" Width="100"></Edit>
+		<Image Align="Left" Height="18" Id="Image2" ImageID="label_dot" Left="514" LeftMargin="12" Style="Stc_Default_bold" TabOrder="21" Text="전화/핸드폰" Top="17" Transparent="TRUE" Width="98"></Image>
+		<Shape Bottom="160" Height="88" Id="Shape8" Left="668" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="672" TabOrder="23" Top="72" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static5" Left="769" Style="Stc_Label" TabOrder="25" Text="이름" Top="91" VAlign="Middle" Width="80"></Static>
+		<Shape Bottom="184" Height="104" Id="Shape6" Left="761" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="769" TabOrder="26" Top="80" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static8" Left="960" Style="Stc_Label" TabOrder="27" Text="구분" Top="91" VAlign="Middle" Width="80"></Static>
+		<Shape Bottom="168" Height="88" Id="Shape9" Left="953" LineColor="slateblue" LineKind="Vertical" LineWidth="4" Right="961" TabOrder="28" Top="80" Type="Rectangle" Visible="FALSE" Width="8"></Shape>
+		<Shape Bottom="160" Height="88" Id="Shape10" Left="849" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="853" TabOrder="29" Top="72" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Edit BindDataset="DS_USER_LST" Border="Flat" Column="USR_PWD" Height="18" Id="EDT_USR_PWD" Left="671" LeftMargin="4" Style="Edit_Ess" TabOrder="30" Top="92" Width="90"></Edit>
+		<Shape Bottom="160" Height="88" Id="Shape11" Left="1040" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1044" TabOrder="31" Top="72" Type="Rectangle" Visible="FALSE" Width="4"></Shape>
+		<Edit BindDataset="DS_USER_LST" Border="Flat" Column="USR_NM" Height="18" Id="EDT_USR_NM" Left="853" LeftMargin="4" Style="Edit_Ess" TabOrder="32" Top="92" Width="100"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static4" Left="588" Style="Stc_Label" TabOrder="33" Text="팀" Top="138" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static0" Left="325" Style="Stc_Label" TabOrder="34" Text="전화번호" Top="114" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static1" Left="588" Style="Stc_Label" TabOrder="36" Text="핸드폰번호" Top="115" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_USER_LST" Border="Flat" Column="TEL_NO" Height="18" Id="EDT_TEL_NO" Left="409" LeftMargin="4" Style="Edit" TabOrder="35" Top="116" Width="170"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static2" Left="769" Style="Stc_Label" TabOrder="37" Text="입사일" Top="115" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static9" Left="960" Style="Stc_Label" TabOrder="38" Text="퇴사일" Top="115" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_USER_LST" Border="Flat" Column="HP_NO" Height="18" Id="EDT_HP_NO" Left="671" LeftMargin="4" Style="Edit" TabOrder="39" Top="116" Width="90"></Edit>
+		<Combo BindDataset="DS_USER_LST" Border="Flat" Column="USR_GBN" Height="18" Id="COB_USR_GBN" Left="1043" ResetIndex="FIRST" ShadowColor="user2" Style="Combo_Ess" TabOrder="40" Top="91" Width="95"></Combo>
+		<MaskEdit BindDataset="DS_USER_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="ST_DT" Height="18" Id="EDT_ST_DT" Left="853" Mask="####-##-##" Style="Edit" TabOrder="41" Top="117" Type="STRING" Width="73"></MaskEdit>
+		<Shape Bottom="141" Height="28" Id="Shape13" Left="926" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="931" TabOrder="43" Top="113" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Height="16" Id="BTN_ST_DT" ImageID="Btn_calendar" Left="931" OnClick="BTN_ST_DT_OnClick" TabOrder="42" Text="Button1" Top="118" Width="16"></Button>
+		<MaskEdit BindDataset="DS_USER_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="ED_DT" Height="18" Id="EDT_ED_DT" Left="1044" Mask="####-##-##" Style="Edit" TabOrder="44" Top="117" Type="STRING" Width="73"></MaskEdit>
+		<Shape Bottom="141" Height="28" Id="Shape14" Left="1137" LineColor="tomato" LineKind="Vertical" LineWidth="5" Right="1142" TabOrder="46" Top="113" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button BindDataset="DS_USER_LST" Column="ED_DT" Height="16" Id="BTN_ED_DT" ImageID="Btn_calendar" Left="1122" OnClick="BTN_ED_DT_OnClick" TabOrder="45" Text="Button1" Top="118" Width="16"></Button>
+		<Combo Border="Flat" Height="18" Id="S_USR_GBN" Left="346" ResetIndex="FIRST" ShadowColor="user2" Style="Combo" TabOrder="47" Top="16" Width="130"></Combo>
+		<Grid AutoEnter="TRUE" AutoScrollBar="AlwaysVert" BindDataset="DS_USERBOND_LST" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="637" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" Font="돋움,9" HeadBorder="Flat" HeadHeight="24" Height="346" Id="GRD_USERBOND_LST" InputPanel="FALSE" Left="320" LineColor="default" LineType="OnlyVERT" OnCellClick="GRD_USERBOND_LST_OnCellClick" OnHeadClick="GRD_USERBOND_LST_OnHeadClick" Right="1235" RowHeight="20" Style="Grid_2" TabOrder="48" TabStop="true" Top="291" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="915">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="30"/>
+						<col width="100"/>
+						<col width="0"/>
+						<col width="150"/>
+						<col width="0"/>
+						<col width="150"/>
+						<col width="80"/>
+						<col width="300"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" InputZeroTime="true" text="FLAG"/>
+						<cell col="1" display="text" InputZeroTime="true" text="ROW_ID"/>
+						<cell col="2" display="text" InputZeroTime="true" text="OPERATOR"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="3" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="No"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="4" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="사용자ID"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="5" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="채권사코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="6" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="채권사명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="7" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="지점코드"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="8" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="지점명"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="9" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="순서"/>
+						<cell bkcolor="user51" bkimagealign="stretch" col="10" color="user52" display="text" font="돋움,10,Bold" InputZeroTime="true" text="특이사항"/>
+					</head>
+					<body>
+						<cell col="0" colid="FLAG" display="text" InputZeroTime="true"/>
+						<cell col="1" colid="ROW_ID" display="text" InputZeroTime="true"/>
+						<cell col="2" colid="OPERATOR" display="text" InputZeroTime="true"/>
+						<cell align="center" col="3" display="text" expr="row&#32;+&#32;1" InputZeroTime="true"/>
+						<cell align="left" col="4" colid="USR_ID" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="5" colid="BND_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="6" colid="BND_NM" display="text" edit="button" expandchar="..." InputZeroTime="true"/>
+						<cell align="left" col="7" colid="SPT_SEQ" display="normal" InputZeroTime="true"/>
+						<cell align="left" col="8" colid="SPT_NM" display="text" edit="button" InputZeroTime="true"/>
+						<cell align="right" col="9" colid="SORT_NO" color="black" display="number" edit="number" InputZeroTime="true"/>
+						<cell align="left" col="10" colid="NOTE" color="black" display="normal" edit="normal" InputZeroTime="true"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_add_dtl" ImageID="Btn_sub_rowadd" Left="1108" OnClick="btn_add_dtl_OnClick" Style="Btn_sub" TabOrder="49" Text="&#32;&#32;&#32;행추가" Top="265" Width="61"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_del_dtl" ImageID="Btn_sub_del" Left="1173" OnClick="btn_del_dtl_OnClick" Style="Btn_sub" TabOrder="50" Text="&#32;&#32;&#32;행삭제" Top="265" Width="61"></Button>
+		<Shape Bottom="268" Height="15" Id="Shape16" Left="321" LineColor="seagreen" LineKind="Vertical" LineWidth="10" Right="1236" TabOrder="51" Top="253" Type="Rectangle" Visible="FALSE" Width="915"></Shape>
+		<Image Align="Left" Height="14" Id="Image6" ImageID="Title_dot" Left="322" LeftMargin="20" Style="Stc_Subtitle" TabOrder="52" Text="사용자별&#32;담당채권사" Top="271" Transparent="TRUE" Width="157"></Image>
+		<Shape Bottom="292" Height="32" Id="Shape18" Left="1168" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1173" TabOrder="53" Top="260" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Shape Bottom="291" Height="5" Id="Shape7" Left="324" LineColor="seagreen" LineKind="Vertical" LineWidth="5" Right="1239" TabOrder="54" Top="286" Type="Rectangle" Visible="FALSE" Width="915"></Shape>
+		<Shape Bottom="84" Height="24" Id="Shape17" Left="1140" LineColor="tomato" LineKind="Vertical" LineWidth="4" Right="1145" TabOrder="55" Top="60" Type="Rectangle" Visible="FALSE" Width="5"></Shape>
+		<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="21" Id="btn_rpt_print" ImageID="Btn_sub_5w" Left="1146" LeftMargin="16" OnClick="btn_reset_now_OnClick" Style="Btn_sub" TabOrder="56" Text="재직증명서" Top="62" TopMargin="1" Transparent="TRUE" Width="90"></Button>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static3" Left="769" Style="Stc_Label" TabOrder="57" Text="주소" Top="138" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_USER_LST" Border="Flat" Column="ADDR" Height="18" Id="Edit0" Left="852" LeftMargin="4" Style="Edit" TabOrder="58" Top="140" Width="282"></Edit>
+		<Combo BindDataset="DS_USER_LST" Border="Flat" Column="DEPT_CD" Height="18" Id="COB_DEPT_CD" Left="671" ResetIndex="FIRST" ShadowColor="user2" Style="Combo_Ess" TabOrder="59" Top="138" Width="90"></Combo>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static6" Left="325" Style="Stc_Label" TabOrder="60" Text="주민번호" Top="161" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static7" Left="770" Style="Stc_Label" TabOrder="61" Text="도장" Top="162" VAlign="Middle" Width="80"></Static>
+		<MaskEdit BindDataset="DS_USER_LST" Border="Flat" BorderColor="INACTIVECAPTIONTEXT" Column="USR_JMN" Height="18" Id="EDT_USR_JMN" Left="409" Mask="######-#######" Style="Edit_Ess" TabOrder="62" Top="162" Type="STRING" Width="166"></MaskEdit>
+		<Edit BindDataset="DS_USER_LST" Border="Flat" Column="STP_FILE" Height="18" Id="EDT_STP_FILE" Left="855" LeftMargin="4" Style="Edit" TabOrder="63" Top="163" Width="136"></Edit>
+		<Button Height="21" Id="BTN_FILE_SAVE" Left="998" OnClick="BTN_FILE_SAVE_OnClick" TabOrder="64" Text="파일첨부" Top="161" Width="58"></Button>
+		<Button Height="21" Id="BTN_FILE_DOWN" Left="1061" OnClick="BTN_FILE_DOWN_OnClick" TabOrder="65" Text="다운로드" Top="161" Width="58"></Button>
+		<Button Height="21" Id="BTN_FILE_DEL" Left="1124" OnClick="BTN_FILE_DEL_OnClick" TabOrder="68" Text="파일삭제" Top="161" Width="58"></Button>
+		<File Bottom="66" Height="24" Id="File1" Left="1248" Right="1272" TabOrder="67" Top="42" Width="24"></File>
+		<FileDialog Bottom="40" Height="24" Id="FileDialog1" Left="1248" Right="1272" TabOrder="68" Top="16" Width="24"></FileDialog>
+		<HttpFile Height="24" Id="multipart_http0" Left="1248" Top="66" Width="24"></HttpFile>
+		<Edit BindDataset="DS_USER_LST" Border="Flat" Column="STP_SAVE_FILE" Height="18" Id="Edit1" Left="888" LeftMargin="4" Style="Edit" TabOrder="67" Top="16" Visible="FALSE" Width="120"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static10" Left="325" Style="Stc_Label" TabOrder="68" Text="팩스번호" Top="137" VAlign="Middle" Width="80"></Static>
+		<Edit BindDataset="DS_USER_LST" Border="Flat" Column="FAX_NO" Height="18" Id="EDT_FAX_NO" Left="409" LeftMargin="4" Style="Edit" TabOrder="69" Top="139" Width="170"></Edit>
+		<Static Align="Center" Border="Flat" Height="20" Id="Static11" Left="588" Style="Stc_Label" TabOrder="70" Text="권한" Top="162" VAlign="Middle" Width="80"></Static>
+		<Combo BindDataset="DS_USER_LST" Border="Flat" Column="PMS_GBN" Height="18" Id="COB_PMS_GBN" Left="671" ResetIndex="FIRST" ShadowColor="user2" Style="Combo_Ess" TabOrder="71" Top="162" Width="90"></Combo>
+		<Static Align="Center" Border="Flat" Height="58" Id="Static13" Left="325" Style="Stc_Label" TabOrder="73" Text="외근직&#10;특이사항" Top="186" VAlign="Middle" Width="80"></Static>
+		<TextArea BindDataset="DS_USER_LST" Column="OUT_NOTE" Height="58" Id="TXT_OUT_NOTE" ImeMode="none" Left="408" Style="Edit" TabOrder="72" Top="186" Width="736"></TextArea>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : 사용자관리
+* 작성자     : 이용재
+* 작성일     : 2013-02-13 : 최초 생성
+* 기능설명   : 사용자 관리
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2013-02-13       V1.0                  initial ver.
+***************************************************************************************************/
+
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+#include "lib::lib_file.js";
+
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+var curTreeRow          = "";
+var curUserBondRow          = "";
+
+var userPath = "C:\\HANA_FILE\\UPFILE\\STP\\";
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+//  1-1.화면 셋팅 함수 
+//  1-2.조회 함수     
+//  1-3.저장 함수    
+//  1-4.삭제 함수    
+//  1-5.Transaction 후 처리 해야 할 내용
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 1.1 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//* 비고         :
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+
+	//*------------------------------------------------------------------------
+    //* 리사이즈 컨포넌트 정의
+	//* H: 가로 리사이즈
+	//* W: 세로 리사이즈
+	//* A: 가로세로 리사이즈
+	//* R: Resize
+	//* M: Move
+	//* Quick view로 테스트시 주석처리 후 테스트
+    //*------------------------------------------------------------------------
+	gfn_SetResize(this, "Shape_search:H:R Shape_edit:H:R GRD_USER_TREE:W:R GRD_USERBOND_LST:A:R btn_add:H:M btn_rpt_print:H:M btn_add_dtl:H:M btn_del_dtl:H:M");
+
+	// 내외근직구분
+	gfn_comCodeCombo(S_USR_GBN, "CC03", "","전체");
+
+	gfn_comCodeCombo(COB_USR_GBN, "CC03", "","");
+	
+	// 권한구분
+	gfn_comCodeCombo(COB_PMS_GBN, "CC08", "","");
+	
+	
+	// 공통 명령어 조정
+	gfn_set_cbutton("조회:fn_search 저장:fn_save 삭제:fn_delete");
+	
+	
+	// 팀콤보 가져오기 
+	fn_search_dept_code();
+	
+	
+	fn_search();
+		
+}
+
+ 
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.2 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{
+	DS_USER_TREE.ClearData();
+	DS_USER_LST.ClearData();
+	DS_USERBOND_LST.ClearData();
+	
+	svcID			= "CCAA03T01.selectUserTree";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_USER_TREE=cc.CCUserDAO.selectUserTree";
+	argument    	= " _sqlName=cc.CCUserDAO.selectUserTree"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " S_USR_NM=" + quote(S_USR_NM.Text)
+							+ " S_TEL_NO=" + quote(S_TEL_NO.Text)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 사용자 정보 저장 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_save()
+{
+	curTreeRow = DS_USER_TREE.curRow;
+	curUserBondRow = DS_USERBOND_LST.curRow;
+		
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	var isSave = false;
+	
+	// 필터 (사용자 기본정보는 한건이라 궂이 필터 안함)
+	DS_USERBOND_LST.FireEvent = false;		
+	DS_USERBOND_LST.UnFilter();
+	DS_USERBOND_LST.Filter("FLAG !='N'");
+
+
+	if(length(DS_USER_LST.GetColumn(0, "USR_ID")) == 0)
+	{
+		bValidate = false;
+		cMessage += "사용자ID 누락 ";
+	}	
+
+	if(length(DS_USER_LST.GetColumn(0, "USR_PWD")) == 0)
+	{
+		bValidate = false;
+		cMessage += "비밀번호 누락 ";
+	}
+
+
+	if(length(DS_USER_LST.GetColumn(0, "USR_NM")) == 0)
+	{
+		bValidate = false;
+		cMessage += "이름 누락 ";
+	}
+
+	
+	if(length(DS_USER_LST.GetColumn(0, "USR_GBN")) == 0)
+	{
+		bValidate = false;
+		cMessage += "사용자구분 누락 ";
+	}
+	
+	
+
+	if(length(DS_USER_LST.GetColumn(0, "DEPT_CD")) == 0)
+	{
+		bValidate = false;
+		cMessage += "팀 누락 ";
+	}			
+
+
+	if(length(DS_USER_LST.GetColumn(0, "PMS_GBN")) == 0)
+	{
+		bValidate = false;
+		cMessage += "권한 누락 ";
+	}	
+	
+	if(bValidate == false)
+	{
+		gfn_popup_message("modal", "error", cMessage, "확인");
+	}
+	else
+	{
+		isSave = true;
+	}	
+	
+	// 지점정보체크 
+	if(DS_USERBOND_LST.rowcount > 0)
+	{
+	
+		// 필수체크
+		for(var i=0;i<DS_USERBOND_LST.rowcount;i++)
+		{
+			
+			cMessage = "";
+			
+			if(length(DS_USERBOND_LST.GetColumn(i, "BND_SEQ")) == 0)
+			{
+				bValidate = false;
+				cMessage += "채권사 누락 ";
+			}
+
+			
+			if(bValidate == false)
+			{
+				pMessage += "\n ["+i+"] " + cMessage;
+			}
+		}
+		
+		// 필수항목 누락 
+		if(bValidate == false)
+		{
+			gfn_popup_message("modal", "error", pMessage, "확인");
+		}
+		else
+		{
+			isSave = true;
+		}	
+	}
+
+
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		// 저장 
+		//if(gfn_popup_message("modal", "confirm", "저장하시겠습니까?", "확인")) 
+		//{
+
+			// 새로운 DataSet에 담아서 보내야됨
+			// 아니면 변경된 모든것들을 보내버리므로 안됨.
+			ds_temp.ClearData();
+			ds_temp.CopyF("DS_USERBOND_LST");
+			
+			svcID			= "CCAA03T01.saveUserLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "cc.CCUserDAO.saveUserLst=DS_USER_LST:A"
+							+ " cc.CCUserDAO.saveUserBondLst=ds_temp:A";
+			
+			outDatasets 	= "";
+			argument    	= " _sqlName=cc.CCUserDAO.saveUserLst"
+							+ ",cc.CCUserDAO.saveUserBondLst"			
+							;
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		//}
+	
+	}
+
+	DS_USERBOND_LST.UnFilter();
+	DS_USERBOND_LST.Filter("flag != 'D'");
+	DS_USERBOND_LST.FireEvent = true;	
+
+
+	DS_USER_TREE.row = curTreeRow;
+	DS_USERBOND_LST.row = curUserBondRow;	
+	
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.4 삭제 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_delete()
+{
+	var bValidate = true;
+	var pMessage = "";
+	var cMessage = "";
+	
+	
+	// 선택된 사용자 삭제 
+	if(length(DS_USER_LST.GetColumn(DS_USER_LST.currow,"ROW_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "삭제할 항목이 없습니다.", "확인");
+		bValidate = false;	
+		return;
+	}
+	// 정상일경우 처리
+	if(bValidate == true)
+	{
+		//삭제 
+		//if(gfn_popup_message("modal", "confirm", "삭제하시겠습니까? 삭제 후 복원이 불가능 합니다.", "확인")) 
+		//{
+		
+			svcID			= "CCAA03T01.deleteUserLst";
+			url   			= "service::common/select_mi.do";
+			inDatasets  	= "";
+			outDatasets 	= "";
+			argument    	= " _sqlName=cc.CCUserDAO.deleteUserLst"
+							+ " ROW_ID=" + quote(DS_USER_LST.GetColumn(DS_USER_LST.currow,"ROW_ID"))
+							;
+			
+			callbackFunc 	= "gfn_callback";	
+		
+		
+			gfn_showProgressWindow(true);
+			gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 
+		//}
+	
+	}
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 1.5 Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+
+	switch(svcID) 
+	{		
+		// 조회
+		case "CCAA03T01.selectUserTree" :
+		
+			// 조회 결과 없으면 메시지를 띄운다.
+			//if(DS_USER_TREE.rowcount < 1) 
+			//{ 
+			//	gfn_popup_message("modal", "ico_info", "조회된 내용이 없습니다.", "확인");	
+			//}
+			
+		break;	
+
+		
+		// 수정
+		case "CCAA03T01.saveUserLst" :
+			gfn_setMsg("사용자 추가/수정 완료.");
+			fn_search_user_info(DS_USER_LST.GetColumn(DS_USER_LST.curRow, "BRCH_ID"), DS_USER_LST.GetColumn(DS_USER_LST.curRow, "USR_ID"));		
+		break;	
+		
+		
+		// 삭제
+		case "CCAA03T01.deleteUserLst" :
+		
+			gfn_setMsg("사용자 삭제 완료.");
+			fn_search();		
+		break;	
+		
+		// 팀정보 조회
+		case "CCAA03T01.selectDeptCode" :
+		
+			gfn_DSCombo(COB_DEPT_CD, "DS_DEPT_CODE", "DEPT_CD", "DEPT_NM",  "", "");
+		
+		break;		
+		
+		
+		
+		default:
+	}
+
+	if(curTreeRow != null) 
+	{
+		DS_USER_TREE.row = curTreeRow;
+	}
+
+	if(curUserBondRow != null) 
+	{
+		DS_USERBOND_LST.row = curUserBondRow;
+	}
+
+}
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 사용자 정보 가져오기  
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search_user_info(BRCH_ID, USR_ID)
+{
+	curTreeRow = DS_USER_TREE.curRow;
+	
+	DS_USER_LST.ClearData();
+	DS_USERBOND_LST.ClearData();
+	
+	svcID			= "CCAA03T01.selectUserLst";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_USER_LST=cc.CCUserDAO.selectUserInfo"
+							+ " DS_USERBOND_LST=cc.CCUserDAO.selectUserBondInfo"
+							+ " DS_USER_TREE=cc.CCUserDAO.selectUserTree"
+							;	
+	;
+	argument    	= " _sqlName=cc.CCUserDAO.selectUserInfo"
+							+ ",cc.CCUserDAO.selectUserBondInfo"
+							+ ",cc.CCUserDAO.selectUserTree"
+							+ " BRCH_ID=" + quote(BRCH_ID)
+							+ " USR_ID=" + quote(USR_ID)
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID)
+							+ " S_USR_NM=" + quote(S_USR_NM.Text)
+							+ " S_TEL_NO=" + quote(S_TEL_NO.Text)
+							+ " OPERATOR=" + quote(GDS_USER_INFO.USR_ID);							
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 팀 조회 함수 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_search_dept_code()
+{
+	svcID			= "CCAA03T01.selectDeptCode";
+	url   			= "service::common/select_mi.do";
+	inDatasets  	= "";
+	outDatasets 	= "DS_DEPT_CODE=cc.CCUserDAO.selectDeptCode";
+	argument    	= " _sqlName=cc.CCUserDAO.selectDeptCode"
+							+ " S_BRCH_ID=" + quote(GDS_USER_INFO.BRCH_ID);
+	
+	
+	callbackFunc 	= "gfn_callback";
+
+	gfn_showProgressWindow(true);
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);	 	
+
+}
+
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//  2-1.Load 부분
+//  2-2.UnLoad 부분
+//  2-3 onSize 부분
+//  2-4.초기화 부분
+//  2-5.조회 버튼 클릭     
+//  2-6.저장 버튼 클릭    
+//  2-7.삭제 버튼 클릭    
+//  2-8.엑셀 버튼 클릭    
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-1.화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAA03T01_OnLoadCompleted(obj)
+{
+	// 공통 init
+	gfn_OnInit();
+	
+	// 폼초기화 
+	fn_initForm();
+
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function CCAA03T01_OnUnloadCompleted(obj)
+{
+	fn_save();
+	gfn_OnBeforeExit();
+}
+
+
+
+
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : TREE Grid  클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_USER_TREE_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	// 사용자 기본정보 및 지점정보 가져오기 
+	var BRCH_ID = DS_USER_TREE.GetColumn(nRow,"BRCH_ID");
+	var USR_ID = DS_USER_TREE.GetColumn(nRow,"USR_ID");
+	
+	fn_search_user_info(BRCH_ID, USR_ID);	
+}
+
+
+function GRD_USERBOND_LST_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	curUserBondRow = nRow;
+	// 팝업
+	if(nCell == 6 || nCell == 8)
+	{	
+			
+		//  기존값은 클리어
+		DS_USERBOND_LST.SetColumn(nRow,"BND_SEQ", "");
+		DS_USERBOND_LST.SetColumn(nRow,"BND_NM", "");
+		DS_USERBOND_LST.SetColumn(nRow,"SPT_SEQ", "");
+		DS_USERBOND_LST.SetColumn(nRow,"SPT_NM", "");
+			
+			
+		var params = "P_BRCH_ID="+quote(GDS_USER_INFO.BRCH_ID) ;
+			
+		var retArr = gfn_openPopup(this, "CP::CPAB01P01.xml", params, true);
+
+		DS_USERBOND_LST.SetColumn(nRow,"BND_SEQ", retArr[1]);
+		DS_USERBOND_LST.SetColumn(nRow,"BND_NM", retArr[2]);
+		DS_USERBOND_LST.SetColumn(nRow,"SPT_SEQ", retArr[3]);
+		DS_USERBOND_LST.SetColumn(nRow,"SPT_NM", retArr[4]);
+			
+	
+		GRD_USERBOND_LST.Redraw;
+		
+	}	
+
+}
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : Grid 해더 클릭시 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function GRD_USER_TREE_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_USER_TREE, DS_USER_TREE, nCell);	
+}
+
+
+
+
+function GRD_USERBOND_LST_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_GridSort(GRD_USERBOND_LST, DS_USERBOND_LST, nCell);	
+}
+
+
+
+ 
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 추가 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_add_OnClick(obj)
+{
+	
+	DS_USER_LST.cleardata();
+	DS_USERBOND_LST.cleardata();
+	
+	var vRow = DS_USER_LST.AddRow();
+    
+	// 기초값
+	DS_USER_LST.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+	DS_USER_LST.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+	DS_USER_LST.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+    
+    DS_USER_LST.SetColumn(vRow,"BRCH_ID", GDS_USER_INFO.GetColumn(0, "BRCH_ID"));// 
+}
+
+
+
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행추가 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_add_dtl_OnClick(obj)
+{
+	
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_USER_LST.GetColumn(DS_USER_LST.curRow,"USR_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "먼저 사용자 기본정보를 선택 해야 합니다. ", "확인");
+		return;
+	}
+	
+	var vRow = DS_USERBOND_LST.AddRow();
+	
+	// 기초값
+	DS_USERBOND_LST.SetColumn(vRow,"FLAG","I");	// 추가 FLAG 넣기
+	DS_USERBOND_LST.SetColumn(vRow,"ROW_ID","");	// ROW_ID(조회후 셋팅됨)
+	DS_USERBOND_LST.SetColumn(vRow,"OPERATOR", GDS_USER_INFO.GetColumn(0, "USR_ID"));// 등록자, 수정자 넣기
+    
+    DS_USERBOND_LST.SetColumn(vRow,"BRCH_ID", DS_USER_LST.GetColumn(DS_USER_LST.curRow, "BRCH_ID"));// 
+    DS_USERBOND_LST.SetColumn(vRow,"USR_ID", DS_USER_LST.GetColumn(DS_USER_LST.curRow, "USR_ID"));// 
+	
+}
+ 
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 행삭제 클릭시  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function btn_del_dtl_OnClick(obj)
+{
+	// 추가된것은 DB저장전이므로 그냥 DataSet에서 삭제
+	if(DS_USERBOND_LST.GetColumn(row,"FLAG") == "I")
+	{
+		DS_USERBOND_LST.DeleteRow(curUserBondRow);
+	}
+	// 아닌것은 실제로 DB에 삭제해야되므로 flag를 D로 두고 마지막에 filter한다.
+	else
+	{
+		DS_USERBOND_LST.SetColumn(curUserBondRow,"FLAG", "D");
+	}	
+	
+	DS_USERBOND_LST.Filter("flag != 'D'");	// 삭제된거는 필터링
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : DataSet 변경시 자동저장
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function DS_USER_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}
+}
+
+
+
+function DS_USERBOND_LST_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	// flag가 'N' 이면 'U' 로 바꾼다.
+	if(obj.GetColumn(nRow, "FLAG") == "N" )
+	{
+		obj.SetColumn(nRow, "FLAG", "U");	// 수정했다는 표시 
+	}	
+}
+
+
+
+
+
+function S_USR_NM_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_search();	
+	}		
+}
+
+
+
+
+
+function S_TEL_NO_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar==13){				
+		fn_search();	
+	}		
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 시작일 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function BTN_ST_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", EDT_ST_DT);
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 종료일 선택 팝업
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function BTN_ED_DT_OnClick(obj)
+{
+	gfn_SetCalendarDate(obj, "D", EDT_ED_DT);
+}
+
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 파일첨부  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function BTN_FILE_SAVE_OnClick(obj)
+{
+	
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_USER_LST.GetColumn(DS_USER_LST.curRow,"USR_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "먼저 사용자 기본정보를 선택 해야 합니다. ", "확인");
+		return;
+	}	
+	
+	FileDialog1.Type = "OPEN";
+	
+	if(FileDialog1.Open()){
+
+		var fileExt = gfn_getExt(FileDialog1.FileName);
+				
+		
+		File1.FileName = FileDialog1.FilePath + "\\" + FileDialog1.FileName;
+		
+		DS_USER_LST.SetColumn(DS_USER_LST.curRow, "STP_FILE", FileDialog1.FileName);
+		
+		
+		// 바로 저장 
+		fn_file_upload();
+
+	}	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 파일다운  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function BTN_FILE_DOWN_OnClick(obj)
+{
+	
+	// 기본정보가 선택되지 않으면 경고 
+	if(length(DS_USER_LST.GetColumn(DS_USER_LST.curRow,"USR_ID")) == 0)
+	{
+		gfn_popup_message("modal", "error", "먼저 사용자 기본정보를 선택 해야 합니다. ", "확인");
+		return;
+	}	
+	
+	var str_param = DS_USER_LST.GetColumn(DS_USER_LST.curRow, "STP_SAVE_FILE");
+	
+	FileDialog1.Type = "save";
+	//FileDialog1.FileName = str_param;	
+	FileDialog1.Open();	
+	//trace(" >>> " + FileDialog1.FilePath);
+	
+	var savefilename = str_param;
+	var savepath  = userPath + savefilename;
+			
+	var ret = gfn_ReadFile(multipart_http0, FileDialog1.FilePath +"\\"+ FileDialog1.FileName, savepath, 0);
+
+	if ( ret[0] == "FAIL" )
+	{
+		alert('오류:'+ret[1]);
+	} 	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 파일삭제  실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function BTN_FILE_DEL_OnClick(obj)
+{
+	DS_USER_LST.SetColumn(DS_USER_LST.curRow, "STP_FILE", "");
+	DS_USER_LST.SetColumn(DS_USER_LST.curRow, "STP_SAVE_FILE", "");
+}
+ 
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 파일업로드 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//* 비고         :
+//*-----------------------------------------------------------------------------------------------
+function fn_file_upload()
+{
+	// 사진추가된 경우
+	if(length(File1.FileName) != 0)
+	{
+		var tmpFileName =  FileDialog1.FileName;			// 파일명
+		var chkFile = "";									// 임시 파일명
+		var fileExt = "";										// 확장자 
+		
+		fileExt = gfn_getExt(tmpFileName);
+				
+		
+	
+		// 1. 사진 저장
+		var filefullname = File1.FileName;
+		var savefilename = "STP_" + DS_USER_LST.GetColumn(DS_USER_LST.curRow, "USR_ID") +"."+fileExt; 
+		var savepath  = userPath + savefilename;
+		
+		var ret = gfn_FileWrite(multipart_http0, filefullname, savefilename, savepath);
+		
+		// 업로드 실패
+		if(ret[0] == "FAIL")
+		{
+			gfn_popup_message("modal", "ico_alert", "양식파일 저장 실패하였습니다.", "확인");
+		}
+		// 업로드 성공
+		else
+		{
+			DS_USER_LST.SetColumn(DS_USER_LST.curRow, "STP_FILE", FileDialog1.FileName);		// 원본파일명
+			DS_USER_LST.SetColumn(DS_USER_LST.curRow, "STP_SAVE_FILE", savefilename);			// 저장파일명
+		}
+	}
+	
+	
+//	File1.Delete();
+	File1.Close();	
+	
+}
+]]></Script>
+</Window>

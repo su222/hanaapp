@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<Window>
+	<Form Height="176" Id="POPUP_BIRTH" Left="8" OnLoadCompleted="POPUP_BIRTH_OnLoadCompleted" OnUnloadCompleted="POPUP_BIRTH_OnUnloadCompleted" PidAttrib="7" Title="생일자팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="176" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_birth">
+				<Contents>
+					<colinfo id="vw_pla_nm" size="256" summ="default" type="STRING"/>
+					<colinfo id="kor_nm" size="255" summ="default" type="STRING"/>
+					<colinfo id="COM_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="eno" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Div Height="130" Id="Div0" Left="8" scroll="true" TabOrder="1" Text="Div0" Top="28" Width="164">
+			<Contents>
+				<Image Border="Flat" BorderColor="black" Height="34" Id="Image0" Left="2" TabOrder="3" Top="36" Visible="FALSE" Width="28"></Image>
+				<Image FillType="STRETCH" Height="20" Id="Image4" ImageID="cake" Left="7" TabOrder="1" Width="20"></Image>
+				<Edit Border="Flat" BorderColor="white" Color="black" Font="맑은&#32;고딕,10,Bold" Height="30" Id="Edit0" Left="29" Readonly="TRUE" TabOrder="2" Text="생일축하합니다." Top="-5" Width="95"></Edit>
+				<Edit Align="CENTER" Border="Flat" BorderColor="white" Color="black" Font="맑은&#32;고딕,8,Bold" Height="30" Id="Edit1" Left="30" Readonly="TRUE" TabOrder="4" Text="황정음" Top="35" Visible="FALSE" Width="45"></Edit>
+				<Image Border="Flat" BorderColor="black" Height="34" Id="Image1" Left="78" TabOrder="5" Top="36" Visible="FALSE" Width="28"></Image>
+				<Edit Align="CENTER" Border="Flat" BorderColor="white" Color="black" Font="맑은&#32;고딕,8,Bold" Height="30" Id="Edit2" Left="106" Readonly="TRUE" TabOrder="6" Text="황정음" Top="35" Visible="FALSE" Width="45"></Edit>
+				<Edit Align="CENTER" Border="Flat" BorderColor="white" Color="black" Font="맑은&#32;고딕,8,Bold" Height="30" Id="Edit4" Left="106" Readonly="TRUE" TabOrder="7" Text="황정음" Top="83" Visible="FALSE" Width="45"></Edit>
+				<Image Border="Flat" BorderColor="black" Height="34" Id="Image3" Left="78" TabOrder="8" Top="84" Visible="FALSE" Width="28"></Image>
+				<Edit Align="CENTER" Border="Flat" BorderColor="white" Color="black" Font="맑은&#32;고딕,8,Bold" Height="30" Id="Edit3" Left="30" Readonly="TRUE" TabOrder="9" Text="황정음" Top="83" Visible="FALSE" Width="45"></Edit>
+				<Image Border="Flat" BorderColor="black" Height="34" Id="Image2" Left="2" TabOrder="10" Top="84" Visible="FALSE" Width="28"></Image>
+			</Contents>
+		</Div>
+		<Image FillType="STRETCH" Height="176" Id="Image0" ImageID="pop_img_birth" TabOrder="2" Transparent="TRUE" Width="176"></Image>
+		<Image Height="30" Id="img_birth" ImageID="gls_cal_top" Left="224" TabOrder="3" Top="320" Visible="FALSE" Width="179"></Image>
+		<Grid AutoEnter="TRUE" AutoScrollBar="None" BindDataset="ds_birth" BkColor2="user55" BkSelColor="user54" BoldHead="FALSE" Border="Flat" Bottom="392" CellMoving="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillArea="TRUE" HeadBorder="Flat" HeadHeight="24" Height="24" Id="grd_birth" InputPanel="FALSE" Left="299" LineColor="default" LineType="OnlyVERT" Right="417" RowHeight="46" Style="Grid_2" TabOrder="4" TabStop="true" Top="368" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="118">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="60"/>
+						<col width="55"/>
+					</columns>
+					<head>
+						<cell bkcolor="user51" bkimagealign="stretch" bkimageid="grid_t_bg" col="0" color="user52" display="text" text="flag"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="1" color="user42" display="text" text="row_id"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="2" color="user42" display="text" text="operator"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="3" color="user42" display="checkbox" edit="checkbox"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="4" color="user42" combocol="code" combodataset="ds_INDS_GB" combotext="value" display="text" text="부서"/>
+						<cell bkcolor="user41" bkimagealign="stretch" bkimageid="grid_t_bg_pop1" col="5" color="user42" display="text" text="이름"/>
+					</head>
+					<body>
+						<cell col="0" colid="flag" display="text" edit="normal"/>
+						<cell col="1" colid="row_id" display="text" edit="normal" expandsize="0"/>
+						<cell col="2" colid="operator" display="text"/>
+						<cell align="center" col="3" colid="chk" color="black" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="4" colid="vw_pla_nm" display="text" font="돋움,9"/>
+						<cell align="center" col="5" colid="kor_nm" combocol="code" combodataset="ds_sort" combotext="name" display="text" font="돋움,9"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" BKColor="user41" Border="Flat" BorderColor="user37" Color="user52" Height="24" Id="Static1" Left="201" TabOrder="5" Text="사진" Top="368" VAlign="Middle" Visible="FALSE" Width="59"></Static>
+		<Static Align="Center" Color="black" Font="Tahom,9,Bold" Height="15" Id="st_year" Left="160" TabOrder="6" Text="생일자" Top="344" VAlign="Middle" Visible="FALSE" Width="55"></Static>
+	</Form>
+	<Script><![CDATA[/***************************************************************************************************
+* FormID(명) : POPUP_BIRTH (생일자 팝업)
+* 작성자     : 한희경
+* 작성일     : 2011-03-30: 최초 생성
+* 기능설명   : 생일자 선택
+* 변경로그
+* Date             Ver          Name        Description
+* ---------------  ------   ----------  ---------------------------
+* 2011-03-30      V1.0                  initial ver.
+***************************************************************************************************/
+
+/// 그냥 닫기하면 데이타 유지...
+
+/**************************************************************************************************
+  * 공통 Script Include
+***************************************************************************************************/
+#include "lib::lib_global.js";
+#include "lib::lib_comm.js";
+#include "lib::lib_grid.js";
+#include "lib::lib_platform.js";
+#include "lib::lib_popup.js";
+#include "lib::lib_msg.js";
+#include "lib::lib_ext.js";
+
+/**************************************************************************************************
+  * 화면 변수 선언부
+***************************************************************************************************/
+
+//var popupValue 	= ""; // 팝업창에서 받아온 값을 넣어주기 위해서 전역변수로 선언 (현제 쓰이지는 않는다)
+var svcID			= "";		
+var url   			= "";
+var inDatasets  	= "";
+var outDatasets 	= "";
+var argument    	= "";
+var callbackFunc 	= "";
+
+
+
+
+
+
+/**************************************************************************************************
+  * 공통 Function 처리 부분
+***************************************************************************************************/
+
+//*------------------------------------------------------------------------
+//* 함수설명     : 화면셋팅 함수 
+//* 함수유형     :
+//* parameter    :
+//* return value : 없음
+//*------------------------------------------------------------------------
+function fn_initForm()
+{
+	trace('birth_day='+g_birthDay);
+
+	fn_search();
+	
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 마스터(산업구분) 조회 함수 
+//* 함수유형     : 
+//* parameter    : s_cob_inds_gb.value : 산업구분코드 
+//* return value : ds_CMPNY 데이터셋에 저장
+//*-----------------------------------------------------------------------------------------------
+function fn_search()
+{trace("p_birth_conf="+GDS_USER_INFO.birth_conf);
+	svcID			= "Portal.selectBirthPop";
+	url   			= "service::Portal.selectBirthPop.do";
+	inDatasets  	= "";
+	outDatasets 	= "ds_birth=Portal.selectBirthPop";
+	argument    	= " _sqlName=Portal.selectBirthPop"
+						+ " birth_ymd=" + quote(g_birthDay)		
+						+ " p_COM_ID=" + quote(GDS_USER_INFO.COM_ID)
+						+ " p_vw_pla_cd=" + quote(GDS_USER_INFO.vw_pla_cd)
+						+ " p_vw_pla_cnt=" + quote(GDS_USER_INFO.vw_pla_cnt)
+						+ " p_birth_conf=" + quote(GDS_USER_INFO.birth_conf)
+						;
+	callbackFunc 	= "fn_callback";
+	gfn_Transaction(svcID, url, inDatasets, outDatasets, argument, callbackFunc);		
+	
+}
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : //Transaction 호출후 결과값 확인 (gfn_callback에서 fn_callback을 호출한다.)
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function fn_callback(svcID, errorCode, errorMsg)
+{
+	
+	switch(svcID) 
+	{
+		// 생일자
+		case "Portal.selectBirthPop" :
+		
+			trace('ddddddddddddddddddddddddddddddd');
+		fn_makeImgComp();
+		break;	
+
+		default:
+			  alert("기타"); 
+	}
+}
+
+
+
+
+/**************************************************************************************************
+  * 사용자 정의  Function 처리 부분
+***************************************************************************************************/
+function fn_makeImgComp()
+{	
+	// 데이터셋 rowcount - 생일자 수만큼 row생성
+	var rowcount = ds_birth.rowcount;
+
+	// 좌측 첫번째
+	// 이미지 컴포넌트 초기값
+	var img0_ileft = 2;
+	var img0_iright = 30;
+	var img0_itop = 36;
+	var img0_ibottom = 70;
+	var img0_iheight = 34;
+	var img0_iwidth = 28;
+	
+	// 성명 컴포넌트 초기값
+	var name0_ileft = 30;
+	var name0_iright = 75;
+	var name0_itop = 35;
+	var name0_ibottom = 65;
+	var name0_iheight = 30;
+	var name0_iwidth = 45;	
+	
+	// 우측 첫번쨰
+	// 이미지 컴포넌트 초기값
+	var img1_ileft = 72;
+	var img1_iright = 100;
+	var img1_itop = 36;
+	var img1_ibottom = 70;
+	var img1_iheight = 34;
+	var img1_iwidth = 28;
+	
+	// 성명 컴포넌트 초기값
+	var name1_ileft = 100;
+	var name1_iright = 145;
+	var name1_itop = 35;
+	var name1_ibottom = 65;
+	var name1_iheight = 30;
+	var name1_iwidth = 45;	
+	trace(rowcount);
+	// 컴포넌트 생성
+	for(nImg = 0; nImg < rowcount; nImg++)
+	{	trace(GlobalURL);
+		// 사진 imgUrl
+		var imgUrl = GlobalURL + "UPFILE/PICPER/";
+		// 성명
+		var name = "";
+		
+		if(nImg=0)
+		{		
+			imgUrl = imgUrl + ds_birth.getcolumn(nImg, "COM_ID") + "/APPROVE/" + 
+					ds_birth.getcolumn(nImg, "eno") + ".jpg";
+			name = ds_birth.getcolumn(nImg, "kor_nm");
+			
+			div0.Create("image", "img_pic" + nImg,'left="'+ img0_ileft+'" right="'+img0_iright+'" top="'+img0_itop+'" width="'
+			            +img0_iwidth+'" height="'+img0_iheight+'" text="" border="flat" filltype="STRETCH" bordercolor = "white" imageID="' + imgUrl +'"');
+		
+			div0.Create("edit", "edt_name" + nImg,'left="'+ name0_ileft+'" right="'+name0_iright+'" top="'+name0_itop+'" width="'
+			           +name0_iwidth+'" height="'+name0_iheight+'" color="black" readOnly="true" border="flat" bordercolor = "white" text="' + name +'"');
+		
+		}
+		else if(nImg=1)
+		{		
+			imgUrl = imgUrl + ds_birth.getcolumn(nImg, "COM_ID") + "/APPROVE/" + 
+					ds_birth.getcolumn(nImg, "eno") + ".jpg";
+			name = ds_birth.getcolumn(nImg, "kor_nm");
+			
+			div0.Create("image", "img_pic" + nImg1,'left="'+ img1_ileft+'" right="'+img1_iright+'" top="'+img1_itop+'" width="'
+			            +img1_iwidth+'" height="'+img1_iheight+'" text="" border="flat" filltype="STRETCH" bordercolor = "white" imageID="' + imgUrl +'"');
+		
+			div0.Create("edit", "edt_name" + nImg,'left="'+ name1_ileft+'" right="'+name1_iright+'" top="'+name1_itop+'" width="'
+			           +name1_iwidth+'" height="'+name1_iheight+'" color="black" readOnly="true" border="flat" bordercolor = "white" text="' + name +'"');
+		
+		}
+		else
+		{
+			var rmder = toNumber(nImg) % 2;
+			trace(rmder);
+			if(rmder == 0)
+			{
+				imgUrl = imgUrl + ds_birth.getcolumn(nImg, "COM_ID") + "/APPROVE/" + 
+						ds_birth.getcolumn(nImg, "eno") + ".jpg";
+				name = ds_birth.getcolumn(nImg, "kor_nm");
+				
+				img0_itop = toNumber(img0_itop) + 50;
+				name0_itop = toNumber(name0_itop) + 50;
+				
+				div0.Create("image", "img_pic" + nImg,'left="'+ img0_ileft+'" right="'+img0_iright+'" top="'+img0_itop+'" width="'
+							+img0_iwidth+'" height="'+img0_iheight+'" text="" border="flat" filltype="STRETCH" bordercolor = "white" imageID="' + imgUrl +'"');
+			
+				div0.Create("edit", "edt_name" + nImg,'left="'+ name0_ileft+'" right="'+name0_iright+'" top="'+name0_itop+'" width="'
+						   +name0_iwidth+'" height="'+name0_iheight+'" color="black" readOnly="true" border="flat" bordercolor = "white" text="' + name +'"');		
+			}
+			else
+			{
+				imgUrl = imgUrl + ds_birth.getcolumn(nImg, "COM_ID") + "/APPROVE/" + 
+						ds_birth.getcolumn(nImg, "eno") + ".jpg";
+				name = ds_birth.getcolumn(nImg, "kor_nm");
+				
+				img1_itop = toNumber(img1_itop) + 50;
+				name1_itop = toNumber(name1_itop) + 50;
+								
+				div0.Create("image", "img_pic" + nImg,'left="'+ img1_ileft+'" right="'+img1_iright+'" top="'+img1_itop+'" width="'
+							+img1_iwidth+'" height="'+img1_iheight+'" text="" border="flat" filltype="STRETCH" bordercolor = "white" imageID="' + imgUrl +'"');
+			
+				div0.Create("edit", "edt_name" + nImg,'left="'+ name1_ileft+'" right="'+name1_iright+'" top="'+name1_itop+'" width="'
+						   +name1_iwidth+'" height="'+name1_iheight+'" color="black" readOnly="true" border="flat" bordercolor = "white" text="' + name +'"');	
+			}
+		}
+		// 스크롤 리싸이징
+		this.resizescroll();
+		div0.resizeScroll();
+	}
+	
+	
+
+/*
+	// 이미지 컴포넌트 생성	
+	var ileft = 1;
+	var iright = 59;
+	var itop = 23;
+	//var ibottom = 9;
+	var iwidth = 59;
+	var iheight = 46;
+	var rowCount = ds_birth.rowcount;
+
+	// 그리드 높이 설정
+	div0.grd_birth.height = 24;
+	div0.grd_birth.height = toNumber(div0.grd_birth.height)
+	                       + (toNumber(div0.grd_birth.Rowheight) * toNumber(rowcount));
+	                       
+	for(nImg=0; nImg < rowCount; nImg++)
+	{
+		var imgUrl = "http://59.12.238.168:8088/UPFILE/PICPER/";
+		//var imgUrl = "http://localhost:8088/PICPER";
+		
+		// 첫번쨰 이미지 컴포넌트셋팅
+		if(nImg=0)
+		{
+		trace("first imag");
+			imgUrl = imgUrl + ds_birth.getcolumn(nImg, "COM_ID") + "/APPROVE/" + 
+			         ds_birth.getcolumn(nImg, "eno") + ".jpg";
+			trace(imgurl);
+			div0.Create("image", "image" + nImg,'left="'+ ileft+'" right="'+iright+'" top="'+itop+'" width="'+iwidth+'" height="'+iheight+'" text="" border="flat" filltype="STRETCH" bordercolor = "#B1B1B1" imageID="' + imgUrl+'"');
+			
+		// 두번쨰부터
+		}else
+		{
+			imgUrl = imgUrl + ds_birth.getcolumn(nImg, "COM_ID") + "/APPROVE/" + 
+			        ds_birth.getcolumn(nImg, "eno") + ".jpg";
+			itop = toNumber(itop) + toNumber(iheight);
+			//ibottom = toNumber(ibottom) + toNumber(iheight);
+			div0.Create("image", "image" + nImg,'left="'+ileft+'" right="'+iright+'" top="'+itop+'" width="'+iwidth+'" height="'+iheight+'" text="" border="flat" filltype="STRETCH" bordercolor = "#B1B1B1" imageID="' + imgUrl+'"');
+	
+		}
+		
+	}
+	// 스크롤 재생성
+	//this.div_idpic.resizescroll();
+	this.resizescroll();
+	div0.resizeScroll();
+	*/
+}
+
+/**************************************************************************************************
+  * 공통 Event 처리 부분
+***************************************************************************************************/
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 화면 Load 완료시 실행 스크립트 
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------/
+function POPUP_BIRTH_OnLoadCompleted(obj)
+{
+	
+	// 폼초기화 
+	fn_initForm();
+
+	// 그리드 공통 초기화 
+	gfn_grid_init(div0.grd_birth);
+	
+}
+
+
+//*------------------------------------------------------------------------------------------------
+//* 함수설명     : 2-2.화면 Unload 시 실행 스크립트
+//* 함수유형     : 
+//* parameter    : 
+//* return value : 없음
+//*-----------------------------------------------------------------------------------------------
+function POPUP_BIRTH_OnUnloadCompleted(obj)
+{
+
+}
+
+
+/**************************************************************************************************
+  * 사용자 정의  Event 처리 부분
+***************************************************************************************************/
+
+
+function btn_cancel_OnClick(obj)
+{
+	close(true);
+}
+
+function img_close_OnClick(obj,nX,nY)
+{
+	close(true);
+}
+
+]]></Script>
+</Window>
